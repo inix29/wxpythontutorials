@@ -1,0 +1,734 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.HeaderCtrl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.HeaderCtrlEvent.html" rel="next" title="wx.HeaderCtrlEvent"/>
+<link href="wx.HeaderColumnSimple.html" rel="prev" title="wx.HeaderColumnSimple"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.HeaderCtrl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.HeaderCtrlEvent.html" title="wx.HeaderCtrlEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.HeaderColumnSimple.html" title="wx.HeaderColumnSimple">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.HeaderCtrl</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-future-improvements"> Future Improvements</a></li>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.HeaderCtrl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-headerctrl">
+<span id="wx-headerctrl"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.HeaderCtrl</strong><a class="headerlink" href="#phoenix-title-wx-headerctrl" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-headerctrl"><span class="std std-ref">  wx.HeaderCtrl</span></a>  is the control containing the column headings which is usually used for display of tabular data.</p>
+<p>It is used as part of <a class="reference internal" href="wx.grid.Grid.html#wx-grid-grid"><span class="std std-ref">  wx.grid.Grid</span></a>, in generic version <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  and report view of <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  but can be also used independently. In general this class is meant to be used as part of another control which already stores the column information somewhere as it can’t be used directly: instead you need to inherit from it and implement the <a class="reference internal" href="#wx.HeaderCtrl.GetColumn" title="wx.HeaderCtrl.GetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumn</span></code></a>  method to provide column information. See <a class="reference internal" href="wx.HeaderCtrlSimple.html#wx-headerctrlsimple"><span class="std std-ref">  wx.HeaderCtrlSimple</span></a>  for a concrete control class which can be used directly.</p>
+<p>In addition to labeling the columns, the control has the following features:</p>
+<ul class="simple">
+<li><p>Column reordering support, either by explicitly configuring the columns order and calling <a class="reference internal" href="#wx.HeaderCtrl.SetColumnsOrder" title="wx.HeaderCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a>  or by dragging the columns interactively (if enabled).</p></li>
+<li><p>Display of the icons in the header: this is often used to display a sort or reverse sort indicator when the column header is clicked.</p></li>
+</ul>
+<p>Notice that this control itself doesn’t do anything other than displaying the column headers. In particular column reordering and sorting must still be supported by the associated control displaying the real data under the header. Also remember to call <code class="xref py py-meth docutils literal notranslate"><span class="pre">ScrollWindow</span></code>  method of the control if the associated data display window has a horizontal scrollbar, otherwise the headers wouldn’t align with the data when the window is scrolled.</p>
+<p>This control is implemented using the native header control under MSW systems and a generic implementation elsewhere.</p>
+<div class="section" id="phoenix-title-future-improvements">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Future Improvements<a class="headerlink" href="#phoenix-title-future-improvements" title="Permalink to this headline">¶</a></h2>
+<p>Some features are supported by the native MSW control and so could be easily implemented in this version of <a class="reference internal" href="#wx-headerctrl"><span class="std std-ref">  wx.HeaderCtrl</span></a>  but need to be implemented in the generic version as well to be really useful. Please let us know if you need or, better, plan to work on implementing, any of them:</p>
+<ul class="simple">
+<li><p>Displaying bitmaps instead of or together with the text</p></li>
+<li><p>Custom drawn headers</p></li>
+<li><p>Filters associated with a column.</p></li>
+</ul>
+</div>
+<div class="section" id="styles-window-styles">
+<span id="headerctrl-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_REORDER</span></code>: If this style is specified (it is by default), the user can reorder the control columns by dragging them.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_HIDE</span></code>: If this style is specified, the control shows a popup menu allowing the user to change the columns visibility on right mouse click. Notice that the program can always hide or show the columns, this style only affects the users capability to do it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.HD_DEFAULT_STYLE</span></code>: Symbolic name for the default control style, currently equal to  <code class="docutils literal notranslate"><span class="pre">HD_ALLOW_REORDER</span></code> .</p></li>
+</ul>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="headerctrl-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive one of the <a class="reference internal" href="wx.HeaderCtrlEvent.html#wx-headerctrlevent"><span class="std std-ref">  wx.HeaderCtrlEvent</span></a> parameters.</p>
+<ul class="simple">
+<li><p>EVT_HEADER_CLICK: A column heading was clicked.</p></li>
+<li><p>EVT_HEADER_RIGHT_CLICK: A column heading was right clicked.</p></li>
+<li><p>EVT_HEADER_MIDDLE_CLICK: A column heading was clicked with the middle mouse button.</p></li>
+<li><p>EVT_HEADER_DCLICK: A column heading was double clicked.</p></li>
+<li><p>EVT_HEADER_RIGHT_DCLICK: A column heading was right double clicked.</p></li>
+<li><p>EVT_HEADER_MIDDLE_DCLICK: A column heading was double clicked with the middle mouse button.</p></li>
+<li><p>EVT_HEADER_SEPARATOR_DCLICK: Separator to the right of the specified column was double clicked (this action is commonly used to resize the column to fit its contents width and the control provides <a class="reference internal" href="#wx.HeaderCtrl.UpdateColumnWidthToFit" title="wx.HeaderCtrl.UpdateColumnWidthToFit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumnWidthToFit</span></code></a>  method to make implementing this easier).</p></li>
+<li><p>EVT_HEADER_BEGIN_RESIZE: The user started to drag the separator to the right of the column with the specified index (this can only happen for the columns for which <a class="reference internal" href="wx.HeaderColumn.html#wx.HeaderColumn.IsResizeable" title="wx.HeaderColumn.IsResizeable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.HeaderColumn.IsResizeable</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code>). The event can be vetoed to prevent the column from being resized. If it isn’t, the resizing and end resize (or dragging cancelled) events will be generated later.</p></li>
+<li><p>EVT_HEADER_RESIZING: The user is dragging the column with the specified index resizing it and its current width is <a class="reference internal" href="wx.HeaderCtrlEvent.html#wx.HeaderCtrlEvent.GetWidth" title="wx.HeaderCtrlEvent.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.HeaderCtrlEvent.GetWidth</span></code></a> . The event can be vetoed to stop the dragging operation completely at any time.</p></li>
+<li><p>EVT_HEADER_END_RESIZE: The user stopped dragging the column by releasing the mouse. The column should normally be resized to the value of <a class="reference internal" href="wx.HeaderCtrlEvent.html#wx.HeaderCtrlEvent.GetWidth" title="wx.HeaderCtrlEvent.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.HeaderCtrlEvent.GetWidth</span></code></a> .</p></li>
+<li><p>EVT_HEADER_BEGIN_REORDER: The user started to drag the column with the specified index (this can only happen for the controls with <code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_REORDER</span></code> style). This event can be vetoed to prevent the column from being reordered, otherwise the end reorder message will be generated later.</p></li>
+<li><p>EVT_HEADER_END_REORDER: The user dropped the column in its new location. The event can be vetoed to prevent the column from being placed at the new position or handled to update the display of the data in the associated control to match the new column location (available from <a class="reference internal" href="wx.HeaderCtrlEvent.html#wx.HeaderCtrlEvent.GetNewOrder" title="wx.HeaderCtrlEvent.GetNewOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.HeaderCtrlEvent.GetNewOrder</span></code></a> ).</p></li>
+<li><p>EVT_HEADER_DRAGGING_CANCELLED: The resizing or reordering operation currently in progress was cancelled. This can happen if the user pressed Esc key while dragging the mouse or the mouse capture was lost for some other reason. You only need to handle this event if your application entered into some modal mode when resizing or reordering began, in which case it should handle this event in addition to the matching end resizing or reordering ones.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.grid.Grid.html#wx-grid-grid"><span class="std std-ref">  wx.grid.Grid</span></a>, <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>, <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>HeaderCtrl</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of HeaderCtrl" class="inheritance" src="_static/images/inheritance/wx.HeaderCtrl_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="52,315,169,344" href="wx.HeaderCtrl.html" id="node1" shape="rect" title="wx.HeaderCtrl  is the control containing the column headings which is usually used for display of tabular data."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.HeaderCtrlSimple.html#wx-headerctrlsimple"><span class="std std-ref">  wx.HeaderCtrlSimple</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%"/>
+<col style="width: 64%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.__init__" title="wx.HeaderCtrl.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor not creating the underlying window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.AddColumnsItems" title="wx.HeaderCtrl.AddColumnsItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddColumnsItems</span></code></a></p></td>
+<td><p>Helper function appending the checkable items corresponding to all the columns to the given menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.Create" title="wx.HeaderCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Create the header control window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.GetClassDefaultAttributes" title="wx.HeaderCtrl.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.GetColumn" title="wx.HeaderCtrl.GetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumn</span></code></a></p></td>
+<td><p>Method to be implemented by the derived classes to return the information for the given column.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.GetColumnAt" title="wx.HeaderCtrl.GetColumnAt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnAt</span></code></a></p></td>
+<td><p>Return the index of the column displayed at the given position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.GetColumnCount" title="wx.HeaderCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p></td>
+<td><p>Return the number of columns in the control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.GetColumnPos" title="wx.HeaderCtrl.GetColumnPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnPos</span></code></a></p></td>
+<td><p>Get the position at which this column is currently displayed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.GetColumnTitleWidth" title="wx.HeaderCtrl.GetColumnTitleWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnTitleWidth</span></code></a></p></td>
+<td><p>Returns width needed for given column’s title.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.GetColumnsOrder" title="wx.HeaderCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a></p></td>
+<td><p>Return the array describing the columns display order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.IsEmpty" title="wx.HeaderCtrl.IsEmpty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmpty</span></code></a></p></td>
+<td><p>Return whether the control has any columns.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.MoveColumnInOrderArray" title="wx.HeaderCtrl.MoveColumnInOrderArray"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MoveColumnInOrderArray</span></code></a></p></td>
+<td><p>Helper function to manipulate the array of column indices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.OnColumnCountChanging" title="wx.HeaderCtrl.OnColumnCountChanging"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnColumnCountChanging</span></code></a></p></td>
+<td><p>Can be overridden in the derived class to update internal data structures when the number of the columns in the control changes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.ResetColumnsOrder" title="wx.HeaderCtrl.ResetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ResetColumnsOrder</span></code></a></p></td>
+<td><p>Reset the columns order to the natural one.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.SetColumnCount" title="wx.HeaderCtrl.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p></td>
+<td><p>Set the number of columns in the control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.SetColumnsOrder" title="wx.HeaderCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a></p></td>
+<td><p>Change the columns display order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.ShowColumnsMenu" title="wx.HeaderCtrl.ShowColumnsMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowColumnsMenu</span></code></a></p></td>
+<td><p>Show the popup menu allowing the user to show or hide the columns.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.ShowCustomizeDialog" title="wx.HeaderCtrl.ShowCustomizeDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowCustomizeDialog</span></code></a></p></td>
+<td><p>Show the column customization dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.UpdateColumn" title="wx.HeaderCtrl.UpdateColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumn</span></code></a></p></td>
+<td><p>Update the column with the given index.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.UpdateColumnVisibility" title="wx.HeaderCtrl.UpdateColumnVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumnVisibility</span></code></a></p></td>
+<td><p>Method called when the column visibility is changed by the user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.UpdateColumnWidthToFit" title="wx.HeaderCtrl.UpdateColumnWidthToFit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumnWidthToFit</span></code></a></p></td>
+<td><p>Method which may be implemented by the derived classes to allow double clicking the column separator to resize the column to fit its contents.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.UpdateColumnsOrder" title="wx.HeaderCtrl.UpdateColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumnsOrder</span></code></a></p></td>
+<td><p>Method called when the columns order is changed in the customization dialog.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 48%"/>
+<col style="width: 52%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.HeaderCtrl.ColumnCount" title="wx.HeaderCtrl.ColumnCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ColumnCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.HeaderCtrl.GetColumnCount" title="wx.HeaderCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a> and <a class="reference internal" href="#wx.HeaderCtrl.SetColumnCount" title="wx.HeaderCtrl.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.HeaderCtrl.ColumnsOrder" title="wx.HeaderCtrl.ColumnsOrder"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ColumnsOrder</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.HeaderCtrl.GetColumnsOrder" title="wx.HeaderCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a> and <a class="reference internal" href="#wx.HeaderCtrl.SetColumnsOrder" title="wx.HeaderCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.HeaderCtrl">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">HeaderCtrl</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HeaderCtrl</span><span class="p">()</span>
+
+<span class="n">HeaderCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">winid</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+           <span class="n">style</span><span class="o">=</span><span class="n">HD_DEFAULT_STYLE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">HeaderCtrlNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>HeaderCtrl is the control containing the column headings which is
+usually used for display of tabular data.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.HeaderCtrl.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor not creating the underlying window.</p>
+<p>You must use <a class="reference internal" href="#wx.HeaderCtrl.Create" title="wx.HeaderCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   after creating the object using this constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, winid=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=HD_DEFAULT_STYLE, name=HeaderCtrlNameStr)</em></p>
+<p>Constructor creating the window.</p>
+<p>Please see <a class="reference internal" href="#wx.HeaderCtrl.Create" title="wx.HeaderCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   for the parameters documentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>winid</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.AddColumnsItems">
+<code class="sig-name descname">AddColumnsItems</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">menu</em>, <em class="sig-param">idColumnsBase=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.AddColumnsItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function appending the checkable items corresponding to all the columns to the given menu.</p>
+<p>This function is used by <a class="reference internal" href="#wx.HeaderCtrl.ShowColumnsMenu" title="wx.HeaderCtrl.ShowColumnsMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowColumnsMenu</span></code></a>   but can also be used if you show your own custom columns menu and still want all the columns shown in it. It appends menu items with column labels as their text and consecutive ids starting from <em class="xref py py-obj">idColumnsBase</em>  to the menu and checks the items corresponding to the currently visible columns.</p>
+<p>Example of use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ColumnItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">()</span>
+    <span class="n">menu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s2">"Some custom command"</span><span class="p">)</span>
+    <span class="n">menu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">AddColumnsItems</span><span class="p">(</span><span class="n">menu</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetPopupMenuSelectionFromUser</span><span class="p">(</span><span class="n">menu</span><span class="p">,</span> <span class="n">pt</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">rc</span> <span class="o">&gt;=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="c1"># ... toggle visibility of the column rc-200 ...</span>
+        <span class="n">ToggleVisibility</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menu</strong> (<a class="reference internal" href="wx.Menu.html#wx.Menu" title="wx.Menu"><em>wx.Menu</em></a>) – The menu to append the items to. It may be currently empty or not.</p></li>
+<li><p><strong>idColumnsBase</strong> (<em>int</em>) – The id for the menu item corresponding to the first column, the other ones are consecutive starting from it. It should be positive.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">winid=ID_ANY</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=HD_DEFAULT_STYLE</em>, <em class="sig-param">name=HeaderCtrlNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the header control window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – The parent window. The header control should be typically positioned along the top edge of this window.</p></li>
+<li><p><strong>winid</strong> (<em>wx.WindowID</em>) – Id of the control or  <code class="docutils literal notranslate"><span class="pre">ID_ANY</span></code>   if you don’t care.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The initial position of the control.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – The initial size of the control (usually not very useful as this control will typically be resized to have the same width as the associated data display control).</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – The control style,  <code class="docutils literal notranslate"><span class="pre">HD_DEFAULT_STYLE</span></code>   by default. Notice that the default style allows the user to reorder the columns by dragging them and you need to explicitly turn this feature off by using:
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">HD_DEFAULT_STYLE</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">wx</span><span class="o">.</span><span class="n">HD_ALLOW_REORDER</span>
+</pre></div>
+</div>
+<p>if this is undesirable.</p>
+</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – The name of the control.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.GetColumn">
+<code class="sig-name descname">GetColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.GetColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to be implemented by the derived classes to return the information for the given column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – The column index, between 0 and the value last passed to <a class="reference internal" href="#wx.HeaderCtrl.SetColumnCount" title="wx.HeaderCtrl.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a> .</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.HeaderColumn.html#wx-headercolumn"><span class="std std-ref">  wx.HeaderColumn</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.GetColumnAt">
+<code class="sig-name descname">GetColumnAt</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.GetColumnAt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the index of the column displayed at the given position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – The display position, e.g. 0 for the left-most column, 1 for the next one and so on until <a class="reference internal" href="#wx.HeaderCtrl.GetColumnCount" title="wx.HeaderCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a>   - 1.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.HeaderCtrl.GetColumnPos" title="wx.HeaderCtrl.GetColumnPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnPos</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.GetColumnCount">
+<code class="sig-name descname">GetColumnCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.GetColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of columns in the control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of columns as previously set by <a class="reference internal" href="#wx.HeaderCtrl.SetColumnCount" title="wx.HeaderCtrl.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a> .</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.HeaderCtrl.IsEmpty" title="wx.HeaderCtrl.IsEmpty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmpty</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.GetColumnPos">
+<code class="sig-name descname">GetColumnPos</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.GetColumnPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the position at which this column is currently displayed.</p>
+<p>Notice that a valid position is returned even for the hidden columns currently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – The column index, must be less than <a class="reference internal" href="#wx.HeaderCtrl.GetColumnCount" title="wx.HeaderCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a> .</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.HeaderCtrl.GetColumnAt" title="wx.HeaderCtrl.GetColumnAt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnAt</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.GetColumnTitleWidth">
+<code class="sig-name descname">GetColumnTitleWidth</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.GetColumnTitleWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns width needed for given column’s title.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.HeaderColumn.html#wx.HeaderColumn" title="wx.HeaderColumn"><em>wx.HeaderColumn</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.4.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.GetColumnsOrder">
+<code class="sig-name descname">GetColumnsOrder</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.GetColumnsOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the array describing the columns display order.</p>
+<p>For the controls without <code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_REORDER</span></code> style the returned array will be the same as was passed to <a class="reference internal" href="#wx.HeaderCtrl.SetColumnsOrder" title="wx.HeaderCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a>   previously or define the default order (with n-th element being n) if it hadn’t been called. But for the controls with <code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_REORDER</span></code> style, the columns can be also reordered by user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of integers</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.IsEmpty">
+<code class="sig-name descname">IsEmpty</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the control has any columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.HeaderCtrl.GetColumnCount" title="wx.HeaderCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.MoveColumnInOrderArray">
+<em class="property">static </em><code class="sig-name descname">MoveColumnInOrderArray</code><span class="sig-paren">(</span><em class="sig-param">order</em>, <em class="sig-param">idx</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.MoveColumnInOrderArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to manipulate the array of column indices.</p>
+<p>This function reshuffles the array of column indices indexed by positions (i.e. using the same convention as for <a class="reference internal" href="#wx.HeaderCtrl.SetColumnsOrder" title="wx.HeaderCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a> ) so that the column with the given index is found at the specified position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>order</strong> (<em>list of integers</em>) – Array containing the indices of columns in order of their positions.</p></li>
+<li><p><strong>idx</strong> (<em>int</em>) – The index of the column to move.</p></li>
+<li><p><strong>pos</strong> (<em>int</em>) – The new position for the column  <em class="xref py py-obj">idx</em>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.OnColumnCountChanging">
+<code class="sig-name descname">OnColumnCountChanging</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">count</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.OnColumnCountChanging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can be overridden in the derived class to update internal data structures when the number of the columns in the control changes.</p>
+<p>This method is called by <a class="reference internal" href="#wx.HeaderCtrl.SetColumnCount" title="wx.HeaderCtrl.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a>   before effectively changing the number of columns.</p>
+<p>The base class version does nothing but it is good practice to still call it from the overridden version in the derived class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>count</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.ResetColumnsOrder">
+<code class="sig-name descname">ResetColumnsOrder</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.ResetColumnsOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the columns order to the natural one.</p>
+<p>After calling this function, the column with index  <code class="docutils literal notranslate"><span class="pre">idx</span></code>   appears at position   <code class="docutils literal notranslate"><span class="pre">idx</span></code>   in the control.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.SetColumnCount">
+<code class="sig-name descname">SetColumnCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">count</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.SetColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the number of columns in the control.</p>
+<p>The control will use <a class="reference internal" href="#wx.HeaderCtrl.GetColumn" title="wx.HeaderCtrl.GetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumn</span></code></a>   to get information about all the new columns and refresh itself, i.e. this method also has the same effect as calling <a class="reference internal" href="#wx.HeaderCtrl.UpdateColumn" title="wx.HeaderCtrl.UpdateColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumn</span></code></a>   for all columns but it should only be used if the number of columns really changed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>count</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.SetColumnsOrder">
+<code class="sig-name descname">SetColumnsOrder</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">order</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.SetColumnsOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the columns display order.</p>
+<p>The display order defines the order in which the columns appear on the screen and does <em class="xref py py-obj">not</em>  affect the interpretation of indices by all the other class methods.</p>
+<p>The <em class="xref py py-obj">order</em>  array specifies the column indices corresponding to the display positions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>order</strong> (<em>list of integers</em>) – A permutation of all column indices, i.e. an array of size <a class="reference internal" href="#wx.HeaderCtrl.GetColumnsOrder" title="wx.HeaderCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a>   containing all column indices exactly once. The n-th element of this array defines the index of the column shown at the n-th position from left (for the default left-to-right writing direction).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.ListCtrl.html#wx.ListCtrl.SetColumnsOrder" title="wx.ListCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.SetColumnsOrder</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.ShowColumnsMenu">
+<code class="sig-name descname">ShowColumnsMenu</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pt</em>, <em class="sig-param">title=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.ShowColumnsMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the popup menu allowing the user to show or hide the columns.</p>
+<p>This functions shows the popup menu containing all columns with check marks for the ones which are currently shown and allows the user to check or uncheck them to toggle their visibility. It is called from the default <code class="docutils literal notranslate"><span class="pre">EVT_HEADER_RIGHT_CLICK</span></code> handler for the controls which have <code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_HIDE</span></code> style. And if the column has <code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_REORDER</span></code> style as well, the menu also contains an item to customize the columns shown using which results in <a class="reference internal" href="#wx.HeaderCtrl.ShowCustomizeDialog" title="wx.HeaderCtrl.ShowCustomizeDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowCustomizeDialog</span></code></a>   being called, please see its description for more details.</p>
+<p>If a column was toggled, <a class="reference internal" href="#wx.HeaderCtrl.UpdateColumnVisibility" title="wx.HeaderCtrl.UpdateColumnVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumnVisibility</span></code></a>   virtual function is called so it must be implemented for the controls with <code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_HIDE</span></code> style or if you call this function explicitly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The position of the menu, in the header window coordinates.</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – The title for the menu if not empty.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a column was shown or hidden or <code class="docutils literal notranslate"><span class="pre">False</span></code> if nothing was done, e.g. because the menu was cancelled.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.ShowCustomizeDialog">
+<code class="sig-name descname">ShowCustomizeDialog</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.ShowCustomizeDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the column customization dialog.</p>
+<p>This function displays a modal dialog containing the list of all columns which the user can use to reorder them as well as show or hide individual columns.</p>
+<p>If the user accepts the changes done in the dialog, the virtual methods <a class="reference internal" href="#wx.HeaderCtrl.UpdateColumnVisibility" title="wx.HeaderCtrl.UpdateColumnVisibility"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumnVisibility</span></code></a>   and <a class="reference internal" href="#wx.HeaderCtrl.UpdateColumnsOrder" title="wx.HeaderCtrl.UpdateColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumnsOrder</span></code></a>   will be called so they must be overridden in the derived class if this method is ever called. Please notice that the user will be able to invoke it interactively from the header popup menu if the control has both <code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_HIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">wx.HD_ALLOW_REORDER</span></code> styles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.RearrangeDialog.html#wx-rearrangedialog"><span class="std std-ref">  wx.RearrangeDialog</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.UpdateColumn">
+<code class="sig-name descname">UpdateColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.UpdateColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the column with the given index.</p>
+<p>When the value returned by <a class="reference internal" href="#wx.HeaderCtrl.GetColumn" title="wx.HeaderCtrl.GetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumn</span></code></a>   changes, this method must be called to notify the control about the change and update the visual display to match the new column data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – The column index, must be less than <a class="reference internal" href="#wx.HeaderCtrl.GetColumnCount" title="wx.HeaderCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a> .</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.UpdateColumnVisibility">
+<code class="sig-name descname">UpdateColumnVisibility</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em>, <em class="sig-param">show</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.UpdateColumnVisibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method called when the column visibility is changed by the user.</p>
+<p>This method is called from <a class="reference internal" href="#wx.HeaderCtrl.ShowColumnsMenu" title="wx.HeaderCtrl.ShowColumnsMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowColumnsMenu</span></code></a>   or <a class="reference internal" href="#wx.HeaderCtrl.ShowCustomizeDialog" title="wx.HeaderCtrl.ShowCustomizeDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowCustomizeDialog</span></code></a>   when the user interactively hides or shows a column. A typical implementation will simply update the internally stored column state. Notice that there is no need to call <a class="reference internal" href="#wx.HeaderCtrl.UpdateColumn" title="wx.HeaderCtrl.UpdateColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateColumn</span></code></a>   from this method as it is already done by <a class="reference internal" href="#wx-headerctrl"><span class="std std-ref">  wx.HeaderCtrl</span></a>  itself.</p>
+<p>The base class version doesn’t do anything and must be overridden if this method is called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> (<em>int</em>) – The index of the column whose visibility was toggled.</p></li>
+<li><p><strong>show</strong> (<em>bool</em>) – The new visibility value, <code class="docutils literal notranslate"><span class="pre">True</span></code> if the column is now shown or <code class="docutils literal notranslate"><span class="pre">False</span></code> if it is not hidden.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.UpdateColumnWidthToFit">
+<code class="sig-name descname">UpdateColumnWidthToFit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em>, <em class="sig-param">widthTitle</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.UpdateColumnWidthToFit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method which may be implemented by the derived classes to allow double clicking the column separator to resize the column to fit its contents.</p>
+<p>When a separator is double clicked, the default handler of <code class="docutils literal notranslate"><span class="pre">EVT_HEADER_SEPARATOR_DCLICK</span></code> event calls this function and refreshes the column if it returns <code class="docutils literal notranslate"><span class="pre">True</span></code> so to implement the resizing of the column to fit its width on header double click you need to implement this method using logic similar to this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyHeaderColumn</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HeaderColumn</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">HeaderColumn</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">SetWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+
+
+    <span class="k">def</span> <span class="nf">GetWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span>
+
+
+<span class="k">class</span> <span class="nc">MyHeaderCtrl</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HeaderCtrl</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">HeaderCtrl</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+    <span class="k">def</span> <span class="nf">GetColumn</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+
+    <span class="k">def</span> <span class="nf">UpdateColumnWidthToFit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">widthTitle</span><span class="p">):</span>
+
+        <span class="c1"># ... compute minimal width for column idx ...</span>
+        <span class="n">widthContents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CalculateMinWidth</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">SetWidth</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">widthContents</span><span class="p">,</span> <span class="n">widthTitle</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Base class version simply returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> (<em>int</em>) – The zero-based index of the column to update.</p></li>
+<li><p><strong>widthTitle</strong> (<em>int</em>) – Contains minimal width needed to display the column header itself and will usually be used as a starting point for the fitting width calculation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> to indicate that the column was resized, i.e. <a class="reference internal" href="#wx.HeaderCtrl.GetColumn" title="wx.HeaderCtrl.GetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumn</span></code></a>   now returns the new width value, and so must be refreshed or <code class="docutils literal notranslate"><span class="pre">False</span></code> meaning that the control didn’t reach to the separator double click.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.HeaderCtrl.UpdateColumnsOrder">
+<code class="sig-name descname">UpdateColumnsOrder</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">order</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.HeaderCtrl.UpdateColumnsOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method called when the columns order is changed in the customization dialog.</p>
+<p>This method is only called from <a class="reference internal" href="#wx.HeaderCtrl.ShowCustomizeDialog" title="wx.HeaderCtrl.ShowCustomizeDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowCustomizeDialog</span></code></a>   when the user changes the order of columns. In particular it is <em class="xref py py-obj">not</em>  called if a single column changes place because the user dragged it to the new location, the <code class="docutils literal notranslate"><span class="pre">EVT_HEADER_END_REORDER</span></code> event handler should be used to react to this.</p>
+<p>A typical implementation in a derived class will update the display order of the columns in the associated control, if any. Notice that there is no need to call <a class="reference internal" href="#wx.HeaderCtrl.SetColumnsOrder" title="wx.HeaderCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a>   from it as <a class="reference internal" href="#wx-headerctrl"><span class="std std-ref">  wx.HeaderCtrl</span></a>  does it itself.</p>
+<p>The base class version doesn’t do anything and must be overridden if this method is called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>order</strong> (<em>list of integers</em>) – The new column order. This array uses the same convention as <a class="reference internal" href="#wx.HeaderCtrl.SetColumnsOrder" title="wx.HeaderCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a> .</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.HeaderCtrl.ColumnCount">
+<code class="sig-name descname">ColumnCount</code><a class="headerlink" href="#wx.HeaderCtrl.ColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.HeaderCtrl.GetColumnCount" title="wx.HeaderCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a> and <a class="reference internal" href="#wx.HeaderCtrl.SetColumnCount" title="wx.HeaderCtrl.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.HeaderCtrl.ColumnsOrder">
+<code class="sig-name descname">ColumnsOrder</code><a class="headerlink" href="#wx.HeaderCtrl.ColumnsOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.HeaderCtrl.GetColumnsOrder" title="wx.HeaderCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a> and <a class="reference internal" href="#wx.HeaderCtrl.SetColumnsOrder" title="wx.HeaderCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

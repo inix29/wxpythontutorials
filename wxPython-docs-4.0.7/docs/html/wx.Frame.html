@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Frame — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.GBPosition.html" rel="next" title="wx.GBPosition"/>
+<link href="wx.FontWeight.enumeration.html" rel="prev" title="wx.FontWeight"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Frame</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.GBPosition.html" title="wx.GBPosition">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.FontWeight.enumeration.html" title="wx.FontWeight">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Frame</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-default-event-processing"> Default event processing</a></li>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#extra-styles-window-extra-styles"> Window Extra Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Frame.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-frame">
+<span id="wx-frame"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Frame</strong><a class="headerlink" href="#phoenix-title-wx-frame" title="Permalink to this headline">¶</a></h1>
+<p>A frame is a window whose size and position can (usually) be changed by the user.</p>
+<p>It usually has thick borders and a title bar, and can optionally contain a menu bar, toolbar and status bar. A frame can contain any window that is not a frame or dialog.</p>
+<p>A frame that has a status bar and toolbar, created via the <a class="reference internal" href="#wx.Frame.CreateStatusBar" title="wx.Frame.CreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStatusBar</span></code></a>  and <a class="reference internal" href="#wx.Frame.CreateToolBar" title="wx.Frame.CreateToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateToolBar</span></code></a>  functions, manages these windows and adjusts the value returned by <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClientSize</span></code>  to reflect the remaining size available to application windows.</p>
+<div class="section" id="phoenix-title-default-event-processing">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Default event processing<a class="headerlink" href="#phoenix-title-default-event-processing" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#wx-frame"><span class="std std-ref">  wx.Frame</span></a>  processes the following events:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wxEVT_SIZE:</span></code>   if the frame has exactly one child window, not counting the status and toolbar, this child is resized to take the entire frame client area. If two or more windows are present, they should be laid out explicitly either by manually handling   <code class="docutils literal notranslate"><span class="pre">wxEVT_SIZE</span></code>   or using sizers;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wxEVT_MENU_HIGHLIGHT:</span></code>   the default implementation displays the help string associated with the selected item in the first pane of the status bar, if there is one.</p></li>
+</ul>
+</div>
+<div class="section" id="styles-window-styles">
+<span id="frame-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.DEFAULT_FRAME_STYLE</span></code>: Defined as <code class="docutils literal notranslate"><span class="pre">wx.MINIMIZE_BOX</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.MAXIMIZE_BOX</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.RESIZE_BORDER</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.SYSTEM_MENU</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.CAPTION</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.CLOSE_BOX</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.CLIP_CHILDREN</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ICONIZE</span></code>: Display the frame iconized (minimized). Windows only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.CAPTION</span></code>: Puts a caption on the frame. Notice that this flag is required by <code class="docutils literal notranslate"><span class="pre">wx.MINIMIZE_BOX</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.MAXIMIZE_BOX</span></code> and <code class="docutils literal notranslate"><span class="pre">wx.CLOSE_BOX</span></code> on most systems as the corresponding buttons cannot be shown if the window has no title bar at all. I.e. if <code class="docutils literal notranslate"><span class="pre">wx.CAPTION</span></code> is not specified those styles would be simply ignored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.MINIMIZE</span></code>: Identical to <code class="docutils literal notranslate"><span class="pre">wx.ICONIZE</span></code>. Windows only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.MINIMIZE_BOX</span></code>: Displays a minimize box on the frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.MAXIMIZE</span></code>: Displays the frame maximized. Windows and GTK+ only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.MAXIMIZE_BOX</span></code>: Displays a maximize box on the frame. Notice that under wxGTK <code class="docutils literal notranslate"><span class="pre">wx.RESIZE_BORDER</span></code> must be used as well or this style is ignored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.CLOSE_BOX</span></code>: Displays a close box on the frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.STAY_ON_TOP</span></code>: Stay on top of all other windows, see also <code class="docutils literal notranslate"><span class="pre">wx.FRAME_FLOAT_ON_PARENT</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.SYSTEM_MENU</span></code>: Displays a system menu containing the list of various windows commands in the window title bar. Unlike <code class="docutils literal notranslate"><span class="pre">wx.MINIMIZE_BOX</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.MAXIMIZE_BOX</span></code> and <code class="docutils literal notranslate"><span class="pre">wx.CLOSE_BOX</span></code> styles this style can be used without <code class="docutils literal notranslate"><span class="pre">wx.CAPTION</span></code>, at least under Windows, and makes the system menu available without showing it on screen in this case. However it is recommended to only use it together with <code class="docutils literal notranslate"><span class="pre">wx.CAPTION</span></code> for consistent behaviour under all platforms.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.RESIZE_BORDER</span></code>: Displays a resizable border around the window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FRAME_TOOL_WINDOW</span></code>: Causes a frame with a small title bar to be created; the frame does not appear in the taskbar under Windows or GTK+.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FRAME_NO_TASKBAR</span></code>: Creates an otherwise normal frame but it does not appear in the taskbar under Windows or GTK+ (note that it will minimize to the desktop window under Windows which may seem strange to the users and thus it might be better to use this style only without <code class="docutils literal notranslate"><span class="pre">wx.MINIMIZE_BOX</span></code> style). In wxGTK, the flag is respected only if the window manager supports <code class="docutils literal notranslate"><span class="pre">_NET_WM_STATE_SKIP_TASKBAR</span></code> hint.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FRAME_FLOAT_ON_PARENT</span></code>: The frame will always be on top of its parent (unlike <code class="docutils literal notranslate"><span class="pre">wx.STAY_ON_TOP</span></code>). A frame created with this style must have a not <code class="docutils literal notranslate"><span class="pre">None</span></code> parent.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FRAME_SHAPED</span></code>: Windows with this style are allowed to have their shape changed with the <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetShape</span></code>  method.</p></li>
+</ul>
+<p>The default frame style is for normal, resizable frames. To create a frame which cannot be resized by user, you may use the following combination of styles:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">style</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DEFAULT_FRAME_STYLE</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">RESIZE_BORDER</span> <span class="o">|</span> <span class="n">wx</span><span class="o">.</span><span class="n">MAXIMIZE_BOX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-styles-window-extra-styles">
+<span id="frame-extra-styles"></span><h2><a class="reference internal" href="_images/extra_styles.png"><img alt="extra_styles" class="align-middle" src="_images/extra_styles.png" style="width: 32px;"/></a> Window Extra Styles<a class="headerlink" href="#extra-styles-window-extra-styles" title="Permalink to this headline">¶</a></h2>
+<p>See also the <a class="reference internal" href="window_styles_overview.html#window-styles"><span class="std std-ref">Window Styles</span></a>. This class supports the following extra styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FRAME_EX_CONTEXTHELP</span></code>: Under Windows, puts a query button on the caption. When pressed, Windows will go into a context-sensitive help mode and wxWidgets will send a  <code class="docutils literal notranslate"><span class="pre">wxEVT_HELP</span></code>   event if the user clicked on an application window. Note that this is an extended style and must be set by calling SetExtraStyle before Create is called (two-step construction). You cannot use this style together with <code class="docutils literal notranslate"><span class="pre">wx.MAXIMIZE_BOX</span></code> or <code class="docutils literal notranslate"><span class="pre">wx.MINIMIZE_BOX</span></code>, so you should use <code class="docutils literal notranslate"><span class="pre">wx.DEFAULT_FRAME_STYLE</span></code> ~ (wx``wx.MINIMIZE_BOX`` | <code class="docutils literal notranslate"><span class="pre">wx.MAXIMIZE_BOX</span></code>) for the frames having this style (the dialogs don’t have a minimize or a maximize box by default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FRAME_EX_METAL</span></code>: On Mac OS X, frames with this style will be shown with a metallic look. This is an extra style.</p></li>
+</ul>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="frame-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Event macros for events emitted by this class:</p>
+<ul class="simple">
+<li><p>EVT_CLOSE: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_CLOSE_WINDOW</span></code>   event when the frame is being closed by the user or programmatically (see  <a class="reference internal" href="wx.Window.html#wx.Window.Close" title="wx.Window.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Close</span></code></a> ). The user may generate this event clicking the close button (typically the ‘X’ on the top-right of the title bar) if it’s present (see the  <code class="docutils literal notranslate"><span class="pre">CLOSE_BOX</span></code>   style). See  <a class="reference internal" href="wx.CloseEvent.html#wx-closeevent"><span class="std std-ref">  wx.CloseEvent</span></a>.</p></li>
+<li><p>EVT_ICONIZE: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_ICONIZE</span></code>   event. See  <a class="reference internal" href="wx.IconizeEvent.html#wx-iconizeevent"><span class="std std-ref">  wx.IconizeEvent</span></a>.</p></li>
+<li><p>EVT_MENU_OPEN: A menu is about to be opened. See <a class="reference internal" href="wx.MenuEvent.html#wx-menuevent"><span class="std std-ref">  wx.MenuEvent</span></a>.</p></li>
+<li><p>EVT_MENU_CLOSE: A menu has been just closed. See <a class="reference internal" href="wx.MenuEvent.html#wx-menuevent"><span class="std std-ref">  wx.MenuEvent</span></a>.</p></li>
+<li><p>EVT_MENU_HIGHLIGHT: The menu item with the specified id has been highlighted: used to show help prompts in the status bar by <a class="reference internal" href="#wx-frame"><span class="std std-ref">  wx.Frame</span></a>. See <a class="reference internal" href="wx.MenuEvent.html#wx-menuevent"><span class="std std-ref">  wx.MenuEvent</span></a>.</p></li>
+<li><p>EVT_MENU_HIGHLIGHT_ALL: A menu item has been highlighted, i.e. the currently selected menu item has changed. See <a class="reference internal" href="wx.MenuEvent.html#wx-menuevent"><span class="std std-ref">  wx.MenuEvent</span></a>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An application should normally define an <a class="reference internal" href="wx.CloseEvent.html#wx-closeevent"><span class="std std-ref">  wx.CloseEvent</span></a>  handler for the frame to respond to system close events, for example so that related data and subwindows can be cleaned up.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.MDIParentFrame.html#wx-mdiparentframe"><span class="std std-ref">  wx.MDIParentFrame</span></a>, <a class="reference internal" href="wx.MDIChildFrame.html#wx-mdichildframe"><span class="std std-ref">  wx.MDIChildFrame</span></a>, <a class="reference internal" href="wx.MiniFrame.html#wx-miniframe"><span class="std std-ref">  wx.MiniFrame</span></a>, <a class="reference internal" href="wx.Dialog.html#wx-dialog"><span class="std std-ref">  wx.Dialog</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Frame</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Frame" class="inheritance" src="_static/images/inheritance/wx.Frame_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="67,392,155,421" href="wx.Frame.html" id="node1" shape="rect" title="A frame is a window whose size and position can (usually) be changed by the user."/> <area alt="" coords="31,315,190,344" href="wx.TopLevelWindow.html" id="node2" shape="rect" title="wx.TopLevelWindow  is a common base class for wx.Dialog  and wx.Frame."/> <area alt="" coords="25,237,196,267" href="wx.NonOwnedWindow.html" id="node3" shape="rect" title="Common base class for all non-child windows."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node4" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node5" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node6" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node7" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/wx.frame.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/wx.frame1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.frame2.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.aui.AuiMDIParentFrame.html#wx-aui-auimdiparentframe"><span class="std std-ref">  wx.aui.AuiMDIParentFrame</span></a>, <em class="xref py py-obj">DocChildFrame</em>     , <em class="xref py py-obj">DocParentFrame</em>     , <a class="reference internal" href="wx.html.HtmlHelpFrame.html#wx-html-htmlhelpframe"><span class="std std-ref">  wx.html.HtmlHelpFrame</span></a>, <a class="reference internal" href="wx.MDIChildFrame.html#wx-mdichildframe"><span class="std std-ref">  wx.MDIChildFrame</span></a>, <a class="reference internal" href="wx.MDIParentFrame.html#wx-mdiparentframe"><span class="std std-ref">  wx.MDIParentFrame</span></a>, <a class="reference internal" href="wx.MiniFrame.html#wx-miniframe"><span class="std std-ref">  wx.MiniFrame</span></a>, <a class="reference internal" href="wx.PreviewFrame.html#wx-previewframe"><span class="std std-ref">  wx.PreviewFrame</span></a>, <a class="reference internal" href="wx.adv.SplashScreen.html#wx-adv-splashscreen"><span class="std std-ref">  wx.adv.SplashScreen</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%"/>
+<col style="width: 53%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.__init__" title="wx.Frame.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.Centre" title="wx.Frame.Centre"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Centre</span></code></a></p></td>
+<td><p>Centres the frame on the display.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.Create" title="wx.Frame.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Used in two-step frame construction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.CreateStatusBar" title="wx.Frame.CreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStatusBar</span></code></a></p></td>
+<td><p>Creates a status bar at the bottom of the frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.CreateToolBar" title="wx.Frame.CreateToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateToolBar</span></code></a></p></td>
+<td><p>Creates a toolbar at the top or left of the frame.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.GetClassDefaultAttributes" title="wx.Frame.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.GetClientAreaOrigin" title="wx.Frame.GetClientAreaOrigin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClientAreaOrigin</span></code></a></p></td>
+<td><p>Returns the origin of the frame client area (in client coordinates).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.GetMenuBar" title="wx.Frame.GetMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuBar</span></code></a></p></td>
+<td><p>Returns a pointer to the menubar currently associated with the frame (if any).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.GetStatusBar" title="wx.Frame.GetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBar</span></code></a></p></td>
+<td><p>Returns a pointer to the status bar currently associated with the frame (if any).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.GetStatusBarPane" title="wx.Frame.GetStatusBarPane"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBarPane</span></code></a></p></td>
+<td><p>Returns the status bar pane used to display menu and toolbar help.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.GetToolBar" title="wx.Frame.GetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBar</span></code></a></p></td>
+<td><p>Returns a pointer to the toolbar currently associated with the frame (if any).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.OnCreateStatusBar" title="wx.Frame.OnCreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCreateStatusBar</span></code></a></p></td>
+<td><p>Virtual function called when a status bar is requested by <code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStatusBar</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.OnCreateToolBar" title="wx.Frame.OnCreateToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCreateToolBar</span></code></a></p></td>
+<td><p>Virtual function called when a toolbar is requested by <code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateToolBar</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.PopStatusText" title="wx.Frame.PopStatusText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PopStatusText</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.ProcessCommand" title="wx.Frame.ProcessCommand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ProcessCommand</span></code></a></p></td>
+<td><p>Simulate a menu command.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.PushStatusText" title="wx.Frame.PushStatusText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PushStatusText</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.SetMenuBar" title="wx.Frame.SetMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenuBar</span></code></a></p></td>
+<td><p>Tells the frame to show the given menu bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.SetStatusBar" title="wx.Frame.SetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusBar</span></code></a></p></td>
+<td><p>Associates a status bar with the frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.SetStatusBarPane" title="wx.Frame.SetStatusBarPane"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusBarPane</span></code></a></p></td>
+<td><p>Set the status bar pane used to display menu and toolbar help.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.SetStatusText" title="wx.Frame.SetStatusText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusText</span></code></a></p></td>
+<td><p>Sets the status bar text and redraws the status bar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.SetStatusWidths" title="wx.Frame.SetStatusWidths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusWidths</span></code></a></p></td>
+<td><p>Sets the widths of the fields in the status bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.SetToolBar" title="wx.Frame.SetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBar</span></code></a></p></td>
+<td><p>Associates a toolbar with the frame.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.MenuBar" title="wx.Frame.MenuBar"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MenuBar</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Frame.GetMenuBar" title="wx.Frame.GetMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuBar</span></code></a> and <a class="reference internal" href="#wx.Frame.SetMenuBar" title="wx.Frame.SetMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenuBar</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.StatusBar" title="wx.Frame.StatusBar"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StatusBar</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Frame.GetStatusBar" title="wx.Frame.GetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBar</span></code></a> and <a class="reference internal" href="#wx.Frame.SetStatusBar" title="wx.Frame.SetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusBar</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Frame.StatusBarPane" title="wx.Frame.StatusBarPane"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StatusBarPane</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Frame.GetStatusBarPane" title="wx.Frame.GetStatusBarPane"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBarPane</span></code></a> and <a class="reference internal" href="#wx.Frame.SetStatusBarPane" title="wx.Frame.SetStatusBarPane"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusBarPane</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Frame.ToolBar" title="wx.Frame.ToolBar"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ToolBar</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Frame.GetToolBar" title="wx.Frame.GetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBar</span></code></a> and <a class="reference internal" href="#wx.Frame.SetToolBar" title="wx.Frame.SetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBar</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Frame">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Frame</code><span class="sig-paren">(</span><em class="sig-param">TopLevelWindow</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Frame</span><span class="p">()</span>
+
+<span class="n">Frame</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span>
+      <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">DEFAULT_FRAME_STYLE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">FrameNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A frame is a window whose size and position can (usually) be changed
+by the user.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Frame.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, title=””, pos=DefaultPosition, size=DefaultSize, style=DEFAULT_FRAME_STYLE, name=FrameNameStr)</em></p>
+<p>Constructor, creating the window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – The window parent. This may be, and often is, <code class="docutils literal notranslate"><span class="pre">None</span></code>. If it is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, the frame will be minimized when its parent is minimized and restored when it is restored (although it will still be possible to minimize and restore just this frame itself).</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – The window identifier. It may take a value of -1 to indicate a default value.</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – The caption to be displayed on the frame’s title bar.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The window position. The value DefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – The window size. The value DefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – The window style. See <a class="reference internal" href="#wx-frame"><span class="std std-ref">  wx.Frame</span></a>  class description.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – The name of the window. This parameter is used to associate a name with the item, allowing the application user to set Motif resource values for individual windows.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Motif, <code class="docutils literal notranslate"><span class="pre">MWM</span></code> (the Motif Window Manager) should be running for any window styles to work (otherwise all styles take effect).</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.Create" title="wx.Frame.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.Centre">
+<code class="sig-name descname">Centre</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">direction=BOTH</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.Centre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centres the frame on the display.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>direction</strong> (<em>int</em>) – The parameter may be <code class="docutils literal notranslate"><span class="pre">wx.HORIZONTAL</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.VERTICAL</span></code> or <code class="docutils literal notranslate"><span class="pre">wx.BOTH</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">title=""</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=DEFAULT_FRAME_STYLE</em>, <em class="sig-param">name=FrameNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used in two-step frame construction.</p>
+<p>See <a class="reference internal" href="#wx-frame"><span class="std std-ref">  wx.Frame</span></a>  for further details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>title</strong> (<em>string</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.CreateStatusBar">
+<code class="sig-name descname">CreateStatusBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">number=1</em>, <em class="sig-param">style=STB_DEFAULT_STYLE</em>, <em class="sig-param">id=0</em>, <em class="sig-param">name=StatusBarNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.CreateStatusBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a status bar at the bottom of the frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<em>int</em>) – The number of fields to create. Specify a value greater than 1 to create a multi-field status bar.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – The status bar style. See <a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a>  for a list of valid styles.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – The status bar window identifier. If -1, an identifier will be chosen by wxWidgets.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – The status bar window name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A pointer to the status bar if it was created successfully, <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The width of the status bar is the whole width of the frame (adjusted automatically when resizing), and the height and text size are chosen by the host windowing system.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.SetStatusText" title="wx.Frame.SetStatusText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusText</span></code></a> , <a class="reference internal" href="#wx.Frame.OnCreateStatusBar" title="wx.Frame.OnCreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCreateStatusBar</span></code></a> , <a class="reference internal" href="#wx.Frame.GetStatusBar" title="wx.Frame.GetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBar</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.CreateToolBar">
+<code class="sig-name descname">CreateToolBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">style=TB_DEFAULT_STYLE</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">name=ToolBarNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.CreateToolBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a toolbar at the top or left of the frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>style</strong> (<em>long</em>) – The toolbar style. See <a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>  for a list of valid styles.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – The toolbar window identifier. If -1, an identifier will be chosen by wxWidgets.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – The toolbar window name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A pointer to the toolbar if it was created successfully, <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, the toolbar is an instance of <a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>. To use a different class, override <a class="reference internal" href="#wx.Frame.OnCreateToolBar" title="wx.Frame.OnCreateToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCreateToolBar</span></code></a> . When a toolbar has been created with this function, or made known to the frame with <a class="reference internal" href="#wx.Frame.SetToolBar" title="wx.Frame.SetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Frame.SetToolBar</span></code></a> , the frame will manage the toolbar position and adjust the return value from <a class="reference internal" href="wx.Window.html#wx.Window.GetClientSize" title="wx.Window.GetClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetClientSize</span></code></a>   to reflect the available space for application windows. Under Pocket <code class="docutils literal notranslate"><span class="pre">PC</span></code>, you should always use this function for creating the toolbar to be managed by the frame, so that wxWidgets can use a combined menubar and toolbar. Where you manage your own toolbars, create a <a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>  as usual.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.CreateStatusBar" title="wx.Frame.CreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStatusBar</span></code></a> , <a class="reference internal" href="#wx.Frame.OnCreateToolBar" title="wx.Frame.OnCreateToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCreateToolBar</span></code></a> , <a class="reference internal" href="#wx.Frame.SetToolBar" title="wx.Frame.SetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBar</span></code></a> , <a class="reference internal" href="#wx.Frame.GetToolBar" title="wx.Frame.GetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBar</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.GetClientAreaOrigin">
+<code class="sig-name descname">GetClientAreaOrigin</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.GetClientAreaOrigin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the origin of the frame client area (in client coordinates).</p>
+<p>It may be different from (0, 0) if the frame has a toolbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Point.html#wx-point"><span class="std std-ref">  wx.Point</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.GetMenuBar">
+<code class="sig-name descname">GetMenuBar</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.GetMenuBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the menubar currently associated with the frame (if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.MenuBar.html#wx-menubar"><span class="std std-ref">  wx.MenuBar</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.SetMenuBar" title="wx.Frame.SetMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenuBar</span></code></a> , <a class="reference internal" href="wx.MenuBar.html#wx-menubar"><span class="std std-ref">  wx.MenuBar</span></a>, <a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.GetStatusBar">
+<code class="sig-name descname">GetStatusBar</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.GetStatusBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the status bar currently associated with the frame (if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.CreateStatusBar" title="wx.Frame.CreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStatusBar</span></code></a> , <a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.GetStatusBarPane">
+<code class="sig-name descname">GetStatusBarPane</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.GetStatusBarPane" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the status bar pane used to display menu and toolbar help.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.SetStatusBarPane" title="wx.Frame.SetStatusBarPane"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusBarPane</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.GetToolBar">
+<code class="sig-name descname">GetToolBar</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.GetToolBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the toolbar currently associated with the frame (if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.CreateToolBar" title="wx.Frame.CreateToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateToolBar</span></code></a> , <a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>, <a class="reference internal" href="#wx.Frame.SetToolBar" title="wx.Frame.SetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBar</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.OnCreateStatusBar">
+<code class="sig-name descname">OnCreateStatusBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">number</em>, <em class="sig-param">style</em>, <em class="sig-param">id</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.OnCreateStatusBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Virtual function called when a status bar is requested by <a class="reference internal" href="#wx.Frame.CreateStatusBar" title="wx.Frame.CreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStatusBar</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<em>int</em>) – The number of fields to create.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – The window style. See <a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a>  for a list of valid styles.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – The window identifier. If -1, an identifier will be chosen by wxWidgets.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – The window name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A status bar object.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An application can override this function to return a different kind of status bar. The default implementation returns an instance of <a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.CreateStatusBar" title="wx.Frame.CreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStatusBar</span></code></a> , <a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.OnCreateToolBar">
+<code class="sig-name descname">OnCreateToolBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">style</em>, <em class="sig-param">id</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.OnCreateToolBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Virtual function called when a toolbar is requested by <a class="reference internal" href="#wx.Frame.CreateToolBar" title="wx.Frame.CreateToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateToolBar</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>style</strong> (<em>long</em>) – The toolbar style. See <a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>  for a list of valid styles.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – The toolbar window identifier. If -1, an identifier will be chosen by wxWidgets.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – The toolbar window name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A toolbar object.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An application can override this function to return a different kind of toolbar. The default implementation returns an instance of <a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.CreateToolBar" title="wx.Frame.CreateToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateToolBar</span></code></a> , <a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.PopStatusText">
+<code class="sig-name descname">PopStatusText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">number=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.PopStatusText" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>number</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.ProcessCommand">
+<code class="sig-name descname">ProcessCommand</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.ProcessCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate a menu command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The identifier for a menu item.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.PushStatusText">
+<code class="sig-name descname">PushStatusText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">text</em>, <em class="sig-param">number=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.PushStatusText" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>number</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.SetMenuBar">
+<code class="sig-name descname">SetMenuBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">menuBar</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.SetMenuBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells the frame to show the given menu bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>menuBar</strong> (<a class="reference internal" href="wx.MenuBar.html#wx.MenuBar" title="wx.MenuBar"><em>wx.MenuBar</em></a>) – The menu bar to associate with the frame.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the frame is destroyed, the menu bar and its menus will be destroyed also, so do not delete the menu bar explicitly (except by resetting the frame’s menu bar to another frame or <code class="docutils literal notranslate"><span class="pre">None</span></code>). Under Windows, a size event is generated, so be sure to initialize data members properly before calling <a class="reference internal" href="#wx.Frame.SetMenuBar" title="wx.Frame.SetMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenuBar</span></code></a> . Note that on some platforms, it is not possible to call this function twice for the same frame object.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.GetMenuBar" title="wx.Frame.GetMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuBar</span></code></a> , <a class="reference internal" href="wx.MenuBar.html#wx-menubar"><span class="std std-ref">  wx.MenuBar</span></a>, <a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.SetStatusBar">
+<code class="sig-name descname">SetStatusBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">statusBar</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.SetStatusBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates a status bar with the frame.</p>
+<p>If <em class="xref py py-obj">statusBar</em>  is <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the status bar, if present, is detached from the frame, but <em class="xref py py-obj">not</em>  deleted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>statusBar</strong> (<a class="reference internal" href="wx.StatusBar.html#wx.StatusBar" title="wx.StatusBar"><em>wx.StatusBar</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.CreateStatusBar" title="wx.Frame.CreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStatusBar</span></code></a> , <a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a>, <a class="reference internal" href="#wx.Frame.GetStatusBar" title="wx.Frame.GetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBar</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.SetStatusBarPane">
+<code class="sig-name descname">SetStatusBarPane</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.SetStatusBarPane" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the status bar pane used to display menu and toolbar help.</p>
+<p>Using -1 disables help display.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.SetStatusText">
+<code class="sig-name descname">SetStatusText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">text</em>, <em class="sig-param">number=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.SetStatusText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the status bar text and redraws the status bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – The text for the status field.</p></li>
+<li><p><strong>number</strong> (<em>int</em>) – The status field (starting from zero).</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use an empty string to clear the status bar.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Frame.CreateStatusBar" title="wx.Frame.CreateStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStatusBar</span></code></a> , <a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.SetStatusWidths">
+<code class="sig-name descname">SetStatusWidths</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">widths</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.SetStatusWidths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the widths of the fields in the status bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>widths</strong> (<em>list of integers</em>) – Must contain an array of n integers, each of which is a status field width in pixels. A value of -1 indicates that the field is variable width; at least one field must be -1. You should delete this array after calling <a class="reference internal" href="#wx.Frame.SetStatusWidths" title="wx.Frame.SetStatusWidths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusWidths</span></code></a> .</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Frame.SetToolBar">
+<code class="sig-name descname">SetToolBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolBar</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Frame.SetToolBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates a toolbar with the frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>toolBar</strong> (<a class="reference internal" href="wx.ToolBar.html#wx.ToolBar" title="wx.ToolBar"><em>wx.ToolBar</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.Frame.MenuBar">
+<code class="sig-name descname">MenuBar</code><a class="headerlink" href="#wx.Frame.MenuBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Frame.GetMenuBar" title="wx.Frame.GetMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuBar</span></code></a> and <a class="reference internal" href="#wx.Frame.SetMenuBar" title="wx.Frame.SetMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenuBar</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Frame.StatusBar">
+<code class="sig-name descname">StatusBar</code><a class="headerlink" href="#wx.Frame.StatusBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Frame.GetStatusBar" title="wx.Frame.GetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBar</span></code></a> and <a class="reference internal" href="#wx.Frame.SetStatusBar" title="wx.Frame.SetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusBar</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Frame.StatusBarPane">
+<code class="sig-name descname">StatusBarPane</code><a class="headerlink" href="#wx.Frame.StatusBarPane" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Frame.GetStatusBarPane" title="wx.Frame.GetStatusBarPane"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBarPane</span></code></a> and <a class="reference internal" href="#wx.Frame.SetStatusBarPane" title="wx.Frame.SetStatusBarPane"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStatusBarPane</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Frame.ToolBar">
+<code class="sig-name descname">ToolBar</code><a class="headerlink" href="#wx.Frame.ToolBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Frame.GetToolBar" title="wx.Frame.GetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBar</span></code></a> and <a class="reference internal" href="#wx.Frame.SetToolBar" title="wx.Frame.SetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBar</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

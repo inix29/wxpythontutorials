@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.FontMapper — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.FontMetrics.html" rel="next" title="wx.FontMetrics"/>
+<link href="wx.FontList.html" rel="prev" title="wx.FontList"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.FontMapper</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.FontMetrics.html" title="wx.FontMetrics">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.FontList.html" title="wx.FontList">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.FontMapper</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-using-fontmapper-in-conjunction-with-mbconv-classes"> Using FontMapper in conjunction with MBConv classes</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.FontMapper.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-fontmapper">
+<span id="wx-fontmapper"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.FontMapper</strong><a class="headerlink" href="#phoenix-title-wx-fontmapper" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-fontmapper"><span class="std std-ref">  wx.FontMapper</span></a>  manages user-definable correspondence between logical font names and the fonts present on the machine.</p>
+<p>The default implementations of all functions will ask the user if they are not capable of finding the answer themselves and store the answer in a config file (configurable via SetConfigXXX functions). This behaviour may be disabled by giving the value of <code class="docutils literal notranslate"><span class="pre">False</span></code> to “interactive” parameter.</p>
+<p>However, the functions will always consult the config file to allow the user-defined values override the default logic and there is no way to disable this - which shouldn’t be ever needed because if “interactive” was never <code class="docutils literal notranslate"><span class="pre">True</span></code>, the config file is never created anyhow.</p>
+<p>In case everything else fails (i.e. there is no record in config file and “interactive” is <code class="docutils literal notranslate"><span class="pre">False</span></code> or user denied to choose any replacement), the class queries <em class="xref py py-obj">EncodingConverter</em>       for “equivalent” encodings (e.g. iso8859-2 and cp1250) and tries them.</p>
+<div class="section" id="phoenix-title-using-fontmapper-in-conjunction-with-mbconv-classes">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Using FontMapper in conjunction with MBConv classes<a class="headerlink" href="#phoenix-title-using-fontmapper-in-conjunction-with-mbconv-classes" title="Permalink to this headline">¶</a></h2>
+<p>If you need to display text in encoding which is not available at host system (see <a class="reference internal" href="#wx.FontMapper.IsEncodingAvailable" title="wx.FontMapper.IsEncodingAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.IsEncodingAvailable</span></code></a> ), you may use these two classes to find font in some similar encoding (see <a class="reference internal" href="#wx.FontMapper.GetAltForEncoding" title="wx.FontMapper.GetAltForEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.GetAltForEncoding</span></code></a> ) and convert the text to this encoding (<em class="xref py py-obj">MBConv</em>       classes). Following code snippet demonstrates it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">wx</span><span class="o">.</span><span class="n">FontMapper</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span><span class="o">.</span><span class="n">IsEncodingAvailable</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">facename</span><span class="p">):</span>
+    <span class="n">success</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FontMapper</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span><span class="o">.</span><span class="n">GetAltForEncoding</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">facename</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+        <span class="n">convFrom</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FontMapper</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span><span class="o">.</span><span class="n">GetEncodingName</span><span class="p">(</span><span class="n">enc</span><span class="p">)</span>
+        <span class="n">convTo</span>   <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FontMapper</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span><span class="o">.</span><span class="n">GetEncodingName</span><span class="p">(</span><span class="n">alt</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">convFrom</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">convTo</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># ...failure (or we may try iso8859-1/7bit ASCII)...</span>
+        <span class="k">pass</span>
+
+<span class="c1"># ...display text...</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><em class="xref py py-obj">EncodingConverter</em>     , <a class="reference internal" href="writing_non_english_applications.html#writing-non-english-applications"><span class="std std-ref">Writing Non-English Applications</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>FontMapper</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of FontMapper" class="inheritance" src="_static/images/inheritance/wx.FontMapper_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,131,35" href="wx.FontMapper.html" id="node1" shape="rect" title="wx.FontMapper  manages user-definable correspondence between logical font names and the fonts present on the machine."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%"/>
+<col style="width: 61%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontMapper.__init__" title="wx.FontMapper.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontMapper.CharsetToEncoding" title="wx.FontMapper.CharsetToEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CharsetToEncoding</span></code></a></p></td>
+<td><p>Returns the encoding for the given charset (in the form of <code class="docutils literal notranslate"><span class="pre">RFC</span></code> 2046) or  <code class="docutils literal notranslate"><span class="pre">FONTENCODING_SYSTEM</span></code>   if couldn’t decode it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontMapper.Get" title="wx.FontMapper.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a></p></td>
+<td><p>Get the current font mapper object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontMapper.GetAllEncodingNames" title="wx.FontMapper.GetAllEncodingNames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAllEncodingNames</span></code></a></p></td>
+<td><p>Returns the array of all possible names for the given encoding. If it</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontMapper.GetAltForEncoding" title="wx.FontMapper.GetAltForEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAltForEncoding</span></code></a></p></td>
+<td><p>Find an alternative for the given encoding (which is supposed to not be available on this system).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontMapper.GetEncoding" title="wx.FontMapper.GetEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEncoding</span></code></a></p></td>
+<td><p>Returns the <em class="xref py py-obj">n-th</em>  supported encoding.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontMapper.GetEncodingDescription" title="wx.FontMapper.GetEncodingDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEncodingDescription</span></code></a></p></td>
+<td><p>Return user-readable string describing the given encoding.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontMapper.GetEncodingFromName" title="wx.FontMapper.GetEncodingFromName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEncodingFromName</span></code></a></p></td>
+<td><p>Return the encoding corresponding to the given internal name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontMapper.GetEncodingName" title="wx.FontMapper.GetEncodingName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEncodingName</span></code></a></p></td>
+<td><p>Return internal string identifier for the encoding (see also <a class="reference internal" href="#wx.FontMapper.GetEncodingDescription" title="wx.FontMapper.GetEncodingDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.GetEncodingDescription</span></code></a> ).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontMapper.GetSupportedEncodingsCount" title="wx.FontMapper.GetSupportedEncodingsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSupportedEncodingsCount</span></code></a></p></td>
+<td><p>Returns the number of the font encodings supported by this class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontMapper.IsEncodingAvailable" title="wx.FontMapper.IsEncodingAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEncodingAvailable</span></code></a></p></td>
+<td><p>Check whether given encoding is available in given face or not.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontMapper.Set" title="wx.FontMapper.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Set</span></code></a></p></td>
+<td><p>Set the current font mapper object and return previous one (may be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontMapper.SetConfigPath" title="wx.FontMapper.SetConfigPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetConfigPath</span></code></a></p></td>
+<td><p>Set the root config path to use (should be an absolute path).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontMapper.SetDialogParent" title="wx.FontMapper.SetDialogParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDialogParent</span></code></a></p></td>
+<td><p>The parent window for modal dialogs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontMapper.SetDialogTitle" title="wx.FontMapper.SetDialogTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDialogTitle</span></code></a></p></td>
+<td><p>The title for the dialogs (note that default is quite reasonable).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.FontMapper">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">FontMapper</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FontMapper</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>FontMapper manages user-definable correspondence between logical
+font names and the fonts present on the machine.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.FontMapper.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The preferred way of creating a <a class="reference internal" href="#wx-fontmapper"><span class="std std-ref">  wx.FontMapper</span></a>  instance is to call <a class="reference internal" href="#wx.FontMapper.Get" title="wx.FontMapper.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.Get</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.CharsetToEncoding">
+<code class="sig-name descname">CharsetToEncoding</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">charset</em>, <em class="sig-param">interactive=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.CharsetToEncoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the encoding for the given charset (in the form of <code class="docutils literal notranslate"><span class="pre">RFC</span></code> 2046) or  <code class="docutils literal notranslate"><span class="pre">FONTENCODING_SYSTEM</span></code>   if couldn’t decode it.</p>
+<p>Be careful when using this function with <em class="xref py py-obj">interactive</em>  set to <code class="docutils literal notranslate"><span class="pre">True</span></code> (default value) as the function then may show a dialog box to the user which may lead to unexpected reentrancies and may also take a significantly longer time than a simple function call. For these reasons, it is almost always a bad idea to call this function from the event handlers for repeatedly generated events such as  <code class="docutils literal notranslate"><span class="pre">EVT_PAINT</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>charset</strong> (<em>string</em>) – </p></li>
+<li><p><strong>interactive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.FontEncoding.enumeration.html#wx-fontencoding"><span class="std std-ref">  wx.FontEncoding</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.Get">
+<em class="property">static </em><code class="sig-name descname">Get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.Get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current font mapper object.</p>
+<p>If there is no current object, creates one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-fontmapper"><span class="std std-ref">  wx.FontMapper</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.FontMapper.Set" title="wx.FontMapper.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Set</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.GetAllEncodingNames">
+<em class="property">static </em><code class="sig-name descname">GetAllEncodingNames</code><span class="sig-paren">(</span><em class="sig-param">encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.GetAllEncodingNames" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns the array of all possible names for the given encoding. If it
+isn’t empty, the first name in it is the canonical encoding name,
+i.e. the same string as returned by GetEncodingName()</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of strings</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.GetAltForEncoding">
+<code class="sig-name descname">GetAltForEncoding</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">encoding</em>, <em class="sig-param">facename=""</em>, <em class="sig-param">interactive=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.GetAltForEncoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find an alternative for the given encoding (which is supposed to not be available on this system).</p>
+<p>If successful, return <code class="docutils literal notranslate"><span class="pre">True</span></code> and fill info structure with the parameters required to create the font, otherwise return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>The first form is for wxWidgets’ internal use while the second one is better suitable for general use <a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a>  constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>encoding</strong> (<a class="reference internal" href="wx.FontEncoding.enumeration.html" title="FontEncoding"><em>FontEncoding</em></a>) – </p></li>
+<li><p><strong>facename</strong> (<em>string</em>) – </p></li>
+<li><p><strong>interactive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <em class="xref py py-obj">bool</em>, <em class="xref py py-obj">alt_encoding</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.GetEncoding">
+<em class="property">static </em><code class="sig-name descname">GetEncoding</code><span class="sig-paren">(</span><em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.GetEncoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <em class="xref py py-obj">n-th</em>  supported encoding.</p>
+<p>Together with <a class="reference internal" href="#wx.FontMapper.GetSupportedEncodingsCount" title="wx.FontMapper.GetSupportedEncodingsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSupportedEncodingsCount</span></code></a>   this method may be used to get all supported encodings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.FontEncoding.enumeration.html#wx-fontencoding"><span class="std std-ref">  wx.FontEncoding</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.GetEncodingDescription">
+<em class="property">static </em><code class="sig-name descname">GetEncodingDescription</code><span class="sig-paren">(</span><em class="sig-param">encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.GetEncodingDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return user-readable string describing the given encoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>encoding</strong> (<a class="reference internal" href="wx.FontEncoding.enumeration.html" title="FontEncoding"><em>FontEncoding</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.GetEncodingFromName">
+<em class="property">static </em><code class="sig-name descname">GetEncodingFromName</code><span class="sig-paren">(</span><em class="sig-param">encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.GetEncodingFromName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the encoding corresponding to the given internal name.</p>
+<p>This function is the inverse of <a class="reference internal" href="#wx.FontMapper.GetEncodingName" title="wx.FontMapper.GetEncodingName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEncodingName</span></code></a>   and is intentionally less general than <a class="reference internal" href="#wx.FontMapper.CharsetToEncoding" title="wx.FontMapper.CharsetToEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CharsetToEncoding</span></code></a> , i.e. it doesn’t try to make any guesses nor ever asks the user. It is meant just as a way of restoring objects previously serialized using <a class="reference internal" href="#wx.FontMapper.GetEncodingName" title="wx.FontMapper.GetEncodingName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEncodingName</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>encoding</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.FontEncoding.enumeration.html#wx-fontencoding"><span class="std std-ref">  wx.FontEncoding</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.GetEncodingName">
+<em class="property">static </em><code class="sig-name descname">GetEncodingName</code><span class="sig-paren">(</span><em class="sig-param">encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.GetEncodingName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return internal string identifier for the encoding (see also <a class="reference internal" href="#wx.FontMapper.GetEncodingDescription" title="wx.FontMapper.GetEncodingDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.GetEncodingDescription</span></code></a> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>encoding</strong> (<a class="reference internal" href="wx.FontEncoding.enumeration.html" title="FontEncoding"><em>FontEncoding</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.FontMapper.GetEncodingFromName" title="wx.FontMapper.GetEncodingFromName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEncodingFromName</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.GetSupportedEncodingsCount">
+<em class="property">static </em><code class="sig-name descname">GetSupportedEncodingsCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.GetSupportedEncodingsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of the font encodings supported by this class.</p>
+<p>Together with <a class="reference internal" href="#wx.FontMapper.GetEncoding" title="wx.FontMapper.GetEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEncoding</span></code></a>   this method may be used to get all supported encodings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.IsEncodingAvailable">
+<code class="sig-name descname">IsEncodingAvailable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">encoding</em>, <em class="sig-param">facename=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.IsEncodingAvailable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether given encoding is available in given face or not.</p>
+<p>If no facename is given, find <em class="xref py py-obj">any</em>  font in this encoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>encoding</strong> (<a class="reference internal" href="wx.FontEncoding.enumeration.html" title="FontEncoding"><em>FontEncoding</em></a>) – </p></li>
+<li><p><strong>facename</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.Set">
+<em class="property">static </em><code class="sig-name descname">Set</code><span class="sig-paren">(</span><em class="sig-param">mapper</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.Set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the current font mapper object and return previous one (may be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<p>This method is only useful if you want to plug-in an alternative font mapper into wxWidgets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mapper</strong> (<a class="reference internal" href="#wx.FontMapper" title="wx.FontMapper"><em>wx.FontMapper</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontmapper"><span class="std std-ref">  wx.FontMapper</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.FontMapper.Get" title="wx.FontMapper.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.SetConfigPath">
+<code class="sig-name descname">SetConfigPath</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">prefix</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.SetConfigPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the root config path to use (should be an absolute path).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prefix</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.SetDialogParent">
+<code class="sig-name descname">SetDialogParent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.SetDialogParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The parent window for modal dialogs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontMapper.SetDialogTitle">
+<code class="sig-name descname">SetDialogTitle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontMapper.SetDialogTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>The title for the dialogs (note that default is quite reasonable).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

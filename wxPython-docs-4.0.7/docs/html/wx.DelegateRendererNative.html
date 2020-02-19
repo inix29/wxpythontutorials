@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.DelegateRendererNative — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.Dialog.html" rel="next" title="wx.Dialog"/>
+<link href="wx.DateTime.Tm.html" rel="prev" title="wx.DateTime.Tm"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.DelegateRendererNative</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.Dialog.html" title="wx.Dialog">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.DateTime.Tm.html" title="wx.DateTime.Tm">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.DelegateRendererNative</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.DelegateRendererNative.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-delegaterenderernative">
+<span id="wx-delegaterenderernative"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.DelegateRendererNative</strong><a class="headerlink" href="#phoenix-title-wx-delegaterenderernative" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-delegaterenderernative"><span class="std std-ref">  wx.DelegateRendererNative</span></a>  allows reuse of renderers code by forwarding all the <a class="reference internal" href="wx.RendererNative.html#wx-renderernative"><span class="std std-ref">  wx.RendererNative</span></a>  methods to the given object and thus allowing you to only modify some of its methods</p>
+<p>Note that the “normal”, inheritance-based approach, doesn’t work with the renderers as it is impossible to derive from a class unknown at compile-time and the renderer is only chosen at run-time. So suppose that you want to only add something to the drawing of the tree control buttons but leave all the other methods unchanged</p>
+<p>Except for the constructor, it has exactly the same methods as <a class="reference internal" href="wx.RendererNative.html#wx-renderernative"><span class="std std-ref">  wx.RendererNative</span></a>  and their implementation is trivial: they are simply forwarded to the real renderer. Note that the “real” renderer may, in turn, be a <a class="reference internal" href="#wx-delegaterenderernative"><span class="std std-ref">  wx.DelegateRendererNative</span></a>  as well and that there may be arbitrarily many levels like this</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.RendererNative.html#wx-renderernative"><span class="std std-ref">  wx.RendererNative</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>DelegateRendererNative</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of DelegateRendererNative" class="inheritance" src="_static/images/inheritance/wx.DelegateRendererNative_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,216,112" href="wx.DelegateRendererNative.html" id="node1" shape="rect" title="wx.DelegateRendererNative  allows reuse of renderers code by forwarding all the wx.RendererNative  methods to the given object and thus allowing you to only modify some of its methods"/> <area alt="" coords="36,5,185,35" href="wx.RendererNative.html" id="node2" shape="rect" title="First, a brief introduction to wx.RendererNative  and why it is needed."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%"/>
+<col style="width: 69%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.__init__" title="wx.DelegateRendererNative.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>The default constructor does the same thing as the other one except that it uses the <a class="reference internal" href="wx.RendererNative.html#wx-renderernative"><span class="std std-ref">generic renderer</span></a>  instead of the user-specified <em class="xref py py-obj">rendererNative</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawCheckBox" title="wx.DelegateRendererNative.DrawCheckBox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawCheckBox</span></code></a></p></td>
+<td><p>Draw a check box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawComboBoxDropButton" title="wx.DelegateRendererNative.DrawComboBoxDropButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawComboBoxDropButton</span></code></a></p></td>
+<td><p>Draw a button like the one used by <a class="reference internal" href="wx.ComboBox.html#wx-combobox"><span class="std std-ref">  wx.ComboBox</span></a>  to show a drop down window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawDropArrow" title="wx.DelegateRendererNative.DrawDropArrow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawDropArrow</span></code></a></p></td>
+<td><p>Draw a drop down arrow that is suitable for use outside a combo box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawFocusRect" title="wx.DelegateRendererNative.DrawFocusRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawFocusRect</span></code></a></p></td>
+<td><p>Draw a focus rectangle using the specified rectangle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawHeaderButton" title="wx.DelegateRendererNative.DrawHeaderButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawHeaderButton</span></code></a></p></td>
+<td><p>Draw the header control button (used, for example, by <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawHeaderButtonContents" title="wx.DelegateRendererNative.DrawHeaderButtonContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawHeaderButtonContents</span></code></a></p></td>
+<td><p>Draw the contents of a header control button (label, sort arrows, etc.).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawItemSelectionRect" title="wx.DelegateRendererNative.DrawItemSelectionRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawItemSelectionRect</span></code></a></p></td>
+<td><p>Draw a selection rectangle underneath the text as used e.g.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawPushButton" title="wx.DelegateRendererNative.DrawPushButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawPushButton</span></code></a></p></td>
+<td><p>Draw a blank push button that looks very similar to <a class="reference internal" href="wx.Button.html#wx-button"><span class="std std-ref">  wx.Button</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawSplitterBorder" title="wx.DelegateRendererNative.DrawSplitterBorder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawSplitterBorder</span></code></a></p></td>
+<td><p>Draw the border for sash window: this border must be such that the sash drawn by <code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawSplitterSash</span></code>   blends into it well.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawSplitterSash" title="wx.DelegateRendererNative.DrawSplitterSash"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawSplitterSash</span></code></a></p></td>
+<td><p>Draw a sash.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawTitleBarBitmap" title="wx.DelegateRendererNative.DrawTitleBarBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawTitleBarBitmap</span></code></a></p></td>
+<td><p>Draw a title bar button in the given state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.DrawTreeItemButton" title="wx.DelegateRendererNative.DrawTreeItemButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawTreeItemButton</span></code></a></p></td>
+<td><p>Draw the expanded/collapsed icon for a tree control item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.GetCheckBoxSize" title="wx.DelegateRendererNative.GetCheckBoxSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCheckBoxSize</span></code></a></p></td>
+<td><p>Returns the size of a check box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.GetHeaderButtonHeight" title="wx.DelegateRendererNative.GetHeaderButtonHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeaderButtonHeight</span></code></a></p></td>
+<td><p>Returns the height of a header button, either a fixed platform height if available, or a generic height based on the <em class="xref py py-obj">win</em>  window’s font.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.GetHeaderButtonMargin" title="wx.DelegateRendererNative.GetHeaderButtonMargin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeaderButtonMargin</span></code></a></p></td>
+<td><p>Returns the horizontal margin on the left and right sides of header button’s label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.GetSplitterParams" title="wx.DelegateRendererNative.GetSplitterParams"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSplitterParams</span></code></a></p></td>
+<td><p>Get the splitter parameters, see <a class="reference internal" href="wx.SplitterRenderParams.html#wx-splitterrenderparams"><span class="std std-ref">  wx.SplitterRenderParams</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.GetVersion" title="wx.DelegateRendererNative.GetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVersion</span></code></a></p></td>
+<td><p>This function is used for version checking: <code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code>   refuses to load any shared libraries implementing an older or incompatible version.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DelegateRendererNative.Version" title="wx.DelegateRendererNative.Version"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Version</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.DelegateRendererNative.GetVersion" title="wx.DelegateRendererNative.GetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVersion</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.DelegateRendererNative">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">DelegateRendererNative</code><span class="sig-paren">(</span><em class="sig-param">RendererNative</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DelegateRendererNative</span><span class="p">()</span>
+
+<span class="n">DelegateRendererNative</span><span class="p">(</span><span class="n">rendererNative</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DelegateRendererNative allows reuse of renderers code by forwarding
+all the RendererNative methods to the given object and thus allowing
+you to only modify some of its methods  without having to reimplement
+all of them.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>The default constructor does the same thing as the other one except that it uses the <a class="reference internal" href="wx.RendererNative.html#wx-renderernative"><span class="std std-ref">generic renderer</span></a>  instead of the user-specified <em class="xref py py-obj">rendererNative</em>.</p>
+<p>In any case, this sets up the delegate renderer object to follow all calls to the specified real renderer.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, rendererNative)</em></p>
+<p>This constructor uses the user-specified <em class="xref py py-obj">rendererNative</em>  to set up the delegate renderer object to follow all calls to the specified real renderer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rendererNative</strong> (<a class="reference internal" href="wx.RendererNative.html#wx.RendererNative" title="wx.RendererNative"><em>wx.RendererNative</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This object does not take ownership of (i.e. won’t delete) <em class="xref py py-obj">rendererNative</em>.</p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawCheckBox">
+<code class="sig-name descname">DrawCheckBox</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawCheckBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a check box.</p>
+<p><em class="xref py py-obj">flags</em>  may have the  <code class="docutils literal notranslate"><span class="pre">CONTROL_CHECKED</span></code> ,   <code class="docutils literal notranslate"><span class="pre">CONTROL_CURRENT</span></code>   or   <code class="docutils literal notranslate"><span class="pre">CONTROL_UNDETERMINED</span></code>   bit set, see  <code class="docutils literal notranslate"><span class="pre">CONTROL_FLAGS</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawComboBoxDropButton">
+<code class="sig-name descname">DrawComboBoxDropButton</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawComboBoxDropButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a button like the one used by <a class="reference internal" href="wx.ComboBox.html#wx-combobox"><span class="std std-ref">  wx.ComboBox</span></a>  to show a drop down window.</p>
+<p>The usual appearance is a downwards pointing arrow.</p>
+<p><em class="xref py py-obj">flags</em>  may have the  <code class="docutils literal notranslate"><span class="pre">CONTROL_PRESSED</span></code>   or   <code class="docutils literal notranslate"><span class="pre">CONTROL_CURRENT</span></code>   bit set, see  <code class="docutils literal notranslate"><span class="pre">CONTROL_FLAGS</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawDropArrow">
+<code class="sig-name descname">DrawDropArrow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawDropArrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a drop down arrow that is suitable for use outside a combo box.</p>
+<p>Arrow will have transparent background.</p>
+<p><em class="xref py py-obj">rect</em>  is not entirely filled by the arrow. Instead, you should use bounding rectangle of a drop down button which arrow matches the size you need.</p>
+<p><em class="xref py py-obj">flags</em>  may have the  <code class="docutils literal notranslate"><span class="pre">CONTROL_PRESSED</span></code>   or   <code class="docutils literal notranslate"><span class="pre">CONTROL_CURRENT</span></code>   bit set, see  <code class="docutils literal notranslate"><span class="pre">CONTROL_FLAGS</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawFocusRect">
+<code class="sig-name descname">DrawFocusRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawFocusRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a focus rectangle using the specified rectangle.</p>
+<p><a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>.</p>
+<p>The only supported flags is  <code class="docutils literal notranslate"><span class="pre">CONTROL_SELECTED</span></code>   for items which are selected. see  <code class="docutils literal notranslate"><span class="pre">CONTROL_FLAGS</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawHeaderButton">
+<code class="sig-name descname">DrawHeaderButton</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em>, <em class="sig-param">sortArrow=HDR_SORT_ICON_NONE</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawHeaderButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the header control button (used, for example, by <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>).</p>
+<p>Depending on platforms the <em class="xref py py-obj">flags</em>  parameter may support the  <code class="docutils literal notranslate"><span class="pre">CONTROL_SELECTED</span></code> <code class="docutils literal notranslate"><span class="pre">CONTROL_DISABLED</span></code>   and   <code class="docutils literal notranslate"><span class="pre">CONTROL_CURRENT</span></code>   bits, see  <code class="docutils literal notranslate"><span class="pre">CONTROL_FLAGS</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+<li><p><strong>sortArrow</strong> (<a class="reference internal" href="wx.HeaderSortIconType.enumeration.html" title="HeaderSortIconType"><em>HeaderSortIconType</em></a>) – </p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="wx.HeaderButtonParams.html#wx.HeaderButtonParams" title="wx.HeaderButtonParams"><em>wx.HeaderButtonParams</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The optimal width to contain the unabbreviated label text or bitmap, the sort arrow if present, and internal margins.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawHeaderButtonContents">
+<code class="sig-name descname">DrawHeaderButtonContents</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em>, <em class="sig-param">sortArrow=HDR_SORT_ICON_NONE</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawHeaderButtonContents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the contents of a header control button (label, sort arrows, etc.).</p>
+<p>This function is normally only called by <a class="reference internal" href="#wx.DelegateRendererNative.DrawHeaderButton" title="wx.DelegateRendererNative.DrawHeaderButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawHeaderButton</span></code></a> .</p>
+<p>Depending on platforms the <em class="xref py py-obj">flags</em>  parameter may support the  <code class="docutils literal notranslate"><span class="pre">CONTROL_SELECTED</span></code> <code class="docutils literal notranslate"><span class="pre">CONTROL_DISABLED</span></code>   and   <code class="docutils literal notranslate"><span class="pre">CONTROL_CURRENT</span></code>   bits, see  <code class="docutils literal notranslate"><span class="pre">CONTROL_FLAGS</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+<li><p><strong>sortArrow</strong> (<a class="reference internal" href="wx.HeaderSortIconType.enumeration.html" title="HeaderSortIconType"><em>HeaderSortIconType</em></a>) – </p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="wx.HeaderButtonParams.html#wx.HeaderButtonParams" title="wx.HeaderButtonParams"><em>wx.HeaderButtonParams</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The optimal width to contain the unabbreviated label text or bitmap, the sort arrow if present, and internal margins.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawItemSelectionRect">
+<code class="sig-name descname">DrawItemSelectionRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawItemSelectionRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a selection rectangle underneath the text as used e.g.</p>
+<p>in a <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>.</p>
+<p>The supported <em class="xref py py-obj">flags</em>  are  <code class="docutils literal notranslate"><span class="pre">CONTROL_SELECTED</span></code>   for items which are selected (e.g. often a blue rectangle) and   <code class="docutils literal notranslate"><span class="pre">CONTROL_CURRENT</span></code>   for the item that has the focus (often a dotted line around the item’s text).   <code class="docutils literal notranslate"><span class="pre">CONTROL_FOCUSED</span></code>   may be used to indicate if the control has the focus (otherwise the selection rectangle is e.g. often grey and not blue). This may be ignored by the renderer or deduced by the code directly from the  <em class="xref py py-obj">win</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawPushButton">
+<code class="sig-name descname">DrawPushButton</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawPushButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a blank push button that looks very similar to <a class="reference internal" href="wx.Button.html#wx-button"><span class="std std-ref">  wx.Button</span></a>.</p>
+<p><em class="xref py py-obj">flags</em>  may have the  <code class="docutils literal notranslate"><span class="pre">CONTROL_PRESSED</span></code> ,   <code class="docutils literal notranslate"><span class="pre">CONTROL_CURRENT</span></code>   or   <code class="docutils literal notranslate"><span class="pre">CONTROL_ISDEFAULT</span></code>   bit set, see  <code class="docutils literal notranslate"><span class="pre">CONTROL_FLAGS</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawSplitterBorder">
+<code class="sig-name descname">DrawSplitterBorder</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawSplitterBorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the border for sash window: this border must be such that the sash drawn by <a class="reference internal" href="#wx.DelegateRendererNative.DrawSplitterSash" title="wx.DelegateRendererNative.DrawSplitterSash"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawSplitterSash</span></code></a>   blends into it well.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawSplitterSash">
+<code class="sig-name descname">DrawSplitterSash</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">size</em>, <em class="sig-param">position</em>, <em class="sig-param">orient</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawSplitterSash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a sash.</p>
+<p>The <em class="xref py py-obj">orient</em>  parameter defines whether the sash should be vertical or horizontal and how the <em class="xref py py-obj">position</em>  should be interpreted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>position</strong> (<em>int</em>) – </p></li>
+<li><p><strong>orient</strong> (<a class="reference internal" href="wx.Orientation.enumeration.html" title="Orientation"><em>Orientation</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawTitleBarBitmap">
+<code class="sig-name descname">DrawTitleBarBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">button</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawTitleBarBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a title bar button in the given state.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.DrawTreeItemButton">
+<code class="sig-name descname">DrawTreeItemButton</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.DrawTreeItemButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the expanded/collapsed icon for a tree control item.</p>
+<p>To draw an expanded button the <em class="xref py py-obj">flags</em>  parameter must contain  <code class="docutils literal notranslate"><span class="pre">CONTROL_EXPANDED</span></code>   bit, see  <code class="docutils literal notranslate"><span class="pre">CONTROL_FLAGS</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.GetCheckBoxSize">
+<code class="sig-name descname">GetCheckBoxSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.GetCheckBoxSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of a check box.</p>
+<p>The <em class="xref py py-obj">win</em>  parameter is not used currently and can be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.GetHeaderButtonHeight">
+<code class="sig-name descname">GetHeaderButtonHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.GetHeaderButtonHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the height of a header button, either a fixed platform height if available, or a generic height based on the <em class="xref py py-obj">win</em>  window’s font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.GetHeaderButtonMargin">
+<code class="sig-name descname">GetHeaderButtonMargin</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.GetHeaderButtonMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the horizontal margin on the left and right sides of header button’s label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.GetSplitterParams">
+<code class="sig-name descname">GetSplitterParams</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.GetSplitterParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the splitter parameters, see <a class="reference internal" href="wx.SplitterRenderParams.html#wx-splitterrenderparams"><span class="std std-ref">  wx.SplitterRenderParams</span></a>.</p>
+<p>The <em class="xref py py-obj">win</em>  parameter should be a <a class="reference internal" href="wx.SplitterWindow.html#wx-splitterwindow"><span class="std std-ref">  wx.SplitterWindow</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SplitterRenderParams.html#wx-splitterrenderparams"><span class="std std-ref">  wx.SplitterRenderParams</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DelegateRendererNative.GetVersion">
+<code class="sig-name descname">GetVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DelegateRendererNative.GetVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used for version checking: <a class="reference internal" href="wx.RendererNative.html#wx.RendererNative.Load" title="wx.RendererNative.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a>   refuses to load any shared libraries implementing an older or incompatible version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.RendererVersion.html#wx-rendererversion"><span class="std std-ref">  wx.RendererVersion</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The implementation of this method is always the same in all renderers (simply construct <a class="reference internal" href="wx.RendererVersion.html#wx-rendererversion"><span class="std std-ref">  wx.RendererVersion</span></a>  using the  <code class="docutils literal notranslate"><span class="pre">RendererVersion::Current_XXX</span></code>   values), but it has to be in the derived, not base, class, to detect mismatches between the renderers versions and so you have to implement it anew in all renderers.</p>
+</div>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.DelegateRendererNative.Version">
+<code class="sig-name descname">Version</code><a class="headerlink" href="#wx.DelegateRendererNative.Version" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.DelegateRendererNative.GetVersion" title="wx.DelegateRendererNative.GetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVersion</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

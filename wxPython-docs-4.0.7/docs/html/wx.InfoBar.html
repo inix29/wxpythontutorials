@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.InfoBar — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.InitDialogEvent.html" rel="next" title="wx.InitDialogEvent"/>
+<link href="wx.IndividualLayoutConstraint.html" rel="prev" title="wx.IndividualLayoutConstraint"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.InfoBar</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.InitDialogEvent.html" title="wx.InitDialogEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.IndividualLayoutConstraint.html" title="wx.IndividualLayoutConstraint">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.InfoBar</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.InfoBar.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-infobar">
+<span id="wx-infobar"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.InfoBar</strong><a class="headerlink" href="#phoenix-title-wx-infobar" title="Permalink to this headline">¶</a></h1>
+<p>An info bar is a transient window shown at top or bottom of its parent window to display non-critical information to the user.</p>
+<p>This class provides another way to show messages to the user, intermediate between message boxes and status bar messages. The message boxes are modal and thus interrupt the users work flow and should be used sparingly for this reason. However status bar messages are often too easy not to notice at all. An info bar provides a way to present the messages which has a much higher chance to be noticed by the user but without being annoying.</p>
+<p>Info bar may show an icon (on the left), text message and, optionally, buttons allowing the user to react to the information presented. It always has a close button at the right allowing the user to dismiss it so it isn’t necessary to provide a button just to close it.</p>
+<p><a class="reference internal" href="#wx-infobar"><span class="std std-ref">  wx.InfoBar</span></a>  calls its parent <a class="reference internal" href="wx.Window.html#wx.Window.Layout" title="wx.Window.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Layout</span></code></a>   method and assumes that it will change the parent layout appropriately depending on whether the info bar itself is shown or hidden. Usually this is achieved by simply using a sizer for the parent window layout and adding <a class="reference internal" href="#wx-infobar"><span class="std std-ref">  wx.InfoBar</span></a>  to this sizer as one of the items. Considering the usual placement of the info bars, normally this sizer should be a vertical <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  and the bar its first or last element so the simplest possible example of using this class would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'InfoBar!'</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">infoBar</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">InfoBar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">infoBar</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">SizerFlags</span><span class="p">()</span><span class="o">.</span><span class="n">Expand</span><span class="p">())</span>
+
+        <span class="c1"># ... add other frame controls to the sizer ...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">SomeMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">infoBar</span><span class="o">.</span><span class="n">ShowMessage</span><span class="p">(</span><span class="s2">"Something happened"</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ICON_INFORMATION</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See the dialogs sample for more sophisticated examples.</p>
+<p>Currently this class is implemented generically (i.e. in the same platform-independent way for all ports) and also natively in wxGTK but the native implementation requires a recent</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a>, <a class="reference internal" href="wx.MessageDialog.html#wx-messagedialog"><span class="std std-ref">  wx.MessageDialog</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>InfoBar</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of InfoBar" class="inheritance" src="_static/images/inheritance/wx.InfoBar_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="64,315,157,344" href="wx.InfoBar.html" id="node1" shape="rect" title="An info bar is a transient window shown at top or bottom of its parent window to display non-critical information to the user."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.InfoBar.__init__" title="wx.InfoBar.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.InfoBar.AddButton" title="wx.InfoBar.AddButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddButton</span></code></a></p></td>
+<td><p>Add a button to be shown in the info bar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.InfoBar.Create" title="wx.InfoBar.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Create the info bar window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.InfoBar.Dismiss" title="wx.InfoBar.Dismiss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dismiss</span></code></a></p></td>
+<td><p>Hide the info bar window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.InfoBar.GetClassDefaultAttributes" title="wx.InfoBar.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.InfoBar.GetEffectDuration" title="wx.InfoBar.GetEffectDuration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEffectDuration</span></code></a></p></td>
+<td><p>Return the effect animation duration currently used.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.InfoBar.GetHideEffect" title="wx.InfoBar.GetHideEffect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHideEffect</span></code></a></p></td>
+<td><p>Return the effect currently used for hiding the bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.InfoBar.GetShowEffect" title="wx.InfoBar.GetShowEffect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetShowEffect</span></code></a></p></td>
+<td><p>Return the effect currently used for showing the bar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.InfoBar.RemoveButton" title="wx.InfoBar.RemoveButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveButton</span></code></a></p></td>
+<td><p>Remove a button previously added by <code class="xref py py-meth docutils literal notranslate"><span class="pre">AddButton</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.InfoBar.SetEffectDuration" title="wx.InfoBar.SetEffectDuration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEffectDuration</span></code></a></p></td>
+<td><p>Set the duration of the animation used when showing or hiding the bar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.InfoBar.SetFont" title="wx.InfoBar.SetFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFont</span></code></a></p></td>
+<td><p>Overridden base class methods changes the font of the text message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.InfoBar.SetShowHideEffects" title="wx.InfoBar.SetShowHideEffects"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetShowHideEffects</span></code></a></p></td>
+<td><p>Set the effects to use when showing and hiding the bar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.InfoBar.ShowMessage" title="wx.InfoBar.ShowMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowMessage</span></code></a></p></td>
+<td><p>Show a message in the bar.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 49%"/>
+<col style="width: 51%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.InfoBar.EffectDuration" title="wx.InfoBar.EffectDuration"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EffectDuration</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.InfoBar.GetEffectDuration" title="wx.InfoBar.GetEffectDuration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEffectDuration</span></code></a> and <a class="reference internal" href="#wx.InfoBar.SetEffectDuration" title="wx.InfoBar.SetEffectDuration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEffectDuration</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.InfoBar.HideEffect" title="wx.InfoBar.HideEffect"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HideEffect</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.InfoBar.GetHideEffect" title="wx.InfoBar.GetHideEffect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHideEffect</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.InfoBar.ShowEffect" title="wx.InfoBar.ShowEffect"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ShowEffect</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.InfoBar.GetShowEffect" title="wx.InfoBar.GetShowEffect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetShowEffect</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.InfoBar">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">InfoBar</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">InfoBar</span><span class="p">()</span>
+
+<span class="n">InfoBar</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">winid</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An info bar is a transient window shown at top or bottom of its parent
+window to display non-critical information to the user.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.InfoBar.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p>Use <a class="reference internal" href="#wx.InfoBar.Create" title="wx.InfoBar.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   for the objects created using this constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, winid=ID_ANY)</em></p>
+<p>Constructor creating the info bar window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>winid</strong> (<em>wx.WindowID</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.InfoBar.Create" title="wx.InfoBar.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.AddButton">
+<code class="sig-name descname">AddButton</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">btnid</em>, <em class="sig-param">label=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.AddButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a button to be shown in the info bar.</p>
+<p>The button added by this method will be shown to the right of the text (in <code class="docutils literal notranslate"><span class="pre">LTR</span></code> layout), with each successive button being added to the right of the previous one. If any buttons are added to the info bar using this method, the default “Close” button is not shown as it is assumed that the extra buttons already allow the user to close it.</p>
+<p>Clicking the button will generate a normal <code class="docutils literal notranslate"><span class="pre">EVT_COMMAND_BUTTON_CLICKED</span></code> event which can be handled as usual. The default handler in <a class="reference internal" href="#wx-infobar"><span class="std std-ref">  wx.InfoBar</span></a>  itself closes the window whenever a button in it is clicked so if you wish the info bar to be hidden when the button is clicked, simply call  <code class="docutils literal notranslate"><span class="pre">event.Skip()</span></code>   in the button handler to let the base class handler do it (calling  <a class="reference internal" href="#wx.InfoBar.Dismiss" title="wx.InfoBar.Dismiss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dismiss</span></code></a>   explicitly works too, of course). On the other hand, if you don’t skip the event, the info bar will remain opened so make sure to do it for at least some buttons to allow the user to close it.</p>
+<p>Notice that the generic <a class="reference internal" href="#wx-infobar"><span class="std std-ref">  wx.InfoBar</span></a>  implementation handles the button events itself and so they are not propagated to the info bar parent and you need to either inherit from <a class="reference internal" href="#wx-infobar"><span class="std std-ref">  wx.InfoBar</span></a>  and handle them in your derived class or use <a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.Connect" title="wx.EvtHandler.Connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.Connect</span></code></a> , as is done in the dialogs sample, to handle the button events in the parent frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>btnid</strong> (<em>wx.WindowID</em>) – Id of the button. It will be used in the button message clicking this button will generate.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – The label of the button. It may only be empty if  <em class="xref py py-obj">btnid</em>  is one of the stock ids in which case the corresponding stock label (see <a class="reference internal" href="wx.functions.html#wx.GetStockLabel" title="wx.GetStockLabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetStockLabel</span></code></a>     ) will be used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">winid=ID_ANY</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the info bar window.</p>
+<p>Notice that unlike most of the other Window-derived classes, <a class="reference internal" href="#wx-infobar"><span class="std std-ref">  wx.InfoBar</span></a>  is created hidden and is only shown when <a class="reference internal" href="#wx.InfoBar.ShowMessage" title="wx.InfoBar.ShowMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowMessage</span></code></a>   is called. This is more convenient as usually the info bar is created to be shown at some later time and not immediately and so creating it hidden avoids the need to call <code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code>   explicitly from the code using it.</p>
+<p>This should be only called if the object was created using its default constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – A valid parent window pointer.</p></li>
+<li><p><strong>winid</strong> (<em>wx.WindowID</em>) – The id of the info bar window, usually unused as currently no events are generated by this class.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.Dismiss">
+<code class="sig-name descname">Dismiss</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.Dismiss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hide the info bar window.</p>
+<p>This method hides the window and lays out the parent window to account for its disappearance (unlike a simple <code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code> ).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.GetEffectDuration">
+<code class="sig-name descname">GetEffectDuration</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.GetEffectDuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the effect animation duration currently used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.GetHideEffect">
+<code class="sig-name descname">GetHideEffect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.GetHideEffect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the effect currently used for hiding the bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ShowEffect.enumeration.html#wx-showeffect"><span class="std std-ref">  wx.ShowEffect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.GetShowEffect">
+<code class="sig-name descname">GetShowEffect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.GetShowEffect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the effect currently used for showing the bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ShowEffect.enumeration.html#wx-showeffect"><span class="std std-ref">  wx.ShowEffect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.RemoveButton">
+<code class="sig-name descname">RemoveButton</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">btnid</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.RemoveButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a button previously added by <a class="reference internal" href="#wx.InfoBar.AddButton" title="wx.InfoBar.AddButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddButton</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>btnid</strong> (<em>wx.WindowID</em>) – Id of the button to remove. If more than one button with the same id is used in the info bar (which is in any case not recommended), the last, i.e. most recently added, button with this id is removed.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.SetEffectDuration">
+<code class="sig-name descname">SetEffectDuration</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">duration</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.SetEffectDuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the duration of the animation used when showing or hiding the bar.</p>
+<p>By default, 500ms duration is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>duration</strong> (<em>int</em>) – Duration of the animation, in milliseconds.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.SetFont">
+<code class="sig-name descname">SetFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">font</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.SetFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overridden base class methods changes the font of the text message.</p>
+<p><a class="reference internal" href="#wx-infobar"><span class="std std-ref">  wx.InfoBar</span></a>  overrides this method to use the font passed to it for its text message part. By default a larger and bold version of the standard font is used.</p>
+<p>This method is generic-only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>font</strong> (<a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><em>wx.Font</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.SetShowHideEffects">
+<code class="sig-name descname">SetShowHideEffects</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">showEffect</em>, <em class="sig-param">hideEffect</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.SetShowHideEffects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the effects to use when showing and hiding the bar.</p>
+<p>Either or both of the parameters can be set to <code class="docutils literal notranslate"><span class="pre">wx.SHOW_EFFECT_NONE</span></code> to disable using effects entirely.</p>
+<p>By default, the info bar uses <code class="docutils literal notranslate"><span class="pre">wx.SHOW_EFFECT_SLIDE_TO_BOTTOM</span></code> effect for showing itself and <code class="docutils literal notranslate"><span class="pre">wx.SHOW_EFFECT_SLIDE_TO_TOP</span></code> for hiding if it is the first element of the containing sizer and reverse effects if it’s the last one. If it is neither the first nor the last element, no effect is used to avoid the use of an inappropriate one and this function must be called if an effect is desired.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>showEffect</strong> (<a class="reference internal" href="wx.ShowEffect.enumeration.html" title="ShowEffect"><em>ShowEffect</em></a>) – The effect to use when showing the bar.</p></li>
+<li><p><strong>hideEffect</strong> (<a class="reference internal" href="wx.ShowEffect.enumeration.html" title="ShowEffect"><em>ShowEffect</em></a>) – The effect to use when hiding the bar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.InfoBar.ShowMessage">
+<code class="sig-name descname">ShowMessage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">msg</em>, <em class="sig-param">flags=ICON_INFORMATION</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.InfoBar.ShowMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show a message in the bar.</p>
+<p>If the bar is currently hidden, it will be shown. Otherwise its message will be updated in place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<em>string</em>) – The text of the message.</p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – One of <code class="docutils literal notranslate"><span class="pre">wx.ICON_NONE</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ICON_INFORMATION</span></code> (default), <code class="docutils literal notranslate"><span class="pre">wx.ICON_QUESTION</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ICON_WARNING</span></code> or <code class="docutils literal notranslate"><span class="pre">wx.ICON_ERROR</span></code> values. These flags have the same meaning as in <a class="reference internal" href="wx.MessageDialog.html#wx-messagedialog"><span class="std std-ref">  wx.MessageDialog</span></a>  for the generic version, i.e. show (or not, in case of <code class="docutils literal notranslate"><span class="pre">wx.ICON_NONE</span></code>) the corresponding icon in the bar but can be interpreted by the native versions. For example, the GTK+ native implementation doesn’t show icons at all but uses this parameter to select the appropriate background colour for the notification.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.InfoBar.EffectDuration">
+<code class="sig-name descname">EffectDuration</code><a class="headerlink" href="#wx.InfoBar.EffectDuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.InfoBar.GetEffectDuration" title="wx.InfoBar.GetEffectDuration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEffectDuration</span></code></a> and <a class="reference internal" href="#wx.InfoBar.SetEffectDuration" title="wx.InfoBar.SetEffectDuration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEffectDuration</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.InfoBar.HideEffect">
+<code class="sig-name descname">HideEffect</code><a class="headerlink" href="#wx.InfoBar.HideEffect" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.InfoBar.GetHideEffect" title="wx.InfoBar.GetHideEffect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHideEffect</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.InfoBar.ShowEffect">
+<code class="sig-name descname">ShowEffect</code><a class="headerlink" href="#wx.InfoBar.ShowEffect" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.InfoBar.GetShowEffect" title="wx.InfoBar.GetShowEffect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetShowEffect</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

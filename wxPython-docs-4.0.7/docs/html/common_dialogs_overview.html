@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Common Dialogs — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="config_overview.html" rel="next" title="Config Overview"/>
+<link href="command_overview.html" rel="prev" title="Command Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Common Dialogs</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="config_overview.html" title="Config Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="command_overview.html" title="Command Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Common Dialogs</strong></a><ul>
+<li><a class="reference internal" href="#colourdialog-overview">ColourDialog Overview</a><ul>
+<li><a class="reference internal" href="#the-ms-windows-colour-selector">The MS Windows Colour Selector</a></li>
+<li><a class="reference internal" href="#the-generic-colour-selector">The Generic Colour Selector</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fontdialog-overview">FontDialog Overview</a><ul>
+<li><a class="reference internal" href="#the-ms-windows-font-selector">The MS Windows Font Selector</a></li>
+<li><a class="reference internal" href="#the-generic-font-selector">The Generic Font Selector</a></li>
+<li><a class="reference internal" href="#id3">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#printdialog-overview">PrintDialog Overview</a></li>
+<li><a class="reference internal" href="#filedialog-overview">FileDialog Overview</a></li>
+<li><a class="reference internal" href="#dirdialog-overview">DirDialog Overview</a></li>
+<li><a class="reference internal" href="#textentrydialog-overview">TextEntryDialog Overview</a></li>
+<li><a class="reference internal" href="#passwordentrydialog-overview">PasswordEntryDialog Overview</a></li>
+<li><a class="reference internal" href="#messagedialog-overview">MessageDialog Overview</a></li>
+<li><a class="reference internal" href="#singlechoicedialog-overview">SingleChoiceDialog Overview</a></li>
+<li><a class="reference internal" href="#multichoicedialog-overview">MultiChoiceDialog Overview</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/common_dialogs_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-common-dialogs">
+<span id="common-dialogs"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Common Dialogs</strong><a class="headerlink" href="#phoenix-title-common-dialogs" title="Permalink to this headline">¶</a></h1>
+<p>Common dialog classes and functions encapsulate commonly-needed dialog
+box requirements. They are all ‘modal’, grabbing the flow of control
+until the user dismisses the dialog, to make them easy to use within
+an application.</p>
+<p>Some dialogs have both platform-dependent and platform-independent
+implementations, so that if underlying windowing systems do not
+provide the required functionality, the generic classes and functions
+can stand in. For example, under MS Windows, <a class="reference internal" href="wx.ColourDialog.html#wx-colourdialog"><span class="std std-ref">  wx.ColourDialog</span></a>
+uses the standard colour selector. There is also an equivalent called
+<em class="xref py py-obj">wx.GenericColourDialog</em> for other platforms, and a macro defines
+<a class="reference internal" href="wx.ColourDialog.html#wx-colourdialog"><span class="std std-ref">  wx.ColourDialog</span></a> to be the same as <em class="xref py py-obj">wx.GenericColourDialog</em> on
+non-MS Windows platforms. However, under MS Windows, the generic
+dialog can also be used, for testing or other purposes.</p>
+<div class="section" id="colourdialog-overview">
+<span id="id1"></span><h2>ColourDialog Overview<a class="headerlink" href="#colourdialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="wx.ColourDialog.html#wx-colourdialog"><span class="std std-ref">  wx.ColourDialog</span></a> presents a colour selector to the user, and
+returns with colour information.</p>
+<div class="section" id="the-ms-windows-colour-selector">
+<h3>The MS Windows Colour Selector<a class="headerlink" href="#the-ms-windows-colour-selector" title="Permalink to this headline">¶</a></h3>
+<p>Under Windows, the native colour selector common dialog is used. This
+presents a dialog box with three main regions: at the top left, a
+palette of 48 commonly-used colours is shown. Under this, there is a
+palette of 16 ‘custom colours’ which can be set by the application if
+desired. Additionally, the user may open up the dialog box to show a
+right-hand panel containing controls to select a precise colour, and
+add it to the custom colour palette.</p>
+</div>
+<div class="section" id="the-generic-colour-selector">
+<h3>The Generic Colour Selector<a class="headerlink" href="#the-generic-colour-selector" title="Permalink to this headline">¶</a></h3>
+<p>Under non-MS Windows platforms, the colour selector is a simulation of
+most of the features of the MS Windows selector.  Two palettes of 48
+standard and 16 custom colours are presented, with the right-hand area
+containing three sliders for the user to select a colour from red,
+green and blue components. This colour may be added to the custom
+colour palette, and will replace either the currently selected custom
+colour, or the first one in the palette if none is selected.  The RGB
+colour sliders are not optional in the generic colour selector. The
+generic colour selector is also available under MS Windows; use the
+name <em class="xref py py-obj">wx.GenericColourDialog</em>.</p>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>Here is an example of using <a class="reference internal" href="wx.ColourDialog.html#wx-colourdialog"><span class="std std-ref">  wx.ColourDialog</span></a>, which sets various
+parameters of a <a class="reference internal" href="wx.ColourData.html#wx-colourdata"><span class="std std-ref">  wx.ColourData</span></a> object, including a grey scale
+for the custom colours. If the user did not cancel the dialog, the
+application retrieves the selected colour and uses it to set the
+background of a window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ColourData</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">SetChooseFull</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+    <span class="n">colour</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Colour</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">16</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="mi">16</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">SetCustomColour</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">colour</span><span class="p">)</span>
+
+<span class="n">dialog</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ColourDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">dialog</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+    <span class="n">retData</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">GetColourData</span><span class="p">()</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">retData</span><span class="o">.</span><span class="n">GetColour</span><span class="p">()</span>
+    <span class="n">brush</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Brush</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">SOLID</span><span class="p">)</span>
+    <span class="n">myWindow</span><span class="o">.</span><span class="n">SetBackground</span><span class="p">(</span><span class="n">brush</span><span class="p">)</span>
+    <span class="n">myWindow</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
+    <span class="n">myWindow</span><span class="o">.</span><span class="n">Refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fontdialog-overview">
+<span id="id2"></span><h2>FontDialog Overview<a class="headerlink" href="#fontdialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="wx.FontDialog.html#wx-fontdialog"><span class="std std-ref">  wx.FontDialog</span></a> presents a font selector to the user, and
+returns with font and colour information.</p>
+<div class="section" id="the-ms-windows-font-selector">
+<h3>The MS Windows Font Selector<a class="headerlink" href="#the-ms-windows-font-selector" title="Permalink to this headline">¶</a></h3>
+<p>Under Windows, the native font selector common dialog is used. This
+presents a dialog box with controls for font name, point size, style,
+weight, underlining, strikeout and text foreground colour. A sample of
+the font is shown on a white area of the dialog box. Note that in the
+translation from full MS Windows fonts to wxPython font conventions,
+strikeout is ignored and a font family (such as Swiss or Modern) is
+deduced from the actual font name (such as Arial or Courier).</p>
+</div>
+<div class="section" id="the-generic-font-selector">
+<h3>The Generic Font Selector<a class="headerlink" href="#the-generic-font-selector" title="Permalink to this headline">¶</a></h3>
+<p>Under non-MS Windows platforms, the font selector is simpler. Controls
+for font family, point size, style, weight, underlining and text
+foreground colour are provided, and a sample is shown upon a white
+background. The generic font selector is also available under MS
+Windows; use the name <em class="xref py py-obj">wx.GenericFontDialog</em>.</p>
+</div>
+<div class="section" id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Here is an example of using <a class="reference internal" href="wx.FontDialog.html#wx-fontdialog"><span class="std std-ref">  wx.FontDialog</span></a>. The application uses
+the returned font and colour for drawing text on a canvas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FontData</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">SetInitialFont</span><span class="p">(</span><span class="n">canvasFont</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">SetColour</span><span class="p">(</span><span class="n">canvasTextColour</span><span class="p">)</span>
+
+<span class="n">dialog</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FontDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">dialog</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+    <span class="n">retData</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">GetFontData</span><span class="p">()</span>
+    <span class="n">canvasFont</span> <span class="o">=</span> <span class="n">retData</span><span class="o">.</span><span class="n">GetChosenFont</span><span class="p">()</span>
+    <span class="n">canvasTextColour</span> <span class="o">=</span> <span class="n">retData</span><span class="o">.</span><span class="n">GetColour</span><span class="p">()</span>
+    <span class="n">myWindow</span><span class="o">.</span><span class="n">Refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="printdialog-overview">
+<span id="id4"></span><h2>PrintDialog Overview<a class="headerlink" href="#printdialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>This class represents the print and print setup common dialogs. You
+may obtain a <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a> device context from a successfully
+dismissed print dialog.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="printing_framework_overview.html#printing-framework-overview"><span class="std std-ref">Printing Framework Overview</span></a>
+for an example.</p>
+</div>
+</div>
+<div class="section" id="filedialog-overview">
+<span id="id5"></span><h2>FileDialog Overview<a class="headerlink" href="#filedialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>Pops up a file selector box. On Windows and GTK 2.4+, this is the
+common file selector dialog. In X, this is a file selector box with
+somewhat less functionality. The path and filename are distinct
+elements of a full file pathname.</p>
+<p>If path is “”, the current directory will be used. If filename is “”,
+no default filename will be supplied.  The wildcard determines what
+files are displayed in the file selector, and file extension supplies
+a type extension for the required filename. Flags may be a combination
+of <code class="docutils literal notranslate"><span class="pre">wx.FD_OPEN</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.FD_SAVE</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.FD_OVERWRITE_PROMPT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">wx.FD_HIDE_READONLY</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.FD_FILE_MUST_EXIST</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.FD_MULTIPLE</span></code>,
+<code class="docutils literal notranslate"><span class="pre">wx.FD_CHANGE_DIR</span></code> or 0.</p>
+<p>Both the X and Windows versions implement a wildcard filter. Typing a
+filename containing wildcards <code class="docutils literal notranslate"><span class="pre">(\*,</span> <span class="pre">?)</span></code> in the filename text item,
+and clicking on Ok, will result in only those files matching the
+pattern being displayed. In the X version, supplying no default name
+will result in the wildcard filter being inserted in the filename text
+item; the filter is ignored if a default name is supplied.</p>
+<p>The wildcard may be a specification for multiple types of file with a
+description for each, such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wildcard</span> <span class="o">=</span> <span class="s2">"BMP files (*.bmp)|*.bmp|GIF files (*.gif)|*.gif"</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dirdialog-overview">
+<span id="id6"></span><h2>DirDialog Overview<a class="headerlink" href="#dirdialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>This dialog shows a directory selector dialog, allowing the user to
+select a single directory.</p>
+</div>
+<div class="section" id="textentrydialog-overview">
+<span id="id7"></span><h2>TextEntryDialog Overview<a class="headerlink" href="#textentrydialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>This is a dialog with a text entry field. The value that the user
+entered is obtained using <a class="reference internal" href="wx.TextEntryDialog.html#wx.TextEntryDialog.GetValue" title="wx.TextEntryDialog.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TextEntryDialog.GetValue</span></code></a> ().</p>
+</div>
+<div class="section" id="passwordentrydialog-overview">
+<span id="id8"></span><h2>PasswordEntryDialog Overview<a class="headerlink" href="#passwordentrydialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>This is a dialog with a password entry field. The value that the user
+entered is obtained using <a class="reference internal" href="wx.TextEntryDialog.html#wx.TextEntryDialog.GetValue" title="wx.TextEntryDialog.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TextEntryDialog.GetValue</span></code></a> ().</p>
+</div>
+<div class="section" id="messagedialog-overview">
+<span id="id9"></span><h2>MessageDialog Overview<a class="headerlink" href="#messagedialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>This dialog shows a message, plus buttons that can be chosen from
+<code class="docutils literal notranslate"><span class="pre">OK</span></code>, <code class="docutils literal notranslate"><span class="pre">Cancel</span></code>, <code class="docutils literal notranslate"><span class="pre">Yes</span></code>, and <code class="docutils literal notranslate"><span class="pre">No</span></code>. Under Windows, an optional
+icon can be shown, such as an exclamation mark or question mark.</p>
+<p>The return value of <a class="reference internal" href="wx.MessageDialog.html#wx.MessageDialog.ShowModal" title="wx.MessageDialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.MessageDialog.ShowModal</span></code></a> () indicates
+which button the user pressed.</p>
+</div>
+<div class="section" id="singlechoicedialog-overview">
+<span id="id10"></span><h2>SingleChoiceDialog Overview<a class="headerlink" href="#singlechoicedialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>This dialog shows a list of choices, plus <code class="docutils literal notranslate"><span class="pre">OK</span></code> and (optionally)
+<code class="docutils literal notranslate"><span class="pre">Cancel</span></code>. The user can select one of them. The selection can be
+obtained from the dialog as an index, a string or client data.</p>
+</div>
+<div class="section" id="multichoicedialog-overview">
+<span id="id11"></span><h2>MultiChoiceDialog Overview<a class="headerlink" href="#multichoicedialog-overview" title="Permalink to this headline">¶</a></h2>
+<p>This dialog shows a list of choices, plus <code class="docutils literal notranslate"><span class="pre">OK</span></code> and (optionally)
+<code class="docutils literal notranslate"><span class="pre">Cancel</span></code>. The user can select one or more of them.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

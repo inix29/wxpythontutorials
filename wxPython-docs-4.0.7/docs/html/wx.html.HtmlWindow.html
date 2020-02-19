@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.html.HtmlWindow — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.html.HtmlWindowInterface.html" rel="next" title="wx.html.HtmlWindowInterface"/>
+<link href="wx.html.HtmlWinTagHandler.html" rel="prev" title="wx.html.HtmlWinTagHandler"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.html.1moduleindex.html">
+<strong>wx.html</strong></a> »</li>
+<li class="reltitle"> <strong>wx.html.HtmlWindow</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.html.HtmlWindowInterface.html" title="wx.html.HtmlWindowInterface">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.html.HtmlWinTagHandler.html" title="wx.html.HtmlWinTagHandler">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.html.HtmlWindow</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.html.HtmlWindow.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-html-htmlwindow">
+<span id="wx-html-htmlwindow"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.html.HtmlWindow</strong><a class="headerlink" href="#phoenix-title-wx-html-htmlwindow" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>  is probably the only class you will directly use unless you want to do something special (like adding new tag handlers or MIME filters).</p>
+<p>The purpose of this class is to display rich content pages (either local file or downloaded via <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> protocol) in a window based on a subset of the HTML standard. The width of the window is constant - given in the constructor - and virtual height is changed dynamically depending on page size. Once the window is created you can set its content by calling <a class="reference internal" href="#wx.html.HtmlWindow.SetPage" title="wx.html.HtmlWindow.SetPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPage</span></code></a>  with raw HTML, <a class="reference internal" href="#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPage</span></code></a>  with a <a class="reference internal" href="wx.FileSystem.html#wx-filesystem"><span class="std std-ref">  wx.FileSystem</span></a>  location or <a class="reference internal" href="#wx.html.HtmlWindow.LoadFile" title="wx.html.HtmlWindow.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a>  with a filename.</p>
+<div class="section" id="styles-window-styles">
+<span id="htmlwindow-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HW_SCROLLBAR_NEVER</span></code>: Never display scrollbars, not even when the page is larger than the window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HW_SCROLLBAR_AUTO</span></code>: Display scrollbars only if page’s size exceeds window’s size.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HW_NO_SELECTION</span></code>: Don’t allow the user to select text.</p></li>
+</ul>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="htmlwindow-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive one of the <a class="reference internal" href="wx.html.HtmlCellEvent.html#wx-html-htmlcellevent"><span class="std std-ref">  wx.html.HtmlCellEvent</span></a><a class="reference internal" href="wx.html.HtmlLinkEvent.html#wx-html-htmllinkevent"><span class="std std-ref">  wx.html.HtmlLinkEvent</span></a> parameters.</p>
+<ul class="simple">
+<li><p>EVT_HTML_CELL_CLICKED: A <a class="reference internal" href="wx.html.HtmlCell.html#wx-html-htmlcell"><span class="std std-ref">  wx.html.HtmlCell</span></a>  was clicked.</p></li>
+<li><p>EVT_HTML_CELL_HOVER: The mouse passed over a <a class="reference internal" href="wx.html.HtmlCell.html#wx-html-htmlcell"><span class="std std-ref">  wx.html.HtmlCell</span></a>.</p></li>
+<li><p>EVT_HTML_LINK_CLICKED: A <a class="reference internal" href="wx.html.HtmlCell.html#wx-html-htmlcell"><span class="std std-ref">  wx.html.HtmlCell</span></a>  which contains an hyperlink was clicked.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want complete HTML/CSS support as well as a Javascript engine, see instead <a class="reference internal" href="wx.html2.WebView.html#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>  uses the <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  class for displaying images, as such you need to initialize the handlers for any image formats you use before loading a page. See <a class="reference internal" href="wx.functions.html#wx.InitAllImageHandlers" title="wx.InitAllImageHandlers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.InitAllImageHandlers</span></code></a>       and <a class="reference internal" href="wx.Image.html#wx.Image.AddHandler" title="wx.Image.AddHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.AddHandler</span></code></a> .</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.html.HtmlLinkEvent.html#wx-html-htmllinkevent"><span class="std std-ref">  wx.html.HtmlLinkEvent</span></a>, <a class="reference internal" href="wx.html.HtmlCellEvent.html#wx-html-htmlcellevent"><span class="std std-ref">  wx.html.HtmlCellEvent</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>HtmlWindow</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of HtmlWindow" class="inheritance" src="_static/images/inheritance/wx.html.HtmlWindow_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="112,179,276,208" href="wx.html.HtmlWindow.html" id="node1" shape="rect" title="wx.html.HtmlWindow  is probably the only class you will directly use unless you want to do something special (like adding new tag handlers or MIME filters)."/> <area alt="" coords="5,101,167,131" href="Scrolled&lt; wxPanel &gt;.html" id="node2" shape="rect" title="Scrolled&lt; wxPanel &gt;"/> <area alt="" coords="191,101,415,131" href="wx.html.HtmlWindowInterface.html" id="node3" shape="rect" title="Abstract interface to a HTML rendering window (such as wx.html.HtmlWindow  or wx.html.HtmlListBox) that is passed to wx.html.HtmlWinParser."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%"/>
+<col style="width: 59%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.__init__" title="wx.html.HtmlWindow.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.AddFilter" title="wx.html.HtmlWindow.AddFilter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddFilter</span></code></a></p></td>
+<td><p>Adds <a class="reference internal" href="html_overview.html#input-filter"><span class="std std-ref">input filter</span></a>  to the static list of available filters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.AppendToPage" title="wx.html.HtmlWindow.AppendToPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendToPage</span></code></a></p></td>
+<td><p>Appends HTML fragment to currently displayed text and refreshes the window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.GetClassDefaultAttributes" title="wx.html.HtmlWindow.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.GetInternalRepresentation" title="wx.html.HtmlWindow.GetInternalRepresentation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetInternalRepresentation</span></code></a></p></td>
+<td><p>Returns pointer to the top-level container.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedAnchor" title="wx.html.HtmlWindow.GetOpenedAnchor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenedAnchor</span></code></a></p></td>
+<td><p>Returns anchor within currently opened page (see <a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedPage" title="wx.html.HtmlWindow.GetOpenedPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlWindow.GetOpenedPage</span></code></a> ).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedPage" title="wx.html.HtmlWindow.GetOpenedPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenedPage</span></code></a></p></td>
+<td><p>Returns full location of the opened page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedPageTitle" title="wx.html.HtmlWindow.GetOpenedPageTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenedPageTitle</span></code></a></p></td>
+<td><p>Returns title of the opened page or “” if the current page does not contain &lt;<code class="docutils literal notranslate"><span class="pre">TITLE</span></code>&gt; tag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.GetParser" title="wx.html.HtmlWindow.GetParser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParser</span></code></a></p></td>
+<td><p>Returns a pointer to the current parser.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.GetRelatedFrame" title="wx.html.HtmlWindow.GetRelatedFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRelatedFrame</span></code></a></p></td>
+<td><p>Returns the related frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.HistoryBack" title="wx.html.HtmlWindow.HistoryBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HistoryBack</span></code></a></p></td>
+<td><p>Moves back to the previous page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.HistoryCanBack" title="wx.html.HtmlWindow.HistoryCanBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HistoryCanBack</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is possible to go back in the history i.e.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.HistoryCanForward" title="wx.html.HtmlWindow.HistoryCanForward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HistoryCanForward</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is possible to go forward in the history i.e.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.HistoryClear" title="wx.html.HtmlWindow.HistoryClear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HistoryClear</span></code></a></p></td>
+<td><p>Clears history.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.HistoryForward" title="wx.html.HtmlWindow.HistoryForward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HistoryForward</span></code></a></p></td>
+<td><p>Moves to next page in history.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.LoadFile" title="wx.html.HtmlWindow.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p></td>
+<td><p>Loads an HTML page from a file and displays it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPage</span></code></a></p></td>
+<td><p>Unlike <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPage</span></code>   this function first loads the HTML page from <em class="xref py py-obj">location</em>  and then displays it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.OnCellClicked" title="wx.html.HtmlWindow.OnCellClicked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCellClicked</span></code></a></p></td>
+<td><p>This method is called when a mouse button is clicked inside <a class="reference internal" href="#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.OnCellMouseHover" title="wx.html.HtmlWindow.OnCellMouseHover"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCellMouseHover</span></code></a></p></td>
+<td><p>This method is called when a mouse moves over an HTML cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.OnLinkClicked" title="wx.html.HtmlWindow.OnLinkClicked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnLinkClicked</span></code></a></p></td>
+<td><p>Called when user clicks on hypertext link.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.OnOpeningURL" title="wx.html.HtmlWindow.OnOpeningURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnOpeningURL</span></code></a></p></td>
+<td><p>Called when an URL is being opened (either when the user clicks on a link or an image is loaded).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.OnSetTitle" title="wx.html.HtmlWindow.OnSetTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSetTitle</span></code></a></p></td>
+<td><p>Called on parsing &lt;<code class="docutils literal notranslate"><span class="pre">TITLE</span></code>&gt; tag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.ReadCustomization" title="wx.html.HtmlWindow.ReadCustomization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ReadCustomization</span></code></a></p></td>
+<td><p>This reads custom settings from Config.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.ScrollToAnchor" title="wx.html.HtmlWindow.ScrollToAnchor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ScrollToAnchor</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SelectAll" title="wx.html.HtmlWindow.SelectAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectAll</span></code></a></p></td>
+<td><p>Selects all text in the window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SelectLine" title="wx.html.HtmlWindow.SelectLine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectLine</span></code></a></p></td>
+<td><p>Selects the line of text that <em class="xref py py-obj">pos</em>  points at.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SelectWord" title="wx.html.HtmlWindow.SelectWord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectWord</span></code></a></p></td>
+<td><p>Selects the word at position <em class="xref py py-obj">pos</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SelectionToText" title="wx.html.HtmlWindow.SelectionToText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectionToText</span></code></a></p></td>
+<td><p>Returns the current selection as plain text.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SetBorders" title="wx.html.HtmlWindow.SetBorders"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetBorders</span></code></a></p></td>
+<td><p>This function sets the space between border of window and HTML contents.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SetFonts" title="wx.html.HtmlWindow.SetFonts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFonts</span></code></a></p></td>
+<td><p>This function sets font sizes and faces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SetPage" title="wx.html.HtmlWindow.SetPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPage</span></code></a></p></td>
+<td><p>Sets the source of a page and displays it, for example</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SetRelatedFrame" title="wx.html.HtmlWindow.SetRelatedFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRelatedFrame</span></code></a></p></td>
+<td><p>Sets the frame in which page title will be displayed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SetRelatedStatusBar" title="wx.html.HtmlWindow.SetRelatedStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRelatedStatusBar</span></code></a></p></td>
+<td><p><strong>After</strong>  calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRelatedFrame</span></code> , this sets statusbar slot where messages will be displayed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.SetStandardFonts" title="wx.html.HtmlWindow.SetStandardFonts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStandardFonts</span></code></a></p></td>
+<td><p>Sets default font sizes and/or default font size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.ToText" title="wx.html.HtmlWindow.ToText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ToText</span></code></a></p></td>
+<td><p>Returns content of currently displayed page as plain text.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.WriteCustomization" title="wx.html.HtmlWindow.WriteCustomization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WriteCustomization</span></code></a></p></td>
+<td><p>Saves custom settings into Config.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%"/>
+<col style="width: 54%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.InternalRepresentation" title="wx.html.HtmlWindow.InternalRepresentation"><code class="xref py py-attr docutils literal notranslate"><span class="pre">InternalRepresentation</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetInternalRepresentation" title="wx.html.HtmlWindow.GetInternalRepresentation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetInternalRepresentation</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.OpenedAnchor" title="wx.html.HtmlWindow.OpenedAnchor"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OpenedAnchor</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedAnchor" title="wx.html.HtmlWindow.GetOpenedAnchor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenedAnchor</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.OpenedPage" title="wx.html.HtmlWindow.OpenedPage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OpenedPage</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedPage" title="wx.html.HtmlWindow.GetOpenedPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenedPage</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.OpenedPageTitle" title="wx.html.HtmlWindow.OpenedPageTitle"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OpenedPageTitle</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedPageTitle" title="wx.html.HtmlWindow.GetOpenedPageTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenedPageTitle</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.Parser" title="wx.html.HtmlWindow.Parser"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Parser</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetParser" title="wx.html.HtmlWindow.GetParser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParser</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlWindow.RelatedFrame" title="wx.html.HtmlWindow.RelatedFrame"><code class="xref py py-attr docutils literal notranslate"><span class="pre">RelatedFrame</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetRelatedFrame" title="wx.html.HtmlWindow.GetRelatedFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRelatedFrame</span></code></a> and <a class="reference internal" href="#wx.html.HtmlWindow.SetRelatedFrame" title="wx.html.HtmlWindow.SetRelatedFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRelatedFrame</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.html.HtmlWindow">
+<em class="property">class </em><code class="sig-prename descclassname">wx.html.</code><code class="sig-name descname">HtmlWindow</code><span class="sig-paren">(</span><em class="sig-param">ScrolledWindow</em>, <em class="sig-param">HtmlWindowInterface</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HtmlWindow</span><span class="p">()</span>
+
+<span class="n">HtmlWindow</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+           <span class="n">style</span><span class="o">=</span><span class="n">HW_DEFAULT_STYLE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"htmlWindow"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>HtmlWindow is probably the only class you will directly use unless
+you want to do something special (like adding new tag handlers or MIME
+filters).</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=HW_DEFAULT_STYLE, name=”htmlWindow”)</em></p>
+<p>Constructor.</p>
+<p>The parameters are the same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">Scrolled.__init__</span></code>   constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.AddFilter">
+<em class="property">static </em><code class="sig-name descname">AddFilter</code><span class="sig-paren">(</span><em class="sig-param">filter</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.AddFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds <a class="reference internal" href="html_overview.html#input-filter"><span class="std std-ref">input filter</span></a>  to the static list of available filters.</p>
+<p>These filters are present by default:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">text/html</span></code>   MIME type</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image/*</span></code>   MIME types</p></li>
+<li><p>Plain Text filter (this filter is used if no other filter matches)</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<a class="reference internal" href="wx.html.HtmlFilter.html#wx.html.HtmlFilter" title="wx.html.HtmlFilter"><em>wx.html.HtmlFilter</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.AppendToPage">
+<code class="sig-name descname">AppendToPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">source</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.AppendToPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends HTML fragment to currently displayed text and refreshes the window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>string</em>) – HTML code fragment</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if an error occurred, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">VisualAttributes</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.GetInternalRepresentation">
+<code class="sig-name descname">GetInternalRepresentation</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.GetInternalRepresentation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to the top-level container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.html.HtmlContainerCell.html#wx-html-htmlcontainercell"><span class="std std-ref">  wx.html.HtmlContainerCell</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="html_overview.html#cells-and-containers"><span class="std std-ref">Cells and Containers</span></a>, <a class="reference internal" href="printing_framework_overview.html#printing-framework-overview"><span class="std std-ref">Printing Framework Overview</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.GetOpenedAnchor">
+<code class="sig-name descname">GetOpenedAnchor</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.GetOpenedAnchor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns anchor within currently opened page (see <a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedPage" title="wx.html.HtmlWindow.GetOpenedPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlWindow.GetOpenedPage</span></code></a> ).</p>
+<p>If no page is opened or if the displayed page wasn’t produced by call to <a class="reference internal" href="#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPage</span></code></a> , empty string is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.GetOpenedPage">
+<code class="sig-name descname">GetOpenedPage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.GetOpenedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns full location of the opened page.</p>
+<p>If no page is opened or if the displayed page wasn’t produced by call to <a class="reference internal" href="#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPage</span></code></a> , empty string is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.GetOpenedPageTitle">
+<code class="sig-name descname">GetOpenedPageTitle</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.GetOpenedPageTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns title of the opened page or “” if the current page does not contain &lt;<code class="docutils literal notranslate"><span class="pre">TITLE</span></code>&gt; tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.GetParser">
+<code class="sig-name descname">GetParser</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.GetParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the current parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.html.HtmlWinParser.html#wx-html-htmlwinparser"><span class="std std-ref">  wx.html.HtmlWinParser</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.GetRelatedFrame">
+<code class="sig-name descname">GetRelatedFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.GetRelatedFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the related frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Frame</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.HistoryBack">
+<code class="sig-name descname">HistoryBack</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.HistoryBack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves back to the previous page.</p>
+<p>Only pages displayed using <a class="reference internal" href="#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPage</span></code></a>   are stored in history list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.HistoryCanBack">
+<code class="sig-name descname">HistoryCanBack</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.HistoryCanBack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is possible to go back in the history i.e.</p>
+<p><a class="reference internal" href="#wx.html.HtmlWindow.HistoryBack" title="wx.html.HtmlWindow.HistoryBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HistoryBack</span></code></a>   won’t fail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.HistoryCanForward">
+<code class="sig-name descname">HistoryCanForward</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.HistoryCanForward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is possible to go forward in the history i.e.</p>
+<p><a class="reference internal" href="#wx.html.HtmlWindow.HistoryForward" title="wx.html.HtmlWindow.HistoryForward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HistoryForward</span></code></a>   won’t fail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.HistoryClear">
+<code class="sig-name descname">HistoryClear</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.HistoryClear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears history.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.HistoryForward">
+<code class="sig-name descname">HistoryForward</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.HistoryForward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves to next page in history.</p>
+<p>Only pages displayed using <a class="reference internal" href="#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPage</span></code></a>   are stored in history list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.LoadFile">
+<code class="sig-name descname">LoadFile</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.LoadFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads an HTML page from a file and displays it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if an error occurred, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPage</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.LoadPage">
+<code class="sig-name descname">LoadPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">location</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.LoadPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unlike <a class="reference internal" href="#wx.html.HtmlWindow.SetPage" title="wx.html.HtmlWindow.SetPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPage</span></code></a>   this function first loads the HTML page from <em class="xref py py-obj">location</em>  and then displays it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>location</strong> (<em>string</em>) – The address of the document. See the <a class="reference internal" href="filesystem_overview.html#filesystem-overview"><span class="std std-ref">FileSystem Overview</span></a>  for details on the address format and <a class="reference internal" href="wx.FileSystem.html#wx-filesystem"><span class="std std-ref">  wx.FileSystem</span></a>  for a description of how the file is opened.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if an error occurred, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.html.HtmlWindow.LoadFile" title="wx.html.HtmlWindow.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.OnCellClicked">
+<code class="sig-name descname">OnCellClicked</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cell</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.OnCellClicked" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called when a mouse button is clicked inside <a class="reference internal" href="#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>.</p>
+<p>The default behaviour is to emit a <a class="reference internal" href="wx.html.HtmlCellEvent.html#wx-html-htmlcellevent"><span class="std std-ref">  wx.html.HtmlCellEvent</span></a>  and, if the event was not processed or skipped, call <a class="reference internal" href="#wx.html.HtmlWindow.OnLinkClicked" title="wx.html.HtmlWindow.OnLinkClicked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnLinkClicked</span></code></a>   if the cell contains an hypertext link.</p>
+<p>Overloading this method is deprecated; intercept the event instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cell</strong> (<a class="reference internal" href="wx.html.HtmlCell.html#wx.html.HtmlCell" title="wx.html.HtmlCell"><em>wx.html.HtmlCell</em></a>) – The cell inside which the mouse was clicked, always a simple (i.e. non-container) cell</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – The logical x coordinate of the click point</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – The logical y coordinate of the click point</p></li>
+<li><p><strong>event</strong> (<a class="reference internal" href="wx.MouseEvent.html#wx.MouseEvent" title="wx.MouseEvent"><em>wx.MouseEvent</em></a>) – The mouse event containing other information about the click</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a link was clicked, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.OnCellMouseHover">
+<code class="sig-name descname">OnCellMouseHover</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cell</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.OnCellMouseHover" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called when a mouse moves over an HTML cell.</p>
+<p>Default behaviour is to emit a <a class="reference internal" href="wx.html.HtmlCellEvent.html#wx-html-htmlcellevent"><span class="std std-ref">  wx.html.HtmlCellEvent</span></a>.</p>
+<p>Overloading this method is deprecated; intercept the event instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cell</strong> (<a class="reference internal" href="wx.html.HtmlCell.html#wx.html.HtmlCell" title="wx.html.HtmlCell"><em>wx.html.HtmlCell</em></a>) – The cell inside which the mouse is currently, always a simple (i.e. non-container) cell</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – The logical x coordinate of the click point</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – The logical y coordinate of the click point</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.OnLinkClicked">
+<code class="sig-name descname">OnLinkClicked</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">link</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.OnLinkClicked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when user clicks on hypertext link.</p>
+<p>Default behaviour is to emit a <a class="reference internal" href="wx.html.HtmlLinkEvent.html#wx-html-htmllinkevent"><span class="std std-ref">  wx.html.HtmlLinkEvent</span></a>  and, if the event was not processed or skipped, call <a class="reference internal" href="#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPage</span></code></a>   and do nothing else.</p>
+<p>Overloading this method is deprecated; intercept the event instead.</p>
+<p>Also see <a class="reference internal" href="wx.html.HtmlLinkInfo.html#wx-html-htmllinkinfo"><span class="std std-ref">  wx.html.HtmlLinkInfo</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>link</strong> (<a class="reference internal" href="wx.html.HtmlLinkInfo.html#wx.html.HtmlLinkInfo" title="wx.html.HtmlLinkInfo"><em>wx.html.HtmlLinkInfo</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.OnOpeningURL">
+<code class="sig-name descname">OnOpeningURL</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">type</em>, <em class="sig-param">url</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.OnOpeningURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when an URL is being opened (either when the user clicks on a link or an image is loaded).</p>
+<p>The URL will be opened only if <a class="reference internal" href="#wx.html.HtmlWindow.OnOpeningURL" title="wx.html.HtmlWindow.OnOpeningURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnOpeningURL</span></code></a>   returns  <code class="docutils literal notranslate"><span class="pre">HTML_OPEN</span></code> . This method is called by  <a class="reference internal" href="wx.html.HtmlParser.html#wx.html.HtmlParser.OpenURL" title="wx.html.HtmlParser.OpenURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlParser.OpenURL</span></code></a> .</p>
+<p>You can override <a class="reference internal" href="#wx.html.HtmlWindow.OnOpeningURL" title="wx.html.HtmlWindow.OnOpeningURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnOpeningURL</span></code></a>   to selectively block some URLs (e.g. for security reasons) or to redirect them elsewhere. Default behaviour is to always return  <code class="docutils literal notranslate"><span class="pre">HTML_OPEN</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<a class="reference internal" href="wx.html.HtmlURLType.enumeration.html" title="HtmlURLType"><em>HtmlURLType</em></a>) – Indicates type of the resource. Is one of
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HTML_URL_PAGE</span></code>: Opening a HTML page.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HTML_URL_IMAGE</span></code>: Opening an image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HTML_URL_OTHER</span></code>: Opening a resource that doesn’t fall into any other category.</p></li>
+</ul>
+</p></li>
+<li><p><strong>url</strong> (<em>string</em>) – URL being opened.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Pointer to <em class="xref py py-obj">String</em>       variable that must be filled with an URL if <a class="reference internal" href="#wx.html.HtmlWindow.OnOpeningURL" title="wx.html.HtmlWindow.OnOpeningURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnOpeningURL</span></code></a>   returns  <code class="docutils literal notranslate"><span class="pre">HTML_REDIRECT</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HTML_OPEN</span></code>: Open the URL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HTML_BLOCK</span></code>: Deny access to the URL, <a class="reference internal" href="wx.html.HtmlParser.html#wx.html.HtmlParser.OpenURL" title="wx.html.HtmlParser.OpenURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlParser.OpenURL</span></code></a>   will return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HTML_REDIRECT</span></code>: Don’t open url, redirect to another URL. <a class="reference internal" href="#wx.html.HtmlWindow.OnOpeningURL" title="wx.html.HtmlWindow.OnOpeningURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnOpeningURL</span></code></a>   must fill redirect with the new URL. <a class="reference internal" href="#wx.html.HtmlWindow.OnOpeningURL" title="wx.html.HtmlWindow.OnOpeningURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnOpeningURL</span></code></a>   will be called again on returned URL.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.html.HtmlOpeningStatus.enumeration.html#wx-html-htmlopeningstatus"><span class="std std-ref">  wx.html.HtmlOpeningStatus</span></a>, <em class="xref py py-obj">redirectTo</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.OnSetTitle">
+<code class="sig-name descname">OnSetTitle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.OnSetTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called on parsing &lt;<code class="docutils literal notranslate"><span class="pre">TITLE</span></code>&gt; tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.ReadCustomization">
+<code class="sig-name descname">ReadCustomization</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cfg</em>, <em class="sig-param">path=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.ReadCustomization" title="Permalink to this definition">¶</a></dt>
+<dd><p>This reads custom settings from Config.</p>
+<p>It uses the path ‘path’ if given, otherwise it saves info into currently selected path. The values are stored in sub-path  <a class="reference internal" href="#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>. Read values: all things set by  <a class="reference internal" href="#wx.html.HtmlWindow.SetFonts" title="wx.html.HtmlWindow.SetFonts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFonts</span></code></a> , <a class="reference internal" href="#wx.html.HtmlWindow.SetBorders" title="wx.html.HtmlWindow.SetBorders"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetBorders</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase" title="wx.ConfigBase"><em>wx.ConfigBase</em></a>) – Config from which you want to read the configuration.</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – Optional path in config tree. If not given current path is used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.ScrollToAnchor">
+<code class="sig-name descname">ScrollToAnchor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.ScrollToAnchor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>anchor</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">String</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SelectAll">
+<code class="sig-name descname">SelectAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SelectAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects all text in the window.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.html.HtmlWindow.SelectLine" title="wx.html.HtmlWindow.SelectLine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectLine</span></code></a> , <a class="reference internal" href="#wx.html.HtmlWindow.SelectWord" title="wx.html.HtmlWindow.SelectWord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectWord</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SelectLine">
+<code class="sig-name descname">SelectLine</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SelectLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the line of text that <em class="xref py py-obj">pos</em>  points at.</p>
+<p>Note that <em class="xref py py-obj">pos</em>  is relative to the top of displayed page, not to window’s origin, use <a class="reference internal" href="wx.Scrolled.html#wx.Scrolled.CalcUnscrolledPosition" title="wx.Scrolled.CalcUnscrolledPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Scrolled.CalcUnscrolledPosition</span></code></a>   to convert physical coordinate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.html.HtmlWindow.SelectAll" title="wx.html.HtmlWindow.SelectAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectAll</span></code></a> , <a class="reference internal" href="#wx.html.HtmlWindow.SelectWord" title="wx.html.HtmlWindow.SelectWord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectWord</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SelectWord">
+<code class="sig-name descname">SelectWord</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SelectWord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the word at position <em class="xref py py-obj">pos</em>.</p>
+<p>Note that <em class="xref py py-obj">pos</em>  is relative to the top of displayed page, not to window’s origin, use <a class="reference internal" href="wx.Scrolled.html#wx.Scrolled.CalcUnscrolledPosition" title="wx.Scrolled.CalcUnscrolledPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Scrolled.CalcUnscrolledPosition</span></code></a>   to convert physical coordinate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.html.HtmlWindow.SelectAll" title="wx.html.HtmlWindow.SelectAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectAll</span></code></a> , <a class="reference internal" href="#wx.html.HtmlWindow.SelectLine" title="wx.html.HtmlWindow.SelectLine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectLine</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SelectionToText">
+<code class="sig-name descname">SelectionToText</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SelectionToText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current selection as plain text.</p>
+<p>Returns an empty string if no text is currently selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SetBorders">
+<code class="sig-name descname">SetBorders</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SetBorders" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function sets the space between border of window and HTML contents.</p>
+<p>See image:</p>
+<div class="figure align-center">
+<img alt="_images/htmlwin_border.png" src="_images/htmlwin_border.png"/>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>int</em>) – indentation from borders in pixels</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SetFonts">
+<code class="sig-name descname">SetFonts</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">normal_face</em>, <em class="sig-param">fixed_face</em>, <em class="sig-param">sizes</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SetFonts" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function sets font sizes and faces.</p>
+<p>See <a class="reference internal" href="wx.html.HtmlDCRenderer.html#wx.html.HtmlDCRenderer.SetFonts" title="wx.html.HtmlDCRenderer.SetFonts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlDCRenderer.SetFonts</span></code></a>   for detailed description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>normal_face</strong> (<em>string</em>) – </p></li>
+<li><p><strong>fixed_face</strong> (<em>string</em>) – </p></li>
+<li><p><strong>sizes</strong> (<em>list of integers</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>SetSize()</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SetPage">
+<code class="sig-name descname">SetPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">source</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SetPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the source of a page and displays it, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">htmlwin</span><span class="o">.</span><span class="n">SetPage</span><span class="p">(</span><span class="s2">"&lt;html&gt;&lt;body&gt;Hello, world!&lt;/body&gt;&lt;/html&gt;"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want to load a document from some location use <a class="reference internal" href="#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPage</span></code></a>   instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>string</em>) – The HTML to be displayed.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if an error occurred, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SetRelatedFrame">
+<code class="sig-name descname">SetRelatedFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">frame</em>, <em class="sig-param">format</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SetRelatedFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the frame in which page title will be displayed.</p>
+<p><em class="xref py py-obj">format</em>  is the format of the frame title, e.g. “HtmlHelp : %s”. It must contain exactly one s. This s is substituted with HTML page title.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<a class="reference internal" href="wx.Frame.html#wx.Frame" title="wx.Frame"><em>wx.Frame</em></a>) – </p></li>
+<li><p><strong>format</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SetRelatedStatusBar">
+<code class="sig-name descname">SetRelatedStatusBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SetRelatedStatusBar" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetRelatedStatusBar</strong> <em class="xref py py-obj">(self, index)</em></p>
+<p><strong>After</strong>  calling <a class="reference internal" href="#wx.html.HtmlWindow.SetRelatedFrame" title="wx.html.HtmlWindow.SetRelatedFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRelatedFrame</span></code></a> , this sets statusbar slot where messages will be displayed.</p>
+<p>(Default is -1 = no messages.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – Statusbar slot number (0..n)</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetRelatedStatusBar</strong> <em class="xref py py-obj">(self, statusbar, index=0)</em></p>
+<p><strong>Sets</strong>  the associated statusbar where messages will be displayed.</p>
+<p>Call this instead of <a class="reference internal" href="#wx.html.HtmlWindow.SetRelatedFrame" title="wx.html.HtmlWindow.SetRelatedFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRelatedFrame</span></code></a>   if you want statusbar updates only, no changing of the frame title.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>statusbar</strong> (<a class="reference internal" href="wx.StatusBar.html#wx.StatusBar" title="wx.StatusBar"><em>wx.StatusBar</em></a>) – Statusbar pointer</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – Statusbar slot number (0..n)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.SetStandardFonts">
+<code class="sig-name descname">SetStandardFonts</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">size=-1</em>, <em class="sig-param">normal_face=""</em>, <em class="sig-param">fixed_face=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.SetStandardFonts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets default font sizes and/or default font size.</p>
+<p>See <a class="reference internal" href="wx.html.HtmlDCRenderer.html#wx.html.HtmlDCRenderer.SetStandardFonts" title="wx.html.HtmlDCRenderer.SetStandardFonts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlDCRenderer.SetStandardFonts</span></code></a>   for detailed description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – </p></li>
+<li><p><strong>normal_face</strong> (<em>string</em>) – </p></li>
+<li><p><strong>fixed_face</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.html.HtmlWindow.SetFonts" title="wx.html.HtmlWindow.SetFonts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFonts</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.ToText">
+<code class="sig-name descname">ToText</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.ToText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns content of currently displayed page as plain text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlWindow.WriteCustomization">
+<code class="sig-name descname">WriteCustomization</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cfg</em>, <em class="sig-param">path=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlWindow.WriteCustomization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves custom settings into Config.</p>
+<p>It uses the path ‘path’ if given, otherwise it saves info into currently selected path. Regardless of whether the path is given or not, the function creates sub-path  <a class="reference internal" href="#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>.</p>
+<p>Saved values: all things set by <a class="reference internal" href="#wx.html.HtmlWindow.SetFonts" title="wx.html.HtmlWindow.SetFonts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFonts</span></code></a> , <a class="reference internal" href="#wx.html.HtmlWindow.SetBorders" title="wx.html.HtmlWindow.SetBorders"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetBorders</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase" title="wx.ConfigBase"><em>wx.ConfigBase</em></a>) – Config to which you want to save the configuration.</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – Optional path in config tree. If not given, the current path is used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.html.HtmlWindow.InternalRepresentation">
+<code class="sig-name descname">InternalRepresentation</code><a class="headerlink" href="#wx.html.HtmlWindow.InternalRepresentation" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetInternalRepresentation" title="wx.html.HtmlWindow.GetInternalRepresentation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetInternalRepresentation</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlWindow.OpenedAnchor">
+<code class="sig-name descname">OpenedAnchor</code><a class="headerlink" href="#wx.html.HtmlWindow.OpenedAnchor" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedAnchor" title="wx.html.HtmlWindow.GetOpenedAnchor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenedAnchor</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlWindow.OpenedPage">
+<code class="sig-name descname">OpenedPage</code><a class="headerlink" href="#wx.html.HtmlWindow.OpenedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedPage" title="wx.html.HtmlWindow.GetOpenedPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenedPage</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlWindow.OpenedPageTitle">
+<code class="sig-name descname">OpenedPageTitle</code><a class="headerlink" href="#wx.html.HtmlWindow.OpenedPageTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetOpenedPageTitle" title="wx.html.HtmlWindow.GetOpenedPageTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenedPageTitle</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlWindow.Parser">
+<code class="sig-name descname">Parser</code><a class="headerlink" href="#wx.html.HtmlWindow.Parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetParser" title="wx.html.HtmlWindow.GetParser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParser</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlWindow.RelatedFrame">
+<code class="sig-name descname">RelatedFrame</code><a class="headerlink" href="#wx.html.HtmlWindow.RelatedFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlWindow.GetRelatedFrame" title="wx.html.HtmlWindow.GetRelatedFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRelatedFrame</span></code></a> and <a class="reference internal" href="#wx.html.HtmlWindow.SetRelatedFrame" title="wx.html.HtmlWindow.SetRelatedFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRelatedFrame</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

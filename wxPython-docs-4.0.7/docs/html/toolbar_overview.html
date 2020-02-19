@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>ToolBar Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="treectrl_overview.html" rel="next" title="TreeCtrl Overview"/>
+<link href="tipprovider_overview.html" rel="prev" title="TipProvider Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>ToolBar Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="treectrl_overview.html" title="TreeCtrl Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="tipprovider_overview.html" title="TipProvider Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>ToolBar Overview</strong></a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/toolbar_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-toolbar-overview">
+<span id="toolbar-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>ToolBar Overview</strong><a class="headerlink" href="#phoenix-title-toolbar-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The toolbar family of classes allows an application to use toolbars in
+a variety of configurations and styles.</p>
+<p>The toolbar is a popular user interface component and contains a set
+of bitmap buttons or toggles.  A toolbar gives faster access to an
+application’s facilities than menus, which have to be popped up and
+selected rather laboriously.</p>
+<p>Instead of supplying one toolbar class with a number of different
+implementations depending on platform, wxPython separates out the
+classes. This is because there are a number of different toolbar
+styles that you may wish to use simultaneously, and also, future
+toolbar implementations will emerge which cannot all be shoe-horned
+into the one class.</p>
+<p>A toolbar might appear as a single row of images under the menubar, or
+it might be in a separate frame layout in several rows and
+columns. The class handles the layout of the images, unless explicit
+positioning is requested.</p>
+<p>A tool is a bitmap which can either be a button (there is no ‘state’,
+it just generates an event when clicked) or it can be a toggle. If a
+toggle, a second bitmap can be provided to depict the ‘on’ state; if
+the second bitmap is omitted, either the inverse of the first bitmap
+will be used (for monochrome displays) or a thick border is drawn
+around the bitmap (for colour displays where inverting will not have
+the desired result).</p>
+<p>The Windows-specific toolbar classes expect 16-colour bitmaps that are
+16 pixels wide and 15 pixels high. If you want to use a different
+size, call <a class="reference internal" href="wx.ToolBar.html#wx.ToolBar.SetToolBitmapSize" title="wx.ToolBar.SetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolBar.SetToolBitmapSize</span></code></a> as the demo shows, before
+adding tools to the button bar.  Don’t supply more than one bitmap for
+each tool, because the toolbar generates all three images (normal,
+depressed, and checked) from the single bitmap you give it.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

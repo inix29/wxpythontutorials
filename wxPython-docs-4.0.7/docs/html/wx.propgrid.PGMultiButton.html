@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.propgrid.PGMultiButton — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.propgrid.PGNumericValidationConstants.enumeration.html" rel="next" title="wx.propgrid.PGNumericValidationConstants"/>
+<link href="wx.propgrid.PGLongStringDialogAdapter.html" rel="prev" title="wx.propgrid.PGLongStringDialogAdapter"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.propgrid.1moduleindex.html">
+<strong>wx.propgrid</strong></a> »</li>
+<li class="reltitle"> <strong>wx.propgrid.PGMultiButton</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.propgrid.PGNumericValidationConstants.enumeration.html" title="wx.propgrid.PGNumericValidationConstants">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.propgrid.PGLongStringDialogAdapter.html" title="wx.propgrid.PGLongStringDialogAdapter">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.propgrid.PGMultiButton</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.propgrid.PGMultiButton.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-propgrid-pgmultibutton">
+<span id="wx-propgrid-pgmultibutton"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.propgrid.PGMultiButton</strong><a class="headerlink" href="#phoenix-title-wx-propgrid-pgmultibutton" title="Permalink to this headline">¶</a></h1>
+<p>This class can be used to have multiple buttons in a property editor.</p>
+<p>You will need to create a new property editor class, override CreateControls, and have it return <a class="reference internal" href="#wx-propgrid-pgmultibutton"><span class="std std-ref">  wx.propgrid.PGMultiButton</span></a>  instance in <a class="reference internal" href="wx.propgrid.PGWindowList.html#wx.propgrid.PGWindowList.SetSecondary" title="wx.propgrid.PGWindowList.SetSecondary"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGWindowList.SetSecondary</span></code></a> .</p>
+<p>For instance, here we add three buttons to a TextCtrl editor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SampleMultiButtonEditor</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PGTextCtrlEditor</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">GetName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"SampleMultiButtonEditor"</span>
+
+    <span class="k">def</span> <span class="nf">CreateControls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">propGrid</span><span class="p">,</span> <span class="n">aProperty</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="c1"># Create and populate buttons-subwindow</span>
+        <span class="n">buttons</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PGMultiButton</span><span class="p">(</span><span class="n">propGrid</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+
+        <span class="c1"># Add two regular buttons</span>
+        <span class="n">buttons</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span>
+        <span class="n">buttons</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">"A"</span><span class="p">)</span>
+
+        <span class="c1"># Add a bitmap button</span>
+        <span class="n">buttons</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ArtProvider</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ART_FOLDER</span><span class="p">))</span>
+
+        <span class="c1"># Create the 'primary' editor control (textctrl in self case)</span>
+        <span class="n">wndList</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PGTextCtrlEditor</span><span class="o">.</span><span class="n">CreateControls</span><span class="p">(</span>
+                        <span class="n">propGrid</span><span class="p">,</span> <span class="n">aProperty</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">buttons</span><span class="o">.</span><span class="n">GetPrimarySize</span><span class="p">())</span>
+
+        <span class="c1"># Finally, move buttons-subwindow to correct position and make sure</span>
+        <span class="c1"># returned wx.propgrid.PGWindowList contains our custom button list.</span>
+        <span class="n">buttons</span><span class="o">.</span><span class="n">Finalize</span><span class="p">(</span><span class="n">propGrid</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">wndList</span><span class="o">.</span><span class="n">SetSecondary</span><span class="p">(</span><span class="n">buttons</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wndList</span>
+
+
+    <span class="k">def</span> <span class="nf">OnEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">propGrid</span><span class="p">,</span> <span class="n">aProperty</span><span class="p">,</span> <span class="n">ctrl</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">GetEventType</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">wxEVT_BUTTON</span><span class="p">:</span>
+            <span class="n">buttons</span> <span class="o">=</span> <span class="n">propGrid</span><span class="o">.</span><span class="n">GetEditorControlSecondary</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">GetId</span><span class="p">()</span> <span class="o">==</span> <span class="n">buttons</span><span class="o">.</span><span class="n">GetButtonId</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
+                <span class="c1"># Do something when the first button is pressed</span>
+                <span class="c1"># Return true if the action modified the value in editor.</span>
+                <span class="o">...</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">GetId</span><span class="p">()</span> <span class="o">==</span> <span class="n">buttons</span><span class="o">.</span><span class="n">GetButtonId</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+                <span class="c1"># Do something when the second button is pressed</span>
+                <span class="o">...</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">GetId</span><span class="p">()</span> <span class="o">==</span> <span class="n">buttons</span><span class="o">.</span><span class="n">GetButtonId</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                <span class="c1"># Do something when the third button is pressed</span>
+                <span class="o">...</span>
+
+        <span class="k">return</span> <span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PGTextCtrlEditor</span><span class="o">.</span><span class="n">OnEvent</span><span class="p">(</span><span class="n">propGrid</span><span class="p">,</span> <span class="n">aProperty</span><span class="p">,</span> <span class="n">ctrl</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Further to use this editor, code like this can be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Register editor class - needs only to be called once</span>
+<span class="n">multiButtonEditor</span> <span class="o">=</span> <span class="n">SampleMultiButtonEditor</span><span class="p">()</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PropertyGrid</span><span class="o">.</span><span class="n">RegisterEditorClass</span><span class="p">(</span><span class="n">multiButtonEditor</span><span class="p">)</span>
+
+<span class="c1"># Insert the property that will have multiple buttons</span>
+<span class="n">propGrid</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">LongStringProperty</span><span class="p">(</span><span class="s2">"MultipleButtons"</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PG_LABEL</span><span class="p">))</span>
+
+<span class="c1"># Change property to use editor created in the previous code segment</span>
+<span class="n">propGrid</span><span class="o">.</span><span class="n">SetPropertyEditor</span><span class="p">(</span><span class="s2">"MultipleButtons"</span><span class="p">,</span> <span class="n">multiButtonEditor</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>PGMultiButton</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of PGMultiButton" class="inheritance" src="_static/images/inheritance/wx.propgrid.PGMultiButton_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="10,237,211,267" href="wx.propgrid.PGMultiButton.html" id="node1" shape="rect" title="This class can be used to have multiple buttons in a property editor."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node2" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node3" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node4" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node5" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%"/>
+<col style="width: 54%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.__init__" title="wx.propgrid.PGMultiButton.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.Add" title="wx.propgrid.PGMultiButton.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a></p></td>
+<td><p>Adds new button, with given label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.AddBitmapButton" title="wx.propgrid.PGMultiButton.AddBitmapButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddBitmapButton</span></code></a></p></td>
+<td><p>A simple wrapper around the PGMultiButton.Add method, for backwards compatibility.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.AddButton" title="wx.propgrid.PGMultiButton.AddButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddButton</span></code></a></p></td>
+<td><p>A simple wrapper around the PGMultiButton.Add method, for backwards compatibility.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.Finalize" title="wx.propgrid.PGMultiButton.Finalize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Finalize</span></code></a></p></td>
+<td><p>Call this in CreateControls() of your custom editor class after all buttons have been added.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.GetButton" title="wx.propgrid.PGMultiButton.GetButton"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetButton</span></code></a></p></td>
+<td><p>Returns pointer to one of the buttons.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.GetButtonId" title="wx.propgrid.PGMultiButton.GetButtonId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetButtonId</span></code></a></p></td>
+<td><p>Returns Id of one of the buttons.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.GetClassDefaultAttributes" title="wx.propgrid.PGMultiButton.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.GetCount" title="wx.propgrid.PGMultiButton.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCount</span></code></a></p></td>
+<td><p>Returns number of buttons.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.GetPrimarySize" title="wx.propgrid.PGMultiButton.GetPrimarySize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrimarySize</span></code></a></p></td>
+<td><p>Returns size of primary editor control, as appropriately reduced by number of buttons present.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.Count" title="wx.propgrid.PGMultiButton.Count"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Count</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PGMultiButton.GetCount" title="wx.propgrid.PGMultiButton.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PGMultiButton.PrimarySize" title="wx.propgrid.PGMultiButton.PrimarySize"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PrimarySize</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PGMultiButton.GetPrimarySize" title="wx.propgrid.PGMultiButton.GetPrimarySize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrimarySize</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.propgrid.PGMultiButton">
+<em class="property">class </em><code class="sig-prename descclassname">wx.propgrid.</code><code class="sig-name descname">PGMultiButton</code><span class="sig-paren">(</span><em class="sig-param">Window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PGMultiButton</span><span class="p">(</span><span class="n">pg</span><span class="p">,</span> <span class="n">sz</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class can be used to have multiple buttons in a property editor.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pg</em>, <em class="sig-param">sz</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pg</strong> (<a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx.propgrid.PropertyGrid" title="wx.propgrid.PropertyGrid"><em>wx.propgrid.PropertyGrid</em></a>) – </p></li>
+<li><p><strong>sz</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.Add">
+<code class="sig-name descname">Add</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.Add" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, label, id=-2)</em></p>
+<p>Adds new button, with given label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, bitmap, id=-2)</em></p>
+<p>Adds new bitmap button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bitmap</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.AddBitmapButton">
+<code class="sig-name descname">AddBitmapButton</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bitmap</em>, <em class="sig-param">id=-2</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.AddBitmapButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple wrapper around the PGMultiButton.Add method, for backwards compatibility.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.AddButton">
+<code class="sig-name descname">AddButton</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label</em>, <em class="sig-param">id=-2</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.AddButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple wrapper around the PGMultiButton.Add method, for backwards compatibility.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.Finalize">
+<code class="sig-name descname">Finalize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">propGrid</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.Finalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this in CreateControls() of your custom editor class after all buttons have been added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>propGrid</strong> (<a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx.propgrid.PropertyGrid" title="wx.propgrid.PropertyGrid"><em>wx.propgrid.PropertyGrid</em></a>) – <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  given in CreateControls().</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – <a class="reference internal" href="wx.Point.html#wx-point"><span class="std std-ref">  wx.Point</span></a>  given in CreateControls().</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.GetButton">
+<code class="sig-name descname">GetButton</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">i</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.GetButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to one of the buttons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Window</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.GetButtonId">
+<code class="sig-name descname">GetButtonId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">i</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.GetButtonId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Id of one of the buttons.</p>
+<p>This is utility function to be used in event handlers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">VisualAttributes</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.GetCount">
+<code class="sig-name descname">GetCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.GetCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of buttons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PGMultiButton.GetPrimarySize">
+<code class="sig-name descname">GetPrimarySize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PGMultiButton.GetPrimarySize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns size of primary editor control, as appropriately reduced by number of buttons present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.propgrid.PGMultiButton.Count">
+<code class="sig-name descname">Count</code><a class="headerlink" href="#wx.propgrid.PGMultiButton.Count" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PGMultiButton.GetCount" title="wx.propgrid.PGMultiButton.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PGMultiButton.PrimarySize">
+<code class="sig-name descname">PrimarySize</code><a class="headerlink" href="#wx.propgrid.PGMultiButton.PrimarySize" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PGMultiButton.GetPrimarySize" title="wx.propgrid.PGMultiButton.GetPrimarySize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrimarySize</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

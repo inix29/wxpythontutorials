@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.EvtHandler — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.FSFile.html" rel="next" title="wx.FSFile"/>
+<link href="wx.EventPropagation.enumeration.html" rel="prev" title="wx.EventPropagation"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.EvtHandler</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.FSFile.html" title="wx.FSFile">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.EventPropagation.enumeration.html" title="wx.EventPropagation">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.EvtHandler</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.EvtHandler.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-evthandler">
+<span id="wx-evthandler"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.EvtHandler</strong><a class="headerlink" href="#phoenix-title-wx-evthandler" title="Permalink to this headline">¶</a></h1>
+<p>A class that can handle events from the windowing system.</p>
+<p><a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  is (and therefore all window classes are) derived from this class.</p>
+<p>When events are received, <a class="reference internal" href="#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a>  invokes the method listed in the event table using itself as the object. When using multiple inheritance  <strong>it is imperative that the</strong> <a class="reference internal" href="#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a> <strong>(-derived) class is the first class inherited</strong>   such that the  <code class="docutils literal notranslate"><span class="pre">this</span></code>   pointer for the overall object will be identical to the   <code class="docutils literal notranslate"><span class="pre">this</span></code>   pointer of the  <a class="reference internal" href="#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a>  portion.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="events_overview.html#how-events-are-processed"><span class="std std-ref">How Events are Processed</span></a>, <a class="reference internal" href="wx.EventBlocker.html#wx-eventblocker"><span class="std std-ref">  wx.EventBlocker</span></a>, <a class="reference internal" href="wx.EventLoopBase.html#wx-eventloopbase"><span class="std std-ref">  wx.EventLoopBase</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>EvtHandler</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of EvtHandler" class="inheritance" src="_static/images/inheritance/wx.EvtHandler_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node1" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node3" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.AppConsole.html#wx-appconsole"><span class="std std-ref">  wx.AppConsole</span></a>, <a class="reference internal" href="wx.aui.AuiManager.html#wx-aui-auimanager"><span class="std std-ref">  wx.aui.AuiManager</span></a>, <em class="xref py py-obj">DocManager</em>     , <em class="xref py py-obj">Document</em>     , <a class="reference internal" href="wx.EventBlocker.html#wx-eventblocker"><span class="std std-ref">  wx.EventBlocker</span></a>, <a class="reference internal" href="wx.FileSystemWatcher.html#wx-filesystemwatcher"><span class="std std-ref">  wx.FileSystemWatcher</span></a>, <a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a>, <a class="reference internal" href="wx.MouseEventsManager.html#wx-mouseeventsmanager"><span class="std std-ref">  wx.MouseEventsManager</span></a>, <a class="reference internal" href="wx.adv.NotificationMessage.html#wx-adv-notificationmessage"><span class="std std-ref">  wx.adv.NotificationMessage</span></a>, <a class="reference internal" href="wx.Process.html#wx-process"><span class="std std-ref">  wx.Process</span></a>, <a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a>, <a class="reference internal" href="wx.adv.TaskBarIcon.html#wx-adv-taskbaricon"><span class="std std-ref">  wx.adv.TaskBarIcon</span></a>, <a class="reference internal" href="wx.Timer.html#wx-timer"><span class="std std-ref">  wx.Timer</span></a>, <a class="reference internal" href="wx.Validator.html#wx-validator"><span class="std std-ref">  wx.Validator</span></a>, <em class="xref py py-obj">View</em>     , <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.__init__" title="wx.EvtHandler.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.AddFilter" title="wx.EvtHandler.AddFilter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddFilter</span></code></a></p></td>
+<td><p>Add an event filter whose FilterEvent() method will be called for each and every event processed by wxWidgets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.AddPendingEvent" title="wx.EvtHandler.AddPendingEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddPendingEvent</span></code></a></p></td>
+<td><p>Post an event to be processed later.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.Bind" title="wx.EvtHandler.Bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Bind</span></code></a></p></td>
+<td><p>Bind an event to an event handler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.Connect" title="wx.EvtHandler.Connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Connect</span></code></a></p></td>
+<td><p>Make an entry in the dynamic event table for an event binding.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.DeletePendingEvents" title="wx.EvtHandler.DeletePendingEvents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeletePendingEvents</span></code></a></p></td>
+<td><p>Deletes all events queued on this event handler using <a class="reference internal" href="wx.functions.html#wx.QueueEvent" title="wx.QueueEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.QueueEvent</span></code></a>       or <code class="xref py py-meth docutils literal notranslate"><span class="pre">AddPendingEvent</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.Disconnect" title="wx.EvtHandler.Disconnect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Disconnect</span></code></a></p></td>
+<td><p>Remove an event binding by removing its entry in the dynamic event table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.GetEvtHandlerEnabled" title="wx.EvtHandler.GetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEvtHandlerEnabled</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the event handler is enabled, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.GetNextHandler" title="wx.EvtHandler.GetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextHandler</span></code></a></p></td>
+<td><p>Returns the pointer to the next handler in the chain.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.GetPreviousHandler" title="wx.EvtHandler.GetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPreviousHandler</span></code></a></p></td>
+<td><p>Returns the pointer to the previous handler in the chain.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.IsUnlinked" title="wx.EvtHandler.IsUnlinked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsUnlinked</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the next and the previous handler pointers of this event handler instance are <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.ProcessEvent" title="wx.EvtHandler.ProcessEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ProcessEvent</span></code></a></p></td>
+<td><p>Processes an event, searching event tables and calling zero or more suitable event handler function(s).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.ProcessEventLocally" title="wx.EvtHandler.ProcessEventLocally"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ProcessEventLocally</span></code></a></p></td>
+<td><p>Try to process the event in this handler and all those chained to it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.ProcessPendingEvents" title="wx.EvtHandler.ProcessPendingEvents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ProcessPendingEvents</span></code></a></p></td>
+<td><p>Processes the pending events previously queued using <a class="reference internal" href="wx.functions.html#wx.QueueEvent" title="wx.QueueEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.QueueEvent</span></code></a>       or <code class="xref py py-meth docutils literal notranslate"><span class="pre">AddPendingEvent</span></code> ; you must call this function only if you are sure there are pending events for this handler, otherwise a  <code class="docutils literal notranslate"><span class="pre">CHECK</span></code>   will fail.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.QueueEvent" title="wx.EvtHandler.QueueEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QueueEvent</span></code></a></p></td>
+<td><p>Queue event for a later processing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.RemoveFilter" title="wx.EvtHandler.RemoveFilter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveFilter</span></code></a></p></td>
+<td><p>Remove a filter previously installed with <code class="xref py py-meth docutils literal notranslate"><span class="pre">AddFilter</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.SafelyProcessEvent" title="wx.EvtHandler.SafelyProcessEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SafelyProcessEvent</span></code></a></p></td>
+<td><p>Processes an event by calling <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  and handles any exceptions that occur in the process.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.SetEvtHandlerEnabled" title="wx.EvtHandler.SetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEvtHandlerEnabled</span></code></a></p></td>
+<td><p>Enables or disables the event handler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.SetNextHandler" title="wx.EvtHandler.SetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNextHandler</span></code></a></p></td>
+<td><p>Sets the pointer to the next handler.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.SetPreviousHandler" title="wx.EvtHandler.SetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPreviousHandler</span></code></a></p></td>
+<td><p>Sets the pointer to the previous handler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.TryAfter" title="wx.EvtHandler.TryAfter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryAfter</span></code></a></p></td>
+<td><p>Method called by <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  as last resort.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.TryBefore" title="wx.EvtHandler.TryBefore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryBefore</span></code></a></p></td>
+<td><p>Method called by <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  before examining this object event tables.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.Unbind" title="wx.EvtHandler.Unbind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Unbind</span></code></a></p></td>
+<td><p>Disconnects the event handler binding for event from <em class="xref py py-obj">self</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.Unlink" title="wx.EvtHandler.Unlink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Unlink</span></code></a></p></td>
+<td><p>Unlinks this event handler from the chain it’s part of (if any); then links the “previous” event handler to the “next” one (so that the chain won’t be interrupted).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%"/>
+<col style="width: 54%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.EvtHandlerEnabled" title="wx.EvtHandler.EvtHandlerEnabled"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EvtHandlerEnabled</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.EvtHandler.GetEvtHandlerEnabled" title="wx.EvtHandler.GetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEvtHandlerEnabled</span></code></a> and <a class="reference internal" href="#wx.EvtHandler.SetEvtHandlerEnabled" title="wx.EvtHandler.SetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEvtHandlerEnabled</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EvtHandler.NextHandler" title="wx.EvtHandler.NextHandler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NextHandler</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.EvtHandler.GetNextHandler" title="wx.EvtHandler.GetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextHandler</span></code></a> and <a class="reference internal" href="#wx.EvtHandler.SetNextHandler" title="wx.EvtHandler.SetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNextHandler</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EvtHandler.PreviousHandler" title="wx.EvtHandler.PreviousHandler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PreviousHandler</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.EvtHandler.GetPreviousHandler" title="wx.EvtHandler.GetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPreviousHandler</span></code></a> and <a class="reference internal" href="#wx.EvtHandler.SetPreviousHandler" title="wx.EvtHandler.SetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPreviousHandler</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.EvtHandler">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">EvtHandler</code><span class="sig-paren">(</span><em class="sig-param">Object</em>, <em class="sig-param">Trackable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EvtHandler</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A class that can handle events from the windowing system.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.EvtHandler.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.AddFilter">
+<em class="property">static </em><code class="sig-name descname">AddFilter</code><span class="sig-paren">(</span><em class="sig-param">filter</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.AddFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an event filter whose FilterEvent() method will be called for each and every event processed by wxWidgets.</p>
+<p>The filters are called in <code class="docutils literal notranslate"><span class="pre">LIFO</span></code> order and <a class="reference internal" href="wx.App.html#wx-app"><span class="std std-ref">  wx.App</span></a>  is registered as an event filter by default. The pointer must remain valid until it’s removed with <a class="reference internal" href="#wx.EvtHandler.RemoveFilter" title="wx.EvtHandler.RemoveFilter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveFilter</span></code></a>   and is not deleted by <a class="reference internal" href="#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<a class="reference internal" href="wx.EventFilter.html#wx.EventFilter" title="wx.EventFilter"><em>wx.EventFilter</em></a>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.3.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.AddPendingEvent">
+<code class="sig-name descname">AddPendingEvent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.AddPendingEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post an event to be processed later.</p>
+<p>This function is similar to <a class="reference internal" href="wx.functions.html#wx.QueueEvent" title="wx.QueueEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.QueueEvent</span></code></a>       but can’t be used to post events from worker threads for the event objects with <em class="xref py py-obj">String</em>       fields (i.e. in practice most of them) because of an unsafe use of the same <em class="xref py py-obj">String</em>       object which happens because the <em class="xref py py-obj">String</em>       field in the original <em class="xref py py-obj">event</em>  object and its copy made internally by this function share the same string buffer internally. Use <a class="reference internal" href="wx.functions.html#wx.QueueEvent" title="wx.QueueEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.QueueEvent</span></code></a>       to avoid this.</p>
+<p>A copy of <em class="xref py py-obj">event</em>  is made by the function, so the original can be deleted as soon as function returns (it is common that the original is created on the stack). This requires that the <a class="reference internal" href="wx.Event.html#wx.Event.Clone" title="wx.Event.Clone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Event.Clone</span></code></a>   method be implemented by event so that it can be duplicated and stored until it gets processed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.Event.html#wx.Event" title="wx.Event"><em>wx.Event</em></a>) – Event to add to the pending events queue.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.Bind">
+<code class="sig-name descname">Bind</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em>, <em class="sig-param">handler</em>, <em class="sig-param">source=None</em>, <em class="sig-param">id=wx.ID_ANY</em>, <em class="sig-param">id2=wx.ID_ANY</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.Bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bind an event to an event handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – One of the <code class="docutils literal notranslate"><span class="pre">EVT_</span></code> event binder objects that
+specifies the type of event to bind.</p></li>
+<li><p><strong>handler</strong> – A callable object to be invoked when the
+event is delivered to self.  Pass <code class="docutils literal notranslate"><span class="pre">None</span></code> to
+disconnect an event handler.</p></li>
+<li><p><strong>source</strong> – Sometimes the event originates from a
+different window than self, but you still
+want to catch it in self.  (For example, a
+button event delivered to a frame.)  By
+passing the source of the event, the event
+handling system is able to differentiate
+between the same event type from different
+controls.</p></li>
+<li><p><strong>id</strong> – Used to spcify the event source by <code class="docutils literal notranslate"><span class="pre">ID</span></code> instead
+of instance.</p></li>
+<li><p><strong>id2</strong> – Used when it is desirable to bind a handler
+to a range of IDs, such as with <code class="docutils literal notranslate"><span class="pre">EVT_MENU_RANGE</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.Connect">
+<code class="sig-name descname">Connect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">lastId</em>, <em class="sig-param">eventType</em>, <em class="sig-param">func</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.Connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make an entry in the dynamic event table for an event binding.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.DeletePendingEvents">
+<code class="sig-name descname">DeletePendingEvents</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.DeletePendingEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all events queued on this event handler using <a class="reference internal" href="wx.functions.html#wx.QueueEvent" title="wx.QueueEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.QueueEvent</span></code></a>       or <a class="reference internal" href="#wx.EvtHandler.AddPendingEvent" title="wx.EvtHandler.AddPendingEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddPendingEvent</span></code></a> .</p>
+<p>Use with care because the events which are deleted are (obviously) not processed and this may have unwanted consequences (e.g. user actions events will be lost).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.Disconnect">
+<code class="sig-name descname">Disconnect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">lastId=-1</em>, <em class="sig-param">eventType=wxEVT_NULL</em>, <em class="sig-param">func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.Disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an event binding by removing its entry in the dynamic event table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.GetEvtHandlerEnabled">
+<code class="sig-name descname">GetEvtHandlerEnabled</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.GetEvtHandlerEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the event handler is enabled, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.EvtHandler.SetEvtHandlerEnabled" title="wx.EvtHandler.SetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEvtHandlerEnabled</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.GetNextHandler">
+<code class="sig-name descname">GetNextHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.GetNextHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the pointer to the next handler in the chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.EvtHandler.SetNextHandler" title="wx.EvtHandler.SetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNextHandler</span></code></a> , <a class="reference internal" href="#wx.EvtHandler.GetPreviousHandler" title="wx.EvtHandler.GetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPreviousHandler</span></code></a> , <a class="reference internal" href="#wx.EvtHandler.SetPreviousHandler" title="wx.EvtHandler.SetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPreviousHandler</span></code></a> , <a class="reference internal" href="wx.Window.html#wx.Window.PushEventHandler" title="wx.Window.PushEventHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.PushEventHandler</span></code></a> , <a class="reference internal" href="wx.Window.html#wx.Window.PopEventHandler" title="wx.Window.PopEventHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.PopEventHandler</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.GetPreviousHandler">
+<code class="sig-name descname">GetPreviousHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.GetPreviousHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the pointer to the previous handler in the chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.EvtHandler.SetPreviousHandler" title="wx.EvtHandler.SetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPreviousHandler</span></code></a> , <a class="reference internal" href="#wx.EvtHandler.GetNextHandler" title="wx.EvtHandler.GetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextHandler</span></code></a> , <a class="reference internal" href="#wx.EvtHandler.SetNextHandler" title="wx.EvtHandler.SetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNextHandler</span></code></a> , <a class="reference internal" href="wx.Window.html#wx.Window.PushEventHandler" title="wx.Window.PushEventHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.PushEventHandler</span></code></a> , <a class="reference internal" href="wx.Window.html#wx.Window.PopEventHandler" title="wx.Window.PopEventHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.PopEventHandler</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.IsUnlinked">
+<code class="sig-name descname">IsUnlinked</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.IsUnlinked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the next and the previous handler pointers of this event handler instance are <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.EvtHandler.SetPreviousHandler" title="wx.EvtHandler.SetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPreviousHandler</span></code></a> , <a class="reference internal" href="#wx.EvtHandler.SetNextHandler" title="wx.EvtHandler.SetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNextHandler</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.ProcessEvent">
+<code class="sig-name descname">ProcessEvent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.ProcessEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes an event, searching event tables and calling zero or more suitable event handler function(s).</p>
+<p>Normally, your application would not call this function: it is called in the wxWidgets implementation to dispatch incoming user interface events to the framework (and application).</p>
+<p>However, you might need to call it if implementing new functionality (such as a new control) where you define new event types, as opposed to allowing the user to override virtual functions.</p>
+<p>Notice that you don’t usually need to override <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  to customize the event handling, overriding the specially provided <a class="reference internal" href="#wx.EvtHandler.TryBefore" title="wx.EvtHandler.TryBefore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryBefore</span></code></a>   and <a class="reference internal" href="#wx.EvtHandler.TryAfter" title="wx.EvtHandler.TryAfter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryAfter</span></code></a>   functions is usually enough. For example, <a class="reference internal" href="wx.MDIParentFrame.html#wx-mdiparentframe"><span class="std std-ref">  wx.MDIParentFrame</span></a>  may override <a class="reference internal" href="#wx.EvtHandler.TryBefore" title="wx.EvtHandler.TryBefore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryBefore</span></code></a>   to ensure that the menu events are processed in the active child frame before being processed in the parent frame itself.</p>
+<p>The normal order of event table searching is as follows:</p>
+<ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.FilterEvent</span></code>   is called. If it returns anything but  <code class="docutils literal notranslate"><span class="pre">-1</span></code>   (default) the processing stops here.</p></li>
+<li><p><a class="reference internal" href="#wx.EvtHandler.TryBefore" title="wx.EvtHandler.TryBefore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryBefore</span></code></a>   is called (this is where <a class="reference internal" href="wx.Validator.html#wx-validator"><span class="std std-ref">  wx.Validator</span></a>  are taken into account for <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  objects). If this returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, the function exits.</p></li>
+<li><p>If the object is disabled (via a call to <a class="reference internal" href="#wx.EvtHandler.SetEvtHandlerEnabled" title="wx.EvtHandler.SetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.SetEvtHandlerEnabled</span></code></a> ) the function skips to step (7).</p></li>
+<li><p>Dynamic event table of the handlers bound using <code class="xref py py-meth docutils literal notranslate"><span class="pre">Bind</span></code>   is searched. If a handler is found, it is executed and the function returns <code class="docutils literal notranslate"><span class="pre">True</span></code> unless the handler used <a class="reference internal" href="wx.Event.html#wx.Event.Skip" title="wx.Event.Skip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Event.Skip</span></code></a>   to indicate that it didn’t handle the event in which case the search continues.</p></li>
+<li><p>Static events table of the handlers bound using event table macros is searched for this event handler. If this fails, the base class event table is tried, and so on until no more tables exist or an appropriate function was found. If a handler is found, the same logic as in the previous step applies.</p></li>
+<li><p>The search is applied down the entire chain of event handlers (usually the chain has a length of one). This chain can be formed using <a class="reference internal" href="#wx.EvtHandler.SetNextHandler" title="wx.EvtHandler.SetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.SetNextHandler</span></code></a> :</p></li>
+</ul>
+<div class="figure align-center">
+<img alt="_images/overview_events_chain.png" src="_images/overview_events_chain.png"/>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<blockquote>
+<div><p>(referring to the image, if <code class="docutils literal notranslate"><span class="pre">A-&gt;ProcessEvent</span></code>   is called and it doesn’t handle the event,   <code class="docutils literal notranslate"><span class="pre">B-&gt;ProcessEvent</span></code>   will be called and so on…). Note that in the case of  <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  you can build a stack of event handlers (see <a class="reference internal" href="wx.Window.html#wx.Window.PushEventHandler" title="wx.Window.PushEventHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.PushEventHandler</span></code></a>   for more info). If any of the handlers of the chain return <code class="docutils literal notranslate"><span class="pre">True</span></code>, the function exits.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wx.EvtHandler.TryAfter" title="wx.EvtHandler.TryAfter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryAfter</span></code></a>   is called: for the <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  object this may propagate the event to the window parent (recursively). If the event is still not processed, <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  on TheApp object is called as the last step.</p></li>
+</ul>
+<p>Notice that steps (2)-(6) are performed in <a class="reference internal" href="#wx.EvtHandler.ProcessEventLocally" title="wx.EvtHandler.ProcessEventLocally"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ProcessEventLocally</span></code></a>   which is called by this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.Event.html#wx.Event" title="wx.Event"><em>wx.Event</em></a>) – Event to process.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a suitable event handler function was found and executed, and the function did not call <a class="reference internal" href="wx.Event.html#wx.Event.Skip" title="wx.Event.Skip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Event.Skip</span></code></a> .</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">SearchEventTable</span></code></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.ProcessEventLocally">
+<code class="sig-name descname">ProcessEventLocally</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.ProcessEventLocally" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to process the event in this handler and all those chained to it.</p>
+<p>As explained in <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  documentation, the event handlers may be chained in a doubly-linked list. This function tries to process the event in this handler (including performing any pre-processing done in <a class="reference internal" href="#wx.EvtHandler.TryBefore" title="wx.EvtHandler.TryBefore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryBefore</span></code></a> , e.g. applying validators) and all those following it in the chain until the event is processed or the chain is exhausted.</p>
+<p>This function is called from <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  and, in turn, calls <a class="reference internal" href="#wx.EvtHandler.TryBefore" title="wx.EvtHandler.TryBefore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryBefore</span></code></a>   and <a class="reference internal" href="#wx.EvtHandler.TryAfter" title="wx.EvtHandler.TryAfter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryAfter</span></code></a> . It is not virtual and so cannot be overridden but can, and should, be called to forward an event to another handler instead of <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  which would result in a duplicate call to <a class="reference internal" href="#wx.EvtHandler.TryAfter" title="wx.EvtHandler.TryAfter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TryAfter</span></code></a> , e.g. resulting in all unprocessed events being sent to the application object multiple times.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.Event.html#wx.Event" title="wx.Event"><em>wx.Event</em></a>) – Event to process.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this handler of one of those chained to it processed the event.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.ProcessPendingEvents">
+<code class="sig-name descname">ProcessPendingEvents</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.ProcessPendingEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the pending events previously queued using <a class="reference internal" href="wx.functions.html#wx.QueueEvent" title="wx.QueueEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.QueueEvent</span></code></a>       or <a class="reference internal" href="#wx.EvtHandler.AddPendingEvent" title="wx.EvtHandler.AddPendingEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddPendingEvent</span></code></a> ; you must call this function only if you are sure there are pending events for this handler, otherwise a  <code class="docutils literal notranslate"><span class="pre">CHECK</span></code>   will fail.</p>
+<p>The real processing still happens in <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  which is called by this function.</p>
+<p>Note that this function needs a valid application object (see <a class="reference internal" href="wx.AppConsole.html#wx.AppConsole.GetInstance" title="wx.AppConsole.GetInstance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppConsole.GetInstance</span></code></a> ) because <a class="reference internal" href="wx.App.html#wx-app"><span class="std std-ref">  wx.App</span></a>  holds the list of the event handlers with pending events and this function manipulates that list.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.QueueEvent">
+<code class="sig-name descname">QueueEvent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.QueueEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queue event for a later processing.</p>
+<p>This method is similar to <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  but while the latter is synchronous, i.e. the event is processed immediately, before the function returns, this one is asynchronous and returns immediately while the event will be processed at some later time (usually during the next event loop iteration).</p>
+<p>Another important difference is that this method takes ownership of the <em class="xref py py-obj">event</em>  parameter, i.e. it will delete it itself. This implies that the event should be allocated on the heap and that the pointer can’t be used any more after the function returns (as it can be deleted at any moment).</p>
+<p><a class="reference internal" href="wx.functions.html#wx.QueueEvent" title="wx.QueueEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.QueueEvent</span></code></a>       can be used for inter-thread communication from the worker threads to the main thread, it is safe in the sense that it uses locking internally and avoids the problem mentioned in <a class="reference internal" href="#wx.EvtHandler.AddPendingEvent" title="wx.EvtHandler.AddPendingEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddPendingEvent</span></code></a>   documentation by ensuring that the <em class="xref py py-obj">event</em>  object is not used by the calling thread any more. Care should still be taken to avoid that some fields of this object are used by it, notably any <em class="xref py py-obj">String</em>       members of the event object must not be shallow copies of another <em class="xref py py-obj">String</em>       object as this would result in them still using the same string buffer behind the scenes. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">FunctionInAWorkerThread</span><span class="p">(</span><span class="n">strs</span><span class="p">):</span>
+
+    <span class="n">evt</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CommandEvent</span><span class="p">()</span>
+
+    <span class="n">evt</span><span class="o">.</span><span class="n">SetString</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span>
+
+    <span class="n">wx</span><span class="o">.</span><span class="n">TheApp</span><span class="o">.</span><span class="n">QueueEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that you can use <em class="xref py py-obj">ThreadEvent</em>       instead of <a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a>  to avoid this problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">FunctionInAWorkerThread</span><span class="p">(</span><span class="n">strs</span><span class="p">):</span>
+
+    <span class="n">evt</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ThreadEvent</span><span class="p">()</span>
+    <span class="n">evt</span><span class="o">.</span><span class="n">SetString</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span>
+
+    <span class="c1"># wx.ThreadEvent.Clone() makes sure that the internal wx.String</span>
+    <span class="c1"># member is not shared by other string instances:</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">TheApp</span><span class="o">.</span><span class="n">QueueEvent</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">Clone</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Finally notice that this method automatically wakes up the event loop if it is currently idle by calling <a class="reference internal" href="wx.functions.html#wx.WakeUpIdle" title="wx.WakeUpIdle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.WakeUpIdle</span></code></a>       so there is no need to do it manually when using it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.Event.html#wx.Event" title="wx.Event"><em>wx.Event</em></a>) – A heap-allocated event to be queued, <a class="reference internal" href="wx.functions.html#wx.QueueEvent" title="wx.QueueEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.QueueEvent</span></code></a>       takes ownership of it. This parameter shouldn’t be  <code class="docutils literal notranslate"><span class="pre">NULL</span></code> .</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.RemoveFilter">
+<em class="property">static </em><code class="sig-name descname">RemoveFilter</code><span class="sig-paren">(</span><em class="sig-param">filter</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.RemoveFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a filter previously installed with <a class="reference internal" href="#wx.EvtHandler.AddFilter" title="wx.EvtHandler.AddFilter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddFilter</span></code></a> .</p>
+<p>It’s an error to remove a filter that hadn’t been previously added or was already removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<a class="reference internal" href="wx.EventFilter.html#wx.EventFilter" title="wx.EventFilter"><em>wx.EventFilter</em></a>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.3.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.SafelyProcessEvent">
+<code class="sig-name descname">SafelyProcessEvent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.SafelyProcessEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes an event by calling <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  and handles any exceptions that occur in the process.</p>
+<p>If an exception is thrown in event handler, <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.OnExceptionInMainLoop</span></code>   is called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.Event.html#wx.Event" title="wx.Event"><em>wx.Event</em></a>) – Event to process.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the event was processed, <code class="docutils literal notranslate"><span class="pre">False</span></code> if no handler was found or an exception was thrown.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Window.html#wx.Window.HandleWindowEvent" title="wx.Window.HandleWindowEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.HandleWindowEvent</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.SetEvtHandlerEnabled">
+<code class="sig-name descname">SetEvtHandlerEnabled</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enabled</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.SetEvtHandlerEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables or disables the event handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if the event handler is to be enabled, <code class="docutils literal notranslate"><span class="pre">False</span></code> if it is to be disabled.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use this function to avoid having to remove the event handler from the chain, for example when implementing a dialog editor and changing from edit to test mode.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.EvtHandler.GetEvtHandlerEnabled" title="wx.EvtHandler.GetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEvtHandlerEnabled</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.SetNextHandler">
+<code class="sig-name descname">SetNextHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.SetNextHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the pointer to the next handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>handler</strong> (<a class="reference internal" href="#wx.EvtHandler" title="wx.EvtHandler"><em>wx.EvtHandler</em></a>) – The event handler to be set as the next handler. Cannot be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  for more info about how the chains of event handlers are internally used. Also remember that <a class="reference internal" href="#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a>  uses double-linked lists and thus if you use this function, you should also call <a class="reference internal" href="#wx.EvtHandler.SetPreviousHandler" title="wx.EvtHandler.SetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPreviousHandler</span></code></a>   on the argument passed to this function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">handlerA</span><span class="o">.</span><span class="n">SetNextHandler</span><span class="p">(</span><span class="n">handlerB</span><span class="p">)</span>
+<span class="n">handlerB</span><span class="o">.</span><span class="n">SetPreviousHandler</span><span class="p">(</span><span class="n">handlerA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="events_overview.html#how-events-are-processed"><span class="std std-ref">How Events are Processed</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.SetPreviousHandler">
+<code class="sig-name descname">SetPreviousHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.SetPreviousHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the pointer to the previous handler.</p>
+<p>All remarks about <a class="reference internal" href="#wx.EvtHandler.SetNextHandler" title="wx.EvtHandler.SetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNextHandler</span></code></a>   apply to this function as well.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>handler</strong> (<a class="reference internal" href="#wx.EvtHandler" title="wx.EvtHandler"><em>wx.EvtHandler</em></a>) – The event handler to be set as the previous handler. Cannot be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="events_overview.html#how-events-are-processed"><span class="std std-ref">How Events are Processed</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.TryAfter">
+<code class="sig-name descname">TryAfter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.TryAfter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method called by <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  as last resort.</p>
+<p>This method can be overridden to implement post-processing for the events which were not processed anywhere else.</p>
+<p>The base class version handles forwarding the unprocessed events to <a class="reference internal" href="wx.App.html#wx-app"><span class="std std-ref">  wx.App</span></a>  at <a class="reference internal" href="#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a>  level and propagating them upwards the window child-parent chain at <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  level and so should usually be called when overriding this method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">public</span> <span class="n">BaseClass</span><span class="p">):</span> <span class="c1"># something inheriting from wx.EvtHandler</span>
+
+<span class="o">...</span>
+    <span class="k">def</span> <span class="nf">TryAfter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">BaseClass</span><span class="o">.</span><span class="n">TryAfter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">MyPostProcess</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.Event.html#wx.Event" title="wx.Event"><em>wx.Event</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.TryBefore">
+<code class="sig-name descname">TryBefore</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.TryBefore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method called by <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a>  before examining this object event tables.</p>
+<p>This method can be overridden to hook into the event processing logic as early as possible. You should usually call the base class version when overriding this method, even if <a class="reference internal" href="#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a>  itself does nothing here, some derived classes do use this method, e.g. <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  implements support for <a class="reference internal" href="wx.Validator.html#wx-validator"><span class="std std-ref">  wx.Validator</span></a>  in it.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">BaseClass</span><span class="p">):</span>  <span class="c1"># something inheriting from wx.EvtHandler</span>
+
+<span class="o">...</span>
+    <span class="k">def</span> <span class="nf">TryBefore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MyPreProcess</span><span class="p">(</span><span class="n">event</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="n">BaseClass</span><span class="o">.</span><span class="n">TryBefore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.Event.html#wx.Event" title="wx.Event"><em>wx.Event</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.Unbind">
+<code class="sig-name descname">Unbind</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em>, <em class="sig-param">source=None</em>, <em class="sig-param">id=wx.ID_ANY</em>, <em class="sig-param">id2=wx.ID_ANY</em>, <em class="sig-param">handler=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.Unbind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the event handler binding for event from <em class="xref py py-obj">self</em>.
+Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if successful.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EvtHandler.Unlink">
+<code class="sig-name descname">Unlink</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EvtHandler.Unlink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unlinks this event handler from the chain it’s part of (if any); then links the “previous” event handler to the “next” one (so that the chain won’t be interrupted).</p>
+<p>E.g. if before calling <a class="reference internal" href="#wx.EvtHandler.Unlink" title="wx.EvtHandler.Unlink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Unlink</span></code></a>   you have the following chain:</p>
+<div class="figure align-center">
+<img alt="_images/evthandler_unlink_before.png" src="_images/evthandler_unlink_before.png"/>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<blockquote>
+<div><p>then after calling B-&gt; <a class="reference internal" href="#wx.EvtHandler.Unlink" title="wx.EvtHandler.Unlink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Unlink</span></code></a>   you’ll have:</p>
+</div></blockquote>
+<div class="figure align-center">
+<img alt="_images/evthandler_unlink_after.png" src="_images/evthandler_unlink_after.png"/>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.EvtHandler.EvtHandlerEnabled">
+<code class="sig-name descname">EvtHandlerEnabled</code><a class="headerlink" href="#wx.EvtHandler.EvtHandlerEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.EvtHandler.GetEvtHandlerEnabled" title="wx.EvtHandler.GetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEvtHandlerEnabled</span></code></a> and <a class="reference internal" href="#wx.EvtHandler.SetEvtHandlerEnabled" title="wx.EvtHandler.SetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEvtHandlerEnabled</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.EvtHandler.NextHandler">
+<code class="sig-name descname">NextHandler</code><a class="headerlink" href="#wx.EvtHandler.NextHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.EvtHandler.GetNextHandler" title="wx.EvtHandler.GetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextHandler</span></code></a> and <a class="reference internal" href="#wx.EvtHandler.SetNextHandler" title="wx.EvtHandler.SetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNextHandler</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.EvtHandler.PreviousHandler">
+<code class="sig-name descname">PreviousHandler</code><a class="headerlink" href="#wx.EvtHandler.PreviousHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.EvtHandler.GetPreviousHandler" title="wx.EvtHandler.GetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPreviousHandler</span></code></a> and <a class="reference internal" href="#wx.EvtHandler.SetPreviousHandler" title="wx.EvtHandler.SetPreviousHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPreviousHandler</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

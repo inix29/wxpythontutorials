@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.grid.GridCellAttrProvider — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.grid.GridCellAutoWrapStringEditor.html" rel="next" title="wx.grid.GridCellAutoWrapStringEditor"/>
+<link href="wx.grid.GridCellAttr.AttrKind.enumeration.html" rel="prev" title="wx.grid.GridCellAttr.AttrKind"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.grid.1moduleindex.html">
+<strong>wx.grid</strong></a> »</li>
+<li class="reltitle"> <strong>wx.grid.GridCellAttrProvider</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.grid.GridCellAutoWrapStringEditor.html" title="wx.grid.GridCellAutoWrapStringEditor">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.grid.GridCellAttr.AttrKind.enumeration.html" title="wx.grid.GridCellAttr.AttrKind">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.grid.GridCellAttrProvider</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.grid.GridCellAttrProvider.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-grid-gridcellattrprovider">
+<span id="wx-grid-gridcellattrprovider"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.grid.GridCellAttrProvider</strong><a class="headerlink" href="#phoenix-title-wx-grid-gridcellattrprovider" title="Permalink to this headline">¶</a></h1>
+<p>Class providing attributes to be used for the grid cells.</p>
+<p>This class both defines an interface which grid cell attributes providers should implement</p>
+<p>An object of this class can be associated with a <a class="reference internal" href="wx.grid.Grid.html#wx-grid-grid"><span class="std std-ref">  wx.grid.Grid</span></a>  using <a class="reference internal" href="wx.grid.GridTableBase.html#wx.grid.GridTableBase.SetAttrProvider" title="wx.grid.GridTableBase.SetAttrProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.GridTableBase.SetAttrProvider</span></code></a>   but it’s not necessary to call it if you intend to use the default provider as it is used by <a class="reference internal" href="wx.grid.GridTableBase.html#wx-grid-gridtablebase"><span class="std std-ref">  wx.grid.GridTableBase</span></a>  by default anyhow.</p>
+<p>Notice that while attributes provided by this class can be set for individual cells using <a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetAttr" title="wx.grid.GridCellAttrProvider.SetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttr</span></code></a>  or the entire rows or columns using <a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetRowAttr" title="wx.grid.GridCellAttrProvider.SetRowAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowAttr</span></code></a>  and <a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetColAttr" title="wx.grid.GridCellAttrProvider.SetColAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColAttr</span></code></a>  they are always retrieved using <a class="reference internal" href="#wx.grid.GridCellAttrProvider.GetAttr" title="wx.grid.GridCellAttrProvider.GetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttr</span></code></a>  function.</p>
+<p>The default implementation of this class stores the attributes passed to its <a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetAttr" title="wx.grid.GridCellAttrProvider.SetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttr</span></code></a>, <a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetRowAttr" title="wx.grid.GridCellAttrProvider.SetRowAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowAttr</span></code></a>  and <a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetColAttr" title="wx.grid.GridCellAttrProvider.SetColAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColAttr</span></code></a>  in a straightforward way. A derived class may use its knowledge about how the attributes are used in your program to implement it much more efficiently: for example, using a special background colour for all even-numbered rows can be implemented by simply returning the same attribute from <a class="reference internal" href="#wx.grid.GridCellAttrProvider.GetAttr" title="wx.grid.GridCellAttrProvider.GetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttr</span></code></a>  if the row number is even instead of having to store N/2 row attributes where N is the total number of rows in the grid.</p>
+<p>Notice that objects of this class can’t be copied.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>GridCellAttrProvider</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of GridCellAttrProvider" class="inheritance" src="_static/images/inheritance/wx.grid.GridCellAttrProvider_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,215,112" href="wx.grid.GridCellAttrProvider.html" id="node1" shape="rect" title="Class providing attributes to be used for the grid cells."/> <area alt="" coords="20,5,200,35" href="wx.ClientDataContainer.html" id="node2" shape="rect" title="This class is a mixin that provides storage and management of 'client data'."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellAttrProvider.__init__" title="wx.grid.GridCellAttrProvider.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Trivial default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellAttrProvider.GetAttr" title="wx.grid.GridCellAttrProvider.GetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttr</span></code></a></p></td>
+<td><p>Get the attribute to use for the specified cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellAttrProvider.GetColumnHeaderRenderer" title="wx.grid.GridCellAttrProvider.GetColumnHeaderRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnHeaderRenderer</span></code></a></p></td>
+<td><p>Return the renderer used for drawing column headers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellAttrProvider.GetCornerRenderer" title="wx.grid.GridCellAttrProvider.GetCornerRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCornerRenderer</span></code></a></p></td>
+<td><p>Return the renderer used for drawing the corner window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellAttrProvider.GetRowHeaderRenderer" title="wx.grid.GridCellAttrProvider.GetRowHeaderRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowHeaderRenderer</span></code></a></p></td>
+<td><p>Return the renderer used for drawing row headers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetAttr" title="wx.grid.GridCellAttrProvider.SetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttr</span></code></a></p></td>
+<td><p>Set attribute for the specified cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetColAttr" title="wx.grid.GridCellAttrProvider.SetColAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColAttr</span></code></a></p></td>
+<td><p>Set attribute for the specified column.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetRowAttr" title="wx.grid.GridCellAttrProvider.SetRowAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowAttr</span></code></a></p></td>
+<td><p>Set attribute for the specified row.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellAttrProvider.CornerRenderer" title="wx.grid.GridCellAttrProvider.CornerRenderer"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CornerRenderer</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.grid.GridCellAttrProvider.GetCornerRenderer" title="wx.grid.GridCellAttrProvider.GetCornerRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCornerRenderer</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.grid.GridCellAttrProvider">
+<em class="property">class </em><code class="sig-prename descclassname">wx.grid.</code><code class="sig-name descname">GridCellAttrProvider</code><span class="sig-paren">(</span><em class="sig-param">ClientDataContainer</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellAttrProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GridCellAttrProvider</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Class providing attributes to be used for the grid cells.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.grid.GridCellAttrProvider.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellAttrProvider.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trivial default constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellAttrProvider.GetAttr">
+<code class="sig-name descname">GetAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">kind</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellAttrProvider.GetAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the attribute to use for the specified cell.</p>
+<p>If <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.GridCellAttr.Any</span></code>   is used as <em class="xref py py-obj">kind</em>  value, this function combines the attributes set for this cell using <a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetAttr" title="wx.grid.GridCellAttrProvider.SetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttr</span></code></a>   and those for its row or column (set with <a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetRowAttr" title="wx.grid.GridCellAttrProvider.SetRowAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowAttr</span></code></a>   or <a class="reference internal" href="#wx.grid.GridCellAttrProvider.SetColAttr" title="wx.grid.GridCellAttrProvider.SetColAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColAttr</span></code></a>   respectively), with the cell attribute having the highest precedence.</p>
+<p>Notice that the caller must call DecRef() on the returned pointer if it is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – The row of the cell.</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – The column of the cell.</p></li>
+<li><p><strong>kind</strong> (<em>GridCellAttr.wxAttrKind</em>) – The kind of the attribute to return.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.grid.GridCellAttr.html#wx-grid-gridcellattr"><span class="std std-ref">  wx.grid.GridCellAttr</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The attribute to use which should be DecRef()’d by caller or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no attributes are defined for this cell.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellAttrProvider.GetColumnHeaderRenderer">
+<code class="sig-name descname">GetColumnHeaderRenderer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellAttrProvider.GetColumnHeaderRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the renderer used for drawing column headers.</p>
+<p>By default <a class="reference internal" href="wx.grid.GridColumnHeaderRendererDefault.html#wx-grid-gridcolumnheaderrendererdefault"><span class="std std-ref">  wx.grid.GridColumnHeaderRendererDefault</span></a>  is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.grid.GridColumnHeaderRenderer.html#wx-grid-gridcolumnheaderrenderer"><span class="std std-ref">  wx.grid.GridColumnHeaderRenderer</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.SetUseNativeColLabels" title="wx.grid.Grid.SetUseNativeColLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.Grid.SetUseNativeColLabels</span></code></a> , <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.UseNativeColHeader" title="wx.grid.Grid.UseNativeColHeader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.Grid.UseNativeColHeader</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellAttrProvider.GetCornerRenderer">
+<code class="sig-name descname">GetCornerRenderer</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellAttrProvider.GetCornerRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the renderer used for drawing the corner window.</p>
+<p>By default <a class="reference internal" href="wx.grid.GridCornerHeaderRendererDefault.html#wx-grid-gridcornerheaderrendererdefault"><span class="std std-ref">  wx.grid.GridCornerHeaderRendererDefault</span></a>  is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.grid.GridCornerHeaderRenderer.html#wx-grid-gridcornerheaderrenderer"><span class="std std-ref">  wx.grid.GridCornerHeaderRenderer</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellAttrProvider.GetRowHeaderRenderer">
+<code class="sig-name descname">GetRowHeaderRenderer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellAttrProvider.GetRowHeaderRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the renderer used for drawing row headers.</p>
+<p>By default <a class="reference internal" href="wx.grid.GridRowHeaderRendererDefault.html#wx-grid-gridrowheaderrendererdefault"><span class="std std-ref">  wx.grid.GridRowHeaderRendererDefault</span></a>  is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>row</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.grid.GridRowHeaderRenderer.html#wx-grid-gridrowheaderrenderer"><span class="std std-ref">  wx.grid.GridRowHeaderRenderer</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellAttrProvider.SetAttr">
+<code class="sig-name descname">SetAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">attr</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellAttrProvider.SetAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set attribute for the specified cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.grid.GridCellAttr.html#wx.grid.GridCellAttr" title="wx.grid.GridCellAttr"><em>wx.grid.GridCellAttr</em></a>) – </p></li>
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellAttrProvider.SetColAttr">
+<code class="sig-name descname">SetColAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">attr</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellAttrProvider.SetColAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set attribute for the specified column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.grid.GridCellAttr.html#wx.grid.GridCellAttr" title="wx.grid.GridCellAttr"><em>wx.grid.GridCellAttr</em></a>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellAttrProvider.SetRowAttr">
+<code class="sig-name descname">SetRowAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">attr</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellAttrProvider.SetRowAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set attribute for the specified row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.grid.GridCellAttr.html#wx.grid.GridCellAttr" title="wx.grid.GridCellAttr"><em>wx.grid.GridCellAttr</em></a>) – </p></li>
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.grid.GridCellAttrProvider.CornerRenderer">
+<code class="sig-name descname">CornerRenderer</code><a class="headerlink" href="#wx.grid.GridCellAttrProvider.CornerRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.grid.GridCellAttrProvider.GetCornerRenderer" title="wx.grid.GridCellAttrProvider.GetCornerRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCornerRenderer</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.dataview.DataViewTreeCtrl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.dataview.DataViewTreeStore.html" rel="next" title="wx.dataview.DataViewTreeStore"/>
+<link href="wx.dataview.DataViewToggleRenderer.html" rel="prev" title="wx.dataview.DataViewToggleRenderer"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.dataview.1moduleindex.html">
+<strong>wx.dataview</strong></a> »</li>
+<li class="reltitle"> <strong>wx.dataview.DataViewTreeCtrl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.dataview.DataViewTreeStore.html" title="wx.dataview.DataViewTreeStore">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.dataview.DataViewToggleRenderer.html" title="wx.dataview.DataViewToggleRenderer">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.dataview.DataViewTreeCtrl</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.dataview.DataViewTreeCtrl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-dataview-dataviewtreectrl">
+<span id="wx-dataview-dataviewtreectrl"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.dataview.DataViewTreeCtrl</strong><a class="headerlink" href="#phoenix-title-wx-dataview-dataviewtreectrl" title="Permalink to this headline">¶</a></h1>
+<p>This class is a <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  which internally uses a <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  and forwards most of its API to that class.</p>
+<p>Additionally, it uses a <a class="reference internal" href="wx.ImageList.html#wx-imagelist"><span class="std std-ref">  wx.ImageList</span></a>  to store a list of icons.</p>
+<p>The main purpose of this class is to provide a simple upgrade path for code using <a class="reference internal" href="wx.TreeCtrl.html#wx-treectrl"><span class="std std-ref">  wx.TreeCtrl</span></a>.</p>
+<div class="section" id="styles-window-styles">
+<span id="dataviewtreectrl-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<blockquote>
+<div><p>See <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  for the list of supported styles.</p>
+</div></blockquote>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="dataviewtreectrl-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Event macros for events emitted by this class:</p>
+<blockquote>
+<div><p>See <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  for the list of events emitted by this class.</p>
+</div></blockquote>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>DataViewTreeCtrl</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of DataViewTreeCtrl" class="inheritance" src="_static/images/inheritance/wx.dataview.DataViewTreeCtrl_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,392,233,421" href="wx.dataview.DataViewTreeCtrl.html" id="node1" shape="rect" title="This class is a wx.dataview.DataViewCtrl  which internally uses a wx.dataview.DataViewTreeStore  and forwards most of its API to that class."/> <area alt="" coords="21,315,218,344" href="wx.dataview.DataViewCtrl.html" id="node2" shape="rect" title="wx.dataview.DataViewCtrl  is a control to display data either in a tree like fashion or in a tabular form or both."/> <area alt="" coords="73,237,166,267" href="wx.Control.html" id="node3" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="71,160,168,189" href="wx.Window.html" id="node4" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="60,83,179,112" href="wx.EvtHandler.html" id="node5" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="14,5,102,35" href="wx.Object.html" id="node6" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="127,5,237,35" href="wx.Trackable.html" id="node7" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/wx.dataview.dataviewtreectrl.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/wx.dataview.dataviewtreectrl1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.dataview.dataviewtreectrl2.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%"/>
+<col style="width: 63%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.__init__" title="wx.dataview.DataViewTreeCtrl.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.AppendContainer" title="wx.dataview.DataViewTreeCtrl.AppendContainer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendContainer</span></code></a></p></td>
+<td><p>Appends a container to the given <em class="xref py py-obj">parent</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.AppendItem" title="wx.dataview.DataViewTreeCtrl.AppendItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendItem</span></code></a></p></td>
+<td><p>Appends an item to the given <em class="xref py py-obj">parent</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.Create" title="wx.dataview.DataViewTreeCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates the control and a <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  as its internal model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.DeleteAllItems" title="wx.dataview.DataViewTreeCtrl.DeleteAllItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAllItems</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.DeleteChildren" title="wx.dataview.DataViewTreeCtrl.DeleteChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteChildren</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.DeleteItem" title="wx.dataview.DataViewTreeCtrl.DeleteItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteItem</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetChildCount" title="wx.dataview.DataViewTreeCtrl.GetChildCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildCount</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetClassDefaultAttributes" title="wx.dataview.DataViewTreeCtrl.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetImageList" title="wx.dataview.DataViewTreeCtrl.GetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageList</span></code></a></p></td>
+<td><p>Returns the image list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetItemData" title="wx.dataview.DataViewTreeCtrl.GetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemData</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetItemExpandedIcon" title="wx.dataview.DataViewTreeCtrl.GetItemExpandedIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemExpandedIcon</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetItemIcon" title="wx.dataview.DataViewTreeCtrl.GetItemIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemIcon</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetItemText" title="wx.dataview.DataViewTreeCtrl.GetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemText</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetNthChild" title="wx.dataview.DataViewTreeCtrl.GetNthChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNthChild</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetStore" title="wx.dataview.DataViewTreeCtrl.GetStore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStore</span></code></a></p></td>
+<td><p>Returns the store.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.InsertContainer" title="wx.dataview.DataViewTreeCtrl.InsertContainer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertContainer</span></code></a></p></td>
+<td><p>Calls the same method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  but uses an index position in the image list instead of a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.InsertItem" title="wx.dataview.DataViewTreeCtrl.InsertItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertItem</span></code></a></p></td>
+<td><p>Calls the same method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  but uses an index position in the image list instead of a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.IsContainer" title="wx.dataview.DataViewTreeCtrl.IsContainer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsContainer</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if item is a container.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.PrependContainer" title="wx.dataview.DataViewTreeCtrl.PrependContainer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PrependContainer</span></code></a></p></td>
+<td><p>Calls the same method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  but uses an index position in the image list instead of a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.PrependItem" title="wx.dataview.DataViewTreeCtrl.PrependItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PrependItem</span></code></a></p></td>
+<td><p>Calls the same method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  but uses an index position in the image list instead of a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.SetImageList" title="wx.dataview.DataViewTreeCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a></p></td>
+<td><p>Sets the image list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.SetItemData" title="wx.dataview.DataViewTreeCtrl.SetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemData</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.SetItemExpandedIcon" title="wx.dataview.DataViewTreeCtrl.SetItemExpandedIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemExpandedIcon</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.SetItemIcon" title="wx.dataview.DataViewTreeCtrl.SetItemIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemIcon</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.SetItemText" title="wx.dataview.DataViewTreeCtrl.SetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemText</span></code></a></p></td>
+<td><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%"/>
+<col style="width: 58%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.ImageList" title="wx.dataview.DataViewTreeCtrl.ImageList"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ImageList</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetImageList" title="wx.dataview.DataViewTreeCtrl.GetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageList</span></code></a> and <a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.SetImageList" title="wx.dataview.DataViewTreeCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.Store" title="wx.dataview.DataViewTreeCtrl.Store"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Store</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetStore" title="wx.dataview.DataViewTreeCtrl.GetStore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStore</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.dataview.DataViewTreeCtrl">
+<em class="property">class </em><code class="sig-prename descclassname">wx.dataview.</code><code class="sig-name descname">DataViewTreeCtrl</code><span class="sig-paren">(</span><em class="sig-param">DataViewCtrl</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DataViewTreeCtrl</span><span class="p">()</span>
+
+<span class="n">DataViewTreeCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span>
+                 <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">DV_NO_HEADER</span><span class="o">|</span><span class="n">DV_ROW_LINES</span><span class="p">,</span>
+                 <span class="n">validator</span><span class="o">=</span><span class="n">DefaultValidator</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class is a DataViewCtrl which internally uses a
+DataViewTreeStore and forwards most of its API to that class.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=DV_NO_HEADER|DV_ROW_LINES, validator=DefaultValidator)</em></p>
+<p>Constructor.</p>
+<p>Calls <a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.Create" title="wx.dataview.DataViewTreeCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.AppendContainer">
+<code class="sig-name descname">AppendContainer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">text</em>, <em class="sig-param">icon=-1</em>, <em class="sig-param">expanded=-1</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.AppendContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends a container to the given <em class="xref py py-obj">parent</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>icon</strong> (<em>int</em>) – </p></li>
+<li><p><strong>expanded</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>ClientData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.AppendItem">
+<code class="sig-name descname">AppendItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">text</em>, <em class="sig-param">icon=-1</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.AppendItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends an item to the given <em class="xref py py-obj">parent</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>icon</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>ClientData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=DV_NO_HEADER|DV_ROW_LINES</em>, <em class="sig-param">validator=DefaultValidator</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the control and a <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  as its internal model.</p>
+<p>The default tree column created by this method is an editable column using <a class="reference internal" href="wx.dataview.DataViewIconTextRenderer.html#wx-dataview-dataviewicontextrenderer"><span class="std std-ref">  wx.dataview.DataViewIconTextRenderer</span></a>  as its renderer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.DeleteAllItems">
+<code class="sig-name descname">DeleteAllItems</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.DeleteAllItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.DeleteChildren">
+<code class="sig-name descname">DeleteChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.DeleteChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.DeleteItem">
+<code class="sig-name descname">DeleteItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.DeleteItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.GetChildCount">
+<code class="sig-name descname">GetChildCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.GetChildCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">VisualAttributes</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.GetImageList">
+<code class="sig-name descname">GetImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.GetImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the image list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.ImageList" title="wx.dataview.DataViewTreeCtrl.ImageList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageList</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.GetItemData">
+<code class="sig-name descname">GetItemData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.GetItemData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">ClientData</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.GetItemExpandedIcon">
+<code class="sig-name descname">GetItemExpandedIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.GetItemExpandedIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Icon</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.GetItemIcon">
+<code class="sig-name descname">GetItemIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.GetItemIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Icon</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.GetItemText">
+<code class="sig-name descname">GetItemText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.GetItemText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.GetNthChild">
+<code class="sig-name descname">GetNthChild</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.GetNthChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.GetStore">
+<code class="sig-name descname">GetStore</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.GetStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.InsertContainer">
+<code class="sig-name descname">InsertContainer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">previous</em>, <em class="sig-param">text</em>, <em class="sig-param">icon=-1</em>, <em class="sig-param">expanded=-1</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.InsertContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the same method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  but uses an index position in the image list instead of a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>previous</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>icon</strong> (<em>int</em>) – </p></li>
+<li><p><strong>expanded</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>ClientData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.InsertItem">
+<code class="sig-name descname">InsertItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">previous</em>, <em class="sig-param">text</em>, <em class="sig-param">icon=-1</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.InsertItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the same method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  but uses an index position in the image list instead of a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>previous</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>icon</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>ClientData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.IsContainer">
+<code class="sig-name descname">IsContainer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.IsContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if item is a container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.PrependContainer">
+<code class="sig-name descname">PrependContainer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">text</em>, <em class="sig-param">icon=-1</em>, <em class="sig-param">expanded=-1</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.PrependContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the same method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  but uses an index position in the image list instead of a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>icon</strong> (<em>int</em>) – </p></li>
+<li><p><strong>expanded</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>ClientData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.PrependItem">
+<code class="sig-name descname">PrependItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">text</em>, <em class="sig-param">icon=-1</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.PrependItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the same method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>  but uses an index position in the image list instead of a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>icon</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>ClientData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.SetImageList">
+<code class="sig-name descname">SetImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imagelist</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.SetImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the image list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>imagelist</strong> (<a class="reference internal" href="wx.ImageList.html#wx.ImageList" title="wx.ImageList"><em>wx.ImageList</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.SetItemData">
+<code class="sig-name descname">SetItemData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.SetItemData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>data</strong> (<em>ClientData</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.SetItemExpandedIcon">
+<code class="sig-name descname">SetItemExpandedIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">icon</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.SetItemExpandedIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>icon</strong> (<a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><em>wx.Icon</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.SetItemIcon">
+<code class="sig-name descname">SetItemIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">icon</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.SetItemIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>icon</strong> (<a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><em>wx.Icon</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewTreeCtrl.SetItemText">
+<code class="sig-name descname">SetItemText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.SetItemText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the identical method from <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewTreeCtrl.ImageList">
+<code class="sig-name descname">ImageList</code><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.ImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetImageList" title="wx.dataview.DataViewTreeCtrl.GetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageList</span></code></a> and <a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.SetImageList" title="wx.dataview.DataViewTreeCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewTreeCtrl.Store">
+<code class="sig-name descname">Store</code><a class="headerlink" href="#wx.dataview.DataViewTreeCtrl.Store" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewTreeCtrl.GetStore" title="wx.dataview.DataViewTreeCtrl.GetStore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStore</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

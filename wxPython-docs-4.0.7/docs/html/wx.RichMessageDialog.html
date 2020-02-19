@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.RichMessageDialog — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.SVGFileDC.html" rel="next" title="wx.SVGFileDC"/>
+<link href="wx.RendererVersion.html" rel="prev" title="wx.RendererVersion"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.RichMessageDialog</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.SVGFileDC.html" title="wx.SVGFileDC">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.RendererVersion.html" title="wx.RendererVersion">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.RichMessageDialog</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.RichMessageDialog.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-richmessagedialog">
+<span id="wx-richmessagedialog"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.RichMessageDialog</strong><a class="headerlink" href="#phoenix-title-wx-richmessagedialog" title="Permalink to this headline">¶</a></h1>
+<p>Extension of <a class="reference internal" href="wx.MessageDialog.html#wx-messagedialog"><span class="std std-ref">  wx.MessageDialog</span></a>  with additional functionality.</p>
+<p>This class adds the possibility of using a checkbox (that is especially useful for implementing the “Don’t ask me again” kind of dialogs) and an extra explanatory text which is initially collapsed and not shown to the user but can be expanded to show more information.</p>
+<p>Notice that currently the native dialog is used only under MSW when using Vista or later Windows version. Elsewhere, or for older versions of Windows, a generic implementation which is less familiar to the users is used. Because of this it’s recommended to use this class only if you do need its extra functionality and use <a class="reference internal" href="wx.MessageDialog.html#wx-messagedialog"><span class="std std-ref">  wx.MessageDialog</span></a>  which does have native implementation under all platforms otherwise. However if you do need to put e.g. a checkbox in a dialog, you should definitely consider using this class instead of using your own custom dialog because it will have much better appearance at least under recent Windows versions.</p>
+<p>To use this class, you need to create the dialog object and call <a class="reference internal" href="#wx.RichMessageDialog.ShowCheckBox" title="wx.RichMessageDialog.ShowCheckBox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowCheckBox</span></code></a>  and/or <a class="reference internal" href="#wx.RichMessageDialog.ShowDetailedText" title="wx.RichMessageDialog.ShowDetailedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowDetailedText</span></code></a>  to configure its contents. Other than that, it is used in exactly the same way as <a class="reference internal" href="wx.MessageDialog.html#wx-messagedialog"><span class="std std-ref">  wx.MessageDialog</span></a>  and supports all the styles supported by it. In particular, <a class="reference internal" href="#wx.RichMessageDialog.ShowModal" title="wx.RichMessageDialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>  return value is the same as for <a class="reference internal" href="wx.MessageDialog.html#wx-messagedialog"><span class="std std-ref">  wx.MessageDialog</span></a>. The only difference is that you need to use <a class="reference internal" href="#wx.RichMessageDialog.IsCheckBoxChecked" title="wx.RichMessageDialog.IsCheckBoxChecked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsCheckBoxChecked</span></code></a>  to examine the checkbox value if you had called <a class="reference internal" href="#wx.RichMessageDialog.ShowCheckBox" title="wx.RichMessageDialog.ShowCheckBox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowCheckBox</span></code></a>.</p>
+<p>Here is a simple example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ShowDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">dont_show</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RichMessageDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"Welcome to my wonderful program!"</span><span class="p">)</span>
+    <span class="n">dlg</span><span class="o">.</span><span class="n">ShowCheckBox</span><span class="p">(</span><span class="s2">"Don't show welcome dialog again"</span><span class="p">)</span>
+    <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="c1"># return value ignored as we have "Ok" only anyhow</span>
+
+    <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">IsCheckBoxChecked</span><span class="p">():</span>
+        <span class="c1"># ... make sure we won't show it again the next time ...</span>
+        <span class="n">dont_show</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="common_dialogs_overview.html#messagedialog-overview"><span class="std std-ref">MessageDialog Overview</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>RichMessageDialog</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of RichMessageDialog" class="inheritance" src="_static/images/inheritance/wx.RichMessageDialog_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="54,101,229,131" href="wx.RichMessageDialog.html" id="node1" shape="rect" title="Extension of wx.MessageDialog  with additional functionality."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%"/>
+<col style="width: 54%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.RichMessageDialog.__init__" title="wx.RichMessageDialog.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor specifying the rich message dialog properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.RichMessageDialog.GetCheckBoxText" title="wx.RichMessageDialog.GetCheckBoxText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCheckBoxText</span></code></a></p></td>
+<td><p>Retrieves the label for the checkbox.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.RichMessageDialog.GetClassDefaultAttributes" title="wx.RichMessageDialog.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.RichMessageDialog.GetDetailedText" title="wx.RichMessageDialog.GetDetailedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDetailedText</span></code></a></p></td>
+<td><p>Retrieves the detailed text.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.RichMessageDialog.IsCheckBoxChecked" title="wx.RichMessageDialog.IsCheckBoxChecked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsCheckBoxChecked</span></code></a></p></td>
+<td><p>Retrieves the state of the checkbox.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.RichMessageDialog.ShowCheckBox" title="wx.RichMessageDialog.ShowCheckBox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowCheckBox</span></code></a></p></td>
+<td><p>Shows a checkbox with a given label or hides it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.RichMessageDialog.ShowDetailedText" title="wx.RichMessageDialog.ShowDetailedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowDetailedText</span></code></a></p></td>
+<td><p>Shows or hides a detailed text and an expander that is used to show or hide the detailed text.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.RichMessageDialog.ShowModal" title="wx.RichMessageDialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a></p></td>
+<td><p>Shows the dialog, returning one of <code class="docutils literal notranslate"><span class="pre">wx.ID_OK</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_CANCEL</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_YES</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_NO</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.RichMessageDialog.CheckBoxText" title="wx.RichMessageDialog.CheckBoxText"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CheckBoxText</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.RichMessageDialog.GetCheckBoxText" title="wx.RichMessageDialog.GetCheckBoxText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCheckBoxText</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.RichMessageDialog.DetailedText" title="wx.RichMessageDialog.DetailedText"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DetailedText</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.RichMessageDialog.GetDetailedText" title="wx.RichMessageDialog.GetDetailedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDetailedText</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.RichMessageDialog">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">RichMessageDialog</code><span class="sig-paren">(</span><em class="sig-param">GenericMessageDialog</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RichMessageDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RichMessageDialog</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="n">MessageBoxCaptionStr</span><span class="p">,</span>
+                  <span class="n">style</span><span class="o">=</span><span class="n">OK</span><span class="o">|</span><span class="n">CENTRE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Extension of MessageDialog with additional functionality.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.RichMessageDialog.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">message</em>, <em class="sig-param">caption=MessageBoxCaptionStr</em>, <em class="sig-param">style=OK|CENTRE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RichMessageDialog.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor specifying the rich message dialog properties.</p>
+<p>Works just like the constructor for <a class="reference internal" href="wx.MessageDialog.html#wx-messagedialog"><span class="std std-ref">  wx.MessageDialog</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>message</strong> (<em>string</em>) – </p></li>
+<li><p><strong>caption</strong> (<em>string</em>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RichMessageDialog.GetCheckBoxText">
+<code class="sig-name descname">GetCheckBoxText</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RichMessageDialog.GetCheckBoxText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the label for the checkbox.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The label for the checkbox, will be the empty string if no checkbox is used.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RichMessageDialog.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RichMessageDialog.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RichMessageDialog.GetDetailedText">
+<code class="sig-name descname">GetDetailedText</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RichMessageDialog.GetDetailedText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the detailed text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The detailed text or empty if detailed text is not used.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RichMessageDialog.IsCheckBoxChecked">
+<code class="sig-name descname">IsCheckBoxChecked</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RichMessageDialog.IsCheckBoxChecked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the state of the checkbox.</p>
+<p>If this method is called before showing the dialog, the initial value of the checkbox, as set by <a class="reference internal" href="#wx.RichMessageDialog.ShowCheckBox" title="wx.RichMessageDialog.ShowCheckBox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowCheckBox</span></code></a>   is used. If it is called after calling <a class="reference internal" href="wx.Dialog.html#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.ShowModal</span></code></a> , the value set by the user is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the checkbox is checked or <code class="docutils literal notranslate"><span class="pre">False</span></code> if not.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RichMessageDialog.ShowCheckBox">
+<code class="sig-name descname">ShowCheckBox</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">checkBoxText</em>, <em class="sig-param">checked=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RichMessageDialog.ShowCheckBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows a checkbox with a given label or hides it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkBoxText</strong> (<em>string</em>) – If the parameter is non-empty a checkbox will be shown with that label, otherwise it will be hidden.</p></li>
+<li><p><strong>checked</strong> (<em>bool</em>) – The initial state of the checkbox.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RichMessageDialog.ShowDetailedText">
+<code class="sig-name descname">ShowDetailedText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">detailedText</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RichMessageDialog.ShowDetailedText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows or hides a detailed text and an expander that is used to show or hide the detailed text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>detailedText</strong> (<em>string</em>) – The detailed text that can be expanded when the dialog is shown, if empty no detailed text will be used.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RichMessageDialog.ShowModal">
+<code class="sig-name descname">ShowModal</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RichMessageDialog.ShowModal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the dialog, returning one of <code class="docutils literal notranslate"><span class="pre">wx.ID_OK</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_CANCEL</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_YES</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_NO</span></code>.</p>
+<p><a class="reference internal" href="#wx.RichMessageDialog.IsCheckBoxChecked" title="wx.RichMessageDialog.IsCheckBoxChecked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsCheckBoxChecked</span></code></a>   can be called afterwards to retrieve the value of the check box if one was used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.RichMessageDialog.CheckBoxText">
+<code class="sig-name descname">CheckBoxText</code><a class="headerlink" href="#wx.RichMessageDialog.CheckBoxText" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.RichMessageDialog.GetCheckBoxText" title="wx.RichMessageDialog.GetCheckBoxText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCheckBoxText</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.RichMessageDialog.DetailedText">
+<code class="sig-name descname">DetailedText</code><a class="headerlink" href="#wx.RichMessageDialog.DetailedText" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.RichMessageDialog.GetDetailedText" title="wx.RichMessageDialog.GetDetailedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDetailedText</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,1356 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.adv.PseudoDC — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.adv.QueryLayoutInfoEvent.html" rel="next" title="wx.adv.QueryLayoutInfoEvent"/>
+<link href="wx.adv.PropertySheetDialogFlags.enumeration.html" rel="prev" title="wx.adv.PropertySheetDialogFlags"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.adv.1moduleindex.html">
+<strong>wx.adv</strong></a> »</li>
+<li class="reltitle"> <strong>wx.adv.PseudoDC</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.adv.QueryLayoutInfoEvent.html" title="wx.adv.QueryLayoutInfoEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.adv.PropertySheetDialogFlags.enumeration.html" title="wx.adv.PropertySheetDialogFlags">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.adv.PseudoDC</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.adv.PseudoDC.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-adv-pseudodc">
+<span id="wx-adv-pseudodc"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.adv.PseudoDC</strong><a class="headerlink" href="#phoenix-title-wx-adv-pseudodc" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>A PseudoDC is an object that can be used much like real
+<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DC</span></code></a>, however it provides some additional features for
+object recording and manipulation beyond what a <code class="docutils literal notranslate"><span class="pre">wx.DC</span></code> can
+provide.</p>
+<p>All commands issued to the <code class="docutils literal notranslate"><span class="pre">PseudoDC</span></code> are stored in a list.  You
+can then play these commands back to a real DC object as often as
+needed, using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawToDC</span></code> method or one of the similar
+methods.  Commands in the command list can be tagged by an <code class="docutils literal notranslate"><span class="pre">ID</span></code>. You
+can use this <code class="docutils literal notranslate"><span class="pre">ID</span></code> to clear the operations associated with a single
+<code class="docutils literal notranslate"><span class="pre">ID</span></code>, redraw the objects associated with that <code class="docutils literal notranslate"><span class="pre">ID</span></code>, grey them, adjust
+their position, etc.</p>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>PseudoDC</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of PseudoDC" class="inheritance" src="_static/images/inheritance/wx.adv.PseudoDC_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,147,35" href="wx.adv.PseudoDC.html" id="node1" shape="rect" title="A PseudoDC is an object that can be used much like real"/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.__init__" title="wx.adv.PseudoDC.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructs a new Pseudo device context for recording and</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.Clear" title="wx.adv.PseudoDC.Clear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Clear</span></code></a></p></td>
+<td><p>Clears the device context using the current background brush.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.ClearId" title="wx.adv.PseudoDC.ClearId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearId</span></code></a></p></td>
+<td><p>Removes all operations associated with id so the object can be redrawn.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.CrossHair" title="wx.adv.PseudoDC.CrossHair"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CrossHair</span></code></a></p></td>
+<td><p>Displays a cross hair using the current pen. This is a</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawArc" title="wx.adv.PseudoDC.DrawArc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawArc</span></code></a></p></td>
+<td><p>Draws an arc of a circle, centred on the center point</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawBitmap" title="wx.adv.PseudoDC.DrawBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawBitmap</span></code></a></p></td>
+<td><p>Draw a bitmap on the device context at the specified</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawCheckMark" title="wx.adv.PseudoDC.DrawCheckMark"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawCheckMark</span></code></a></p></td>
+<td><p>Draws a check mark inside the given rectangle</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawCircle" title="wx.adv.PseudoDC.DrawCircle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawCircle</span></code></a></p></td>
+<td><p>Draws a circle with the given center point and radius.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawEllipse" title="wx.adv.PseudoDC.DrawEllipse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawEllipse</span></code></a></p></td>
+<td><p>Draws an ellipse contained in the specified rectangle. The current pen</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawEllipticArc" title="wx.adv.PseudoDC.DrawEllipticArc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawEllipticArc</span></code></a></p></td>
+<td><p>Draws an arc of an ellipse, with the given rectangle</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawIcon" title="wx.adv.PseudoDC.DrawIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawIcon</span></code></a></p></td>
+<td><p>Draw an icon on the display at the given position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawIdToDC" title="wx.adv.PseudoDC.DrawIdToDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawIdToDC</span></code></a></p></td>
+<td><p>Draw recorded operations tagged with id to dc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawLabel" title="wx.adv.PseudoDC.DrawLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawLabel</span></code></a></p></td>
+<td><p>Draw text within the specified rectangle, abiding by the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawLine" title="wx.adv.PseudoDC.DrawLine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawLine</span></code></a></p></td>
+<td><p>Draws a line from the first point to the second.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawLines" title="wx.adv.PseudoDC.DrawLines"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawLines</span></code></a></p></td>
+<td><p>Draws lines using a sequence of <a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Point</span></code></a> objects, adding the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawPoint" title="wx.adv.PseudoDC.DrawPoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawPoint</span></code></a></p></td>
+<td><p>Draws a point using the current pen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawPolygon" title="wx.adv.PseudoDC.DrawPolygon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawPolygon</span></code></a></p></td>
+<td><p>Draws a filled polygon using a sequence of <a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Point</span></code></a> objects, adding</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawRectangle" title="wx.adv.PseudoDC.DrawRectangle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawRectangle</span></code></a></p></td>
+<td><p>Draws a rectangle with the given top left corner, and with</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawRotatedText" title="wx.adv.PseudoDC.DrawRotatedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawRotatedText</span></code></a></p></td>
+<td><p>Draws the text rotated by angle degrees, if supported by the platform.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawRoundedRectangle" title="wx.adv.PseudoDC.DrawRoundedRectangle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawRoundedRectangle</span></code></a></p></td>
+<td><p>Draws a rectangle with the given top left corner, and with</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawSpline" title="wx.adv.PseudoDC.DrawSpline"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawSpline</span></code></a></p></td>
+<td><p>Draws a spline between all given control points, (a list of <a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Point</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawText" title="wx.adv.PseudoDC.DrawText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawText</span></code></a></p></td>
+<td><p>Draws a text string at the specified point, using the</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawToDC" title="wx.adv.PseudoDC.DrawToDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawToDC</span></code></a></p></td>
+<td><p>Draws the recorded operations to dc.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawToDCClipped" title="wx.adv.PseudoDC.DrawToDCClipped"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawToDCClipped</span></code></a></p></td>
+<td><p>Draws the recorded operations to dc,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.DrawToDCClippedRgn" title="wx.adv.PseudoDC.DrawToDCClippedRgn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawToDCClippedRgn</span></code></a></p></td>
+<td><p>Draws the recorded operations to dc,</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.FindObjects" title="wx.adv.PseudoDC.FindObjects"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindObjects</span></code></a></p></td>
+<td><p>Returns a list of all the id’s that draw a pixel with</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.FindObjectsByBBox" title="wx.adv.PseudoDC.FindObjectsByBBox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindObjectsByBBox</span></code></a></p></td>
+<td><p>Returns a list of all the id’s whose bounding boxes include (x,y).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.FloodFill" title="wx.adv.PseudoDC.FloodFill"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FloodFill</span></code></a></p></td>
+<td><p>Flood fills the device context starting from the given point,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.GetIdBounds" title="wx.adv.PseudoDC.GetIdBounds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIdBounds</span></code></a></p></td>
+<td><p>Returns the bounding rectangle previously set with <em class="xref py py-obj">SetIdBounds</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.GetIdGreyedOut" title="wx.adv.PseudoDC.GetIdGreyedOut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIdGreyedOut</span></code></a></p></td>
+<td><p>Get whether the set of objects with tag <em class="xref py py-obj">id</em> are drawn greyed out or not.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.GetLen" title="wx.adv.PseudoDC.GetLen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLen</span></code></a></p></td>
+<td><p>Returns the number of operations in the recorded list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.RemoveAll" title="wx.adv.PseudoDC.RemoveAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveAll</span></code></a></p></td>
+<td><p>Removes all objects and operations from the recorded list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.RemoveId" title="wx.adv.PseudoDC.RemoveId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveId</span></code></a></p></td>
+<td><p>Remove the object node (and all operations) associated with an id.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetBackground" title="wx.adv.PseudoDC.SetBackground"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetBackground</span></code></a></p></td>
+<td><p>Sets the current background brush for the DC.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetBackgroundMode" title="wx.adv.PseudoDC.SetBackgroundMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetBackgroundMode</span></code></a></p></td>
+<td><p>The mode parameter may be one of <code class="docutils literal notranslate"><span class="pre">wx.SOLID</span></code> and</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetBrush" title="wx.adv.PseudoDC.SetBrush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetBrush</span></code></a></p></td>
+<td><p>Sets the current brush for the DC.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetFont" title="wx.adv.PseudoDC.SetFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFont</span></code></a></p></td>
+<td><p>Sets the current font for the DC. It must be a valid font, in</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetId" title="wx.adv.PseudoDC.SetId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetId</span></code></a></p></td>
+<td><p>Sets the id to be associated with subsequent operations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetIdBounds" title="wx.adv.PseudoDC.SetIdBounds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetIdBounds</span></code></a></p></td>
+<td><p>Set the bounding rect of a given object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetIdGreyedOut" title="wx.adv.PseudoDC.SetIdGreyedOut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetIdGreyedOut</span></code></a></p></td>
+<td><p>Set whether the set of objects with tag <em class="xref py py-obj">id</em> are drawn greyed out or not.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetLogicalFunction" title="wx.adv.PseudoDC.SetLogicalFunction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLogicalFunction</span></code></a></p></td>
+<td><p>Sets the current logical function for the device context. This</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetPen" title="wx.adv.PseudoDC.SetPen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPen</span></code></a></p></td>
+<td><p>Sets the current pen for the DC.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetTextBackground" title="wx.adv.PseudoDC.SetTextBackground"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTextBackground</span></code></a></p></td>
+<td><p>Sets the current text background colour for the DC.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.SetTextForeground" title="wx.adv.PseudoDC.SetTextForeground"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTextForeground</span></code></a></p></td>
+<td><p>Sets the current text foreground colour for the DC.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.TranslateId" title="wx.adv.PseudoDC.TranslateId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TranslateId</span></code></a></p></td>
+<td><p>Translate the position of the operations of tag <em class="xref py py-obj">id</em> by (<em class="xref py py-obj">dx</em>, <em class="xref py py-obj">dy</em>).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.PseudoDC.Len" title="wx.adv.PseudoDC.Len"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Len</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.PseudoDC.GetLen" title="wx.adv.PseudoDC.GetLen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLen</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.adv.PseudoDC">
+<em class="property">class </em><code class="sig-prename descclassname">wx.adv.</code><code class="sig-name descname">PseudoDC</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PseudoDC</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A PseudoDC is an object that can be used much like real
+<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DC</span></code></a>, however it provides some additional features for
+object recording and manipulation beyond what a <code class="docutils literal notranslate"><span class="pre">wx.DC</span></code> can
+provide.</p>
+<p>All commands issued to the <code class="docutils literal notranslate"><span class="pre">PseudoDC</span></code> are stored in a list.  You
+can then play these commands back to a real DC object as often as
+needed, using the <a class="reference internal" href="#wx.adv.PseudoDC.DrawToDC" title="wx.adv.PseudoDC.DrawToDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawToDC</span></code></a> method or one of the similar
+methods.  Commands in the command list can be tagged by an <code class="docutils literal notranslate"><span class="pre">ID</span></code>. You
+can use this <code class="docutils literal notranslate"><span class="pre">ID</span></code> to clear the operations associated with a single
+<code class="docutils literal notranslate"><span class="pre">ID</span></code>, redraw the objects associated with that <code class="docutils literal notranslate"><span class="pre">ID</span></code>, grey them, adjust
+their position, etc.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new Pseudo device context for recording and
+replaying DC operations.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.Clear">
+<code class="sig-name descname">Clear</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the device context using the current background brush.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.ClearId">
+<code class="sig-name descname">ClearId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.ClearId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all operations associated with id so the object can be redrawn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.CrossHair">
+<code class="sig-name descname">CrossHair</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.CrossHair" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CrossHair</strong> <em class="xref py py-obj">(self, x, y)</em></p>
+<blockquote>
+<div><p>Displays a cross hair using the current pen. This is a
+vertical and horizontal line the height and width of the
+window, centred on the given point.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CrossHair</strong> <em class="xref py py-obj">(self, pt)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawArc">
+<code class="sig-name descname">DrawArc</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x1</em>, <em class="sig-param">y1</em>, <em class="sig-param">x2</em>, <em class="sig-param">y2</em>, <em class="sig-param">xc</em>, <em class="sig-param">yc</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawArc" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Draws an arc of a circle, centred on the center point
+(xc, yc), from the first point to the second. The current
+pen is used for the outline and the current brush for
+filling the shape.</p>
+<p>The arc is drawn in an anticlockwise direction from the
+start point to the end point.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>int</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>int</em>) – </p></li>
+<li><p><strong>xc</strong> (<em>int</em>) – </p></li>
+<li><p><strong>yc</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawBitmap">
+<code class="sig-name descname">DrawBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawBitmap</strong> <em class="xref py py-obj">(self, bmp, x, y, useMask=False)</em></p>
+<blockquote>
+<div><p>Draw a bitmap on the device context at the specified
+point. If useMask is <code class="docutils literal notranslate"><span class="pre">True</span></code> and the bitmap has a
+transparency mask, (or alpha channel on the platforms that
+support it) then the bitmap will be drawn transparently.</p>
+<p>When drawing a mono-bitmap, the current text foreground
+colour will be used to draw the foreground of the bitmap
+(all bits set to 1), and the current text background
+colour to draw the background (all bits set to 0).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.PseudoDC.SetTextForeground" title="wx.adv.PseudoDC.SetTextForeground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetTextForeground</span></code></a>, <a class="reference internal" href="#wx.adv.PseudoDC.SetTextBackground" title="wx.adv.PseudoDC.SetTextBackground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetTextBackground</span></code></a> and <a class="reference internal" href="wx.MemoryDC.html#wx.MemoryDC" title="wx.MemoryDC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.MemoryDC</span></code></a></p>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bmp</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>useMask</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawBitmap</strong> <em class="xref py py-obj">(self, bmp, pt, useMask=False)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bmp</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>useMask</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawCheckMark">
+<code class="sig-name descname">DrawCheckMark</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawCheckMark" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawCheckMark</strong> <em class="xref py py-obj">(self, x, y, width, height)</em></p>
+<p>Draws a check mark inside the given rectangle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawCheckMark</strong> <em class="xref py py-obj">(self, rect)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawCircle">
+<code class="sig-name descname">DrawCircle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawCircle" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawCircle</strong> <em class="xref py py-obj">(self, x, y, radius)</em></p>
+<blockquote>
+<div><p>Draws a circle with the given center point and radius.
+The current pen is used for the outline and the current
+brush for filling the shape.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.PseudoDC.DrawEllipse" title="wx.adv.PseudoDC.DrawEllipse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DrawEllipse</span></code></a></p>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawCircle</strong> <em class="xref py py-obj">(self, pt, radius)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawEllipse">
+<code class="sig-name descname">DrawEllipse</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawEllipse" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawEllipse</strong> <em class="xref py py-obj">(self, x, y, width, height)</em></p>
+<blockquote>
+<div><p>Draws an ellipse contained in the specified rectangle. The current pen
+is used for the outline and the current brush for filling the shape.”, “</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.PseudoDC.DrawCircle" title="wx.adv.PseudoDC.DrawCircle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DrawCircle</span></code></a></p>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawEllipse</strong> <em class="xref py py-obj">(self, rect)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawEllipse</strong> <em class="xref py py-obj">(self, pt, sz)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>sz</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawEllipticArc">
+<code class="sig-name descname">DrawEllipticArc</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawEllipticArc" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawEllipticArc</strong> <em class="xref py py-obj">(self, x, y, w, h, start, end)</em></p>
+<blockquote>
+<div><p>Draws an arc of an ellipse, with the given rectangle
+defining the bounds of the ellipse. The current pen is
+used for drawing the arc and the current brush is used for
+drawing the pie.</p>
+<p>The start and end parameters specify the start and end
+of the arc relative to the three-o’clock position from the
+center of the rectangle. Angles are specified in degrees
+(360 is a complete circle). Positive values mean
+counter-clockwise motion. If start is equal to end, a
+complete ellipse will be drawn.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>w</strong> (<em>int</em>) – </p></li>
+<li><p><strong>h</strong> (<em>int</em>) – </p></li>
+<li><p><strong>start</strong> (<em>float</em>) – </p></li>
+<li><p><strong>end</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawEllipticArc</strong> <em class="xref py py-obj">(self, pt, sz, start, end)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>sz</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>start</strong> (<em>float</em>) – </p></li>
+<li><p><strong>end</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawIcon">
+<code class="sig-name descname">DrawIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawIcon</strong> <em class="xref py py-obj">(self, icon, x, y)</em></p>
+<p>Draw an icon on the display at the given position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>icon</strong> (<a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><em>wx.Icon</em></a>) – </p></li>
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawIcon</strong> <em class="xref py py-obj">(self, icon, pt)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>icon</strong> (<a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><em>wx.Icon</em></a>) – </p></li>
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawIdToDC">
+<code class="sig-name descname">DrawIdToDC</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">dc</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawIdToDC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw recorded operations tagged with id to dc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawLabel">
+<code class="sig-name descname">DrawLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawLabel</strong> <em class="xref py py-obj">(self, text, rect, alignment=ALIGN_LEFT|ALIGN_TOP, indexAccel=-1)</em></p>
+<blockquote>
+<div><p>Draw text within the specified rectangle, abiding by the
+alignment flags.  Will additionally emphasize the
+character at indexAccel if it is not -1.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>alignment</strong> (<em>int</em>) – </p></li>
+<li><p><strong>indexAccel</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawLabel</strong> <em class="xref py py-obj">(self, text, image, rect, alignment=ALIGN_LEFT|ALIGN_TOP, indexAccel=-1)</em></p>
+<blockquote>
+<div><p>Draw text and an image (which may be <code class="docutils literal notranslate"><span class="pre">wx.NullBitmap</span></code> to skip
+drawing it) within the specified rectangle, abiding by the alignment
+flags.  Will additionally emphasize the character at indexAccel if
+it is not -1.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>image</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>alignment</strong> (<em>int</em>) – </p></li>
+<li><p><strong>indexAccel</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawLine">
+<code class="sig-name descname">DrawLine</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawLine" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawLine</strong> <em class="xref py py-obj">(self, x1, y1, x2, y2)</em></p>
+<blockquote>
+<div><p>Draws a line from the first point to the second.
+The current pen is used for drawing the line. Note that
+the second point is not part of the line and is not
+drawn by this function (this is consistent with the
+behaviour of many other toolkits).</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>int</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawLine</strong> <em class="xref py py-obj">(self, pt1, pt2)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt1</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>pt2</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawLines">
+<code class="sig-name descname">DrawLines</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">points</em>, <em class="sig-param">xoffset=0</em>, <em class="sig-param">yoffset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawLines" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Draws lines using a sequence of <a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Point</span></code></a> objects, adding the
+optional offset coordinate. The current pen is used for drawing the
+lines.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> (<em>PointList</em>) – </p></li>
+<li><p><strong>xoffset</strong> (<em>int</em>) – </p></li>
+<li><p><strong>yoffset</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawPoint">
+<code class="sig-name descname">DrawPoint</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawPoint</strong> <em class="xref py py-obj">(self, x, y)</em></p>
+<p>Draws a point using the current pen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawPoint</strong> <em class="xref py py-obj">(self, pt)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawPolygon">
+<code class="sig-name descname">DrawPolygon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">points</em>, <em class="sig-param">xoffset=0</em>, <em class="sig-param">yoffset=0</em>, <em class="sig-param">fillStyle=ODDEVEN_RULE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawPolygon" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Draws a filled polygon using a sequence of <a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Point</span></code></a> objects, adding
+the optional offset coordinate.  The last argument specifies the fill
+rule: <code class="docutils literal notranslate"><span class="pre">wx.ODDEVEN_RULE</span></code> (the default) or <code class="docutils literal notranslate"><span class="pre">wx.WINDING_RULE</span></code>.</p>
+<p>The current pen is used for drawing the outline, and the current brush
+for filling the shape. Using a transparent brush suppresses
+filling. Note that wxWidgets automatically closes the first and last
+points.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> (<em>PointList</em>) – </p></li>
+<li><p><strong>xoffset</strong> (<em>int</em>) – </p></li>
+<li><p><strong>yoffset</strong> (<em>int</em>) – </p></li>
+<li><p><strong>fillStyle</strong> (<a class="reference internal" href="wx.PolygonFillMode.enumeration.html" title="PolygonFillMode"><em>PolygonFillMode</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawRectangle">
+<code class="sig-name descname">DrawRectangle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawRectangle" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawRectangle</strong> <em class="xref py py-obj">(self, x, y, width, height)</em></p>
+<blockquote>
+<div><p>Draws a rectangle with the given top left corner, and with
+the given size. The current pen is used for the outline
+and the current brush for filling the shape.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawRectangle</strong> <em class="xref py py-obj">(self, rect)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawRectangle</strong> <em class="xref py py-obj">(self, pt, sz)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>sz</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawRotatedText">
+<code class="sig-name descname">DrawRotatedText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawRotatedText" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawRotatedText</strong> <em class="xref py py-obj">(self, text, x, y, angle)</em></p>
+<p>Draws the text rotated by angle degrees, if supported by the platform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>angle</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawRotatedText</strong> <em class="xref py py-obj">(self, text, pt, angle)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>angle</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawRoundedRectangle">
+<code class="sig-name descname">DrawRoundedRectangle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawRoundedRectangle" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawRoundedRectangle</strong> <em class="xref py py-obj">(self, x, y, width, height, radius)</em></p>
+<blockquote>
+<div><p>Draws a rectangle with the given top left corner, and with
+the given size. The current pen is used for the outline
+and the current brush for filling the shape.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+<li><p><strong>radius</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawRoundedRectangle</strong> <em class="xref py py-obj">(self, rect, radius)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>radius</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawRoundedRectangle</strong> <em class="xref py py-obj">(self, pt, sz, radius)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>sz</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>radius</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawSpline">
+<code class="sig-name descname">DrawSpline</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">points</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawSpline" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Draws a spline between all given control points, (a list of <a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Point</span></code></a>
+objects) using the current pen. The spline is drawn using a series of
+lines, using an algorithm taken from the X drawing program ‘<code class="docutils literal notranslate"><span class="pre">XFIG</span></code>’.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>points</strong> (<em>PointList</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawText">
+<code class="sig-name descname">DrawText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawText" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawText</strong> <em class="xref py py-obj">(self, text, x, y)</em></p>
+<blockquote>
+<div><p>Draws a text string at the specified point, using the
+current text font, and the current text foreground and
+background colours.</p>
+<p>The coordinates refer to the top-left corner of the
+rectangle bounding the string. See <a class="reference internal" href="wx.DC.html#wx.DC.GetTextExtent" title="wx.DC.GetTextExtent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DC.GetTextExtent</span></code></a>
+for how to get the dimensions of a text string, which can
+be used to position the text more precisely, (you will
+need to use a real DC with GetTextExtent as wx.PseudoDC
+does not implement it.)</p>
+<p><code class="docutils literal notranslate"><span class="pre">NOTE</span></code>: under wxGTK the current logical function is used
+by this function but it is ignored by wxMSW. Thus, you
+should avoid using logical functions with this function
+in portable programs.”, “</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.PseudoDC.DrawRotatedText" title="wx.adv.PseudoDC.DrawRotatedText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DrawRotatedText</span></code></a></p>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DrawText</strong> <em class="xref py py-obj">(self, text, pt)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawToDC">
+<code class="sig-name descname">DrawToDC</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawToDC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws the recorded operations to dc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawToDCClipped">
+<code class="sig-name descname">DrawToDCClipped</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em>, <em class="sig-param">rect</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawToDCClipped" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Draws the recorded operations to dc,
+unless the operation is known to be outside of rect.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.DrawToDCClippedRgn">
+<code class="sig-name descname">DrawToDCClippedRgn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em>, <em class="sig-param">region</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.DrawToDCClippedRgn" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Draws the recorded operations to dc,
+unless the operation is known to be outside the given region.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>region</strong> (<a class="reference internal" href="wx.Region.html#wx.Region" title="wx.Region"><em>wx.Region</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.FindObjects">
+<code class="sig-name descname">FindObjects</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">radius=1</em>, <em class="sig-param">bg=WHITE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.FindObjects" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns a list of all the id’s that draw a pixel with
+color not equal to bg within radius of (x,y). Returns an
+empty list if nothing is found.  The list is in reverse
+drawing order so list[0] is the top id.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – </p></li>
+<li><p><strong>bg</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.FindObjectsByBBox">
+<code class="sig-name descname">FindObjectsByBBox</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.FindObjectsByBBox" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns a list of all the id’s whose bounding boxes include (x,y).
+Returns an empty list if nothing is found.  The list is in
+reverse drawing order so list[0] is the top id.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.FloodFill">
+<code class="sig-name descname">FloodFill</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.FloodFill" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>FloodFill</strong> <em class="xref py py-obj">(self, x, y, col, style=FLOOD_SURFACE)</em></p>
+<blockquote>
+<div><p>Flood fills the device context starting from the given point,
+using the current brush colour, and using a style:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FLOOD_SURFACE</span></code>: the flooding occurs until a colour other than the given colour is encountered.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FLOOD_BORDER</span></code>: the area to be flooded is bounded by the given colour.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+<li><p><strong>style</strong> (<a class="reference internal" href="wx.FloodFillStyle.enumeration.html" title="FloodFillStyle"><em>FloodFillStyle</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>FloodFill</strong> <em class="xref py py-obj">(self, pt, col, style=FLOOD_SURFACE)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+<li><p><strong>style</strong> (<a class="reference internal" href="wx.FloodFillStyle.enumeration.html" title="FloodFillStyle"><em>FloodFillStyle</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.GetIdBounds">
+<code class="sig-name descname">GetIdBounds</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.GetIdBounds" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns the bounding rectangle previously set with <a class="reference internal" href="#wx.adv.PseudoDC.SetIdBounds" title="wx.adv.PseudoDC.SetIdBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetIdBounds</span></code></a>.
+If no bounds have been set, it returns wx.Rect(0,0,0,0).</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Rect</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.GetIdGreyedOut">
+<code class="sig-name descname">GetIdGreyedOut</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.GetIdGreyedOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get whether the set of objects with tag <em class="xref py py-obj">id</em> are drawn greyed out or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.GetLen">
+<code class="sig-name descname">GetLen</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.GetLen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of operations in the recorded list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.RemoveAll">
+<code class="sig-name descname">RemoveAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.RemoveAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all objects and operations from the recorded list.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.RemoveId">
+<code class="sig-name descname">RemoveId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.RemoveId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the object node (and all operations) associated with an id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetBackground">
+<code class="sig-name descname">SetBackground</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">brush</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetBackground" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the current background brush for the DC.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>brush</strong> (<a class="reference internal" href="wx.Brush.html#wx.Brush" title="wx.Brush"><em>wx.Brush</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetBackgroundMode">
+<code class="sig-name descname">SetBackgroundMode</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">mode</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetBackgroundMode" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>The mode parameter may be one of <code class="docutils literal notranslate"><span class="pre">wx.SOLID</span></code> and
+<code class="docutils literal notranslate"><span class="pre">wx.TRANSPARENT</span></code>. This setting determines whether text
+will be drawn with a background colour or not.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetBrush">
+<code class="sig-name descname">SetBrush</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">brush</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetBrush" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Sets the current brush for the DC.</p>
+<p>If the argument is <code class="docutils literal notranslate"><span class="pre">wx.NullBrush</span></code>, the current brush is selected out
+of the device context, and the original brush restored, allowing the
+current brush to be destroyed safely.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Brush.html#wx.Brush" title="wx.Brush"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Brush</span></code></a></p>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>brush</strong> (<a class="reference internal" href="wx.Brush.html#wx.Brush" title="wx.Brush"><em>wx.Brush</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetFont">
+<code class="sig-name descname">SetFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">font</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetFont" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Sets the current font for the DC. It must be a valid font, in
+particular you should not pass <code class="docutils literal notranslate"><span class="pre">wx.NullFont</span></code> to this method.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Font</span></code></a></p>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>font</strong> (<a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><em>wx.Font</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetId">
+<code class="sig-name descname">SetId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the id to be associated with subsequent operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetIdBounds">
+<code class="sig-name descname">SetIdBounds</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">rect</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetIdBounds" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Set the bounding rect of a given object.
+This will create an object node if one doesn’t exist.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetIdGreyedOut">
+<code class="sig-name descname">SetIdGreyedOut</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">greyout</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetIdGreyedOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set whether the set of objects with tag <em class="xref py py-obj">id</em> are drawn greyed out or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+<li><p><strong>greyout</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetLogicalFunction">
+<code class="sig-name descname">SetLogicalFunction</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">function</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetLogicalFunction" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Sets the current logical function for the device context. This
+determines how a source pixel (from a pen or brush colour, combines
+with a destination pixel in the current device context.</p>
+<p>The possible values and their meaning in terms of source and
+destination pixel values are defined in the <a class="reference internal" href="wx.RasterOperationMode.enumeration.html#wx-rasteroperationmode"><span class="std std-ref">  wx.RasterOperationMode</span></a>
+enumeration.</p>
+<p>The default is wx.``wx.COPY``, which simply draws with the current
+colour. The others combine the current colour and the background using
+a logical operation. wx.``wx.INVERT`` is commonly used for drawing rubber
+bands or moving outlines, since drawing twice reverts to the original
+colour.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="wx.RasterOperationMode.enumeration.html" title="RasterOperationMode"><em>RasterOperationMode</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetPen">
+<code class="sig-name descname">SetPen</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pen</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetPen" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Sets the current pen for the DC.</p>
+<p>If the argument is <code class="docutils literal notranslate"><span class="pre">wx.NullPen</span></code>, the current pen is selected out of the
+device context, and the original pen restored.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Pen.html#wx.Pen" title="wx.Pen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Pen</span></code></a></p>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pen</strong> (<a class="reference internal" href="wx.Pen.html#wx.Pen" title="wx.Pen"><em>wx.Pen</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetTextBackground">
+<code class="sig-name descname">SetTextBackground</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colour</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetTextBackground" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the current text background colour for the DC.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>colour</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Colour</span></code>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.SetTextForeground">
+<code class="sig-name descname">SetTextForeground</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colour</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.SetTextForeground" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the current text foreground colour for the DC.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>colour</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.PseudoDC.TranslateId">
+<code class="sig-name descname">TranslateId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.PseudoDC.TranslateId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate the position of the operations of tag <em class="xref py py-obj">id</em> by (<em class="xref py py-obj">dx</em>, <em class="xref py py-obj">dy</em>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+<li><p><strong>dx</strong> (<em>int</em>) – </p></li>
+<li><p><strong>dy</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.adv.PseudoDC.Len">
+<code class="sig-name descname">Len</code><a class="headerlink" href="#wx.adv.PseudoDC.Len" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.PseudoDC.GetLen" title="wx.adv.PseudoDC.GetLen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLen</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

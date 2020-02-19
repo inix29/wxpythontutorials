@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.GenericDragImage — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.GenericMessageDialog.html" rel="next" title="wx.GenericMessageDialog"/>
+<link href="wx.GenericDirCtrl.html" rel="prev" title="wx.GenericDirCtrl"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.GenericDragImage</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.GenericMessageDialog.html" title="wx.GenericMessageDialog">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.GenericDirCtrl.html" title="wx.GenericDirCtrl">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.GenericDragImage</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.GenericDragImage.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-genericdragimage">
+<span id="wx-genericdragimage"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.GenericDragImage</strong><a class="headerlink" href="#phoenix-title-wx-genericdragimage" title="Permalink to this headline">¶</a></h1>
+<p>This class is used when you wish to drag an object on the screen, and a simple cursor is not enough.</p>
+<p>On Windows, the Win32 API is used to achieve smooth dragging. On other platforms, GenericDragImage is used. Applications may also prefer to use GenericDragImage on Windows, too.</p>
+<p>To use this class, when you wish to start dragging an image, create a <a class="reference internal" href="wx.DragImage.html#wx-dragimage"><span class="std std-ref">  wx.DragImage</span></a>  object and store it somewhere you can access it as the drag progresses. Call <a class="reference internal" href="#wx.GenericDragImage.BeginDrag" title="wx.GenericDragImage.BeginDrag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BeginDrag</span></code></a>  to start, and <a class="reference internal" href="#wx.GenericDragImage.EndDrag" title="wx.GenericDragImage.EndDrag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndDrag</span></code></a>  to stop the drag. To move the image, initially call <a class="reference internal" href="#wx.GenericDragImage.Show" title="wx.GenericDragImage.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>  and then <a class="reference internal" href="#wx.GenericDragImage.Move" title="wx.GenericDragImage.Move"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Move</span></code></a>. If you wish to update the screen contents during the drag (for example, highlight an item as in the dragimag sample), first call <a class="reference internal" href="#wx.GenericDragImage.Hide" title="wx.GenericDragImage.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a>, update the screen, call <a class="reference internal" href="#wx.GenericDragImage.Move" title="wx.GenericDragImage.Move"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Move</span></code></a>, and then call <a class="reference internal" href="#wx.GenericDragImage.Show" title="wx.GenericDragImage.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>.</p>
+<p>You can drag within one window, or you can use full-screen dragging either across the whole screen, or just restricted to one area of the screen to save resources. If you want the user to drag between two windows, then you will need to use full-screen dragging.</p>
+<p>If you wish to draw the image yourself, use GenericDragImage and override <a class="reference internal" href="#wx.GenericDragImage.DoDrawImage" title="wx.GenericDragImage.DoDrawImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoDrawImage</span></code></a>  and <a class="reference internal" href="#wx.GenericDragImage.GetImageRect" title="wx.GenericDragImage.GetImageRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageRect</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">Drag Image Sample</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>GenericDragImage</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of GenericDragImage" class="inheritance" src="_static/images/inheritance/wx.DragImage_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,124,112" href="wx.DragImage.html" id="node1" shape="rect" title="This class is used when you wish to drag an object on the screen, and a simple cursor is not enough."/> <area alt="" coords="21,5,109,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%"/>
+<col style="width: 60%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GenericDragImage.__init__" title="wx.GenericDragImage.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GenericDragImage.BeginDrag" title="wx.GenericDragImage.BeginDrag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BeginDrag</span></code></a></p></td>
+<td><p>Start dragging the image, in a window or full screen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GenericDragImage.DoDrawImage" title="wx.GenericDragImage.DoDrawImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoDrawImage</span></code></a></p></td>
+<td><p>Draws the image on the device context with top-left corner at the given position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GenericDragImage.EndDrag" title="wx.GenericDragImage.EndDrag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndDrag</span></code></a></p></td>
+<td><p>Call this when the drag has finished.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GenericDragImage.GetImageRect" title="wx.GenericDragImage.GetImageRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageRect</span></code></a></p></td>
+<td><p>Returns the rectangle enclosing the image, assuming that the image is drawn with its top-left corner at the given point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GenericDragImage.Hide" title="wx.GenericDragImage.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a></p></td>
+<td><p>Hides the image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GenericDragImage.Move" title="wx.GenericDragImage.Move"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Move</span></code></a></p></td>
+<td><p>Call this to move the image to a new position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GenericDragImage.Show" title="wx.GenericDragImage.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p></td>
+<td><p>Shows the image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GenericDragImage.UpdateBackingFromWindow" title="wx.GenericDragImage.UpdateBackingFromWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateBackingFromWindow</span></code></a></p></td>
+<td><p>Override this if you wish to draw the window contents to the backing bitmap yourself.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.GenericDragImage">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">GenericDragImage</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GenericDragImage</span><span class="p">()</span>
+
+<span class="n">GenericDragImage</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">NullCursor</span><span class="p">)</span>
+
+<span class="n">GenericDragImage</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">NullCursor</span><span class="p">)</span>
+
+<span class="n">GenericDragImage</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">NullCursor</span><span class="p">)</span>
+
+<span class="n">GenericDragImage</span><span class="p">(</span><span class="n">treeCtrl</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+
+<span class="n">GenericDragImage</span><span class="p">(</span><span class="n">listCtrl</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class is used when you wish to drag an object on the screen, and
+a simple cursor is not enough.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.GenericDragImage.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, image, cursor=NullCursor)</em></p>
+<p>Constructs a drag image from a bitmap and optional cursor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – Bitmap to be used as the drag image. The bitmap can have a mask.</p></li>
+<li><p><strong>cursor</strong> (<a class="reference internal" href="wx.Cursor.html#wx.Cursor" title="wx.Cursor"><em>wx.Cursor</em></a>) – Optional cursor to combine with the image.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, image, cursor=NullCursor)</em></p>
+<p>Constructs a drag image from an icon and optional cursor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><em>wx.Icon</em></a>) – Icon to be used as the drag image.</p></li>
+<li><p><strong>cursor</strong> (<a class="reference internal" href="wx.Cursor.html#wx.Cursor" title="wx.Cursor"><em>wx.Cursor</em></a>) – Optional cursor to combine with the image.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, text, cursor=NullCursor)</em></p>
+<p>Constructs a drag image from a text string and optional cursor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – Text used to construct a drag image.</p></li>
+<li><p><strong>cursor</strong> (<a class="reference internal" href="wx.Cursor.html#wx.Cursor" title="wx.Cursor"><em>wx.Cursor</em></a>) – Optional cursor to combine with the image.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, treeCtrl, id)</em></p>
+<p>Constructs a drag image from the text in the given tree control item, and optional cursor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>treeCtrl</strong> (<a class="reference internal" href="wx.TreeCtrl.html#wx.TreeCtrl" title="wx.TreeCtrl"><em>wx.TreeCtrl</em></a>) – Tree control for constructing a tree drag image.</p></li>
+<li><p><strong>id</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – Tree control item id.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, listCtrl, id)</em></p>
+<p>Constructs a drag image from the text in the given list control item, and optional cursor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listCtrl</strong> (<a class="reference internal" href="wx.ListCtrl.html#wx.ListCtrl" title="wx.ListCtrl"><em>wx.ListCtrl</em></a>) – List control for constructing a list drag image.</p></li>
+<li><p><strong>id</strong> (<em>long</em>) – List control item id.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GenericDragImage.BeginDrag">
+<code class="sig-name descname">BeginDrag</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage.BeginDrag" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>BeginDrag</strong> <em class="xref py py-obj">(self, hotspot, window, fullScreen=False, rect=None)</em></p>
+<p>Start dragging the image, in a window or full screen.</p>
+<p>You need to then call <a class="reference internal" href="#wx.GenericDragImage.Show" title="wx.GenericDragImage.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>   and <a class="reference internal" href="#wx.GenericDragImage.Move" title="wx.GenericDragImage.Move"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Move</span></code></a>   to show the image on the screen. Call <a class="reference internal" href="#wx.GenericDragImage.EndDrag" title="wx.GenericDragImage.EndDrag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndDrag</span></code></a>   when the drag has finished.</p>
+<p>Note that this call automatically calls CaptureMouse().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hotspot</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The location of the drag position relative to the upper-left corner of the image.</p></li>
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – The window that captures the mouse, and within which the dragging is limited unless fullScreen is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>fullScreen</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, specifies that the drag will be visible over the full screen, or over as much of the screen as is specified by rect. Note that the mouse will still be captured in window.</p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, specifies the rectangle (in screen coordinates) that bounds the dragging operation. Specifying this can make the operation more efficient by cutting down on the area under consideration, and it can also make a visual difference since the drag is clipped to this area.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>BeginDrag</strong> <em class="xref py py-obj">(self, hotspot, window, boundingWindow)</em></p>
+<p>Start dragging the image, using the first window to capture the mouse and the second to specify the bounding area.</p>
+<p>This form is equivalent to using the first form, but more convenient than working out the bounding rectangle explicitly.</p>
+<p>You need to then call <a class="reference internal" href="#wx.GenericDragImage.Show" title="wx.GenericDragImage.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>   and <a class="reference internal" href="#wx.GenericDragImage.Move" title="wx.GenericDragImage.Move"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Move</span></code></a>   to show the image on the screen. Call <a class="reference internal" href="#wx.GenericDragImage.EndDrag" title="wx.GenericDragImage.EndDrag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndDrag</span></code></a>   when the drag has finished.</p>
+<p>Note that this call automatically calls CaptureMouse().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hotspot</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The location of the drag position relative to the upper-left corner of the image.</p></li>
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – The window that captures the mouse, and within which the dragging is limited.</p></li>
+<li><p><strong>boundingWindow</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Specifies the area within which the drag occurs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GenericDragImage.DoDrawImage">
+<code class="sig-name descname">DoDrawImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage.DoDrawImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws the image on the device context with top-left corner at the given position.</p>
+<p>This function is only available with GenericDragImage, to allow applications to draw their own image instead of using an actual bitmap. If you override this function, you must also override <a class="reference internal" href="#wx.GenericDragImage.GetImageRect" title="wx.GenericDragImage.GetImageRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageRect</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GenericDragImage.EndDrag">
+<code class="sig-name descname">EndDrag</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage.EndDrag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this when the drag has finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function automatically releases mouse capture.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GenericDragImage.GetImageRect">
+<code class="sig-name descname">GetImageRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage.GetImageRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the rectangle enclosing the image, assuming that the image is drawn with its top-left corner at the given point.</p>
+<p>This function is available in GenericDragImage only, and may be overridden (together with <a class="reference internal" href="#wx.GenericDragImage.DoDrawImage" title="wx.GenericDragImage.DoDrawImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoDrawImage</span></code></a> ) to provide a virtual drawing capability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Rect.html#wx-rect"><span class="std std-ref">  wx.Rect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GenericDragImage.Hide">
+<code class="sig-name descname">Hide</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage.Hide" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hides the image.</p>
+<p>You may wish to call this before updating the window contents (perhaps highlighting an item). Then call <a class="reference internal" href="#wx.GenericDragImage.Move" title="wx.GenericDragImage.Move"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Move</span></code></a>   and <a class="reference internal" href="#wx.GenericDragImage.Show" title="wx.GenericDragImage.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GenericDragImage.Move">
+<code class="sig-name descname">Move</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pt</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage.Move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to move the image to a new position.</p>
+<p>The image will only be shown if <a class="reference internal" href="#wx.GenericDragImage.Show" title="wx.GenericDragImage.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>   has been called previously (for example at the start of the drag).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The position in client coordinates (relative to the window specified in <a class="reference internal" href="#wx.GenericDragImage.BeginDrag" title="wx.GenericDragImage.BeginDrag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BeginDrag</span></code></a> ).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GenericDragImage.Show">
+<code class="sig-name descname">Show</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage.Show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the image.</p>
+<p>Call this at least once when dragging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GenericDragImage.UpdateBackingFromWindow">
+<code class="sig-name descname">UpdateBackingFromWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">windowDC</em>, <em class="sig-param">destDC</em>, <em class="sig-param">sourceRect</em>, <em class="sig-param">destRect</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GenericDragImage.UpdateBackingFromWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this if you wish to draw the window contents to the backing bitmap yourself.</p>
+<p>This can be desirable if you wish to avoid flicker by not having to redraw the updated window itself just before dragging, which can cause a flicker just as the drag starts. Instead, paint the drag image’s backing bitmap to show the appropriate graphic <em class="xref py py-obj">minus</em>  the objects to be dragged, and leave the window itself to be updated by the drag image. This can provide eerily smooth, flicker-free drag behaviour.</p>
+<p>The default implementation copies the window contents to the backing bitmap. A new implementation will normally copy information from another source, such as from its own backing bitmap if it has one, or directly from internal data structures.</p>
+<p>This function is available in GenericDragImage only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>windowDC</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>destDC</strong> (<a class="reference internal" href="wx.MemoryDC.html#wx.MemoryDC" title="wx.MemoryDC"><em>wx.MemoryDC</em></a>) – </p></li>
+<li><p><strong>sourceRect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>destRect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

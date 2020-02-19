@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.tools.dbg — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.tools.dbg.Logger.html" rel="next" title="wx.tools.dbg.Logger"/>
+<link href="wx.tools.html" rel="prev" title="wx.tools"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.tools.html">
+<strong>wx.tools</strong></a> »</li>
+<li class="reltitle"> <strong>wx.tools.dbg</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.tools.dbg.Logger.html" title="wx.tools.dbg.Logger">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.tools.html" title="wx.tools">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.tools.dbg</strong></a><ul>
+<li><a class="reference internal" href="#class-summary-classes-summary"> Classes Summary</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.tools.dbg.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.tools.dbg"></span><div class="section" id="phoenix-title-wx-tools-dbg">
+<span id="wx-tools-dbg"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.tools.dbg</strong><a class="headerlink" href="#phoenix-title-wx-tools-dbg" title="Permalink to this headline">¶</a></h1>
+<p>This module provides a useful debugging framework that supports
+showing nesting of function calls and allows a program to contain
+lots of debugging print statements that can easily be turned on
+or off to debug the code.  It also supports the ability to
+have each function indent the debugging statements contained
+within it, including those of any other function called within
+its scope, thus allowing you to see in what order functions are
+being called, and from where.</p>
+<p>This capability is particularly useful in wxPython applications,
+where exactly events occur that cause functions to be called is
+not entirely clear, and because wxPython programs can’t be run
+from inside other debugging environments that have their own
+message loops.</p>
+<p>This module defines a Logger class, responsible for managing
+debugging output.  Each Logger instance can be given a name
+at construction; if this is done, ‘&lt;name&gt;:’ will precede each
+logging output made by that Logger instance.</p>
+<p>The log() function this class provides takes a set of positional
+arguments that are printed in order if debugging is enabled
+(just like print does), followed by a set of keyword arguments
+that control the behavior of the log() function itself on subsequent
+calls.  The current keyword arguments are:</p>
+<dl class="simple">
+<dt>indent</dt><dd><p>When set to a value of 1, this increments the current
+indentation level, causing all subsequent dbg() outputs to be
+indented by 3 more spaces.  When set to a value of 0,
+this process is reversed, causing the indent to decrease by
+3 spaces.  The default indentation level is 0.</p>
+</dd>
+<dt>enable</dt><dd><p>When set to a value of 1, this turns on dbg() output for
+for program importing this module, until told to do otherwise.
+When set to a value of 0, dbg output is turned off.  (dbg
+output is off by default.)</p>
+</dd>
+<dt>suspend</dt><dd><p>When set to a value of 1, this increments the current
+“suspension” level.  This makes it possible for a function
+to temporarily suspend its and any of its dependents’
+potential outputs that use the same Logger instance.
+When set to a value of 0, the suspension level is
+decremented.  When the value goes back to 0, potential
+logging is resumed (actual output depends on the
+“enable” status of the Logger instance in question.)</p>
+</dd>
+<dt>wxlog</dt><dd><p>When set to a value of 1, the output will be sent to the
+active wxLog target.</p>
+</dd>
+<dt>stream</dt><dd><p>When set to a non-None value, the current output stream
+(default of sys.stdout) is pushed onto a stack of streams,
+and is replaced in the dbg system with the specified stream.
+When called with a value of None, the previous stream will
+be restored (if stacked.)  If set to None without previously
+changing it will result in no action being taken.</p>
+</dd>
+</dl>
+<p>You can also call the log function implicitly on the Logger
+instance, ie. you can type:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wx.tools.dbg</span> <span class="kn">import</span> <span class="n">Logger</span>
+<span class="n">dbg</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">dbg</span><span class="p">(</span><span class="s1">'something to print'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using this fairly simple mechanism, it is possible to get fairly
+useful debugging output in a program.  Consider the following
+code example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s1">'a'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s1">'dictionary'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s1">'of'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="s1">'words'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dbg</span> <span class="o">=</span> <span class="n">dbg</span><span class="o">.</span><span class="n">Logger</span><span class="p">(</span><span class="s1">'module'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dbg</span><span class="p">(</span><span class="n">enable</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">module: dbg enabled</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">dbg</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">bar</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">dbg</span><span class="p">(</span><span class="s1">'end of foo'</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">dbg</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">dbg</span><span class="p">(</span><span class="s1">'contents of d:'</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">l</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">dbg</span><span class="p">(</span><span class="s1">'</span><span class="si">%d</span><span class="s1"> ='</span> <span class="o">%</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">dbg</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">dbg</span><span class="p">(</span><span class="s1">'end of bar'</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">module: foo</span>
+<span class="go">   module: bar</span>
+<span class="go">      module: contents of d:</span>
+<span class="go">         module: 1 = a</span>
+<span class="go">         module: 2 = dictionary</span>
+<span class="go">         module: 3 = of</span>
+<span class="go">         module: 4 = words</span>
+<span class="go">      module: end of bar</span>
+<span class="go">   module: end of foo</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="class-summary-classes-summary">
+<h2><a class="reference internal" href="_images/class_summary.png"><img alt="class_summary" class="align-middle" src="_images/class_summary.png" style="width: 32px;"/></a> Classes Summary<a class="headerlink" href="#class-summary-classes-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Logger</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.richtext.RichTextField — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.richtext.RichTextFieldType.html" rel="next" title="wx.richtext.RichTextFieldType"/>
+<link href="wx.richtext.RichTextEvent.html" rel="prev" title="wx.richtext.RichTextEvent"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.richtext.1moduleindex.html">
+<strong>wx.richtext</strong></a> »</li>
+<li class="reltitle"> <strong>wx.richtext.RichTextField</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.richtext.RichTextFieldType.html" title="wx.richtext.RichTextFieldType">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.richtext.RichTextEvent.html" title="wx.richtext.RichTextEvent">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.richtext.RichTextField</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.richtext.RichTextField.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-richtext-richtextfield">
+<span id="wx-richtext-richtextfield"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.richtext.RichTextField</strong><a class="headerlink" href="#phoenix-title-wx-richtext-richtextfield" title="Permalink to this headline">¶</a></h1>
+<p>This class implements the general concept of a field, an object that represents additional functionality such as a footnote, a bookmark, a page number, a table of contents, and so on.</p>
+<p>Extra information (such as a bookmark name) can be stored in the object properties.</p>
+<p>Drawing, layout, and property editing is delegated to classes derived from <a class="reference internal" href="wx.richtext.RichTextFieldType.html#wx-richtext-richtextfieldtype"><span class="std std-ref">  wx.richtext.RichTextFieldType</span></a>, such as instances of <a class="reference internal" href="wx.richtext.RichTextFieldTypeStandard.html#wx-richtext-richtextfieldtypestandard"><span class="std std-ref">  wx.richtext.RichTextFieldTypeStandard</span></a>; this makes the use of fields an efficient method of introducing extra functionality, since most of the information required to draw a field (such as a bitmap) is kept centrally in a single field type definition.</p>
+<p>The FieldType property, accessed by SetFieldType/GetFieldType, is used to retrieve the field type definition. So be careful not to overwrite this property.</p>
+<p><a class="reference internal" href="#wx-richtext-richtextfield"><span class="std std-ref">  wx.richtext.RichTextField</span></a>  is derived from <a class="reference internal" href="wx.richtext.RichTextParagraphLayoutBox.html#wx-richtext-richtextparagraphlayoutbox"><span class="std std-ref">  wx.richtext.RichTextParagraphLayoutBox</span></a>, which means that it can contain its own read-only content, refreshed when the application calls the UpdateField function. Whether a field is treated as a composite or a single graphic is determined by the field type definition. If using <a class="reference internal" href="wx.richtext.RichTextFieldTypeStandard.html#wx-richtext-richtextfieldtypestandard"><span class="std std-ref">  wx.richtext.RichTextFieldTypeStandard</span></a>, passing the display type <code class="docutils literal notranslate"><span class="pre">RICHTEXT_FIELD_STYLE_COMPOSITE</span></code> to the field type definition causes the field to behave like a composite; the other display styles display a simple graphic. When implementing a composite field, you will still need to derive from <a class="reference internal" href="wx.richtext.RichTextFieldTypeStandard.html#wx-richtext-richtextfieldtypestandard"><span class="std std-ref">  wx.richtext.RichTextFieldTypeStandard</span></a>  or <a class="reference internal" href="wx.richtext.RichTextFieldType.html#wx-richtext-richtextfieldtype"><span class="std std-ref">  wx.richtext.RichTextFieldType</span></a>, if only to implement UpdateField to refresh the field content appropriately. <a class="reference internal" href="wx.richtext.RichTextFieldTypeStandard.html#wx-richtext-richtextfieldtypestandard"><span class="std std-ref">  wx.richtext.RichTextFieldTypeStandard</span></a>  is only one possible implementation, but covers common needs especially for simple, static fields using text or a bitmap.</p>
+<p>Register field types on application initialisation with the static function <a class="reference internal" href="wx.richtext.RichTextBuffer.html#wx.richtext.RichTextBuffer.AddFieldType" title="wx.richtext.RichTextBuffer.AddFieldType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.richtext.RichTextBuffer.AddFieldType</span></code></a> . They will be deleted automatically on application exit.</p>
+<p>An application can write a field to a control with <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.WriteField" title="wx.richtext.RichTextCtrl.WriteField"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.richtext.RichTextCtrl.WriteField</span></code></a> , taking a field type, the properties for the field, and optional attributes.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.richtext.RichTextFieldTypeStandard.html#wx-richtext-richtextfieldtypestandard"><span class="std std-ref">  wx.richtext.RichTextFieldTypeStandard</span></a>, <a class="reference internal" href="wx.richtext.RichTextFieldType.html#wx-richtext-richtextfieldtype"><span class="std std-ref">  wx.richtext.RichTextFieldType</span></a>, <a class="reference internal" href="wx.richtext.RichTextParagraphLayoutBox.html#wx-richtext-richtextparagraphlayoutbox"><span class="std std-ref">  wx.richtext.RichTextParagraphLayoutBox</span></a>, <a class="reference internal" href="wx.richtext.RichTextProperties.html#wx-richtext-richtextproperties"><span class="std std-ref">  wx.richtext.RichTextProperties</span></a>, <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx-richtext-richtextctrl"><span class="std std-ref">  wx.richtext.RichTextCtrl</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>RichTextField</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of RichTextField" class="inheritance" src="_static/images/inheritance/wx.richtext.RichTextField_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="59,315,250,344" href="wx.richtext.RichTextField.html" id="node1" shape="rect" title="This class implements the general concept of a field, an object that represents additional functionality such as a footnote, a bookmark, a page number, a table of contents, and so on."/> <area alt="" coords="5,237,304,267" href="wx.richtext.RichTextParagraphLayoutBox.html" id="node2" shape="rect" title="This class knows how to lay out paragraphs."/> <area alt="" coords="18,160,291,189" href="wx.richtext.RichTextCompositeObject.html" id="node3" shape="rect" title="Objects of this class can contain other objects."/> <area alt="" coords="53,83,256,112" href="wx.richtext.RichTextObject.html" id="node4" shape="rect" title="This is the base for drawable rich text objects."/> <area alt="" coords="111,5,199,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%"/>
+<col style="width: 57%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.__init__" title="wx.richtext.RichTextField.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor; optionally pass the parent object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.AcceptsFocus" title="wx.richtext.RichTextField.AcceptsFocus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AcceptsFocus</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if objects of this class can accept the focus, i.e. a call to SetFocusObject is possible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.CalculateRange" title="wx.richtext.RichTextField.CalculateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CalculateRange</span></code></a></p></td>
+<td><p>Calculates the range of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.CanEditProperties" title="wx.richtext.RichTextField.CanEditProperties"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanEditProperties</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if we can edit the object’s properties via a GUI.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.Clone" title="wx.richtext.RichTextField.Clone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Clone</span></code></a></p></td>
+<td><p>Clones the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.Copy" title="wx.richtext.RichTextField.Copy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Copy</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.Draw" title="wx.richtext.RichTextField.Draw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Draw</span></code></a></p></td>
+<td><p>Draw the item, within the given range.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.EditProperties" title="wx.richtext.RichTextField.EditProperties"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EditProperties</span></code></a></p></td>
+<td><p>Edits the object’s properties via a GUI.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.GetFieldType" title="wx.richtext.RichTextField.GetFieldType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFieldType</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.GetPropertiesMenuLabel" title="wx.richtext.RichTextField.GetPropertiesMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPropertiesMenuLabel</span></code></a></p></td>
+<td><p>Returns the label to be used for the properties context menu item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.GetRangeSize" title="wx.richtext.RichTextField.GetRangeSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRangeSize</span></code></a></p></td>
+<td><p>Returns the object size for the given range.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.GetXMLNodeName" title="wx.richtext.RichTextField.GetXMLNodeName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetXMLNodeName</span></code></a></p></td>
+<td><p>Returns the <code class="docutils literal notranslate"><span class="pre">XML</span></code> node name of this object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.IsAtomic" title="wx.richtext.RichTextField.IsAtomic"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsAtomic</span></code></a></p></td>
+<td><p>If a field has children, we don’t want the user to be able to edit it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.IsEmpty" title="wx.richtext.RichTextField.IsEmpty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmpty</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the buffer is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.IsTopLevel" title="wx.richtext.RichTextField.IsTopLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsTopLevel</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this object is top-level, i.e. contains its own paragraphs, such as a text box.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.Layout" title="wx.richtext.RichTextField.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a></p></td>
+<td><p>Lay the item out at the specified position with the given size constraint.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.SetFieldType" title="wx.richtext.RichTextField.SetFieldType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFieldType</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.UpdateField" title="wx.richtext.RichTextField.UpdateField"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateField</span></code></a></p></td>
+<td><p>Update the field; delegated to the associated field type.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.FieldType" title="wx.richtext.RichTextField.FieldType"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FieldType</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.richtext.RichTextField.GetFieldType" title="wx.richtext.RichTextField.GetFieldType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFieldType</span></code></a> and <a class="reference internal" href="#wx.richtext.RichTextField.SetFieldType" title="wx.richtext.RichTextField.SetFieldType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFieldType</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.PropertiesMenuLabel" title="wx.richtext.RichTextField.PropertiesMenuLabel"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PropertiesMenuLabel</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.richtext.RichTextField.GetPropertiesMenuLabel" title="wx.richtext.RichTextField.GetPropertiesMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPropertiesMenuLabel</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextField.XMLNodeName" title="wx.richtext.RichTextField.XMLNodeName"><code class="xref py py-attr docutils literal notranslate"><span class="pre">XMLNodeName</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.richtext.RichTextField.GetXMLNodeName" title="wx.richtext.RichTextField.GetXMLNodeName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetXMLNodeName</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.richtext.RichTextField">
+<em class="property">class </em><code class="sig-prename descclassname">wx.richtext.</code><code class="sig-name descname">RichTextField</code><span class="sig-paren">(</span><em class="sig-param">RichTextParagraphLayoutBox</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RichTextField</span><span class="p">(</span><span class="n">fieldType</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">RichTextField</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class implements the general concept of a field, an object that
+represents additional functionality such as a footnote, a bookmark, a
+page number, a table of contents, and so on.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, fieldType=””, parent=None)</em></p>
+<p>Default constructor; optionally pass the parent object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fieldType</strong> (<em>string</em>) – </p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.richtext.RichTextObject.html#wx.richtext.RichTextObject" title="wx.richtext.RichTextObject"><em>wx.richtext.RichTextObject</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, obj)</em></p>
+<p>Copy constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>obj</strong> (<a class="reference internal" href="#wx.richtext.RichTextField" title="wx.richtext.RichTextField"><em>wx.richtext.RichTextField</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.AcceptsFocus">
+<code class="sig-name descname">AcceptsFocus</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.AcceptsFocus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if objects of this class can accept the focus, i.e. a call to SetFocusObject is possible.</p>
+<p>For example, containers supporting text, such as a text box object, can accept the focus, but a table can’t (set the focus to individual cells instead).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.CalculateRange">
+<code class="sig-name descname">CalculateRange</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">start</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.CalculateRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the range of the object.</p>
+<p>By default, guess that the object is 1 unit long.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>start</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">end</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.CanEditProperties">
+<code class="sig-name descname">CanEditProperties</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.CanEditProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if we can edit the object’s properties via a GUI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.Clone">
+<code class="sig-name descname">Clone</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.Clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clones the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.richtext.RichTextObject.html#wx-richtext-richtextobject"><span class="std std-ref">  wx.richtext.RichTextObject</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.Copy">
+<code class="sig-name descname">Copy</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">obj</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.Copy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>obj</strong> (<a class="reference internal" href="#wx.richtext.RichTextField" title="wx.richtext.RichTextField"><em>wx.richtext.RichTextField</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.Draw">
+<code class="sig-name descname">Draw</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em>, <em class="sig-param">context</em>, <em class="sig-param">range</em>, <em class="sig-param">selection</em>, <em class="sig-param">rect</em>, <em class="sig-param">descent</em>, <em class="sig-param">style</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.Draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the item, within the given range.</p>
+<p>Some objects may ignore the range (for example paragraphs) while others must obey it (lines, to implement wrapping)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="wx.richtext.RichTextDrawingContext.html#wx.richtext.RichTextDrawingContext" title="wx.richtext.RichTextDrawingContext"><em>wx.richtext.RichTextDrawingContext</em></a>) – </p></li>
+<li><p><strong>range</strong> (<a class="reference internal" href="wx.richtext.RichTextRange.html#wx.richtext.RichTextRange" title="wx.richtext.RichTextRange"><em>wx.richtext.RichTextRange</em></a>) – </p></li>
+<li><p><strong>selection</strong> (<a class="reference internal" href="wx.richtext.RichTextSelection.html#wx.richtext.RichTextSelection" title="wx.richtext.RichTextSelection"><em>wx.richtext.RichTextSelection</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>descent</strong> (<em>int</em>) – </p></li>
+<li><p><strong>style</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.EditProperties">
+<code class="sig-name descname">EditProperties</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.EditProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edits the object’s properties via a GUI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>buffer</strong> (<a class="reference internal" href="wx.richtext.RichTextBuffer.html#wx.richtext.RichTextBuffer" title="wx.richtext.RichTextBuffer"><em>wx.richtext.RichTextBuffer</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.GetFieldType">
+<code class="sig-name descname">GetFieldType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.GetFieldType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.GetPropertiesMenuLabel">
+<code class="sig-name descname">GetPropertiesMenuLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.GetPropertiesMenuLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label to be used for the properties context menu item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.GetRangeSize">
+<code class="sig-name descname">GetRangeSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">range</em>, <em class="sig-param">size</em>, <em class="sig-param">descent</em>, <em class="sig-param">dc</em>, <em class="sig-param">context</em>, <em class="sig-param">flags</em>, <em class="sig-param">position=Point(0</em>, <em class="sig-param">0)</em>, <em class="sig-param">parentSize=DefaultSize</em>, <em class="sig-param">partialExtents=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.GetRangeSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the object size for the given range.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if the range is invalid for this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>range</strong> (<a class="reference internal" href="wx.richtext.RichTextRange.html#wx.richtext.RichTextRange" title="wx.richtext.RichTextRange"><em>wx.richtext.RichTextRange</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>descent</strong> (<em>int</em>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="wx.richtext.RichTextDrawingContext.html#wx.richtext.RichTextDrawingContext" title="wx.richtext.RichTextDrawingContext"><em>wx.richtext.RichTextDrawingContext</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+<li><p><strong>position</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>parentSize</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>partialExtents</strong> (<em>list of integers</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.GetXMLNodeName">
+<code class="sig-name descname">GetXMLNodeName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.GetXMLNodeName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <code class="docutils literal notranslate"><span class="pre">XML</span></code> node name of this object.</p>
+<p>This must be overridden for XmlNode-base <code class="docutils literal notranslate"><span class="pre">XML</span></code> export to work.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.IsAtomic">
+<code class="sig-name descname">IsAtomic</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.IsAtomic" title="Permalink to this definition">¶</a></dt>
+<dd><p>If a field has children, we don’t want the user to be able to edit it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.IsEmpty">
+<code class="sig-name descname">IsEmpty</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the buffer is empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.IsTopLevel">
+<code class="sig-name descname">IsTopLevel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.IsTopLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this object is top-level, i.e. contains its own paragraphs, such as a text box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.Layout">
+<code class="sig-name descname">Layout</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em>, <em class="sig-param">context</em>, <em class="sig-param">rect</em>, <em class="sig-param">parentRect</em>, <em class="sig-param">style</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.Layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lay the item out at the specified position with the given size constraint.</p>
+<p>Layout must set the cached size. <em class="xref py py-obj">rect</em>  is the available space for the object, and <em class="xref py py-obj">parentRect</em>  is the container that is used to determine a relative size or position (for example if a text box must be 50% of the parent text box).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="wx.richtext.RichTextDrawingContext.html#wx.richtext.RichTextDrawingContext" title="wx.richtext.RichTextDrawingContext"><em>wx.richtext.RichTextDrawingContext</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>parentRect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.SetFieldType">
+<code class="sig-name descname">SetFieldType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">fieldType</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.SetFieldType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fieldType</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextField.UpdateField">
+<code class="sig-name descname">UpdateField</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextField.UpdateField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the field; delegated to the associated field type.</p>
+<p>This would typically expand the field to its value, if this is a dynamically changing and/or composite field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>buffer</strong> (<a class="reference internal" href="wx.richtext.RichTextBuffer.html#wx.richtext.RichTextBuffer" title="wx.richtext.RichTextBuffer"><em>wx.richtext.RichTextBuffer</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.richtext.RichTextField.FieldType">
+<code class="sig-name descname">FieldType</code><a class="headerlink" href="#wx.richtext.RichTextField.FieldType" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.richtext.RichTextField.GetFieldType" title="wx.richtext.RichTextField.GetFieldType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFieldType</span></code></a> and <a class="reference internal" href="#wx.richtext.RichTextField.SetFieldType" title="wx.richtext.RichTextField.SetFieldType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFieldType</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.richtext.RichTextField.PropertiesMenuLabel">
+<code class="sig-name descname">PropertiesMenuLabel</code><a class="headerlink" href="#wx.richtext.RichTextField.PropertiesMenuLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.richtext.RichTextField.GetPropertiesMenuLabel" title="wx.richtext.RichTextField.GetPropertiesMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPropertiesMenuLabel</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.richtext.RichTextField.XMLNodeName">
+<code class="sig-name descname">XMLNodeName</code><a class="headerlink" href="#wx.richtext.RichTextField.XMLNodeName" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.richtext.RichTextField.GetXMLNodeName" title="wx.richtext.RichTextField.GetXMLNodeName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetXMLNodeName</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

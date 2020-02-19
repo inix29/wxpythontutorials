@@ -1,0 +1,1144 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Dialog — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.DialogLayoutAdaptationMode.enumeration.html" rel="next" title="wx.DialogLayoutAdaptationMode"/>
+<link href="wx.DelegateRendererNative.html" rel="prev" title="wx.DelegateRendererNative"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Dialog</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.DialogLayoutAdaptationMode.enumeration.html" title="wx.DialogLayoutAdaptationMode">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.DelegateRendererNative.html" title="wx.DelegateRendererNative">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Dialog</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-modal-and-modeless"> Modal and Modeless</a></li>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Dialog.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-dialog">
+<span id="wx-dialog"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Dialog</strong><a class="headerlink" href="#phoenix-title-wx-dialog" title="Permalink to this headline">¶</a></h1>
+<p>A dialog box is a window with a title bar and sometimes a system menu, which can be moved around the screen.</p>
+<p>It can contain controls and other windows and is often used to allow the user to make some choice or to answer a question.</p>
+<p>Dialogs can be made scrollable, automatically, for computers with low resolution screens: please see <a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  for further details.</p>
+<p>Dialogs usually contain either a single button allowing to close the dialog or two buttons, one accepting the changes and the other one discarding them (such button, if present, is automatically activated if the user presses the “Esc” key). By default, buttons with the standard <code class="docutils literal notranslate"><span class="pre">wx.ID_OK</span></code> and <code class="docutils literal notranslate"><span class="pre">wx.ID_CANCEL</span></code> identifiers behave as expected. Starting with wxWidgets 2.7 it is also possible to use a button with a different identifier instead, see <a class="reference internal" href="#wx.Dialog.SetAffirmativeId" title="wx.Dialog.SetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAffirmativeId</span></code></a>  and <a class="reference internal" href="#wx.Dialog.SetEscapeId" title="wx.Dialog.SetEscapeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEscapeId</span></code></a>.</p>
+<p>Also notice that the <a class="reference internal" href="#wx.Dialog.CreateButtonSizer" title="wx.Dialog.CreateButtonSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateButtonSizer</span></code></a>  should be used to create the buttons appropriate for the current platform and positioned correctly (including their order which is platform-dependent).</p>
+<div class="section" id="phoenix-title-modal-and-modeless">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Modal and Modeless<a class="headerlink" href="#phoenix-title-modal-and-modeless" title="Permalink to this headline">¶</a></h2>
+<p>There are two kinds of dialog, modal and modeless. A modal dialog blocks program flow and user input on other windows until it is dismissed, whereas a modeless dialog behaves more like a frame in that program flow continues, and input in other windows is still possible. To show a modal dialog you should use the <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>  method while to show a dialog modelessly you simply use <a class="reference internal" href="#wx.Dialog.Show" title="wx.Dialog.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>, just as with frames. Note that the modal dialog is one of the very few examples of Window-derived objects which may be created on the stack and not on the heap. In other words, while most windows would be created like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># In Python we don't have to worry about the stack vs. the heap, however</span>
+<span class="c1"># that means that dialogs do need to be destroyed. The typical pattern for</span>
+<span class="c1"># dialog usage looks something like this:</span>
+<span class="k">def</span> <span class="nf">AskUser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">MyAskDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+            <span class="c1"># do something here</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Hello'</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># handle dialog being cancelled or ended by some other button</span>
+            <span class="o">...</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="c1"># explicitly cause the dialog to destroy itself</span>
+        <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can achieve the same result with dialogs by using simpler code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Things can be made a little simpler in Python by using the dialog as a</span>
+<span class="c1"># context manager, using the with statement, like this:</span>
+<span class="k">def</span> <span class="nf">AskUser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">MyAskDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="k">as</span> <span class="n">dlg</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+            <span class="c1"># do something here</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Hello'</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># handle dialog being cancelled or ended by some other button</span>
+            <span class="o">...</span>
+
+    <span class="c1"># The dialog is automatically destroyed on exit from the context manager</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="styles-window-styles">
+<span id="dialog-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>An application can define a <a class="reference internal" href="wx.CloseEvent.html#wx-closeevent"><span class="std std-ref">  wx.CloseEvent</span></a>  handler for the dialog to respond to system close events. This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.CAPTION</span></code>: Puts a caption on the dialog box.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.DEFAULT_DIALOG_STYLE</span></code>: Equivalent to a combination of <code class="docutils literal notranslate"><span class="pre">wx.CAPTION</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.CLOSE_BOX</span></code> and <code class="docutils literal notranslate"><span class="pre">wx.SYSTEM_MENU</span></code> (the last one is not used under Unix).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.RESIZE_BORDER</span></code>: Display a resizable frame around the window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.SYSTEM_MENU</span></code>: Display a system menu.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.CLOSE_BOX</span></code>: Displays a close box on the frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.MAXIMIZE_BOX</span></code>: Displays a maximize box on the dialog.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.MINIMIZE_BOX</span></code>: Displays a minimize box on the dialog.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">THICK_FRAME</span></code>: Display a thick frame around the window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.STAY_ON_TOP</span></code>: The dialog stays on top of all other windows.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NO_3D</span></code>: This style is obsolete and doesn’t do anything any more, don’t use it in any new code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.DIALOG_NO_PARENT</span></code>: By default, a dialog created with a <code class="docutils literal notranslate"><span class="pre">None</span></code> parent window will be given the <a class="reference internal" href="wx.App.html#wx-app"><span class="std std-ref">application’s top level window</span></a>  as parent. Use this style to prevent this from happening and create an orphan dialog. This is not recommended for modal dialogs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.DIALOG_EX_CONTEXTHELP</span></code>: Under Windows, puts a query button on the caption. When pressed, Windows will go into a context-sensitive help mode and wxWidgets will send a  <code class="docutils literal notranslate"><span class="pre">wxEVT_HELP</span></code>   event if the user clicked on an application window. Note that this is an extended style and must be set by calling  <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExtraStyle</span></code>  before Create is called (two-step construction).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.DIALOG_EX_METAL</span></code>: On Mac OS X, frames with this style will be shown with a metallic look. This is an extra style.</p></li>
+</ul>
+<p>Under Unix or Linux, <code class="docutils literal notranslate"><span class="pre">MWM</span></code> (the Motif Window Manager) or other window managers recognizing the <code class="docutils literal notranslate"><span class="pre">MHM</span></code> hints should be running for any of these styles to have an effect.</p>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="dialog-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive one of the <a class="reference internal" href="wx.CloseEvent.html#wx-closeevent"><span class="std std-ref">  wx.CloseEvent</span></a> parameters.</p>
+<ul class="simple">
+<li><p>EVT_CLOSE: The dialog is being closed by the user or programmatically (see <a class="reference internal" href="wx.Window.html#wx.Window.Close" title="wx.Window.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Close</span></code></a> ). The user may generate this event clicking the close button (typically the ‘X’ on the top-right of the title bar) if it’s present (see the  <code class="docutils literal notranslate"><span class="pre">CLOSE_BOX</span></code>   style) or by clicking a button with the   <code class="docutils literal notranslate"><span class="pre">ID_CANCEL</span></code>   or   <code class="docutils literal notranslate"><span class="pre">ID_OK</span></code>   ids.</p></li>
+<li><p>EVT_INIT_DIALOG: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_INIT_DIALOG</span></code>   event. See  <a class="reference internal" href="wx.InitDialogEvent.html#wx-initdialogevent"><span class="std std-ref">  wx.InitDialogEvent</span></a>.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#dialog-overview"><span class="std std-ref">Dialog Overview</span></a>, <a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a>, <a class="reference internal" href="validator_overview.html#validator-overview"><span class="std std-ref">Validator Overview</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Dialog</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Dialog" class="inheritance" src="_static/images/inheritance/wx.Dialog_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="67,392,155,421" href="wx.Dialog.html" id="node1" shape="rect" title="A dialog box is a window with a title bar and sometimes a system menu, which can be moved around the screen."/> <area alt="" coords="31,315,190,344" href="wx.TopLevelWindow.html" id="node2" shape="rect" title="wx.TopLevelWindow  is a common base class for wx.Dialog  and wx.Frame."/> <area alt="" coords="25,237,196,267" href="wx.NonOwnedWindow.html" id="node3" shape="rect" title="Common base class for all non-child windows."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node4" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node5" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node6" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node7" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/wx.dialog.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/no_appearance.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.dialog1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.ColourDialog.html#wx-colourdialog"><span class="std std-ref">  wx.ColourDialog</span></a>, <a class="reference internal" href="wx.DirDialog.html#wx-dirdialog"><span class="std std-ref">  wx.DirDialog</span></a>, <a class="reference internal" href="wx.FileDialog.html#wx-filedialog"><span class="std std-ref">  wx.FileDialog</span></a>, <a class="reference internal" href="wx.FindReplaceDialog.html#wx-findreplacedialog"><span class="std std-ref">  wx.FindReplaceDialog</span></a>, <a class="reference internal" href="wx.FontDialog.html#wx-fontdialog"><span class="std std-ref">  wx.FontDialog</span></a>, <a class="reference internal" href="wx.GenericProgressDialog.html#wx-genericprogressdialog"><span class="std std-ref">  wx.GenericProgressDialog</span></a>, <a class="reference internal" href="wx.html.HtmlHelpDialog.html#wx-html-htmlhelpdialog"><span class="std std-ref">  wx.html.HtmlHelpDialog</span></a>, <a class="reference internal" href="wx.MessageDialog.html#wx-messagedialog"><span class="std std-ref">  wx.MessageDialog</span></a>, <a class="reference internal" href="wx.MultiChoiceDialog.html#wx-multichoicedialog"><span class="std std-ref">  wx.MultiChoiceDialog</span></a>, <a class="reference internal" href="wx.NumberEntryDialog.html#wx-numberentrydialog"><span class="std std-ref">  wx.NumberEntryDialog</span></a>, <a class="reference internal" href="wx.propgrid.PGArrayEditorDialog.html#wx-propgrid-pgarrayeditordialog"><span class="std std-ref">  wx.propgrid.PGArrayEditorDialog</span></a>, <a class="reference internal" href="wx.PrintAbortDialog.html#wx-printabortdialog"><span class="std std-ref">  wx.PrintAbortDialog</span></a>, <a class="reference internal" href="wx.adv.PropertySheetDialog.html#wx-adv-propertysheetdialog"><span class="std std-ref">  wx.adv.PropertySheetDialog</span></a>, <a class="reference internal" href="wx.RearrangeDialog.html#wx-rearrangedialog"><span class="std std-ref">  wx.RearrangeDialog</span></a>, <a class="reference internal" href="wx.richtext.RichTextStyleOrganiserDialog.html#wx-richtext-richtextstyleorganiserdialog"><span class="std std-ref">  wx.richtext.RichTextStyleOrganiserDialog</span></a>, <a class="reference internal" href="wx.SingleChoiceDialog.html#wx-singlechoicedialog"><span class="std std-ref">  wx.SingleChoiceDialog</span></a>, <a class="reference internal" href="wx.richtext.SymbolPickerDialog.html#wx-richtext-symbolpickerdialog"><span class="std std-ref">  wx.richtext.SymbolPickerDialog</span></a>, <a class="reference internal" href="wx.TextEntryDialog.html#wx-textentrydialog"><span class="std std-ref">  wx.TextEntryDialog</span></a>, <a class="reference internal" href="wx.adv.Wizard.html#wx-adv-wizard"><span class="std std-ref">  wx.adv.Wizard</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%"/>
+<col style="width: 68%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.__init__" title="wx.Dialog.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.AddMainButtonId" title="wx.Dialog.AddMainButtonId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddMainButtonId</span></code></a></p></td>
+<td><p>Adds an identifier to be regarded as a main button for the non-scrolling area of a dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.CanDoLayoutAdaptation" title="wx.Dialog.CanDoLayoutAdaptation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanDoLayoutAdaptation</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this dialog can and should perform layout adaptation using <code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLayoutAdaptation</span></code> , usually if the dialog is too large to fit on the display.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.Centre" title="wx.Dialog.Centre"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Centre</span></code></a></p></td>
+<td><p>Centres the dialog box on the display.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.Create" title="wx.Dialog.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Used for two-step dialog box construction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.CreateButtonSizer" title="wx.Dialog.CreateButtonSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateButtonSizer</span></code></a></p></td>
+<td><p>Creates a sizer with standard buttons.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.CreateSeparatedButtonSizer" title="wx.Dialog.CreateSeparatedButtonSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateSeparatedButtonSizer</span></code></a></p></td>
+<td><p>Creates a sizer with standard buttons using <code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateButtonSizer</span></code>   separated from the rest of the dialog contents by a horizontal <a class="reference internal" href="wx.StaticLine.html#wx-staticline"><span class="std std-ref">  wx.StaticLine</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.CreateSeparatedSizer" title="wx.Dialog.CreateSeparatedSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateSeparatedSizer</span></code></a></p></td>
+<td><p>Returns the sizer containing the given one with a separating <a class="reference internal" href="wx.StaticLine.html#wx-staticline"><span class="std std-ref">  wx.StaticLine</span></a>  if necessarily.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.CreateStdDialogButtonSizer" title="wx.Dialog.CreateStdDialogButtonSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStdDialogButtonSizer</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="wx.StdDialogButtonSizer.html#wx-stddialogbuttonsizer"><span class="std std-ref">  wx.StdDialogButtonSizer</span></a>  with standard buttons.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.CreateTextSizer" title="wx.Dialog.CreateTextSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateTextSizer</span></code></a></p></td>
+<td><p>Splits text up at newlines and places the lines into <a class="reference internal" href="wx.StaticText.html#wx-statictext"><span class="std std-ref">  wx.StaticText</span></a>  objects in a vertical <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.DoLayoutAdaptation" title="wx.Dialog.DoLayoutAdaptation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLayoutAdaptation</span></code></a></p></td>
+<td><p>Performs layout adaptation, usually if the dialog is too large to fit on the display.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.EnableLayoutAdaptation" title="wx.Dialog.EnableLayoutAdaptation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableLayoutAdaptation</span></code></a></p></td>
+<td><p>A static function enabling or disabling layout adaptation for all dialogs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.EndModal" title="wx.Dialog.EndModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndModal</span></code></a></p></td>
+<td><p>Ends a modal dialog, passing a value to be returned from the <code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code>   invocation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.GetAffirmativeId" title="wx.Dialog.GetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAffirmativeId</span></code></a></p></td>
+<td><p>Gets the identifier of the button which works like standard <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> button in this dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.GetClassDefaultAttributes" title="wx.Dialog.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.GetContentWindow" title="wx.Dialog.GetContentWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetContentWindow</span></code></a></p></td>
+<td><p>Override this to return a window containing the main content of the dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.GetEscapeId" title="wx.Dialog.GetEscapeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEscapeId</span></code></a></p></td>
+<td><p>Gets the identifier of the button to map presses of  <code class="docutils literal notranslate"><span class="pre">ESC</span></code>   button to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.GetLayoutAdaptationDone" title="wx.Dialog.GetLayoutAdaptationDone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdaptationDone</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the dialog has been adapted, usually by making it scrollable to work with a small display.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.GetLayoutAdaptationLevel" title="wx.Dialog.GetLayoutAdaptationLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdaptationLevel</span></code></a></p></td>
+<td><p>Gets a value representing the aggressiveness of search for buttons and sizers to be in the non-scrolling part of a layout-adapted dialog.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.GetLayoutAdaptationMode" title="wx.Dialog.GetLayoutAdaptationMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdaptationMode</span></code></a></p></td>
+<td><p>Gets the adaptation mode, overriding the global adaptation flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.GetLayoutAdapter" title="wx.Dialog.GetLayoutAdapter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdapter</span></code></a></p></td>
+<td><p>A static function getting the current layout adapter object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.GetMainButtonIds" title="wx.Dialog.GetMainButtonIds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMainButtonIds</span></code></a></p></td>
+<td><p>Returns an array of identifiers to be regarded as the main buttons for the non-scrolling area of a dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.GetReturnCode" title="wx.Dialog.GetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetReturnCode</span></code></a></p></td>
+<td><p>Gets the return code for this window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.Iconize" title="wx.Dialog.Iconize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Iconize</span></code></a></p></td>
+<td><p>Iconizes or restores the dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.IsIconized" title="wx.Dialog.IsIconized"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsIconized</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the dialog box is iconized.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.IsLayoutAdaptationEnabled" title="wx.Dialog.IsLayoutAdaptationEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsLayoutAdaptationEnabled</span></code></a></p></td>
+<td><p>A static function returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if layout adaptation is enabled for all dialogs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.IsMainButtonId" title="wx.Dialog.IsMainButtonId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsMainButtonId</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em class="xref py py-obj">id</em>  is in the array of identifiers to be regarded as the main buttons for the non-scrolling area of a dialog.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.IsModal" title="wx.Dialog.IsModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsModal</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the dialog box is modal, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.SetAffirmativeId" title="wx.Dialog.SetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAffirmativeId</span></code></a></p></td>
+<td><p>Sets the identifier to be used as <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> button.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.SetEscapeId" title="wx.Dialog.SetEscapeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEscapeId</span></code></a></p></td>
+<td><p>Sets the identifier of the button which should work like the standard “Cancel” button in this dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.SetIcon" title="wx.Dialog.SetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetIcon</span></code></a></p></td>
+<td><p>Sets the icon for this dialog.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.SetIcons" title="wx.Dialog.SetIcons"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetIcons</span></code></a></p></td>
+<td><p>Sets the icons for this dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.SetLayoutAdaptationDone" title="wx.Dialog.SetLayoutAdaptationDone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdaptationDone</span></code></a></p></td>
+<td><p>Marks the dialog as having been adapted, usually by making it scrollable to work with a small display.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.SetLayoutAdaptationLevel" title="wx.Dialog.SetLayoutAdaptationLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdaptationLevel</span></code></a></p></td>
+<td><p>Sets the aggressiveness of search for buttons and sizers to be in the non-scrolling part of a layout-adapted dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.SetLayoutAdaptationMode" title="wx.Dialog.SetLayoutAdaptationMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdaptationMode</span></code></a></p></td>
+<td><p>Sets the adaptation mode, overriding the global adaptation flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.SetLayoutAdapter" title="wx.Dialog.SetLayoutAdapter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdapter</span></code></a></p></td>
+<td><p>A static function for setting the current layout adapter object, returning the old adapter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.SetReturnCode" title="wx.Dialog.SetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetReturnCode</span></code></a></p></td>
+<td><p>Sets the return code for this window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.Show" title="wx.Dialog.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p></td>
+<td><p>Hides or shows the dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a></p></td>
+<td><p>Shows an application-modal dialog.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.ShowWindowModal" title="wx.Dialog.ShowWindowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowWindowModal</span></code></a></p></td>
+<td><p>Shows a dialog modal to the parent top level window only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.__enter__" title="wx.Dialog.__enter__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__enter__</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.__exit__" title="wx.Dialog.__exit__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__exit__</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%"/>
+<col style="width: 54%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.AffirmativeId" title="wx.Dialog.AffirmativeId"><code class="xref py py-attr docutils literal notranslate"><span class="pre">AffirmativeId</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Dialog.GetAffirmativeId" title="wx.Dialog.GetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAffirmativeId</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetAffirmativeId" title="wx.Dialog.SetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAffirmativeId</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.ContentWindow" title="wx.Dialog.ContentWindow"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ContentWindow</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Dialog.GetContentWindow" title="wx.Dialog.GetContentWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetContentWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.EscapeId" title="wx.Dialog.EscapeId"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EscapeId</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Dialog.GetEscapeId" title="wx.Dialog.GetEscapeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEscapeId</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetEscapeId" title="wx.Dialog.SetEscapeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEscapeId</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.LayoutAdaptationDone" title="wx.Dialog.LayoutAdaptationDone"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LayoutAdaptationDone</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Dialog.GetLayoutAdaptationDone" title="wx.Dialog.GetLayoutAdaptationDone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdaptationDone</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetLayoutAdaptationDone" title="wx.Dialog.SetLayoutAdaptationDone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdaptationDone</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.LayoutAdaptationLevel" title="wx.Dialog.LayoutAdaptationLevel"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LayoutAdaptationLevel</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Dialog.GetLayoutAdaptationLevel" title="wx.Dialog.GetLayoutAdaptationLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdaptationLevel</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetLayoutAdaptationLevel" title="wx.Dialog.SetLayoutAdaptationLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdaptationLevel</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.LayoutAdaptationMode" title="wx.Dialog.LayoutAdaptationMode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LayoutAdaptationMode</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Dialog.GetLayoutAdaptationMode" title="wx.Dialog.GetLayoutAdaptationMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdaptationMode</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetLayoutAdaptationMode" title="wx.Dialog.SetLayoutAdaptationMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdaptationMode</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Dialog.MainButtonIds" title="wx.Dialog.MainButtonIds"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MainButtonIds</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Dialog.GetMainButtonIds" title="wx.Dialog.GetMainButtonIds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMainButtonIds</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Dialog.ReturnCode" title="wx.Dialog.ReturnCode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ReturnCode</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Dialog.GetReturnCode" title="wx.Dialog.GetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetReturnCode</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetReturnCode" title="wx.Dialog.SetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetReturnCode</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Dialog">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Dialog</code><span class="sig-paren">(</span><em class="sig-param">TopLevelWindow</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dialog</span><span class="p">()</span>
+
+<span class="n">Dialog</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span>
+       <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">DEFAULT_DIALOG_STYLE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">DialogNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A dialog box is a window with a title bar and sometimes a system menu,
+which can be moved around the screen.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Dialog.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, title=””, pos=DefaultPosition, size=DefaultSize, style=DEFAULT_DIALOG_STYLE, name=DialogNameStr)</em></p>
+<p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Can be <code class="docutils literal notranslate"><span class="pre">None</span></code>, a frame or another dialog box.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – An identifier for the dialog. A value of -1 is taken to mean a default.</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – The title of the dialog.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The dialog position. The value DefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – The dialog size. The value DefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – The window style.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – Used to associate a name with the window, allowing the application user to set Motif resource values for individual dialog boxes.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Dialog.Create" title="wx.Dialog.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.AddMainButtonId">
+<code class="sig-name descname">AddMainButtonId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.AddMainButtonId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an identifier to be regarded as a main button for the non-scrolling area of a dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>wx.WindowID</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.CanDoLayoutAdaptation">
+<code class="sig-name descname">CanDoLayoutAdaptation</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.CanDoLayoutAdaptation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this dialog can and should perform layout adaptation using <a class="reference internal" href="#wx.Dialog.DoLayoutAdaptation" title="wx.Dialog.DoLayoutAdaptation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLayoutAdaptation</span></code></a> , usually if the dialog is too large to fit on the display.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.Centre">
+<code class="sig-name descname">Centre</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">direction=BOTH</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.Centre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centres the dialog box on the display.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>direction</strong> (<em>int</em>) – May be <code class="docutils literal notranslate"><span class="pre">wx.HORIZONTAL</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.VERTICAL</span></code> or <code class="docutils literal notranslate"><span class="pre">wx.BOTH</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">title=""</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=DEFAULT_DIALOG_STYLE</em>, <em class="sig-param">name=DialogNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for two-step dialog box construction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>title</strong> (<em>string</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx-dialog"><span class="std std-ref">  wx.Dialog</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.CreateButtonSizer">
+<code class="sig-name descname">CreateButtonSizer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.CreateButtonSizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a sizer with standard buttons.</p>
+<p><em class="xref py py-obj">flags</em>  is a bit list of the following flags: <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.CANCEL</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.YES</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.NO</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.APPLY</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.CLOSE</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.HELP</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.NO_DEFAULT</span></code>.</p>
+<p>The sizer lays out the buttons in a manner appropriate to the platform.</p>
+<p>This function uses <a class="reference internal" href="#wx.Dialog.CreateStdDialogButtonSizer" title="wx.Dialog.CreateStdDialogButtonSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateStdDialogButtonSizer</span></code></a>   internally for most platforms but doesn’t create the sizer at all for the platforms with hardware buttons (such as smartphones) for which it sets up the hardware buttons appropriately and returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, so don’t forget to test that the return value is valid before using it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Sizer.html#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.CreateSeparatedButtonSizer">
+<code class="sig-name descname">CreateSeparatedButtonSizer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.CreateSeparatedButtonSizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a sizer with standard buttons using <a class="reference internal" href="#wx.Dialog.CreateButtonSizer" title="wx.Dialog.CreateButtonSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateButtonSizer</span></code></a>   separated from the rest of the dialog contents by a horizontal <a class="reference internal" href="wx.StaticLine.html#wx-staticline"><span class="std std-ref">  wx.StaticLine</span></a>.</p>
+<p>This is a combination of  <a class="reference internal" href="#wx.Dialog.CreateButtonSizer" title="wx.Dialog.CreateButtonSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateButtonSizer</span></code></a>   and <a class="reference internal" href="#wx.Dialog.CreateSeparatedSizer" title="wx.Dialog.CreateSeparatedSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateSeparatedSizer</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Sizer.html#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Just like <a class="reference internal" href="#wx.Dialog.CreateButtonSizer" title="wx.Dialog.CreateButtonSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateButtonSizer</span></code></a> , this function may return <code class="docutils literal notranslate"><span class="pre">None</span></code> if no buttons were created.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.CreateSeparatedSizer">
+<code class="sig-name descname">CreateSeparatedSizer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sizer</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.CreateSeparatedSizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sizer containing the given one with a separating <a class="reference internal" href="wx.StaticLine.html#wx-staticline"><span class="std std-ref">  wx.StaticLine</span></a>  if necessarily.</p>
+<p>This function is useful for creating the sizer containing footer-like contents in dialog boxes. It will add a separating static line only if it conforms to the current platform convention (currently it is not added under Mac where the use of static lines for grouping is discouraged and is added elsewhere).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sizer</strong> (<a class="reference internal" href="wx.Sizer.html#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – The sizer to wrap, must be not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Sizer.html#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The sizer wrapping the input one or possibly the input sizer itself if no wrapping is necessary.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.CreateStdDialogButtonSizer">
+<code class="sig-name descname">CreateStdDialogButtonSizer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.CreateStdDialogButtonSizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="wx.StdDialogButtonSizer.html#wx-stddialogbuttonsizer"><span class="std std-ref">  wx.StdDialogButtonSizer</span></a>  with standard buttons.</p>
+<p><em class="xref py py-obj">flags</em>  is a bit list of the following flags: <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.CANCEL</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.YES</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.NO</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.APPLY</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.CLOSE</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.HELP</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.NO_DEFAULT</span></code>.</p>
+<p>The sizer lays out the buttons in a manner appropriate to the platform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.StdDialogButtonSizer.html#wx-stddialogbuttonsizer"><span class="std std-ref">  wx.StdDialogButtonSizer</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.CreateTextSizer">
+<code class="sig-name descname">CreateTextSizer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.CreateTextSizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits text up at newlines and places the lines into <a class="reference internal" href="wx.StaticText.html#wx-statictext"><span class="std std-ref">  wx.StaticText</span></a>  objects in a vertical <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Sizer.html#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.DoLayoutAdaptation">
+<code class="sig-name descname">DoLayoutAdaptation</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.DoLayoutAdaptation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs layout adaptation, usually if the dialog is too large to fit on the display.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.EnableLayoutAdaptation">
+<em class="property">static </em><code class="sig-name descname">EnableLayoutAdaptation</code><span class="sig-paren">(</span><em class="sig-param">enable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.EnableLayoutAdaptation" title="Permalink to this definition">¶</a></dt>
+<dd><p>A static function enabling or disabling layout adaptation for all dialogs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.EndModal">
+<code class="sig-name descname">EndModal</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">retCode</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.EndModal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ends a modal dialog, passing a value to be returned from the <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>   invocation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>retCode</strong> (<em>int</em>) – The value that should be returned by ShowModal.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a> , <a class="reference internal" href="#wx.Dialog.GetReturnCode" title="wx.Dialog.GetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetReturnCode</span></code></a> , <a class="reference internal" href="#wx.Dialog.SetReturnCode" title="wx.Dialog.SetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetReturnCode</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetAffirmativeId">
+<code class="sig-name descname">GetAffirmativeId</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetAffirmativeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the identifier of the button which works like standard <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> button in this dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Dialog.SetAffirmativeId" title="wx.Dialog.SetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAffirmativeId</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetContentWindow">
+<code class="sig-name descname">GetContentWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetContentWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to return a window containing the main content of the dialog.</p>
+<p>This is particularly useful when the dialog implements pages, such as <a class="reference internal" href="wx.adv.PropertySheetDialog.html#wx-adv-propertysheetdialog"><span class="std std-ref">  wx.adv.PropertySheetDialog</span></a>, and allows the <a class="reference internal" href="dialog_overview.html#layout-adaptation-code"><span class="std std-ref">layout adaptation code</span></a>  to know that only the pages need to be made scrollable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetEscapeId">
+<code class="sig-name descname">GetEscapeId</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetEscapeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the identifier of the button to map presses of  <code class="docutils literal notranslate"><span class="pre">ESC</span></code>   button to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Dialog.SetEscapeId" title="wx.Dialog.SetEscapeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEscapeId</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetLayoutAdaptationDone">
+<code class="sig-name descname">GetLayoutAdaptationDone</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetLayoutAdaptationDone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the dialog has been adapted, usually by making it scrollable to work with a small display.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetLayoutAdaptationLevel">
+<code class="sig-name descname">GetLayoutAdaptationLevel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetLayoutAdaptationLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a value representing the aggressiveness of search for buttons and sizers to be in the non-scrolling part of a layout-adapted dialog.</p>
+<p>Zero switches off adaptation, and 3 allows search for standard buttons anywhere in the dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetLayoutAdaptationMode">
+<code class="sig-name descname">GetLayoutAdaptationMode</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetLayoutAdaptationMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the adaptation mode, overriding the global adaptation flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.DialogLayoutAdaptationMode.enumeration.html#wx-dialoglayoutadaptationmode"><span class="std std-ref">  wx.DialogLayoutAdaptationMode</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetLayoutAdapter">
+<em class="property">static </em><code class="sig-name descname">GetLayoutAdapter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetLayoutAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A static function getting the current layout adapter object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.DialogLayoutAdapter.html#wx-dialoglayoutadapter"><span class="std std-ref">  wx.DialogLayoutAdapter</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetMainButtonIds">
+<code class="sig-name descname">GetMainButtonIds</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetMainButtonIds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an array of identifiers to be regarded as the main buttons for the non-scrolling area of a dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of integers</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.GetReturnCode">
+<code class="sig-name descname">GetReturnCode</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.GetReturnCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the return code for this window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A return code is normally associated with a modal dialog, where <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>   returns a code to the application.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Dialog.SetReturnCode" title="wx.Dialog.SetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetReturnCode</span></code></a> , <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a> , <a class="reference internal" href="#wx.Dialog.EndModal" title="wx.Dialog.EndModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndModal</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.Iconize">
+<code class="sig-name descname">Iconize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">iconize=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.Iconize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iconizes or restores the dialog.</p>
+<p>Windows only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>iconize</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, iconizes the dialog box; if <code class="docutils literal notranslate"><span class="pre">False</span></code>, shows and restores it.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that in Windows, iconization has no effect since dialog boxes cannot be iconized. However, applications may need to explicitly restore dialog boxes under Motif which have user-iconizable frames, and under Windows calling Iconize(false) will bring the window to the front, as does Show(true).</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.IsIconized">
+<code class="sig-name descname">IsIconized</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.IsIconized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the dialog box is iconized.</p>
+<p>Windows only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Always returns <code class="docutils literal notranslate"><span class="pre">False</span></code> under Windows since dialogs cannot be iconized.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.IsLayoutAdaptationEnabled">
+<em class="property">static </em><code class="sig-name descname">IsLayoutAdaptationEnabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.IsLayoutAdaptationEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>A static function returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if layout adaptation is enabled for all dialogs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.IsMainButtonId">
+<code class="sig-name descname">IsMainButtonId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.IsMainButtonId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em class="xref py py-obj">id</em>  is in the array of identifiers to be regarded as the main buttons for the non-scrolling area of a dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>wx.WindowID</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition availability" id="index-0">
+<p class="admonition-title">Availability</p>
+<p>Only available for MSW.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.IsModal">
+<code class="sig-name descname">IsModal</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.IsModal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the dialog box is modal, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.SetAffirmativeId">
+<code class="sig-name descname">SetAffirmativeId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.SetAffirmativeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the identifier to be used as <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> button.</p>
+<p>When the button with this identifier is pressed, the dialog calls <a class="reference internal" href="wx.Window.html#wx.Window.Validate" title="wx.Window.Validate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Validate</span></code></a>   and <a class="reference internal" href="wx.Window.html#wx.Window.TransferDataFromWindow" title="wx.Window.TransferDataFromWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.TransferDataFromWindow</span></code></a>   and, if they both return <code class="docutils literal notranslate"><span class="pre">True</span></code>, closes the dialog with the affirmative id return code.</p>
+<p>Also, when the user presses a hardware <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> button on the devices having one or the special <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> button in the PocketPC title bar, an event with this id is generated.</p>
+<p>By default, the affirmative id is <code class="docutils literal notranslate"><span class="pre">wx.ID_OK</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Dialog.GetAffirmativeId" title="wx.Dialog.GetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAffirmativeId</span></code></a> , <a class="reference internal" href="#wx.Dialog.SetEscapeId" title="wx.Dialog.SetEscapeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEscapeId</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.SetEscapeId">
+<code class="sig-name descname">SetEscapeId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.SetEscapeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the identifier of the button which should work like the standard “Cancel” button in this dialog.</p>
+<p>When the button with this id is clicked, the dialog is closed. Also, when the user presses  <code class="docutils literal notranslate"><span class="pre">ESC</span></code>   key in the dialog or closes the dialog using the close button in the title bar, this is mapped to the click of the button with the specified id.</p>
+<p>By default, the escape id is the special value <code class="docutils literal notranslate"><span class="pre">wx.ID_ANY</span></code> meaning that <code class="docutils literal notranslate"><span class="pre">wx.ID_CANCEL</span></code> button is used if it’s present in the dialog and otherwise the button with <a class="reference internal" href="#wx.Dialog.GetAffirmativeId" title="wx.Dialog.GetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAffirmativeId</span></code></a>   is used. Another special value for <em class="xref py py-obj">id</em>  is <code class="docutils literal notranslate"><span class="pre">wx.ID_NONE</span></code> meaning that  <code class="docutils literal notranslate"><span class="pre">ESC</span></code>   presses should be ignored. If any other value is given, it is interpreted as the id of the button to map the escape key to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method should be used for custom modal dialog implemented in wxWidgets itself, native dialogs such as <a class="reference internal" href="wx.MessageDialog.html#wx-messagedialog"><span class="std std-ref">  wx.MessageDialog</span></a>  or <a class="reference internal" href="wx.FileDialog.html#wx-filedialog"><span class="std std-ref">  wx.FileDialog</span></a>, handle  <code class="docutils literal notranslate"><span class="pre">ESC</span></code>   presses in their own way which cannot be customized.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.SetIcon">
+<code class="sig-name descname">SetIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">icon</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.SetIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the icon for this dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>icon</strong> (<a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><em>wx.Icon</em></a>) – The icon to associate with this dialog.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.SetIcons">
+<code class="sig-name descname">SetIcons</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">icons</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.SetIcons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the icons for this dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>icons</strong> (<a class="reference internal" href="wx.IconBundle.html#wx.IconBundle" title="wx.IconBundle"><em>wx.IconBundle</em></a>) – The icons to associate with this dialog.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.IconBundle.html#wx-iconbundle"><span class="std std-ref">  wx.IconBundle</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.SetLayoutAdaptationDone">
+<code class="sig-name descname">SetLayoutAdaptationDone</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">done</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.SetLayoutAdaptationDone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Marks the dialog as having been adapted, usually by making it scrollable to work with a small display.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>done</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.SetLayoutAdaptationLevel">
+<code class="sig-name descname">SetLayoutAdaptationLevel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">level</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.SetLayoutAdaptationLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the aggressiveness of search for buttons and sizers to be in the non-scrolling part of a layout-adapted dialog.</p>
+<p>Zero switches off adaptation, and 3 allows search for standard buttons anywhere in the dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>level</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.SetLayoutAdaptationMode">
+<code class="sig-name descname">SetLayoutAdaptationMode</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">mode</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.SetLayoutAdaptationMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the adaptation mode, overriding the global adaptation flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="wx.DialogLayoutAdaptationMode.enumeration.html" title="DialogLayoutAdaptationMode"><em>DialogLayoutAdaptationMode</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.DialogLayoutAdaptationMode.enumeration.html#wx-dialoglayoutadaptationmode"><span class="std std-ref">  wx.DialogLayoutAdaptationMode</span></a>, <a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a>  (for more on layout adaptation)</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.SetLayoutAdapter">
+<em class="property">static </em><code class="sig-name descname">SetLayoutAdapter</code><span class="sig-paren">(</span><em class="sig-param">adapter</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.SetLayoutAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A static function for setting the current layout adapter object, returning the old adapter.</p>
+<p>If you call this, you should delete the old adapter object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="wx.DialogLayoutAdapter.html#wx.DialogLayoutAdapter" title="wx.DialogLayoutAdapter"><em>wx.DialogLayoutAdapter</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.DialogLayoutAdapter.html#wx-dialoglayoutadapter"><span class="std std-ref">  wx.DialogLayoutAdapter</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.DialogLayoutAdapter.html#wx-dialoglayoutadapter"><span class="std std-ref">  wx.DialogLayoutAdapter</span></a>, <a class="reference internal" href="dialog_overview.html#automatic-scrolled-dialogs"><span class="std std-ref">Automatic Scrolled Dialogs</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.SetReturnCode">
+<code class="sig-name descname">SetReturnCode</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">retCode</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.SetReturnCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the return code for this window.</p>
+<p>A return code is normally associated with a modal dialog, where <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>   returns a code to the application. The function <a class="reference internal" href="#wx.Dialog.EndModal" title="wx.Dialog.EndModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndModal</span></code></a>   calls <a class="reference internal" href="#wx.Dialog.SetReturnCode" title="wx.Dialog.SetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetReturnCode</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>retCode</strong> (<em>int</em>) – The integer return code, usually a control identifier.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Dialog.GetReturnCode" title="wx.Dialog.GetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetReturnCode</span></code></a> , <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a> , <a class="reference internal" href="#wx.Dialog.EndModal" title="wx.Dialog.EndModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndModal</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.Show">
+<code class="sig-name descname">Show</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">show=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.Show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hides or shows the dialog.</p>
+<p>The preferred way of dismissing a modal dialog is to use <a class="reference internal" href="#wx.Dialog.EndModal" title="wx.Dialog.EndModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndModal</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the dialog box is shown and brought to the front, otherwise the box is hidden. If <code class="docutils literal notranslate"><span class="pre">False</span></code> and the dialog is modal, control is returned to the calling program.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.ShowModal">
+<code class="sig-name descname">ShowModal</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.ShowModal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows an application-modal dialog.</p>
+<p>Program flow does not return until the dialog has been dismissed with <a class="reference internal" href="#wx.Dialog.EndModal" title="wx.Dialog.EndModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndModal</span></code></a> .</p>
+<p>Notice that it is possible to call <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>   for a dialog which had been previously shown with <a class="reference internal" href="#wx.Dialog.Show" title="wx.Dialog.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a> , this allows making an existing modeless dialog modal. However <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>   can’t be called twice without intervening <a class="reference internal" href="#wx.Dialog.EndModal" title="wx.Dialog.EndModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndModal</span></code></a>   calls.</p>
+<p>Note that this function creates a temporary event loop which takes precedence over the application’s main event loop (see <a class="reference internal" href="wx.EventLoopBase.html#wx-eventloopbase"><span class="std std-ref">  wx.EventLoopBase</span></a>) and which is destroyed when the dialog is dismissed. This also results in a call to <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.ProcessPendingEvents</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value set with <a class="reference internal" href="#wx.Dialog.SetReturnCode" title="wx.Dialog.SetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetReturnCode</span></code></a> .</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Dialog.ShowWindowModal" title="wx.Dialog.ShowWindowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowWindowModal</span></code></a> , <code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowWindowModalThenDo</span></code> , <a class="reference internal" href="#wx.Dialog.EndModal" title="wx.Dialog.EndModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndModal</span></code></a> , <a class="reference internal" href="#wx.Dialog.GetReturnCode" title="wx.Dialog.GetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetReturnCode</span></code></a> , <a class="reference internal" href="#wx.Dialog.SetReturnCode" title="wx.Dialog.SetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetReturnCode</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.ShowWindowModal">
+<code class="sig-name descname">ShowWindowModal</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.ShowWindowModal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows a dialog modal to the parent top level window only.</p>
+<p>Unlike <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a> , dialogs shown with this function only prevent the user from interacting with their parent frame only but not with the rest of the application. They also don’t block the program execution but instead return immediately, as <a class="reference internal" href="#wx.Dialog.Show" title="wx.Dialog.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a> , and generate a wxEVT_WINDOW_MODAL_DIALOG_CLOSED event (<a class="reference internal" href="wx.WindowModalDialogEvent.html#wx-windowmodaldialogevent"><span class="std std-ref">  wx.WindowModalDialogEvent</span></a>) later when the dialog is closed.</p>
+<p>Currently this function is only fully implemented in wxOSX ports, under the other platforms it behaves like <a class="reference internal" href="#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>   (but also sends the above mentioned event).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.WindowModalDialogEvent.html#wx-windowmodaldialogevent"><span class="std std-ref">  wx.WindowModalDialogEvent</span></a>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowWindowModalThenDo</span></code></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.__enter__">
+<code class="sig-name descname">__enter__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.__enter__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Dialog.__exit__">
+<code class="sig-name descname">__exit__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">exc_type</em>, <em class="sig-param">exc_val</em>, <em class="sig-param">exc_tb</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Dialog.__exit__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.Dialog.AffirmativeId">
+<code class="sig-name descname">AffirmativeId</code><a class="headerlink" href="#wx.Dialog.AffirmativeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Dialog.GetAffirmativeId" title="wx.Dialog.GetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAffirmativeId</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetAffirmativeId" title="wx.Dialog.SetAffirmativeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAffirmativeId</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Dialog.ContentWindow">
+<code class="sig-name descname">ContentWindow</code><a class="headerlink" href="#wx.Dialog.ContentWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Dialog.GetContentWindow" title="wx.Dialog.GetContentWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetContentWindow</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Dialog.EscapeId">
+<code class="sig-name descname">EscapeId</code><a class="headerlink" href="#wx.Dialog.EscapeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Dialog.GetEscapeId" title="wx.Dialog.GetEscapeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEscapeId</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetEscapeId" title="wx.Dialog.SetEscapeId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEscapeId</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Dialog.LayoutAdaptationDone">
+<code class="sig-name descname">LayoutAdaptationDone</code><a class="headerlink" href="#wx.Dialog.LayoutAdaptationDone" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Dialog.GetLayoutAdaptationDone" title="wx.Dialog.GetLayoutAdaptationDone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdaptationDone</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetLayoutAdaptationDone" title="wx.Dialog.SetLayoutAdaptationDone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdaptationDone</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Dialog.LayoutAdaptationLevel">
+<code class="sig-name descname">LayoutAdaptationLevel</code><a class="headerlink" href="#wx.Dialog.LayoutAdaptationLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Dialog.GetLayoutAdaptationLevel" title="wx.Dialog.GetLayoutAdaptationLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdaptationLevel</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetLayoutAdaptationLevel" title="wx.Dialog.SetLayoutAdaptationLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdaptationLevel</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Dialog.LayoutAdaptationMode">
+<code class="sig-name descname">LayoutAdaptationMode</code><a class="headerlink" href="#wx.Dialog.LayoutAdaptationMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Dialog.GetLayoutAdaptationMode" title="wx.Dialog.GetLayoutAdaptationMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLayoutAdaptationMode</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetLayoutAdaptationMode" title="wx.Dialog.SetLayoutAdaptationMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLayoutAdaptationMode</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Dialog.MainButtonIds">
+<code class="sig-name descname">MainButtonIds</code><a class="headerlink" href="#wx.Dialog.MainButtonIds" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Dialog.GetMainButtonIds" title="wx.Dialog.GetMainButtonIds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMainButtonIds</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Dialog.ReturnCode">
+<code class="sig-name descname">ReturnCode</code><a class="headerlink" href="#wx.Dialog.ReturnCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Dialog.GetReturnCode" title="wx.Dialog.GetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetReturnCode</span></code></a> and <a class="reference internal" href="#wx.Dialog.SetReturnCode" title="wx.Dialog.SetReturnCode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetReturnCode</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

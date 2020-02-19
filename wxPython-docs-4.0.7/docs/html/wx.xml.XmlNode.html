@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.xml.XmlNode — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.xml.XmlNodeType.enumeration.html" rel="next" title="wx.xml.XmlNodeType"/>
+<link href="wx.xml.XmlDocumentLoadFlag.enumeration.html" rel="prev" title="wx.xml.XmlDocumentLoadFlag"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.xml.1moduleindex.html">
+<strong>wx.xml</strong></a> »</li>
+<li class="reltitle"> <strong>wx.xml.XmlNode</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.xml.XmlNodeType.enumeration.html" title="wx.xml.XmlNodeType">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.xml.XmlDocumentLoadFlag.enumeration.html" title="wx.xml.XmlDocumentLoadFlag">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.xml.XmlNode</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.xml.XmlNode.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-xml-xmlnode">
+<span id="wx-xml-xmlnode"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.xml.XmlNode</strong><a class="headerlink" href="#phoenix-title-wx-xml-xmlnode" title="Permalink to this headline">¶</a></h1>
+<p>Represents a node in an <code class="docutils literal notranslate"><span class="pre">XML</span></code> document.</p>
+<p>See <a class="reference internal" href="wx.xml.XmlDocument.html#wx-xml-xmldocument"><span class="std std-ref">  wx.xml.XmlDocument</span></a>.</p>
+<p>Node has a name and may have content and attributes.</p>
+<p>Most common node types are  <code class="docutils literal notranslate"><span class="pre">XML_TEXT_NODE</span></code>   (name and attributes are irrelevant) and   <code class="docutils literal notranslate"><span class="pre">XML_ELEMENT_NODE</span></code> .</p>
+<p>Example: in  <code class="docutils literal notranslate"><span class="pre">&lt;title&gt;hi&lt;/title&gt;</span></code>   there is an element with the name   <code class="docutils literal notranslate"><span class="pre">title</span></code>   and irrelevant content and one child of type   <code class="docutils literal notranslate"><span class="pre">XML_TEXT_NODE</span></code>   with   <code class="docutils literal notranslate"><span class="pre">hi</span></code>   as content.</p>
+<p>The  <code class="docutils literal notranslate"><span class="pre">XML_PI_NODE</span></code>   type sets the name to the <code class="docutils literal notranslate"><span class="pre">PI</span></code> target and the contents to the instructions. Note that whilst the <code class="docutils literal notranslate"><span class="pre">PI</span></code> instructions are often in the form of pseudo-attributes these do not use the nodes attribute system. It is the users responsibility to code and decode the instruction text.</p>
+<p>If  <code class="docutils literal notranslate"><span class="pre">USE_UNICODE</span></code>   is 0, all strings are encoded in the encoding given to  <a class="reference internal" href="wx.xml.XmlDocument.html#wx.xml.XmlDocument.Load" title="wx.xml.XmlDocument.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.xml.XmlDocument.Load</span></code></a>   (default is <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code>).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.xml.XmlDocument.html#wx-xml-xmldocument"><span class="std std-ref">  wx.xml.XmlDocument</span></a>, <a class="reference internal" href="wx.xml.XmlAttribute.html#wx-xml-xmlattribute"><span class="std std-ref">  wx.xml.XmlAttribute</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>XmlNode</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of XmlNode" class="inheritance" src="_static/images/inheritance/wx.xml.XmlNode_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,140,35" href="wx.xml.XmlNode.html" id="node1" shape="rect" title="Represents a node in an ``XML`` document."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%"/>
+<col style="width: 59%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.__init__" title="wx.xml.XmlNode.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Creates this <code class="docutils literal notranslate"><span class="pre">XML</span></code> node and eventually insert it into an existing <code class="docutils literal notranslate"><span class="pre">XML</span></code> tree.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.AddAttribute" title="wx.xml.XmlNode.AddAttribute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddAttribute</span></code></a></p></td>
+<td><p>Appends a attribute with given <em class="xref py py-obj">name</em>  and <em class="xref py py-obj">value</em>  to the list of attributes for this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.AddChild" title="wx.xml.XmlNode.AddChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddChild</span></code></a></p></td>
+<td><p>Adds node <em class="xref py py-obj">child</em>  as the last child of this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.DeleteAttribute" title="wx.xml.XmlNode.DeleteAttribute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAttribute</span></code></a></p></td>
+<td><p>Removes the first attributes which has the given <em class="xref py py-obj">name</em>  from the list of attributes for this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetAttribute" title="wx.xml.XmlNode.GetAttribute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttribute</span></code></a></p></td>
+<td><p>Returns the value of the attribute named <em class="xref py py-obj">attrName</em>  if it does exist.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetAttributes" title="wx.xml.XmlNode.GetAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttributes</span></code></a></p></td>
+<td><p>Return a pointer to the first attribute of this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetChildren" title="wx.xml.XmlNode.GetChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildren</span></code></a></p></td>
+<td><p>Returns the first child of this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetContent" title="wx.xml.XmlNode.GetContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetContent</span></code></a></p></td>
+<td><p>Returns the content of this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetDepth" title="wx.xml.XmlNode.GetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDepth</span></code></a></p></td>
+<td><p>Returns the number of nodes which separate this node from  <code class="docutils literal notranslate"><span class="pre">grandparent</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetLineNumber" title="wx.xml.XmlNode.GetLineNumber"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLineNumber</span></code></a></p></td>
+<td><p>Returns line number of the node in the input <code class="docutils literal notranslate"><span class="pre">XML</span></code> file or  <code class="docutils literal notranslate"><span class="pre">-1</span></code>   if it is unknown.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetName" title="wx.xml.XmlNode.GetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetName</span></code></a></p></td>
+<td><p>Returns the name of this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetNext" title="wx.xml.XmlNode.GetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNext</span></code></a></p></td>
+<td><p>Returns a pointer to the sibling of this node or <code class="docutils literal notranslate"><span class="pre">None</span></code> if there are no siblings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetNoConversion" title="wx.xml.XmlNode.GetNoConversion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNoConversion</span></code></a></p></td>
+<td><p>Returns a flag indicating whether encoding conversion is necessary when saving.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetNodeContent" title="wx.xml.XmlNode.GetNodeContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNodeContent</span></code></a></p></td>
+<td><p>Returns the content of the first child node of type  <code class="docutils literal notranslate"><span class="pre">XML_TEXT_NODE</span></code>   or   <code class="docutils literal notranslate"><span class="pre">XML_CDATA_SECTION_NODE</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetParent" title="wx.xml.XmlNode.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParent</span></code></a></p></td>
+<td><p>Returns a pointer to the parent of this node or <code class="docutils literal notranslate"><span class="pre">None</span></code> if this node has no parent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.GetType" title="wx.xml.XmlNode.GetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetType</span></code></a></p></td>
+<td><p>Returns the type of this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.HasAttribute" title="wx.xml.XmlNode.HasAttribute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasAttribute</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this node has a attribute named <em class="xref py py-obj">attrName</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.InsertChild" title="wx.xml.XmlNode.InsertChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertChild</span></code></a></p></td>
+<td><p>Inserts the <em class="xref py py-obj">child</em>  node immediately before <em class="xref py py-obj">followingNode</em>  in the children list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.InsertChildAfter" title="wx.xml.XmlNode.InsertChildAfter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertChildAfter</span></code></a></p></td>
+<td><p>Inserts the <em class="xref py py-obj">child</em>  node immediately after <em class="xref py py-obj">precedingNode</em>  in the children list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.IsWhitespaceOnly" title="wx.xml.XmlNode.IsWhitespaceOnly"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsWhitespaceOnly</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the content of this node is a string containing only whitespaces (spaces, tabs, new lines, etc).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.RemoveChild" title="wx.xml.XmlNode.RemoveChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveChild</span></code></a></p></td>
+<td><p>Removes the given node from the children list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.SetContent" title="wx.xml.XmlNode.SetContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetContent</span></code></a></p></td>
+<td><p>Sets the content of this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.SetName" title="wx.xml.XmlNode.SetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetName</span></code></a></p></td>
+<td><p>Sets the name of this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.SetNext" title="wx.xml.XmlNode.SetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNext</span></code></a></p></td>
+<td><p>Sets as sibling the given node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.SetNoConversion" title="wx.xml.XmlNode.SetNoConversion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNoConversion</span></code></a></p></td>
+<td><p>Sets a flag to indicate whether encoding conversion is necessary when saving.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.SetParent" title="wx.xml.XmlNode.SetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetParent</span></code></a></p></td>
+<td><p>Sets as parent the given node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.SetType" title="wx.xml.XmlNode.SetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetType</span></code></a></p></td>
+<td><p>Sets the type of this node.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 48%"/>
+<col style="width: 52%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.Attributes" title="wx.xml.XmlNode.Attributes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Attributes</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetAttributes" title="wx.xml.XmlNode.GetAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttributes</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.Children" title="wx.xml.XmlNode.Children"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Children</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetChildren" title="wx.xml.XmlNode.GetChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildren</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.Content" title="wx.xml.XmlNode.Content"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Content</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetContent" title="wx.xml.XmlNode.GetContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetContent</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetContent" title="wx.xml.XmlNode.SetContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetContent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.Depth" title="wx.xml.XmlNode.Depth"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Depth</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetDepth" title="wx.xml.XmlNode.GetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDepth</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.LineNumber" title="wx.xml.XmlNode.LineNumber"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LineNumber</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetLineNumber" title="wx.xml.XmlNode.GetLineNumber"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLineNumber</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.Name" title="wx.xml.XmlNode.Name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Name</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetName" title="wx.xml.XmlNode.GetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetName</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetName" title="wx.xml.XmlNode.SetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.Next" title="wx.xml.XmlNode.Next"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Next</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetNext" title="wx.xml.XmlNode.GetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNext</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetNext" title="wx.xml.XmlNode.SetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNext</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.NoConversion" title="wx.xml.XmlNode.NoConversion"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NoConversion</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetNoConversion" title="wx.xml.XmlNode.GetNoConversion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNoConversion</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetNoConversion" title="wx.xml.XmlNode.SetNoConversion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNoConversion</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.NodeContent" title="wx.xml.XmlNode.NodeContent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NodeContent</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetNodeContent" title="wx.xml.XmlNode.GetNodeContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNodeContent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlNode.Parent" title="wx.xml.XmlNode.Parent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Parent</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetParent" title="wx.xml.XmlNode.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParent</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetParent" title="wx.xml.XmlNode.SetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetParent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlNode.Type" title="wx.xml.XmlNode.Type"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Type</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetType" title="wx.xml.XmlNode.GetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetType</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetType" title="wx.xml.XmlNode.SetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetType</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.xml.XmlNode">
+<em class="property">class </em><code class="sig-prename descclassname">wx.xml.</code><code class="sig-name descname">XmlNode</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">XmlNode</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">lineNo</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">XmlNode</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">lineNo</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">XmlNode</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Represents a node in an <code class="docutils literal notranslate"><span class="pre">XML</span></code> document.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.xml.XmlNode.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, type, name, content=””, attrs=None, next=None, lineNo=-1)</em></p>
+<p>Creates this <code class="docutils literal notranslate"><span class="pre">XML</span></code> node and eventually insert it into an existing <code class="docutils literal notranslate"><span class="pre">XML</span></code> tree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – The parent node to which append this node instance. If this argument is <code class="docutils literal notranslate"><span class="pre">None</span></code> this new node will be floating and it can be appended later to another one using the <a class="reference internal" href="#wx.xml.XmlNode.AddChild" title="wx.xml.XmlNode.AddChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddChild</span></code></a>   or <a class="reference internal" href="#wx.xml.XmlNode.InsertChild" title="wx.xml.XmlNode.InsertChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertChild</span></code></a>   functions. Otherwise the child is already added to the <code class="docutils literal notranslate"><span class="pre">XML</span></code> tree by this constructor and it shouldn’t be done again.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="wx.xml.XmlNodeType.enumeration.html" title="XmlNodeType"><em>XmlNodeType</em></a>) – One of the <a class="reference internal" href="wx.xml.XmlNodeType.enumeration.html#wx-xml-xmlnodetype"><span class="std std-ref">  wx.xml.XmlNodeType</span></a>  enumeration value.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – The name of the node. This is the string which appears between angular brackets.</p></li>
+<li><p><strong>content</strong> (<em>string</em>) – The content of the node. Only meaningful when type is  <code class="docutils literal notranslate"><span class="pre">XML_TEXT_NODE</span></code>   or   <code class="docutils literal notranslate"><span class="pre">XML_CDATA_SECTION_NODE</span></code> .</p></li>
+<li><p><strong>attrs</strong> (<a class="reference internal" href="wx.xml.XmlAttribute.html#wx.xml.XmlAttribute" title="wx.xml.XmlAttribute"><em>wx.xml.XmlAttribute</em></a>) – If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, this <a class="reference internal" href="wx.xml.XmlAttribute.html#wx-xml-xmlattribute"><span class="std std-ref">  wx.xml.XmlAttribute</span></a>  object and its eventual siblings are attached to the node.</p></li>
+<li><p><strong>next</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, this node and its eventual siblings are attached to the node.</p></li>
+<li><p><strong>lineNo</strong> (<em>int</em>) – Number of line this node was present at in input file or -1.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, type, name, content=””, lineNo=-1)</em></p>
+<p>A simplified version of the first constructor form, assuming a <code class="docutils literal notranslate"><span class="pre">None</span></code> parent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<a class="reference internal" href="wx.xml.XmlNodeType.enumeration.html" title="XmlNodeType"><em>XmlNodeType</em></a>) – One of the <a class="reference internal" href="wx.xml.XmlNodeType.enumeration.html#wx-xml-xmlnodetype"><span class="std std-ref">  wx.xml.XmlNodeType</span></a>  enumeration value.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – The name of the node. This is the string which appears between angular brackets.</p></li>
+<li><p><strong>content</strong> (<em>string</em>) – The content of the node. Only meaningful when type is  <code class="docutils literal notranslate"><span class="pre">XML_TEXT_NODE</span></code>   or   <code class="docutils literal notranslate"><span class="pre">XML_CDATA_SECTION_NODE</span></code> .</p></li>
+<li><p><strong>lineNo</strong> (<em>int</em>) – Number of line this node was present at in input file or -1.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, node)</em></p>
+<p>Copy constructor.</p>
+<p>Note that this does NOT copy siblings and parent pointer, i.e. <a class="reference internal" href="#wx.xml.XmlNode.GetParent" title="wx.xml.XmlNode.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParent</span></code></a>   and <a class="reference internal" href="#wx.xml.XmlNode.GetNext" title="wx.xml.XmlNode.GetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNext</span></code></a>   will return <code class="docutils literal notranslate"><span class="pre">None</span></code> after using copy constructor and are never unmodified by <code class="xref py py-meth docutils literal notranslate"><span class="pre">operator=</span></code> . On the other hand, it DOES copy children and attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.AddAttribute">
+<code class="sig-name descname">AddAttribute</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.AddAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>AddAttribute</strong> <em class="xref py py-obj">(self, name, value)</em></p>
+<p>Appends a attribute with given <em class="xref py py-obj">name</em>  and <em class="xref py py-obj">value</em>  to the list of attributes for this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>value</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>AddAttribute</strong> <em class="xref py py-obj">(self, attr)</em></p>
+<p>Appends given attribute to the list of attributes for this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attr</strong> (<a class="reference internal" href="wx.xml.XmlAttribute.html#wx.xml.XmlAttribute" title="wx.xml.XmlAttribute"><em>wx.xml.XmlAttribute</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.AddChild">
+<code class="sig-name descname">AddChild</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">child</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.AddChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds node <em class="xref py py-obj">child</em>  as the last child of this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>child</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this function works in O(n) time where <em class="xref py py-obj">n</em>  is the number of existing children. Consequently, adding large number of child nodes using this method can be expensive, because it has O(n^2) time complexity in number of nodes to be added. Use <a class="reference internal" href="#wx.xml.XmlNode.InsertChildAfter" title="wx.xml.XmlNode.InsertChildAfter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertChildAfter</span></code></a>   to populate <code class="docutils literal notranslate"><span class="pre">XML</span></code> tree in linear time.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.xml.XmlNode.InsertChild" title="wx.xml.XmlNode.InsertChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertChild</span></code></a> , <a class="reference internal" href="#wx.xml.XmlNode.InsertChildAfter" title="wx.xml.XmlNode.InsertChildAfter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertChildAfter</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.DeleteAttribute">
+<code class="sig-name descname">DeleteAttribute</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.DeleteAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the first attributes which has the given <em class="xref py py-obj">name</em>  from the list of attributes for this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetAttribute">
+<code class="sig-name descname">GetAttribute</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">attrName</em>, <em class="sig-param">defaultVal=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the attribute named <em class="xref py py-obj">attrName</em>  if it does exist.</p>
+<p>If it does not exist, the <em class="xref py py-obj">defaultVal</em>  is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attrName</strong> (<em>string</em>) – </p></li>
+<li><p><strong>defaultVal</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetAttributes">
+<code class="sig-name descname">GetAttributes</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a pointer to the first attribute of this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.xml.XmlAttribute.html#wx-xml-xmlattribute"><span class="std std-ref">  wx.xml.XmlAttribute</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetChildren">
+<code class="sig-name descname">GetChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first child of this node.</p>
+<p>To get a pointer to the second child of this node (if it does exist), use the <a class="reference internal" href="#wx.xml.XmlNode.GetNext" title="wx.xml.XmlNode.GetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNext</span></code></a>   function on the returned value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetContent">
+<code class="sig-name descname">GetContent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetContent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the content of this node.</p>
+<p>Can be an empty string. Be aware that for nodes of type  <code class="docutils literal notranslate"><span class="pre">XML_ELEMENT_NODE</span></code>   (the most used node type) the content is an empty string. See  <a class="reference internal" href="#wx.xml.XmlNode.GetNodeContent" title="wx.xml.XmlNode.GetNodeContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNodeContent</span></code></a>   for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetDepth">
+<code class="sig-name descname">GetDepth</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">grandparent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetDepth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of nodes which separate this node from  <code class="docutils literal notranslate"><span class="pre">grandparent</span></code> .</p>
+<p>This function searches only the parents of this node until it finds <em class="xref py py-obj">grandparent</em>  or the <code class="docutils literal notranslate"><span class="pre">None</span></code> node (which is the parent of non-linked nodes or the parent of a <a class="reference internal" href="wx.xml.XmlDocument.html#wx-xml-xmldocument"><span class="std std-ref">  wx.xml.XmlDocument</span></a>’s root element node).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>grandparent</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetLineNumber">
+<code class="sig-name descname">GetLineNumber</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetLineNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns line number of the node in the input <code class="docutils literal notranslate"><span class="pre">XML</span></code> file or  <code class="docutils literal notranslate"><span class="pre">-1</span></code>   if it is unknown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetName">
+<code class="sig-name descname">GetName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of this node.</p>
+<p>Can be an empty string (e.g. for nodes of type  <code class="docutils literal notranslate"><span class="pre">XML_TEXT_NODE</span></code>   or   <code class="docutils literal notranslate"><span class="pre">XML_CDATA_SECTION_NODE</span></code> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetNext">
+<code class="sig-name descname">GetNext</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetNext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the sibling of this node or <code class="docutils literal notranslate"><span class="pre">None</span></code> if there are no siblings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetNoConversion">
+<code class="sig-name descname">GetNoConversion</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetNoConversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a flag indicating whether encoding conversion is necessary when saving.</p>
+<p>The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>You can improve saving efficiency considerably by setting this value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetNodeContent">
+<code class="sig-name descname">GetNodeContent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetNodeContent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the content of the first child node of type  <code class="docutils literal notranslate"><span class="pre">XML_TEXT_NODE</span></code>   or   <code class="docutils literal notranslate"><span class="pre">XML_CDATA_SECTION_NODE</span></code> .</p>
+<p>This function is very useful since the <code class="docutils literal notranslate"><span class="pre">XML</span></code> snippet  <code class="docutils literal notranslate"><span class="pre">"tagnametagcontent/tagname"</span></code>   is represented by expat with the following tag tree:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>XML_ELEMENT_NODE name="tagname", content=""
+|-- XML_TEXT_NODE name="", content="tagcontent"
+</pre></div>
+</div>
+<p>or eventually:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>XML_ELEMENT_NODE name="tagname", content=""
+|-- XML_CDATA_SECTION_NODE name="", content="tagcontent"
+</pre></div>
+</div>
+<p>An empty string is returned if the node has no children of type  <code class="docutils literal notranslate"><span class="pre">XML_TEXT_NODE</span></code>   or   <code class="docutils literal notranslate"><span class="pre">XML_CDATA_SECTION_NODE</span></code> , or if the content of the first child of such types is empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetParent">
+<code class="sig-name descname">GetParent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the parent of this node or <code class="docutils literal notranslate"><span class="pre">None</span></code> if this node has no parent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.GetType">
+<code class="sig-name descname">GetType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.GetType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the type of this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.xml.XmlNodeType.enumeration.html#wx-xml-xmlnodetype"><span class="std std-ref">  wx.xml.XmlNodeType</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.HasAttribute">
+<code class="sig-name descname">HasAttribute</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">attrName</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.HasAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this node has a attribute named <em class="xref py py-obj">attrName</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attrName</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.InsertChild">
+<code class="sig-name descname">InsertChild</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">child</em>, <em class="sig-param">followingNode</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.InsertChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the <em class="xref py py-obj">child</em>  node immediately before <em class="xref py py-obj">followingNode</em>  in the children list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p></li>
+<li><p><strong>followingNode</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if <em class="xref py py-obj">followingNode</em>  has been found and the <em class="xref py py-obj">child</em>  node has been inserted.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For historical reasons, <em class="xref py py-obj">followingNode</em>  may be <code class="docutils literal notranslate"><span class="pre">None</span></code>. In that case, then <em class="xref py py-obj">child</em>  is prepended to the list of children and becomes the first child of this node, i.e. it behaves identically to using the first children (as returned by <a class="reference internal" href="#wx.xml.XmlNode.GetChildren" title="wx.xml.XmlNode.GetChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildren</span></code></a> ) for <em class="xref py py-obj">followingNode</em>).</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.xml.XmlNode.AddChild" title="wx.xml.XmlNode.AddChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddChild</span></code></a> , <a class="reference internal" href="#wx.xml.XmlNode.InsertChildAfter" title="wx.xml.XmlNode.InsertChildAfter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertChildAfter</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.InsertChildAfter">
+<code class="sig-name descname">InsertChildAfter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">child</em>, <em class="sig-param">precedingNode</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.InsertChildAfter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the <em class="xref py py-obj">child</em>  node immediately after <em class="xref py py-obj">precedingNode</em>  in the children list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – The child to insert.</p></li>
+<li><p><strong>precedingNode</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – The node to insert  <em class="xref py py-obj">child</em>  after. As a special case, this can be <code class="docutils literal notranslate"><span class="pre">None</span></code> if this node has no children yet  <em class="xref py py-obj">child</em>  will become this node’s only child node.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if <em class="xref py py-obj">precedingNode</em>  has been found and the <em class="xref py py-obj">child</em>  node has been inserted.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.8.8.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.xml.XmlNode.InsertChild" title="wx.xml.XmlNode.InsertChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertChild</span></code></a> , <a class="reference internal" href="#wx.xml.XmlNode.AddChild" title="wx.xml.XmlNode.AddChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddChild</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.IsWhitespaceOnly">
+<code class="sig-name descname">IsWhitespaceOnly</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.IsWhitespaceOnly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the content of this node is a string containing only whitespaces (spaces, tabs, new lines, etc).</p>
+<p>Note that this function is locale-independent since the parsing of <code class="docutils literal notranslate"><span class="pre">XML</span></code> documents must always produce the exact same tree regardless of the locale it runs under.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.RemoveChild">
+<code class="sig-name descname">RemoveChild</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">child</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.RemoveChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the given node from the children list.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the node was found and removed or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the node could not be found. Note that the caller is responsible for deleting the removed node in order to avoid memory leaks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>child</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.SetContent">
+<code class="sig-name descname">SetContent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">con</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.SetContent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the content of this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>con</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.SetName">
+<code class="sig-name descname">SetName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.SetName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the name of this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.SetNext">
+<code class="sig-name descname">SetNext</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">next</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.SetNext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets as sibling the given node.</p>
+<p>The caller is responsible for deleting any previously present sibling node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>next</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.SetNoConversion">
+<code class="sig-name descname">SetNoConversion</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">noconversion</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.SetNoConversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a flag to indicate whether encoding conversion is necessary when saving.</p>
+<p>The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>You can improve saving efficiency considerably by setting this value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>noconversion</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.SetParent">
+<code class="sig-name descname">SetParent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.SetParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets as parent the given node.</p>
+<p>The caller is responsible for deleting any previously present parent node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parent</strong> (<a class="reference internal" href="#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlNode.SetType">
+<code class="sig-name descname">SetType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">type</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlNode.SetType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the type of this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="wx.xml.XmlNodeType.enumeration.html" title="XmlNodeType"><em>XmlNodeType</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.Attributes">
+<code class="sig-name descname">Attributes</code><a class="headerlink" href="#wx.xml.XmlNode.Attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetAttributes" title="wx.xml.XmlNode.GetAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttributes</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.Children">
+<code class="sig-name descname">Children</code><a class="headerlink" href="#wx.xml.XmlNode.Children" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetChildren" title="wx.xml.XmlNode.GetChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildren</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.Content">
+<code class="sig-name descname">Content</code><a class="headerlink" href="#wx.xml.XmlNode.Content" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetContent" title="wx.xml.XmlNode.GetContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetContent</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetContent" title="wx.xml.XmlNode.SetContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetContent</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.Depth">
+<code class="sig-name descname">Depth</code><a class="headerlink" href="#wx.xml.XmlNode.Depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetDepth" title="wx.xml.XmlNode.GetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDepth</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.LineNumber">
+<code class="sig-name descname">LineNumber</code><a class="headerlink" href="#wx.xml.XmlNode.LineNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetLineNumber" title="wx.xml.XmlNode.GetLineNumber"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLineNumber</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.Name">
+<code class="sig-name descname">Name</code><a class="headerlink" href="#wx.xml.XmlNode.Name" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetName" title="wx.xml.XmlNode.GetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetName</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetName" title="wx.xml.XmlNode.SetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetName</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.Next">
+<code class="sig-name descname">Next</code><a class="headerlink" href="#wx.xml.XmlNode.Next" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetNext" title="wx.xml.XmlNode.GetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNext</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetNext" title="wx.xml.XmlNode.SetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNext</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.NoConversion">
+<code class="sig-name descname">NoConversion</code><a class="headerlink" href="#wx.xml.XmlNode.NoConversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetNoConversion" title="wx.xml.XmlNode.GetNoConversion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNoConversion</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetNoConversion" title="wx.xml.XmlNode.SetNoConversion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNoConversion</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.NodeContent">
+<code class="sig-name descname">NodeContent</code><a class="headerlink" href="#wx.xml.XmlNode.NodeContent" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetNodeContent" title="wx.xml.XmlNode.GetNodeContent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNodeContent</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.Parent">
+<code class="sig-name descname">Parent</code><a class="headerlink" href="#wx.xml.XmlNode.Parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetParent" title="wx.xml.XmlNode.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParent</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetParent" title="wx.xml.XmlNode.SetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetParent</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlNode.Type">
+<code class="sig-name descname">Type</code><a class="headerlink" href="#wx.xml.XmlNode.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlNode.GetType" title="wx.xml.XmlNode.GetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetType</span></code></a> and <a class="reference internal" href="#wx.xml.XmlNode.SetType" title="wx.xml.XmlNode.SetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetType</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.adv.RichToolTip — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.adv.SashDragStatus.enumeration.html" rel="next" title="wx.adv.SashDragStatus"/>
+<link href="wx.adv.QueryLayoutInfoEvent.html" rel="prev" title="wx.adv.QueryLayoutInfoEvent"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.adv.1moduleindex.html">
+<strong>wx.adv</strong></a> »</li>
+<li class="reltitle"> <strong>wx.adv.RichToolTip</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.adv.SashDragStatus.enumeration.html" title="wx.adv.SashDragStatus">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.adv.QueryLayoutInfoEvent.html" title="wx.adv.QueryLayoutInfoEvent">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.adv.RichToolTip</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.adv.RichToolTip.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-adv-richtooltip">
+<span id="wx-adv-richtooltip"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.adv.RichToolTip</strong><a class="headerlink" href="#phoenix-title-wx-adv-richtooltip" title="Permalink to this headline">¶</a></h1>
+<p>Allows showing a tool tip with more customizations than <a class="reference internal" href="wx.ToolTip.html#wx-tooltip"><span class="std std-ref">  wx.ToolTip</span></a>.</p>
+<p>Using this class is very simple, to give a standard warning for a password text control if the password was entered correctly you could simply do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">password</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TE_PASSWORD</span><span class="p">)</span>
+
+<span class="c1"># Later on...</span>
+<span class="n">tip</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">adv</span><span class="o">.</span><span class="n">RichToolTip</span><span class="p">(</span><span class="s2">"Caps Lock is on"</span><span class="p">,</span>
+                         <span class="s2">"You might have made an error in your password</span><span class="se">\n</span><span class="s2">"</span>
+                         <span class="s2">"entry because Caps Lock is turned on.</span><span class="se">\n</span><span class="s2">"</span>
+                         <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+                         <span class="s2">"Press Caps Lock key to turn it off."</span><span class="p">)</span>
+<span class="n">tip</span><span class="o">.</span><span class="n">SetIcon</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ICON_WARNING</span><span class="p">)</span>
+<span class="n">tip</span><span class="o">.</span><span class="n">ShowFor</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Currently this class has generic implementation that can be used with any window and implements all the functionality but doesn’t exactly match the appearance of the native tooltips (even though it makes some efforts to use the style most appropriate for the current platform) and a native MSW version which can be only used with text controls and doesn’t provide as much in the way of customization. Because of this, it’s inadvisable to customize the tooltips unnecessarily as doing this turns off auto-detection of the native style in the generic version and may prevent the native MSW version from being used at all.</p>
+<p>Notice that this class is not derived from <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  and hence doesn’t represent a window, even if its <a class="reference internal" href="#wx.adv.RichToolTip.ShowFor" title="wx.adv.RichToolTip.ShowFor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowFor</span></code></a>  method does create one internally to show the tooltip.</p>
+<p>The images below show some examples of rich tooltips on different platforms, with various customizations applied.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.3.</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>RichToolTip</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of RichToolTip" class="inheritance" src="_static/images/inheritance/wx.adv.RichToolTip_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,156,35" href="wx.adv.RichToolTip.html" id="node1" shape="rect" title="Allows showing a tool tip with more customizations than wx.ToolTip."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/wx.adv.richtooltip.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/wx.adv.richtooltip1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.adv.richtooltip2.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%"/>
+<col style="width: 61%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.RichToolTip.__init__" title="wx.adv.RichToolTip.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor must specify the tooltip title and main message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.RichToolTip.SetBackgroundColour" title="wx.adv.RichToolTip.SetBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetBackgroundColour</span></code></a></p></td>
+<td><p>Set the background colour.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.RichToolTip.SetIcon" title="wx.adv.RichToolTip.SetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetIcon</span></code></a></p></td>
+<td><p>Set the small icon to show.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.RichToolTip.SetTimeout" title="wx.adv.RichToolTip.SetTimeout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTimeout</span></code></a></p></td>
+<td><p>Set timeout after which the tooltip should disappear and optionally set a delay before the tooltip is shown, in milliseconds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.RichToolTip.SetTipKind" title="wx.adv.RichToolTip.SetTipKind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTipKind</span></code></a></p></td>
+<td><p>Choose the tip kind, possibly none.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.RichToolTip.SetTitleFont" title="wx.adv.RichToolTip.SetTitleFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTitleFont</span></code></a></p></td>
+<td><p>Set the title text font.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.RichToolTip.ShowFor" title="wx.adv.RichToolTip.ShowFor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowFor</span></code></a></p></td>
+<td><p>Show the tooltip for the given window and optionally specify where to show the tooltip.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.adv.RichToolTip">
+<em class="property">class </em><code class="sig-prename descclassname">wx.adv.</code><code class="sig-name descname">RichToolTip</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.RichToolTip" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RichToolTip</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Allows showing a tool tip with more customizations than ToolTip.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.adv.RichToolTip.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">title</em>, <em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.RichToolTip.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor must specify the tooltip title and main message.</p>
+<p>The main message can contain embedded new lines. Both the title and message must be non-empty.</p>
+<p>Additional attributes can be set later.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>string</em>) – </p></li>
+<li><p><strong>message</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.RichToolTip.SetBackgroundColour">
+<code class="sig-name descname">SetBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em>, <em class="sig-param">colEnd=Colour()</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.RichToolTip.SetBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the background colour.</p>
+<p>If two colours are specified, the background is drawn using a gradient from top to bottom, otherwise a single solid colour is used.</p>
+<p>By default the colour or colours most appropriate for the current platform are used. If a colour is explicitly set, native MSW version won’t be used as it doesn’t support setting the colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+<li><p><strong>colEnd</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.RichToolTip.SetIcon">
+<code class="sig-name descname">SetIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.RichToolTip.SetIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the small icon to show.</p>
+<p>The icon can be either one of the standard information/warning/error ones, i.e. <code class="docutils literal notranslate"><span class="pre">wx.ICON_INFORMATION</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ICON_WARNING</span></code> or <code class="docutils literal notranslate"><span class="pre">wx.ICON_ERROR</span></code> respectively (the question icon doesn’t make sense for a tooltip so <code class="docutils literal notranslate"><span class="pre">wx.ICON_QUESTION</span></code> can’t be used here) or a custom icon. The latter is unsupported by the native MSW implementation of this class so the use of a standard icon is preferred.</p>
+<p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetIcon</strong> <em class="xref py py-obj">(self, icon=ICON_INFORMATION)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>icon</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetIcon</strong> <em class="xref py py-obj">(self, icon)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>icon</strong> (<a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><em>wx.Icon</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.RichToolTip.SetTimeout">
+<code class="sig-name descname">SetTimeout</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">millisecondsTimeout</em>, <em class="sig-param">millisecondsDelay=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.RichToolTip.SetTimeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set timeout after which the tooltip should disappear and optionally set a delay before the tooltip is shown, in milliseconds.</p>
+<p>By default the tooltip is shown immediately and hidden after a system-dependent interval of time elapses. This method can be used to change this or also disable hiding the tooltip automatically entirely by passing 0 in this parameter (but doing this will prevent the native MSW version from being used).</p>
+<p>Notice that the tooltip will always be hidden if the user presses a key or clicks a mouse button.</p>
+<p>Parameter <em class="xref py py-obj">millisecondsDelay</em>  is new since wxWidgets 2.9.5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>millisecondsTimeout</strong> – </p></li>
+<li><p><strong>millisecondsDelay</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.RichToolTip.SetTipKind">
+<code class="sig-name descname">SetTipKind</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">tipKind</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.RichToolTip.SetTipKind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Choose the tip kind, possibly none.</p>
+<p>See TipKind documentation for the possible choices here.</p>
+<p>By default the tip is positioned automatically, as if TipKind_Auto was used. Native MSW implementation doesn’t support setting the tip kind explicitly and won’t be used if this method is called with any value other than TipKind_Auto.</p>
+<p>Notice that using non automatic tooltip kind may result in the tooltip being positioned partially off screen and it’s the callers responsibility to ensure that this doesn’t happen in this case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tipKind</strong> (<a class="reference internal" href="wx.adv.TipKind.enumeration.html" title="TipKind"><em>TipKind</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.RichToolTip.SetTitleFont">
+<code class="sig-name descname">SetTitleFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">font</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.RichToolTip.SetTitleFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the title text font.</p>
+<p>By default it’s emphasized using the font style or colour appropriate for the current platform. Calling this method prevents the native MSW implementation from being used as it doesn’t support changing the font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>font</strong> (<a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><em>wx.Font</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.RichToolTip.ShowFor">
+<code class="sig-name descname">ShowFor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em>, <em class="sig-param">rect=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.RichToolTip.ShowFor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the tooltip for the given window and optionally specify where to show the tooltip.</p>
+<p>By default the tooltip tip points to the (middle of the) specified window which must be not <code class="docutils literal notranslate"><span class="pre">None</span></code> or, if <em class="xref py py-obj">rect</em>  is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, the middle of the specified <a class="reference internal" href="wx.Rect.html#wx-rect"><span class="std std-ref">  wx.Rect</span></a>.</p>
+<p>The coordinates of the <em class="xref py py-obj">rect</em>  parameter are relative to the given window.</p>
+<p>Currently the native MSW implementation is used only if <em class="xref py py-obj">win</em>  is a <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>  and <em class="xref py py-obj">rect</em>  is <code class="docutils literal notranslate"><span class="pre">None</span></code>. This limitation may be removed in the future.</p>
+<p>Parameter <em class="xref py py-obj">rect</em>  is new since wxWidgets 2.9.5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

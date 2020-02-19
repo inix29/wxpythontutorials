@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.FontInfo — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.FontList.html" rel="next" title="wx.FontList"/>
+<link href="wx.FontFlag.enumeration.html" rel="prev" title="wx.FontFlag"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.FontInfo</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.FontList.html" title="wx.FontList">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.FontFlag.enumeration.html" title="wx.FontFlag">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.FontInfo</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.FontInfo.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-fontinfo">
+<span id="wx-fontinfo"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.FontInfo</strong><a class="headerlink" href="#phoenix-title-wx-fontinfo" title="Permalink to this headline">¶</a></h1>
+<p>This class is a helper used for <a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a>  creation using named parameter idiom: it allows specifying various <a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a>  attributes using the chained calls to its clearly named methods instead of passing them in the fixed order to <a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a>  constructors.</p>
+<p>For example, to create an italic font with the given face name and size you could use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">font</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">FontInfo</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">FaceName</span><span class="p">(</span><span class="s2">"Helvetica"</span><span class="p">)</span><span class="o">.</span><span class="n">Italic</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Notice that all of the methods of this object return a reference to the object itself, allowing the calls to them to be chained as in the example above.</p>
+<p>All methods taking boolean parameters can be used to turn the specified font attribute on or off and turn it on by default.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>FontInfo</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of FontInfo" class="inheritance" src="_static/images/inheritance/wx.FontInfo_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,105,35" href="wx.FontInfo.html" id="node1" shape="rect" title="This class is a helper used for wx.Font  creation using named parameter idiom: it allows specifying various wx.Font  attributes using the chained calls to its clearly named methods instead of passing them in the fixed order to wx.Font  constructors."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontInfo.__init__" title="wx.FontInfo.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor uses the default font size for the current platform.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontInfo.AllFlags" title="wx.FontInfo.AllFlags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AllFlags</span></code></a></p></td>
+<td><p>Set all the font attributes at once.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontInfo.AntiAliased" title="wx.FontInfo.AntiAliased"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AntiAliased</span></code></a></p></td>
+<td><p>Set anti-aliasing flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontInfo.Bold" title="wx.FontInfo.Bold"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Bold</span></code></a></p></td>
+<td><p>Use a bold version of the font.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontInfo.Encoding" title="wx.FontInfo.Encoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Encoding</span></code></a></p></td>
+<td><p>Set the font encoding to use.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontInfo.FaceName" title="wx.FontInfo.FaceName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FaceName</span></code></a></p></td>
+<td><p>Set the font face name to use.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontInfo.Family" title="wx.FontInfo.Family"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Family</span></code></a></p></td>
+<td><p>Set the font family.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontInfo.Italic" title="wx.FontInfo.Italic"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Italic</span></code></a></p></td>
+<td><p>Use an italic version of the font.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontInfo.Light" title="wx.FontInfo.Light"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Light</span></code></a></p></td>
+<td><p>Use a lighter version of the font.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontInfo.Slant" title="wx.FontInfo.Slant"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Slant</span></code></a></p></td>
+<td><p>Use a slanted version of the font.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FontInfo.Strikethrough" title="wx.FontInfo.Strikethrough"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Strikethrough</span></code></a></p></td>
+<td><p>Use a strike-through version of the font.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FontInfo.Underlined" title="wx.FontInfo.Underlined"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Underlined</span></code></a></p></td>
+<td><p>Use an underlined version of the font.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.FontInfo">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">FontInfo</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FontInfo</span><span class="p">()</span>
+
+<span class="n">FontInfo</span><span class="p">(</span><span class="n">pointSize</span><span class="p">)</span>
+
+<span class="n">FontInfo</span><span class="p">(</span><span class="n">pixelSize</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class is a helper used for Font creation using named parameter
+idiom: it allows specifying various Font attributes using the
+chained calls to its clearly named methods instead of passing them in
+the fixed order to Font constructors.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.FontInfo.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor uses the default font size for the current platform.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, pointSize)</em></p>
+<p>Constructor setting the font size in points to use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pointSize</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Font.html#wx.Font.SetPointSize" title="wx.Font.SetPointSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetPointSize</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, pixelSize)</em></p>
+<p>Constructor setting the font size in pixels to use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pixelSize</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Font.html#wx.Font.SetPixelSize" title="wx.Font.SetPixelSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetPixelSize</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.AllFlags">
+<code class="sig-name descname">AllFlags</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.AllFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set all the font attributes at once.</p>
+<p>See <a class="reference internal" href="wx.FontFlag.enumeration.html#wx-fontflag"><span class="std std-ref">  wx.FontFlag</span></a>  for the various flags that can be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.AntiAliased">
+<code class="sig-name descname">AntiAliased</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">antiAliased=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.AntiAliased" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set anti-aliasing flag.</p>
+<p>Force the use of anti-aliasing on or off.</p>
+<p>Currently this is not implemented, i.e. using this method doesn’t do anything.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>antiAliased</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.Bold">
+<code class="sig-name descname">Bold</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bold=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.Bold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use a bold version of the font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bold</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.FontWeight.enumeration.html#wx-fontweight"><span class="std std-ref">  wx.FontWeight</span></a>, <a class="reference internal" href="wx.Font.html#wx.Font.SetWeight" title="wx.Font.SetWeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetWeight</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.Encoding">
+<code class="sig-name descname">Encoding</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.Encoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the font encoding to use.</p>
+<p>This is mostly unneeded in Unicode builds of wxWidgets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>encoding</strong> (<a class="reference internal" href="wx.FontEncoding.enumeration.html" title="FontEncoding"><em>FontEncoding</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.FontEncoding.enumeration.html#wx-fontencoding"><span class="std std-ref">  wx.FontEncoding</span></a>, <a class="reference internal" href="wx.Font.html#wx.Font.SetEncoding" title="wx.Font.SetEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetEncoding</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.FaceName">
+<code class="sig-name descname">FaceName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">faceName</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.FaceName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the font face name to use.</p>
+<p>Face names are not portable, so prefer to use <a class="reference internal" href="#wx.FontInfo.Family" title="wx.FontInfo.Family"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Family</span></code></a>   in portable code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>faceName</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Font.html#wx.Font.SetFaceName" title="wx.Font.SetFaceName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetFaceName</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.Family">
+<code class="sig-name descname">Family</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">family</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.Family" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the font family.</p>
+<p>The family is a generic portable way of referring to fonts without specifying a precise face name. This parameter must be one of the <a class="reference internal" href="wx.FontFamily.enumeration.html#wx-fontfamily"><span class="std std-ref">  wx.FontFamily</span></a>  enumeration values.</p>
+<p>If the <a class="reference internal" href="#wx.FontInfo.FaceName" title="wx.FontInfo.FaceName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FaceName</span></code></a>   is used, then it overrides the font family.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>family</strong> (<a class="reference internal" href="wx.FontFamily.enumeration.html" title="FontFamily"><em>FontFamily</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Font.html#wx.Font.SetFamily" title="wx.Font.SetFamily"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetFamily</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.Italic">
+<code class="sig-name descname">Italic</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">italic=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.Italic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use an italic version of the font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>italic</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.FontStyle.enumeration.html#wx-fontstyle"><span class="std std-ref">  wx.FontStyle</span></a>, <a class="reference internal" href="wx.Font.html#wx.Font.SetStyle" title="wx.Font.SetStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetStyle</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.Light">
+<code class="sig-name descname">Light</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">light=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.Light" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use a lighter version of the font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>light</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.FontWeight.enumeration.html#wx-fontweight"><span class="std std-ref">  wx.FontWeight</span></a>, <a class="reference internal" href="wx.Font.html#wx.Font.SetWeight" title="wx.Font.SetWeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetWeight</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.Slant">
+<code class="sig-name descname">Slant</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">slant=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.Slant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use a slanted version of the font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slant</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.FontStyle.enumeration.html#wx-fontstyle"><span class="std std-ref">  wx.FontStyle</span></a>, <a class="reference internal" href="wx.Font.html#wx.Font.SetStyle" title="wx.Font.SetStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetStyle</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.Strikethrough">
+<code class="sig-name descname">Strikethrough</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">strikethrough=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.Strikethrough" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use a strike-through version of the font.</p>
+<p>Currently this is only implemented in wxMSW and wxGTK.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strikethrough</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FontInfo.Underlined">
+<code class="sig-name descname">Underlined</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">underlined=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FontInfo.Underlined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use an underlined version of the font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>underlined</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-fontinfo"><span class="std std-ref">  wx.FontInfo</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

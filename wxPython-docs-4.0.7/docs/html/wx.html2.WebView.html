@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.html2.WebView — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.html2.WebViewArchiveHandler.html" rel="next" title="wx.html2.WebViewArchiveHandler"/>
+<link href="wx.html2.1moduleindex.html" rel="prev" title="wx.html2"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.html2.1moduleindex.html">
+<strong>wx.html2</strong></a> »</li>
+<li class="reltitle"> <strong>wx.html2.WebView</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.html2.WebViewArchiveHandler.html" title="wx.html2.WebViewArchiveHandler">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.html2.1moduleindex.html" title="wx.html2">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.html2.WebView</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-backend-descriptions"> Backend Descriptions</a><ul>
+<li><a class="reference internal" href="#webview-backend-ie-msw"><code class="docutils literal notranslate"><span class="pre">WEBVIEW_BACKEND_IE</span></code> (MSW)</a></li>
+<li><a class="reference internal" href="#webview-webkit-gtk"><code class="docutils literal notranslate"><span class="pre">WEBVIEW_WEBKIT</span></code> (GTK)</a></li>
+<li><a class="reference internal" href="#webview-webkit-osx"><code class="docutils literal notranslate"><span class="pre">WEBVIEW_WEBKIT</span></code> (OSX)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#phoenix-title-asynchronous-notifications"> Asynchronous Notifications</a></li>
+<li><a class="reference internal" href="#phoenix-title-virtual-file-systems-and-custom-schemes"> Virtual File Systems and Custom Schemes</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.html2.WebView.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-html2-webview">
+<span id="wx-html2-webview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.html2.WebView</strong><a class="headerlink" href="#phoenix-title-wx-html2-webview" title="Permalink to this headline">¶</a></h1>
+<p>This control may be used to render web (HTML / CSS / javascript) documents.</p>
+<p>It is designed to allow the creation of multiple backends for each port, although currently just one is available. It differs from <a class="reference internal" href="wx.html.HtmlWindow.html#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>  in that each backend is actually a full rendering engine, Trident on MSW and Webkit on OSX and GTK. This allows the correct viewing complex pages with javascript and css.</p>
+<div class="section" id="phoenix-title-backend-descriptions">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Backend Descriptions<a class="headerlink" href="#phoenix-title-backend-descriptions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="webview-backend-ie-msw">
+<h3><code class="docutils literal notranslate"><span class="pre">WEBVIEW_BACKEND_IE</span></code> (MSW)<a class="headerlink" href="#webview-backend-ie-msw" title="Permalink to this headline">¶</a></h3>
+<p>The IE backend uses Microsoft’s Trident rendering engine, specifically the version used by the locally installed copy of Internet Explorer. As such it is only available for the MSW port. By default recent versions of the</p>
+<p><a class="reference external" href="http://msdn.microsoft.com/en-us/library/aa752085%28v=VS.85%29.aspx">WebBrowser</a>  control, which this backend uses, emulate Internet Explorer 7. This can be changed with a registry setting, see <a class="reference external" href="http://msdn.microsoft.com/en-us/library/ee330730%28v=vs.85%29.aspx#browser_emulation">this</a>  article for more information. This backend has full support for custom schemes and virtual file systems.</p>
+</div>
+<div class="section" id="webview-webkit-gtk">
+<h3><code class="docutils literal notranslate"><span class="pre">WEBVIEW_WEBKIT</span></code> (GTK)<a class="headerlink" href="#webview-webkit-gtk" title="Permalink to this headline">¶</a></h3>
+<p>Under GTK the WebKit backend uses</p>
+<p><a class="reference external" href="http://webkitgtk.org/">WebKitGTK+</a>. The current minimum version required is 1.3.1 which ships by default with Ubuntu Natty and Debian Wheezy and has the package name libwebkitgtk-dev. Custom schemes and virtual files systems are supported under this backend, however embedded resources such as images and stylesheets are currently loaded using the <a class="reference external" href="data://">data://</a> scheme.</p>
+</div>
+<div class="section" id="webview-webkit-osx">
+<h3><code class="docutils literal notranslate"><span class="pre">WEBVIEW_WEBKIT</span></code> (OSX)<a class="headerlink" href="#webview-webkit-osx" title="Permalink to this headline">¶</a></h3>
+<p>The OSX WebKit backend uses Apple’s</p>
+<p><a class="reference external" href="http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/WebKit/Classes/WebView_Class/Reference/Reference.html#//apple_ref/doc/uid/20001903">WebView</a>  class. This backend has full support for custom schemes and virtual file systems.</p>
+</div>
+</div>
+<div class="section" id="phoenix-title-asynchronous-notifications">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Asynchronous Notifications<a class="headerlink" href="#phoenix-title-asynchronous-notifications" title="Permalink to this headline">¶</a></h2>
+<p>Many of the methods in <a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a>  are asynchronous, i.e. they return immediately and perform their work in the background. This includes functions such as <a class="reference internal" href="#wx.html2.WebView.LoadURL" title="wx.html2.WebView.LoadURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadURL</span></code></a>  and <a class="reference internal" href="#wx.html2.WebView.Reload" title="wx.html2.WebView.Reload"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Reload</span></code></a>. To receive notification of the progress and completion of these functions you need to handle the events that are provided. Specifically  <code class="docutils literal notranslate"><span class="pre">wxEVT_WEBVIEW_LOADED</span></code>   notifies when the page or a sub-frame has finished loading and   <code class="docutils literal notranslate"><span class="pre">wxEVT_WEBVIEW_ERROR</span></code>   notifies that an error has occurred.</p>
+</div>
+<div class="section" id="phoenix-title-virtual-file-systems-and-custom-schemes">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Virtual File Systems and Custom Schemes<a class="headerlink" href="#phoenix-title-virtual-file-systems-and-custom-schemes" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a>  supports the registering of custom scheme handlers, for example  <code class="docutils literal notranslate"><span class="pre">file</span></code>   or   <code class="docutils literal notranslate"><span class="pre">http</span></code> . To do this create a new class which inherits from  <a class="reference internal" href="wx.html2.WebViewHandler.html#wx-html2-webviewhandler"><span class="std std-ref">  wx.html2.WebViewHandler</span></a>, where <em class="xref py py-obj">WebHandler.GetFile()</em> returns a pointer to a <a class="reference internal" href="wx.FSFile.html#wx-fsfile"><span class="std std-ref">  wx.FSFile</span></a>  which represents the given url. You can then register your handler with <a class="reference internal" href="#wx.html2.WebView.RegisterHandler" title="wx.html2.WebView.RegisterHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RegisterHandler</span></code></a>  it will be called for all pages and resources. <a class="reference internal" href="wx.html2.WebViewFSHandler.html#wx-html2-webviewfshandler"><span class="std std-ref">  wx.html2.WebViewFSHandler</span></a>  is provided to access the virtual file system encapsulated by <a class="reference internal" href="wx.FileSystem.html#wx-filesystem"><span class="std std-ref">  wx.FileSystem</span></a>. The <a class="reference internal" href="wx.MemoryFSHandler.html#wx-memoryfshandler"><span class="std std-ref">  wx.MemoryFSHandler</span></a>  documentation gives an example of how this may be used. <a class="reference internal" href="wx.html2.WebViewArchiveHandler.html#wx-html2-webviewarchivehandler"><span class="std std-ref">  wx.html2.WebViewArchiveHandler</span></a>  is provided to allow the navigation of pages inside a zip archive. It supports paths of the form:  <code class="docutils literal notranslate"><span class="pre">scheme:///C</span></code> :/example/docs.zip;protocol=zip/main.htm</p>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="webview-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive one of the <a class="reference internal" href="wx.html2.WebViewEvent.html#wx-html2-webviewevent"><span class="std std-ref">  wx.html2.WebViewEvent</span></a> parameters.</p>
+<ul class="simple">
+<li><p>EVT_WEBVIEW_NAVIGATING: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_WEBVIEW_NAVIGATING</span></code>   event, generated before trying to get a resource. This event may be vetoed to prevent navigating to this resource. Note that if the displayed HTML document has several frames, one such event will be generated per frame.</p></li>
+<li><p>EVT_WEBVIEW_NAVIGATED: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_WEBVIEW_NAVIGATED</span></code>   event generated after it was confirmed that a resource would be requested. This event may not be vetoed. Note that if the displayed HTML document has several frames, one such event will be generated per frame.</p></li>
+<li><p>EVT_WEBVIEW_LOADED: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_WEBVIEW_LOADED</span></code>   event generated when the document is fully loaded and displayed. Note that if the displayed HTML document has several frames, one such event will be generated per frame.</p></li>
+<li><p>EVT_WEBVIEW_ERROR: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_WEBVIEW_ERROR</span></code>   event generated when a navigation error occurs. The integer associated with this event will be a WebNavigationError item. The string associated with this event may contain a backend-specific more precise error message/code.</p></li>
+<li><p>EVT_WEBVIEW_NEWWINDOW: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_WEBVIEW_NEWWINDOW</span></code>   event, generated when a new window is created. You must handle this event if you want anything to happen, for example to load the page in a new window or tab.</p></li>
+<li><p>EVT_WEBVIEW_TITLE_CHANGED: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_WEBVIEW_TITLE_CHANGED</span></code>   event, generated when the page title changes. Use GetString to get the title.</p></li>
+</ul>
+<p><a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a></p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.3.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.html2.WebViewHandler.html#wx-html2-webviewhandler"><span class="std std-ref">  wx.html2.WebViewHandler</span></a>, <a class="reference internal" href="wx.html2.WebViewEvent.html#wx-html2-webviewevent"><span class="std std-ref">  wx.html2.WebViewEvent</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>WebView</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of WebView" class="inheritance" src="_static/images/inheritance/wx.html2.WebView_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="36,315,185,344" href="wx.html2.WebView.html" id="node1" shape="rect" title="This control may be used to render web (HTML / CSS / javascript) documents."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%"/>
+<col style="width: 66%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.CanCopy" title="wx.html2.WebView.CanCopy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanCopy</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the current selection can be copied.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.CanCut" title="wx.html2.WebView.CanCut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanCut</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the current selection can be cut.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.CanGoBack" title="wx.html2.WebView.CanGoBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanGoBack</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is possible to navigate backward in the history of visited pages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.CanGoForward" title="wx.html2.WebView.CanGoForward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanGoForward</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is possible to navigate forward in the history of visited pages.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.CanPaste" title="wx.html2.WebView.CanPaste"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanPaste</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if data can be pasted.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.CanRedo" title="wx.html2.WebView.CanRedo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanRedo</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is an action to redo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.CanSetZoomType" title="wx.html2.WebView.CanSetZoomType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanSetZoomType</span></code></a></p></td>
+<td><p>Retrieve whether the current HTML engine supports a zoom type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.CanUndo" title="wx.html2.WebView.CanUndo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanUndo</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is an action to undo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.ClearHistory" title="wx.html2.WebView.ClearHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearHistory</span></code></a></p></td>
+<td><p>Clear the history, this will also remove the visible page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.ClearSelection" title="wx.html2.WebView.ClearSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearSelection</span></code></a></p></td>
+<td><p>Clears the current selection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.Copy" title="wx.html2.WebView.Copy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Copy</span></code></a></p></td>
+<td><p>Copies the current selection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.Create" title="wx.html2.WebView.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creation function for two-step creation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.Cut" title="wx.html2.WebView.Cut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Cut</span></code></a></p></td>
+<td><p>Cuts the current selection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.DeleteSelection" title="wx.html2.WebView.DeleteSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteSelection</span></code></a></p></td>
+<td><p>Deletes the current selection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.EnableContextMenu" title="wx.html2.WebView.EnableContextMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableContextMenu</span></code></a></p></td>
+<td><p>Enable or disable the right click context menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.EnableHistory" title="wx.html2.WebView.EnableHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableHistory</span></code></a></p></td>
+<td><p>Enable or disable the history.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.Find" title="wx.html2.WebView.Find"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Find</span></code></a></p></td>
+<td><p>Finds a phrase on the current page and if found, the control will scroll the phrase into view and select it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.GetBackwardHistory" title="wx.html2.WebView.GetBackwardHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBackwardHistory</span></code></a></p></td>
+<td><p>Returns a list of items in the back history.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.GetClassDefaultAttributes" title="wx.html2.WebView.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.GetCurrentTitle" title="wx.html2.WebView.GetCurrentTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentTitle</span></code></a></p></td>
+<td><p>Get the title of the current web page, or its URL/path if title is not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.GetCurrentURL" title="wx.html2.WebView.GetCurrentURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentURL</span></code></a></p></td>
+<td><p>Get the URL of the currently displayed document.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.GetForwardHistory" title="wx.html2.WebView.GetForwardHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetForwardHistory</span></code></a></p></td>
+<td><p>Returns a list of items in the forward history.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.GetNativeBackend" title="wx.html2.WebView.GetNativeBackend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNativeBackend</span></code></a></p></td>
+<td><p>Return the pointer to the native backend used by this control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.GetPageSource" title="wx.html2.WebView.GetPageSource"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageSource</span></code></a></p></td>
+<td><p>Get the HTML source code of the currently displayed document.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.GetPageText" title="wx.html2.WebView.GetPageText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageText</span></code></a></p></td>
+<td><p>Get the text of the current page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.GetSelectedSource" title="wx.html2.WebView.GetSelectedSource"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedSource</span></code></a></p></td>
+<td><p>Returns the currently selected source, if any.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.GetSelectedText" title="wx.html2.WebView.GetSelectedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedText</span></code></a></p></td>
+<td><p>Returns the currently selected text, if any.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.GetZoom" title="wx.html2.WebView.GetZoom"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetZoom</span></code></a></p></td>
+<td><p>Get the zoom factor of the page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.GetZoomType" title="wx.html2.WebView.GetZoomType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetZoomType</span></code></a></p></td>
+<td><p>Get how the zoom factor is currently interpreted.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.GoBack" title="wx.html2.WebView.GoBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GoBack</span></code></a></p></td>
+<td><p>Navigate back in the history of visited pages.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.GoForward" title="wx.html2.WebView.GoForward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GoForward</span></code></a></p></td>
+<td><p>Navigate forward in the history of visited pages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.HasSelection" title="wx.html2.WebView.HasSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasSelection</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is a current selection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.IsBusy" title="wx.html2.WebView.IsBusy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsBusy</span></code></a></p></td>
+<td><p>Returns whether the web control is currently busy (e.g. loading a page).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.IsContextMenuEnabled" title="wx.html2.WebView.IsContextMenuEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsContextMenuEnabled</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a context menu will be shown on right click.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.IsEditable" title="wx.html2.WebView.IsEditable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEditable</span></code></a></p></td>
+<td><p>Returns whether the web control is currently editable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.LoadURL" title="wx.html2.WebView.LoadURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadURL</span></code></a></p></td>
+<td><p>Load a web page from a URL.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.New" title="wx.html2.WebView.New"><code class="xref py py-meth docutils literal notranslate"><span class="pre">New</span></code></a></p></td>
+<td><p>Factory function to create a new <a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a>  with two-step creation, <a class="reference internal" href="#wx.html2.WebView.Create" title="wx.html2.WebView.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html2.WebView.Create</span></code></a>   should be called on the returned object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.Paste" title="wx.html2.WebView.Paste"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Paste</span></code></a></p></td>
+<td><p>Pastes the current data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.Print" title="wx.html2.WebView.Print"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Print</span></code></a></p></td>
+<td><p>Opens a print dialog so that the user may print the currently displayed page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.Redo" title="wx.html2.WebView.Redo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Redo</span></code></a></p></td>
+<td><p>Redos the last action.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.RegisterFactory" title="wx.html2.WebView.RegisterFactory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RegisterFactory</span></code></a></p></td>
+<td><p>Allows the registering of new backend for <a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.RegisterHandler" title="wx.html2.WebView.RegisterHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RegisterHandler</span></code></a></p></td>
+<td><p>Registers a custom scheme handler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.Reload" title="wx.html2.WebView.Reload"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Reload</span></code></a></p></td>
+<td><p>Reload the currently displayed URL.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.RunScript" title="wx.html2.WebView.RunScript"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RunScript</span></code></a></p></td>
+<td><p>Runs the given javascript code.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.SelectAll" title="wx.html2.WebView.SelectAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectAll</span></code></a></p></td>
+<td><p>Selects the entire page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.SetEditable" title="wx.html2.WebView.SetEditable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEditable</span></code></a></p></td>
+<td><p>Set the editable property of the web control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.SetPage" title="wx.html2.WebView.SetPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPage</span></code></a></p></td>
+<td><p>Set the displayed page source to the contents of the given string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.SetZoom" title="wx.html2.WebView.SetZoom"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetZoom</span></code></a></p></td>
+<td><p>Set the zoom factor of the page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.SetZoomType" title="wx.html2.WebView.SetZoomType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetZoomType</span></code></a></p></td>
+<td><p>Set how to interpret the zoom factor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.Stop" title="wx.html2.WebView.Stop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stop</span></code></a></p></td>
+<td><p>Stop the current page loading process, if any.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.Undo" title="wx.html2.WebView.Undo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Undo</span></code></a></p></td>
+<td><p>Undos the last action.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 49%"/>
+<col style="width: 51%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.BackwardHistory" title="wx.html2.WebView.BackwardHistory"><code class="xref py py-attr docutils literal notranslate"><span class="pre">BackwardHistory</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetBackwardHistory" title="wx.html2.WebView.GetBackwardHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBackwardHistory</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.CurrentTitle" title="wx.html2.WebView.CurrentTitle"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CurrentTitle</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetCurrentTitle" title="wx.html2.WebView.GetCurrentTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentTitle</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.CurrentURL" title="wx.html2.WebView.CurrentURL"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CurrentURL</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetCurrentURL" title="wx.html2.WebView.GetCurrentURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentURL</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.ForwardHistory" title="wx.html2.WebView.ForwardHistory"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ForwardHistory</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetForwardHistory" title="wx.html2.WebView.GetForwardHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetForwardHistory</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.NativeBackend" title="wx.html2.WebView.NativeBackend"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NativeBackend</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetNativeBackend" title="wx.html2.WebView.GetNativeBackend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNativeBackend</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.PageSource" title="wx.html2.WebView.PageSource"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PageSource</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetPageSource" title="wx.html2.WebView.GetPageSource"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageSource</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.PageText" title="wx.html2.WebView.PageText"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PageText</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetPageText" title="wx.html2.WebView.GetPageText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageText</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.SelectedSource" title="wx.html2.WebView.SelectedSource"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SelectedSource</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetSelectedSource" title="wx.html2.WebView.GetSelectedSource"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedSource</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.SelectedText" title="wx.html2.WebView.SelectedText"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SelectedText</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetSelectedText" title="wx.html2.WebView.GetSelectedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedText</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html2.WebView.Zoom" title="wx.html2.WebView.Zoom"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Zoom</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetZoom" title="wx.html2.WebView.GetZoom"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetZoom</span></code></a> and <a class="reference internal" href="#wx.html2.WebView.SetZoom" title="wx.html2.WebView.SetZoom"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetZoom</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html2.WebView.ZoomType" title="wx.html2.WebView.ZoomType"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ZoomType</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html2.WebView.GetZoomType" title="wx.html2.WebView.GetZoomType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetZoomType</span></code></a> and <a class="reference internal" href="#wx.html2.WebView.SetZoomType" title="wx.html2.WebView.SetZoomType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetZoomType</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.html2.WebView">
+<em class="property">class </em><code class="sig-prename descclassname">wx.html2.</code><code class="sig-name descname">WebView</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView" title="Permalink to this definition">¶</a></dt>
+<dd><p>This control may be used to render web (HTML / CSS / javascript)
+documents.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.html2.WebView.CanCopy">
+<code class="sig-name descname">CanCopy</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.CanCopy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the current selection can be copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This always returns  <code class="docutils literal notranslate"><span class="pre">true</span></code>   on the OSX WebKit backend.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.CanCut">
+<code class="sig-name descname">CanCut</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.CanCut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the current selection can be cut.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This always returns  <code class="docutils literal notranslate"><span class="pre">true</span></code>   on the OSX WebKit backend.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.CanGoBack">
+<code class="sig-name descname">CanGoBack</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.CanGoBack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is possible to navigate backward in the history of visited pages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.CanGoForward">
+<code class="sig-name descname">CanGoForward</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.CanGoForward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is possible to navigate forward in the history of visited pages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.CanPaste">
+<code class="sig-name descname">CanPaste</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.CanPaste" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if data can be pasted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This always returns  <code class="docutils literal notranslate"><span class="pre">true</span></code>   on the OSX WebKit backend.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.CanRedo">
+<code class="sig-name descname">CanRedo</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.CanRedo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is an action to redo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.CanSetZoomType">
+<code class="sig-name descname">CanSetZoomType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">type</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.CanSetZoomType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve whether the current HTML engine supports a zoom type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="wx.html2.WebViewZoomType.enumeration.html" title="WebViewZoomType"><em>WebViewZoomType</em></a>) – The zoom type to test.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether this type of zoom is supported by this HTML engine (and thus can be set through <a class="reference internal" href="#wx.html2.WebView.SetZoomType" title="wx.html2.WebView.SetZoomType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetZoomType</span></code></a> ).</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.CanUndo">
+<code class="sig-name descname">CanUndo</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.CanUndo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is an action to undo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.ClearHistory">
+<code class="sig-name descname">ClearHistory</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.ClearHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the history, this will also remove the visible page.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is not implemented on the WebKit2GTK+ backend.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.ClearSelection">
+<code class="sig-name descname">ClearSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.ClearSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the current selection.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Copy">
+<code class="sig-name descname">Copy</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies the current selection.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">url=WebViewDefaultURLStr</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=0</em>, <em class="sig-param">name=WebViewNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creation function for two-step creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>url</strong> (<em>string</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Cut">
+<code class="sig-name descname">Cut</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Cut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cuts the current selection.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.DeleteSelection">
+<code class="sig-name descname">DeleteSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.DeleteSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the current selection.</p>
+<p>Note that for  <code class="docutils literal notranslate"><span class="pre">WEBVIEW_BACKEND_WEBKIT</span></code>   the selection must be editable, either through SetEditable or the correct HTML attribute.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.EnableContextMenu">
+<code class="sig-name descname">EnableContextMenu</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.EnableContextMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable the right click context menu.</p>
+<p>By default the standard context menu is enabled, this method can be used to disable it or re-enable it later.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.EnableHistory">
+<code class="sig-name descname">EnableHistory</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.EnableHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable the history.</p>
+<p>This will also clear the history.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is not implemented on the WebKit2GTK+ backend.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Find">
+<code class="sig-name descname">Find</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">text</em>, <em class="sig-param">flags=WEBVIEW_FIND_DEFAULT</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds a phrase on the current page and if found, the control will scroll the phrase into view and select it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – The phrase to search for.</p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.html2.WebViewFindFlags.enumeration.html" title="WebViewFindFlags"><em>WebViewFindFlags</em></a>) – The flags for the search.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>If search phrase was not found in combination with the flags then  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   is returned. If called for the first time with search phrase then the total number of results will be returned. Then for every time its called with the same search phrase it will return the number of the current match.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function will restart the search if the flags  <code class="docutils literal notranslate"><span class="pre">WEBVIEW_FIND_ENTIRE_WORD</span></code>   or   <code class="docutils literal notranslate"><span class="pre">WEBVIEW_FIND_MATCH_CASE</span></code>   are changed, since this will require a new search. To reset the search, for example resetting the highlights call the function with an empty search phrase. This always returns   <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   on the OSX WebKit backend.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetBackwardHistory">
+<code class="sig-name descname">GetBackwardHistory</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetBackwardHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of items in the back history.</p>
+<p>The first item in the vector is the first page that was loaded by the control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">VisualAttributes</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetCurrentTitle">
+<code class="sig-name descname">GetCurrentTitle</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetCurrentTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the title of the current web page, or its URL/path if title is not available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetCurrentURL">
+<code class="sig-name descname">GetCurrentURL</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetCurrentURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the URL of the currently displayed document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetForwardHistory">
+<code class="sig-name descname">GetForwardHistory</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetForwardHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of items in the forward history.</p>
+<p>The first item in the vector is the next item in the history with respect to the currently loaded page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetNativeBackend">
+<code class="sig-name descname">GetNativeBackend</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetNativeBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the pointer to the native backend used by this control.</p>
+<p>This method can be used to retrieve the pointer to the native rendering engine used by this control. The return value needs to be down-casted to the appropriate type depending on the platform: under Windows, it’s a pointer to IWebBrowser2 interface, under OS X it’s a WebView pointer and under GTK it’s a WebKitWebView.</p>
+<p>For example, you could set the WebKit options using this method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># In Python the value returned will be a sip wrapper around a void* type,</span>
+<span class="c1"># and it can be converted to the address being pointed to with int().</span>
+<span class="n">webview_ptr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">webview</span><span class="o">.</span><span class="n">GetNativeBackend</span><span class="p">()</span>
+
+<span class="c1"># Assuming you are able to get a ctypes, cffi or similar access to the</span>
+<span class="c1"># webview library, you can use that pointer value to give it access to the</span>
+<span class="c1"># WebView backend to operate upon.</span>
+<span class="n">theWebViewLib</span><span class="o">.</span><span class="n">doSomething</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">webview_ptr</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetPageSource">
+<code class="sig-name descname">GetPageSource</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetPageSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the HTML source code of the currently displayed document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The HTML source code, or an empty string if no page is currently shown.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetPageText">
+<code class="sig-name descname">GetPageText</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetPageText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the text of the current page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetSelectedSource">
+<code class="sig-name descname">GetSelectedSource</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetSelectedSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the currently selected source, if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetSelectedText">
+<code class="sig-name descname">GetSelectedText</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetSelectedText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the currently selected text, if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetZoom">
+<code class="sig-name descname">GetZoom</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetZoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the zoom factor of the page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.html2.WebViewZoom.enumeration.html#wx-html2-webviewzoom"><span class="std std-ref">  wx.html2.WebViewZoom</span></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The current level of zoom.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GetZoomType">
+<code class="sig-name descname">GetZoomType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GetZoomType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get how the zoom factor is currently interpreted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.html2.WebViewZoomType.enumeration.html#wx-html2-webviewzoomtype"><span class="std std-ref">  wx.html2.WebViewZoomType</span></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>How the zoom factor is currently interpreted by the HTML engine.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GoBack">
+<code class="sig-name descname">GoBack</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GoBack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Navigate back in the history of visited pages.</p>
+<p>Only valid if <a class="reference internal" href="#wx.html2.WebView.CanGoBack" title="wx.html2.WebView.CanGoBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanGoBack</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.GoForward">
+<code class="sig-name descname">GoForward</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.GoForward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Navigate forward in the history of visited pages.</p>
+<p>Only valid if <a class="reference internal" href="#wx.html2.WebView.CanGoForward" title="wx.html2.WebView.CanGoForward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanGoForward</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.HasSelection">
+<code class="sig-name descname">HasSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.HasSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is a current selection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.IsBusy">
+<code class="sig-name descname">IsBusy</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.IsBusy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the web control is currently busy (e.g. loading a page).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.IsContextMenuEnabled">
+<code class="sig-name descname">IsContextMenuEnabled</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.IsContextMenuEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a context menu will be shown on right click.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.IsEditable">
+<code class="sig-name descname">IsEditable</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.IsEditable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the web control is currently editable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.LoadURL">
+<code class="sig-name descname">LoadURL</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">url</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.LoadURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a web page from a URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>string</em>) – The URL of the page to be loaded.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Web engines generally report errors asynchronously, so if you wish to know whether loading the URL was successful, register to receive navigation error events.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.New">
+<em class="property">static </em><code class="sig-name descname">New</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.New" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>New</strong> <em class="xref py py-obj">(backend=WebViewBackendDefault)</em></p>
+<p>Factory function to create a new <a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a>  with two-step creation, <a class="reference internal" href="#wx.html2.WebView.Create" title="wx.html2.WebView.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html2.WebView.Create</span></code></a>   should be called on the returned object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>backend</strong> (<em>string</em>) – The backend web rendering engine to use.  <code class="docutils literal notranslate"><span class="pre">WebViewBackendDefault</span></code> ,   <code class="docutils literal notranslate"><span class="pre">WebViewBackendIE</span></code>   and   <code class="docutils literal notranslate"><span class="pre">WebViewBackendWebKit</span></code>   are predefined where appropriate.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The created <a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>New</strong> <em class="xref py py-obj">(parent, id=ID_ANY, url=WebViewDefaultURLStr, pos=DefaultPosition, size=DefaultSize, backend=WebViewBackendDefault, style=0, name=WebViewNameStr)</em></p>
+<p>Factory function to create a new <a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a>  using a <a class="reference internal" href="wx.html2.WebViewFactory.html#wx-html2-webviewfactory"><span class="std std-ref">  wx.html2.WebViewFactory</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Parent window for the control</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of this control</p></li>
+<li><p><strong>url</strong> (<em>string</em>) – Initial URL to load</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Position of the control</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Size of the control</p></li>
+<li><p><strong>backend</strong> (<em>string</em>) – The backend web rendering engine to use.  <code class="docutils literal notranslate"><span class="pre">WebViewBackendDefault</span></code> ,   <code class="docutils literal notranslate"><span class="pre">WebViewBackendIE</span></code>   and   <code class="docutils literal notranslate"><span class="pre">WebViewBackendWebKit</span></code>   are predefined where appropriate.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – Window style. For generic window styles, please see <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – Window name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The created <a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a>, or  <code class="docutils literal notranslate"><span class="pre">NULL</span></code>   if the requested backend is not available</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Paste">
+<code class="sig-name descname">Paste</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Paste" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pastes the current data.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Print">
+<code class="sig-name descname">Print</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a print dialog so that the user may print the currently displayed page.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Redo">
+<code class="sig-name descname">Redo</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Redo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redos the last action.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.RegisterFactory">
+<em class="property">static </em><code class="sig-name descname">RegisterFactory</code><span class="sig-paren">(</span><em class="sig-param">backend</em>, <em class="sig-param">factory</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.RegisterFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows the registering of new backend for <a class="reference internal" href="#wx-html2-webview"><span class="std std-ref">  wx.html2.WebView</span></a>.</p>
+<p><em class="xref py py-obj">backend</em>  can be used as an argument to <a class="reference internal" href="#wx.html2.WebView.New" title="wx.html2.WebView.New"><code class="xref py py-meth docutils literal notranslate"><span class="pre">New</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> (<em>string</em>) – The name for the new backend to be registered under</p></li>
+<li><p><strong>factory</strong> (<a class="reference internal" href="wx.html2.WebViewFactory.html#wx.html2.WebViewFactory" title="wx.html2.WebViewFactory"><em>wx.html2.WebViewFactory</em></a>) – A shared pointer to the factory which creates the appropriate backend.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.RegisterHandler">
+<code class="sig-name descname">RegisterHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.RegisterHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a custom scheme handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>handler</strong> (<a class="reference internal" href="wx.html2.WebViewHandler.html#wx.html2.WebViewHandler" title="wx.html2.WebViewHandler"><em>wx.html2.WebViewHandler</em></a>) – A shared pointer to a WebHandler.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Reload">
+<code class="sig-name descname">Reload</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags=WEBVIEW_RELOAD_DEFAULT</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Reload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reload the currently displayed URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<a class="reference internal" href="wx.html2.WebViewReloadFlags.enumeration.html" title="WebViewReloadFlags"><em>WebViewReloadFlags</em></a>) – A bit array that may optionally contain reload options.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.RunScript">
+<code class="sig-name descname">RunScript</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">javascript</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.RunScript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the given javascript code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>javascript</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using <code class="docutils literal notranslate"><span class="pre">WEBVIEW_BACKEND_IE</span></code> you must wait for the current page to finish loading before calling <a class="reference internal" href="#wx.html2.WebView.RunScript" title="wx.html2.WebView.RunScript"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RunScript</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.SelectAll">
+<code class="sig-name descname">SelectAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.SelectAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the entire page.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.SetEditable">
+<code class="sig-name descname">SetEditable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.SetEditable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the editable property of the web control.</p>
+<p>Enabling allows the user to edit the page even if the  <code class="docutils literal notranslate"><span class="pre">contenteditable</span></code>   attribute is not set. The exact capabilities vary with the backend being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.SetPage">
+<code class="sig-name descname">SetPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.SetPage" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetPage</strong> <em class="xref py py-obj">(self, html, baseUrl)</em></p>
+<p>Set the displayed page source to the contents of the given string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>html</strong> (<em>string</em>) – The string that contains the HTML data to display.</p></li>
+<li><p><strong>baseUrl</strong> (<em>string</em>) – URL assigned to the HTML data, to be used to resolve relative paths, for instance.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using  <code class="docutils literal notranslate"><span class="pre">WEBVIEW_BACKEND_IE</span></code>   you must wait for the current page to finish loading before calling  <a class="reference internal" href="#wx.html2.WebView.SetPage" title="wx.html2.WebView.SetPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPage</span></code></a> . The baseURL parameter is not used in this backend.</p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetPage</strong> <em class="xref py py-obj">(self, html, baseUrl)</em></p>
+<p>Set the displayed page source to the contents of the given stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>html</strong> (<a class="reference internal" href="wx.InputStream.html#wx.InputStream" title="wx.InputStream"><em>wx.InputStream</em></a>) – The stream to read HTML data from.</p></li>
+<li><p><strong>baseUrl</strong> (<em>string</em>) – URL assigned to the HTML data, to be used to resolve relative paths, for instance.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.SetZoom">
+<code class="sig-name descname">SetZoom</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">zoom</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.SetZoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the zoom factor of the page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>zoom</strong> (<a class="reference internal" href="wx.html2.WebViewZoom.enumeration.html" title="WebViewZoom"><em>WebViewZoom</em></a>) – How much to zoom (scale) the HTML document.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.SetZoomType">
+<code class="sig-name descname">SetZoomType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">zoomType</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.SetZoomType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set how to interpret the zoom factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>zoomType</strong> (<a class="reference internal" href="wx.html2.WebViewZoomType.enumeration.html" title="WebViewZoomType"><em>WebViewZoomType</em></a>) – How the zoom factor should be interpreted by the HTML engine.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>invoke <a class="reference internal" href="#wx.html2.WebView.CanSetZoomType" title="wx.html2.WebView.CanSetZoomType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanSetZoomType</span></code></a>   first, some HTML renderers may not support all zoom types.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Stop">
+<code class="sig-name descname">Stop</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop the current page loading process, if any.</p>
+<p>May trigger an error event of type  <code class="docutils literal notranslate"><span class="pre">WEBVIEW_NAV_ERR_USER_CANCELLED</span></code> . <code class="docutils literal notranslate"><span class="pre">TODO</span></code>: make   <code class="docutils literal notranslate"><span class="pre">WEBVIEW_NAV_ERR_USER_CANCELLED</span></code>   errors uniform across ports.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html2.WebView.Undo">
+<code class="sig-name descname">Undo</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html2.WebView.Undo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Undos the last action.</p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.html2.WebView.BackwardHistory">
+<code class="sig-name descname">BackwardHistory</code><a class="headerlink" href="#wx.html2.WebView.BackwardHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetBackwardHistory" title="wx.html2.WebView.GetBackwardHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBackwardHistory</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.CurrentTitle">
+<code class="sig-name descname">CurrentTitle</code><a class="headerlink" href="#wx.html2.WebView.CurrentTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetCurrentTitle" title="wx.html2.WebView.GetCurrentTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentTitle</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.CurrentURL">
+<code class="sig-name descname">CurrentURL</code><a class="headerlink" href="#wx.html2.WebView.CurrentURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetCurrentURL" title="wx.html2.WebView.GetCurrentURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentURL</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.ForwardHistory">
+<code class="sig-name descname">ForwardHistory</code><a class="headerlink" href="#wx.html2.WebView.ForwardHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetForwardHistory" title="wx.html2.WebView.GetForwardHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetForwardHistory</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.NativeBackend">
+<code class="sig-name descname">NativeBackend</code><a class="headerlink" href="#wx.html2.WebView.NativeBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetNativeBackend" title="wx.html2.WebView.GetNativeBackend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNativeBackend</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.PageSource">
+<code class="sig-name descname">PageSource</code><a class="headerlink" href="#wx.html2.WebView.PageSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetPageSource" title="wx.html2.WebView.GetPageSource"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageSource</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.PageText">
+<code class="sig-name descname">PageText</code><a class="headerlink" href="#wx.html2.WebView.PageText" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetPageText" title="wx.html2.WebView.GetPageText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageText</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.SelectedSource">
+<code class="sig-name descname">SelectedSource</code><a class="headerlink" href="#wx.html2.WebView.SelectedSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetSelectedSource" title="wx.html2.WebView.GetSelectedSource"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedSource</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.SelectedText">
+<code class="sig-name descname">SelectedText</code><a class="headerlink" href="#wx.html2.WebView.SelectedText" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetSelectedText" title="wx.html2.WebView.GetSelectedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedText</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.Zoom">
+<code class="sig-name descname">Zoom</code><a class="headerlink" href="#wx.html2.WebView.Zoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetZoom" title="wx.html2.WebView.GetZoom"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetZoom</span></code></a> and <a class="reference internal" href="#wx.html2.WebView.SetZoom" title="wx.html2.WebView.SetZoom"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetZoom</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html2.WebView.ZoomType">
+<code class="sig-name descname">ZoomType</code><a class="headerlink" href="#wx.html2.WebView.ZoomType" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html2.WebView.GetZoomType" title="wx.html2.WebView.GetZoomType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetZoomType</span></code></a> and <a class="reference internal" href="#wx.html2.WebView.SetZoomType" title="wx.html2.WebView.SetZoomType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetZoomType</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

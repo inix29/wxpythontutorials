@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.tools.img2py — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.tools.img2xpm.html" rel="next" title="wx.tools.img2xpm"/>
+<link href="wx.tools.img2png.html" rel="prev" title="wx.tools.img2png"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.tools.html">
+<strong>wx.tools</strong></a> »</li>
+<li class="reltitle"> <strong>wx.tools.img2py</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.tools.img2xpm.html" title="wx.tools.img2xpm">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.tools.img2png.html" title="wx.tools.img2png">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.tools.img2py</strong></a><ul>
+<li><a class="reference internal" href="#function-summary-functions-summary"> Functions Summary</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.tools.img2py.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.tools.img2py"></span><div class="section" id="phoenix-title-wx-tools-img2py">
+<span id="wx-tools-img2py"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.tools.img2py</strong><a class="headerlink" href="#phoenix-title-wx-tools-img2py" title="Permalink to this headline">¶</a></h1>
+<dl class="simple">
+<dt>img2py.py  –  Convert an image to PNG format and embed it in a Python</dt><dd><p>module with appropriate code so it can be loaded into
+a program at runtime.  The benefit is that since it is
+Python source code it can be delivered as a .pyc or
+‘compiled’ into the program using freeze, py2exe, etc.</p>
+</dd>
+</dl>
+<p>Usage:</p>
+<blockquote>
+<div><p>img2py.py [options] image_file python_file</p>
+</div></blockquote>
+<p>Options:</p>
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-m <var>&lt;#rrggbb&gt;</var></span></kbd></dt>
+<dd><p>If the original image has a mask or transparency defined
+it will be used by default.  You can use this option to
+override the default or provide a new mask by specifying
+a colour in the image to mark as transparent.</p>
+</dd>
+<dt><kbd><span class="option">-n <var>&lt;name&gt;</var></span></kbd></dt>
+<dd><p>Normally generic names (getBitmap, etc.) are used for the
+image access functions.  If you use this option you can
+specify a name that should be used to customize the access
+functions, (getNameBitmap, etc.)</p>
+</dd>
+<dt><kbd><span class="option">-c</span></kbd></dt>
+<dd><p>Maintain a catalog of names that can be used to reference
+images.  Catalog can be accessed via catalog and
+index attributes of the module.
+If the -n &lt;name&gt; option is specified then &lt;name&gt;
+is used for the catalog key and index value, otherwise
+the filename without any path or extension is used
+as the key.</p>
+</dd>
+<dt><kbd><span class="option">-a</span></kbd></dt>
+<dd><p>This flag specifies that the python_file should be appended
+to instead of overwritten.  This in combination with -n will
+allow you to put multiple images in one Python source file.</p>
+</dd>
+<dt><kbd><span class="option">-i</span></kbd></dt>
+<dd><p>Also output a function to return the image as a wxIcon.</p>
+</dd>
+<dt><kbd><span class="option">-f</span></kbd></dt>
+<dd><p>Generate code compatible with the old function interface.
+(This option is ON by default in 2.8, use -f to turn off.)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>You can also import this module from your Python scripts, and use its img2py()
+function. See its docstring for more info.</p>
+<div class="section" id="function-summary-functions-summary">
+<h2><a class="reference internal" href="_images/function_summary.png"><img alt="function_summary" class="align-middle" src="_images/function_summary.png" style="width: 32px;"/></a> Functions Summary<a class="headerlink" href="#function-summary-functions-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.tools.img2py.convert" title="wx.tools.img2py.convert"><code class="xref py py-func docutils literal notranslate"><span class="pre">convert</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.tools.img2py.img2py" title="wx.tools.img2py.img2py"><code class="xref py py-func docutils literal notranslate"><span class="pre">img2py</span></code></a></p></td>
+<td><p>Converts an image file to a data structure written in a Python file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.tools.img2py.main" title="wx.tools.img2py.main"><code class="xref py py-func docutils literal notranslate"><span class="pre">main</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<br/><hr/>
+<dl class="function">
+<dt id="wx.tools.img2py.convert">
+<code class="sig-name descname">convert</code><span class="sig-paren">(</span><em class="sig-param">fileName</em>, <em class="sig-param">maskClr</em>, <em class="sig-param">outputDir</em>, <em class="sig-param">outputName</em>, <em class="sig-param">outType</em>, <em class="sig-param">outExt</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.tools.img2py.convert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="function">
+<dt id="wx.tools.img2py.img2py">
+<code class="sig-name descname">img2py</code><span class="sig-paren">(</span><em class="sig-param">image_file</em>, <em class="sig-param">python_file</em>, <em class="sig-param">append=DEFAULT_APPEND</em>, <em class="sig-param">compressed=DEFAULT_COMPRESSED</em>, <em class="sig-param">maskClr=DEFAULT_MASKCLR</em>, <em class="sig-param">imgName=DEFAULT_IMGNAME</em>, <em class="sig-param">icon=DEFAULT_ICON</em>, <em class="sig-param">catalog=DEFAULT_CATALOG</em>, <em class="sig-param">functionCompatible=DEFAULT_COMPATIBLE</em>, <em class="sig-param">functionCompatibile=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.tools.img2py.img2py" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an image file to a data structure written in a Python file
+–image_file: string; the path of the source image file
+–python_file: string; the path of the destination python file
+–other arguments: they are equivalent to the command-line arguments</p>
+</dd></dl>
+<br/><hr/>
+<dl class="function">
+<dt id="wx.tools.img2py.main">
+<code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">args=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.tools.img2py.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wxPython Project Phoenix Migration Guide — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="classic_vs_phoenix.html" rel="next" title="Classic vs Phoenix"/>
+<link href="index.html" rel="prev" title="wxPython API Documentation"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li class="reltitle"> wxPython Project Phoenix Migration Guide</li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="classic_vs_phoenix.html" title="Classic vs Phoenix">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="index.html" title="wxPython API Documentation">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#">wxPython Project Phoenix Migration Guide</a><ul>
+<li><a class="reference internal" href="#version-numbers">Version Numbers</a></li>
+<li><a class="reference internal" href="#overloaded-functions">Overloaded Functions</a></li>
+<li><a class="reference internal" href="#findwindow-methods">FindWindow Methods</a></li>
+<li><a class="reference internal" href="#static-methods">Static Methods</a></li>
+<li><a class="reference internal" href="#unicode-and-auto-converting-strings">Unicode and Auto-Converting Strings</a></li>
+<li><a class="reference internal" href="#font-pen-and-brush-styles">Font, Pen, and Brush Styles</a></li>
+<li><a class="reference internal" href="#wx-pydeadobjecterror-runtimeerror">wx.PyDeadObjectError –&gt; RuntimeError</a></li>
+<li><a class="reference internal" href="#wx-pyassertionerror-wx-wxassertionerror">wx.PyAssertionError –&gt; wx.wxAssertionError</a></li>
+<li><a class="reference internal" href="#the-wx-namespace-and-submodules-reorganized">The ‘wx’ namespace and submodules reorganized</a></li>
+<li><a class="reference internal" href="#wx-listctrl">wx.ListCtrl</a></li>
+<li><a class="reference internal" href="#wx-treectrl">wx.TreeCtrl</a></li>
+<li><a class="reference internal" href="#wx-dragimage">wx.DragImage</a></li>
+<li><a class="reference internal" href="#phase-create">2-Phase Create</a></li>
+<li><a class="reference internal" href="#wx-image-and-python-buffer-objects">wx.Image and Python Buffer Objects</a></li>
+<li><a class="reference internal" href="#wx-dropsource">wx.DropSource</a></li>
+<li><a class="reference internal" href="#wx-dataobject-and-derived-classes">wx.DataObject and derived classes</a></li>
+<li><a class="reference internal" href="#multiple-inheritance">Multiple Inheritance</a></li>
+<li><a class="reference internal" href="#xrc">XRC</a></li>
+<li><a class="reference internal" href="#wx-pyevent-and-wx-pycommandevent">wx.PyEvent and wx.PyCommandEvent</a></li>
+<li><a class="reference internal" href="#makemodal">MakeModal</a></li>
+<li><a class="reference internal" href="#the-wxversion-module">The wxversion module</a></li>
+<li><a class="reference internal" href="#property-grid">Property Grid</a></li>
+<li><a class="reference internal" href="#wx-gizmos">wx.gizmos</a></li>
+<li><a class="reference internal" href="#wx-lib-pubsub-is-deprecated">wx.lib.pubsub is deprecated</a></li>
+<li><a class="reference internal" href="#wx-html-htmlwindow-onopeningurl">wx.html.HtmlWindow.OnOpeningURL</a></li>
+<li><a class="reference internal" href="#wx-newid-is-deprecated">wx.NewId is deprecated</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/MigrationGuide.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="wxpython-project-phoenix-migration-guide">
+<h1>wxPython Project Phoenix Migration Guide<a class="headerlink" href="#wxpython-project-phoenix-migration-guide" title="Permalink to this headline">¶</a></h1>
+<p>wxPython’s Project Phoenix is a new incarnation of the wxPython
+toolkit in which everything that existed before will be cast into the
+flames in the hopes that that which emerges from the ashes will be
+better, brighter, stronger and faster than before.  For more details
+about why and how, please see the <a class="reference external" href="http://wiki.wxpython.org/ProjectPhoenix">ProjectPhoenix</a> pages in the
+wiki.</p>
+<p>This document will describe some of the incompatibilities that
+programmers will run into when migrating code from Classic wxPython to
+the Phoenix.  For some types of changes there won’t be any attempt to
+document the nitty gritty details of the differences, but rather the
+general patterns of the changes will be documented.  Most programmers
+should then be able to work out the details for themselves.</p>
+<p>Please note that throughout this document and elsewhere in the project, as
+well as community discussions and such, you may see the term “<strong>Classic</strong>”
+used by itself. This refers to the original implementation of wxPython.
+Likewise, a standalone “<strong>Phoenix</strong>” or “<strong>Project Phoenix</strong>” will generally
+refer to this new implementation of wxPython.</p>
+<div class="section" id="version-numbers">
+<h2>Version Numbers<a class="headerlink" href="#version-numbers" title="Permalink to this headline">¶</a></h2>
+<p>The version numbers for wxPython are no longer kept in sync with the wxWidgets
+version number. In the past the common version number was used to indicate
+exactly which version of wxWidgets should be used for the wxPython build. Now
+wxWidgets is a git submodule, and the linked version is included in the
+wxPython source tarball, so there is no longer any need to use the matching
+version numbers to implicitly specify the version of the wxWidgets source to
+use.</p>
+<p>This means that wxPython can go back to a 3-component version number and follow
+the common conventions used by 99% of the other software projects out there.
+The 3 components are commonly called MAJOR, MINOR and RELEASE. Since wxPython
+Phoenix is a major upgrade over wxPython Classic then we will start out with a
+new MAJOR version number to help communicate that this isn’t just a little
+update from previous releases.</p>
+<p>Additional flags will be appended to the version number in a manner that is
+compliant with Python’s <a class="reference external" href="https://www.python.org/dev/peps/pep-0440/">PEP-440</a>. This includes syntax for alpha, beta,
+release candidate releases, post-release builds, development snapshots, etc.
+See <code class="docutils literal notranslate"><span class="pre">buildtools/version.py</span></code> in the Phoenix source tree for more details.</p>
+</div>
+<div class="section" id="overloaded-functions">
+<h2>Overloaded Functions<a class="headerlink" href="#overloaded-functions" title="Permalink to this headline">¶</a></h2>
+<p>In order to support more than one of the versions of an overloaded C++
+function or class method in Classic wxPython, we had to rename all but one of
+them.  For example, for the C++ <code class="docutils literal notranslate"><span class="pre">wxWindow::SetSize</span></code> method we have
+<code class="docutils literal notranslate"><span class="pre">SetSize</span></code>, <code class="docutils literal notranslate"><span class="pre">SetDimensions</span></code>, <code class="docutils literal notranslate"><span class="pre">SetRect</span></code> and <code class="docutils literal notranslate"><span class="pre">SetSizeWH</span></code>.  One of the
+features of the new tools used for Project Phoenix is that we no longer need
+to do that and instead we can have just one function or method in the Python
+API and the proper version of the C++ function or method is chosen at runtime
+based on the number and types of parameters passed to the function. So in most
+cases the renamed versions of the overloaded functions have been removed and
+you can call the function with the same name as the C++ API.</p>
+<p>This also includes the default constructor for all widget classes, used for
+the 2-phase create. Previously they were renamed to be the class name with
+“Pre” prepended to it.  For example, <code class="docutils literal notranslate"><span class="pre">wx.PreWindow()</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.PreFrame()</span></code>,
+etc.  Now in the Phoenix build of wxPython that is no longer necessary and you
+can just call the class with no parameters like normal.</p>
+<p>For those renamed items that are more commonly used in the old Classic
+wxPython I’ll add some aliases that will issue a <code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> for
+the first release or two after we switch over to the Phoenix version of the
+code, and then remove them in a later release.</p>
+<p>For a (relatively comprehensive) list of classes, functions and methods which
+need modification while porting your code from Classic to Phoenix, please see
+the <a class="reference internal" href="classic_vs_phoenix.html#classic-vs-phoenix"><span class="std std-ref">Classic vs. Phoenix</span></a> document.</p>
+</div>
+<div class="section" id="findwindow-methods">
+<h2>FindWindow Methods<a class="headerlink" href="#findwindow-methods" title="Permalink to this headline">¶</a></h2>
+<p>One instance of undoing the renames for overloading done in Classic that may
+be not make as much sense as the others is the <code class="docutils literal notranslate"><span class="pre">wx.Window.FindWindow</span></code>
+methods.  This is because there are new methods in Phoenix that have the same
+names as some of the renames in Classic, so we can’t just leave a deprecated
+alias in place that will direct the programmer to use the overloaded version
+of the method instead of the renamed version.</p>
+<p>So we now have the following FindWindow-related methods and static methods
+available in the <code class="docutils literal notranslate"><span class="pre">wx.Window</span></code> class:</p>
+<p>These are non-static and do a recursive search in <code class="docutils literal notranslate"><span class="pre">self</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="n">FindWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="n">FindWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These are <code class="docutils literal notranslate"><span class="pre">staticmethods</span></code> that either search all windows in the application,
+or the subtree rooted at <code class="docutils literal notranslate"><span class="pre">parent</span></code> if it is given:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="n">FindWindowById</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="n">FindWindowByLabel</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="n">FindWindowByName</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And these extra module-level helper functions added in Classic are still
+available in Phoenix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">FindWindowById</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">FindWindowByLabel</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">FindWindowByName</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="static-methods">
+<h2>Static Methods<a class="headerlink" href="#static-methods" title="Permalink to this headline">¶</a></h2>
+<p>In the distant past when SWIG was generating wrapper code for C++ static
+methods it would create a standalone function named <code class="docutils literal notranslate"><span class="pre">ClassName_MethodName</span></code>
+for it. When Python added support for static methods then SWIG was able to use
+that to make a real <code class="docutils literal notranslate"><span class="pre">staticmethod</span></code> named <code class="docutils literal notranslate"><span class="pre">ClassName.MethodName</span></code>, but it still
+generated the standalone function named with the underscore, for
+compatibility. That underscore version of the static methods is now gone, and
+you will get an <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> in existing code that is using them. To fix
+the problem simply change the underscore to a dot, for example you should
+change this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">SystemSettings_GetColour</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">SYS_COLOUR_MENUTEXT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">SystemSettings</span><span class="o">.</span><span class="n">GetColour</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">SYS_COLOUR_MENUTEXT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also make this change in your existing code that is using pre-Phoenix
+versions of wxPython, in order to help you prepare for the transition.</p>
+</div>
+<div class="section" id="unicode-and-auto-converting-strings">
+<h2>Unicode and Auto-Converting Strings<a class="headerlink" href="#unicode-and-auto-converting-strings" title="Permalink to this headline">¶</a></h2>
+<p>Starting with the wxPython 2.9 release series, there are no longer separate
+ansi/Unicode builds of wxPython.  All wxPython builds are now essentially the
+same as the old Unicode builds. This means that all string objects (in Python
+2.7) or bytes objects (Python 3+) passed to wx API functions or methods are
+converted to Unicode before calling the C++ function or method.  By default
+Classic wxPython would use the encoding specified by the locale that was
+current at the time of the import of the wx module.</p>
+<p>However using the default locale could sometimes cause issues because
+it meant that slightly different encodings could be used on different
+platforms, even in the same locale, or the program could end up using
+an encoding in a different locale that the developer has not tested
+their code with.</p>
+<p>Project Phoenix takes this Unicode simplification one step further by
+stipulating that only the utf-8 encoding will be used for
+auto-converting string/bytes objects to the Unicode objects that will be
+passed on to the wx APIs.  If you need to deal with text using a
+different encoding then you will need to convert it to Unicode
+yourself before passing the text to the wx API.  For the most part this
+should not be much of a problem for well written programs that support
+Unicode because they will typically only convert to/from Unicode when
+reading/writing text to a file or database, and will use Unicode objects
+throughout the rest of the code.  The common exception to this is that
+string-literals are often used in the code for specifying labels,
+etc. for UI elements.  If your text for the string literals in your
+code are all ascii or utf-8 then you should not need to make any
+changes at all.  If you have literals with some other encoding then
+you’ll need to deal with them one way or another, either change the
+encoding of your source file to utf-8, or convert the literals from
+your encoding to Unicode before passing the text to the wx API.</p>
+<p>In Python 3.x, where strings are already Unicode objects, most of the above
+confusion goes away, however if you have bytes objects then the same rules of
+auto-converting only from utf-8 will still apply.</p>
+</div>
+<div class="section" id="font-pen-and-brush-styles">
+<h2>Font, Pen, and Brush Styles<a class="headerlink" href="#font-pen-and-brush-styles" title="Permalink to this headline">¶</a></h2>
+<p>The following aliases are currently added for backwards compatibility,
+but will be removed in a future release.  You should migrate any code
+that is using the old names to use the new ones instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">DEFAULT</span>    <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_DEFAULT</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">DECORATIVE</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_DECORATIVE</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">ROMAN</span>      <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_ROMAN</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">SCRIPT</span>     <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_SCRIPT</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">SWISS</span>      <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_SWISS</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">MODERN</span>     <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_MODERN</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">TELETYPE</span>   <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_TELETYPE</span>
+
+<span class="n">wx</span><span class="o">.</span><span class="n">NORMAL</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_NORMAL</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">LIGHT</span>  <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_LIGHT</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">BOLD</span>   <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_BOLD</span>
+
+<span class="n">wx</span><span class="o">.</span><span class="n">NORMAL</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_NORMAL</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">ITALIC</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_ITALIC</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">SLANT</span>  <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_SLANT</span>
+
+<span class="n">wx</span><span class="o">.</span><span class="n">SOLID</span>       <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PENSTYLE_SOLID</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">DOT</span>         <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PENSTYLE_DOT</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">LONG_DASH</span>   <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PENSTYLE_LONG_DASH</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">SHORT_DASH</span>  <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PENSTYLE_SHORT_DASH</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">DOT_DASH</span>    <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PENSTYLE_DOT_DASH</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">USER_DASH</span>   <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PENSTYLE_USER_DASH</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">TRANSPARENT</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PENSTYLE_TRANSPARENT</span>
+
+<span class="n">wx</span><span class="o">.</span><span class="n">STIPPLE_MASK_OPAQUE</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BRUSHSTYLE_STIPPLE_MASK_OPAQUE</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">STIPPLE_MASK</span>        <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BRUSHSTYLE_STIPPLE_MASK</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">STIPPLE</span>             <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BRUSHSTYLE_STIPPLE</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">BDIAGONAL_HATCH</span>     <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BRUSHSTYLE_BDIAGONAL_HATCH</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">CROSSDIAG_HATCH</span>     <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BRUSHSTYLE_CROSSDIAG_HATCH</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">FDIAGONAL_HATCH</span>     <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BRUSHSTYLE_FDIAGONAL_HATCH</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">CROSS_HATCH</span>         <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BRUSHSTYLE_CROSS_HATCH</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL_HATCH</span>    <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BRUSHSTYLE_HORIZONTAL_HATCH</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL_HATCH</span>      <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BRUSHSTYLE_VERTICAL_HATCH</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wx-pydeadobjecterror-runtimeerror">
+<h2>wx.PyDeadObjectError –&gt; RuntimeError<a class="headerlink" href="#wx-pydeadobjecterror-runtimeerror" title="Permalink to this headline">¶</a></h2>
+<p>Classic wxPython tracks when the C++ part of some types of objects (pretty
+much just window types) is destroyed and then replaces the proxy object’s
+class with one that raises a <code class="docutils literal notranslate"><span class="pre">wx.PyDeadObjectError</span> <span class="pre">exception</span></code>. SIP takes
+care of that for us now in a much better way, so that custom hack is no longer
+present in Phoenix, however a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> is the exception that is raised
+now. The <code class="docutils literal notranslate"><span class="pre">wx.Window</span></code> class has a <code class="docutils literal notranslate"><span class="pre">__nonzero__</span></code> method that tests if the
+C++ object has been deleted, so you can still test the window with an <code class="docutils literal notranslate"><span class="pre">if</span></code>
+or other conditional statement to see if it is safe to use, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">someWindow</span><span class="p">:</span>
+    <span class="n">someWindow</span><span class="o">.</span><span class="n">doSomething</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wx-pyassertionerror-wx-wxassertionerror">
+<h2>wx.PyAssertionError –&gt; wx.wxAssertionError<a class="headerlink" href="#wx-pyassertionerror-wx-wxassertionerror" title="Permalink to this headline">¶</a></h2>
+<p>This is the exception raised when one of the <code class="docutils literal notranslate"><span class="pre">wxASSERT</span></code> (or similar)
+statements in the wx C++ code fails. Since it is a wxWidgets assertion and not
+a wxPython assertion the name was changed to make that a little more clear. A
+compatibility alias exists so using <code class="docutils literal notranslate"><span class="pre">wx.PyAssertionError</span></code> will still work,
+but you should migrate those uses to <code class="docutils literal notranslate"><span class="pre">wx.wxAssertionError</span></code> if possible.</p>
+</div>
+<div class="section" id="the-wx-namespace-and-submodules-reorganized">
+<h2>The ‘wx’ namespace and submodules reorganized<a class="headerlink" href="#the-wx-namespace-and-submodules-reorganized" title="Permalink to this headline">¶</a></h2>
+<p>Some reorganization of what classes and functions goes in which internal wx
+extension module has been done. In Classic the organization of the extension
+modules was somewhat haphazard and chaotic. For example there were 5 separate
+modules whose contents were loaded into the main “wx” package namespace and
+several others that needed to be imported separately. However since there was
+not much organization of the core the C++ wxadv and wxhtml DLLs would need to
+be distributed with any applications built with a bundling tool even if the
+application did not use any of those classes.</p>
+<p>For Phoenix the location of the wrapper code for the classes and functions
+will attempt to follow the same organization that wxWidgets uses for putting
+those same classes and functions into DLLs or shared libraries. This means
+that some things that were formerly in the core wx package namespace are no
+longer there. They will have to be used by importing a wx submodule. Most of
+them will be in the <code class="docutils literal notranslate"><span class="pre">wx.adv</span></code> module. One nice advantage of doing this is that
+if your application is not using any of these lesser used classes then you
+will not have to bundle the new modules (nor the associated wx DLLs) with
+your application when you use py2exe or other executable builder. See
+the <a class="reference internal" href="classic_vs_phoenix.html#classic-vs-phoenix"><span class="std std-ref">Classic vs. Phoenix</span></a> document for details.</p>
+</div>
+<div class="section" id="wx-listctrl">
+<h2>wx.ListCtrl<a class="headerlink" href="#wx-listctrl" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">wx.ListItem</span></code> and <code class="docutils literal notranslate"><span class="pre">wx.ListEvent</span></code> the <code class="docutils literal notranslate"><span class="pre">"m_"</span></code> properties are no longer
+public. Instead use the associated getter/setter methods or the auto-generated
+properties that are using them.</p>
+</div>
+<div class="section" id="wx-treectrl">
+<h2>wx.TreeCtrl<a class="headerlink" href="#wx-treectrl" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">GetItemData</span></code> and <code class="docutils literal notranslate"><span class="pre">SetItemData</span></code> now behave just like <code class="docutils literal notranslate"><span class="pre">GetItemPyData</span></code>
+and <code class="docutils literal notranslate"><span class="pre">SetItemPyData</span></code> did in Classic wxPython.  In other words, instead of
+needing to create and use instances of <code class="docutils literal notranslate"><span class="pre">wx.TreeItemData</span></code> to associate Python
+data objects with tree items, you just use the Python objects directly.  It
+will also work when passing the data objects directly to the <code class="docutils literal notranslate"><span class="pre">AppendItem</span></code>,
+<code class="docutils literal notranslate"><span class="pre">InsertItem</span></code>, etc. methods.  (If anybody was actually using the
+<code class="docutils literal notranslate"><span class="pre">wx.TreeItemData</span></code> objects directly before and are unable to adapt then
+please let Robin know.)  The <code class="docutils literal notranslate"><span class="pre">[G|S]etItemPyData</span></code> members still exist, but
+are now deprecated aliases for <code class="docutils literal notranslate"><span class="pre">[G|S]etItemData</span></code>.</p>
+</div>
+<div class="section" id="wx-dragimage">
+<h2>wx.DragImage<a class="headerlink" href="#wx-dragimage" title="Permalink to this headline">¶</a></h2>
+<p>Phoenix is now providing both <code class="docutils literal notranslate"><span class="pre">wx.DragImage</span></code> and <code class="docutils literal notranslate"><span class="pre">wx.GenericDragImage</span></code>
+classes. Classic wxPython only provided <code class="docutils literal notranslate"><span class="pre">wx.DragImage</span></code>, but it was actually
+using <code class="docutils literal notranslate"><span class="pre">wx.GenericDragImage</span></code> internally for all platforms. <code class="docutils literal notranslate"><span class="pre">wx.DragImage</span></code>
+will now be a native implementation on Windows, and will still be the generic
+version where a native implementation is not available. If you would rather
+use the generic implementation on Windows too then switch to using the
+<code class="docutils literal notranslate"><span class="pre">wx.GenericDragImage</span></code> class name.</p>
+</div>
+<div class="section" id="phase-create">
+<h2>2-Phase Create<a class="headerlink" href="#phase-create" title="Permalink to this headline">¶</a></h2>
+<p>In Classic wxPython we had to do some fancy footwork to make use of
+wxWidget’s 2-Phase Create scheme for creating instances of a C++ widget
+class, but delaying the creation of the UI object until later. (This is
+needed for things like setting extended style flags that can not be set after
+creation, or with class factories like XRC.) The old trickery should no
+longer be needed, and instead you can write code that is much more sane. For
+example, instead of Classic code like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyDialog</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Dialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+        <span class="n">pre</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PreDialog</span><span class="p">()</span>
+        <span class="n">pre</span><span class="o">.</span><span class="n">SetExtraStyle</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">FRAME_EX_CONTEXTHELP</span><span class="p">)</span>
+        <span class="n">pre</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PostCreate</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span>                           <span class="c1"># 4</span>
+</pre></div>
+</div>
+<p>In Phoenix that should now be done like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyDialog</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Dialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Dialog</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>                       <span class="c1"># 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetExtraStyle</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">FRAME_EX_CONTEXTHELP</span><span class="p">)</span>    <span class="c1"># 2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>                 <span class="c1"># 3</span>
+</pre></div>
+</div>
+<p>Notice that we are (#1) calling the base class <code class="docutils literal notranslate"><span class="pre">__init__</span></code> like usual, but
+passing no parameters so the default C++ constructor will be invoked. Next
+(#2, #3) we use <code class="docutils literal notranslate"><span class="pre">self</span></code> instead of <code class="docutils literal notranslate"><span class="pre">pre</span></code> because <code class="docutils literal notranslate"><span class="pre">self</span></code> is now a legitimate
+instance of <code class="docutils literal notranslate"><span class="pre">wx.Dialog</span></code>, and (#4) there is no longer any need to call
+<code class="docutils literal notranslate"><span class="pre">PostCreate</span></code> to do its black magic for us because there is no longer a rogue
+instance that needs to be transplanted into <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
+</div>
+<div class="section" id="wx-image-and-python-buffer-objects">
+<h2>wx.Image and Python Buffer Objects<a class="headerlink" href="#wx-image-and-python-buffer-objects" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">wx.Image</span></code> is now using the new buffer APIs for the constructors and methods
+which accept any object supporting the buffer protocol.  These are methods
+which allow you to set the raw RGB or Alpha data in the image in one step.  As
+a consequence of using the new APIs the objects passed must also implement the
+new buffer interface in order to be compatible.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GetData</span></code> and <code class="docutils literal notranslate"><span class="pre">GetAlpha</span></code> now return a copy of the image data as a
+<code class="docutils literal notranslate"><span class="pre">bytearray</span></code> object instead of a string object.  This means that since
+<code class="docutils literal notranslate"><span class="pre">bytearrays</span></code> are mutable you can do things like make changes to the data and
+then use it in the <code class="docutils literal notranslate"><span class="pre">SetData</span></code> of another image.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GetDataBuffer</span></code> and <code class="docutils literal notranslate"><span class="pre">GetAlphaBuffer</span></code> now return <code class="docutils literal notranslate"><span class="pre">memoryview</span></code> objects,
+which allow direct access to the RGB and Alpha buffers inside the image. Just
+as in Classic you should not use those <code class="docutils literal notranslate"><span class="pre">memoryview</span></code> buffers after the
+<code class="docutils literal notranslate"><span class="pre">wx.Image</span></code> has been destroyed.  Using the returned <code class="docutils literal notranslate"><span class="pre">memoryview</span></code> object you
+can manipulate the RGB or Alpha data inside the <code class="docutils literal notranslate"><span class="pre">wx.Image</span></code> without needing
+to make a copy of the data.</p>
+<p>Just as in Classic the <code class="docutils literal notranslate"><span class="pre">SetDataBuffer</span></code> and <code class="docutils literal notranslate"><span class="pre">SetAlphaBuffer</span></code> methods allow
+you to tell the <code class="docutils literal notranslate"><span class="pre">wx.Image</span></code> to use memory buffers in other objects (such as a
+numpy array) as its RGB or Alpha data, as long as the other object supports
+the new buffer protocol.</p>
+</div>
+<div class="section" id="wx-dropsource">
+<h2>wx.DropSource<a class="headerlink" href="#wx-dropsource" title="Permalink to this headline">¶</a></h2>
+<p>We don’t (yet) have an easy way to support different APIs per platform in the
+wx class constructors, so <code class="docutils literal notranslate"><span class="pre">wx.DropSource</span></code> (which optionally takes parameters
+that should be a <code class="docutils literal notranslate"><span class="pre">wx.Icon</span></code> on wxGTK or a <code class="docutils literal notranslate"><span class="pre">wx.Cursor</span></code> on the other
+platforms) has been changed to not accept the cursor/icon in the constructors.
+Instead you’ll have to call either <code class="docutils literal notranslate"><span class="pre">SetCursor</span></code> or <code class="docutils literal notranslate"><span class="pre">SetIcon</span></code> depending on
+the platform.</p>
+</div>
+<div class="section" id="wx-dataobject-and-derived-classes">
+<h2>wx.DataObject and derived classes<a class="headerlink" href="#wx-dataobject-and-derived-classes" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">wx.DataObject</span></code> and <code class="docutils literal notranslate"><span class="pre">wx.DataObjectSimple</span></code> classes can now be
+subclassed in Python.  <code class="docutils literal notranslate"><span class="pre">wx.DataObject</span></code> will let you provide complex
+multi-format data objects that do not need to copy the data until one of the
+formats is requested from the clipboard or a DnD operation.
+<code class="docutils literal notranslate"><span class="pre">wx.DataObjectSimple</span></code> is a simplification that only deals with one data
+format, (although multiple objects can still be provided with
+<code class="docutils literal notranslate"><span class="pre">wx.DataObjectComposite</span></code>.)</p>
+<p>Python buffer objects are used for transferring data to/from the clipboard or
+DnD partner.  Anything that supports the buffer protocol can be used for
+setting or providing data, and a <code class="docutils literal notranslate"><span class="pre">memoryview</span></code> object is created for the APIs
+where the data object should fetch from or copy to a specific memory location.</p>
+<blockquote>
+<div><p>Here is a simple example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyDataObject</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">DataObjectSimple</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">''</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">DataObjectSimple</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetFormat</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">DataFormat</span><span class="p">(</span><span class="s2">"my data format"</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">myData</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">GetDataSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">myData</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">GetDataHere</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">):</span>
+        <span class="c1"># copy our local data value to buf</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="nb">memoryview</span><span class="p">)</span>
+        <span class="n">buf</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">myData</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">SetData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">):</span>
+        <span class="c1"># copy from buf to our local data value</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="nb">memoryview</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">myData</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="multiple-inheritance">
+<h2>Multiple Inheritance<a class="headerlink" href="#multiple-inheritance" title="Permalink to this headline">¶</a></h2>
+<p>The SIP tool currently does not support having more than one wrapped C++ class
+as the base classes of a Python class.  In most cases this is not a problem
+because in wxPython you’re more likely to use multiple inheritance with simple
+mix-in classes or similar constructs than needing to inherit from more than
+one wrapped C++ class.</p>
+<p>However there is at least one use case where that can be a problem, and that
+is with the ComboCtrl’s <code class="docutils literal notranslate"><span class="pre">wx.ComboPopup</span></code> class.  In wxWidgets and also in
+Classic you’re encouraged to use <code class="docutils literal notranslate"><span class="pre">wx.ComboPopup</span></code> as a mix-in class combined
+with the widget class that is going to be your popup window for the
+<code class="docutils literal notranslate"><span class="pre">wx.ComboCtrl</span></code>.  This can not currently be done with Phoenix in the same
+way, but you can also use a widget class with a <code class="docutils literal notranslate"><span class="pre">wx.ComboPopup</span></code> in a has-a
+relationship rather than an is-a relationship.  See
+<code class="docutils literal notranslate"><span class="pre">samples/combo/combo1.py</span></code> for an example.</p>
+</div>
+<div class="section" id="xrc">
+<h2>XRC<a class="headerlink" href="#xrc" title="Permalink to this headline">¶</a></h2>
+<p>The “<code class="docutils literal notranslate"><span class="pre">LoadOnFoo</span></code>” methods of the <code class="docutils literal notranslate"><span class="pre">XmlResource</span></code> class were renamed
+overloads of the corresponding “<code class="docutils literal notranslate"><span class="pre">LoadFoo</span></code>” methods. Since we no longer need
+to rename overloaded methods the “<code class="docutils literal notranslate"><span class="pre">LoadOn</span></code>” version has been removed and you
+should just use the “<code class="docutils literal notranslate"><span class="pre">LoadFoo</span></code>” version instead. These methods are used to
+load some XRC content onto an existing window, such as a <code class="docutils literal notranslate"><span class="pre">wx.Frame</span></code>, instead
+of creating a new <code class="docutils literal notranslate"><span class="pre">wx.Frame</span></code> for the content.</p>
+</div>
+<div class="section" id="wx-pyevent-and-wx-pycommandevent">
+<h2>wx.PyEvent and wx.PyCommandEvent<a class="headerlink" href="#wx-pyevent-and-wx-pycommandevent" title="Permalink to this headline">¶</a></h2>
+<p>Unlike most other <code class="docutils literal notranslate"><span class="pre">wx.Py*</span></code> classes these two still exist in Phoenix, and are
+still the base classes that you should use when creating your own custom event
+classes. For the most part they work just like they did in Classic, and they
+take care of ensuring that any Python attributes that you assign to instances
+of the class will still be there when the event is delivered to an event
+handler. There is one main difference from Classic however, and that is that
+those attributes are now stored in a dictionary object owned by the C++
+instance, instead of being stored directly in the Python instance’s
+dictionary. In most cases this won’t matter to you at all, but if your derived
+class has a <code class="docutils literal notranslate"><span class="pre">__getattr__</span></code> method (or <code class="docutils literal notranslate"><span class="pre">__setattr__</span></code>, or <code class="docutils literal notranslate"><span class="pre">__delattr__</span></code>)
+then you will need to get the attributes from that other dictionary instead.
+You can get a reference to that dictionary using <code class="docutils literal notranslate"><span class="pre">_getAttrDict()</span></code>. For
+example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getAttrDict</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">doSomethingElse</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="makemodal">
+<h2>MakeModal<a class="headerlink" href="#makemodal" title="Permalink to this headline">¶</a></h2>
+<p>Since it is usually not a good idea to make arbitrary top-level windows be
+modal, (you should normally just use a <code class="docutils literal notranslate"><span class="pre">wx.Dialog</span></code> instead,) the
+<code class="docutils literal notranslate"><span class="pre">wx.Frame.MakeModal</span></code> method has been removed. The recommended alternative is
+to use the <code class="docutils literal notranslate"><span class="pre">wx.WindowDisabler</span></code> class instead, but if you prefer the
+semantics of having a method to call to turn on or off the modalness of a
+window then you can add a method like this to your classes to give you a way
+to do it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">MakeModal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modal</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">modal</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'_disabler'</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disabler</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">WindowDisabler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">modal</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'_disabler'</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disabler</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-wxversion-module">
+<h2>The wxversion module<a class="headerlink" href="#the-wxversion-module" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">wxversion</span></code> module is gone, and will not be coming back.  The old way of
+handling multi-version installs and choosing between them was a giant hack in
+my opinion, and I regretted doing it shortly after it was implemented.  However
+since there wasn’t any other way that made sense at the time, and since some
+people were using it already, it got left in the distribution.  But one of the
+purposes of the Phoenix project is to remove as many of the hacks and cruft
+from Classic as possible, so wxversion is gone.</p>
+<p>These days there are <strong>much</strong> better ways to handle the things that the old
+multi-versioning and version selection features that the <code class="docutils literal notranslate"><span class="pre">wxversion</span></code> module
+provided.  Since wxPython Phoenix is built by default to be self-contained and
+relocatable on all of the platforms, then unlike Classic there is no problem
+with installing it in Python virtual environments.  So if you need to have
+multiple versions of wxPython on your system, then create a virtual
+environment for each project and install the version that each needs in their
+environments.  If you have code that requires a specific version or range of
+versions of wxPython then define the dependency in your <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file or a
+<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file and let <code class="docutils literal notranslate"><span class="pre">pip</span></code> take care of the details.  I’m
+confident that you’ll be much happier with this approach.</p>
+</div>
+<div class="section" id="property-grid">
+<h2>Property Grid<a class="headerlink" href="#property-grid" title="Permalink to this headline">¶</a></h2>
+<p>In Classic, custom classes derived from <code class="docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty</span></code> could
+specify which editor to use by providing a <code class="docutils literal notranslate"><span class="pre">GetEditor</span></code> method that returned a
+string.  This method does not exist in C++, and was hacked in to the Python
+wrapper classes in order to remove or simplify other wrapper related problems.</p>
+<p>Those problems are no longer present in Phoenix and so it is easiest to go
+back to the way C++ handles selecting the cell editor and avoid needing to
+awkwardly kludge things together in order to maintain full compatibility.  If
+you have a property class that implements the <code class="docutils literal notranslate"><span class="pre">GetEditor</span></code> method then adding
+the following method to your property class will enable the propgrid to fetch
+the editor instance properly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">DoGetEditorClass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PropertyGridInterface</span><span class="o">.</span><span class="n">GetEditorByName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GetEditor</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wx-gizmos">
+<h2>wx.gizmos<a class="headerlink" href="#wx-gizmos" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">wx.gizmos</span></code> module in Classic was a set of wrappers around some
+3rd-party C++ classes. Unfortunately that code has started rotting a little
+since it has been unmaintained for a while. Instead of perpetuating this
+problem into Phoenix the C++ wrappers have been tossed out and some of the
+more commonly used classes from wx.gizmos has been ported to pure Python code,
+which now lives in the <code class="docutils literal notranslate"><span class="pre">wx.lib.gizmos</span></code> package. There is also a temporary
+<code class="docutils literal notranslate"><span class="pre">wx.gizmos</span></code> module provided in order to provide the class names at the old
+location too in order to ease transitioning to the new packge. Please migrate
+your code to use <code class="docutils literal notranslate"><span class="pre">wx.lib.gizmos</span></code> as <code class="docutils literal notranslate"><span class="pre">wx.gizmos</span></code> will likely go away in a
+future release.</p>
+<p>Please note that the new <code class="docutils literal notranslate"><span class="pre">TreeListCtrl</span></code> class is actually a thin wrapper
+around AGW’s <code class="docutils literal notranslate"><span class="pre">HyperTreeList</span></code> class since it was already a near perfect
+superset of the old TreeListCtrl features and API. One compatibility
+difference that may arise is that like most widgets in the AGW library the
+style flags have been split into 2 parameters, <code class="docutils literal notranslate"><span class="pre">style</span></code> and <code class="docutils literal notranslate"><span class="pre">agwSgtyle</span></code>,
+but it should be a simple matter of changing existing code to pass the
+tree-specific style flags in the <code class="docutils literal notranslate"><span class="pre">agwStyle</span></code> parameter, and wxWidgets common
+style flags in the <code class="docutils literal notranslate"><span class="pre">style</span></code> parameter.</p>
+</div>
+<div class="section" id="wx-lib-pubsub-is-deprecated">
+<h2>wx.lib.pubsub is deprecated<a class="headerlink" href="#wx-lib-pubsub-is-deprecated" title="Permalink to this headline">¶</a></h2>
+<p>Although it originally started as part of this project, for a long time the
+content of the <code class="docutils literal notranslate"><span class="pre">wx.lib.pubsub</span></code> package has been coming from a fork of the
+original, called PyPubSub. It’s all the same code, but with just a different
+access path. However, now that Python 2.7 support in PyPubSub is no longer being
+maintained in the latest versions, it is now time for wxPython to disconnect
+itself in order to not have to remain on the older version. This means that
+<code class="docutils literal notranslate"><span class="pre">wx.lib.pubsub</span></code> is now deprecated.</p>
+<p>Switching to the official PyPubSub is simple however, just install the package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">PyPubSub</span><span class="o">==</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>And then change your import statements that are importing
+<code class="docutils literal notranslate"><span class="pre">wx.lib.pubsub.whatever</span></code>, to just import <code class="docutils literal notranslate"><span class="pre">pubsub.whatever</span></code> instead. If you
+are using Python3 and would like the newest version of PyPubSub then you can
+drop the version number from the pip command above.</p>
+</div>
+<div class="section" id="wx-html-htmlwindow-onopeningurl">
+<h2>wx.html.HtmlWindow.OnOpeningURL<a class="headerlink" href="#wx-html-htmlwindow-onopeningurl" title="Permalink to this headline">¶</a></h2>
+<p>In wxPython Classic the return value of <code class="docutils literal notranslate"><span class="pre">wx.html.HtmlWindow.OnOpeningURL</span></code> and
+<code class="docutils literal notranslate"><span class="pre">wx.html.HtmlWindowInterface.OnHTMLOpeningURL</span></code> could be either a value from the
+<code class="docutils literal notranslate"><span class="pre">wx.html.HtmlOpeningStatus</span></code> enumeration, or a string containing the URL to
+redirect to.</p>
+<p>In Phoenix this has been changed to a simpler wrapper implementation which
+requires that both an enum value and a string be returned as a tuple. For
+example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">OnHTMLOpeningURL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">urlType</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">urlType</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">HTML_URL_IMAGE</span> <span class="ow">and</span> <span class="n">url</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">otherURL</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">HTML_REDIRECT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">otherURL</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">HTML_OPEN</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wx-newid-is-deprecated">
+<h2>wx.NewId is deprecated<a class="headerlink" href="#wx-newid-is-deprecated" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.functions.html#wx.NewId" title="wx.NewId"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.NewId</span></code></a> has been used forever in wxWidgets and wxPython to generate an
+ID for use as the ID for controls, menu items, and similar things. It’s really
+quite a stupid implementation however, in that it simply increments a counter
+and returns that value. There is no way for it to check if the ID is already in
+use, for example if the programmer used some static numbers for IDs, or if the
+counter wrapped around the max integer value and started over at the min integer
+value.</p>
+<p>So a few years ago the wxWidgets team implemented a reference counting scheme
+for the ID values, and started using it internally. In a more recent release the
+<code class="docutils literal notranslate"><span class="pre">wx.NewId</span></code> function was deprecated. Then, even more recently, when code
+was added to Phoenix’s generator tools to automatically deprecate things that
+are marked as deprecated in wxWidgets, then it became deprecated for us too.</p>
+<p>The recommended alternative to <code class="docutils literal notranslate"><span class="pre">wx.NewId</span></code> is to just use <code class="docutils literal notranslate"><span class="pre">wx.ID_ANY</span></code> when
+creating your widgets or other items with IDs. That will use the reference
+counted ID scheme internally and the ID will be reserved until that item is
+destroyed. In those cases where you would prefer to have items with the same ID,
+or to reuse ID values for some other reason, then you should use the
+<a class="reference internal" href="wx.functions.html#wx.NewIdRef" title="wx.NewIdRef"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.NewIdRef</span></code></a> function instead. It returns a <a class="reference internal" href="wx.WindowIDRef.html#wx.WindowIDRef" title="wx.WindowIDRef"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.WindowIDRef</span></code></a>
+object that can be compared with each other, sorted, used as a dictionary key,
+converted to the actual integer value of the ID, etc.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

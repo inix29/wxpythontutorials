@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.MessageDialog — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.Metafile.html" rel="next" title="wx.Metafile"/>
+<link href="wx.MenuItem.html" rel="prev" title="wx.MenuItem"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.MessageDialog</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.Metafile.html" title="wx.Metafile">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.MenuItem.html" title="wx.MenuItem">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.MessageDialog</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.MessageDialog.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-messagedialog">
+<span id="wx-messagedialog"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.MessageDialog</strong><a class="headerlink" href="#phoenix-title-wx-messagedialog" title="Permalink to this headline">¶</a></h1>
+<p>This class represents a dialog that shows a single or multi-line message, with a choice of <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code>, Yes, No and Cancel buttons.</p>
+<div class="section" id="styles-window-styles">
+<span id="messagedialog-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.OK</span></code>: Puts an Ok button in the message box. May be combined with  <code class="docutils literal notranslate"><span class="pre">CANCEL</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.CANCEL</span></code>: Puts a Cancel button in the message box. Must be combined with either  <code class="docutils literal notranslate"><span class="pre">OK</span></code>   or   <code class="docutils literal notranslate"><span class="pre">YES_NO</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.YES_NO</span></code>: Puts Yes and No buttons in the message box. It is recommended to always use  <code class="docutils literal notranslate"><span class="pre">CANCEL</span></code>   with this style as otherwise the message box won’t have a close button under wxMSW and the user will be forced to answer it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.HELP</span></code>: Puts a Help button to the message box. This button can have special appearance or be specially positioned if its label is not changed from the default one. Notice that using this button is not supported when showing a message box from non-main thread in OSX/Cocoa and it is not supported in OSX/Carbon at all. Available since wxWidgets 2.9.3.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.NO_DEFAULT</span></code>: Makes the “No” button default, can only be used with  <code class="docutils literal notranslate"><span class="pre">YES_NO</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.CANCEL_DEFAULT</span></code>: Makes the “Cancel” button default, can only be used with  <code class="docutils literal notranslate"><span class="pre">CANCEL</span></code> . This style is currently not supported (and ignored) in wxOSX.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.YES_DEFAULT</span></code>: Makes the “Yes” button default, this is the default behaviour and this flag exists solely for symmetry with  <code class="docutils literal notranslate"><span class="pre">NO_DEFAULT</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.OK_DEFAULT</span></code>: Makes the “<code class="docutils literal notranslate"><span class="pre">wx.OK</span></code>” button default, this is the default behaviour and this flag exists solely for symmetry with  <code class="docutils literal notranslate"><span class="pre">CANCEL_DEFAULT</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ICON_NONE</span></code>: Displays no icon in the dialog if possible (an icon might still be displayed if the current platform mandates its use). This style may be used to prevent the dialog from using the default icon based on  <code class="docutils literal notranslate"><span class="pre">YES_NO</span></code>   presence as explained in   <code class="docutils literal notranslate"><span class="pre">ICON_QUESTION</span></code>   and   <code class="docutils literal notranslate"><span class="pre">ICON_INFORMATION</span></code>   documentation below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ICON_EXCLAMATION</span></code>: Displays an exclamation, or warning, icon in the dialog.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ICON_ERROR</span></code>: Displays an error icon in the dialog.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ICON_HAND</span></code>: Displays an error symbol, this is a MSW-inspired synonym for  <code class="docutils literal notranslate"><span class="pre">ICON_ERROR</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ICON_QUESTION</span></code>: Displays a question mark symbol. This icon is automatically used with  <code class="docutils literal notranslate"><span class="pre">YES_NO</span></code>   so it’s usually unnecessary to specify it explicitly. This style is not supported for message dialogs under wxMSW when a task dialog is used to implement them (i.e. when running under Windows Vista or later) because  <a class="reference external" href="http://msdn.microsoft.com/en-us/library/aa511273.aspx">Microsoft guidelines</a>  indicate that no icon should be used for routine confirmations. If it is specified, no icon will be displayed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ICON_INFORMATION</span></code>: Displays an information symbol. This icon is used by default if  <code class="docutils literal notranslate"><span class="pre">YES_NO</span></code>   is not given so it is usually unnecessary to specify it explicitly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ICON_AUTH_NEEDED</span></code>: Displays an authentication needed symbol. This style is only supported for message dialogs under wxMSW when a task dialog is used to implement them (i.e. when running under Windows Vista or later). In other cases the default icon selection logic will be used. Note this can be combined with other styles to provide a fallback. For instance, using <code class="docutils literal notranslate"><span class="pre">wx.ICON_AUTH_NEEDED</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.ICON_QUESTION</span></code> will show a shield symbol on Windows Vista or above and a question symbol on other platforms. Available since wxWidgets 2.9.5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.STAY_ON_TOP</span></code>: Makes the message box stay on top of all other windows and not only just its parent (currently implemented only under MSW and GTK).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.CENTRE</span></code>: Centre the message box on its parent or on the screen if parent is not specified. Setting this style under MSW makes no differences as the dialog is always centered on the parent.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="common_dialogs_overview.html#messagedialog-overview"><span class="std std-ref">MessageDialog Overview</span></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.RichMessageDialog.html#wx-richmessagedialog"><span class="std std-ref">  wx.RichMessageDialog</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>MessageDialog</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of MessageDialog" class="inheritance" src="_static/images/inheritance/wx.MessageDialog_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="38,469,183,499" href="wx.MessageDialog.html" id="node1" shape="rect" title="This class represents a dialog that shows a single or multi-line message, with a choice of ``wx.OK``, Yes, No and Cancel buttons."/> <area alt="" coords="67,392,155,421" href="wx.Dialog.html" id="node2" shape="rect" title="A dialog box is a window with a title bar and sometimes a system menu, which can be moved around the screen."/> <area alt="" coords="31,315,190,344" href="wx.TopLevelWindow.html" id="node3" shape="rect" title="wx.TopLevelWindow  is a common base class for wx.Dialog  and wx.Frame."/> <area alt="" coords="25,237,196,267" href="wx.NonOwnedWindow.html" id="node4" shape="rect" title="Common base class for all non-child windows."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node5" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node6" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node7" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node8" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%"/>
+<col style="width: 69%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.__init__" title="wx.MessageDialog.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor specifying the message box properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.GetCancelLabel" title="wx.MessageDialog.GetCancelLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCancelLabel</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.GetCaption" title="wx.MessageDialog.GetCaption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaption</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.GetClassDefaultAttributes" title="wx.MessageDialog.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.GetEffectiveIcon" title="wx.MessageDialog.GetEffectiveIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEffectiveIcon</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.GetExtendedMessage" title="wx.MessageDialog.GetExtendedMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtendedMessage</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.GetHelpLabel" title="wx.MessageDialog.GetHelpLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHelpLabel</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.GetMessage" title="wx.MessageDialog.GetMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessage</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.GetMessageDialogStyle" title="wx.MessageDialog.GetMessageDialogStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessageDialogStyle</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.GetNoLabel" title="wx.MessageDialog.GetNoLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNoLabel</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.GetOKLabel" title="wx.MessageDialog.GetOKLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOKLabel</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.GetYesLabel" title="wx.MessageDialog.GetYesLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetYesLabel</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.HasCustomLabels" title="wx.MessageDialog.HasCustomLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasCustomLabels</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.SetExtendedMessage" title="wx.MessageDialog.SetExtendedMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExtendedMessage</span></code></a></p></td>
+<td><p>Sets the extended message for the dialog: this message is usually an extension of the short message specified in the constructor or set with <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMessage</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.SetHelpLabel" title="wx.MessageDialog.SetHelpLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHelpLabel</span></code></a></p></td>
+<td><p>Sets the label for the Help button.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.SetMessage" title="wx.MessageDialog.SetMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMessage</span></code></a></p></td>
+<td><p>Sets the message shown by the dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.SetOKCancelLabels" title="wx.MessageDialog.SetOKCancelLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOKCancelLabels</span></code></a></p></td>
+<td><p>Overrides the default labels of the <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> and Cancel buttons.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.SetOKLabel" title="wx.MessageDialog.SetOKLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOKLabel</span></code></a></p></td>
+<td><p>Overrides the default label of the <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> button.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.SetYesNoCancelLabels" title="wx.MessageDialog.SetYesNoCancelLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetYesNoCancelLabels</span></code></a></p></td>
+<td><p>Overrides the default labels of the Yes, No and Cancel buttons.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.SetYesNoLabels" title="wx.MessageDialog.SetYesNoLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetYesNoLabels</span></code></a></p></td>
+<td><p>Overrides the default labels of the Yes and No buttons.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.ShowModal" title="wx.MessageDialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a></p></td>
+<td><p>Shows the dialog, returning one of <code class="docutils literal notranslate"><span class="pre">wx.ID_OK</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_CANCEL</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_YES</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_NO</span></code> or <code class="docutils literal notranslate"><span class="pre">wx.ID_HELP</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45%"/>
+<col style="width: 55%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.CancelLabel" title="wx.MessageDialog.CancelLabel"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CancelLabel</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetCancelLabel" title="wx.MessageDialog.GetCancelLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCancelLabel</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.Caption" title="wx.MessageDialog.Caption"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Caption</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetCaption" title="wx.MessageDialog.GetCaption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaption</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.EffectiveIcon" title="wx.MessageDialog.EffectiveIcon"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EffectiveIcon</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetEffectiveIcon" title="wx.MessageDialog.GetEffectiveIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEffectiveIcon</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.ExtendedMessage" title="wx.MessageDialog.ExtendedMessage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ExtendedMessage</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetExtendedMessage" title="wx.MessageDialog.GetExtendedMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtendedMessage</span></code></a> and <a class="reference internal" href="#wx.MessageDialog.SetExtendedMessage" title="wx.MessageDialog.SetExtendedMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExtendedMessage</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.HelpLabel" title="wx.MessageDialog.HelpLabel"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HelpLabel</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetHelpLabel" title="wx.MessageDialog.GetHelpLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHelpLabel</span></code></a> and <a class="reference internal" href="#wx.MessageDialog.SetHelpLabel" title="wx.MessageDialog.SetHelpLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHelpLabel</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.Message" title="wx.MessageDialog.Message"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Message</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetMessage" title="wx.MessageDialog.GetMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessage</span></code></a> and <a class="reference internal" href="#wx.MessageDialog.SetMessage" title="wx.MessageDialog.SetMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMessage</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.MessageDialogStyle" title="wx.MessageDialog.MessageDialogStyle"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MessageDialogStyle</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetMessageDialogStyle" title="wx.MessageDialog.GetMessageDialogStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessageDialogStyle</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.NoLabel" title="wx.MessageDialog.NoLabel"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NoLabel</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetNoLabel" title="wx.MessageDialog.GetNoLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNoLabel</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MessageDialog.OKLabel" title="wx.MessageDialog.OKLabel"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OKLabel</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetOKLabel" title="wx.MessageDialog.GetOKLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOKLabel</span></code></a> and <a class="reference internal" href="#wx.MessageDialog.SetOKLabel" title="wx.MessageDialog.SetOKLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOKLabel</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MessageDialog.YesLabel" title="wx.MessageDialog.YesLabel"><code class="xref py py-attr docutils literal notranslate"><span class="pre">YesLabel</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MessageDialog.GetYesLabel" title="wx.MessageDialog.GetYesLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetYesLabel</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.MessageDialog">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">MessageDialog</code><span class="sig-paren">(</span><em class="sig-param">Dialog</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MessageDialog</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="n">MessageBoxCaptionStr</span><span class="p">,</span>
+              <span class="n">style</span><span class="o">=</span><span class="n">OK</span><span class="o">|</span><span class="n">CENTRE</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class represents a dialog that shows a single or multi-line
+message, with a choice of <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code>, Yes, No and Cancel buttons.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.MessageDialog.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">message</em>, <em class="sig-param">caption=MessageBoxCaptionStr</em>, <em class="sig-param">style=OK|CENTRE</em>, <em class="sig-param">pos=DefaultPosition</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor specifying the message box properties.</p>
+<p>Use <a class="reference internal" href="#wx.MessageDialog.ShowModal" title="wx.MessageDialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>   to show the dialog.</p>
+<p><em class="xref py py-obj">style</em>  may be a bit list of the identifiers described above.</p>
+<p>Notice that not all styles are compatible: only one of  <code class="docutils literal notranslate"><span class="pre">OK</span></code>   and   <code class="docutils literal notranslate"><span class="pre">YES_NO</span></code>   may be specified (and one of them must be specified) and at most one default button style can be used and it is only valid if the corresponding button is shown in the message box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Parent window.</p></li>
+<li><p><strong>message</strong> (<em>string</em>) – Message to show in the dialog.</p></li>
+<li><p><strong>caption</strong> (<em>string</em>) – The dialog title.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – Combination of style flags described above.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Dialog position (ignored under MSW).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetCancelLabel">
+<code class="sig-name descname">GetCancelLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetCancelLabel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetCaption">
+<code class="sig-name descname">GetCaption</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetCaption" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetEffectiveIcon">
+<code class="sig-name descname">GetEffectiveIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetEffectiveIcon" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetExtendedMessage">
+<code class="sig-name descname">GetExtendedMessage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetExtendedMessage" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetHelpLabel">
+<code class="sig-name descname">GetHelpLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetHelpLabel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetMessage">
+<code class="sig-name descname">GetMessage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetMessage" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetMessageDialogStyle">
+<code class="sig-name descname">GetMessageDialogStyle</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetMessageDialogStyle" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetNoLabel">
+<code class="sig-name descname">GetNoLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetNoLabel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetOKLabel">
+<code class="sig-name descname">GetOKLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetOKLabel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.GetYesLabel">
+<code class="sig-name descname">GetYesLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.GetYesLabel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.HasCustomLabels">
+<code class="sig-name descname">HasCustomLabels</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.HasCustomLabels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.SetExtendedMessage">
+<code class="sig-name descname">SetExtendedMessage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">extendedMessage</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.SetExtendedMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the extended message for the dialog: this message is usually an extension of the short message specified in the constructor or set with <a class="reference internal" href="#wx.MessageDialog.SetMessage" title="wx.MessageDialog.SetMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMessage</span></code></a> .</p>
+<p>If it is set, the main message appears highlighted</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extendedMessage</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.SetHelpLabel">
+<code class="sig-name descname">SetHelpLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">help</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.SetHelpLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the label for the Help button.</p>
+<p>Please see the remarks in <a class="reference internal" href="#wx.MessageDialog.SetYesNoLabels" title="wx.MessageDialog.SetYesNoLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetYesNoLabels</span></code></a>   documentation.</p>
+<p>Notice that changing the label of the help button resets its special status (if any, this depends on the platform) and it will be treated just like another button in this case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>help</strong> (<em>MessageDialogButtonLabel</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.3.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.SetMessage">
+<code class="sig-name descname">SetMessage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.SetMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the message shown by the dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.SetOKCancelLabels">
+<code class="sig-name descname">SetOKCancelLabels</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">ok</em>, <em class="sig-param">cancel</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.SetOKCancelLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides the default labels of the <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> and Cancel buttons.</p>
+<p>Please see the remarks in <a class="reference internal" href="#wx.MessageDialog.SetYesNoLabels" title="wx.MessageDialog.SetYesNoLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetYesNoLabels</span></code></a>   documentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ok</strong> (<em>MessageDialogButtonLabel</em>) – </p></li>
+<li><p><strong>cancel</strong> (<em>MessageDialogButtonLabel</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.SetOKLabel">
+<code class="sig-name descname">SetOKLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">ok</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.SetOKLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides the default label of the <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> button.</p>
+<p>Please see the remarks in <a class="reference internal" href="#wx.MessageDialog.SetYesNoLabels" title="wx.MessageDialog.SetYesNoLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetYesNoLabels</span></code></a>   documentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ok</strong> (<em>MessageDialogButtonLabel</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.SetYesNoCancelLabels">
+<code class="sig-name descname">SetYesNoCancelLabels</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">yes</em>, <em class="sig-param">no</em>, <em class="sig-param">cancel</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.SetYesNoCancelLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides the default labels of the Yes, No and Cancel buttons.</p>
+<p>Please see the remarks in <a class="reference internal" href="#wx.MessageDialog.SetYesNoLabels" title="wx.MessageDialog.SetYesNoLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetYesNoLabels</span></code></a>   documentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yes</strong> (<em>MessageDialogButtonLabel</em>) – </p></li>
+<li><p><strong>no</strong> (<em>MessageDialogButtonLabel</em>) – </p></li>
+<li><p><strong>cancel</strong> (<em>MessageDialogButtonLabel</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.SetYesNoLabels">
+<code class="sig-name descname">SetYesNoLabels</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">yes</em>, <em class="sig-param">no</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.SetYesNoLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides the default labels of the Yes and No buttons.</p>
+<p>The arguments of this function can be either strings or one of the standard identifiers, such as  <code class="docutils literal notranslate"><span class="pre">ID_APPLY</span></code>   or   <code class="docutils literal notranslate"><span class="pre">ID_OPEN</span></code> . Notice that even if the label is specified as an identifier, the return value of the dialog  <a class="reference internal" href="#wx.MessageDialog.ShowModal" title="wx.MessageDialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a>   method still remains one of  <code class="docutils literal notranslate"><span class="pre">ID_OK</span></code> ,   <code class="docutils literal notranslate"><span class="pre">ID_CANCEL</span></code> ,   <code class="docutils literal notranslate"><span class="pre">ID_YES</span></code>   or   <code class="docutils literal notranslate"><span class="pre">ID_NO</span></code>   values, i.e. this identifier changes only the label appearance but not the return code generated by the button. It is possible to mix stock identifiers and string labels in the same function call, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">caption</span><span class="p">)</span>
+<span class="n">dlg</span><span class="o">.</span><span class="n">SetYesNoLabels</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_SAVE</span><span class="p">,</span> <span class="s2">"&amp;Don't save"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Also notice that this function is not currently available on all platforms (although as of wxWidgets 2.9.0 it is implemented in all major ports), so it may return <code class="docutils literal notranslate"><span class="pre">False</span></code> to indicate that the labels couldn’t be changed. If it returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, the labels were set successfully.</p>
+<p>Typically, if the function was used successfully, the main dialog message may need to be changed, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">caption</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">SetYesNoLabels</span><span class="p">(</span><span class="s2">"&amp;Quit"</span><span class="p">,</span> <span class="s2">"&amp;Don't quit"</span><span class="p">):</span>
+    <span class="n">dlg</span><span class="o">.</span><span class="n">SetMessage</span><span class="p">(</span><span class="s2">"What do you want to do?"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span> <span class="c1"># buttons have standard "Yes"/"No" values, so rephrase the question</span>
+    <span class="n">dlg</span><span class="o">.</span><span class="n">SetMessage</span><span class="p">(</span><span class="s2">"Do you really want to quit?"</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yes</strong> (<em>MessageDialogButtonLabel</em>) – </p></li>
+<li><p><strong>no</strong> (<em>MessageDialogButtonLabel</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MessageDialog.ShowModal">
+<code class="sig-name descname">ShowModal</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MessageDialog.ShowModal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the dialog, returning one of <code class="docutils literal notranslate"><span class="pre">wx.ID_OK</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_CANCEL</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_YES</span></code>, <code class="docutils literal notranslate"><span class="pre">wx.ID_NO</span></code> or <code class="docutils literal notranslate"><span class="pre">wx.ID_HELP</span></code>.</p>
+<p>Notice that this method returns the identifier of the button which was clicked unlike <a class="reference internal" href="wx.functions.html#wx.MessageBox" title="wx.MessageBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.MessageBox</span></code></a>       function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.MessageDialog.CancelLabel">
+<code class="sig-name descname">CancelLabel</code><a class="headerlink" href="#wx.MessageDialog.CancelLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetCancelLabel" title="wx.MessageDialog.GetCancelLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCancelLabel</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.MessageDialog.Caption">
+<code class="sig-name descname">Caption</code><a class="headerlink" href="#wx.MessageDialog.Caption" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetCaption" title="wx.MessageDialog.GetCaption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaption</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.MessageDialog.EffectiveIcon">
+<code class="sig-name descname">EffectiveIcon</code><a class="headerlink" href="#wx.MessageDialog.EffectiveIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetEffectiveIcon" title="wx.MessageDialog.GetEffectiveIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEffectiveIcon</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.MessageDialog.ExtendedMessage">
+<code class="sig-name descname">ExtendedMessage</code><a class="headerlink" href="#wx.MessageDialog.ExtendedMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetExtendedMessage" title="wx.MessageDialog.GetExtendedMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtendedMessage</span></code></a> and <a class="reference internal" href="#wx.MessageDialog.SetExtendedMessage" title="wx.MessageDialog.SetExtendedMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExtendedMessage</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.MessageDialog.HelpLabel">
+<code class="sig-name descname">HelpLabel</code><a class="headerlink" href="#wx.MessageDialog.HelpLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetHelpLabel" title="wx.MessageDialog.GetHelpLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHelpLabel</span></code></a> and <a class="reference internal" href="#wx.MessageDialog.SetHelpLabel" title="wx.MessageDialog.SetHelpLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHelpLabel</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.MessageDialog.Message">
+<code class="sig-name descname">Message</code><a class="headerlink" href="#wx.MessageDialog.Message" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetMessage" title="wx.MessageDialog.GetMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessage</span></code></a> and <a class="reference internal" href="#wx.MessageDialog.SetMessage" title="wx.MessageDialog.SetMessage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMessage</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.MessageDialog.MessageDialogStyle">
+<code class="sig-name descname">MessageDialogStyle</code><a class="headerlink" href="#wx.MessageDialog.MessageDialogStyle" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetMessageDialogStyle" title="wx.MessageDialog.GetMessageDialogStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessageDialogStyle</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.MessageDialog.NoLabel">
+<code class="sig-name descname">NoLabel</code><a class="headerlink" href="#wx.MessageDialog.NoLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetNoLabel" title="wx.MessageDialog.GetNoLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNoLabel</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.MessageDialog.OKLabel">
+<code class="sig-name descname">OKLabel</code><a class="headerlink" href="#wx.MessageDialog.OKLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetOKLabel" title="wx.MessageDialog.GetOKLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOKLabel</span></code></a> and <a class="reference internal" href="#wx.MessageDialog.SetOKLabel" title="wx.MessageDialog.SetOKLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOKLabel</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.MessageDialog.YesLabel">
+<code class="sig-name descname">YesLabel</code><a class="headerlink" href="#wx.MessageDialog.YesLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MessageDialog.GetYesLabel" title="wx.MessageDialog.GetYesLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetYesLabel</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

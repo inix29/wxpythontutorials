@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.StaticBox — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.StaticBoxSizer.html" rel="next" title="wx.StaticBoxSizer"/>
+<link href="wx.StaticBitmap.html" rel="prev" title="wx.StaticBitmap"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.StaticBox</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.StaticBoxSizer.html" title="wx.StaticBoxSizer">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.StaticBitmap.html" title="wx.StaticBitmap">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.StaticBox</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.StaticBox.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-staticbox">
+<span id="wx-staticbox"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.StaticBox</strong><a class="headerlink" href="#phoenix-title-wx-staticbox" title="Permalink to this headline">¶</a></h1>
+<p>A static box is a rectangle drawn around other windows to denote a logical grouping of items.</p>
+<p>Note that while the previous versions required that windows appearing inside a static box be created as its siblings (i.e. use the same parent as the static box itself), since wxWidgets 2.9.1 it is also possible to create them as children of <a class="reference internal" href="#wx-staticbox"><span class="std std-ref">  wx.StaticBox</span></a>  itself and you are actually encouraged to do it like this if compatibility with the previous versions is not important.</p>
+<p>So the new recommended way to create static box is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">CreateControls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="n">panel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">"StaticBox"</span><span class="p">)</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">"This window is a child of the staticbox"</span><span class="p">)</span>
+
+    <span class="c1"># Other code...</span>
+</pre></div>
+</div>
+<p>While the compatible</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">"StaticBox"</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="s2">"This window is a child of the panel"</span><span class="p">)</span>
+
+<span class="c1"># Other code...</span>
+</pre></div>
+</div>
+<p>Also note that there is a specialized <a class="reference internal" href="wx.Sizer.html#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  class (<a class="reference internal" href="wx.StaticBoxSizer.html#wx-staticboxsizer"><span class="std std-ref">  wx.StaticBoxSizer</span></a>) which can be used as an easier way to pack items into a static box.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.StaticText.html#wx-statictext"><span class="std std-ref">  wx.StaticText</span></a>, <a class="reference internal" href="wx.StaticBoxSizer.html#wx-staticboxsizer"><span class="std std-ref">  wx.StaticBoxSizer</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>StaticBox</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of StaticBox" class="inheritance" src="_static/images/inheritance/wx.StaticBox_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="57,315,165,344" href="wx.StaticBox.html" id="node1" shape="rect" title="A static box is a rectangle drawn around other windows to denote a logical grouping of items."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/wx.staticbox.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/wx.staticbox1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.staticbox2.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.StaticBox.__init__" title="wx.StaticBox.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.StaticBox.Create" title="wx.StaticBox.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates the static box for two-step construction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.StaticBox.GetBordersForSizer" title="wx.StaticBox.GetBordersForSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBordersForSizer</span></code></a></p></td>
+<td><p>Returns extra space that may be needed for borders within a StaticBox.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.StaticBox.GetClassDefaultAttributes" title="wx.StaticBox.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.StaticBox">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">StaticBox</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.StaticBox" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">StaticBox</span><span class="p">()</span>
+
+<span class="n">StaticBox</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span>
+          <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">StaticBoxNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A static box is a rectangle drawn around other windows to denote a
+logical grouping of items.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.StaticBox.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.StaticBox.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, label=””, pos=DefaultPosition, size=DefaultSize, style=0, name=StaticBoxNameStr)</em></p>
+<p>Constructor, creating and showing a static box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Parent window. Must not be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – Window identifier. The value <code class="docutils literal notranslate"><span class="pre">wx.ID_ANY</span></code> indicates a default value.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – Text to be displayed in the static box, the empty string for no label.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Window position. If <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultPosition</span></code>       is specified then a default position is chosen.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Checkbox size. If <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultSize</span></code>       is specified then a default size is chosen.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – Window style. See <a class="reference internal" href="#wx-staticbox"><span class="std std-ref">  wx.StaticBox</span></a>.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – Window name.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.StaticBox.Create" title="wx.StaticBox.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.StaticBox.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">label=""</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=0</em>, <em class="sig-param">name=StaticBoxNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.StaticBox.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the static box for two-step construction.</p>
+<p>See <a class="reference internal" href="#wx-staticbox"><span class="std std-ref">  wx.StaticBox</span></a>  for further details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.StaticBox.GetBordersForSizer">
+<code class="sig-name descname">GetBordersForSizer</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.StaticBox.GetBordersForSizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns extra space that may be needed for borders within a StaticBox.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>( <em class="xref py py-obj">borderTop</em>, <em class="xref py py-obj">borderOther</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.StaticBox.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.StaticBox.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

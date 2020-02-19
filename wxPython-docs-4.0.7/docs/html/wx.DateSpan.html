@@ -1,0 +1,613 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.DateSpan — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.DateTime.html" rel="next" title="wx.DateTime"/>
+<link href="wx.DataObjectSimple.html" rel="prev" title="wx.DataObjectSimple"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.DateSpan</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.DateTime.html" title="wx.DateTime">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.DataObjectSimple.html" title="wx.DataObjectSimple">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.DateSpan</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.DateSpan.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-datespan">
+<span id="wx-datespan"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.DateSpan</strong><a class="headerlink" href="#phoenix-title-wx-datespan" title="Permalink to this headline">¶</a></h1>
+<p>This class is a “logical time span” and is useful for implementing program logic for such things as “add one month to the date” which, in general, doesn’t mean to add 60x60x24x31 seconds to it, but to take the same date the next month (to understand that this is indeed different consider adding one month to Feb, 15</p>
+<p>When adding a month to the date, all lesser components (days, hours, …) won’t be changed unless the resulting date would be invalid: for example, Jan 31 + 1 month will be Feb 28, not (non-existing) Feb 31.</p>
+<p>Because of this feature, adding and subtracting back again the same <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  will <strong>not</strong>, in general, give back the original date: Feb 28 - 1 month will be Jan 28, not Jan 31!</p>
+<p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  objects can be either positive or negative. They may be multiplied by scalars which multiply all deltas by the scalar: i.e. 2(1 month and 1 day) is 2 months and 2 days. They can be added together with <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a>  or <a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a>, but the type of result is different for each case.</p>
+<p>Equality operators are defined for DateSpans. Two DateSpans are equal if and only if they both give the same target date when added to  <strong>every</strong>  source date. Thus <em class="xref py py-obj">DateSpan.Months(1)</em> is not equal to <em class="xref py py-obj">DateSpan.Days(30),</em> because they don’t give the same date when added to Feb 1st. But <em class="xref py py-obj">DateSpan.Days(14)</em> is equal to <em class="xref py py-obj">DateSpan.Weeks(2).</em></p>
+<p>Finally, notice that for adding hours, minutes and so on you don’t need this class at all: <a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a>  will do the job because there are no subtleties associated with those (we don’t support leap seconds).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you specify both weeks and days, the total number of days added will be 7weeks + days! See also <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTotalDays</span></code> .</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="datetime_overview.html#date-and-time"><span class="std std-ref">Date and Time</span></a>, <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>DateSpan</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of DateSpan" class="inheritance" src="_static/images/inheritance/wx.DateSpan_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,116,35" href="wx.DateSpan.html" id="node1" shape="rect" title="This class is a 'logical time span' and is useful for implementing program logic for such things as 'add one month to the date' which, in general, doesn't mean to add 60x60x24x31 seconds to it, but to take the same date the next month (to understand that this is indeed different consider adding one month to Feb, 15"/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.__init__" title="wx.DateSpan.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructs the date span object for the given number of years, months, weeks and days.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.Add" title="wx.DateSpan.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a></p></td>
+<td><p>Adds the given <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  to this <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  and returns a reference to itself.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.Day" title="wx.DateSpan.Day"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Day</span></code></a></p></td>
+<td><p>Returns a date span object corresponding to one day.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.Days" title="wx.DateSpan.Days"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Days</span></code></a></p></td>
+<td><p>Returns a date span object corresponding to the given number of days.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.GetDays" title="wx.DateSpan.GetDays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDays</span></code></a></p></td>
+<td><p>Returns the number of days (not counting the weeks component) in this date span.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.GetMonths" title="wx.DateSpan.GetMonths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMonths</span></code></a></p></td>
+<td><p>Returns the number of the months (not counting the years) in this date span.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.GetTotalDays" title="wx.DateSpan.GetTotalDays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTotalDays</span></code></a></p></td>
+<td><p>Returns the combined number of days in this date span, counting both weeks and days.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.GetTotalMonths" title="wx.DateSpan.GetTotalMonths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTotalMonths</span></code></a></p></td>
+<td><p>Returns the combined number of months in this date span, counting both years and months.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.GetWeeks" title="wx.DateSpan.GetWeeks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWeeks</span></code></a></p></td>
+<td><p>Returns the number of weeks in this date span.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.GetYears" title="wx.DateSpan.GetYears"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetYears</span></code></a></p></td>
+<td><p>Returns the number of years in this date span.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.Month" title="wx.DateSpan.Month"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Month</span></code></a></p></td>
+<td><p>Returns a date span object corresponding to one month.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.Months" title="wx.DateSpan.Months"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Months</span></code></a></p></td>
+<td><p>Returns a date span object corresponding to the given number of months.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.Multiply" title="wx.DateSpan.Multiply"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Multiply</span></code></a></p></td>
+<td><p>Multiplies this date span by the specified <em class="xref py py-obj">factor</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.Neg" title="wx.DateSpan.Neg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Neg</span></code></a></p></td>
+<td><p>Changes the sign of this date span.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.Negate" title="wx.DateSpan.Negate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Negate</span></code></a></p></td>
+<td><p>Returns a date span with the opposite sign.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.SetDays" title="wx.DateSpan.SetDays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDays</span></code></a></p></td>
+<td><p>Sets the number of days (without modifying any other components) in this date span.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.SetMonths" title="wx.DateSpan.SetMonths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMonths</span></code></a></p></td>
+<td><p>Sets the number of months (without modifying any other components) in this date span.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.SetWeeks" title="wx.DateSpan.SetWeeks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWeeks</span></code></a></p></td>
+<td><p>Sets the number of weeks (without modifying any other components) in this date span.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.SetYears" title="wx.DateSpan.SetYears"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetYears</span></code></a></p></td>
+<td><p>Sets the number of years (without modifying any other components) in this date span.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.Subtract" title="wx.DateSpan.Subtract"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Subtract</span></code></a></p></td>
+<td><p>Subtracts the given <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  to this <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  and returns a reference to itself.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.Week" title="wx.DateSpan.Week"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Week</span></code></a></p></td>
+<td><p>Returns a date span object corresponding to one week.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.Weeks" title="wx.DateSpan.Weeks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Weeks</span></code></a></p></td>
+<td><p>Returns a date span object corresponding to the given number of weeks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DateSpan.Year" title="wx.DateSpan.Year"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Year</span></code></a></p></td>
+<td><p>Returns a date span object corresponding to one year.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DateSpan.Years" title="wx.DateSpan.Years"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Years</span></code></a></p></td>
+<td><p>Returns a date span object corresponding to the given number of years.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.DateSpan">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">DateSpan</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DateSpan</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">months</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">weeks</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class is a “logical time span” and is useful for implementing
+program logic for such things as “add one month to the date” which, in
+general, doesn’t mean to add 60x60x24x31 seconds to it, but to take
+the same date the next month (to understand that this is indeed
+different consider adding one month to Feb, 15  we want to get Mar,
+15, of course).</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.DateSpan.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">years=0</em>, <em class="sig-param">months=0</em>, <em class="sig-param">weeks=0</em>, <em class="sig-param">days=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs the date span object for the given number of years, months, weeks and days.</p>
+<p>Note that the weeks and days add together if both are given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>years</strong> (<em>int</em>) – </p></li>
+<li><p><strong>months</strong> (<em>int</em>) – </p></li>
+<li><p><strong>weeks</strong> (<em>int</em>) – </p></li>
+<li><p><strong>days</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Add">
+<code class="sig-name descname">Add</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the given <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  to this <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  and returns a reference to itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#wx.DateSpan" title="wx.DateSpan"><em>wx.DateSpan</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Day">
+<em class="property">static </em><code class="sig-name descname">Day</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Day" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date span object corresponding to one day.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.Days" title="wx.DateSpan.Days"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Days</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Days">
+<em class="property">static </em><code class="sig-name descname">Days</code><span class="sig-paren">(</span><em class="sig-param">days</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Days" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date span object corresponding to the given number of days.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>days</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.Day" title="wx.DateSpan.Day"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Day</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.GetDays">
+<code class="sig-name descname">GetDays</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.GetDays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of days (not counting the weeks component) in this date span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.GetTotalDays" title="wx.DateSpan.GetTotalDays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTotalDays</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.GetMonths">
+<code class="sig-name descname">GetMonths</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.GetMonths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of the months (not counting the years) in this date span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.GetTotalDays">
+<code class="sig-name descname">GetTotalDays</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.GetTotalDays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the combined number of days in this date span, counting both weeks and days.</p>
+<p>This doesn’t take months or years into account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.GetWeeks" title="wx.DateSpan.GetWeeks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWeeks</span></code></a> , <a class="reference internal" href="#wx.DateSpan.GetDays" title="wx.DateSpan.GetDays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDays</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.GetTotalMonths">
+<code class="sig-name descname">GetTotalMonths</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.GetTotalMonths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the combined number of months in this date span, counting both years and months.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.GetYears" title="wx.DateSpan.GetYears"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetYears</span></code></a> , <a class="reference internal" href="#wx.DateSpan.GetMonths" title="wx.DateSpan.GetMonths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMonths</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.GetWeeks">
+<code class="sig-name descname">GetWeeks</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.GetWeeks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of weeks in this date span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.GetTotalDays" title="wx.DateSpan.GetTotalDays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTotalDays</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.GetYears">
+<code class="sig-name descname">GetYears</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.GetYears" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of years in this date span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Month">
+<em class="property">static </em><code class="sig-name descname">Month</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Month" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date span object corresponding to one month.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.Months" title="wx.DateSpan.Months"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Months</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Months">
+<em class="property">static </em><code class="sig-name descname">Months</code><span class="sig-paren">(</span><em class="sig-param">mon</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Months" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date span object corresponding to the given number of months.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mon</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.DateTime.Month.enumeration.html#wx-datetime-month"><span class="std std-ref">  wx.DateTime.Month</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Multiply">
+<code class="sig-name descname">Multiply</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">factor</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Multiply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiplies this date span by the specified <em class="xref py py-obj">factor</em>.</p>
+<p>The product is computed by multiplying each of the components by the <em class="xref py py-obj">factor</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A reference to this <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  object modified in place.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Neg">
+<code class="sig-name descname">Neg</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Neg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes the sign of this date span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.Negate" title="wx.DateSpan.Negate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Negate</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Negate">
+<code class="sig-name descname">Negate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Negate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date span with the opposite sign.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.Neg" title="wx.DateSpan.Neg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Neg</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.SetDays">
+<code class="sig-name descname">SetDays</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.SetDays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of days (without modifying any other components) in this date span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.SetMonths">
+<code class="sig-name descname">SetMonths</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.SetMonths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of months (without modifying any other components) in this date span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.SetWeeks">
+<code class="sig-name descname">SetWeeks</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.SetWeeks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of weeks (without modifying any other components) in this date span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.SetYears">
+<code class="sig-name descname">SetYears</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.SetYears" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of years (without modifying any other components) in this date span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Subtract">
+<code class="sig-name descname">Subtract</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Subtract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subtracts the given <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  to this <a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>  and returns a reference to itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#wx.DateSpan" title="wx.DateSpan"><em>wx.DateSpan</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Week">
+<em class="property">static </em><code class="sig-name descname">Week</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Week" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date span object corresponding to one week.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.Weeks" title="wx.DateSpan.Weeks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Weeks</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Weeks">
+<em class="property">static </em><code class="sig-name descname">Weeks</code><span class="sig-paren">(</span><em class="sig-param">weeks</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Weeks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date span object corresponding to the given number of weeks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>weeks</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.Week" title="wx.DateSpan.Week"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Week</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Year">
+<em class="property">static </em><code class="sig-name descname">Year</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Year" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date span object corresponding to one year.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.DateSpan.Years" title="wx.DateSpan.Years"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Years</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DateSpan.Years">
+<em class="property">static </em><code class="sig-name descname">Years</code><span class="sig-paren">(</span><em class="sig-param">years</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DateSpan.Years" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date span object corresponding to the given number of years.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>years</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.DateTime.Year.enumeration.html#wx-datetime-year"><span class="std std-ref">  wx.DateTime.Year</span></a></p>
+</div>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

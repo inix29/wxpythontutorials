@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.grid.GridCellEditor — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.grid.GridCellEnumEditor.html" rel="next" title="wx.grid.GridCellEnumEditor"/>
+<link href="wx.grid.GridCellDateTimeRenderer.html" rel="prev" title="wx.grid.GridCellDateTimeRenderer"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.grid.1moduleindex.html">
+<strong>wx.grid</strong></a> »</li>
+<li class="reltitle"> <strong>wx.grid.GridCellEditor</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.grid.GridCellEnumEditor.html" title="wx.grid.GridCellEnumEditor">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.grid.GridCellDateTimeRenderer.html" title="wx.grid.GridCellDateTimeRenderer">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.grid.GridCellEditor</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.grid.GridCellEditor.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-grid-gridcelleditor">
+<span id="wx-grid-gridcelleditor"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.grid.GridCellEditor</strong><a class="headerlink" href="#phoenix-title-wx-grid-gridcelleditor" title="Permalink to this headline">¶</a></h1>
+<p>This class is responsible for providing and manipulating the in-place edit controls for the grid.</p>
+<p>Instances of <a class="reference internal" href="#wx-grid-gridcelleditor"><span class="std std-ref">  wx.grid.GridCellEditor</span></a>  (actually, instances of derived classes since it is an abstract class) can be associated with the cell attributes for individual cells, rows, columns, or even for the entire grid.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.grid.GridCellAutoWrapStringEditor.html#wx-grid-gridcellautowrapstringeditor"><span class="std std-ref">  wx.grid.GridCellAutoWrapStringEditor</span></a>, <a class="reference internal" href="wx.grid.GridCellBoolEditor.html#wx-grid-gridcellbooleditor"><span class="std std-ref">  wx.grid.GridCellBoolEditor</span></a>, <a class="reference internal" href="wx.grid.GridCellChoiceEditor.html#wx-grid-gridcellchoiceeditor"><span class="std std-ref">  wx.grid.GridCellChoiceEditor</span></a>, <a class="reference internal" href="wx.grid.GridCellEnumEditor.html#wx-grid-gridcellenumeditor"><span class="std std-ref">  wx.grid.GridCellEnumEditor</span></a>, <a class="reference internal" href="wx.grid.GridCellFloatEditor.html#wx-grid-gridcellfloateditor"><span class="std std-ref">  wx.grid.GridCellFloatEditor</span></a>, <a class="reference internal" href="wx.grid.GridCellNumberEditor.html#wx-grid-gridcellnumbereditor"><span class="std std-ref">  wx.grid.GridCellNumberEditor</span></a>, <a class="reference internal" href="wx.grid.GridCellTextEditor.html#wx-grid-gridcelltexteditor"><span class="std std-ref">  wx.grid.GridCellTextEditor</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>GridCellEditor</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of GridCellEditor" class="inheritance" src="_static/images/inheritance/wx.grid.GridCellEditor_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="98,83,266,112" href="wx.grid.GridCellEditor.html" id="node1" shape="rect" title="This class is responsible for providing and manipulating the in-place edit controls for the grid."/> <area alt="" coords="5,5,185,35" href="wx.ClientDataContainer.html" id="node2" shape="rect" title="This class is a mixin that provides storage and management of 'client data'."/> <area alt="" coords="210,5,330,35" href="wx.RefCounter.html" id="node3" shape="rect" title="This class is used to manage reference-counting providing a simple interface and a counter."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.grid.GridCellBoolEditor.html#wx-grid-gridcellbooleditor"><span class="std std-ref">  wx.grid.GridCellBoolEditor</span></a>, <a class="reference internal" href="wx.grid.GridCellChoiceEditor.html#wx-grid-gridcellchoiceeditor"><span class="std std-ref">  wx.grid.GridCellChoiceEditor</span></a>, <a class="reference internal" href="wx.grid.GridCellTextEditor.html#wx-grid-gridcelltexteditor"><span class="std std-ref">  wx.grid.GridCellTextEditor</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%"/>
+<col style="width: 63%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.__init__" title="wx.grid.GridCellEditor.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.ApplyEdit" title="wx.grid.GridCellEditor.ApplyEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ApplyEdit</span></code></a></p></td>
+<td><p>Effectively save the changes in the grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.BeginEdit" title="wx.grid.GridCellEditor.BeginEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BeginEdit</span></code></a></p></td>
+<td><p>Fetch the value from the table and prepare the edit control to begin editing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.Clone" title="wx.grid.GridCellEditor.Clone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Clone</span></code></a></p></td>
+<td><p>Create a new object which is the copy of this one.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.Create" title="wx.grid.GridCellEditor.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates the actual edit control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.Destroy" title="wx.grid.GridCellEditor.Destroy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Destroy</span></code></a></p></td>
+<td><p>Final cleanup.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.EndEdit" title="wx.grid.GridCellEditor.EndEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndEdit</span></code></a></p></td>
+<td><p>End editing the cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.GetControl" title="wx.grid.GridCellEditor.GetControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetControl</span></code></a></p></td>
+<td><p>Get the <a class="reference internal" href="wx.Control.html#wx-control"><span class="std std-ref">  wx.Control</span></a>  used by this editor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.GetValue" title="wx.grid.GridCellEditor.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValue</span></code></a></p></td>
+<td><p>Returns the value currently in the editor control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.HandleReturn" title="wx.grid.GridCellEditor.HandleReturn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HandleReturn</span></code></a></p></td>
+<td><p>Some types of controls on some platforms may need some help with the Return key.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.IsCreated" title="wx.grid.GridCellEditor.IsCreated"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsCreated</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the edit control has been created.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.PaintBackground" title="wx.grid.GridCellEditor.PaintBackground"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PaintBackground</span></code></a></p></td>
+<td><p>Draws the part of the cell not occupied by the control: the base class version just fills it with background colour from the attribute.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.Reset" title="wx.grid.GridCellEditor.Reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Reset</span></code></a></p></td>
+<td><p>Reset the value in the control back to its starting value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.SetControl" title="wx.grid.GridCellEditor.SetControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetControl</span></code></a></p></td>
+<td><p>Set the <a class="reference internal" href="wx.Control.html#wx-control"><span class="std std-ref">  wx.Control</span></a>  that will be used by this cell editor for editing the value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.SetSize" title="wx.grid.GridCellEditor.SetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSize</span></code></a></p></td>
+<td><p>Size and position the edit control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.Show" title="wx.grid.GridCellEditor.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p></td>
+<td><p>Show or hide the edit control, use the specified attributes to set colours/fonts for it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.StartingClick" title="wx.grid.GridCellEditor.StartingClick"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StartingClick</span></code></a></p></td>
+<td><p>If the editor is enabled by clicking on the cell, this method will be called.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.StartingKey" title="wx.grid.GridCellEditor.StartingKey"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StartingKey</span></code></a></p></td>
+<td><p>If the editor is enabled by pressing keys on the grid, this will be called to let the editor do something about that first key if desired.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">~wxGridCellEditor</span></code></p></td>
+<td><p>The destructor is private because only <code class="xref py py-meth docutils literal notranslate"><span class="pre">DecRef</span></code>   can delete us.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%"/>
+<col style="width: 54%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.Control" title="wx.grid.GridCellEditor.Control"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Control</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.grid.GridCellEditor.GetControl" title="wx.grid.GridCellEditor.GetControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetControl</span></code></a> and <a class="reference internal" href="#wx.grid.GridCellEditor.SetControl" title="wx.grid.GridCellEditor.SetControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetControl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridCellEditor.Value" title="wx.grid.GridCellEditor.Value"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Value</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.grid.GridCellEditor.GetValue" title="wx.grid.GridCellEditor.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValue</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.grid.GridCellEditor">
+<em class="property">class </em><code class="sig-prename descclassname">wx.grid.</code><code class="sig-name descname">GridCellEditor</code><span class="sig-paren">(</span><em class="sig-param">ClientDataContainer</em>, <em class="sig-param">RefCounter</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GridCellEditor</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This class is responsible for providing and manipulating the in-place
+edit controls for the grid.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.ApplyEdit">
+<code class="sig-name descname">ApplyEdit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">grid</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.ApplyEdit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Effectively save the changes in the grid.</p>
+<p>This function should save the value of the control in the grid. It is called only after <a class="reference internal" href="#wx.grid.GridCellEditor.EndEdit" title="wx.grid.GridCellEditor.EndEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndEdit</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>grid</strong> (<a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><em>wx.grid.Grid</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.BeginEdit">
+<code class="sig-name descname">BeginEdit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">grid</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.BeginEdit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch the value from the table and prepare the edit control to begin editing.</p>
+<p>This function should save the original value of the grid cell at the given <em class="xref py py-obj">row</em>  and <em class="xref py py-obj">col</em>  and show the control allowing the user to change it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>grid</strong> (<a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><em>wx.grid.Grid</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.grid.GridCellEditor.EndEdit" title="wx.grid.GridCellEditor.EndEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndEdit</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.Clone">
+<code class="sig-name descname">Clone</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.Clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new object which is the copy of this one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-grid-gridcelleditor"><span class="std std-ref">  wx.grid.GridCellEditor</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id</em>, <em class="sig-param">evtHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the actual edit control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>evtHandler</strong> (<a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler" title="wx.EvtHandler"><em>wx.EvtHandler</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.Destroy">
+<code class="sig-name descname">Destroy</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.Destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Final cleanup.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.EndEdit">
+<code class="sig-name descname">EndEdit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">grid</em>, <em class="sig-param">oldval</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.EndEdit" title="Permalink to this definition">¶</a></dt>
+<dd><p>End editing the cell.</p>
+<p>This function must check if the current value of the editing cell
+is valid and different from the original value in its string
+form. If not then simply return None.  If it has changed then
+this method should save the new value so that ApplyEdit can
+apply it later and the string representation of the new value
+should be returned.</p>
+<p>Notice that this method shoiuld not modify the grid as the
+change could still be vetoed.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.GetControl">
+<code class="sig-name descname">GetControl</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.GetControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="wx.Control.html#wx-control"><span class="std std-ref">  wx.Control</span></a>  used by this editor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx.grid.GridCellEditor.Control" title="wx.grid.GridCellEditor.Control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Control</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.GetValue">
+<code class="sig-name descname">GetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.GetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value currently in the editor control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.HandleReturn">
+<code class="sig-name descname">HandleReturn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.HandleReturn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some types of controls on some platforms may need some help with the Return key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.KeyEvent.html#wx.KeyEvent" title="wx.KeyEvent"><em>wx.KeyEvent</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.IsCreated">
+<code class="sig-name descname">IsCreated</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.IsCreated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the edit control has been created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.PaintBackground">
+<code class="sig-name descname">PaintBackground</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em>, <em class="sig-param">rectCell</em>, <em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.PaintBackground" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws the part of the cell not occupied by the control: the base class version just fills it with background colour from the attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+<li><p><strong>rectCell</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.grid.GridCellAttr.html#wx.grid.GridCellAttr" title="wx.grid.GridCellAttr"><em>wx.grid.GridCellAttr</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.Reset">
+<code class="sig-name descname">Reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.Reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the value in the control back to its starting value.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.SetControl">
+<code class="sig-name descname">SetControl</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.SetControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the <a class="reference internal" href="wx.Control.html#wx-control"><span class="std std-ref">  wx.Control</span></a>  that will be used by this cell editor for editing the value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>control</strong> (<a class="reference internal" href="wx.Control.html#wx.Control" title="wx.Control"><em>wx.Control</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.SetSize">
+<code class="sig-name descname">SetSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rect</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.SetSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Size and position the edit control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.Show">
+<code class="sig-name descname">Show</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">show</em>, <em class="sig-param">attr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.Show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show or hide the edit control, use the specified attributes to set colours/fonts for it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>show</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.grid.GridCellAttr.html#wx.grid.GridCellAttr" title="wx.grid.GridCellAttr"><em>wx.grid.GridCellAttr</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.StartingClick">
+<code class="sig-name descname">StartingClick</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.StartingClick" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the editor is enabled by clicking on the cell, this method will be called.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridCellEditor.StartingKey">
+<code class="sig-name descname">StartingKey</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridCellEditor.StartingKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the editor is enabled by pressing keys on the grid, this will be called to let the editor do something about that first key if desired.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.KeyEvent.html#wx.KeyEvent" title="wx.KeyEvent"><em>wx.KeyEvent</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt>
+<code class="sig-name descname">~wxGridCellEditor(self)</code></dt>
+<dd><p>The destructor is private because only <a class="reference internal" href="wx.RefCounter.html#wx.RefCounter.DecRef" title="wx.RefCounter.DecRef"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DecRef</span></code></a>   can delete us.</p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.grid.GridCellEditor.Control">
+<code class="sig-name descname">Control</code><a class="headerlink" href="#wx.grid.GridCellEditor.Control" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.grid.GridCellEditor.GetControl" title="wx.grid.GridCellEditor.GetControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetControl</span></code></a> and <a class="reference internal" href="#wx.grid.GridCellEditor.SetControl" title="wx.grid.GridCellEditor.SetControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetControl</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.grid.GridCellEditor.Value">
+<code class="sig-name descname">Value</code><a class="headerlink" href="#wx.grid.GridCellEditor.Value" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.grid.GridCellEditor.GetValue" title="wx.grid.GridCellEditor.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValue</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

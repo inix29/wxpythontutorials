@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.filebrowsebutton.FileBrowseButtonWithHistory — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.foldmenu.html" rel="next" title="wx.lib.foldmenu"/>
+<link href="wx.lib.filebrowsebutton.FileBrowseButton.html" rel="prev" title="wx.lib.filebrowsebutton.FileBrowseButton"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.filebrowsebutton.html">
+<strong>wx.lib.filebrowsebutton</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.filebrowsebutton.FileBrowseButtonWithHistory</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.foldmenu.html" title="wx.lib.foldmenu">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.filebrowsebutton.FileBrowseButton.html" title="wx.lib.filebrowsebutton.FileBrowseButton">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.filebrowsebutton.FileBrowseButtonWithHistory</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#super-classes-known-superclasses"> Known Superclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-lib-filebrowsebutton-filebrowsebuttonwithhistory">
+<span id="wx-lib-filebrowsebutton-filebrowsebuttonwithhistory"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.filebrowsebutton.FileBrowseButtonWithHistory</strong><a class="headerlink" href="#phoenix-title-wx-lib-filebrowsebutton-filebrowsebuttonwithhistory" title="Permalink to this headline">¶</a></h1>
+<dl>
+<dt>with following additions:</dt><dd><p>__init__(…, history=None)</p>
+<blockquote>
+<div><dl class="simple">
+<dt>history – optional list of paths for initial history drop-down</dt><dd><p>(must be passed by name, not a positional argument)
+If history is callable it will must return a list used
+for the history drop-down</p>
+</dd>
+<dt>changeCallback – as for FileBrowseButton, but with a work-around</dt><dd><p>for win32 systems which don’t appear to create wx.EVT_COMBOBOX
+events properly.  There is a (slight) chance that this work-around
+will cause some systems to create two events for each Combobox
+selection. If you discover this condition, please report it!</p>
+</dd>
+</dl>
+<p>As for a FileBrowseButton.__init__ otherwise.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>GetHistoryControl()</dt><dd><p>Return reference to the control which implements interfaces
+required for manipulating the history list.  See GetHistoryControl
+documentation for description of what that interface is.</p>
+</dd>
+<dt>GetHistory()</dt><dd><p>Return current history list</p>
+</dd>
+<dt>SetHistory( value=(), selectionIndex = None )</dt><dd><p>Set current history list, if selectionIndex is not None, select that index</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>FileBrowseButtonWithHistory</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of FileBrowseButtonWithHistory" class="inheritance" src="_static/images/inheritance/wx.lib.filebrowsebutton.FileBrowseButtonWithHistory_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,469,381,499" href="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.html" id="node1" shape="rect" title="with following additions:"/> <area alt="" coords="44,392,343,421" href="wx.lib.filebrowsebutton.FileBrowseButton.html" id="node2" shape="rect" title="A control to allow the user to type in a filename or browse with"/> <area alt="" coords="153,315,234,344" href="wx.Panel.html" id="node3" shape="rect" title="A panel is a window on which controls are placed."/> <area alt="" coords="145,237,242,267" href="wx.Window.html" id="node4" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="128,160,259,189" href="wx.WindowBase.html" id="node5" shape="rect" title="wx.WindowBase"/> <area alt="" coords="134,83,253,112" href="wx.EvtHandler.html" id="node6" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="88,5,176,35" href="wx.Object.html" id="node7" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="201,5,311,35" href="wx.Trackable.html" id="node8" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="super-classes-known-superclasses">
+<h2><a class="reference internal" href="_images/super_classes.png"><img alt="super_classes" class="align-middle" src="_images/super_classes.png" style="width: 32px;"/></a> Known Superclasses<a class="headerlink" href="#super-classes-known-superclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.lib.filebrowsebutton.FileBrowseButton.html#wx.lib.filebrowsebutton.FileBrowseButton" title="wx.lib.filebrowsebutton.FileBrowseButton"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.lib.filebrowsebutton.FileBrowseButton</span></code></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.__init__" title="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">param labelText</dt>
+<dd class="field-odd"><p>Text for label to left of text field</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.createTextControl" title="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.createTextControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">createTextControl</span></code></a></p></td>
+<td><p>Create the text control</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.GetHistory" title="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.GetHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHistory</span></code></a></p></td>
+<td><p>Return the current history list</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.GetHistoryControl" title="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.GetHistoryControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHistoryControl</span></code></a></p></td>
+<td><p>Return a pointer to the control which provides (at least)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.OnSetFocus" title="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.OnSetFocus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSetFocus</span></code></a></p></td>
+<td><p>When the history scroll is selected, update the history</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.SetHistory" title="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.SetHistory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHistory</span></code></a></p></td>
+<td><p>Set the current history list</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory">
+<em class="property">class </em><code class="sig-name descname">FileBrowseButtonWithHistory</code><span class="sig-paren">(</span><em class="sig-param">FileBrowseButton</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>with following additions:</dt><dd><p>__init__(…, history=None)</p>
+<blockquote>
+<div><dl class="simple">
+<dt>history – optional list of paths for initial history drop-down</dt><dd><p>(must be passed by name, not a positional argument)
+If history is callable it will must return a list used
+for the history drop-down</p>
+</dd>
+<dt>changeCallback – as for FileBrowseButton, but with a work-around</dt><dd><p>for win32 systems which don’t appear to create wx.EVT_COMBOBOX
+events properly.  There is a (slight) chance that this work-around
+will cause some systems to create two events for each Combobox
+selection. If you discover this condition, please report it!</p>
+</dd>
+</dl>
+<p>As for a FileBrowseButton.__init__ otherwise.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>GetHistoryControl()</dt><dd><p>Return reference to the control which implements interfaces
+required for manipulating the history list.  See GetHistoryControl
+documentation for description of what that interface is.</p>
+</dd>
+<dt>GetHistory()</dt><dd><p>Return current history list</p>
+</dd>
+<dt>SetHistory( value=(), selectionIndex = None )</dt><dd><p>Set current history list, if selectionIndex is not None, select that index</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*arguments</em>, <em class="sig-param">**namedarguments</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labelText</strong> – Text for label to left of text field</p></li>
+<li><p><strong>buttonText</strong> – Text for button which launches the file dialog</p></li>
+<li><p><strong>toolTip</strong> – Help text</p></li>
+<li><p><strong>dialogTitle</strong> – Title used in file dialog</p></li>
+<li><p><strong>startDirectory</strong> – Default directory for file dialog startup</p></li>
+<li><p><strong>fileMask</strong> – File mask (glob pattern, such as <em>.</em>) to use in file dialog</p></li>
+<li><p><strong>fileMode</strong> – wx.FD_OPEN or wx.FD_SAVE, indicates type of file dialog to use</p></li>
+<li><p><strong>changeCallback</strong> – Optional callback called for all changes in value of the control</p></li>
+<li><p><strong>labelWidth</strong> – Width of the label</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.createTextControl">
+<code class="sig-name descname">createTextControl</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.createTextControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the text control</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.GetHistory">
+<code class="sig-name descname">GetHistory</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.GetHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current history list</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.GetHistoryControl">
+<code class="sig-name descname">GetHistoryControl</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.GetHistoryControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a pointer to the control which provides (at least)
+the following methods for manipulating the history list:</p>
+<blockquote>
+<div><p>Append( item ) – add item
+Clear() – clear all items
+Delete( index ) – 0-based index to delete from list
+SetSelection( index ) – 0-based index to select in list</p>
+</div></blockquote>
+<p>Semantics of the methods follow those for the wxComboBox control</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.OnSetFocus">
+<code class="sig-name descname">OnSetFocus</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.OnSetFocus" title="Permalink to this definition">¶</a></dt>
+<dd><p>When the history scroll is selected, update the history</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.SetHistory">
+<code class="sig-name descname">SetHistory</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">value=()</em>, <em class="sig-param">selectionIndex = None</em>, <em class="sig-param">control=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.filebrowsebutton.FileBrowseButtonWithHistory.SetHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the current history list</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

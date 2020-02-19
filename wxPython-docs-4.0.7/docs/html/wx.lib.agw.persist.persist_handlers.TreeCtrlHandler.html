@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.agw.persist.persist_handlers.TreeCtrlHandler — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.agw.persist.persist_handlers.TreeListCtrlHandler.html" rel="next" title="wx.lib.agw.persist.persist_handlers.TreeListCtrlHandler"/>
+<link href="wx.lib.agw.persist.persist_handlers.TreebookHandler.html" rel="prev" title="wx.lib.agw.persist.persist_handlers.TreebookHandler"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a href="wx.lib.agw.html">
+<strong>wx.lib.agw</strong></a> »</li>
+<li><a href="wx.lib.agw.persist.html">
+<strong>wx.lib.agw.persist</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.agw.persist.persist_handlers.html">
+<strong>wx.lib.agw.persist.persist_handlers</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.agw.persist.persist_handlers.TreeCtrlHandler</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.agw.persist.persist_handlers.TreeListCtrlHandler.html" title="wx.lib.agw.persist.persist_handlers.TreeListCtrlHandler">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.agw.persist.persist_handlers.TreebookHandler.html" title="wx.lib.agw.persist.persist_handlers.TreebookHandler">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.agw.persist.persist_handlers.TreeCtrlHandler</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#super-classes-known-superclasses"> Known Superclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-lib-agw-persist-persist-handlers-treectrlhandler">
+<span id="wx-lib-agw-persist-persist-handlers-treectrlhandler"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.agw.persist.persist_handlers.TreeCtrlHandler</strong><a class="headerlink" href="#phoenix-title-wx-lib-agw-persist-persist-handlers-treectrlhandler" title="Permalink to this headline">¶</a></h1>
+<p>Supports saving/restoring a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> expansion state, selections and
+checked items state (meaningful only for <code class="xref py py-class docutils literal notranslate"><span class="pre">lib.agw.customtreectrl.CustomTreeCtrl</span></code>).</p>
+<p>This class handles the following wxPython widgets:</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code>;</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericDirCtrl</span></code>;</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">lib.agw.customtreectrl.CustomTreeCtrl</span></code>;</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">lib.agw.hypertreelist.HyperTreeList</span></code>;</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>TreeCtrlHandler</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of TreeCtrlHandler" class="inheritance" src="_static/images/inheritance/wx.lib.agw.persist.persist_handlers.TreeCtrlHandler_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="6,83,373,112" href="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.html" id="node1" shape="rect" title="Supports saving/restoring a TreeCtrl expansion state, selections and"/> <area alt="" coords="5,5,373,35" href="wx.lib.agw.persist.persist_handlers.AbstractHandler.html" id="node2" shape="rect" title="Base class for persistent windows, uses the window name as persistent name by"/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.lib.agw.persist.persist_handlers.TreeListCtrlHandler.html#wx.lib.agw.persist.persist_handlers.TreeListCtrlHandler" title="wx.lib.agw.persist.persist_handlers.TreeListCtrlHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.lib.agw.persist.persist_handlers.TreeListCtrlHandler</span></code></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="super-classes-known-superclasses">
+<h2><a class="reference internal" href="_images/super_classes.png"><img alt="super_classes" class="align-middle" src="_images/super_classes.png" style="width: 32px;"/></a> Known Superclasses<a class="headerlink" href="#super-classes-known-superclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.lib.agw.persist.persist_handlers.AbstractHandler.html#wx.lib.agw.persist.persist_handlers.AbstractHandler" title="wx.lib.agw.persist.persist_handlers.AbstractHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.lib.agw.persist.persist_handlers.AbstractHandler</span></code></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%"/>
+<col style="width: 64%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.__init__" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default class constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedState" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCheckedState</span></code></a></p></td>
+<td><p>Returns a list of checked items. Checked items are coded as determined by</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedStateOfChildren" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedStateOfChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCheckedStateOfChildren</span></code></a></p></td>
+<td><p>Returns the checked/unchecked state of the children of a tree item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedStateOfItem" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedStateOfItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCheckedStateOfItem</span></code></a></p></td>
+<td><p>Returns the checked/unchecked state of a tree item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionState" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExpansionState</span></code></a></p></td>
+<td><p>Returns list of expanded items. Expanded items are coded as determined by</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionStateOfChildren" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionStateOfChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExpansionStateOfChildren</span></code></a></p></td>
+<td><p>Returns the expansion state of the children of a tree item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionStateOfItem" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionStateOfItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExpansionStateOfItem</span></code></a></p></td>
+<td><p>Returns the expansion state of a tree item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetIndexOfItem" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetIndexOfItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIndexOfItem</span></code></a></p></td>
+<td><p>Return the index of item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemChildren" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemChildren</span></code></a></p></td>
+<td><p>Return the children of item as a list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemIdentity</span></code></a></p></td>
+<td><p>Return a hashable object that represents the identity of the</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetKind" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetKind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetKind</span></code></a></p></td>
+<td><p>Returns a short and meaningful <em>string</em> description of your widget.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionState" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectionState</span></code></a></p></td>
+<td><p>Returns a list of selected items. Selected items are coded as determined by</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionStateOfChildren" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionStateOfChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectionStateOfChildren</span></code></a></p></td>
+<td><p>Returns the selection state of the children of a tree item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionStateOfItem" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionStateOfItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectionStateOfItem</span></code></a></p></td>
+<td><p>Returns the selection state of a tree item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.Restore" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.Restore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Restore</span></code></a></p></td>
+<td><p>Restores the widget’s settings by calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">PersistentObject.RestoreValue()</span></code>, which in</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.Save" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.Save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Save</span></code></a></p></td>
+<td><p>Saves the widget’s settings by calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">PersistentObject.SaveValue()</span></code>, which in</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedState" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCheckedState</span></code></a></p></td>
+<td><p>Checks all tree items whose identity, as determined by <a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrlHandler.GetItemIdentity()</span></code></a>, is present</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedStateOfChildren" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedStateOfChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCheckedStateOfChildren</span></code></a></p></td>
+<td><p>Sets the checked/unchecked state of the children of a tree item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedStateOfItem" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedStateOfItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCheckedStateOfItem</span></code></a></p></td>
+<td><p>Sets the checked/unchecked state of a tree item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionState" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExpansionState</span></code></a></p></td>
+<td><p>Expands all tree items whose identity, as determined by <a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrlHandler.GetItemIdentity()</span></code></a>,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionStateOfChildren" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionStateOfChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExpansionStateOfChildren</span></code></a></p></td>
+<td><p>Sets the expansion state of the children of a tree item (expanded or collapsed).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionStateOfItem" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionStateOfItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExpansionStateOfItem</span></code></a></p></td>
+<td><p>Sets the expansion state of a tree item (expanded or collapsed).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectedStateOfChildren" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectedStateOfChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelectedStateOfChildren</span></code></a></p></td>
+<td><p>Sets the selection state of the children of a tree item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectedStateOfItem" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectedStateOfItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelectedStateOfItem</span></code></a></p></td>
+<td><p>Sets the selection state of a tree item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectionState" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectionState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelectionState</span></code></a></p></td>
+<td><p>Selects all tree items whose identity, as determined by <a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrlHandler.GetItemIdentity()</span></code></a>,</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler">
+<em class="property">class </em><code class="sig-name descname">TreeCtrlHandler</code><span class="sig-paren">(</span><em class="sig-param">AbstractHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supports saving/restoring a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> expansion state, selections and
+checked items state (meaningful only for <code class="xref py py-class docutils literal notranslate"><span class="pre">lib.agw.customtreectrl.CustomTreeCtrl</span></code>).</p>
+<p>This class handles the following wxPython widgets:</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code>;</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericDirCtrl</span></code>;</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">lib.agw.customtreectrl.CustomTreeCtrl</span></code>;</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">lib.agw.hypertreelist.HyperTreeList</span></code>;</p></li>
+</ul>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pObject</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pObject</strong> – a <a class="reference internal" href="wx.lib.agw.persist.persistencemanager.PersistentObject.html#wx.lib.agw.persist.persistencemanager.PersistentObject" title="wx.lib.agw.persist.persistencemanager.PersistentObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersistentObject</span></code></a> containing information about the
+persistent widget.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedState">
+<code class="sig-name descname">GetCheckedState</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of checked items. Checked items are coded as determined by
+the result of <a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrlHandler.GetItemIdentity()</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is meaningful only for <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> and
+<a class="reference internal" href="wx.lib.agw.hypertreelist.HyperTreeList.html#wx.lib.agw.hypertreelist.HyperTreeList" title="wx.lib.agw.hypertreelist.HyperTreeList"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperTreeList</span></code></a>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedStateOfChildren">
+<code class="sig-name descname">GetCheckedStateOfChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedStateOfChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the checked/unchecked state of the children of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedStateOfItem">
+<code class="sig-name descname">GetCheckedStateOfItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetCheckedStateOfItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the checked/unchecked state of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionState">
+<code class="sig-name descname">GetExpansionState</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of expanded items. Expanded items are coded as determined by
+the result of <a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrlHandler.GetItemIdentity()</span></code></a>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionStateOfChildren">
+<code class="sig-name descname">GetExpansionStateOfChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionStateOfChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the expansion state of the children of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionStateOfItem">
+<code class="sig-name descname">GetExpansionStateOfItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetExpansionStateOfItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the expansion state of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetIndexOfItem">
+<code class="sig-name descname">GetIndexOfItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetIndexOfItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the index of item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item;</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemChildren">
+<code class="sig-name descname">GetItemChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item=None</em>, <em class="sig-param">recursively=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the children of item as a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item;</p></li>
+<li><p><strong>recursively</strong> – whether to recurse into the item hierarchy or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity">
+<code class="sig-name descname">GetItemIdentity</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a hashable object that represents the identity of the
+item. By default this returns the position of the item in the
+tree. You may want to override this to return the item label
+(if you know that labels are unique and don’t change), or return
+something that represents the underlying domain object, e.g.
+a database key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item;</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetKind">
+<code class="sig-name descname">GetKind</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetKind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a short and meaningful <em>string</em> description of your widget.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method must be overridden in derived classes.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionState">
+<code class="sig-name descname">GetSelectionState</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of selected items. Selected items are coded as determined by
+the result of <a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrlHandler.GetItemIdentity()</span></code></a>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionStateOfChildren">
+<code class="sig-name descname">GetSelectionStateOfChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionStateOfChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the selection state of the children of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionStateOfItem">
+<code class="sig-name descname">GetSelectionStateOfItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetSelectionStateOfItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the selection state of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.Restore">
+<code class="sig-name descname">Restore</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.Restore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restores the widget’s settings by calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">PersistentObject.RestoreValue()</span></code>, which in
+turns calls <code class="xref py py-meth docutils literal notranslate"><span class="pre">PersistenceManager.RestoreValue()</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method must be overridden in derived classes.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.Save">
+<code class="sig-name descname">Save</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.Save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the widget’s settings by calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">PersistentObject.SaveValue()</span></code>, which in
+turns calls <code class="xref py py-meth docutils literal notranslate"><span class="pre">PersistenceManager.SaveValue()</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method must be overridden in derived classes.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedState">
+<code class="sig-name descname">SetCheckedState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listOfCheckedItems</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks all tree items whose identity, as determined by <a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrlHandler.GetItemIdentity()</span></code></a>, is present
+in the list and unchecks all other tree items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>listOfCheckedItems</strong> – a list of checked <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> items.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is meaningful only for <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> and
+<a class="reference internal" href="wx.lib.agw.hypertreelist.HyperTreeList.html#wx.lib.agw.hypertreelist.HyperTreeList" title="wx.lib.agw.hypertreelist.HyperTreeList"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperTreeList</span></code></a>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedStateOfChildren">
+<code class="sig-name descname">SetCheckedStateOfChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listOfCheckedItems</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedStateOfChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the checked/unchecked state of the children of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listOfCheckedItems</strong> – a list of checked <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> items;</p></li>
+<li><p><strong>item</strong> – a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedStateOfItem">
+<code class="sig-name descname">SetCheckedStateOfItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listOfCheckedItems</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetCheckedStateOfItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the checked/unchecked state of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listOfCheckedItems</strong> – a list of checked <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> items;</p></li>
+<li><p><strong>item</strong> – a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionState">
+<code class="sig-name descname">SetExpansionState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listOfExpandedItems</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expands all tree items whose identity, as determined by <a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrlHandler.GetItemIdentity()</span></code></a>,
+is present in the list and collapses all other tree items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>listOfExpandedItems</strong> – a list of expanded <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> or
+<a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> items.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionStateOfChildren">
+<code class="sig-name descname">SetExpansionStateOfChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listOfExpandedItems</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionStateOfChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the expansion state of the children of a tree item (expanded or collapsed).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listOfExpandedItems</strong> – a list of expanded <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> or
+<a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> items;</p></li>
+<li><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionStateOfItem">
+<code class="sig-name descname">SetExpansionStateOfItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listOfExpandedItems</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetExpansionStateOfItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the expansion state of a tree item (expanded or collapsed).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listOfExpandedItems</strong> – a list of expanded <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> or
+<a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> items;</p></li>
+<li><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectedStateOfChildren">
+<code class="sig-name descname">SetSelectedStateOfChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listOfSelectedItems</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectedStateOfChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the selection state of the children of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listOfSelectedItems</strong> – a list of selected <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> or
+<a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> items;</p></li>
+<li><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectedStateOfItem">
+<code class="sig-name descname">SetSelectedStateOfItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listOfSelectedItems</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectedStateOfItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the selection state of a tree item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listOfSelectedItems</strong> – a list of selected <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> or
+<a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> items;</p></li>
+<li><p><strong>item</strong> – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> item or a <a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> item.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectionState">
+<code class="sig-name descname">SetSelectionState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listOfSelectedItems</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.SetSelectionState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects all tree items whose identity, as determined by <a class="reference internal" href="#wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity" title="wx.lib.agw.persist.persist_handlers.TreeCtrlHandler.GetItemIdentity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrlHandler.GetItemIdentity()</span></code></a>,
+is present in the list and unselects all other tree items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>listOfSelectedItems</strong> – a list of selected <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code> or
+<a class="reference internal" href="wx.lib.agw.customtreectrl.CustomTreeCtrl.html#wx.lib.agw.customtreectrl.CustomTreeCtrl" title="wx.lib.agw.customtreectrl.CustomTreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTreeCtrl</span></code></a> items.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

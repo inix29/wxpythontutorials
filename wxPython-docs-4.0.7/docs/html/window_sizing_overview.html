@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Window Sizing Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="window_styles_overview.html" rel="next" title="Window Styles Overview"/>
+<link href="window_ids_overview.html" rel="prev" title="Window IDs Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Window Sizing Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="window_styles_overview.html" title="Window Styles Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="window_ids_overview.html" title="Window IDs Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Window Sizing Overview</strong></a><ul>
+<li><a class="reference internal" href="#glossary">Glossary</a></li>
+<li><a class="reference internal" href="#functions-related-to-sizing">Functions related to sizing</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/window_sizing_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-window-sizing-overview">
+<span id="window-sizing-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Window Sizing Overview</strong><a class="headerlink" href="#phoenix-title-window-sizing-overview" title="Permalink to this headline">¶</a></h1>
+<p>It can sometimes be confusing to keep track of the various
+size-related attributes of a <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>, how they relate to each
+other, and how they interact with sizers.</p>
+<p>This document will attempt to clear the fog a little, and give some
+simple explanations of things.</p>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>“Best Size”</strong>: the best size of a widget depends on what kind of widget it
+is, and usually also on the contents of the widget. For example a
+<a class="reference internal" href="wx.ListBox.html#wx-listbox"><span class="std std-ref">  wx.ListBox</span></a> ‘s best size will be calculated based on how many items it
+has, up to a certain limit, or a <a class="reference internal" href="wx.Button.html#wx-button"><span class="std std-ref">  wx.Button</span></a> ‘s best size will be
+calculated based on its label size, but normally won’t be smaller than the
+platform default button size (unless a style flag overrides that). There is
+a special method in the wxPython window classes called
+<a class="reference internal" href="wx.Window.html#wx.Window.DoGetBestSize" title="wx.Window.DoGetBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.DoGetBestSize</span></code></a> that a class needs to override if it wants
+to calculate its own best size based on its content.</p></li>
+<li><p><strong>“Minimal Size”</strong>: the minimal size of a widget is a size that is
+normally explicitly set by the programmer either
+with the <a class="reference internal" href="wx.Window.html#wx.Window.SetMinSize" title="wx.Window.SetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetMinSize</span></code></a> method or with
+the <a class="reference internal" href="wx.Window.html#wx.Window.SetSizeHints" title="wx.Window.SetSizeHints"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSizeHints</span></code></a> method. Most controls will also set
+the minimal size to the size given in the control’s constructor if a
+non-default value is passed. Top-level windows
+such as <a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a> will not allow the user to resize the frame
+below the minimal size.</p></li>
+<li><p><strong>“Maximum Size”</strong>: just like for the minimal size, the maximum size is
+normally explicitly set by the programmer with the
+<a class="reference internal" href="wx.Window.html#wx.Window.SetMaxSize" title="wx.Window.SetMaxSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetMaxSize</span></code></a> method or with <a class="reference internal" href="wx.Window.html#wx.Window.SetSizeHints" title="wx.Window.SetSizeHints"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSizeHints</span></code></a>.
+Top-level windows such as <a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a> will not allow the user to resize
+the frame above the maximum size.</p></li>
+<li><p><strong>“Size”</strong>: the size of a widget can be explicitly set or fetched with the
+<a class="reference internal" href="wx.Window.html#wx.Window.SetSize" title="wx.Window.SetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSize</span></code></a> or <a class="reference internal" href="wx.Window.html#wx.Window.GetSize" title="wx.Window.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetSize</span></code></a> methods. This size
+value is the size that the widget is currently using on screen and is the
+way to change the size of something that is not being managed by a sizer.</p></li>
+<li><p><strong>“Client Size”</strong>: the client size represents the widget’s area inside of
+any borders belonging to the widget and is the area that can be drawn upon
+in a <code class="docutils literal notranslate"><span class="pre">wx.EVT_PAINT</span></code> event. If a widget doesn’t have a border then its
+client size is the same as its size.</p></li>
+<li><p><strong>“Initial Size”</strong>: the initial size of a widget is the size given to the
+constructor of the widget, if any. As mentioned above most controls will
+also set this size value as the control’s minimal size. If the size passed
+to the constructor is the default <code class="docutils literal notranslate"><span class="pre">wx.DefaultSize</span></code>, or if the size is not
+fully specified (such as <em class="xref py py-obj">wx.Size(150, -1)</em>) then most controls will fill in
+the missing size components using the best size and will set the initial
+size of the control to the resulting size.</p></li>
+<li><p><strong>“Virtual Size”</strong>: the virtual size is the size of the potentially viewable
+area of the widget. The virtual size of a widget may be larger than its
+actual size and in this case scrollbars will appear to the let the user
+‘explore’ the full contents of the widget. See <a class="reference internal" href="wx.Scrolled.html#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a> for more
+info.</p></li>
+</ul>
+</div>
+<div class="section" id="functions-related-to-sizing">
+<h2>Functions related to sizing<a class="headerlink" href="#functions-related-to-sizing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="wx.Window.html#wx.Window.GetEffectiveMinSize" title="wx.Window.GetEffectiveMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetEffectiveMinSize</span></code></a>: returns a blending of the widget’s
+minimal size and best size, giving precedence to the minimal size. For
+example, if a widget’s min size is set to (150, -1) and the best size is
+(80, 22) then the best fitting size is (150, 22). If the min size is (50,
+20) then the best fitting size is (50, 20). This method is what is called by
+the sizers when determining what the requirements of each item in the sizer
+is, and is used for calculating the overall minimum needs of the sizer.</p></li>
+<li><p><a class="reference internal" href="wx.Window.html#wx.Window.SetInitialSize" title="wx.Window.SetInitialSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetInitialSize</span></code></a>: this is a little different than the
+typical size setters. Rather than just setting an “initial size” attribute
+it actually sets the minimal size to the value passed in, blends that value
+with the best size, and then sets the size of the widget to be the result.
+So you can consider this method to be a “Smart SetSize”. This method is what
+is called by the constructor of most controls to set the minimal size and
+the initial size of the control.</p></li>
+<li><p><a class="reference internal" href="wx.Window.html#wx.Window.Fit" title="wx.Window.Fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Fit</span></code></a>: this method sets the size of a window to fit around
+its children. If it has no children then nothing is done, if it does have
+children then the size of the window is set to the window’s best size.</p></li>
+<li><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Fit" title="wx.Sizer.Fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Fit</span></code></a>: this sets the size of the window to be large enough to
+accommodate the minimum size needed by the sizer, (along with a few other
+constraints…). If the sizer is the one that is assigned to the window then
+this should be equivalent to <a class="reference internal" href="wx.Window.html#wx.Window.Fit" title="wx.Window.Fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Fit</span></code></a>.</p></li>
+<li><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Layout</span></code></a>: recalculates the minimum space needed by each item
+in the sizer, and then lays out the items within the space currently allotted
+to the sizer.</p></li>
+<li><p><a class="reference internal" href="wx.Window.html#wx.Window.Layout" title="wx.Window.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Layout</span></code></a>: if the window has a sizer then it sets the space
+given to the sizer to the current size of the window, which results in a
+call to <a class="reference internal" href="wx.Sizer.html#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Layout</span></code></a>. If the window has layout constraints
+instead of a sizer then the constraints algorithm is run. The <em class="xref py py-obj">Layout()</em>
+method is what is called by the default <code class="docutils literal notranslate"><span class="pre">wx.EVT_SIZE</span></code> handler for
+container windows.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

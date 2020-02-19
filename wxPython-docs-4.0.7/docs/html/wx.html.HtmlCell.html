@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.html.HtmlCell — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.html.HtmlCellEvent.html" rel="next" title="wx.html.HtmlCellEvent"/>
+<link href="wx.html.HtmlBookRecord.html" rel="prev" title="wx.html.HtmlBookRecord"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.html.1moduleindex.html">
+<strong>wx.html</strong></a> »</li>
+<li class="reltitle"> <strong>wx.html.HtmlCell</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.html.HtmlCellEvent.html" title="wx.html.HtmlCellEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.html.HtmlBookRecord.html" title="wx.html.HtmlBookRecord">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.html.HtmlCell</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.html.HtmlCell.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-html-htmlcell">
+<span id="wx-html-htmlcell"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.html.HtmlCell</strong><a class="headerlink" href="#phoenix-title-wx-html-htmlcell" title="Permalink to this headline">¶</a></h1>
+<p>Internal data structure.</p>
+<p>It represents fragments of parsed HTML page, the so-called <strong>cell</strong>  - a word, picture, table, horizontal line and so on. It is used by <a class="reference internal" href="wx.html.HtmlWindow.html#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>  and <a class="reference internal" href="wx.html.HtmlWinParser.html#wx-html-htmlwinparser"><span class="std std-ref">  wx.html.HtmlWinParser</span></a>  to represent HTML page in memory.</p>
+<p>You can divide cells into two groups : <em class="xref py py-obj">visible</em>  cells with non-zero width and height and <em class="xref py py-obj">helper</em>  cells (usually with zero width and height) that perform special actions such as color or font change.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="html_overview.html#cells-and-containers"><span class="std std-ref">Cells and Containers</span></a>, <a class="reference internal" href="wx.html.HtmlContainerCell.html#wx-html-htmlcontainercell"><span class="std std-ref">  wx.html.HtmlContainerCell</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>HtmlCell</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of HtmlCell" class="inheritance" src="_static/images/inheritance/wx.html.HtmlCell_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,141,112" href="wx.html.HtmlCell.html" id="node1" shape="rect" title="Internal data structure."/> <area alt="" coords="29,5,117,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.html.HtmlColourCell.html#wx-html-htmlcolourcell"><span class="std std-ref">  wx.html.HtmlColourCell</span></a>, <a class="reference internal" href="wx.html.HtmlContainerCell.html#wx-html-htmlcontainercell"><span class="std std-ref">  wx.html.HtmlContainerCell</span></a>, <a class="reference internal" href="wx.html.HtmlFontCell.html#wx-html-htmlfontcell"><span class="std std-ref">  wx.html.HtmlFontCell</span></a>, <a class="reference internal" href="wx.html.HtmlWidgetCell.html#wx-html-htmlwidgetcell"><span class="std std-ref">  wx.html.HtmlWidgetCell</span></a>, <a class="reference internal" href="wx.html.HtmlWordCell.html#wx-html-htmlwordcell"><span class="std std-ref">  wx.html.HtmlWordCell</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%"/>
+<col style="width: 62%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.__init__" title="wx.html.HtmlCell.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.AdjustPagebreak" title="wx.html.HtmlCell.AdjustPagebreak"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AdjustPagebreak</span></code></a></p></td>
+<td><p>This method is used to adjust pagebreak position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.ConvertToText" title="wx.html.HtmlCell.ConvertToText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ConvertToText</span></code></a></p></td>
+<td><p>Converts the cell into text representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Draw" title="wx.html.HtmlCell.Draw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Draw</span></code></a></p></td>
+<td><p>Renders the cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.DrawInvisible" title="wx.html.HtmlCell.DrawInvisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DrawInvisible</span></code></a></p></td>
+<td><p>This method is called instead of <code class="xref py py-meth docutils literal notranslate"><span class="pre">Draw</span></code>   when the cell is certainly out of the screen (and thus invisible).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Find" title="wx.html.HtmlCell.Find"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Find</span></code></a></p></td>
+<td><p>Returns pointer to itself if this cell matches condition (or if any of the cells following in the list matches), <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.FindCellByPos" title="wx.html.HtmlCell.FindCellByPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindCellByPos</span></code></a></p></td>
+<td><p>Find a cell inside this cell positioned at the given coordinates (relative to this’s positions).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetAbsPos" title="wx.html.HtmlCell.GetAbsPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAbsPos</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetDescent" title="wx.html.HtmlCell.GetDescent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescent</span></code></a></p></td>
+<td><p>Returns descent value of the cell (m_Descent member).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetFirstChild" title="wx.html.HtmlCell.GetFirstChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstChild</span></code></a></p></td>
+<td><p>Returns pointer to the first cell in the list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetHeight" title="wx.html.HtmlCell.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a></p></td>
+<td><p>Returns height of the cell (m_Height member).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetId" title="wx.html.HtmlCell.GetId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetId</span></code></a></p></td>
+<td><p>Returns unique cell identifier if there is any, the empty string otherwise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetLink" title="wx.html.HtmlCell.GetLink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLink</span></code></a></p></td>
+<td><p>Returns hypertext link if associated with this cell or <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetMouseCursor" title="wx.html.HtmlCell.GetMouseCursor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMouseCursor</span></code></a></p></td>
+<td><p>Returns cursor to show when mouse pointer is over the cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetMouseCursorAt" title="wx.html.HtmlCell.GetMouseCursorAt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMouseCursorAt</span></code></a></p></td>
+<td><p>Returns cursor to show when mouse pointer is over the specified point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetNext" title="wx.html.HtmlCell.GetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNext</span></code></a></p></td>
+<td><p>Returns pointer to the next cell in list (see <em class="xref py py-obj">htmlcell.h</em>       if you’re interested in details).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetParent" title="wx.html.HtmlCell.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParent</span></code></a></p></td>
+<td><p>Returns pointer to parent container.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetPosX" title="wx.html.HtmlCell.GetPosX"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPosX</span></code></a></p></td>
+<td><p>Returns X position within parent (the value is relative to parent’s upper left corner).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetPosY" title="wx.html.HtmlCell.GetPosY"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPosY</span></code></a></p></td>
+<td><p>Returns Y position within parent (the value is relative to parent’s upper left corner).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetRootCell" title="wx.html.HtmlCell.GetRootCell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRootCell</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.GetWidth" title="wx.html.HtmlCell.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a></p></td>
+<td><p>Returns width of the cell (m_Width member).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Layout" title="wx.html.HtmlCell.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a></p></td>
+<td><p>Layouts the cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.ProcessMouseClick" title="wx.html.HtmlCell.ProcessMouseClick"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ProcessMouseClick</span></code></a></p></td>
+<td><p>This function is simple event handler.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.SetId" title="wx.html.HtmlCell.SetId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetId</span></code></a></p></td>
+<td><p>Sets unique cell identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.SetLink" title="wx.html.HtmlCell.SetLink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLink</span></code></a></p></td>
+<td><p>Sets the hypertext link associated with this cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.SetNext" title="wx.html.HtmlCell.SetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNext</span></code></a></p></td>
+<td><p>Sets the next cell in the list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.SetParent" title="wx.html.HtmlCell.SetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetParent</span></code></a></p></td>
+<td><p>Sets parent container of this cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.SetPos" title="wx.html.HtmlCell.SetPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPos</span></code></a></p></td>
+<td><p>Sets the cell’s position within parent container.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.AbsPos" title="wx.html.HtmlCell.AbsPos"><code class="xref py py-attr docutils literal notranslate"><span class="pre">AbsPos</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetAbsPos" title="wx.html.HtmlCell.GetAbsPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAbsPos</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Descent" title="wx.html.HtmlCell.Descent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Descent</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetDescent" title="wx.html.HtmlCell.GetDescent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.FirstChild" title="wx.html.HtmlCell.FirstChild"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FirstChild</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetFirstChild" title="wx.html.HtmlCell.GetFirstChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstChild</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Height" title="wx.html.HtmlCell.Height"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Height</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetHeight" title="wx.html.HtmlCell.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Id" title="wx.html.HtmlCell.Id"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Id</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetId" title="wx.html.HtmlCell.GetId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetId</span></code></a> and <a class="reference internal" href="#wx.html.HtmlCell.SetId" title="wx.html.HtmlCell.SetId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetId</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Link" title="wx.html.HtmlCell.Link"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Link</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetLink" title="wx.html.HtmlCell.GetLink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLink</span></code></a> and <a class="reference internal" href="#wx.html.HtmlCell.SetLink" title="wx.html.HtmlCell.SetLink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLink</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Next" title="wx.html.HtmlCell.Next"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Next</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetNext" title="wx.html.HtmlCell.GetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNext</span></code></a> and <a class="reference internal" href="#wx.html.HtmlCell.SetNext" title="wx.html.HtmlCell.SetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNext</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Parent" title="wx.html.HtmlCell.Parent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Parent</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetParent" title="wx.html.HtmlCell.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParent</span></code></a> and <a class="reference internal" href="#wx.html.HtmlCell.SetParent" title="wx.html.HtmlCell.SetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetParent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.PosX" title="wx.html.HtmlCell.PosX"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PosX</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetPosX" title="wx.html.HtmlCell.GetPosX"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPosX</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.PosY" title="wx.html.HtmlCell.PosY"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PosY</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetPosY" title="wx.html.HtmlCell.GetPosY"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPosY</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlCell.RootCell" title="wx.html.HtmlCell.RootCell"><code class="xref py py-attr docutils literal notranslate"><span class="pre">RootCell</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetRootCell" title="wx.html.HtmlCell.GetRootCell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRootCell</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlCell.Width" title="wx.html.HtmlCell.Width"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Width</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetWidth" title="wx.html.HtmlCell.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.html.HtmlCell">
+<em class="property">class </em><code class="sig-prename descclassname">wx.html.</code><code class="sig-name descname">HtmlCell</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HtmlCell</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Internal data structure.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.html.HtmlCell.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.AdjustPagebreak">
+<code class="sig-name descname">AdjustPagebreak</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pagebreak</em>, <em class="sig-param">known_pagebreaks</em>, <em class="sig-param">pageHeight</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.AdjustPagebreak" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to adjust pagebreak position.</p>
+<p>The first parameter is a variable that contains the y-coordinate of the page break (= horizontal line that should not be crossed by words, images etc.). If this cell cannot be divided into two pieces (each one on another page) then it either moves the pagebreak a few pixels up, if possible, or, if the cell cannot fit on the page at all, then the cell is forced to split unconditionally.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if pagebreak was modified, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pagebreak</strong> (<em>int</em>) – position in pixel of the pagebreak.</p></li>
+<li><p><strong>known_pagebreaks</strong> (<em>list of integers</em>) – the list of the previous pagebreaks</p></li>
+<li><p><strong>pageHeight</strong> (<em>int</em>) – the height in pixel of the page drawable area</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ret_value</span><span class="p">,</span> <span class="n">kp</span> <span class="o">=</span> <span class="n">container</span><span class="o">.</span><span class="n">AdjustPagebreak</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">kp</span><span class="p">,</span> <span class="n">ph</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">ret_value</span><span class="p">:</span>
+    <span class="n">ret_value</span><span class="p">,</span> <span class="n">kp</span> <span class="o">=</span> <span class="n">container</span><span class="o">.</span><span class="n">AdjustPagebreak</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">kp</span><span class="p">,</span> <span class="n">ph</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <em class="xref py py-obj">bool</em>, <em class="xref py py-obj">pagebreak</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.ConvertToText">
+<code class="sig-name descname">ConvertToText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sel</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.ConvertToText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the cell into text representation.</p>
+<p>If sel != <code class="docutils literal notranslate"><span class="pre">None</span></code> then only part of the cell inside the selection is converted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sel</strong> (<a class="reference internal" href="wx.html.HtmlSelection.html#wx.html.HtmlSelection" title="wx.html.HtmlSelection"><em>wx.html.HtmlSelection</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.Draw">
+<code class="sig-name descname">Draw</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">view_y1</em>, <em class="sig-param">view_y2</em>, <em class="sig-param">info</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.Draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – Device context to which the cell is to be drawn.</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Coordinates of parent’s upper left corner (origin). You must add this to m_PosX,m_PosY when passing coordinates to dc’s methods Example:
+<p>dc.DrawText(“hello”, x + cell.PosX, y + cell.PosY)</p>
+</p></li>
+<li><p><strong>view_y1</strong> (<em>int</em>) – y-coord of the first line visible in window. This is used to optimize rendering speed.</p></li>
+<li><p><strong>view_y2</strong> (<em>int</em>) – y-coord of the last line visible in window. This is used to optimize rendering speed.</p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="wx.html.HtmlRenderingInfo.html#wx.html.HtmlRenderingInfo" title="wx.html.HtmlRenderingInfo"><em>wx.html.HtmlRenderingInfo</em></a>) – Additional information for the rendering of the cell.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.DrawInvisible">
+<code class="sig-name descname">DrawInvisible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">info</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.DrawInvisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called instead of <a class="reference internal" href="#wx.html.HtmlCell.Draw" title="wx.html.HtmlCell.Draw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Draw</span></code></a>   when the cell is certainly out of the screen (and thus invisible).</p>
+<p>This is not nonsense - some tags (like <a class="reference internal" href="wx.html.HtmlColourCell.html#wx-html-htmlcolourcell"><span class="std std-ref">  wx.html.HtmlColourCell</span></a>  or font setter) must be drawn even if they are invisible!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – Device context to which the cell is to be drawn.</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Coordinates of parent’s upper left corner. You must add this to m_PosX,m_PosY when passing coordinates to dc’s methods Example:
+<p>dc.DrawText(“hello”, x + cell.PosX, y + cell.PosY)</p>
+</p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="wx.html.HtmlRenderingInfo.html#wx.html.HtmlRenderingInfo" title="wx.html.HtmlRenderingInfo"><em>wx.html.HtmlRenderingInfo</em></a>) – Additional information for the rendering of the cell.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.Find">
+<code class="sig-name descname">Find</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">condition</em>, <em class="sig-param">param</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.Find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to itself if this cell matches condition (or if any of the cells following in the list matches), <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p>
+<p>(In other words if you call top-level container’s <a class="reference internal" href="#wx.html.HtmlCell.Find" title="wx.html.HtmlCell.Find"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Find</span></code></a>   it will return pointer to the first cell that matches the condition)</p>
+<p>It is recommended way how to obtain pointer to particular cell or to cell of some type (e.g. HtmlAnchorCell reacts on <code class="docutils literal notranslate"><span class="pre">wx.html.HTML_COND_ISANCHOR</span></code> condition).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>condition</strong> (<em>int</em>) – Unique integer identifier of condition</p></li>
+<li><p><strong>param</strong> (<em>string</em>) – Optional parameters</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-html-htmlcell"><span class="std std-ref">  wx.html.HtmlCell</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.FindCellByPos">
+<code class="sig-name descname">FindCellByPos</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">flags=HTML_FIND_EXACT</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.FindCellByPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a cell inside this cell positioned at the given coordinates (relative to this’s positions).</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if no such cell exists. The flag can be used to specify whether to look for terminal or nonterminal cells or both. In either case, returned cell is deepest cell in cells tree that contains [x,y].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>flags</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-html-htmlcell"><span class="std std-ref">  wx.html.HtmlCell</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetAbsPos">
+<code class="sig-name descname">GetAbsPos</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rootCell=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetAbsPos" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rootCell</strong> (<a class="reference internal" href="#wx.html.HtmlCell" title="wx.html.HtmlCell"><em>wx.html.HtmlCell</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Point</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetDescent">
+<code class="sig-name descname">GetDescent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetDescent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns descent value of the cell (m_Descent member).</p>
+<p>See explanation:</p>
+<div class="figure align-center">
+<img alt="_images/htmlcell_descent.png" src="_images/htmlcell_descent.png"/>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetFirstChild">
+<code class="sig-name descname">GetFirstChild</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetFirstChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to the first cell in the list.</p>
+<p>You can then use child’s <a class="reference internal" href="#wx.html.HtmlCell.GetNext" title="wx.html.HtmlCell.GetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNext</span></code></a>   method to obtain pointer to the next cell in list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-html-htmlcell"><span class="std std-ref">  wx.html.HtmlCell</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This shouldn’t be used by the end user. If you need some way of finding particular cell in the list, try <a class="reference internal" href="#wx.html.HtmlCell.Find" title="wx.html.HtmlCell.Find"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Find</span></code></a>   method instead.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetHeight">
+<code class="sig-name descname">GetHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns height of the cell (m_Height member).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetId">
+<code class="sig-name descname">GetId</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns unique cell identifier if there is any, the empty string otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetLink">
+<code class="sig-name descname">GetLink</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x=0</em>, <em class="sig-param">y=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns hypertext link if associated with this cell or <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p>
+<p>See <a class="reference internal" href="wx.html.HtmlLinkInfo.html#wx-html-htmllinkinfo"><span class="std std-ref">  wx.html.HtmlLinkInfo</span></a>. (Note: this makes sense only for visible tags).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Coordinates of position where the user pressed mouse button. These coordinates are used e.g. by <code class="docutils literal notranslate"><span class="pre">COLORMAP</span></code>. Values are relative to the upper left corner of <code class="docutils literal notranslate"><span class="pre">THIS</span></code> cell (i.e. from 0 to m_Width or m_Height)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.html.HtmlLinkInfo.html#wx-html-htmllinkinfo"><span class="std std-ref">  wx.html.HtmlLinkInfo</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetMouseCursor">
+<code class="sig-name descname">GetMouseCursor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetMouseCursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns cursor to show when mouse pointer is over the cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.html.HtmlWindowInterface.html#wx.html.HtmlWindowInterface" title="wx.html.HtmlWindowInterface"><em>wx.html.HtmlWindowInterface</em></a>) – interface to the parent HTML window</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Cursor</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.html.HtmlCell.GetMouseCursorAt" title="wx.html.HtmlCell.GetMouseCursorAt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMouseCursorAt</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetMouseCursorAt">
+<code class="sig-name descname">GetMouseCursorAt</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em>, <em class="sig-param">rePos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetMouseCursorAt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns cursor to show when mouse pointer is over the specified point.</p>
+<p>This function should be overridden instead of <a class="reference internal" href="#wx.html.HtmlCell.GetMouseCursorAt" title="wx.html.HtmlCell.GetMouseCursorAt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMouseCursorAt</span></code></a>   if the cursor should depend on the exact position of the mouse in the window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.html.HtmlWindowInterface.html#wx.html.HtmlWindowInterface" title="wx.html.HtmlWindowInterface"><em>wx.html.HtmlWindowInterface</em></a>) – interface to the parent HTML window</p></li>
+<li><p><strong>rePos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Position to show cursor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Cursor</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetNext">
+<code class="sig-name descname">GetNext</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetNext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to the next cell in list (see <em class="xref py py-obj">htmlcell.h</em>       if you’re interested in details).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-html-htmlcell"><span class="std std-ref">  wx.html.HtmlCell</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetParent">
+<code class="sig-name descname">GetParent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to parent container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.html.HtmlContainerCell.html#wx-html-htmlcontainercell"><span class="std std-ref">  wx.html.HtmlContainerCell</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetPosX">
+<code class="sig-name descname">GetPosX</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetPosX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns X position within parent (the value is relative to parent’s upper left corner).</p>
+<p>The returned value is meaningful only if parent’s <a class="reference internal" href="#wx.html.HtmlCell.Layout" title="wx.html.HtmlCell.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   was called before!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetPosY">
+<code class="sig-name descname">GetPosY</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetPosY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Y position within parent (the value is relative to parent’s upper left corner).</p>
+<p>The returned value is meaningful only if parent’s <a class="reference internal" href="#wx.html.HtmlCell.Layout" title="wx.html.HtmlCell.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   was called before!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetRootCell">
+<code class="sig-name descname">GetRootCell</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetRootCell" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-html-htmlcell"><span class="std std-ref">  wx.html.HtmlCell</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.GetWidth">
+<code class="sig-name descname">GetWidth</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.GetWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns width of the cell (m_Width member).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.Layout">
+<code class="sig-name descname">Layout</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">w</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.Layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Layouts the cell.</p>
+<p>This method performs two actions:</p>
+<ul class="simple">
+<li><p>adjusts the cell’s width according to the fact that maximal possible width is <em class="xref py py-obj">w</em>  (this has sense when working with horizontal lines, tables etc.)</p></li>
+<li><p>prepares layout (=fill-in m_PosX, m_PosY (and sometimes m_Height) members) based on actual width <em class="xref py py-obj">w</em></p></li>
+</ul>
+<p>It must be called before displaying cells structure because m_PosX and m_PosY are undefined (or invalid) before calling <a class="reference internal" href="#wx.html.HtmlCell.Layout" title="wx.html.HtmlCell.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>w</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.ProcessMouseClick">
+<code class="sig-name descname">ProcessMouseClick</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em>, <em class="sig-param">pos</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.ProcessMouseClick" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is simple event handler.</p>
+<p>Each time the user clicks mouse button over a cell within <a class="reference internal" href="wx.html.HtmlWindow.html#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>  this method of that cell is called. Default behaviour is to call <a class="reference internal" href="wx.html.HtmlWindow.html#wx.html.HtmlWindow.LoadPage" title="wx.html.HtmlWindow.LoadPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlWindow.LoadPage</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.html.HtmlWindowInterface.html#wx.html.HtmlWindowInterface" title="wx.html.HtmlWindowInterface"><em>wx.html.HtmlWindowInterface</em></a>) – interface to the parent HTML window</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – coordinates of mouse click (this is relative to cell’s origin</p></li>
+<li><p><strong>event</strong> (<a class="reference internal" href="wx.MouseEvent.html#wx.MouseEvent" title="wx.MouseEvent"><em>wx.MouseEvent</em></a>) – mouse event that triggered the call</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if a link was clicked, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.7.0: </span>(before OnMouseClick() method served a similar purpose).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need more “advanced” event handling you should use HtmlBinderCell instead.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.SetId">
+<code class="sig-name descname">SetId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.SetId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets unique cell identifier.</p>
+<p>Default value is no identifier, i.e. empty string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.SetLink">
+<code class="sig-name descname">SetLink</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">link</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.SetLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the hypertext link associated with this cell.</p>
+<p>(Default value is :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>wx.html.HtmlLinkInfo`(“”, “”) (no link))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>link</strong> (<a class="reference internal" href="wx.html.HtmlLinkInfo.html#wx.html.HtmlLinkInfo" title="wx.html.HtmlLinkInfo"><em>wx.html.HtmlLinkInfo</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.SetNext">
+<code class="sig-name descname">SetNext</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cell</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.SetNext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the next cell in the list.</p>
+<p>This shouldn’t be called by user - it is to be used only by <a class="reference internal" href="wx.html.HtmlContainerCell.html#wx.html.HtmlContainerCell.InsertCell" title="wx.html.HtmlContainerCell.InsertCell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlContainerCell.InsertCell</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cell</strong> (<a class="reference internal" href="#wx.html.HtmlCell" title="wx.html.HtmlCell"><em>wx.html.HtmlCell</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.SetParent">
+<code class="sig-name descname">SetParent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">p</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.SetParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets parent container of this cell.</p>
+<p>This is called from <a class="reference internal" href="wx.html.HtmlContainerCell.html#wx.html.HtmlContainerCell.InsertCell" title="wx.html.HtmlContainerCell.InsertCell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlContainerCell.InsertCell</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<a class="reference internal" href="wx.html.HtmlContainerCell.html#wx.html.HtmlContainerCell" title="wx.html.HtmlContainerCell"><em>wx.html.HtmlContainerCell</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlCell.SetPos">
+<code class="sig-name descname">SetPos</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlCell.SetPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the cell’s position within parent container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.AbsPos">
+<code class="sig-name descname">AbsPos</code><a class="headerlink" href="#wx.html.HtmlCell.AbsPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetAbsPos" title="wx.html.HtmlCell.GetAbsPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAbsPos</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.Descent">
+<code class="sig-name descname">Descent</code><a class="headerlink" href="#wx.html.HtmlCell.Descent" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetDescent" title="wx.html.HtmlCell.GetDescent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescent</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.FirstChild">
+<code class="sig-name descname">FirstChild</code><a class="headerlink" href="#wx.html.HtmlCell.FirstChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetFirstChild" title="wx.html.HtmlCell.GetFirstChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstChild</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.Height">
+<code class="sig-name descname">Height</code><a class="headerlink" href="#wx.html.HtmlCell.Height" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetHeight" title="wx.html.HtmlCell.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.Id">
+<code class="sig-name descname">Id</code><a class="headerlink" href="#wx.html.HtmlCell.Id" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetId" title="wx.html.HtmlCell.GetId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetId</span></code></a> and <a class="reference internal" href="#wx.html.HtmlCell.SetId" title="wx.html.HtmlCell.SetId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetId</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.Link">
+<code class="sig-name descname">Link</code><a class="headerlink" href="#wx.html.HtmlCell.Link" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetLink" title="wx.html.HtmlCell.GetLink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLink</span></code></a> and <a class="reference internal" href="#wx.html.HtmlCell.SetLink" title="wx.html.HtmlCell.SetLink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLink</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.Next">
+<code class="sig-name descname">Next</code><a class="headerlink" href="#wx.html.HtmlCell.Next" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetNext" title="wx.html.HtmlCell.GetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNext</span></code></a> and <a class="reference internal" href="#wx.html.HtmlCell.SetNext" title="wx.html.HtmlCell.SetNext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNext</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.Parent">
+<code class="sig-name descname">Parent</code><a class="headerlink" href="#wx.html.HtmlCell.Parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetParent" title="wx.html.HtmlCell.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParent</span></code></a> and <a class="reference internal" href="#wx.html.HtmlCell.SetParent" title="wx.html.HtmlCell.SetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetParent</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.PosX">
+<code class="sig-name descname">PosX</code><a class="headerlink" href="#wx.html.HtmlCell.PosX" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetPosX" title="wx.html.HtmlCell.GetPosX"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPosX</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.PosY">
+<code class="sig-name descname">PosY</code><a class="headerlink" href="#wx.html.HtmlCell.PosY" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetPosY" title="wx.html.HtmlCell.GetPosY"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPosY</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.RootCell">
+<code class="sig-name descname">RootCell</code><a class="headerlink" href="#wx.html.HtmlCell.RootCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetRootCell" title="wx.html.HtmlCell.GetRootCell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRootCell</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlCell.Width">
+<code class="sig-name descname">Width</code><a class="headerlink" href="#wx.html.HtmlCell.Width" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlCell.GetWidth" title="wx.html.HtmlCell.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

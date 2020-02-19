@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.mixins.listctrl.ColumnSorterMixin — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.mixins.listctrl.ListCtrlAutoWidthMixin.html" rel="next" title="wx.lib.mixins.listctrl.ListCtrlAutoWidthMixin"/>
+<link href="wx.lib.mixins.listctrl.CheckListCtrlMixin.html" rel="prev" title="wx.lib.mixins.listctrl.CheckListCtrlMixin"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a href="wx.lib.mixins.html">
+<strong>wx.lib.mixins</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.mixins.listctrl.html">
+<strong>wx.lib.mixins.listctrl</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.mixins.listctrl.ColumnSorterMixin</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.mixins.listctrl.ListCtrlAutoWidthMixin.html" title="wx.lib.mixins.listctrl.ListCtrlAutoWidthMixin">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.mixins.listctrl.CheckListCtrlMixin.html" title="wx.lib.mixins.listctrl.CheckListCtrlMixin">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.mixins.listctrl.ColumnSorterMixin</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.mixins.listctrl.ColumnSorterMixin.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-lib-mixins-listctrl-columnsortermixin">
+<span id="wx-lib-mixins-listctrl-columnsortermixin"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.mixins.listctrl.ColumnSorterMixin</strong><a class="headerlink" href="#phoenix-title-wx-lib-mixins-listctrl-columnsortermixin" title="Permalink to this headline">¶</a></h1>
+<p>A mixin class that handles sorting of a wx.ListCtrl in REPORT mode when
+the column header is clicked on.</p>
+<p>There are a few requirments needed in order for this to work genericly:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The combined class must have a GetListCtrl method that
+returns the wx.ListCtrl to be sorted, and the list control
+must exist at the time the wx.ColumnSorterMixin.__init__
+method is called because it uses GetListCtrl.</p></li>
+<li><p>Items in the list control must have a unique data value set
+with list.SetItemData.</p></li>
+<li><p>The combined class must have an attribute named itemDataMap
+that is a dictionary mapping the data values to a sequence of
+objects representing the values in each column.  These values
+are compared in the column sorter to determine sort order.</p></li>
+</ol>
+</div></blockquote>
+<p>Interesting methods to override are GetColumnSorter,
+GetSecondarySortValues, and GetSortImages.  See below for details.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ColumnSorterMixin</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ColumnSorterMixin" class="inheritance" src="_static/images/inheritance/wx.lib.mixins.listctrl.ColumnSorterMixin_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,291,35" href="wx.lib.mixins.listctrl.ColumnSorterMixin.html" id="node1" shape="rect" title="A mixin class that handles sorting of a wx.ListCtrl in REPORT mode when"/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.__init__" title="wx.lib.mixins.listctrl.ColumnSorterMixin.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Initialize self.  See help(type(self)) for accurate signature.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetColumnSorter" title="wx.lib.mixins.listctrl.ColumnSorterMixin.GetColumnSorter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnSorter</span></code></a></p></td>
+<td><p>Returns a callable object to be used for comparing column values when sorting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetColumnWidths" title="wx.lib.mixins.listctrl.ColumnSorterMixin.GetColumnWidths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnWidths</span></code></a></p></td>
+<td><p>Returns a list of column widths.  Can be used to help restore the current</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetSecondarySortValues" title="wx.lib.mixins.listctrl.ColumnSorterMixin.GetSecondarySortValues"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSecondarySortValues</span></code></a></p></td>
+<td><p>Returns a tuple of 2 values to use for secondary sort values when the</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetSortImages" title="wx.lib.mixins.listctrl.ColumnSorterMixin.GetSortImages"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSortImages</span></code></a></p></td>
+<td><p>Returns a tuple of image list indexesthe indexes in the image list for an image to be put on the column</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetSortState" title="wx.lib.mixins.listctrl.ColumnSorterMixin.GetSortState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSortState</span></code></a></p></td>
+<td><p>Return a tuple containing the index of the column that was last sorted</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.OnSortOrderChanged" title="wx.lib.mixins.listctrl.ColumnSorterMixin.OnSortOrderChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSortOrderChanged</span></code></a></p></td>
+<td><p>Callback called after sort order has changed (whenever user</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.SetColumnCount" title="wx.lib.mixins.listctrl.ColumnSorterMixin.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.SortListItems" title="wx.lib.mixins.listctrl.ColumnSorterMixin.SortListItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SortListItems</span></code></a></p></td>
+<td><p>Sort the list on demand.  Can also be used to set the sort column and order.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin">
+<em class="property">class </em><code class="sig-name descname">ColumnSorterMixin</code><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>A mixin class that handles sorting of a wx.ListCtrl in REPORT mode when
+the column header is clicked on.</p>
+<p>There are a few requirments needed in order for this to work genericly:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The combined class must have a GetListCtrl method that
+returns the wx.ListCtrl to be sorted, and the list control
+must exist at the time the wx.ColumnSorterMixin.__init__
+method is called because it uses GetListCtrl.</p></li>
+<li><p>Items in the list control must have a unique data value set
+with list.SetItemData.</p></li>
+<li><p>The combined class must have an attribute named itemDataMap
+that is a dictionary mapping the data values to a sequence of
+objects representing the values in each column.  These values
+are compared in the column sorter to determine sort order.</p></li>
+</ol>
+</div></blockquote>
+<p>Interesting methods to override are GetColumnSorter,
+GetSecondarySortValues, and GetSortImages.  See below for details.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">numColumns</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin.GetColumnSorter">
+<code class="sig-name descname">GetColumnSorter</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetColumnSorter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a callable object to be used for comparing column values when sorting.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin.GetColumnWidths">
+<code class="sig-name descname">GetColumnWidths</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetColumnWidths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of column widths.  Can be used to help restore the current
+view later.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin.GetSecondarySortValues">
+<code class="sig-name descname">GetSecondarySortValues</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em>, <em class="sig-param">key1</em>, <em class="sig-param">key2</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetSecondarySortValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple of 2 values to use for secondary sort values when the
+items in the selected column match equal.  The default just returns the
+item data values.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin.GetSortImages">
+<code class="sig-name descname">GetSortImages</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetSortImages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple of image list indexesthe indexes in the image list for an image to be put on the column
+header when sorting in descending order.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin.GetSortState">
+<code class="sig-name descname">GetSortState</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.GetSortState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple containing the index of the column that was last sorted
+and the sort direction of that column.
+Usage:
+col, ascending = self.GetSortState()
+# Make changes to list items… then resort
+self.SortListItems(col, ascending)</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin.OnSortOrderChanged">
+<code class="sig-name descname">OnSortOrderChanged</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.OnSortOrderChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback called after sort order has changed (whenever user
+clicked column header).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin.SetColumnCount">
+<code class="sig-name descname">SetColumnCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">newNumColumns</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.SetColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.ColumnSorterMixin.SortListItems">
+<code class="sig-name descname">SortListItems</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col=-1</em>, <em class="sig-param">ascending=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.ColumnSorterMixin.SortListItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the list on demand.  Can also be used to set the sort column and order.</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

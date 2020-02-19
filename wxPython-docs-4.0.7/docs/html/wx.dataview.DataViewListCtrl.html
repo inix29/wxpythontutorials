@@ -1,0 +1,899 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.dataview.DataViewListCtrl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.dataview.DataViewListModel.html" rel="next" title="wx.dataview.DataViewListModel"/>
+<link href="wx.dataview.DataViewItemObjectMapper.html" rel="prev" title="wx.dataview.DataViewItemObjectMapper"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.dataview.1moduleindex.html">
+<strong>wx.dataview</strong></a> »</li>
+<li class="reltitle"> <strong>wx.dataview.DataViewListCtrl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.dataview.DataViewListModel.html" title="wx.dataview.DataViewListModel">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.dataview.DataViewItemObjectMapper.html" title="wx.dataview.DataViewItemObjectMapper">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.dataview.DataViewListCtrl</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.dataview.DataViewListCtrl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-dataview-dataviewlistctrl">
+<span id="wx-dataview-dataviewlistctrl"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.dataview.DataViewListCtrl</strong><a class="headerlink" href="#phoenix-title-wx-dataview-dataviewlistctrl" title="Permalink to this headline">¶</a></h1>
+<p>This class is a <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  which internally uses a <a class="reference internal" href="wx.dataview.DataViewListStore.html#wx-dataview-dataviewliststore"><span class="std std-ref">  wx.dataview.DataViewListStore</span></a>  and forwards most of its API to that class.</p>
+<p>The purpose of this class is to offer a simple way to display and edit a small table of data without having to write your own <a class="reference internal" href="wx.dataview.DataViewModel.html#wx-dataview-dataviewmodel"><span class="std std-ref">  wx.dataview.DataViewModel</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">listctrl</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">dataview</span><span class="o">.</span><span class="n">DataViewListCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">)</span>
+
+<span class="n">listctrl</span><span class="o">.</span><span class="n">AppendToggleColumn</span><span class="p">(</span><span class="s2">"Toggle"</span><span class="p">)</span>
+<span class="n">listctrl</span><span class="o">.</span><span class="n">AppendTextColumn</span><span class="p">(</span><span class="s2">"Text"</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="s2">"row 1"</span><span class="p">]</span>
+<span class="n">listctrl</span><span class="o">.</span><span class="n">AppendItem</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="s2">"row 3"</span><span class="p">]</span>
+<span class="n">listctrl</span><span class="o">.</span><span class="n">AppendItem</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="styles-window-styles">
+<span id="dataviewlistctrl-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<blockquote>
+<div><p>See <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  for the list of supported styles.</p>
+</div></blockquote>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="dataviewlistctrl-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Event macros for events emitted by this class:</p>
+<blockquote>
+<div><p>See <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  for the list of events emitted by this class.</p>
+</div></blockquote>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>DataViewListCtrl</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of DataViewListCtrl" class="inheritance" src="_static/images/inheritance/wx.dataview.DataViewListCtrl_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,392,227,421" href="wx.dataview.DataViewListCtrl.html" id="node1" shape="rect" title="This class is a wx.dataview.DataViewCtrl  which internally uses a wx.dataview.DataViewListStore  and forwards most of its API to that class."/> <area alt="" coords="17,315,215,344" href="wx.dataview.DataViewCtrl.html" id="node2" shape="rect" title="wx.dataview.DataViewCtrl  is a control to display data either in a tree like fashion or in a tabular form or both."/> <area alt="" coords="69,237,163,267" href="wx.Control.html" id="node3" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="67,160,165,189" href="wx.Window.html" id="node4" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="57,83,175,112" href="wx.EvtHandler.html" id="node5" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="11,5,99,35" href="wx.Object.html" id="node6" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="123,5,234,35" href="wx.Trackable.html" id="node7" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.__init__" title="wx.dataview.DataViewListCtrl.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.AppendColumn" title="wx.dataview.DataViewListCtrl.AppendColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendColumn</span></code></a></p></td>
+<td><p>Appends a column to the control and additionally appends a column to the store with the type string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.AppendIconTextColumn" title="wx.dataview.DataViewListCtrl.AppendIconTextColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendIconTextColumn</span></code></a></p></td>
+<td><p>Appends an icon-and-text column to the control and the store.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.AppendItem" title="wx.dataview.DataViewListCtrl.AppendItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendItem</span></code></a></p></td>
+<td><p>Appends an item (=row) to the control and store.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.AppendProgressColumn" title="wx.dataview.DataViewListCtrl.AppendProgressColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendProgressColumn</span></code></a></p></td>
+<td><p>Appends a progress column to the control and the store.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.AppendTextColumn" title="wx.dataview.DataViewListCtrl.AppendTextColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendTextColumn</span></code></a></p></td>
+<td><p>Appends a text column to the control and the store.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.AppendToggleColumn" title="wx.dataview.DataViewListCtrl.AppendToggleColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendToggleColumn</span></code></a></p></td>
+<td><p>Appends a toggle column to the control and the store.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.Create" title="wx.dataview.DataViewListCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates the control and a <a class="reference internal" href="wx.dataview.DataViewListStore.html#wx-dataview-dataviewliststore"><span class="std std-ref">  wx.dataview.DataViewListStore</span></a>  as its internal model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.DeleteAllItems" title="wx.dataview.DataViewListCtrl.DeleteAllItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAllItems</span></code></a></p></td>
+<td><p>Delete all items (= all rows).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.DeleteItem" title="wx.dataview.DataViewListCtrl.DeleteItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteItem</span></code></a></p></td>
+<td><p>Delete the row at position <em class="xref py py-obj">row</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetClassDefaultAttributes" title="wx.dataview.DataViewListCtrl.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetItemCount" title="wx.dataview.DataViewListCtrl.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a></p></td>
+<td><p>Returns the number of items (=rows) in the control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetItemData" title="wx.dataview.DataViewListCtrl.GetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemData</span></code></a></p></td>
+<td><p>Returns the client data associated with the item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetSelectedRow" title="wx.dataview.DataViewListCtrl.GetSelectedRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedRow</span></code></a></p></td>
+<td><p>Returns index of the selected row or <code class="docutils literal notranslate"><span class="pre">wx.NOT_FOUND</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetStore" title="wx.dataview.DataViewListCtrl.GetStore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStore</span></code></a></p></td>
+<td><p>Returns the store.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetTextValue" title="wx.dataview.DataViewListCtrl.GetTextValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTextValue</span></code></a></p></td>
+<td><p>Returns the value from the store.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetToggleValue" title="wx.dataview.DataViewListCtrl.GetToggleValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToggleValue</span></code></a></p></td>
+<td><p>Returns the value from the store.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetValue" title="wx.dataview.DataViewListCtrl.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValue</span></code></a></p></td>
+<td><p>Returns the value from the store.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.InsertColumn" title="wx.dataview.DataViewListCtrl.InsertColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertColumn</span></code></a></p></td>
+<td><p>Inserts a column to the control and additionally inserts a column to the store with the type string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.InsertItem" title="wx.dataview.DataViewListCtrl.InsertItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertItem</span></code></a></p></td>
+<td><p>Inserts an item (=row) to the control and store.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.IsRowSelected" title="wx.dataview.DataViewListCtrl.IsRowSelected"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsRowSelected</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em class="xref py py-obj">row</em>  is selected.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.ItemToRow" title="wx.dataview.DataViewListCtrl.ItemToRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ItemToRow</span></code></a></p></td>
+<td><p>Returns the position of given <em class="xref py py-obj">item</em>  or <code class="docutils literal notranslate"><span class="pre">wx.NOT_FOUND</span></code> if it’s not a valid item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.PrependColumn" title="wx.dataview.DataViewListCtrl.PrependColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PrependColumn</span></code></a></p></td>
+<td><p>Prepends a column to the control and additionally prepends a column to the store with the type string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.PrependItem" title="wx.dataview.DataViewListCtrl.PrependItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PrependItem</span></code></a></p></td>
+<td><p>Prepends an item (=row) to the control and store.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.RowToItem" title="wx.dataview.DataViewListCtrl.RowToItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RowToItem</span></code></a></p></td>
+<td><p>Returns the <a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a>  at the given <em class="xref py py-obj">row</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.SelectRow" title="wx.dataview.DataViewListCtrl.SelectRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectRow</span></code></a></p></td>
+<td><p>Selects given row.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.SetItemData" title="wx.dataview.DataViewListCtrl.SetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemData</span></code></a></p></td>
+<td><p>Associates a client data pointer with the given item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.SetTextValue" title="wx.dataview.DataViewListCtrl.SetTextValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTextValue</span></code></a></p></td>
+<td><p>Sets the value in the store and update the control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.SetToggleValue" title="wx.dataview.DataViewListCtrl.SetToggleValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToggleValue</span></code></a></p></td>
+<td><p>Sets the value in the store and update the control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.SetValue" title="wx.dataview.DataViewListCtrl.SetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetValue</span></code></a></p></td>
+<td><p>Sets the value in the store and update the control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.UnselectRow" title="wx.dataview.DataViewListCtrl.UnselectRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UnselectRow</span></code></a></p></td>
+<td><p>Unselects given row.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.ItemCount" title="wx.dataview.DataViewListCtrl.ItemCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ItemCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetItemCount" title="wx.dataview.DataViewListCtrl.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.SelectedRow" title="wx.dataview.DataViewListCtrl.SelectedRow"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SelectedRow</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetSelectedRow" title="wx.dataview.DataViewListCtrl.GetSelectedRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedRow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.Store" title="wx.dataview.DataViewListCtrl.Store"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Store</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetStore" title="wx.dataview.DataViewListCtrl.GetStore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStore</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.dataview.DataViewListCtrl">
+<em class="property">class </em><code class="sig-prename descclassname">wx.dataview.</code><code class="sig-name descname">DataViewListCtrl</code><span class="sig-paren">(</span><em class="sig-param">DataViewCtrl</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DataViewListCtrl</span><span class="p">()</span>
+
+<span class="n">DataViewListCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span>
+                 <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">DV_ROW_LINES</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">DefaultValidator</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class is a DataViewCtrl which internally uses a
+DataViewListStore and forwards most of its API to that class.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=DV_ROW_LINES, validator=DefaultValidator)</em></p>
+<p>Constructor.</p>
+<p>Calls <a class="reference internal" href="#wx.dataview.DataViewListCtrl.Create" title="wx.dataview.DataViewListCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.AppendColumn">
+<code class="sig-name descname">AppendColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.AppendColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>AppendColumn</strong> <em class="xref py py-obj">(self, column)</em></p>
+<p>Appends a column to the control and additionally appends a column to the store with the type string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>column</strong> (<a class="reference internal" href="wx.dataview.DataViewColumn.html#wx.dataview.DataViewColumn" title="wx.dataview.DataViewColumn"><em>wx.dataview.DataViewColumn</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>AppendColumn</strong> <em class="xref py py-obj">(self, column, varianttype)</em></p>
+<p>Appends a column to the control and additionally appends a column to the list store with the type <em class="xref py py-obj">varianttype</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<a class="reference internal" href="wx.dataview.DataViewColumn.html#wx.dataview.DataViewColumn" title="wx.dataview.DataViewColumn"><em>wx.dataview.DataViewColumn</em></a>) – </p></li>
+<li><p><strong>varianttype</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.AppendIconTextColumn">
+<code class="sig-name descname">AppendIconTextColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label</em>, <em class="sig-param">mode=DATAVIEW_CELL_INERT</em>, <em class="sig-param">width=-1</em>, <em class="sig-param">align=ALIGN_LEFT</em>, <em class="sig-param">flags=DATAVIEW_COL_RESIZABLE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.AppendIconTextColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends an icon-and-text column to the control and the store.</p>
+<p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataViewColumn.__init__</span></code>   for more info about the parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="wx.dataview.DataViewCellMode.enumeration.html" title="DataViewCellMode"><em>DataViewCellMode</em></a>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>align</strong> (<a class="reference internal" href="wx.Alignment.enumeration.html" title="Alignment"><em>Alignment</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.AppendItem">
+<code class="sig-name descname">AppendItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">values</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.AppendItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends an item (=row) to the control and store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">VariantVector</span></code>) – </p></li>
+<li><p><strong>data</strong> (<em>wx.UIntPtr</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.AppendProgressColumn">
+<code class="sig-name descname">AppendProgressColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label</em>, <em class="sig-param">mode=DATAVIEW_CELL_INERT</em>, <em class="sig-param">width=-1</em>, <em class="sig-param">align=ALIGN_LEFT</em>, <em class="sig-param">flags=DATAVIEW_COL_RESIZABLE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.AppendProgressColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends a progress column to the control and the store.</p>
+<p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataViewColumn.__init__</span></code>   for more info about the parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="wx.dataview.DataViewCellMode.enumeration.html" title="DataViewCellMode"><em>DataViewCellMode</em></a>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>align</strong> (<a class="reference internal" href="wx.Alignment.enumeration.html" title="Alignment"><em>Alignment</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.AppendTextColumn">
+<code class="sig-name descname">AppendTextColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label</em>, <em class="sig-param">mode=DATAVIEW_CELL_INERT</em>, <em class="sig-param">width=-1</em>, <em class="sig-param">align=ALIGN_LEFT</em>, <em class="sig-param">flags=DATAVIEW_COL_RESIZABLE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.AppendTextColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends a text column to the control and the store.</p>
+<p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataViewColumn.__init__</span></code>   for more info about the parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="wx.dataview.DataViewCellMode.enumeration.html" title="DataViewCellMode"><em>DataViewCellMode</em></a>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>align</strong> (<a class="reference internal" href="wx.Alignment.enumeration.html" title="Alignment"><em>Alignment</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.AppendToggleColumn">
+<code class="sig-name descname">AppendToggleColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label</em>, <em class="sig-param">mode=DATAVIEW_CELL_ACTIVATABLE</em>, <em class="sig-param">width=-1</em>, <em class="sig-param">align=ALIGN_LEFT</em>, <em class="sig-param">flags=DATAVIEW_COL_RESIZABLE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.AppendToggleColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends a toggle column to the control and the store.</p>
+<p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">DataViewColumn.__init__</span></code>   for more info about the parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="wx.dataview.DataViewCellMode.enumeration.html" title="DataViewCellMode"><em>DataViewCellMode</em></a>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>align</strong> (<a class="reference internal" href="wx.Alignment.enumeration.html" title="Alignment"><em>Alignment</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=DV_ROW_LINES</em>, <em class="sig-param">validator=DefaultValidator</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the control and a <a class="reference internal" href="wx.dataview.DataViewListStore.html#wx-dataview-dataviewliststore"><span class="std std-ref">  wx.dataview.DataViewListStore</span></a>  as its internal model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.DeleteAllItems">
+<code class="sig-name descname">DeleteAllItems</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.DeleteAllItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all items (= all rows).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.DeleteItem">
+<code class="sig-name descname">DeleteItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.DeleteItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the row at position <em class="xref py py-obj">row</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>row</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">VisualAttributes</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.GetItemCount">
+<code class="sig-name descname">GetItemCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.GetItemCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of items (=rows) in the control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.4.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.GetItemData">
+<code class="sig-name descname">GetItemData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.GetItemData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the client data associated with the item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">wx.UIntPtr</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.4.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.SetItemData" title="wx.dataview.DataViewListCtrl.SetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemData</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.GetSelectedRow">
+<code class="sig-name descname">GetSelectedRow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.GetSelectedRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns index of the selected row or <code class="docutils literal notranslate"><span class="pre">wx.NOT_FOUND</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx.dataview.DataViewCtrl.GetSelection" title="wx.dataview.DataViewCtrl.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewCtrl.GetSelection</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.GetStore">
+<code class="sig-name descname">GetStore</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.GetStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.dataview.DataViewListStore.html#wx-dataview-dataviewliststore"><span class="std std-ref">  wx.dataview.DataViewListStore</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.GetTextValue">
+<code class="sig-name descname">GetTextValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.GetTextValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value from the store.</p>
+<p>This method assumes that the string is stored in respective column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.GetToggleValue">
+<code class="sig-name descname">GetToggleValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.GetToggleValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value from the store.</p>
+<p>This method assumes that the boolean value is stored in respective column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.GetValue">
+<code class="sig-name descname">GetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.GetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value from the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">value</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.InsertColumn">
+<code class="sig-name descname">InsertColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.InsertColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertColumn</strong> <em class="xref py py-obj">(self, pos, column)</em></p>
+<p>Inserts a column to the control and additionally inserts a column to the store with the type string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>column</strong> (<a class="reference internal" href="wx.dataview.DataViewColumn.html#wx.dataview.DataViewColumn" title="wx.dataview.DataViewColumn"><em>wx.dataview.DataViewColumn</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertColumn</strong> <em class="xref py py-obj">(self, pos, column, varianttype)</em></p>
+<p>Inserts a column to the control and additionally inserts a column to the list store with the type <em class="xref py py-obj">varianttype</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>column</strong> (<a class="reference internal" href="wx.dataview.DataViewColumn.html#wx.dataview.DataViewColumn" title="wx.dataview.DataViewColumn"><em>wx.dataview.DataViewColumn</em></a>) – </p></li>
+<li><p><strong>varianttype</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.InsertItem">
+<code class="sig-name descname">InsertItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">values</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.InsertItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts an item (=row) to the control and store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>values</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">VariantVector</span></code>) – </p></li>
+<li><p><strong>data</strong> (<em>wx.UIntPtr</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.IsRowSelected">
+<code class="sig-name descname">IsRowSelected</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.IsRowSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em class="xref py py-obj">row</em>  is selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>row</strong> – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx.dataview.DataViewCtrl.IsSelected" title="wx.dataview.DataViewCtrl.IsSelected"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewCtrl.IsSelected</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.ItemToRow">
+<code class="sig-name descname">ItemToRow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.ItemToRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the position of given <em class="xref py py-obj">item</em>  or <code class="docutils literal notranslate"><span class="pre">wx.NOT_FOUND</span></code> if it’s not a valid item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.PrependColumn">
+<code class="sig-name descname">PrependColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.PrependColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>PrependColumn</strong> <em class="xref py py-obj">(self, column)</em></p>
+<p>Prepends a column to the control and additionally prepends a column to the store with the type string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>column</strong> (<a class="reference internal" href="wx.dataview.DataViewColumn.html#wx.dataview.DataViewColumn" title="wx.dataview.DataViewColumn"><em>wx.dataview.DataViewColumn</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>PrependColumn</strong> <em class="xref py py-obj">(self, column, varianttype)</em></p>
+<p>Prepends a column to the control and additionally prepends a column to the list store with the type <em class="xref py py-obj">varianttype</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<a class="reference internal" href="wx.dataview.DataViewColumn.html#wx.dataview.DataViewColumn" title="wx.dataview.DataViewColumn"><em>wx.dataview.DataViewColumn</em></a>) – </p></li>
+<li><p><strong>varianttype</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.PrependItem">
+<code class="sig-name descname">PrependItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">values</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.PrependItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepends an item (=row) to the control and store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">VariantVector</span></code>) – </p></li>
+<li><p><strong>data</strong> (<em>wx.UIntPtr</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.RowToItem">
+<code class="sig-name descname">RowToItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.RowToItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a>  at the given <em class="xref py py-obj">row</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>row</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.SelectRow">
+<code class="sig-name descname">SelectRow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.SelectRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects given row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>row</strong> – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx.dataview.DataViewCtrl.Select" title="wx.dataview.DataViewCtrl.Select"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewCtrl.Select</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.SetItemData">
+<code class="sig-name descname">SetItemData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.SetItemData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates a client data pointer with the given item.</p>
+<p>Notice that the control does <em class="xref py py-obj">not</em>  take ownership of the pointer for compatibility with <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>. I.e. it will <em class="xref py py-obj">not</em>  delete the pointer (if it is a pointer and not a number) itself, it is up to you to do it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>data</strong> (<em>wx.UIntPtr</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.4.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetItemData" title="wx.dataview.DataViewListCtrl.GetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemData</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.SetTextValue">
+<code class="sig-name descname">SetTextValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">value</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.SetTextValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value in the store and update the control.</p>
+<p>This method assumes that the string is stored in respective column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>string</em>) – </p></li>
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.SetToggleValue">
+<code class="sig-name descname">SetToggleValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">value</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.SetToggleValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value in the store and update the control.</p>
+<p>This method assumes that the boolean value is stored in respective column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.SetValue">
+<code class="sig-name descname">SetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">value</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.SetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value in the store and update the control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>DVCVariant</em>) – </p></li>
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewListCtrl.UnselectRow">
+<code class="sig-name descname">UnselectRow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewListCtrl.UnselectRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unselects given row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>row</strong> – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx.dataview.DataViewCtrl.Unselect" title="wx.dataview.DataViewCtrl.Unselect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewCtrl.Unselect</span></code></a></p>
+</div>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewListCtrl.ItemCount">
+<code class="sig-name descname">ItemCount</code><a class="headerlink" href="#wx.dataview.DataViewListCtrl.ItemCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetItemCount" title="wx.dataview.DataViewListCtrl.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewListCtrl.SelectedRow">
+<code class="sig-name descname">SelectedRow</code><a class="headerlink" href="#wx.dataview.DataViewListCtrl.SelectedRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetSelectedRow" title="wx.dataview.DataViewListCtrl.GetSelectedRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedRow</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewListCtrl.Store">
+<code class="sig-name descname">Store</code><a class="headerlink" href="#wx.dataview.DataViewListCtrl.Store" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewListCtrl.GetStore" title="wx.dataview.DataViewListCtrl.GetStore"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStore</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

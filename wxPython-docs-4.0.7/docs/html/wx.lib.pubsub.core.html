@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.pubsub.core — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.pubsub.core.callables.html" rel="next" title="wx.lib.pubsub.core.callables"/>
+<link href="wx.lib.pubsub.html" rel="prev" title="wx.lib.pubsub"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.pubsub.html">
+<strong>wx.lib.pubsub</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.pubsub.core</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.pubsub.core.callables.html" title="wx.lib.pubsub.core.callables">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.pubsub.html" title="wx.lib.pubsub">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.pubsub.core</strong></a><ul>
+<li><a class="reference internal" href="#module-summary-modules-summary"> Modules Summary</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.pubsub.core.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.pubsub.core"></span><div class="section" id="phoenix-title-wx-lib-pubsub-core">
+<span id="wx-lib-pubsub-core"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.pubsub.core</strong><a class="headerlink" href="#phoenix-title-wx-lib-pubsub-core" title="Permalink to this headline">¶</a></h1>
+<p>Core package of pubsub, holding the publisher, listener, and topic
+object modules. Functions defined here are used internally by
+pubsub so that the right modules can be found later, based on the
+selected messaging protocol.</p>
+<p>Indeed some of the API depends on the messaging
+protocol used. For instance sendMessage(), defined in publisher.py,
+has a different signature (and hence implementation) for the kwargs
+protocol than for the arg1 protocol.</p>
+<p>The most convenient way to
+support this is to put the parts of the package that differ based
+on protocol in separate folder, and add one of those folders to
+the package’s __path__ variable (defined automatically by the Python
+interpreter when __init__.py is executed). For instance, code
+specific to the kwargs protocol goes in the kwargs folder, and code
+specific to the arg1 protocol in the arg1 folder. Then when doing
+“from pubsub.core import listener”, the correct listener.py will be
+found for the specified protocol. The default protocol is kwargs.</p>
+<p>Only one protocol can be used in an application. The default protocol,
+if none is chosen by user, is kwargs, as selected by the call to
+_prependModulePath() at end of this file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+<dt class="field-even">license</dt>
+<dd class="field-even"><p>BSD, see LICENSE_BSD_Simple.txt for details.</p>
+</dd>
+</dl>
+<div class="section" id="module-summary-modules-summary">
+<h2><a class="reference internal" href="_images/module_summary.png"><img alt="module_summary" class="align-middle" src="_images/module_summary.png" style="width: 32px;"/></a> Modules Summary<a class="headerlink" href="#module-summary-modules-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.callables.html#module-wx.lib.pubsub.core.callables" title="wx.lib.pubsub.core.callables"><code class="xref py py-mod docutils literal notranslate"><span class="pre">callables</span></code></a></p></td>
+<td><p>Low level functions and classes related to callables.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.datamsg.html#module-wx.lib.pubsub.core.datamsg" title="wx.lib.pubsub.core.datamsg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datamsg</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.imp2.html#module-wx.lib.pubsub.core.imp2" title="wx.lib.pubsub.core.imp2"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imp2</span></code></a></p></td>
+<td><p>The _resolve_name and _import_module were taken from the backport of</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.itopicdefnprovider.html#module-wx.lib.pubsub.core.itopicdefnprovider" title="wx.lib.pubsub.core.itopicdefnprovider"><code class="xref py py-mod docutils literal notranslate"><span class="pre">itopicdefnprovider</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.listener.html#module-wx.lib.pubsub.core.listener" title="wx.lib.pubsub.core.listener"><code class="xref py py-mod docutils literal notranslate"><span class="pre">listener</span></code></a></p></td>
+<td><p>Top-level functionality related to message listeners.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.listenerbase.html#module-wx.lib.pubsub.core.listenerbase" title="wx.lib.pubsub.core.listenerbase"><code class="xref py py-mod docutils literal notranslate"><span class="pre">listenerbase</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.listenerimpl.html#module-wx.lib.pubsub.core.listenerimpl" title="wx.lib.pubsub.core.listenerimpl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">listenerimpl</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.notificationmgr.html#module-wx.lib.pubsub.core.notificationmgr" title="wx.lib.pubsub.core.notificationmgr"><code class="xref py py-mod docutils literal notranslate"><span class="pre">notificationmgr</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.publisher.html#module-wx.lib.pubsub.core.publisher" title="wx.lib.pubsub.core.publisher"><code class="xref py py-mod docutils literal notranslate"><span class="pre">publisher</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.publisherbase.html#module-wx.lib.pubsub.core.publisherbase" title="wx.lib.pubsub.core.publisherbase"><code class="xref py py-mod docutils literal notranslate"><span class="pre">publisherbase</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.publishermixin.html#module-wx.lib.pubsub.core.publishermixin" title="wx.lib.pubsub.core.publishermixin"><code class="xref py py-mod docutils literal notranslate"><span class="pre">publishermixin</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.topicargspec.html#module-wx.lib.pubsub.core.topicargspec" title="wx.lib.pubsub.core.topicargspec"><code class="xref py py-mod docutils literal notranslate"><span class="pre">topicargspec</span></code></a></p></td>
+<td><p>Definitions related to message data specification.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.topicargspecimpl.html#module-wx.lib.pubsub.core.topicargspecimpl" title="wx.lib.pubsub.core.topicargspecimpl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">topicargspecimpl</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.topicdefnprovider.html#module-wx.lib.pubsub.core.topicdefnprovider" title="wx.lib.pubsub.core.topicdefnprovider"><code class="xref py py-mod docutils literal notranslate"><span class="pre">topicdefnprovider</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.topicexc.html#module-wx.lib.pubsub.core.topicexc" title="wx.lib.pubsub.core.topicexc"><code class="xref py py-mod docutils literal notranslate"><span class="pre">topicexc</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.topicmgr.html#module-wx.lib.pubsub.core.topicmgr" title="wx.lib.pubsub.core.topicmgr"><code class="xref py py-mod docutils literal notranslate"><span class="pre">topicmgr</span></code></a></p></td>
+<td><p>Code related to the concept of topic tree and its management: creating</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.topicmgrimpl.html#module-wx.lib.pubsub.core.topicmgrimpl" title="wx.lib.pubsub.core.topicmgrimpl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">topicmgrimpl</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.topicobj.html#module-wx.lib.pubsub.core.topicobj" title="wx.lib.pubsub.core.topicobj"><code class="xref py py-mod docutils literal notranslate"><span class="pre">topicobj</span></code></a></p></td>
+<td><p>Provide the Topic class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.topictreetraverser.html#module-wx.lib.pubsub.core.topictreetraverser" title="wx.lib.pubsub.core.topictreetraverser"><code class="xref py py-mod docutils literal notranslate"><span class="pre">topictreetraverser</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.topicutils.html#module-wx.lib.pubsub.core.topicutils" title="wx.lib.pubsub.core.topicutils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">topicutils</span></code></a></p></td>
+<td><p>Various utilities used by topic-related modules.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.treeconfig.html#module-wx.lib.pubsub.core.treeconfig" title="wx.lib.pubsub.core.treeconfig"><code class="xref py py-mod docutils literal notranslate"><span class="pre">treeconfig</span></code></a></p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.core.validatedefnargs.html#module-wx.lib.pubsub.core.validatedefnargs" title="wx.lib.pubsub.core.validatedefnargs"><code class="xref py py-mod docutils literal notranslate"><span class="pre">validatedefnargs</span></code></a></p></td>
+<td><p>Some topic definition validation functions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.core.weakmethod.html#module-wx.lib.pubsub.core.weakmethod" title="wx.lib.pubsub.core.weakmethod"><code class="xref py py-mod docutils literal notranslate"><span class="pre">weakmethod</span></code></a></p></td>
+<td><p>This module provides a basic “weak method” implementation, WeakMethod. It uses</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

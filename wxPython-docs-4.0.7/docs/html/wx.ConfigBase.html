@@ -1,0 +1,1071 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.ConfigBase — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ConfigBase.EntryType.enumeration.html" rel="next" title="wx.ConfigBase.EntryType"/>
+<link href="wx.CompositionMode.enumeration.html" rel="prev" title="wx.CompositionMode"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.ConfigBase</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ConfigBase.EntryType.enumeration.html" title="wx.ConfigBase.EntryType">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.CompositionMode.enumeration.html" title="wx.CompositionMode">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.ConfigBase</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-example"> Example</a></li>
+<li><a class="reference internal" href="#phoenix-title-static-functions"> Static Functions</a></li>
+<li><a class="reference internal" href="#phoenix-title-path-management"> Path Management</a></li>
+<li><a class="reference internal" href="#phoenix-title-enumeration"> Enumeration</a></li>
+<li><a class="reference internal" href="#phoenix-title-key-access"> Key Access</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.ConfigBase.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-configbase">
+<span id="wx-configbase"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.ConfigBase</strong><a class="headerlink" href="#phoenix-title-wx-configbase" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a>  defines the basic interface of all config classes.</p>
+<p>It cannot be used by itself (it is an abstract base class) and you will always use one of its derivations: <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>, <em class="xref py py-obj">RegConfig</em>       or any other.</p>
+<p>However, usually you don’t even need to know the precise nature of the class you’re working with but you would just use the <a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a>  methods. This allows you to write the same code regardless of whether you’re working with the registry under Windows or text-based config files under Unix. To make writing the portable code even easier, wxWidgets provides a typedef Config which is mapped onto the native <a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a>  implementation on the given platform: i.e. <em class="xref py py-obj">RegConfig</em>       under Windows and <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>  otherwise.</p>
+<p>See <a class="reference internal" href="config_overview.html#config-overview"><span class="std std-ref">Config Overview</span></a>  for a description of all features of this class.</p>
+<p>It is highly recommended to use static functions <a class="reference internal" href="#wx.ConfigBase.Get" title="wx.ConfigBase.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a>  and/or <a class="reference internal" href="#wx.ConfigBase.Set" title="wx.ConfigBase.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Set</span></code></a>, so please have a look at them.</p>
+<p>Related Include Files:</p>
+<ul class="simple">
+<li><p>&lt;<em class="xref py py-obj">/config.h</em>     &gt;  - Let wxWidgets choose a Config class for your platform.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;wx/confbase.h&gt;</span></code>   - Base config class.</p></li>
+<li><p>&lt;<em class="xref py py-obj">/fileconf.h</em>     &gt;  -  <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>  class.</p></li>
+<li><p>&lt;<em class="xref py py-obj">/msw/regconf.h</em>     &gt;  -  <em class="xref py py-obj">RegConfig</em>       class, see also <em class="xref py py-obj">RegKey</em>     .</p></li>
+</ul>
+<div class="section" id="phoenix-title-example">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Example<a class="headerlink" href="#phoenix-title-example" title="Permalink to this headline">¶</a></h2>
+<p>Here is how you would typically use this class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># using wx.Config instead of writing wx.FileConfig or wx.RegConfig enhances</span>
+<span class="c1"># portability of the code</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="s2">"MyAppName"</span><span class="p">)</span>
+<span class="n">strs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">Read</span><span class="p">(</span><span class="s2">"LastPrompt"</span><span class="p">)</span>
+
+<span class="c1"># another example: using default values and the full path instead of just</span>
+<span class="c1"># key name: if the key is not found , the value 17 is returned</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">ReadInt</span><span class="p">(</span><span class="s2">"/LastRun/CalculatedValues/MaxValue"</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+
+<span class="c1"># at the end of the program we would save everything back</span>
+<span class="n">config</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="s2">"LastPrompt"</span><span class="p">,</span> <span class="n">strs</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="s2">"/LastRun/CalculatedValues/MaxValue"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This basic example, of course, doesn’t show all Config features, such as enumerating, testing for existence and deleting the entries and groups of entries in the config file, its abilities to automatically store the default values or expand the environment variables on the fly. However, the main idea is that using this class is easy and that it should normally do what you expect it to.</p>
+</div>
+<div class="section" id="phoenix-title-static-functions">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Static Functions<a class="headerlink" href="#phoenix-title-static-functions" title="Permalink to this headline">¶</a></h2>
+<p>The static functions provided deal with the “default” config object. Although its usage is not at all mandatory it may be convenient to use a global config object instead of creating and deleting the local config objects each time you need one (especially because creating a <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>  object might be a time consuming operation). In this case, you may create this global config object in the very start of the program and <a class="reference internal" href="#wx.ConfigBase.Set" title="wx.ConfigBase.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Set</span></code></a>  it as the default. Then, from anywhere in your program, you may access it using the <a class="reference internal" href="#wx.ConfigBase.Get" title="wx.ConfigBase.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a>  function. This global Config object will be deleted by wxWidgets automatically if it exists. Note that this implies that if you do delete this object yourself (usually in <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.OnExit</span></code> ) you must use Set(NULL) to prevent wxWidgets from deleting it the second time. As it happens, you may even further simplify the procedure described above: you may forget about calling <a class="reference internal" href="#wx.ConfigBase.Set" title="wx.ConfigBase.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Set</span></code></a>. When <a class="reference internal" href="#wx.ConfigBase.Get" title="wx.ConfigBase.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a>  is called and there is no current object, it will create one using <a class="reference internal" href="#wx.ConfigBase.Create" title="wx.ConfigBase.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>  function. To disable this behaviour <a class="reference internal" href="#wx.ConfigBase.DontCreateOnDemand" title="wx.ConfigBase.DontCreateOnDemand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DontCreateOnDemand</span></code></a>  is provided.</p>
+</div>
+<div class="section" id="phoenix-title-path-management">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Path Management<a class="headerlink" href="#phoenix-title-path-management" title="Permalink to this headline">¶</a></h2>
+<p>As explained in the <a class="reference internal" href="config_overview.html#config-overview"><span class="std std-ref">config overview</span></a>, the config classes support a file system-like hierarchy of keys (files) and groups (directories). As in the file system case, to specify a key in the config class you must use a path to it. Config classes also support the notion of the current group, which makes it possible to use the relative paths. To clarify all this, here is an example (it is only for the sake of demonstration, it doesn’t do anything sensible!):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="s2">"FooBarApp"</span><span class="p">)</span>
+
+<span class="c1"># right now the current path is '/'</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="s2">"RootEntry"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># go to some other place: if the group(s) don't exist, they will be created</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">SetPath</span><span class="p">(</span><span class="s2">"/Group/Subgroup"</span><span class="p">)</span>
+
+<span class="c1"># create an entry in subgroup</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="s2">"SubgroupEntry"</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># '..' is understood</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="s2">"../GroupEntry"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">SetPath</span><span class="p">(</span><span class="s2">".."</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">conf</span><span class="o">.</span><span class="n">ReadInt</span><span class="p">(</span><span class="s2">"Subgroup/SubgroupEntry"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Invalid SubgroupEntry'</span><span class="p">)</span>
+
+<span class="c1"># use absolute path: it is allowed, too</span>
+<span class="k">if</span> <span class="n">conf</span><span class="o">.</span><span class="n">ReadInt</span><span class="p">(</span><span class="s2">"/RootEntry"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Invalid RootEntry'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is highly recommended that you restore the path to its old value on function exit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+
+    <span class="n">oldPath</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">SetPath</span><span class="p">(</span><span class="s2">"/Foo/Data"</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">SetPath</span><span class="p">(</span><span class="n">oldPath</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Otherwise the assert in the following example will surely fail (we suppose here that the foo() function is the same as above except that it doesn’t save and restore the path):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+
+    <span class="n">config</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="s2">"Test"</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+
+    <span class="n">foo</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+    <span class="c1"># we're reading "/Foo/Data/Test" here! -1 will probably be returned...</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">ReadInt</span><span class="p">(</span><span class="s2">"Test"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">17</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Invalid Test'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, the path separator in <a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a>  and derived classes is always “/”, regardless of the platform (i.e. it is not “\” under Windows).</p>
+</div>
+<div class="section" id="phoenix-title-enumeration">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Enumeration<a class="headerlink" href="#phoenix-title-enumeration" title="Permalink to this headline">¶</a></h2>
+<p>The enumeration functions allow you to enumerate all entries and groups in the config file. All functions here return <code class="docutils literal notranslate"><span class="pre">False</span></code> when there are no more items. You must pass the same index to GetNext() and GetFirst() (don’t modify it). Please note that it is not the index of the current item (you will have some great surprises with <em class="xref py py-obj">RegConfig</em>       if you assume this) and you shouldn’t even look at it: it is just a “cookie” which stores the state of the enumeration. It can’t be stored inside the class because it would prevent you from running several enumerations simultaneously, that’s why you must pass it explicitly. Having said all this, enumerating the config entries/groups is very simple:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="s2">"MyAppName"</span><span class="p">)</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># first enum all entries</span>
+<span class="n">more</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">GetFirstEntry</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="n">more</span><span class="p">:</span>
+    <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">more</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">GetNextEntry</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># ... we have all entry names in names...</span>
+
+<span class="c1"># now all groups...</span>
+<span class="n">more</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">GetFirstGroup</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="n">more</span><span class="p">:</span>
+    <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">more</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">GetNextGroup</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># ... we have all group (and entry) names in names...</span>
+</pre></div>
+</div>
+<p>There are also functions to get the number of entries/subgroups without actually enumerating them, but you will probably never need them.</p>
+</div>
+<div class="section" id="phoenix-title-key-access">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Key Access<a class="headerlink" href="#phoenix-title-key-access" title="Permalink to this headline">¶</a></h2>
+<p>The key access functions are the core of <a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a>  class: they allow you to read and write config file data. All <a class="reference internal" href="#wx.ConfigBase.Read" title="wx.ConfigBase.Read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Read</span></code></a>  functions take a default value which will be returned if the specified key is not found in the config file. Currently, supported types of data are: <em class="xref py py-obj">String</em>     ,  <code class="docutils literal notranslate"><span class="pre">long</span></code> ,   <code class="docutils literal notranslate"><span class="pre">double</span></code> ,   <code class="docutils literal notranslate"><span class="pre">bool</span></code> ,  <a class="reference internal" href="wx.Colour.html#wx-colour"><span class="std std-ref">  wx.Colour</span></a>  and any other types for which the functions <em class="xref py py-obj">wx.ToString</em>       and <em class="xref py py-obj">wx.FromString</em>       are defined. Try not to read long values into string variables and vice versa: although it just might work with <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>, you will get a system error with <em class="xref py py-obj">RegConfig</em>       because in the Windows registry the different types of entries are indeed used. Final remark: the <em class="xref py py-obj">szKey</em>  parameter for all these functions can contain an arbitrary path (either relative or absolute), not just the key name.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the documentation of this class, the words “config file” also mean “registry hive” for <em class="xref py py-obj">RegConfig</em>       and, generally speaking, might mean any physical storage where a ConfigBase-derived class stores its data.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should use either <code class="xref py py-meth docutils literal notranslate"><span class="pre">Set</span></code>   or <code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code>   because wxWidgets library itself would take advantage of it and could save various information in it. For example <a class="reference internal" href="wx.FontMapper.html#wx-fontmapper"><span class="std std-ref">  wx.FontMapper</span></a>  or Unix version of <a class="reference internal" href="wx.FileDialog.html#wx-filedialog"><span class="std std-ref">  wx.FileDialog</span></a>  have the ability to use Config class.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.ConfigPathChanger.html#wx-configpathchanger"><span class="std std-ref">  wx.ConfigPathChanger</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ConfigBase</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ConfigBase" class="inheritance" src="_static/images/inheritance/wx.ConfigBase_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,125,112" href="wx.ConfigBase.html" id="node1" shape="rect" title="wx.ConfigBase  defines the basic interface of all config classes."/> <area alt="" coords="21,5,109,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>, <em class="xref py py-obj">RegConfig</em></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%"/>
+<col style="width: 65%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.__init__" title="wx.ConfigBase.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>This is the default and only constructor of the <a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a>  class, and derived classes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.Create" title="wx.ConfigBase.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Create a new config object and sets it as the current one.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.DeleteAll" title="wx.ConfigBase.DeleteAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAll</span></code></a></p></td>
+<td><p>Delete the whole underlying object (disk file, registry key, …).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.DeleteEntry" title="wx.ConfigBase.DeleteEntry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteEntry</span></code></a></p></td>
+<td><p>Deletes the specified entry and the group it belongs to if it was the last key in it and the second parameter is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.DeleteGroup" title="wx.ConfigBase.DeleteGroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteGroup</span></code></a></p></td>
+<td><p>Delete the group (with all subgroups).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.DontCreateOnDemand" title="wx.ConfigBase.DontCreateOnDemand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DontCreateOnDemand</span></code></a></p></td>
+<td><p>Calling this function will prevent  ` <code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code>  `   from automatically creating a new config object if the current one is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.Exists" title="wx.ConfigBase.Exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Exists</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.Flush" title="wx.ConfigBase.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a></p></td>
+<td><p>Permanently writes all changes (otherwise, they’re only written from object’s destructor).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.Get" title="wx.ConfigBase.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a></p></td>
+<td><p>Get the current config object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.GetAppName" title="wx.ConfigBase.GetAppName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAppName</span></code></a></p></td>
+<td><p>Returns the application name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.GetEntryType" title="wx.ConfigBase.GetEntryType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEntryType</span></code></a></p></td>
+<td><p>Returns the type of the given entry or <em class="xref py py-obj">Unknown</em>  if the entry doesn’t exist.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.GetFirstEntry" title="wx.ConfigBase.GetFirstEntry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstEntry</span></code></a></p></td>
+<td><p>GetFirstEntry() . (more, value, index)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.GetFirstGroup" title="wx.ConfigBase.GetFirstGroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstGroup</span></code></a></p></td>
+<td><p>GetFirstGroup() . (more, value, index)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.GetNextEntry" title="wx.ConfigBase.GetNextEntry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextEntry</span></code></a></p></td>
+<td><p>GetNextEntry() . (more, value, index)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.GetNextGroup" title="wx.ConfigBase.GetNextGroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextGroup</span></code></a></p></td>
+<td><p>GetNextGroup(long index) . (more, value, index)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.GetNumberOfEntries" title="wx.ConfigBase.GetNumberOfEntries"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberOfEntries</span></code></a></p></td>
+<td><p>Get number of entries in the current group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.GetNumberOfGroups" title="wx.ConfigBase.GetNumberOfGroups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberOfGroups</span></code></a></p></td>
+<td><p>Get number of entries/subgroups in the current group, with or without its subgroups.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.GetPath" title="wx.ConfigBase.GetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPath</span></code></a></p></td>
+<td><p>Retrieve the current path (always as absolute path).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.GetVendorName" title="wx.ConfigBase.GetVendorName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVendorName</span></code></a></p></td>
+<td><p>Returns the vendor name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.HasEntry" title="wx.ConfigBase.HasEntry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasEntry</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.HasGroup" title="wx.ConfigBase.HasGroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasGroup</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.IsExpandingEnvVars" title="wx.ConfigBase.IsExpandingEnvVars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsExpandingEnvVars</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if we are expanding environment variables in key values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.IsRecordingDefaults" title="wx.ConfigBase.IsRecordingDefaults"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsRecordingDefaults</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if we are writing defaults back to the config file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.Read" title="wx.ConfigBase.Read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Read</span></code></a></p></td>
+<td><p>Another version of <code class="xref py py-meth docutils literal notranslate"><span class="pre">Read</span></code> , returning the string value directly.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.ReadBool" title="wx.ConfigBase.ReadBool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ReadBool</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.ReadDouble" title="wx.ConfigBase.ReadDouble"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ReadDouble</span></code></a></p></td>
+<td><p>Reads a float value from the key and returns it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.ReadFloat" title="wx.ConfigBase.ReadFloat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ReadFloat</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.ReadInt" title="wx.ConfigBase.ReadInt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ReadInt</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.ReadLong" title="wx.ConfigBase.ReadLong"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ReadLong</span></code></a></p></td>
+<td><p>Reads a long value from the key and returns it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.RenameEntry" title="wx.ConfigBase.RenameEntry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RenameEntry</span></code></a></p></td>
+<td><p>Renames an entry in the current group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.RenameGroup" title="wx.ConfigBase.RenameGroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RenameGroup</span></code></a></p></td>
+<td><p>Renames a subgroup of the current group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.Set" title="wx.ConfigBase.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Set</span></code></a></p></td>
+<td><p>Sets the config object as the current one, returns the pointer to the previous current object (both the parameter and returned value may be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.SetExpandEnvVars" title="wx.ConfigBase.SetExpandEnvVars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExpandEnvVars</span></code></a></p></td>
+<td><p>Determine whether we wish to expand environment variables in key values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.SetPath" title="wx.ConfigBase.SetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPath</span></code></a></p></td>
+<td><p>Set current path: if the first character is ‘/’, it is the absolute path, otherwise it is a relative path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.SetRecordDefaults" title="wx.ConfigBase.SetRecordDefaults"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRecordDefaults</span></code></a></p></td>
+<td><p>Sets whether defaults are recorded to the config file whenever an attempt to read the value which is not present in it is done.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.Write" title="wx.ConfigBase.Write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Write</span></code></a></p></td>
+<td><p>Writes the <em class="xref py py-obj">String</em>       value to the config file and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> on success.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.WriteBool" title="wx.ConfigBase.WriteBool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WriteBool</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.WriteFloat" title="wx.ConfigBase.WriteFloat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WriteFloat</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.WriteInt" title="wx.ConfigBase.WriteInt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WriteInt</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase._cpp_ReadInt" title="wx.ConfigBase._cpp_ReadInt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_cpp_ReadInt</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.AppName" title="wx.ConfigBase.AppName"><code class="xref py py-attr docutils literal notranslate"><span class="pre">AppName</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ConfigBase.GetAppName" title="wx.ConfigBase.GetAppName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAppName</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.FirstEntry" title="wx.ConfigBase.FirstEntry"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FirstEntry</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ConfigBase.GetFirstEntry" title="wx.ConfigBase.GetFirstEntry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstEntry</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.FirstGroup" title="wx.ConfigBase.FirstGroup"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FirstGroup</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ConfigBase.GetFirstGroup" title="wx.ConfigBase.GetFirstGroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstGroup</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.NextEntry" title="wx.ConfigBase.NextEntry"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NextEntry</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ConfigBase.GetNextEntry" title="wx.ConfigBase.GetNextEntry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextEntry</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.NextGroup" title="wx.ConfigBase.NextGroup"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NextGroup</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ConfigBase.GetNextGroup" title="wx.ConfigBase.GetNextGroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextGroup</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.NumberOfEntries" title="wx.ConfigBase.NumberOfEntries"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NumberOfEntries</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ConfigBase.GetNumberOfEntries" title="wx.ConfigBase.GetNumberOfEntries"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberOfEntries</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.NumberOfGroups" title="wx.ConfigBase.NumberOfGroups"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NumberOfGroups</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ConfigBase.GetNumberOfGroups" title="wx.ConfigBase.GetNumberOfGroups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberOfGroups</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigBase.Path" title="wx.ConfigBase.Path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Path</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ConfigBase.GetPath" title="wx.ConfigBase.GetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPath</span></code></a> and <a class="reference internal" href="#wx.ConfigBase.SetPath" title="wx.ConfigBase.SetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPath</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigBase.VendorName" title="wx.ConfigBase.VendorName"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VendorName</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ConfigBase.GetVendorName" title="wx.ConfigBase.GetVendorName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVendorName</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.ConfigBase">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">ConfigBase</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ConfigBase</span><span class="p">(</span><span class="n">appName</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">vendorName</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
+           <span class="n">localFilename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">globalFilename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ConfigBase defines the basic interface of all config classes.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.ConfigBase.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">appName=""</em>, <em class="sig-param">vendorName=""</em>, <em class="sig-param">localFilename=""</em>, <em class="sig-param">globalFilename=""</em>, <em class="sig-param">style=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the default and only constructor of the <a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a>  class, and derived classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>appName</strong> (<em>string</em>) – The application name. If this is empty, the class will normally use <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.GetAppName</span></code>   to set it. The application name is used in the registry key on Windows, and can be used to deduce the local filename parameter if that is missing.</p></li>
+<li><p><strong>vendorName</strong> (<em>string</em>) – The vendor name. If this is empty, it is assumed that no vendor name is wanted, if this is optional for the current config class. The vendor name is appended to the application name for <em class="xref py py-obj">RegConfig</em>     .</p></li>
+<li><p><strong>localFilename</strong> (<em>string</em>) – Some config classes require a local filename. If this is not present, but required, the application name will be used instead.</p></li>
+<li><p><strong>globalFilename</strong> (<em>string</em>) – Some config classes require a global filename. If this is not present, but required, the application name will be used instead.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – Can be one of  <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_LOCAL_FILE</span></code>   and   <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_GLOBAL_FILE</span></code> .
+<p>The style interpretation depends on the config class and is ignored by some implementations. For <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>, these styles determine whether a local or global config file is created or used: if  <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_GLOBAL_FILE</span></code>   is used, then settings are read from the global config file and if   <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_LOCAL_FILE</span></code>   is used, settings are read from and written to local config file (if they are both set, global file is read first, then local file, overwriting global settings). If the flag is present but the parameter is empty, the parameter will be set to a default. If the parameter is present but the style flag not, the relevant flag will be added to the style. For  <em class="xref py py-obj">RegConfig</em>     , the <code class="docutils literal notranslate"><span class="pre">GLOBAL</span></code> flag refers to the  <code class="docutils literal notranslate"><span class="pre">HKLM</span></code>   key while <code class="docutils literal notranslate"><span class="pre">LOCAL</span></code> one is for the usual   <code class="docutils literal notranslate"><span class="pre">HKCU</span></code>   one.</p>
+<p>For <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>  you can also add  <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_RELATIVE_PATH</span></code>   by logically or’ing it to either of the <code class="docutils literal notranslate"><span class="pre">_FILE</span></code> options to tell  <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>  to use relative instead of absolute paths.</p>
+<p>On non-VMS Unix systems, the default local configuration file is “~/.appname”. However, this path may be also used as user data directory (see <a class="reference internal" href="wx.StandardPaths.html#wx.StandardPaths.GetUserDataDir" title="wx.StandardPaths.GetUserDataDir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StandardPaths.GetUserDataDir</span></code></a> ) if the application has several data files. In this case  <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_SUBDIR</span></code>   flag, which changes the default local configuration file to “~/.appname/appname” should be used. Notice that this flag is ignored if   <em class="xref py py-obj">localFilename</em>  is provided.  <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_SUBDIR</span></code>   is new since wxWidgets version 2.8.2.</p>
+<p>For <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>, you can also add  <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_NO_ESCAPE_CHARACTERS</span></code>   which will turn off character escaping for the values of entries stored in the config file: for example a foo key with some backslash characters will be stored as “foo=C:\mydir” instead of the usual storage of “foo=C:\mydir”.</p>
+<p>The  <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_NO_ESCAPE_CHARACTERS</span></code>   style can be helpful if your config file must be read or written to by a non-wxWidgets program (which might not understand the escape characters). Note, however, that if   <code class="docutils literal notranslate"><span class="pre">CONFIG_USE_NO_ESCAPE_CHARACTERS</span></code>   style is used, it is now your application’s responsibility to ensure that there is no newline or other illegal characters in a value, before writing that value to the file.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p>This parameter is only used by <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>  when compiled in Unicode mode. It specifies the encoding in which the configuration file is written.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, environment variable expansion is on and recording defaults is off.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.Create">
+<em class="property">static </em><code class="sig-name descname">Create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new config object and sets it as the current one.</p>
+<p>This function will create the most appropriate implementation of Config available for the current platform. By default this means that the system registry will be used for storing the configuration information under MSW and a file under the user home directory (see <a class="reference internal" href="wx.StandardPaths.html#wx.StandardPaths.GetUserConfigDir" title="wx.StandardPaths.GetUserConfigDir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StandardPaths.GetUserConfigDir</span></code></a> ) elsewhere.</p>
+<p>If you prefer to use the configuration files everywhere, you can define  <code class="docutils literal notranslate"><span class="pre">USE_CONFIG_NATIVE</span></code>   to 0 when compiling wxWidgets. Or you can simply always create  <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>  explicitly.</p>
+<p>Finally, if you want to create a custom Config subclass you may change this function behaviour by overriding <a class="reference internal" href="wx.AppTraits.html#wx.AppTraits.CreateConfig" title="wx.AppTraits.CreateConfig"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppTraits.CreateConfig</span></code></a>   to create it. An example when this could be useful could be an application which could be installed either normally (in which case the default behaviour of using <em class="xref py py-obj">RegConfig</em>       is appropriate) or in a “portable” way in which case a <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>  with a file in the program directory would be used and the choice would be done in CreateConfig() at run-time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.DeleteAll">
+<code class="sig-name descname">DeleteAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.DeleteAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the whole underlying object (disk file, registry key, …).</p>
+<p>Primarily for use by uninstallation routine.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.DeleteEntry">
+<code class="sig-name descname">DeleteEntry</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">bDeleteGroupIfEmpty=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.DeleteEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the specified entry and the group it belongs to if it was the last key in it and the second parameter is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>string</em>) – </p></li>
+<li><p><strong>bDeleteGroupIfEmpty</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.DeleteGroup">
+<code class="sig-name descname">DeleteGroup</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.DeleteGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the group (with all subgroups).</p>
+<p>If the current path is under the group being deleted it is changed to its deepest still existing component. E.g. if the current path is  <code class="docutils literal notranslate"><span class="pre">"/A/B/C/D"</span></code>   and the group   <code class="docutils literal notranslate"><span class="pre">C</span></code>   is deleted, the path becomes   <code class="docutils literal notranslate"><span class="pre">"/A/B"</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.DontCreateOnDemand">
+<em class="property">static </em><code class="sig-name descname">DontCreateOnDemand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.DontCreateOnDemand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calling this function will prevent  ` <a class="reference internal" href="#wx.ConfigBase.Get" title="wx.ConfigBase.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a>  `   from automatically creating a new config object if the current one is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>It might be useful to call it near the program end to prevent “accidental” creation of a new config object.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.Exists">
+<code class="sig-name descname">Exists</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">strName</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.Exists" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strName</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if either a group or an entry with a given name exists.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.Flush">
+<code class="sig-name descname">Flush</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bCurrentOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.Flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permanently writes all changes (otherwise, they’re only written from object’s destructor).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bCurrentOnly</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.Get">
+<em class="property">static </em><code class="sig-name descname">Get</code><span class="sig-paren">(</span><em class="sig-param">CreateOnDemand=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.Get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current config object.</p>
+<p>If there is no current object and <em class="xref py py-obj">CreateOnDemand</em>  is <code class="docutils literal notranslate"><span class="pre">True</span></code>, this creates one (using <a class="reference internal" href="#wx.ConfigBase.Create" title="wx.ConfigBase.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a> ) unless <a class="reference internal" href="#wx.ConfigBase.DontCreateOnDemand" title="wx.ConfigBase.DontCreateOnDemand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DontCreateOnDemand</span></code></a>   was called previously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>CreateOnDemand</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetAppName">
+<code class="sig-name descname">GetAppName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetAppName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the application name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetEntryType">
+<code class="sig-name descname">GetEntryType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetEntryType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the type of the given entry or <em class="xref py py-obj">Unknown</em>  if the entry doesn’t exist.</p>
+<p>This function should be used to decide which version of <a class="reference internal" href="#wx.ConfigBase.Read" title="wx.ConfigBase.Read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Read</span></code></a>   should be used because some of Config implementations will complain about type mismatch otherwise: e.g., an attempt to read a string value from an integer key with <em class="xref py py-obj">RegConfig</em>       will fail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ConfigBase.EntryType.enumeration.html#wx-configbase-entrytype"><span class="std std-ref">  wx.ConfigBase.EntryType</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetFirstEntry">
+<code class="sig-name descname">GetFirstEntry</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetFirstEntry" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>GetFirstEntry() . (more, value, index)</p>
+<p>Allows enumerating the entries in the current group in a config
+object.  Returns a tuple containing a flag indicating if there are more
+items, the name of the current item, and an index to pass to
+GetNextEntry to fetch the next item.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetFirstGroup">
+<code class="sig-name descname">GetFirstGroup</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetFirstGroup" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>GetFirstGroup() . (more, value, index)</p>
+<p>Allows enumerating the subgroups in a config object.  Returns a tuple
+containing a flag indicating if there are more items, the name of the
+current item, and an index to pass to GetNextGroup to fetch the next
+item.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetNextEntry">
+<code class="sig-name descname">GetNextEntry</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetNextEntry" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>GetNextEntry() . (more, value, index)</p>
+<p>Allows enumerating the entries in the current group in a config
+object.  Returns a tuple containing a flag indicating if there are more
+items, the name of the current item, and an index to pass to
+GetNextEntry to fetch the next item.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetNextGroup">
+<code class="sig-name descname">GetNextGroup</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetNextGroup" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>GetNextGroup(long index) . (more, value, index)</p>
+<p>Allows enumerating the subgroups in a config object.  Returns a tuple
+containing a flag indicating if there are more items, the name of the
+current item, and an index to pass to GetNextGroup to fetch the next
+item.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetNumberOfEntries">
+<code class="sig-name descname">GetNumberOfEntries</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bRecursive=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetNumberOfEntries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get number of entries in the current group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bRecursive</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetNumberOfGroups">
+<code class="sig-name descname">GetNumberOfGroups</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bRecursive=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetNumberOfGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get number of entries/subgroups in the current group, with or without its subgroups.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bRecursive</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetPath">
+<code class="sig-name descname">GetPath</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the current path (always as absolute path).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.GetVendorName">
+<code class="sig-name descname">GetVendorName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.GetVendorName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the vendor name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.HasEntry">
+<code class="sig-name descname">HasEntry</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">strName</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.HasEntry" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strName</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the entry by this name exists.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.HasGroup">
+<code class="sig-name descname">HasGroup</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">strName</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.HasGroup" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strName</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the group by this name exists.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.IsExpandingEnvVars">
+<code class="sig-name descname">IsExpandingEnvVars</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.IsExpandingEnvVars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if we are expanding environment variables in key values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.IsRecordingDefaults">
+<code class="sig-name descname">IsRecordingDefaults</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.IsRecordingDefaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if we are writing defaults back to the config file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.Read">
+<code class="sig-name descname">Read</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">defaultVal=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.Read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Another version of <a class="reference internal" href="#wx.ConfigBase.Read" title="wx.ConfigBase.Read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Read</span></code></a> , returning the string value directly.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.ReadBool">
+<code class="sig-name descname">ReadBool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">defaultVal=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.ReadBool" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.ReadDouble">
+<code class="sig-name descname">ReadDouble</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">defaultVal</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.ReadDouble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a float value from the key and returns it.</p>
+<p><em class="xref py py-obj">defaultVal</em>  is returned if the key is not found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>string</em>) – </p></li>
+<li><p><strong>defaultVal</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">float</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.ReadFloat">
+<code class="sig-name descname">ReadFloat</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">defaultVal=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.ReadFloat" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">float</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.ReadInt">
+<code class="sig-name descname">ReadInt</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">defaultVal=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.ReadInt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.ReadLong">
+<code class="sig-name descname">ReadLong</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">defaultVal</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.ReadLong" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a long value from the key and returns it.</p>
+<p><em class="xref py py-obj">defaultVal</em>  is returned if the key is not found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>string</em>) – </p></li>
+<li><p><strong>defaultVal</strong> (<em>long</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.RenameEntry">
+<code class="sig-name descname">RenameEntry</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">oldName</em>, <em class="sig-param">newName</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.RenameEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renames an entry in the current group.</p>
+<p>The entries names (both the old and the new one) shouldn’t contain backslashes, i.e. only simple names and not arbitrary paths are accepted by this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oldName</strong> (<em>string</em>) – </p></li>
+<li><p><strong>newName</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if <em class="xref py py-obj">oldName</em>  doesn’t exist or if <em class="xref py py-obj">newName</em>  already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.RenameGroup">
+<code class="sig-name descname">RenameGroup</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">oldName</em>, <em class="sig-param">newName</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.RenameGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renames a subgroup of the current group.</p>
+<p>The subgroup names (both the old and the new one) shouldn’t contain backslashes, i.e. only simple names and not arbitrary paths are accepted by this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oldName</strong> (<em>string</em>) – </p></li>
+<li><p><strong>newName</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if <em class="xref py py-obj">oldName</em>  doesn’t exist or if <em class="xref py py-obj">newName</em>  already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.Set">
+<em class="property">static </em><code class="sig-name descname">Set</code><span class="sig-paren">(</span><em class="sig-param">pConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.Set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the config object as the current one, returns the pointer to the previous current object (both the parameter and returned value may be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pConfig</strong> (<a class="reference internal" href="#wx.ConfigBase" title="wx.ConfigBase"><em>wx.ConfigBase</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.SetExpandEnvVars">
+<code class="sig-name descname">SetExpandEnvVars</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bDoIt=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.SetExpandEnvVars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether we wish to expand environment variables in key values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bDoIt</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.SetPath">
+<code class="sig-name descname">SetPath</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">strPath</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.SetPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set current path: if the first character is ‘/’, it is the absolute path, otherwise it is a relative path.</p>
+<p>‘..’ is supported. If <em class="xref py py-obj">strPath</em>  doesn’t exist, it is created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strPath</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.ConfigPathChanger.html#wx-configpathchanger"><span class="std std-ref">  wx.ConfigPathChanger</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.SetRecordDefaults">
+<code class="sig-name descname">SetRecordDefaults</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bDoIt=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.SetRecordDefaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether defaults are recorded to the config file whenever an attempt to read the value which is not present in it is done.</p>
+<p>If on (default is off) all default values for the settings used by the program are written back to the config file. This allows the user to see what config options may be changed and is probably useful only for <a class="reference internal" href="wx.FileConfig.html#wx-fileconfig"><span class="std std-ref">  wx.FileConfig</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bDoIt</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.Write">
+<code class="sig-name descname">Write</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.Write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the <em class="xref py py-obj">String</em>       value to the config file and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> on success.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>string</em>) – </p></li>
+<li><p><strong>value</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.WriteBool">
+<code class="sig-name descname">WriteBool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.WriteBool" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.WriteFloat">
+<code class="sig-name descname">WriteFloat</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.WriteFloat" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase.WriteInt">
+<code class="sig-name descname">WriteInt</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase.WriteInt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigBase._cpp_ReadInt">
+<code class="sig-name descname">_cpp_ReadInt</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">key</em>, <em class="sig-param">defaultVal=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigBase._cpp_ReadInt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.ConfigBase.AppName">
+<code class="sig-name descname">AppName</code><a class="headerlink" href="#wx.ConfigBase.AppName" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ConfigBase.GetAppName" title="wx.ConfigBase.GetAppName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAppName</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ConfigBase.FirstEntry">
+<code class="sig-name descname">FirstEntry</code><a class="headerlink" href="#wx.ConfigBase.FirstEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ConfigBase.GetFirstEntry" title="wx.ConfigBase.GetFirstEntry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstEntry</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ConfigBase.FirstGroup">
+<code class="sig-name descname">FirstGroup</code><a class="headerlink" href="#wx.ConfigBase.FirstGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ConfigBase.GetFirstGroup" title="wx.ConfigBase.GetFirstGroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstGroup</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ConfigBase.NextEntry">
+<code class="sig-name descname">NextEntry</code><a class="headerlink" href="#wx.ConfigBase.NextEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ConfigBase.GetNextEntry" title="wx.ConfigBase.GetNextEntry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextEntry</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ConfigBase.NextGroup">
+<code class="sig-name descname">NextGroup</code><a class="headerlink" href="#wx.ConfigBase.NextGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ConfigBase.GetNextGroup" title="wx.ConfigBase.GetNextGroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextGroup</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ConfigBase.NumberOfEntries">
+<code class="sig-name descname">NumberOfEntries</code><a class="headerlink" href="#wx.ConfigBase.NumberOfEntries" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ConfigBase.GetNumberOfEntries" title="wx.ConfigBase.GetNumberOfEntries"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberOfEntries</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ConfigBase.NumberOfGroups">
+<code class="sig-name descname">NumberOfGroups</code><a class="headerlink" href="#wx.ConfigBase.NumberOfGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ConfigBase.GetNumberOfGroups" title="wx.ConfigBase.GetNumberOfGroups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberOfGroups</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ConfigBase.Path">
+<code class="sig-name descname">Path</code><a class="headerlink" href="#wx.ConfigBase.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ConfigBase.GetPath" title="wx.ConfigBase.GetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPath</span></code></a> and <a class="reference internal" href="#wx.ConfigBase.SetPath" title="wx.ConfigBase.SetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPath</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ConfigBase.VendorName">
+<code class="sig-name descname">VendorName</code><a class="headerlink" href="#wx.ConfigBase.VendorName" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ConfigBase.GetVendorName" title="wx.ConfigBase.GetVendorName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVendorName</span></code></a></p>
+</dd></dl>
+</dd></dl>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

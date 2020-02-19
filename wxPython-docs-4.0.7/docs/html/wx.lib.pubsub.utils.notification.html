@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.pubsub.utils.notification — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.pubsub.utils.notification.IgnoreNotificationsMixin.html" rel="next" title="wx.lib.pubsub.utils.notification.IgnoreNotificationsMixin"/>
+<link href="wx.lib.pubsub.utils.misc.StructMsg.html" rel="prev" title="wx.lib.pubsub.utils.misc.StructMsg"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a href="wx.lib.pubsub.html">
+<strong>wx.lib.pubsub</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.pubsub.utils.html">
+<strong>wx.lib.pubsub.utils</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.pubsub.utils.notification</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.pubsub.utils.notification.IgnoreNotificationsMixin.html" title="wx.lib.pubsub.utils.notification.IgnoreNotificationsMixin">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.pubsub.utils.misc.StructMsg.html" title="wx.lib.pubsub.utils.misc.StructMsg">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.pubsub.utils.notification</strong></a><ul>
+<li><a class="reference internal" href="#function-summary-functions-summary"> Functions Summary</a></li>
+<li><a class="reference internal" href="#class-summary-classes-summary"> Classes Summary</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.pubsub.utils.notification.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.pubsub.utils.notification"></span><div class="section" id="phoenix-title-wx-lib-pubsub-utils-notification">
+<span id="wx-lib-pubsub-utils-notification"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.pubsub.utils.notification</strong><a class="headerlink" href="#phoenix-title-wx-lib-pubsub-utils-notification" title="Permalink to this headline">¶</a></h1>
+<p>Provide an interface class for handling pubsub notification messages,
+and an example class (though very useful in practice) showing how to
+use it.</p>
+<p>Notification messages are generated by pubsub</p>
+<ul class="simple">
+<li><p>if a handler has been configured via pub.addNotificationHandler()</p></li>
+<li><p>when pubsub does certain tasks, such as when a listener subscribes to
+or unsubscribes from a topic</p></li>
+</ul>
+<p>Derive from this class to handle notification events from
+various parts of pubsub. E.g. when a listener subscribes,
+unsubscribes, or dies, a notification handler, if you
+specified one via pub.addNotificationHandler(), is given the
+relevant information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Copyright since 2006 by Oliver Schoenborn, all rights reserved.</p>
+</dd>
+<dt class="field-even">license</dt>
+<dd class="field-even"><p>BSD, see LICENSE_BSD_Simple.txt for details.</p>
+</dd>
+</dl>
+<div class="section" id="function-summary-functions-summary">
+<h2><a class="reference internal" href="_images/function_summary.png"><img alt="function_summary" class="align-middle" src="_images/function_summary.png" style="width: 32px;"/></a> Functions Summary<a class="headerlink" href="#function-summary-functions-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.pubsub.utils.notification.useNotifyByPubsubMessage" title="wx.lib.pubsub.utils.notification.useNotifyByPubsubMessage"><code class="xref py py-func docutils literal notranslate"><span class="pre">useNotifyByPubsubMessage</span></code></a></p></td>
+<td><p>Will cause all of pubsub’s notifications of pubsub “actions” (such as</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.pubsub.utils.notification.useNotifyByWriteFile" title="wx.lib.pubsub.utils.notification.useNotifyByWriteFile"><code class="xref py py-func docutils literal notranslate"><span class="pre">useNotifyByWriteFile</span></code></a></p></td>
+<td><p>Will cause all pubsub notifications of pubsub “actions” (such as</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-summary-classes-summary">
+<h2><a class="reference internal" href="_images/class_summary.png"><img alt="class_summary" class="align-middle" src="_images/class_summary.png" style="width: 32px;"/></a> Classes Summary<a class="headerlink" href="#class-summary-classes-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.utils.notification.IgnoreNotificationsMixin.html#wx.lib.pubsub.utils.notification.IgnoreNotificationsMixin" title="wx.lib.pubsub.utils.notification.IgnoreNotificationsMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IgnoreNotificationsMixin</span></code></a></p></td>
+<td><p>Derive your Notifications handler from this class if your handler</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.pubsub.utils.notification.NotifyByPubsubMessage.html#wx.lib.pubsub.utils.notification.NotifyByPubsubMessage" title="wx.lib.pubsub.utils.notification.NotifyByPubsubMessage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotifyByPubsubMessage</span></code></a></p></td>
+<td><p>Handle pubsub notification messages by generating</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.pubsub.utils.notification.NotifyByWriteFile.html#wx.lib.pubsub.utils.notification.NotifyByWriteFile" title="wx.lib.pubsub.utils.notification.NotifyByWriteFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotifyByWriteFile</span></code></a></p></td>
+<td><p>Print a message to stdout when a notification is received.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<br/><hr/>
+<dl class="function">
+<dt id="wx.lib.pubsub.utils.notification.useNotifyByPubsubMessage">
+<code class="sig-name descname">useNotifyByPubsubMessage</code><span class="sig-paren">(</span><em class="sig-param">publisher=None</em>, <em class="sig-param">all=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.utils.notification.useNotifyByPubsubMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will cause all of pubsub’s notifications of pubsub “actions” (such as
+new topic created, message sent, listener subscribed, etc) to be sent
+out as messages. Topic will be ‘pubsub’ subtopics, such as
+‘pubsub.newTopic’, ‘pubsub.delTopic’, ‘pubsub.sendMessage’, etc.</p>
+<p>The ‘all’ and kwargs args are the same as pubsub’s setNotificationFlags(),
+except that ‘all’ defaults to True.</p>
+<p>The publisher is rarely needed:</p>
+<ul>
+<li><p>The publisher must be specfied if pubsub is not installed
+on the system search path (ie from pubsub import … would fail or
+import wrong pubsub – such as if pubsub is within wxPython’s
+wx.lib package). Then pbuModule is the pub module to use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wx.lib.pubsub</span> <span class="kn">import</span> <span class="n">pub</span>
+<span class="kn">from</span> <span class="nn">wx.lib.pubsub.utils</span> <span class="kn">import</span> <span class="n">notification</span>
+<span class="n">notification</span><span class="o">.</span><span class="n">useNotifyByPubsubMessage</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd></dl>
+<br/><hr/>
+<dl class="function">
+<dt id="wx.lib.pubsub.utils.notification.useNotifyByWriteFile">
+<code class="sig-name descname">useNotifyByWriteFile</code><span class="sig-paren">(</span><em class="sig-param">fileObj=None</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">publisher=None</em>, <em class="sig-param">all=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.utils.notification.useNotifyByWriteFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will cause all pubsub notifications of pubsub “actions” (such as
+new topic created, message sent, listener died etc) to be written to
+specified file (or stdout if none given). The fileObj need only
+provide a ‘write(string)’ method.</p>
+<p>The first two arguments are the same as those of NotifyByWriteFile
+constructor. The ‘all’ and kwargs arguments are those of pubsub’s
+setNotificationFlags(), except that ‘all’ defaults to True.  See
+useNotifyByPubsubMessage() for an explanation of pubModule (typically
+only if pubsub inside wxPython’s wx.lib)</p>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

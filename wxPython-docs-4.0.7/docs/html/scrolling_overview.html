@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Scrolled Windows Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="sizers_overview.html" rel="next" title="Sizers Overview"/>
+<link href="richtextctrl_overview.html" rel="prev" title="RichTextCtrl Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Scrolled Windows Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="sizers_overview.html" title="Sizers Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="richtextctrl_overview.html" title="RichTextCtrl Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Scrolled Windows Overview</strong></a><ul>
+<li><a class="reference internal" href="#the-scrollbar-model">The Scrollbar Model</a></li>
+<li><a class="reference internal" href="#an-example">An Example</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/scrolling_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-scrolled-windows-overview">
+<span id="scrolled-windows"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Scrolled Windows Overview</strong><a class="headerlink" href="#phoenix-title-scrolled-windows-overview" title="Permalink to this headline">¶</a></h1>
+<p>Scrollbars come in various guises in wxWidgets. All windows have the
+potential to show a vertical scrollbar and/or a horizontal scrollbar:
+it is a basic capability of a window. However, in practice, not all
+windows do make use of scrollbars, such as a single-line
+<a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>.</p>
+<p>Because any class derived from <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> may have scrollbars,
+there are functions to manipulate the scrollbars and event handlers to
+intercept scroll events. But just because a window generates a scroll
+event, doesn’t mean that the window necessarily handles it and
+physically scrolls the window. The base class <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> in fact
+doesn’t have any default functionality to handle scroll events. If you
+created a <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> object with scrollbars, and then clicked on
+the scrollbars, nothing at all would happen. This is deliberate,
+because the interpretation of scroll events varies from one window
+class to another.</p>
+<p><a class="reference internal" href="wx.ScrolledWindow.html#wx-scrolledwindow"><span class="std std-ref">  wx.ScrolledWindow</span></a> is an example of a window that adds
+functionality to make scrolling really work. It assumes that scrolling
+happens in consistent units, not different-sized jumps, and that page
+size is represented by the visible portion of the window.  It is
+suited to drawing applications, but perhaps not so suitable for a
+sophisticated editor in which the amount scrolled may vary according
+to the size of text on a given line. For this, you would derive from
+<a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> and implement scrolling yourself.
+<a class="reference internal" href="wx.grid.Grid.html#wx-grid-grid"><span class="std std-ref">  wx.grid.Grid</span></a> is an example of a class that implements its own
+scrolling, largely because columns and rows can vary in size.</p>
+<div class="section" id="the-scrollbar-model">
+<h2>The Scrollbar Model<a class="headerlink" href="#the-scrollbar-model" title="Permalink to this headline">¶</a></h2>
+<p>The function <a class="reference internal" href="wx.Window.html#wx.Window.SetScrollbar" title="wx.Window.SetScrollbar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetScrollbar</span></code></a> gives a clue about the way
+a scrollbar is modeled. This function takes the following arguments:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%"/>
+<col style="width: 78%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em class="xref py py-obj">orientation</em></p></td>
+<td><p>Which scrollbar: <code class="docutils literal notranslate"><span class="pre">wx.VERTICAL</span></code> or <code class="docutils literal notranslate"><span class="pre">wx.HORIZONTAL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><em class="xref py py-obj">position</em></p></td>
+<td><p>The position of the scrollbar in scroll units.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em class="xref py py-obj">visible</em></p></td>
+<td><p>The size of the visible portion of the scrollbar, in scroll units.</p></td>
+</tr>
+<tr class="row-even"><td><p><em class="xref py py-obj">range</em></p></td>
+<td><p>The maximum position of the scrollbar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em class="xref py py-obj">refresh</em></p></td>
+<td><p>Whether the scrollbar should be repainted.</p></td>
+</tr>
+</tbody>
+</table>
+<p><em class="xref py py-obj">orientation</em> determines whether we’re talking about the built-in
+horizontal or vertical scrollbar.</p>
+<p><em class="xref py py-obj">position</em> is simply the position of the ‘thumb’ (the bit you drag to
+scroll around). It is given in scroll units, and so is relative to the
+total range of the scrollbar.</p>
+<p><em class="xref py py-obj">visible</em> gives the number of scroll units that represents the portion
+of the window currently visible. Normally, a scrollbar is capable of
+indicating this visually by showing a different length of thumb.</p>
+<p><em class="xref py py-obj">range</em> is the maximum value of the scrollbar, where zero is the start
+position. You choose the units that suit you, so if you wanted to
+display text that has 100 lines, you would set this to 100. Note that
+this doesn’t have to correspond to the number of pixels scrolled - it
+is up to you how you actually show the contents of the window.</p>
+<p><em class="xref py py-obj">refresh</em> just indicates whether the scrollbar should be repainted
+immediately or not.</p>
+</div>
+<div class="section" id="an-example">
+<h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say you wish to display 50 lines of text, using the same
+font. The window is sized so that you can only see 16 lines at a
+time. You would use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SetScrollbar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that with the window at this size, the thumb position
+can never go above 50 minus 16, or 34. You can determine how many
+lines are currently visible by dividing the current view size by
+the character height in pixels.</p>
+</div>
+<p>When defining your own scrollbar behaviour, you will always need to
+recalculate the scrollbar settings when the window size changes. You
+could therefore put your scrollbar calculations and <em class="xref py py-obj">SetScrollbar</em>
+call into a function named <em class="xref py py-obj">AdjustScrollbars</em>, which can be called
+initially and also from your <a class="reference internal" href="wx.SizeEvent.html#wx-sizeevent"><span class="std std-ref">  wx.SizeEvent</span></a> handler function.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

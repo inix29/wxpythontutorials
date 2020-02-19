@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.SingleInstanceChecker — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.Size.html" rel="next" title="wx.Size"/>
+<link href="wx.SingleChoiceDialog.html" rel="prev" title="wx.SingleChoiceDialog"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.SingleInstanceChecker</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.Size.html" title="wx.Size">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.SingleChoiceDialog.html" title="wx.SingleChoiceDialog">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.SingleInstanceChecker</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.SingleInstanceChecker.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-singleinstancechecker">
+<span id="wx-singleinstancechecker"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.SingleInstanceChecker</strong><a class="headerlink" href="#phoenix-title-wx-singleinstancechecker" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-singleinstancechecker"><span class="std std-ref">  wx.SingleInstanceChecker</span></a>  class allows checking that only a single instance of a program is running.</p>
+<p>To do it, you should create an object of this class. As long as this object is alive, calls to <a class="reference internal" href="#wx.SingleInstanceChecker.IsAnotherRunning" title="wx.SingleInstanceChecker.IsAnotherRunning"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SingleInstanceChecker.IsAnotherRunning</span></code></a>   from other processes will return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>As the object should have the life span as big as possible, it makes sense to create it either as a global or in <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.OnInit</span></code> . For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">OnInit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"SingleApp-</span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">wx</span><span class="o">.</span><span class="n">GetUserId</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">instance</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">SingleInstanceChecker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">IsAnotherRunning</span><span class="p">():</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="s2">"Another instance is running"</span><span class="p">,</span> <span class="s2">"ERROR"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">SingleAppFrame</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">"SingleApp"</span><span class="p">)</span>
+    <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Note that by default <a class="reference internal" href="#wx.SingleInstanceChecker.CreateDefault" title="wx.SingleInstanceChecker.CreateDefault"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SingleInstanceChecker.CreateDefault</span></code></a>   is used to create the checker meaning that it will be initialized differently for different users and thus will allow different users to run the application concurrently which is usually the required behaviour. However if only a single instance of a program should be running system-wide, you need to call <a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>  with a custom name which does <em class="xref py py-obj">not</em>  include <a class="reference internal" href="wx.functions.html#wx.GetUserId" title="wx.GetUserId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetUserId</span></code></a>     .</p>
+<p>This class is implemented for Win32 and Unix platforms (supporting  <code class="docutils literal notranslate"><span class="pre">fcntl()</span></code>   system call, but almost all of modern Unix systems do) only.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>SingleInstanceChecker</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of SingleInstanceChecker" class="inheritance" src="_static/images/inheritance/wx.SingleInstanceChecker_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,203,35" href="wx.SingleInstanceChecker.html" id="node1" shape="rect" title="wx.SingleInstanceChecker  class allows checking that only a single instance of a program is running."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%"/>
+<col style="width: 53%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.SingleInstanceChecker.__init__" title="wx.SingleInstanceChecker.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Initialize the object if it had been created using the default constructor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.SingleInstanceChecker.CreateDefault" title="wx.SingleInstanceChecker.CreateDefault"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateDefault</span></code></a></p></td>
+<td><p>Calls <code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code>   with default name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.SingleInstanceChecker.IsAnotherRunning" title="wx.SingleInstanceChecker.IsAnotherRunning"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsAnotherRunning</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if another copy of this program is already running and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.SingleInstanceChecker">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">SingleInstanceChecker</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SingleInstanceChecker" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SingleInstanceChecker</span><span class="p">()</span>
+
+<span class="n">SingleInstanceChecker</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>SingleInstanceChecker class allows checking that only a single
+instance of a program is running.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.SingleInstanceChecker.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SingleInstanceChecker.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p>You may call <a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   after using it or directly call <a class="reference internal" href="#wx.SingleInstanceChecker.IsAnotherRunning" title="wx.SingleInstanceChecker.IsAnotherRunning"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsAnotherRunning</span></code></a>   in which case <a class="reference internal" href="#wx.SingleInstanceChecker.CreateDefault" title="wx.SingleInstanceChecker.CreateDefault"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateDefault</span></code></a>   will be implicitly used.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, name, path=””)</em></p>
+<p>Constructor calling <a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a> .</p>
+<p>This constructor does exactly the same thing as <a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   but doesn’t allow to check for errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>path</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.SingleInstanceChecker.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em>, <em class="sig-param">path=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SingleInstanceChecker.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the object if it had been created using the default constructor.</p>
+<p>Note that you can’t call <a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   more than once, so calling it if the non default constructor had been used is an error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – Must be given and be as unique as possible. It is used as the mutex name under Win32 and the lock file name under Unix. <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.GetAppName</span></code>   and <a class="reference internal" href="wx.functions.html#wx.GetUserId" title="wx.GetUserId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetUserId</span></code></a>       are commonly used to construct this parameter.</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – The path is optional and is ignored under Win32 and used as the directory to create the lock file in under Unix (default is <a class="reference internal" href="wx.functions.html#wx.GetHomeDir" title="wx.GetHomeDir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetHomeDir</span></code></a>     ).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if initialization failed, it doesn’t mean that another instance is running <a class="reference internal" href="#wx.SingleInstanceChecker.IsAnotherRunning" title="wx.SingleInstanceChecker.IsAnotherRunning"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsAnotherRunning</span></code></a>   to check for it.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One of possible reasons while <a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   may fail on Unix is that the lock file used for checking already exists but was not created by the user. Therefore applications shouldn’t treat failure of this function as fatal condition, because doing so would open them to the possibility of a Denial of Service attack. Instead, they should alert the user about the problem and offer to continue execution without checking if another instance is running.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.SingleInstanceChecker.CreateDefault">
+<code class="sig-name descname">CreateDefault</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SingleInstanceChecker.CreateDefault" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls <a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   with default name.</p>
+<p>This method simply calls <a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   with a string composed of <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.GetAppName</span></code>   and <a class="reference internal" href="wx.functions.html#wx.GetUserId" title="wx.GetUserId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetUserId</span></code></a>     .</p>
+<p>Because this method uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.GetAppName</span></code> , it may only be called after the global application was constructed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.SingleInstanceChecker.IsAnotherRunning">
+<code class="sig-name descname">IsAnotherRunning</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SingleInstanceChecker.IsAnotherRunning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if another copy of this program is already running and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<p>Notice that if the object was created using the default constructor <a class="reference internal" href="#wx.SingleInstanceChecker.Create" title="wx.SingleInstanceChecker.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   hadn’t been called before this method, it will call <a class="reference internal" href="#wx.SingleInstanceChecker.CreateDefault" title="wx.SingleInstanceChecker.CreateDefault"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateDefault</span></code></a>   automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

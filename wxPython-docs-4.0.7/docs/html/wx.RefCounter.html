@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.RefCounter — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.Region.html" rel="next" title="wx.Region"/>
+<link href="wx.Rect2D.html" rel="prev" title="wx.Rect2D"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.RefCounter</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.Region.html" title="wx.Region">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.Rect2D.html" title="wx.Rect2D">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.RefCounter</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.RefCounter.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-refcounter">
+<span id="wx-refcounter"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.RefCounter</strong><a class="headerlink" href="#phoenix-title-wx-refcounter" title="Permalink to this headline">¶</a></h1>
+<p>This class is used to manage reference-counting providing a simple interface and a counter.</p>
+<p><a class="reference internal" href="#wx-refcounter"><span class="std std-ref">  wx.RefCounter</span></a>  can be easily used together with <em class="xref py py-obj">ObjectDataPtr</em>       to ensure that no calls to <a class="reference internal" href="#wx.RefCounter.DecRef" title="wx.RefCounter.DecRef"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.RefCounter.DecRef</span></code></a>   are missed - thus avoiding memory leaks.</p>
+<p><em class="xref py py-obj">wx.ObjectRefData</em>       is a typedef to <a class="reference internal" href="#wx-refcounter"><span class="std std-ref">  wx.RefCounter</span></a>  and is used as the built-in reference counted storage for Object-derived classes.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Object.html#wx-object"><span class="std std-ref">  wx.Object</span></a>, <em class="xref py py-obj">wx.ObjectRefData</em>     , <em class="xref py py-obj">ObjectDataPtr</em>     , <a class="reference internal" href="refcount_overview.html#reference-counting"><span class="std std-ref">Reference Counting</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>RefCounter</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of RefCounter" class="inheritance" src="_static/images/inheritance/wx.RefCounter_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,125,35" href="wx.RefCounter.html" id="node1" shape="rect" title="This class is used to manage reference-counting providing a simple interface and a counter."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.dataview.DataViewModel.html#wx-dataview-dataviewmodel"><span class="std std-ref">  wx.dataview.DataViewModel</span></a>, <a class="reference internal" href="wx.grid.GridCellAttr.html#wx-grid-gridcellattr"><span class="std std-ref">  wx.grid.GridCellAttr</span></a>, <a class="reference internal" href="wx.grid.GridCellEditor.html#wx-grid-gridcelleditor"><span class="std std-ref">  wx.grid.GridCellEditor</span></a>, <a class="reference internal" href="wx.grid.GridCellRenderer.html#wx-grid-gridcellrenderer"><span class="std std-ref">  wx.grid.GridCellRenderer</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%"/>
+<col style="width: 66%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.RefCounter.__init__" title="wx.RefCounter.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.RefCounter.DecRef" title="wx.RefCounter.DecRef"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DecRef</span></code></a></p></td>
+<td><p>Decrements the reference count associated with this shared data and, if it reaches zero, destroys this instance of <a class="reference internal" href="#wx-refcounter"><span class="std std-ref">  wx.RefCounter</span></a>  releasing its memory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.RefCounter.GetRefCount" title="wx.RefCounter.GetRefCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRefCount</span></code></a></p></td>
+<td><p>Returns the reference count associated with this shared data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.RefCounter.IncRef" title="wx.RefCounter.IncRef"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IncRef</span></code></a></p></td>
+<td><p>Increments the reference count associated with this shared data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">~wxRefCounter</span></code></p></td>
+<td><p>Destructor.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.RefCounter.RefCount" title="wx.RefCounter.RefCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">RefCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.RefCounter.GetRefCount" title="wx.RefCounter.GetRefCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRefCount</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.RefCounter">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">RefCounter</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RefCounter" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RefCounter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This class is used to manage reference-counting providing a simple
+interface and a counter.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.RefCounter.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RefCounter.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+<p>Initialises the internal reference count to 1.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RefCounter.DecRef">
+<code class="sig-name descname">DecRef</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RefCounter.DecRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrements the reference count associated with this shared data and, if it reaches zero, destroys this instance of <a class="reference internal" href="#wx-refcounter"><span class="std std-ref">  wx.RefCounter</span></a>  releasing its memory.</p>
+<p>Please note that after calling this function, the caller should absolutely avoid to use the pointer to this instance since it may not be valid anymore.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RefCounter.GetRefCount">
+<code class="sig-name descname">GetRefCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RefCounter.GetRefCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reference count associated with this shared data.</p>
+<p>When this goes to zero during a <a class="reference internal" href="#wx.RefCounter.DecRef" title="wx.RefCounter.DecRef"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DecRef</span></code></a>   call, the object will auto-free itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.RefCounter.IncRef">
+<code class="sig-name descname">IncRef</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.RefCounter.IncRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increments the reference count associated with this shared data.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt>
+<code class="sig-name descname">~wxRefCounter(self)</code></dt>
+<dd><p>Destructor.</p>
+<p>It’s declared  <code class="docutils literal notranslate"><span class="pre">protected</span></code>   so that  <a class="reference internal" href="#wx-refcounter"><span class="std std-ref">  wx.RefCounter</span></a>  instances will never be destroyed directly but only as result of a <a class="reference internal" href="#wx.RefCounter.DecRef" title="wx.RefCounter.DecRef"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DecRef</span></code></a>   call.</p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.RefCounter.RefCount">
+<code class="sig-name descname">RefCount</code><a class="headerlink" href="#wx.RefCounter.RefCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.RefCounter.GetRefCount" title="wx.RefCounter.GetRefCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRefCount</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

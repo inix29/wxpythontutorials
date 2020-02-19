@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>App Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="bitmap_overview.html" rel="next" title="Bitmaps and Icons"/>
+<link href="hello_world.html" rel="prev" title="wxPython Introduction and Hello World"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>App Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="bitmap_overview.html" title="Bitmaps and Icons">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="hello_world.html" title="wxPython Introduction and Hello World">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>App Overview</strong></a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#application-shutdown">Application Shutdown</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/app_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-app-overview">
+<span id="app-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>App Overview</strong><a class="headerlink" href="#phoenix-title-app-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>A wxPython application does not have a main procedure; the equivalent
+is the <a class="reference internal" href="wx.AppConsole.html#wx.AppConsole.OnInit" title="wx.AppConsole.OnInit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppConsole.OnInit</span></code></a> member defined for a class derived
+from <a class="reference internal" href="wx.App.html#wx-app"><span class="std std-ref">  wx.App</span></a>.</p>
+<p><em class="xref py py-obj">OnInit</em> will usually create a top window as a bare minimum. Unlike in
+earlier versions of wxPython, <em class="xref py py-obj">OnInit</em> does not return a frame.
+Instead it returns a boolean value which indicates whether processing
+should continue (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<p>An application closes by destroying all windows. Because all frames
+must be destroyed for the application to exit, it is advisable to use
+parent frames wherever possible when creating new frames, so that
+deleting the top level frame will automatically delete child frames.
+The alternative is to explicitly delete child frames in the top-level
+frame’s <a class="reference internal" href="wx.CloseEvent.html#wx-closeevent"><span class="std std-ref">  wx.CloseEvent</span></a> handler.</p>
+<p>In emergencies the <a class="reference internal" href="wx.functions.html#wx.Exit" title="wx.Exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.Exit</span></code></a> function can be called to kill the
+application however, normally the application shuts down automatically
+when the last top-level window closes. See
+<a class="reference internal" href="#application-shutdown"><span class="std std-ref">Application Shutdown</span></a>.</p>
+<p>An example of defining an application follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DerivedApp</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">OnInit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">the_frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Other initialization code...</span>
+        <span class="n">the_frame</span><span class="o">.</span><span class="n">Show</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="application-shutdown">
+<span id="id1"></span><h2>Application Shutdown<a class="headerlink" href="#application-shutdown" title="Permalink to this headline">¶</a></h2>
+<p>The application normally shuts down when the last of its top level
+windows is closed. This is normally the expected behaviour and means
+that it is enough to call <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Close`()</span> <span class="pre">in</span> <span class="pre">response</span> <span class="pre">to</span> <span class="pre">the</span>
+<span class="pre">"Exit"</span> <span class="pre">menu</span> <span class="pre">command</span> <span class="pre">if</span> <span class="pre">your</span> <span class="pre">program</span> <span class="pre">has</span> <span class="pre">a</span> <span class="pre">single</span> <span class="pre">top</span> <span class="pre">level</span> <span class="pre">window.</span>  <span class="pre">If</span>
+<span class="pre">this</span> <span class="pre">behavior</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">desirable</span> <span class="pre">:meth:`wx.PyApp.SetExitOnFrameDelete</span></code> can
+be called to change it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that such logic doesn’t apply for the windows shown
+before the program enters the main loop: in other words, you can
+safely show a dialog from <a class="reference internal" href="wx.AppConsole.html#wx.AppConsole.OnInit" title="wx.AppConsole.OnInit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppConsole.OnInit</span></code></a> and not be
+afraid that your application terminates when this dialog – which
+is the last top level window for the moment – is closed.</p>
+</div>
+<p>Another aspect of the application shutdown is
+<a class="reference internal" href="wx.AppConsole.html#wx.AppConsole.OnExit" title="wx.AppConsole.OnExit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppConsole.OnExit</span></code></a> which is called when the application
+exits but before wxPython cleans up its internal structures.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

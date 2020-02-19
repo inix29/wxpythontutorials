@@ -1,0 +1,1171 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>RichTextCtrl Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="scrolling_overview.html" rel="next" title="Scrolled Windows Overview"/>
+<link href="refcount_overview.html" rel="prev" title="Reference Counting Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>RichTextCtrl Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="scrolling_overview.html" title="Scrolled Windows Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="refcount_overview.html" title="Reference Counting Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>RichTextCtrl Overview</strong></a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#related-classes">Related Classes</a></li>
+<li><a class="reference internal" href="#code-example">Code Example</a></li>
+<li><a class="reference internal" href="#text-styles">Text Styles</a></li>
+<li><a class="reference internal" href="#included-dialogs">Included Dialogs</a></li>
+<li><a class="reference internal" href="#how-richtextctrl-is-implemented">How RichTextCtrl is Implemented</a></li>
+<li><a class="reference internal" href="#nested-objects">Nested Objects</a></li>
+<li><a class="reference internal" href="#context-menus-and-property-dialogs">Context Menus and Property Dialogs</a></li>
+<li><a class="reference internal" href="#development-roadmap">Development Roadmap</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bugs">Bugs</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/richtextctrl_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-richtextctrl-overview">
+<span id="richtextctrl-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>RichTextCtrl Overview</strong><a class="headerlink" href="#phoenix-title-richtextctrl-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> provides a generic implementation of a
+rich text editor that can handle different character styles, paragraph
+formatting, and images.</p>
+<p>It’s aimed at editing ‘natural’ language text - if you need an editor
+that supports code editing, <a class="reference internal" href="wx.stc.StyledTextCtrl.html#wx.stc.StyledTextCtrl" title="wx.stc.StyledTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.stc.StyledTextCtrl</span></code></a> is a better choice.</p>
+<p>Despite its name, it cannot currently read or write RTF (rich text
+format) files. Instead, it uses its own XML format, and can also read
+and write plain text. In future we expect to provide RTF or
+OpenDocument file capabilities. Custom file formats can be supported
+by creating additional file handlers and registering them with the
+control.</p>
+<p><a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> is largely compatible with the
+<a class="reference internal" href="wx.TextCtrl.html#wx.TextCtrl" title="wx.TextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextCtrl</span></code></a> API, but extends it where necessary. The control can
+be used where the native rich text capabilities of <a class="reference internal" href="wx.TextCtrl.html#wx.TextCtrl" title="wx.TextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextCtrl</span></code></a>
+are not adequate (this is particularly true on Windows) and where more
+direct access to the content representation is required. It is
+difficult and inefficient to read the style information in a
+<a class="reference internal" href="wx.TextCtrl.html#wx.TextCtrl" title="wx.TextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextCtrl</span></code></a>, whereas this information is readily available in
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a>. Since it’s written in pure wxWidgets,
+any customizations you make to <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> will be
+reflected on all platforms.</p>
+<p><a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> supports basic printing via the
+easy-to-use <a class="reference internal" href="wx.richtext.RichTextPrinting.html#wx.richtext.RichTextPrinting" title="wx.richtext.RichTextPrinting"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextPrinting</span></code></a> class. Creating
+applications with simple word processing features is simplified with
+the inclusion of <a class="reference internal" href="wx.richtext.RichTextFormattingDialog.html#wx.richtext.RichTextFormattingDialog" title="wx.richtext.RichTextFormattingDialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextFormattingDialog</span></code></a>, a tabbed
+dialog allowing interactive tailoring of paragraph and character
+styling. Also provided is the multi-purpose dialog
+<a class="reference internal" href="wx.richtext.RichTextStyleOrganiserDialog.html#wx.richtext.RichTextStyleOrganiserDialog" title="wx.richtext.RichTextStyleOrganiserDialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleOrganiserDialog</span></code></a> that can be used for
+managing style definitions, browsing styles and applying them, or
+selecting list styles with a renumber option.</p>
+<p>There are a few disadvantages to using
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a>. It is not native, so does not behave
+exactly as a native <a class="reference internal" href="wx.TextCtrl.html#wx.TextCtrl" title="wx.TextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextCtrl</span></code></a>, although common editing
+conventions are followed. Users may miss the built-in spelling
+correction on Mac OS X, or any special character input that may be
+provided by the native control. It would also be a poor choice if
+intended users rely on screen readers that would be not work well with
+non-native text input implementation. You might mitigate this by
+providing the choice between <a class="reference internal" href="wx.TextCtrl.html#wx.TextCtrl" title="wx.TextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextCtrl</span></code></a> and
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a>, with fewer features in the former
+case.</p>
+<p>A good way to understand <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a>’s
+capabilities is to run the sample in the wxPython demo, and browse the
+code.</p>
+<div class="section" id="related-classes">
+<h3>Related Classes<a class="headerlink" href="#related-classes" title="Permalink to this headline">¶</a></h3>
+<p><strong>Major classes:</strong> <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextBuffer.html#wx.richtext.RichTextBuffer" title="wx.richtext.RichTextBuffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextBuffer</span></code></a>, <a class="reference internal" href="wx.richtext.RichTextEvent.html#wx.richtext.RichTextEvent" title="wx.richtext.RichTextEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextEvent</span></code></a></p>
+<dl class="simple">
+<dt><strong>Helper classes:</strong> <a class="reference internal" href="wx.TextAttr.html#wx.TextAttr" title="wx.TextAttr"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextAttr</span></code></a>,</dt><dd><p><a class="reference internal" href="wx.richtext.RichTextRange.html#wx.richtext.RichTextRange" title="wx.richtext.RichTextRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextRange</span></code></a></p>
+</dd>
+</dl>
+<p><strong>File handler classes:</strong> <a class="reference internal" href="wx.richtext.RichTextFileHandler.html#wx.richtext.RichTextFileHandler" title="wx.richtext.RichTextFileHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextFileHandler</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextHTMLHandler.html#wx.richtext.RichTextHTMLHandler" title="wx.richtext.RichTextHTMLHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextHTMLHandler</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextXMLHandler.html#wx.richtext.RichTextXMLHandler" title="wx.richtext.RichTextXMLHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextXMLHandler</span></code></a></p>
+<p><strong>Style classes:</strong>
+<a class="reference internal" href="wx.richtext.RichTextCharacterStyleDefinition.html#wx.richtext.RichTextCharacterStyleDefinition" title="wx.richtext.RichTextCharacterStyleDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCharacterStyleDefinition</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextParagraphStyleDefinition.html#wx.richtext.RichTextParagraphStyleDefinition" title="wx.richtext.RichTextParagraphStyleDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextParagraphStyleDefinition</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextListStyleDefinition.html#wx.richtext.RichTextListStyleDefinition" title="wx.richtext.RichTextListStyleDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextListStyleDefinition</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextStyleSheet.html#wx.richtext.RichTextStyleSheet" title="wx.richtext.RichTextStyleSheet"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleSheet</span></code></a></p>
+<p><strong>Additional controls:</strong> <a class="reference internal" href="wx.richtext.RichTextStyleComboCtrl.html#wx.richtext.RichTextStyleComboCtrl" title="wx.richtext.RichTextStyleComboCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleComboCtrl</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextStyleListBox.html#wx.richtext.RichTextStyleListBox" title="wx.richtext.RichTextStyleListBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleListBox</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextStyleListCtrl.html#wx.richtext.RichTextStyleListCtrl" title="wx.richtext.RichTextStyleListCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleListCtrl</span></code></a></p>
+<p><strong>Printing classes:</strong> <a class="reference internal" href="wx.richtext.RichTextPrinting.html#wx.richtext.RichTextPrinting" title="wx.richtext.RichTextPrinting"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextPrinting</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextPrintout.html#wx.richtext.RichTextPrintout" title="wx.richtext.RichTextPrintout"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextPrintout</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextHeaderFooterData.html#wx.richtext.RichTextHeaderFooterData" title="wx.richtext.RichTextHeaderFooterData"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextHeaderFooterData</span></code></a></p>
+<p><strong>Dialog classes:</strong> <a class="reference internal" href="wx.richtext.RichTextStyleOrganiserDialog.html#wx.richtext.RichTextStyleOrganiserDialog" title="wx.richtext.RichTextStyleOrganiserDialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleOrganiserDialog</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextFormattingDialog.html#wx.richtext.RichTextFormattingDialog" title="wx.richtext.RichTextFormattingDialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextFormattingDialog</span></code></a>,
+<a class="reference internal" href="wx.richtext.SymbolPickerDialog.html#wx.richtext.SymbolPickerDialog" title="wx.richtext.SymbolPickerDialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolPickerDialog</span></code></a></p>
+</div>
+<div class="section" id="code-example">
+<h3>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h3>
+<p>This is taken from the wxPython demo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wx</span>
+<span class="kn">import</span> <span class="nn">wx.richtext</span> <span class="k">as</span> <span class="nn">rt</span>
+<span class="kn">import</span> <span class="nn">images</span>
+
+<span class="c1">#----------------------------------------------------------------------</span>
+
+<span class="k">class</span> <span class="nc">RichTextFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">MakeMenuBar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">MakeToolBar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CreateStatusBar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetStatusText</span><span class="p">(</span><span class="s2">"Welcome to wx.richtext.RichTextCtrl!"</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VSCROLL</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">HSCROLL</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">NO_BORDER</span><span class="p">);</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">CallAfter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetFocus</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Freeze</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginSuppressUndo</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginParagraphSpacing</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginAlignment</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ALIGNMENT_CENTRE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginBold</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginFontSize</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"Welcome to wxRichTextCtrl, a wxWidgets control for editing and presenting "</span> \
+                           <span class="s2">"styled text and images"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndFontSize</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginItalic</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"by Julian Smart"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndItalic</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndBold</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteImage</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">_rt_zebra</span><span class="o">.</span><span class="n">GetImage</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndAlignment</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"What can you do with this thing? "</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteImage</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">_rt_smiley</span><span class="o">.</span><span class="n">GetImage</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">" Well, you can change text "</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginTextColour</span><span class="p">((</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"colour, like this red bit."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndTextColour</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginTextColour</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">" And this blue bit."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndTextColour</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">" Naturally you can make things "</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginBold</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"bold "</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndBold</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginItalic</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"or italic "</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndItalic</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginUnderline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"or underlined."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndUnderline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginFontSize</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">" Different font sizes on the same line is allowed, too."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndFontSize</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">" Next we'll show an indented paragraph."</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginLeftIndent</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"It was in January, the most down-trodden month of an Edinburgh winter. "</span> \
+                           <span class="s2">"An attractive woman came into the cafe, which is nothing remarkable."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndLeftIndent</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"Next, we'll show a first-line indent, achieved using BeginLeftIndent(100, -40)."</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginLeftIndent</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"It was in January, the most down-trodden month of an Edinburgh winter. "</span> \
+                           <span class="s2">"An attractive woman came into the cafe, which is nothing remarkable."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndLeftIndent</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"Numbered bullets are possible, again using sub-indents:"</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginNumberedBullet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"This is my first item. Note that wxRichTextCtrl doesn't automatically do numbering, "</span> \
+                           <span class="s2">"but this will be added later."</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndNumberedBullet</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginNumberedBullet</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"This is my second item."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndNumberedBullet</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"The following paragraph is right-indented:"</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginRightIndent</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"It was in January, the most down-trodden month of an Edinburgh winter. "</span> \
+                           <span class="s2">"An attractive woman came into the cafe, which is nothing remarkable."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndRightIndent</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"The following paragraph is right-aligned with 1.5 line spacing:"</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginAlignment</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ALIGNMENT_RIGHT</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginLineSpacing</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LINE_SPACING_HALF</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"It was in January, the most down-trodden month of an Edinburgh winter. "</span> \
+                           <span class="s2">"An attractive woman came into the cafe, which is nothing remarkable."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndLineSpacing</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndAlignment</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"Other notable features of wxRichTextCtrl include:"</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginSymbolBullet</span><span class="p">(</span><span class="s1">'*'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"Compatibility with wxTextCtrl API"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndSymbolBullet</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginSymbolBullet</span><span class="p">(</span><span class="s1">'*'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"Easy stack-based BeginXXX()...EndXXX() style setting in addition to SetStyle()"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndSymbolBullet</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginSymbolBullet</span><span class="p">(</span><span class="s1">'*'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"XML loading and saving"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndSymbolBullet</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginSymbolBullet</span><span class="p">(</span><span class="s1">'*'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"Undo/Redo, with batching option and Undo suppressing"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndSymbolBullet</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginSymbolBullet</span><span class="p">(</span><span class="s1">'*'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"Clipboard copy and paste"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndSymbolBullet</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginSymbolBullet</span><span class="p">(</span><span class="s1">'*'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"wxRichTextStyleSheet with named character and paragraph styles, and control for "</span> \
+                           <span class="s2">"applying named styles"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndSymbolBullet</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginSymbolBullet</span><span class="p">(</span><span class="s1">'*'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"A design that can easily be extended to other content types, ultimately with text "</span> \
+                           <span class="s2">"boxes, tables, controls, and so on"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndSymbolBullet</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginSymbolBullet</span><span class="p">(</span><span class="s1">'*'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+
+        <span class="c1"># Make a style suitable for showing a URL</span>
+        <span class="n">urlStyle</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">urlStyle</span><span class="o">.</span><span class="n">SetTextColour</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>
+        <span class="n">urlStyle</span><span class="o">.</span><span class="n">SetFontUnderlined</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"RichTextCtrl can also display URLs, such as this one: "</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginStyle</span><span class="p">(</span><span class="n">urlStyle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginURL</span><span class="p">(</span><span class="s2">"http://wxPython.org/"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"The wxPython Web Site"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndURL</span><span class="p">();</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndStyle</span><span class="p">();</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">". Click on the URL to generate an event."</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_TEXT_URL</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnURL</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Newline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">WriteText</span><span class="p">(</span><span class="s2">"Note: this sample content was generated programmatically from within the "</span> \
+                           <span class="s2">"MyFrame constructor "</span> \
+                           <span class="s2">"in the demo. The images were loaded from inline XPMs. Enjoy wxRichTextCtrl!"</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndParagraphSpacing</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">EndSuppressUndo</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">Thaw</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">OnURL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">GetString</span><span class="p">(),</span> <span class="s2">"URL Clicked"</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnFileOpen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="c1"># This gives us a string suitable for the file dialog based on</span>
+        <span class="c1"># the file handlers that are loaded</span>
+        <span class="n">wildcard</span><span class="p">,</span> <span class="n">types</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextBuffer</span><span class="o">.</span><span class="n">GetExtWildcard</span><span class="p">(</span><span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"Choose a filename"</span><span class="p">,</span>
+                            <span class="n">wildcard</span><span class="o">=</span><span class="n">wildcard</span><span class="p">,</span>
+                            <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">OPEN</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+                <span class="n">fileType</span> <span class="o">=</span> <span class="n">types</span><span class="p">[</span><span class="n">dlg</span><span class="o">.</span><span class="n">GetFilterIndex</span><span class="p">()]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">LoadFile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">fileType</span><span class="p">)</span>
+        <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">OnFileSave</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetFilename</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">OnFileSaveAs</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SaveFile</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">OnFileSaveAs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">wildcard</span><span class="p">,</span> <span class="n">types</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextBuffer</span><span class="o">.</span><span class="n">GetExtWildcard</span><span class="p">(</span><span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"Choose a filename"</span><span class="p">,</span>
+                            <span class="n">wildcard</span><span class="o">=</span><span class="n">wildcard</span><span class="p">,</span>
+                            <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">SAVE</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+                <span class="n">fileType</span> <span class="o">=</span> <span class="n">types</span><span class="p">[</span><span class="n">dlg</span><span class="o">.</span><span class="n">GetFilterIndex</span><span class="p">()]</span>
+                <span class="n">ext</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextBuffer</span><span class="o">.</span><span class="n">FindHandlerByType</span><span class="p">(</span><span class="n">fileType</span><span class="p">)</span><span class="o">.</span><span class="n">GetExtension</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="p">):</span>
+                    <span class="n">path</span> <span class="o">+=</span> <span class="s1">'.'</span> <span class="o">+</span> <span class="n">ext</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SaveFile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">fileType</span><span class="p">)</span>
+
+        <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">OnFileViewHTML</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="c1"># Get an instance of the html file handler, use it to save the</span>
+        <span class="c1"># document to a StringIO stream, and then display the</span>
+        <span class="c1"># resulting html text in a dialog with a HtmlWindow.</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextHTMLHandler</span><span class="p">()</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">RICHTEXT_HANDLER_SAVE_IMAGES_TO_MEMORY</span><span class="p">)</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">SetFontSizeMapping</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+
+        <span class="kn">import</span> <span class="nn">cStringIO</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">cStringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">handler</span><span class="o">.</span><span class="n">SaveStream</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetBuffer</span><span class="p">(),</span> <span class="n">stream</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="kn">import</span> <span class="nn">wx.html</span>
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"HTML"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">DEFAULT_DIALOG_STYLE</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RESIZE_BORDER</span><span class="p">)</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">HtmlWindow</span><span class="p">(</span><span class="n">dlg</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">400</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BORDER_SUNKEN</span><span class="p">)</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">SetPage</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+        <span class="n">btn</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">dlg</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
+        <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">btn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">CENTER</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">dlg</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Fit</span><span class="p">(</span><span class="n">dlg</span><span class="p">)</span>
+
+        <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span>
+
+        <span class="n">handler</span><span class="o">.</span><span class="n">DeleteTemporaryImages</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">OnFileExit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">Close</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnBold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">ApplyBoldToSelection</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">OnItalic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">ApplyItalicToSelection</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">OnUnderline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">ApplyUnderlineToSelection</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">OnAlignLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">ApplyAlignmentToSelection</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ALIGNMENT_LEFT</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnAlignRight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">ApplyAlignmentToSelection</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ALIGNMENT_RIGHT</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnAlignCenter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">ApplyAlignmentToSelection</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ALIGNMENT_CENTRE</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnIndentMore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LEFT_INDENT</span><span class="p">)</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetInsertionPoint</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextRange</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">HasSelection</span><span class="p">():</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetSelectionRange</span><span class="p">()</span>
+
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetLeftIndent</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetLeftIndent</span><span class="p">()</span> <span class="o">+</span> <span class="mi">100</span><span class="p">)</span>
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LEFT_INDENT</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetStyle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnIndentLess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LEFT_INDENT</span><span class="p">)</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetInsertionPoint</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextRange</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">HasSelection</span><span class="p">():</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetSelectionRange</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">GetLeftIndent</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetLeftIndent</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetLeftIndent</span><span class="p">()</span> <span class="o">-</span> <span class="mi">100</span><span class="p">)</span>
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LEFT_INDENT</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetStyle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnParagraphSpacingMore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_PARA_SPACING_AFTER</span><span class="p">)</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetInsertionPoint</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextRange</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">HasSelection</span><span class="p">():</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetSelectionRange</span><span class="p">()</span>
+
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetParagraphSpacingAfter</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetParagraphSpacingAfter</span><span class="p">()</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span>
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_PARA_SPACING_AFTER</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetStyle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnParagraphSpacingLess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_PARA_SPACING_AFTER</span><span class="p">)</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetInsertionPoint</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextRange</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">HasSelection</span><span class="p">():</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetSelectionRange</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">GetParagraphSpacingAfter</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
+                <span class="n">attr</span><span class="o">.</span><span class="n">SetParagraphSpacingAfter</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetParagraphSpacingAfter</span><span class="p">()</span> <span class="o">-</span> <span class="mi">20</span><span class="p">);</span>
+                <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_PARA_SPACING_AFTER</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetStyle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnLineSpacingSingle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LINE_SPACING</span><span class="p">)</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetInsertionPoint</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextRange</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">HasSelection</span><span class="p">():</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetSelectionRange</span><span class="p">()</span>
+
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LINE_SPACING</span><span class="p">)</span>
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetLineSpacing</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetStyle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnLineSpacingHalf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LINE_SPACING</span><span class="p">)</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetInsertionPoint</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextRange</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">HasSelection</span><span class="p">():</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetSelectionRange</span><span class="p">()</span>
+
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LINE_SPACING</span><span class="p">)</span>
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetLineSpacing</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetStyle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnLineSpacingDouble</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LINE_SPACING</span><span class="p">)</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetInsertionPoint</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextRange</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">HasSelection</span><span class="p">():</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetSelectionRange</span><span class="p">()</span>
+
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_LINE_SPACING</span><span class="p">)</span>
+            <span class="n">attr</span><span class="o">.</span><span class="n">SetLineSpacing</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetStyle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">OnFont</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">HasSelection</span><span class="p">():</span>
+            <span class="k">return</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetSelectionRange</span><span class="p">()</span>
+        <span class="n">fontData</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FontData</span><span class="p">()</span>
+        <span class="n">fontData</span><span class="o">.</span><span class="n">EnableEffects</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_FONT</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetInsertionPoint</span><span class="p">(),</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="n">fontData</span><span class="o">.</span><span class="n">SetInitialFont</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetFont</span><span class="p">())</span>
+
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FontDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fontData</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+            <span class="n">fontData</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetFontData</span><span class="p">()</span>
+            <span class="n">font</span> <span class="o">=</span> <span class="n">fontData</span><span class="o">.</span><span class="n">GetChosenFont</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">font</span><span class="p">:</span>
+                <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_FONT</span><span class="p">)</span>
+                <span class="n">attr</span><span class="o">.</span><span class="n">SetFont</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetStyle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">OnColour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">colourData</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ColourData</span><span class="p">()</span>
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">TextAttrEx</span><span class="p">()</span>
+        <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_TEXT_COLOUR</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetInsertionPoint</span><span class="p">(),</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="n">colourData</span><span class="o">.</span><span class="n">SetColour</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetTextColour</span><span class="p">())</span>
+
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ColourDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colourData</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+            <span class="n">colourData</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetColourData</span><span class="p">()</span>
+            <span class="n">colour</span> <span class="o">=</span> <span class="n">colourData</span><span class="o">.</span><span class="n">GetColour</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">colour</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">HasSelection</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">BeginTextColour</span><span class="p">(</span><span class="n">colour</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">GetSelectionRange</span><span class="p">()</span>
+                    <span class="n">attr</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ATTR_TEXT_COLOUR</span><span class="p">)</span>
+                    <span class="n">attr</span><span class="o">.</span><span class="n">SetTextColour</span><span class="p">(</span><span class="n">colour</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">SetStyle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
+
+
+
+    <span class="k">def</span> <span class="nf">OnUpdateBold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">evt</span><span class="o">.</span><span class="n">Check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">IsSelectionBold</span><span class="p">())</span>
+
+
+    <span class="k">def</span> <span class="nf">OnUpdateItalic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">evt</span><span class="o">.</span><span class="n">Check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">IsSelectionItalics</span><span class="p">())</span>
+
+
+    <span class="k">def</span> <span class="nf">OnUpdateUnderline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">evt</span><span class="o">.</span><span class="n">Check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">IsSelectionUnderlined</span><span class="p">())</span>
+
+
+    <span class="k">def</span> <span class="nf">OnUpdateAlignLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">evt</span><span class="o">.</span><span class="n">Check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">IsSelectionAligned</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ALIGNMENT_LEFT</span><span class="p">))</span>
+
+
+    <span class="k">def</span> <span class="nf">OnUpdateAlignCenter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">evt</span><span class="o">.</span><span class="n">Check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">IsSelectionAligned</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ALIGNMENT_CENTRE</span><span class="p">))</span>
+
+
+    <span class="k">def</span> <span class="nf">OnUpdateAlignRight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">evt</span><span class="o">.</span><span class="n">Check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">IsSelectionAligned</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">TEXT_ALIGNMENT_RIGHT</span><span class="p">))</span>
+
+
+    <span class="k">def</span> <span class="nf">ForwardEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="c1"># The RichTextCtrl can handle menu and update events for undo,</span>
+        <span class="c1"># redo, cut, copy, paste, delete, and select all, so just</span>
+        <span class="c1"># forward the event to it.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span><span class="o">.</span><span class="n">ProcessEvent</span><span class="p">(</span><span class="n">evt</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">MakeMenuBar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">doBind</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">handler</span><span class="p">,</span> <span class="n">updateUI</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_MENU</span><span class="p">,</span> <span class="n">handler</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">updateUI</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_UPDATE_UI</span><span class="p">,</span> <span class="n">updateUI</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+        <span class="n">fileMenu</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">fileMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;Open</span><span class="se">\t</span><span class="s2">Ctrl+O"</span><span class="p">,</span> <span class="s2">"Open a file"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnFileOpen</span> <span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">fileMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;Save</span><span class="se">\t</span><span class="s2">Ctrl+S"</span><span class="p">,</span> <span class="s2">"Save a file"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnFileSave</span> <span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">fileMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;Save As...</span><span class="se">\t</span><span class="s2">F12"</span><span class="p">,</span> <span class="s2">"Save to a new file"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnFileSaveAs</span> <span class="p">)</span>
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">fileMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;View as HTML"</span><span class="p">,</span> <span class="s2">"View HTML"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnFileViewHTML</span><span class="p">)</span>
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">fileMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"E&amp;xit</span><span class="se">\t</span><span class="s2">Ctrl+Q"</span><span class="p">,</span> <span class="s2">"Quit this program"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnFileExit</span> <span class="p">)</span>
+
+        <span class="n">editMenu</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">editMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_UNDO</span><span class="p">,</span> <span class="s2">"&amp;Undo</span><span class="se">\t</span><span class="s2">Ctrl+Z"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">editMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_REDO</span><span class="p">,</span> <span class="s2">"&amp;Redo</span><span class="se">\t</span><span class="s2">Ctrl+Y"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span> <span class="p">)</span>
+        <span class="n">editMenu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">editMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CUT</span><span class="p">,</span> <span class="s2">"Cu&amp;t</span><span class="se">\t</span><span class="s2">Ctrl+X"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span> <span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">editMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_COPY</span><span class="p">,</span> <span class="s2">"&amp;Copy</span><span class="se">\t</span><span class="s2">Ctrl+C"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">editMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_PASTE</span><span class="p">,</span> <span class="s2">"&amp;Paste</span><span class="se">\t</span><span class="s2">Ctrl+V"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">editMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CLEAR</span><span class="p">,</span> <span class="s2">"&amp;Delete</span><span class="se">\t</span><span class="s2">Del"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">)</span>
+        <span class="n">editMenu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">editMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_SELECTALL</span><span class="p">,</span> <span class="s2">"Select A&amp;ll</span><span class="se">\t</span><span class="s2">Ctrl+A"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span> <span class="p">)</span>
+
+        <span class="n">formatMenu</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendCheckItem</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;Bold</span><span class="se">\t</span><span class="s2">Ctrl+B"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnBold</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateBold</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendCheckItem</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;Italic</span><span class="se">\t</span><span class="s2">Ctrl+I"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnItalic</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateItalic</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendCheckItem</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;Underline</span><span class="se">\t</span><span class="s2">Ctrl+U"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnUnderline</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateUnderline</span><span class="p">)</span>
+        <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendCheckItem</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"L&amp;eft Align"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnAlignLeft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateAlignLeft</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendCheckItem</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;Centre"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnAlignCenter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateAlignCenter</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendCheckItem</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;Right Align"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OnAlignRight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateAlignRight</span><span class="p">)</span>
+        <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Indent &amp;More"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnIndentMore</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Indent &amp;Less"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnIndentLess</span><span class="p">)</span>
+        <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Increase Paragraph &amp;Spacing"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnParagraphSpacingMore</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Decrease &amp;Paragraph Spacing"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnParagraphSpacingLess</span><span class="p">)</span>
+        <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Normal Line Spacing"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnLineSpacingSingle</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"1.5 Line Spacing"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnLineSpacingHalf</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Double Line Spacing"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnLineSpacingDouble</span><span class="p">)</span>
+        <span class="n">formatMenu</span><span class="o">.</span><span class="n">AppendSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">formatMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"&amp;Font..."</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnFont</span><span class="p">)</span>
+
+        <span class="n">mb</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">()</span>
+        <span class="n">mb</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">fileMenu</span><span class="p">,</span> <span class="s2">"&amp;File"</span><span class="p">)</span>
+        <span class="n">mb</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">editMenu</span><span class="p">,</span> <span class="s2">"&amp;Edit"</span><span class="p">)</span>
+        <span class="n">mb</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">formatMenu</span><span class="p">,</span> <span class="s2">"F&amp;ormat"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetMenuBar</span><span class="p">(</span><span class="n">mb</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">MakeToolBar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">doBind</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">handler</span><span class="p">,</span> <span class="n">updateUI</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_TOOL</span><span class="p">,</span> <span class="n">handler</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">updateUI</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_UPDATE_UI</span><span class="p">,</span> <span class="n">updateUI</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+        <span class="n">tbar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CreateToolBar</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_open</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Open"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnFileOpen</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_save</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Save"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnFileSave</span><span class="p">)</span>
+        <span class="n">tbar</span><span class="o">.</span><span class="n">AddSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CUT</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_cut</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Cut"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_COPY</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_copy</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Copy"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_PASTE</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_paste</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Paste"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">)</span>
+        <span class="n">tbar</span><span class="o">.</span><span class="n">AddSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_UNDO</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_undo</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Undo"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_REDO</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_redo</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Redo"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ForwardEvent</span><span class="p">)</span>
+        <span class="n">tbar</span><span class="o">.</span><span class="n">AddSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_bold</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span> <span class="n">isToggle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Bold"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnBold</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateBold</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_italic</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span> <span class="n">isToggle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Italic"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnItalic</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateItalic</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_underline</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span> <span class="n">isToggle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Underline"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUnderline</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateUnderline</span><span class="p">)</span>
+        <span class="n">tbar</span><span class="o">.</span><span class="n">AddSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_alignleft</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span> <span class="n">isToggle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Align Left"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnAlignLeft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateAlignLeft</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_centre</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span> <span class="n">isToggle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Center"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnAlignCenter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateAlignCenter</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_alignright</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span> <span class="n">isToggle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Align Right"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnAlignRight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnUpdateAlignRight</span><span class="p">)</span>
+        <span class="n">tbar</span><span class="o">.</span><span class="n">AddSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_indentless</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Indent Less"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnIndentLess</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_indentmore</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Indent More"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnIndentMore</span><span class="p">)</span>
+        <span class="n">tbar</span><span class="o">.</span><span class="n">AddSeparator</span><span class="p">()</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_font</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Font"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnFont</span><span class="p">)</span>
+        <span class="n">doBind</span><span class="p">(</span> <span class="n">tbar</span><span class="o">.</span><span class="n">AddTool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">_rt_colour</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(),</span>
+                            <span class="n">shortHelpString</span><span class="o">=</span><span class="s2">"Font Colour"</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnColour</span><span class="p">)</span>
+
+        <span class="n">tbar</span><span class="o">.</span><span class="n">Realize</span><span class="p">()</span>
+
+
+<span class="c1">#----------------------------------------------------------------------</span>
+
+<span class="k">class</span> <span class="nc">TestPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">b</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Show the RichTextCtrl sample"</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnButton</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">AddRTCHandlers</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">AddRTCHandlers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># make sure we haven't already added them.</span>
+        <span class="k">if</span> <span class="n">rt</span><span class="o">.</span><span class="n">RichTextBuffer</span><span class="o">.</span><span class="n">FindHandlerByType</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">RICHTEXT_TYPE_HTML</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># This would normally go in your app's OnInit method.  I'm</span>
+        <span class="c1"># not sure why these file handlers are not loaded by</span>
+        <span class="c1"># default by the C++ richtext code, I guess it's so you</span>
+        <span class="c1"># can change the name or extension if you wanted...</span>
+        <span class="n">rt</span><span class="o">.</span><span class="n">RichTextBuffer</span><span class="o">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">RichTextHTMLHandler</span><span class="p">())</span>
+        <span class="n">rt</span><span class="o">.</span><span class="n">RichTextBuffer</span><span class="o">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">RichTextXMLHandler</span><span class="p">())</span>
+
+        <span class="c1"># ...like this</span>
+        <span class="n">rt</span><span class="o">.</span><span class="n">RichTextBuffer</span><span class="o">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">rt</span><span class="o">.</span><span class="n">RichTextXMLHandler</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Other XML"</span><span class="p">,</span>
+                                                           <span class="n">ext</span><span class="o">=</span><span class="s2">"ox"</span><span class="p">,</span>
+                                                           <span class="nb">type</span><span class="o">=</span><span class="mi">99</span><span class="p">))</span>
+
+        <span class="c1"># This is needed for the view as HTML option since we tell it</span>
+        <span class="c1"># to store the images in the memory file system.</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">FileSystem</span><span class="o">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MemoryFSHandler</span><span class="p">())</span>
+
+
+    <span class="k">def</span> <span class="nf">OnButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+
+        <span class="n">win</span> <span class="o">=</span> <span class="n">RichTextFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"wx.richtext.RichTextCtrl"</span><span class="p">,</span>
+                            <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span>
+                            <span class="n">style</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DEFAULT_FRAME_STYLE</span><span class="p">)</span>
+        <span class="n">win</span><span class="o">.</span><span class="n">Show</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># give easy access to the demo's PyShell if it's running</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtfrm</span> <span class="o">=</span> <span class="n">win</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtc</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">rtc</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">panel</span> <span class="o">=</span> <span class="n">TestPanel</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="text-styles">
+<h3>Text Styles<a class="headerlink" href="#text-styles" title="Permalink to this headline">¶</a></h3>
+<p>Styling attributes are represented by <a class="reference internal" href="wx.TextAttr.html#wx.TextAttr" title="wx.TextAttr"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextAttr</span></code></a>, or for more
+control over attributes such as margins and size, the derived class
+<a class="reference internal" href="wx.richtext.RichTextAttr.html#wx.richtext.RichTextAttr" title="wx.richtext.RichTextAttr"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextAttr</span></code></a>.</p>
+<p>When setting a style, the flags of the attribute object determine
+which attributes are applied. When querying a style, the passed flags
+are ignored except (optionally) to determine whether attributes should
+be retrieved from character content or from the paragraph object.</p>
+<p><a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> takes a layered approach to styles, so that
+different parts of the content may be responsible for contributing
+different attributes to the final style you see on the screen.</p>
+<p>There are four main notions of style within a control:</p>
+<ul class="simple">
+<li><p><strong>Basic style</strong>: The fundamental style of a control, onto which any
+other styles are layered. It provides default attributes, and
+changing the basic style may immediately change the look of the
+content depending on what other styles the content uses. Calling
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SetFont" title="wx.richtext.RichTextCtrl.SetFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFont</span></code></a> changes the font for the
+basic style. The basic style is set with
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SetBasicStyle" title="wx.richtext.RichTextCtrl.SetBasicStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetBasicStyle</span></code></a>.</p></li>
+<li><p><strong>Paragraph style</strong>: Each paragraph has attributes that are set
+independently from other paragraphs and independently from the
+content within the paragraph. Normally, these attributes are
+paragraph- related, such as alignment and indentation, but it is
+possible to set character attributes too. The paragraph style can be
+set independently of its content by passing
+<code class="docutils literal notranslate"><span class="pre">RICHTEXT_SETSTYLE_PARAGRAPHS_ONLY</span></code> to
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SetStyleEx" title="wx.richtext.RichTextCtrl.SetStyleEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStyleEx</span></code></a>.</p></li>
+<li><p><strong>Character style</strong>: Characters within each paragraph can have
+attributes. A single character, or a run of characters, can have a
+particular set of attributes. The character style can be with
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SetStyle" title="wx.richtext.RichTextCtrl.SetStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStyle</span></code></a> or
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SetStyleEx" title="wx.richtext.RichTextCtrl.SetStyleEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStyleEx</span></code></a>.</p></li>
+<li><p><strong>Default style</strong>: This is the ‘current’ style that determines the
+style of content that is subsequently typed, pasted or
+programmatically inserted. The default style is set with
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SetDefaultStyle" title="wx.richtext.RichTextCtrl.SetDefaultStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDefaultStyle</span></code></a>.</p></li>
+</ul>
+<p>What you see on the screen is the dynamically <em>combined</em> style, found
+by merging the first three of the above style types (the fourth is
+only a guide for future content insertion and therefore does not
+affect the currently displayed content).</p>
+<p>To make all this more concrete, here are examples of where you might
+set these different styles:</p>
+<ul class="simple">
+<li><p>You might set the <em>basic style</em> to have a Times Roman font in 12
+point, left-aligned, with two millimetres of spacing after each
+paragraph.</p></li>
+<li><p>You might set the <em>paragraph style</em> (for one particular paragraph)
+to be centred.</p></li>
+<li><p>You might set the <em>character style</em> of one particular word to bold.</p></li>
+<li><p>You might set the <em>default style</em> to be underlined, for subsequent
+inserted text.</p></li>
+</ul>
+<p>Naturally you can do any of these things either using your own UI, or
+programmatically.</p>
+<p>The basic <a class="reference internal" href="wx.TextCtrl.html#wx.TextCtrl" title="wx.TextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextCtrl</span></code></a> doesn’t make the same distinctions as
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> regarding attribute storage. So we need finer
+control when setting and retrieving attributes.
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SetStyleEx" title="wx.richtext.RichTextCtrl.SetStyleEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStyleEx</span></code></a> takes a <em>flags</em> parameter:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RICHTEXT_SETSTYLE_OPTIMIZE</span></code> specifies that the style should be
+changed only if the combined attributes are different from the
+attributes for the current object. This is important when applying
+styling that has been edited by the user, because he has just edited
+the <em>combined</em> (visible) style, and <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> wants to leave
+unchanged attributes associated with their original objects instead of
+applying them to both paragraph and content objects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RICHTEXT_SETSTYLE_PARAGRAPHS_ONLY</span></code> specifies that only paragraph
+objects within the given range should take on the attributes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RICHTEXT_SETSTYLE_CHARACTERS_ONLY</span></code> specifies that only content
+objects (text or images) within the given range should take on the
+attributes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RICHTEXT_SETSTYLE_WITH_UNDO</span></code> specifies that the operation should be
+undoable.</p></li>
+</ul>
+<p>It’s great to be able to change arbitrary attributes in a
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a>, but it can be unwieldy for the
+user or programmer to set attributes separately. Word processors have
+collections of styles that you can tailor or use as-is, and this means
+that you can set a heading with one click instead of marking text in
+bold, specifying a large font size, and applying a certain paragraph
+spacing and alignment for every such heading. Similarly, wxPython
+provides a class called <a class="reference internal" href="wx.richtext.RichTextStyleSheet.html#wx.richtext.RichTextStyleSheet" title="wx.richtext.RichTextStyleSheet"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleSheet</span></code></a> which
+manages style definitions
+(<a class="reference internal" href="wx.richtext.RichTextParagraphStyleDefinition.html#wx.richtext.RichTextParagraphStyleDefinition" title="wx.richtext.RichTextParagraphStyleDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextParagraphStyleDefinition</span></code></a>,
+<a class="reference internal" href="wx.richtext.RichTextListStyleDefinition.html#wx.richtext.RichTextListStyleDefinition" title="wx.richtext.RichTextListStyleDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextListStyleDefinition</span></code></a> and
+<a class="reference internal" href="wx.richtext.RichTextCharacterStyleDefinition.html#wx.richtext.RichTextCharacterStyleDefinition" title="wx.richtext.RichTextCharacterStyleDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCharacterStyleDefinition</span></code></a>). Once you have
+added definitions to a style sheet and associated it with a
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a>, you can apply a named definition
+to a range of text. The classes
+<a class="reference internal" href="wx.richtext.RichTextStyleComboCtrl.html#wx.richtext.RichTextStyleComboCtrl" title="wx.richtext.RichTextStyleComboCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleComboCtrl</span></code></a> and
+<a class="reference internal" href="wx.richtext.RichTextStyleListBox.html#wx.richtext.RichTextStyleListBox" title="wx.richtext.RichTextStyleListBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleListBox</span></code></a> can be used to present the
+user with a list of styles in a sheet, and apply them to the selected
+text.</p>
+<p>You can reapply a style sheet to the contents of the control, by
+calling <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.ApplyStyleSheet" title="wx.richtext.RichTextCtrl.ApplyStyleSheet"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ApplyStyleSheet</span></code></a>. This is
+useful if the style definitions have changed, and you want the content
+to reflect this. It relies on the fact that when you apply a named
+style, the style definition name is recorded in the content. So
+ApplyStyleSheet works by finding the paragraph attributes with style
+names and re- applying the definition’s attributes to the
+paragraph. Currently, this works with paragraph and list style
+definitions only.</p>
+</div>
+<div class="section" id="included-dialogs">
+<h3>Included Dialogs<a class="headerlink" href="#included-dialogs" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> comes with standard dialogs to make
+it easier to implement text editing functionality.</p>
+<p><a class="reference internal" href="wx.richtext.RichTextFormattingDialog.html#wx.richtext.RichTextFormattingDialog" title="wx.richtext.RichTextFormattingDialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextFormattingDialog</span></code></a> can be used for
+character or paragraph formatting, or a combination of both. It’s a
+<em class="xref py py-obj">PropertySheetDialog</em> with the following available tabs: Font, Indents
+&amp; Spacing, Tabs, Bullets, Style, Borders, Margins, Background, Size,
+and List Style.  You can select which pages will be shown by supplying
+flags to the dialog constructor. In a character formatting dialog,
+typically only the Font page will be shown. In a paragraph formatting
+dialog, you’ll show the Indents &amp; Spacing, Tabs and Bullets pages. The
+Style tab is useful when editing a style definition.</p>
+<p>You can customize this dialog by providing your own
+<a class="reference internal" href="wx.richtext.RichTextFormattingDialogFactory.html#wx.richtext.RichTextFormattingDialogFactory" title="wx.richtext.RichTextFormattingDialogFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextFormattingDialogFactory</span></code></a> object, which
+tells the formatting dialog how many pages are supported, what their
+identifiers are, and how to creates the pages.</p>
+<p><a class="reference internal" href="wx.richtext.RichTextStyleOrganiserDialog.html#wx.richtext.RichTextStyleOrganiserDialog" title="wx.richtext.RichTextStyleOrganiserDialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextStyleOrganiserDialog</span></code></a> is a multi-purpose
+dialog that can be used for managing style definitions, browsing
+styles and applying them, or selecting list styles with a renumber
+option. See the sample for usage - it is used for the “Manage Styles”
+and “Bullets and Numbering” menu commands.</p>
+<p><a class="reference internal" href="wx.richtext.SymbolPickerDialog.html#wx.richtext.SymbolPickerDialog" title="wx.richtext.SymbolPickerDialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolPickerDialog</span></code></a> lets the user insert a symbol
+from a specified font. It has no <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a>
+dependencies besides being included in the rich text library.</p>
+</div>
+<div class="section" id="how-richtextctrl-is-implemented">
+<h3>How RichTextCtrl is Implemented<a class="headerlink" href="#how-richtextctrl-is-implemented" title="Permalink to this headline">¶</a></h3>
+<p>Data representation is handled by
+<a class="reference internal" href="wx.richtext.RichTextBuffer.html#wx.richtext.RichTextBuffer" title="wx.richtext.RichTextBuffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextBuffer</span></code></a>, and a
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> always has one such buffer.</p>
+<p>The content is represented by a hierarchy of objects, all derived from
+<a class="reference internal" href="wx.richtext.RichTextObject.html#wx.richtext.RichTextObject" title="wx.richtext.RichTextObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextObject</span></code></a>. An object might be an image, a
+fragment of text, a paragraph, or a further composite object. Objects
+store a <a class="reference internal" href="wx.richtext.RichTextAttr.html#wx.richtext.RichTextAttr" title="wx.richtext.RichTextAttr"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextAttr</span></code></a> containing style
+information; a paragraph object can contain both paragraph and
+character information, but content objects such as text can only store
+character information. The final style displayed in the control or in
+a printout is a combination of base style, paragraph style and content
+(character) style.</p>
+<p>The top of the hierarchy is the buffer, a kind of
+<a class="reference internal" href="wx.richtext.RichTextParagraphLayoutBox.html#wx.richtext.RichTextParagraphLayoutBox" title="wx.richtext.RichTextParagraphLayoutBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextParagraphLayoutBox</span></code></a>, containing further
+<a class="reference internal" href="wx.richtext.RichTextParagraph.html#wx.richtext.RichTextParagraph" title="wx.richtext.RichTextParagraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextParagraph</span></code></a> objects, each of which can
+include text, images and potentially other types of object.</p>
+<p>Each object maintains a range (start and end position) measured from
+the start of the main parent object.</p>
+<p>When Layout is called on an object, it is given a size which the
+object must limit itself to, or one or more flexible directions
+(vertical or horizontal). So, for example, a centred paragraph is
+given the page width to play with (minus any margins), but can extend
+indefinitely in the vertical direction. The implementation of Layout
+caches the calculated size and position.</p>
+<p>When the buffer is modified, a range is invalidated (marked as
+requiring layout), so that only the minimum amount of layout is
+performed.</p>
+<p>A paragraph of pure text with the same style contains just one further
+object, a <a class="reference internal" href="wx.richtext.RichTextPlainText.html#wx.richtext.RichTextPlainText" title="wx.richtext.RichTextPlainText"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextPlainText</span></code></a> object. When styling
+is applied to part of this object, the object is decomposed into
+separate objects, one object for each different character style. So
+each object within a paragraph always has just one <a class="reference internal" href="wx.TextAttr.html#wx.TextAttr" title="wx.TextAttr"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextAttr</span></code></a>
+object to denote its character style. Of course, this can lead to
+fragmentation after a lot of edit operations, potentially leading to
+several objects with the same style where just one would do. So a
+Defragment function is called when updating the control’s display, to
+ensure that the minimum number of objects is used.</p>
+</div>
+<div class="section" id="nested-objects">
+<h3>Nested Objects<a class="headerlink" href="#nested-objects" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> supports nested objects such as
+text boxes and tables. To achieve compatibility with the existing API,
+there is the concept of <em>object</em> <em>focus</em>. When the user clicks on a
+nested text box, the object focus is set to that container object so
+all keyboard input and API functions apply to that container. The
+application can change the focus using
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">SetObjectFocus</span></code>. Call this function
+with a <code class="docutils literal notranslate"><span class="pre">None</span></code> parameter to set the focus back to the top-level
+object.</p>
+<p>An event will be sent to the control when the focus changes.</p>
+<p>When the user clicks on the control,
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> determines which container to set
+as the current object focus by calling the found container’s overrided
+<a class="reference internal" href="wx.richtext.RichTextObject.html#wx.richtext.RichTextObject.AcceptsFocus" title="wx.richtext.RichTextObject.AcceptsFocus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AcceptsFocus</span></code></a> function. For
+example, although a table is a container, it must not itself be the
+object focus because there is no text editing at the table
+level. Instead, a cell within the table must accept the focus.</p>
+<p>Since with nested objects it is not possible to represent a section
+with merely a start position and an end position, the class
+<a class="reference internal" href="wx.richtext.RichTextSelection.html#wx.richtext.RichTextSelection" title="wx.richtext.RichTextSelection"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextSelection</span></code></a> is provided which stores
+multiple ranges (for non-contiguous selections such as table cells)
+and a pointer to the container object in question. You can pass
+<a class="reference internal" href="wx.richtext.RichTextSelection.html#wx.richtext.RichTextSelection" title="wx.richtext.RichTextSelection"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextSelection</span></code></a> to
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SetSelection" title="wx.richtext.RichTextCtrl.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelection</span></code></a> or get an instance of
+it from <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.GetSelection" title="wx.richtext.RichTextCtrl.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a>.</p>
+<p>When selecting multiple objects, such as cell tables, the
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> dragging handler code calls the
+function <a class="reference internal" href="wx.richtext.RichTextObject.html#wx.richtext.RichTextObject.HandlesChildSelections" title="wx.richtext.RichTextObject.HandlesChildSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HandlesChildSelections</span></code></a> to
+determine whether the children can be individual selections. Currently
+only table cells can be multiply-selected in this way.</p>
+</div>
+<div class="section" id="context-menus-and-property-dialogs">
+<h3>Context Menus and Property Dialogs<a class="headerlink" href="#context-menus-and-property-dialogs" title="Permalink to this headline">¶</a></h3>
+<p>There are three ways you can make use of context menus: you can let
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> handle everything and provide a basic
+menu; you can set your own context menu using
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SetContextMenu" title="wx.richtext.RichTextCtrl.SetContextMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetContextMenu</span></code></a> but let
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> handle showing it and adding property
+items; or you can override the default context menu behaviour by
+adding a context menu event handler to your class in the normal way.</p>
+<p>If you right-click over a text box in cell in a table, you may want to
+edit the properties of one of these objects - but which properties
+will you be editing?</p>
+<p>Well, the default behaviour allows up to three property-editing menu
+items simultaneously - for the object clicked on, the container of
+that object, and the container’s parent (depending on whether any of
+these objects return true from their
+<a class="reference internal" href="wx.richtext.RichTextObject.html#wx.richtext.RichTextObject.CanEditProperties" title="wx.richtext.RichTextObject.CanEditProperties"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanEditProperties</span></code></a> functions). If
+you supply a context menu, add a property command item using the
+<code class="docutils literal notranslate"><span class="pre">ID_RICHTEXT_PROPERTIES1</span></code> identifier, so that
+<a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl" title="wx.richtext.RichTextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichTextCtrl</span></code></a> can find the position to add
+command items. The object should tell the control what label to use by
+returning a string from
+<a class="reference internal" href="wx.richtext.RichTextObject.html#wx.richtext.RichTextObject.GetPropertiesMenuLabel" title="wx.richtext.RichTextObject.GetPropertiesMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPropertiesMenuLabel</span></code></a>.</p>
+<p>Since there may be several property-editing commands showing, it is
+recommended that you don’t include the word Properties - just the name
+of the object, such as Text Box or Table.</p>
+</div>
+<div class="section" id="development-roadmap">
+<h3>Development Roadmap<a class="headerlink" href="#development-roadmap" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="bugs">
+<h2>Bugs<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
+<p>This is an incomplete list of bugs.</p>
+<ul class="simple">
+<li><p>Moving the caret up at the beginning of a line sometimes incorrectly
+positions the caret.</p></li>
+<li><p>As the selection is expanded, the text jumps slightly due to kerning
+differences between drawing a single text string versus drawing
+several fragments separately. This could be improved by using
+<a class="reference internal" href="wx.DC.html#wx.DC.GetPartialTextExtents" title="wx.DC.GetPartialTextExtents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetPartialTextExtents</span></code></a> to calculate exactly where the separate
+fragments should be drawn. Note that this problem also applies to
+separation of text fragments due to difference in their attributes.</p></li>
+</ul>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>This is a list of some of the features that have yet to be
+implemented. Help with them will be appreciated.</p>
+<ul class="simple">
+<li><p>Support for composite objects in some functions where it’s not yet
+implemented, for example ApplyStyleSheet</p></li>
+<li><p>Table API enhancements and dialogs; improved table layout especially
+row spans and fitting</p></li>
+<li><p>Conversion from HTML, and a rewrite of the HTML output handler that
+includes CSS, tables, text boxes, and floating images, in addition to
+a simplified-HTML mode for wxHTML compatibility</p></li>
+<li><p>Open Office input and output</p></li>
+<li><p>RTF input and output</p></li>
+<li><p>A ruler control</p></li>
+<li><p>Standard editing toolbars</p></li>
+<li><p>Bitmap bullets</p></li>
+<li><p>Justified text, in print/preview at least</p></li>
+<li><p>Scaling: either everything scaled, or rendering using a custom
+reference point size and an optional dimension scale</p></li>
+</ul>
+<p>There are also things that could be done to take advantage of the
+underlying text capabilities of the platform; higher-level text
+formatting APIs are available on some platforms, such as Mac OS X, and
+some of translation from high level to low level <a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DC</span></code></a> API is
+unnecessary. However this would require additions to the wxPython API.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.html.HtmlHelpController — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.html.HtmlHelpData.html" rel="next" title="wx.html.HtmlHelpData"/>
+<link href="wx.html.HtmlFontCell.html" rel="prev" title="wx.html.HtmlFontCell"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.html.1moduleindex.html">
+<strong>wx.html</strong></a> »</li>
+<li class="reltitle"> <strong>wx.html.HtmlHelpController</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.html.HtmlHelpData.html" title="wx.html.HtmlHelpData">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.html.HtmlFontCell.html" title="wx.html.HtmlFontCell">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.html.HtmlHelpController</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.html.HtmlHelpController.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-html-htmlhelpcontroller">
+<span id="wx-html-htmlhelpcontroller"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.html.HtmlHelpController</strong><a class="headerlink" href="#phoenix-title-wx-html-htmlhelpcontroller" title="Permalink to this headline">¶</a></h1>
+<p>This help controller provides an easy way of displaying HTML help in your application (see <span class="xref std std-ref">HTML Sample</span>, test example).</p>
+<p>The help system is based on <strong>books</strong>  (see <a class="reference internal" href="#wx.html.HtmlHelpController.AddBook" title="wx.html.HtmlHelpController.AddBook"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlHelpController.AddBook</span></code></a> ). A book is a logical section of documentation (for example “User’s Guide” or “Programmer’s Guide” or “C++ Reference” or “wxWidgets Reference”). The help controller can handle as many books as you want.</p>
+<p>Although this class has an API compatible with other wxWidgets help controllers as documented by <em class="xref py py-obj">HelpController</em>     , it is recommended that you use the enhanced capabilities of <a class="reference internal" href="#wx-html-htmlhelpcontroller"><span class="std std-ref">  wx.html.HtmlHelpController</span></a>’s API.</p>
+<p>HTML uses Microsoft’s HTML Help Workshop project files (.hhp, .hhk, .hhc) as its native format. The file format is described in <a class="reference internal" href="html_overview.html#help-files-format"><span class="std std-ref">Help Files Format</span></a>. The directory  <code class="docutils literal notranslate"><span class="pre">helpfiles</span></code>   in the  <span class="xref std std-ref">HTML Sample</span>  contains sample project files.</p>
+<p>Note that the Microsoft’s HTML Help Workshop (<a class="reference external" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=00535334-c8a6-452f-9aa0-d597d16580cc">http://www.microsoft.com/downloads/details.aspx?FamilyID=00535334-c8a6-452f-9aa0-d597d16580cc</a>) also runs on other platforms using <code class="docutils literal notranslate"><span class="pre">WINE</span></code> (<a class="reference external" href="http://www.winehq.org/">http://www.winehq.org/</a>) and it can be used to create the .hpp, .hhk and .hhc files through a friendly GUI. The commercial tool HelpBlocks (<a class="reference external" href="http://www.helpblocks.com">http://www.helpblocks.com</a>) can also create these files.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>BestHelpController, <a class="reference internal" href="wx.html.HtmlHelpFrame.html#wx-html-htmlhelpframe"><span class="std std-ref">  wx.html.HtmlHelpFrame</span></a>, <a class="reference internal" href="wx.html.HtmlHelpDialog.html#wx-html-htmlhelpdialog"><span class="std std-ref">  wx.html.HtmlHelpDialog</span></a>, <a class="reference internal" href="wx.html.HtmlHelpWindow.html#wx-html-htmlhelpwindow"><span class="std std-ref">  wx.html.HtmlHelpWindow</span></a>, <a class="reference internal" href="wx.html.HtmlModalHelp.html#wx-html-htmlmodalhelp"><span class="std std-ref">  wx.html.HtmlModalHelp</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>HtmlHelpController</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of HtmlHelpController" class="inheritance" src="_static/images/inheritance/wx.html.HtmlHelpController_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,160,213,189" href="wx.html.HtmlHelpController.html" id="node1" shape="rect" title="This help controller provides an easy way of displaying HTML help in your application (see HTML Sample &lt;html sample&gt;, test example)."/> <area alt="" coords="23,83,196,112" href="wx.HelpControllerBase.html" id="node2" shape="rect" title="This is the abstract base class a family of classes by which applications may invoke a help viewer to provide on-line help."/> <area alt="" coords="65,5,153,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%"/>
+<col style="width: 63%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.__init__" title="wx.html.HtmlHelpController.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.AddBook" title="wx.html.HtmlHelpController.AddBook"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddBook</span></code></a></p></td>
+<td><p>Adds a book (i.e.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.CreateHelpDialog" title="wx.html.HtmlHelpController.CreateHelpDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateHelpDialog</span></code></a></p></td>
+<td><p>This protected virtual method may be overridden so that when specifying the  <code class="docutils literal notranslate"><span class="pre">HF_DIALOG</span></code>   style, the controller uses a different dialog.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.CreateHelpFrame" title="wx.html.HtmlHelpController.CreateHelpFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateHelpFrame</span></code></a></p></td>
+<td><p>This protected virtual method may be overridden so that the controller uses a different frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.Display" title="wx.html.HtmlHelpController.Display"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Display</span></code></a></p></td>
+<td><p>Displays page <em class="xref py py-obj">x</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.DisplayContents" title="wx.html.HtmlHelpController.DisplayContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisplayContents</span></code></a></p></td>
+<td><p>Displays help window and focuses contents panel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.DisplayIndex" title="wx.html.HtmlHelpController.DisplayIndex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisplayIndex</span></code></a></p></td>
+<td><p>Displays help window and focuses index panel.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.GetDialog" title="wx.html.HtmlHelpController.GetDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDialog</span></code></a></p></td>
+<td><p>Returns the current help dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.GetFrame" title="wx.html.HtmlHelpController.GetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrame</span></code></a></p></td>
+<td><p>Returns the current help frame.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.GetHelpWindow" title="wx.html.HtmlHelpController.GetHelpWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHelpWindow</span></code></a></p></td>
+<td><p>Get the current help window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.KeywordSearch" title="wx.html.HtmlHelpController.KeywordSearch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">KeywordSearch</span></code></a></p></td>
+<td><p>Displays the help window, focuses search panel and starts searching.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.ReadCustomization" title="wx.html.HtmlHelpController.ReadCustomization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ReadCustomization</span></code></a></p></td>
+<td><p>Reads the controller’s setting (position of window, etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.SetHelpWindow" title="wx.html.HtmlHelpController.SetHelpWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHelpWindow</span></code></a></p></td>
+<td><p>Set the help window to be managed by this controller.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.SetShouldPreventAppExit" title="wx.html.HtmlHelpController.SetShouldPreventAppExit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetShouldPreventAppExit</span></code></a></p></td>
+<td><p>Sets whether the help frame should prevent application from exiting if it’s the only remaining top level window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.SetTempDir" title="wx.html.HtmlHelpController.SetTempDir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTempDir</span></code></a></p></td>
+<td><p>Sets the path for storing temporary files - cached binary versions of index and contents files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.SetTitleFormat" title="wx.html.HtmlHelpController.SetTitleFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTitleFormat</span></code></a></p></td>
+<td><p>Sets format of title of the frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.UseConfig" title="wx.html.HtmlHelpController.UseConfig"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UseConfig</span></code></a></p></td>
+<td><p>Associates the <em class="xref py py-obj">config</em>  object with the controller.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.WriteCustomization" title="wx.html.HtmlHelpController.WriteCustomization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WriteCustomization</span></code></a></p></td>
+<td><p>Stores controllers setting (position of window etc.)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%"/>
+<col style="width: 57%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.Dialog" title="wx.html.HtmlHelpController.Dialog"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Dialog</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlHelpController.GetDialog" title="wx.html.HtmlHelpController.GetDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDialog</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.Frame" title="wx.html.HtmlHelpController.Frame"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Frame</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlHelpController.GetFrame" title="wx.html.HtmlHelpController.GetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrame</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlHelpController.HelpWindow" title="wx.html.HtmlHelpController.HelpWindow"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HelpWindow</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlHelpController.GetHelpWindow" title="wx.html.HtmlHelpController.GetHelpWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHelpWindow</span></code></a> and <a class="reference internal" href="#wx.html.HtmlHelpController.SetHelpWindow" title="wx.html.HtmlHelpController.SetHelpWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHelpWindow</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.html.HtmlHelpController">
+<em class="property">class </em><code class="sig-prename descclassname">wx.html.</code><code class="sig-name descname">HtmlHelpController</code><span class="sig-paren">(</span><em class="sig-param">HelpControllerBase</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HtmlHelpController</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">HF_DEFAULT_STYLE</span><span class="p">,</span> <span class="n">parentWindow</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">HtmlHelpController</span><span class="p">(</span><span class="n">parentWindow</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">HF_DEFAULT_STYLE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This help controller provides an easy way of displaying HTML help in
+your application (see HTML Sample, test example).</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, style=HF_DEFAULT_STYLE, parentWindow=None)</em></p>
+<p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>style</strong> (<em>int</em>) – This is a combination of these flags:
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_TOOLBAR</span></code>: The help window has a toolbar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_FLAT_TOOLBAR</span></code>: The help window has a toolbar with flat buttons (aka coolbar).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_CONTENTS</span></code>: The help window has a contents panel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_INDEX</span></code>: The help window has an index panel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_SEARCH</span></code>: The help window has a search panel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_BOOKMARKS</span></code>: The help window has bookmarks controls.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_OPEN_FILES</span></code>: Allows user to open arbitrary HTML document.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_PRINT</span></code>: The toolbar contains “print” button.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_MERGE_BOOKS</span></code>: The contents pane does not show book nodes. All books are merged together and appear as single book to the user.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_ICONS_BOOK</span></code>: All nodes in contents pane have a book icon. This is how Microsoft’s HTML help viewer behaves.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_ICONS_FOLDER</span></code>: Book nodes in contents pane have a book icon, book’s sections have a folder icon. This is the default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_ICONS_BOOK_CHAPTER</span></code>: Both book nodes and nodes of top-level sections of a book (i.e. chapters) have a book icon, all other sections (sections, subsections, …) have a folder icon.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_EMBEDDED</span></code>: Specifies that the help controller controls an embedded window of class <a class="reference internal" href="wx.html.HtmlHelpWindow.html#wx-html-htmlhelpwindow"><span class="std std-ref">  wx.html.HtmlHelpWindow</span></a>  that should not be destroyed when the controller is destroyed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_DIALOG</span></code>: Specifies that the help controller should create a dialog containing the help window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_FRAME</span></code>: Specifies that the help controller should create a frame containing the help window. This is the default if neither <code class="docutils literal notranslate"><span class="pre">wx.html.HF_DIALOG</span></code> nor <code class="docutils literal notranslate"><span class="pre">wx.html.HF_EMBEDDED</span></code> is specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_MODAL</span></code>: Specifies that the help controller should create a modal dialog containing the help window (used with the <code class="docutils literal notranslate"><span class="pre">wx.html.HF_DIALOG</span></code> style).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HF_DEFAULT_STYLE</span></code>: <code class="docutils literal notranslate"><span class="pre">wx.html.HF_TOOLBAR</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.html.HF_CONTENTS</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.html.HF_INDEX</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.html.HF_SEARCH</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.html.HF_BOOKMARKS</span></code> | <code class="docutils literal notranslate"><span class="pre">wx.html.HF_PRINT</span></code></p></li>
+</ul>
+</p></li>
+<li><p><strong>parentWindow</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – This is an optional window to be used as the parent for the help window.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parentWindow, style=HF_DEFAULT_STYLE)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parentWindow</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.AddBook">
+<code class="sig-name descname">AddBook</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.AddBook" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>AddBook</strong> <em class="xref py py-obj">(self, bookFile, showWaitMsg=False)</em></p>
+<p>Adds a book (i.e.</p>
+<p>a <a class="reference internal" href="html_overview.html#hhp-file"><span class="std std-ref">.hhp file</span></a>; an HTML Help Workshop project file) into the list of loaded books.</p>
+<p>This must be called at least once before displaying any help. <em class="xref py py-obj">bookFile</em>  or <em class="xref py py-obj">bookUrl</em>  may be either  <code class="docutils literal notranslate"><span class="pre">".hhp"</span></code>   file or a <code class="docutils literal notranslate"><span class="pre">ZIP</span></code> archive that contains an arbitrary number of   <code class="docutils literal notranslate"><span class="pre">".hhp"</span></code>   files in its top-level directory. This <code class="docutils literal notranslate"><span class="pre">ZIP</span></code> archive must have   <code class="docutils literal notranslate"><span class="pre">".zip"</span></code>   or   <code class="docutils literal notranslate"><span class="pre">".htb"</span></code>   extension (the latter stands for “HTML book”). In other words,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AddBook</span><span class="p">(</span><span class="s2">"help.zip"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>is possible and is the recommended way.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bookFile</strong> (<em>string</em>) – Help book filename. It is recommended to use this prototype instead of the one taking URL, because it is less error-prone.</p></li>
+<li><p><strong>showWaitMsg</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> then a decoration-less window with progress message is displayed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>AddBook</strong> <em class="xref py py-obj">(self, bookUrl, showWaitMsg=False)</em></p>
+<p>Adds a book (i.e.</p>
+<p>a <a class="reference internal" href="html_overview.html#hhp-file"><span class="std std-ref">.hhp file</span></a>; an HTML Help Workshop project file) into the list of loaded books.</p>
+<p>See the other overload for additional info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bookUrl</strong> (<em>string</em>) – Help book URL (note that syntax of filename and URL is different on most platforms).</p></li>
+<li><p><strong>showWaitMsg</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> then a decoration-less window with progress message is displayed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.CreateHelpDialog">
+<code class="sig-name descname">CreateHelpDialog</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.CreateHelpDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>This protected virtual method may be overridden so that when specifying the  <code class="docutils literal notranslate"><span class="pre">HF_DIALOG</span></code>   style, the controller uses a different dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="wx.html.HtmlHelpData.html#wx.html.HtmlHelpData" title="wx.html.HtmlHelpData"><em>wx.html.HtmlHelpData</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.html.HtmlHelpDialog.html#wx-html-htmlhelpdialog"><span class="std std-ref">  wx.html.HtmlHelpDialog</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.CreateHelpFrame">
+<code class="sig-name descname">CreateHelpFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.CreateHelpFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>This protected virtual method may be overridden so that the controller uses a different frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="wx.html.HtmlHelpData.html#wx.html.HtmlHelpData" title="wx.html.HtmlHelpData"><em>wx.html.HtmlHelpData</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.html.HtmlHelpFrame.html#wx-html-htmlhelpframe"><span class="std std-ref">  wx.html.HtmlHelpFrame</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.Display">
+<code class="sig-name descname">Display</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.Display" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Display</strong> <em class="xref py py-obj">(self, x)</em></p>
+<p>Displays page <em class="xref py py-obj">x</em>.</p>
+<p>This is <code class="docutils literal notranslate"><span class="pre">THE</span></code> important function - it is used to display the help in application. You can specify the page in many ways:</p>
+<ul class="simple">
+<li><p>as direct filename of HTML document</p></li>
+<li><p>as chapter name (from contents) or as a book name</p></li>
+<li><p>as some word from index</p></li>
+<li><p>even as any word (will be searched)</p></li>
+</ul>
+<p>Looking for the page runs in these steps:</p>
+<ul class="simple">
+<li><p>try to locate file named x (if x is for example “doc/howto.htm”)</p></li>
+<li><p>try to open starting page of book named x</p></li>
+<li><p>try to find x in contents (if x is for example “How To …”)</p></li>
+<li><p>try to find x in index (if x is for example “How To …”)</p></li>
+<li><p>switch to Search panel and start searching</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Display</strong> <em class="xref py py-obj">(self, id)</em></p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.DisplayContents">
+<code class="sig-name descname">DisplayContents</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.DisplayContents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays help window and focuses contents panel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.DisplayIndex">
+<code class="sig-name descname">DisplayIndex</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.DisplayIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays help window and focuses index panel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.GetDialog">
+<code class="sig-name descname">GetDialog</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.GetDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current help dialog.</p>
+<p>(May be <code class="docutils literal notranslate"><span class="pre">None</span></code>.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.html.HtmlHelpDialog.html#wx-html-htmlhelpdialog"><span class="std std-ref">  wx.html.HtmlHelpDialog</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.GetFrame">
+<code class="sig-name descname">GetFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.GetFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current help frame.</p>
+<p>(May be <code class="docutils literal notranslate"><span class="pre">None</span></code>.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.html.HtmlHelpFrame.html#wx-html-htmlhelpframe"><span class="std std-ref">  wx.html.HtmlHelpFrame</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.GetHelpWindow">
+<code class="sig-name descname">GetHelpWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.GetHelpWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current help window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.html.HtmlHelpWindow.html#wx-html-htmlhelpwindow"><span class="std std-ref">  wx.html.HtmlHelpWindow</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.KeywordSearch">
+<code class="sig-name descname">KeywordSearch</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">keyword</em>, <em class="sig-param">mode=HELP_SEARCH_ALL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.KeywordSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the help window, focuses search panel and starts searching.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the keyword was found. Optionally it searches through the index (mode =  <code class="docutils literal notranslate"><span class="pre">HELP_SEARCH_INDEX</span></code> ), default the content (mode =   <code class="docutils literal notranslate"><span class="pre">HELP_SEARCH_ALL</span></code> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyword</strong> (<em>string</em>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="wx.HelpSearchMode.enumeration.html" title="HelpSearchMode"><em>HelpSearchMode</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#wx.html.HtmlHelpController.KeywordSearch" title="wx.html.HtmlHelpController.KeywordSearch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">KeywordSearch</span></code></a>   searches only pages listed in  <code class="docutils literal notranslate"><span class="pre">".hhc"</span></code>   file(s). You should list all pages in the contents file.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.ReadCustomization">
+<code class="sig-name descname">ReadCustomization</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cfg</em>, <em class="sig-param">path=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.ReadCustomization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the controller’s setting (position of window, etc.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase" title="wx.ConfigBase"><em>wx.ConfigBase</em></a>) – </p></li>
+<li><p><strong>path</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.SetHelpWindow">
+<code class="sig-name descname">SetHelpWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">helpWindow</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.SetHelpWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the help window to be managed by this controller.</p>
+<p>This makes it possible to have a help window that might not be in a <a class="reference internal" href="wx.html.HtmlHelpFrame.html#wx-html-htmlhelpframe"><span class="std std-ref">  wx.html.HtmlHelpFrame</span></a>  or dialog but is embedded in some other window in the application. Be sure to use the <code class="docutils literal notranslate"><span class="pre">wx.html.HF_EMBEDDED</span></code> style in this case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>helpWindow</strong> (<a class="reference internal" href="wx.html.HtmlHelpWindow.html#wx.html.HtmlHelpWindow" title="wx.html.HtmlHelpWindow"><em>wx.html.HtmlHelpWindow</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.SetShouldPreventAppExit">
+<code class="sig-name descname">SetShouldPreventAppExit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.SetShouldPreventAppExit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether the help frame should prevent application from exiting if it’s the only remaining top level window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the application will not quit unless the help frame is closed. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>, i.e. the application does exit if only the help window remains opened.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.PyApp.html#wx.PyApp.SetExitOnFrameDelete" title="wx.PyApp.SetExitOnFrameDelete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.SetExitOnFrameDelete</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.SetTempDir">
+<code class="sig-name descname">SetTempDir</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.SetTempDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the path for storing temporary files - cached binary versions of index and contents files.</p>
+<p>These binary forms are much faster to read. Default value is empty string (empty string means that no cached data are stored). Note that these files are <em class="xref py py-obj">not</em>  deleted when program exits.</p>
+<p>Once created these cached files will be used in all subsequent executions of your application. If cached files become older than corresponding  <code class="docutils literal notranslate"><span class="pre">".hhp"</span></code>   file (e.g. if you regenerate documentation) it will be refreshed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.SetTitleFormat">
+<code class="sig-name descname">SetTitleFormat</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">format</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.SetTitleFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets format of title of the frame.</p>
+<p>Must contain exactly one “%s” (for title of displayed HTML page).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>format</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.UseConfig">
+<code class="sig-name descname">UseConfig</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">config</em>, <em class="sig-param">rootpath=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.UseConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates the <em class="xref py py-obj">config</em>  object with the controller.</p>
+<p>If there is associated config object, <a class="reference internal" href="#wx-html-htmlhelpcontroller"><span class="std std-ref">  wx.html.HtmlHelpController</span></a>  automatically reads and writes settings (including <a class="reference internal" href="wx.html.HtmlWindow.html#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>’s settings) when needed. The only thing you must do is create Config object and call <a class="reference internal" href="#wx.html.HtmlHelpController.UseConfig" title="wx.html.HtmlHelpController.UseConfig"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UseConfig</span></code></a> .</p>
+<p>If you do not use <a class="reference internal" href="#wx.html.HtmlHelpController.UseConfig" title="wx.html.HtmlHelpController.UseConfig"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UseConfig</span></code></a> , <a class="reference internal" href="#wx-html-htmlhelpcontroller"><span class="std std-ref">  wx.html.HtmlHelpController</span></a>  will use the default Config object if available (for details see <a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase.Get" title="wx.ConfigBase.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ConfigBase.Get</span></code></a>   and <a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase.Set" title="wx.ConfigBase.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ConfigBase.Set</span></code></a> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase" title="wx.ConfigBase"><em>wx.ConfigBase</em></a>) – </p></li>
+<li><p><strong>rootpath</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlHelpController.WriteCustomization">
+<code class="sig-name descname">WriteCustomization</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cfg</em>, <em class="sig-param">path=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlHelpController.WriteCustomization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores controllers setting (position of window etc.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase" title="wx.ConfigBase"><em>wx.ConfigBase</em></a>) – </p></li>
+<li><p><strong>path</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.html.HtmlHelpController.Dialog">
+<code class="sig-name descname">Dialog</code><a class="headerlink" href="#wx.html.HtmlHelpController.Dialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlHelpController.GetDialog" title="wx.html.HtmlHelpController.GetDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDialog</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlHelpController.Frame">
+<code class="sig-name descname">Frame</code><a class="headerlink" href="#wx.html.HtmlHelpController.Frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlHelpController.GetFrame" title="wx.html.HtmlHelpController.GetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrame</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlHelpController.HelpWindow">
+<code class="sig-name descname">HelpWindow</code><a class="headerlink" href="#wx.html.HtmlHelpController.HelpWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlHelpController.GetHelpWindow" title="wx.html.HtmlHelpController.GetHelpWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHelpWindow</span></code></a> and <a class="reference internal" href="#wx.html.HtmlHelpController.SetHelpWindow" title="wx.html.HtmlHelpController.SetHelpWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHelpWindow</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

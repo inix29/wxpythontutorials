@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Date and Time Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="dc_overview.html" rel="next" title="Device Contexts"/>
+<link href="dataobject_overview.html" rel="prev" title="DataObject Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Date and Time Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="dc_overview.html" title="Device Contexts">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="dataobject_overview.html" title="DataObject Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Date and Time Overview</strong></a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#all-date-time-classes-at-a-glance">All date/time classes at a glance</a></li>
+<li><a class="reference internal" href="#datetime-characteristics">DateTime characteristics</a></li>
+<li><a class="reference internal" href="#difference-between-datespan-and-timespan">Difference between DateSpan and TimeSpan</a></li>
+<li><a class="reference internal" href="#date-arithmetics">Date arithmetics</a></li>
+<li><a class="reference internal" href="#time-zone-considerations">Time zone considerations</a></li>
+<li><a class="reference internal" href="#daylight-saving-time-dst">Daylight saving time (DST)</a></li>
+<li><a class="reference internal" href="#datetime-and-holidays">DateTime and Holidays</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/datetime_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-date-and-time-overview">
+<span id="date-and-time"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Date and Time Overview</strong><a class="headerlink" href="#phoenix-title-date-and-time-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>wxPython provides a set of powerful classes to work with dates and
+times. Some of the supported features of <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> class are:</p>
+<ul class="simple">
+<li><p>Wide range: the range of supported dates goes from about 4714
+B.C. to some 480 million years in the future.</p></li>
+<li><p>Precision: not using floating point calculations anywhere ensures
+that the date calculations don’t suffer from rounding errors.</p></li>
+<li><p>Many features: not only all usual calculations with dates are
+supported, but also more exotic week and year day calculations, work
+day testing, standard astronomical functions, conversion to and from
+strings in either strict or free format.</p></li>
+<li><p>Efficiency: objects of <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> are small (8 bytes) and
+working with them is fast.</p></li>
+</ul>
+</div>
+<div class="section" id="all-date-time-classes-at-a-glance">
+<h2>All date/time classes at a glance<a class="headerlink" href="#all-date-time-classes-at-a-glance" title="Permalink to this headline">¶</a></h2>
+<p>There are 3 main classes related to date and time: except
+<a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> itself which represents an absolute moment in time,
+there are also two classes - <a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a> and <a class="reference internal" href="wx.DateSpan.html#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a> -
+which represent the intervals of time.</p>
+</div>
+<div class="section" id="datetime-characteristics">
+<h2>DateTime characteristics<a class="headerlink" href="#datetime-characteristics" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> stores the time as a signed number of milliseconds
+since the Epoch which is fixed, by convention, to Jan 1, 1970 -
+however this is not visible to the class users (in particular, dates
+prior to the Epoch are handled just as well (or as bad) as the dates
+after it).  But it does mean that the best resolution which can be
+achieved with this class is 1 millisecond.</p>
+<p>The size of <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> object is 8 bytes because it is
+represented as a 64 bit integer. The resulting range of supported
+dates is thus approximatively 580 million years, but due to the
+current limitations in the Gregorian calendar support, only dates from
+Nov 24, 4714BC are supported (this is subject to change if there is
+sufficient interest in doing it).</p>
+<p>Finally, the internal representation is time zone independent (always
+in GMT) and the time zones only come into play when a date is broken
+into year/month/day components. See more about timezones below (see
+<a class="reference internal" href="#time-zone-considerations"><span class="std std-ref">Time zone considerations</span></a>).</p>
+<p>Currently, the only supported calendar is Gregorian one (which is used
+even for the dates prior to the historic introduction of this calendar
+which was first done on Oct 15, 1582 but is, generally speaking,
+country, and even region, dependent). Future versions will probably
+have Julian calendar support as well and support for other calendars
+(Maya, Hebrew, Chinese…) is not ruled out.</p>
+</div>
+<div class="section" id="difference-between-datespan-and-timespan">
+<h2>Difference between DateSpan and TimeSpan<a class="headerlink" href="#difference-between-datespan-and-timespan" title="Permalink to this headline">¶</a></h2>
+<p>While there is only one logical way to represent an absolute moment in
+the time (and hence only one <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> class), there are at
+least two methods to describe a time interval.</p>
+<p>First, there is the direct and self-explaining way implemented by
+<a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a>: it is just a difference in milliseconds between two
+moments in time. Adding or subtracting such an interval to
+<a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> is always well-defined and is a fast operation.</p>
+<p>But in the daily life other, calendar-dependent time interval
+specifications are used. For example, ‘one month later’ is commonly
+used.  However, it is clear that this is not the same as
+<a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a> of 60*60*24*31 seconds because ‘one month later’
+Feb 15 is Mar 15 and not Mar 17 or Mar 16 (depending on whether the
+year is leap or not).</p>
+<p>This is why there is another class for representing such intervals
+called <a class="reference internal" href="wx.DateSpan.html#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a>. It handles these sort of operations in the
+most natural way possible, but note that manipulating with intervals
+of this kind is not always well-defined. Consider, for example, Jan 31
++ ‘1 month’: this will give Feb 28 (or 29), i.e. the last day of
+February and not the non-existent Feb 31. Of course, this is what is
+usually wanted, but you still might be surprised to notice that now
+subtracting back the same interval from Feb 28 will result in Jan 28
+and <strong>not</strong> Jan 31 we started with!</p>
+<p>So, unless you plan to implement some kind of natural language parsing
+in the program, you should probably use <a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a> instead of
+<a class="reference internal" href="wx.DateSpan.html#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a> (which is also more efficient). However,
+<a class="reference internal" href="wx.DateSpan.html#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a> may be very useful in situations when you do need to
+understand what ‘in a month’ means - of course, it is just:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span> <span class="o">+</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateSpan</span><span class="o">.</span><span class="n">Month</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="date-arithmetics">
+<h2>Date arithmetics<a class="headerlink" href="#date-arithmetics" title="Permalink to this headline">¶</a></h2>
+<p>Many different operations may be performed with the dates, however not
+all of them make sense. For example, multiplying a date by a number is
+an invalid operation, even though multiplying either of the time span
+classes by a number is perfectly valid.</p>
+<p>Here is what can be done:</p>
+<ul class="simple">
+<li><p><strong>Addition</strong>: a <a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a> or <a class="reference internal" href="wx.DateSpan.html#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a> can be added to
+<a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> resulting in a new <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> object and also 2
+objects of the same span class can be added together giving another
+object of the same class.</p></li>
+<li><p><strong>Subtraction</strong>: the same types of operations as above are allowed
+and, additionally, a difference between two <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> objects
+can be taken and this will yield <a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a>.</p></li>
+<li><p><strong>Multiplication</strong>: a <a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a> or <a class="reference internal" href="wx.DateSpan.html#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a> object can
+be multiplied by an integer number resulting in an object of the
+same type.</p></li>
+<li><p><strong>Unary minus</strong>: a <a class="reference internal" href="wx.TimeSpan.html#wx-timespan"><span class="std std-ref">  wx.TimeSpan</span></a> or <a class="reference internal" href="wx.DateSpan.html#wx-datespan"><span class="std std-ref">  wx.DateSpan</span></a> object may
+finally be negated giving an interval of the same magnitude but of
+opposite time direction.</p></li>
+</ul>
+<p>For all these operations there are corresponding global (overloaded)
+operators and also member functions which are synonyms for them:
+<em class="xref py py-obj">Add()</em>, <em class="xref py py-obj">Subtract()</em> and <em class="xref py py-obj">Multiply()</em>. Unary minus as well as
+composite assignment operations (like +=) are only implemented as
+members and <em class="xref py py-obj">Neg()</em> is the synonym for unary minus.</p>
+</div>
+<div class="section" id="time-zone-considerations">
+<span id="id1"></span><h2>Time zone considerations<a class="headerlink" href="#time-zone-considerations" title="Permalink to this headline">¶</a></h2>
+<p>Although the time is always stored internally in GMT, you will usually
+work in the local time zone. Because of this, all <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a>
+constructors and setters which take the broken down date assume that
+these values are for the local time zone. Thus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">DateTimeFromDMY</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="o">.</span><span class="n">Jan</span><span class="p">,</span> <span class="mi">1970</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will not correspond to the <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> Epoch unless you happen
+to live in the UK. All methods returning the date components (year,
+month, day, hour, minute, second…) will also return the correct
+values for the local time zone by default, so, generally, doing the
+natural things will lead to natural and correct results.</p>
+<p>If you only want to do this, you may safely skip the rest of this
+section. However, if you want to work with different time zones, you
+should read it to the end.</p>
+<p>In this (rare) case, you are still limited to the local time zone when
+constructing <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> objects, i.e. there is no way to
+construct a <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a> corresponding to the given date in,
+say, Pacific Standard Time. To do it, you will need to call
+<a class="reference internal" href="wx.DateTime.html#wx.DateTime.ToTimezone" title="wx.DateTime.ToTimezone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.ToTimezone</span></code></a> or <a class="reference internal" href="wx.DateTime.html#wx.DateTime.MakeTimezone" title="wx.DateTime.MakeTimezone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.MakeTimezone</span></code></a>
+methods to adjust the date for the target time zone. There are also
+special versions of these functions <a class="reference internal" href="wx.DateTime.html#wx.DateTime.ToUTC" title="wx.DateTime.ToUTC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.ToUTC</span></code></a> and
+<a class="reference internal" href="wx.DateTime.html#wx.DateTime.MakeUTC" title="wx.DateTime.MakeUTC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.MakeUTC</span></code></a> for the most common case - when the date
+should be constructed in UTC.</p>
+<p>You also can just retrieve the value for some time zone without
+converting the object to it first. For this you may pass TimeZone
+argument to any of the methods which are affected by the time zone
+(all methods getting date components and the date formatting ones, for
+example).  In particular, the <em class="xref py py-obj">Format()</em> family of methods accepts a
+TimeZone parameter and this allows to simply print time in any time
+zone.</p>
+<p>To see how to do it, the last issue to address is how to construct a
+TimeZone object which must be passed to all these methods. First of
+all, you may construct it manually by specifying the time zone offset
+in seconds from GMT, but usually you will just use one of the
+<a class="reference internal" href="#date-and-time"><span class="std std-ref">Date and Time</span></a> and let the conversion
+constructor do the job.</p>
+<p>I.e. you would just write:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTimeFromDMY</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="o">.</span><span class="n">May</span><span class="p">,</span> <span class="mi">1977</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The time is </span><span class="si">%s</span><span class="s2"> in local time zone"</span> <span class="o">%</span> <span class="n">dt</span><span class="o">.</span><span class="n">FormatTime</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The time is </span><span class="si">%s</span><span class="s2"> in GMT"</span> <span class="o">%</span> <span class="n">dt</span><span class="o">.</span><span class="n">FormatTime</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="o">.</span><span class="n">GMT</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="daylight-saving-time-dst">
+<span id="dst-overview"></span><h2>Daylight saving time (DST)<a class="headerlink" href="#daylight-saving-time-dst" title="Permalink to this headline">¶</a></h2>
+<p>DST (a.k.a. ‘summer time’) handling is always a delicate task which is
+better left to the operating system which is supposed to be configured
+by the administrator to behave correctly. Unfortunately, when doing
+calculations with date outside of the range supported by the standard
+library, we are forced to deal with these issues ourselves.</p>
+<p>Several functions are provided to calculate the beginning and end of
+DST in the given year and to determine whether it is in effect at the
+given moment or not, but they should not be considered as absolutely
+correct because, first of all, they only work more or less correctly
+for only a handful of countries (any information about other ones
+appreciated!) and even for them the rules may perfectly well change in
+the future.</p>
+<p>The time zone handling methods (see <a class="reference internal" href="#time-zone-considerations"><span class="std std-ref">Time zone considerations</span></a>) use these functions too, so they are
+subject to the same limitations.</p>
+</div>
+<div class="section" id="datetime-and-holidays">
+<h2>DateTime and Holidays<a class="headerlink" href="#datetime-and-holidays" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>WRITE THIS DOC PARAGRAPH.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

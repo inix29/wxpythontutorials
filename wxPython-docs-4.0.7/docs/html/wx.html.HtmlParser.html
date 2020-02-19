@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.html.HtmlParser — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.html.HtmlPrintout.html" rel="next" title="wx.html.HtmlPrintout"/>
+<link href="wx.html.HtmlOpeningStatus.enumeration.html" rel="prev" title="wx.html.HtmlOpeningStatus"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.html.1moduleindex.html">
+<strong>wx.html</strong></a> »</li>
+<li class="reltitle"> <strong>wx.html.HtmlParser</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.html.HtmlPrintout.html" title="wx.html.HtmlPrintout">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.html.HtmlOpeningStatus.enumeration.html" title="wx.html.HtmlOpeningStatus">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.html.HtmlParser</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.html.HtmlParser.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-html-htmlparser">
+<span id="wx-html-htmlparser"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.html.HtmlParser</strong><a class="headerlink" href="#phoenix-title-wx-html-htmlparser" title="Permalink to this headline">¶</a></h1>
+<p>Classes derived from this handle the <strong>generic</strong>  parsing of HTML documents: it scans the document and divide it into blocks of tags (where one block consists of beginning and ending tag and of text between these two tags).</p>
+<p>It is independent from <a class="reference internal" href="wx.html.HtmlWindow.html#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>  and can be used as stand-alone parser.</p>
+<p>It uses system of tag handlers to parse the HTML document. Tag handlers are not statically shared by all instances but are created for each <a class="reference internal" href="#wx-html-htmlparser"><span class="std std-ref">  wx.html.HtmlParser</span></a>  instance. The reason is that the handler may contain document-specific temporary data used during parsing (e.g. complicated structures like tables).</p>
+<p>Typically the user calls only the <a class="reference internal" href="#wx.html.HtmlParser.Parse" title="wx.html.HtmlParser.Parse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlParser.Parse</span></code></a>   method.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="html_overview.html#cells-and-containers"><span class="std std-ref">Cells and Containers</span></a>, <a class="reference internal" href="html_overview.html#tag-handlers"><span class="std std-ref">Tag Handlers</span></a>, <a class="reference internal" href="wx.html.HtmlTag.html#wx-html-htmltag"><span class="std std-ref">  wx.html.HtmlTag</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>HtmlParser</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of HtmlParser" class="inheritance" src="_static/images/inheritance/wx.html.HtmlParser_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,159,35" href="wx.html.HtmlParser.html" id="node1" shape="rect" title="Classes derived from this handle the **generic**  parsing of HTML documents: it scans the document and divide it into blocks of tags (where one block consists of beginning and ending tag and of text between these two tags)."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.html.HtmlWinParser.html#wx-html-htmlwinparser"><span class="std std-ref">  wx.html.HtmlWinParser</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%"/>
+<col style="width: 58%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.__init__" title="wx.html.HtmlParser.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlParser.AddTag" title="wx.html.HtmlParser.AddTag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTag</span></code></a></p></td>
+<td><p>This may (and may not) be overwritten in derived class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.AddTagHandler" title="wx.html.HtmlParser.AddTagHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTagHandler</span></code></a></p></td>
+<td><p>Adds handler to the internal list ( hash table) of handlers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlParser.DoParsing" title="wx.html.HtmlParser.DoParsing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoParsing</span></code></a></p></td>
+<td><p>Parses the whole m_Source.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.DoneParser" title="wx.html.HtmlParser.DoneParser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoneParser</span></code></a></p></td>
+<td><p>This must be called after <code class="xref py py-meth docutils literal notranslate"><span class="pre">DoParsing</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlParser.GetFS" title="wx.html.HtmlParser.GetFS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFS</span></code></a></p></td>
+<td><p>Returns pointer to the file system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.GetProduct" title="wx.html.HtmlParser.GetProduct"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetProduct</span></code></a></p></td>
+<td><p>Returns product of parsing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlParser.GetSource" title="wx.html.HtmlParser.GetSource"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSource</span></code></a></p></td>
+<td><p>Returns pointer to the source being parsed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.InitParser" title="wx.html.HtmlParser.InitParser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InitParser</span></code></a></p></td>
+<td><p>Setups the parser for parsing the <em class="xref py py-obj">source</em>  string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlParser.OpenURL" title="wx.html.HtmlParser.OpenURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OpenURL</span></code></a></p></td>
+<td><p>Opens given URL and returns  <a class="reference internal" href="wx.FSFile.html#wx-fsfile"><span class="std std-ref">  wx.FSFile</span></a>  object that can be used to read data from it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.Parse" title="wx.html.HtmlParser.Parse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Parse</span></code></a></p></td>
+<td><p>Proceeds parsing of the document.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlParser.PopTagHandler" title="wx.html.HtmlParser.PopTagHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PopTagHandler</span></code></a></p></td>
+<td><p>Restores parser’s state before last call to <code class="xref py py-meth docutils literal notranslate"><span class="pre">PushTagHandler</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.PushTagHandler" title="wx.html.HtmlParser.PushTagHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PushTagHandler</span></code></a></p></td>
+<td><p>Forces the handler to handle additional tags (not returned by <a class="reference internal" href="wx.html.HtmlTagHandler.html#wx.html.HtmlTagHandler.GetSupportedTags" title="wx.html.HtmlTagHandler.GetSupportedTags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlTagHandler.GetSupportedTags</span></code></a> ).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlParser.SetFS" title="wx.html.HtmlParser.SetFS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFS</span></code></a></p></td>
+<td><p>Sets the virtual file system that will be used to request additional files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.StopParsing" title="wx.html.HtmlParser.StopParsing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StopParsing</span></code></a></p></td>
+<td><p>Call this function to interrupt parsing from a tag handler.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.FS" title="wx.html.HtmlParser.FS"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FS</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlParser.GetFS" title="wx.html.HtmlParser.GetFS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFS</span></code></a> and <a class="reference internal" href="#wx.html.HtmlParser.SetFS" title="wx.html.HtmlParser.SetFS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFS</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.html.HtmlParser.Product" title="wx.html.HtmlParser.Product"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Product</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlParser.GetProduct" title="wx.html.HtmlParser.GetProduct"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetProduct</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.html.HtmlParser.Source" title="wx.html.HtmlParser.Source"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Source</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.html.HtmlParser.GetSource" title="wx.html.HtmlParser.GetSource"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSource</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.html.HtmlParser">
+<em class="property">class </em><code class="sig-prename descclassname">wx.html.</code><code class="sig-name descname">HtmlParser</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HtmlParser</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Classes derived from this handle the generic parsing of HTML
+documents: it scans the document and divide it into blocks of tags
+(where one block consists of beginning and ending tag and of text
+between these two tags).</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.html.HtmlParser.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.AddTag">
+<code class="sig-name descname">AddTag</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">tag</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.AddTag" title="Permalink to this definition">¶</a></dt>
+<dd><p>This may (and may not) be overwritten in derived class.</p>
+<p>This method is called each time new tag is about to be added. <em class="xref py py-obj">tag</em>  contains information about the tag. (See <a class="reference internal" href="wx.html.HtmlTag.html#wx-html-htmltag"><span class="std std-ref">  wx.html.HtmlTag</span></a>  for details.)</p>
+<p>Default (<a class="reference internal" href="#wx-html-htmlparser"><span class="std std-ref">  wx.html.HtmlParser</span></a>) behaviour is this: first it finds a handler capable of handling this tag and then it calls handler’s HandleTag() method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tag</strong> (<a class="reference internal" href="wx.html.HtmlTag.html#wx.html.HtmlTag" title="wx.html.HtmlTag"><em>wx.html.HtmlTag</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.AddTagHandler">
+<code class="sig-name descname">AddTagHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.AddTagHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds handler to the internal list ( hash table) of handlers.</p>
+<p>This method should not be called directly by user but rather by derived class’ constructor.</p>
+<p>This adds the handler to this <strong>instance</strong>  of <a class="reference internal" href="#wx-html-htmlparser"><span class="std std-ref">  wx.html.HtmlParser</span></a>, not to all objects of this class! (Static front-end to AddTagHandler is provided by <a class="reference internal" href="wx.html.HtmlWinParser.html#wx-html-htmlwinparser"><span class="std std-ref">  wx.html.HtmlWinParser</span></a>).</p>
+<p>All handlers are deleted on object deletion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>handler</strong> (<a class="reference internal" href="wx.html.HtmlTagHandler.html#wx.html.HtmlTagHandler" title="wx.html.HtmlTagHandler"><em>wx.html.HtmlTagHandler</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.DoParsing">
+<code class="sig-name descname">DoParsing</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.DoParsing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the whole m_Source.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.DoneParser">
+<code class="sig-name descname">DoneParser</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.DoneParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>This must be called after <a class="reference internal" href="#wx.html.HtmlParser.DoParsing" title="wx.html.HtmlParser.DoParsing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoParsing</span></code></a> .</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.GetFS">
+<code class="sig-name descname">GetFS</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.GetFS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to the file system.</p>
+<p>Because each tag handler has reference to it is parent parser it can easily request the file by calling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Parser</span><span class="o">.</span><span class="n">GetFS</span><span class="p">()</span><span class="o">.</span><span class="n">OpenFile</span><span class="p">(</span><span class="s2">"image.jpg"</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">FileSystem</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.GetProduct">
+<code class="sig-name descname">GetProduct</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.GetProduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns product of parsing.</p>
+<p>Returned value is result of parsing of the document.</p>
+<p>The type of this result depends on internal representation in derived parser (but it must be derived from Object!). See <a class="reference internal" href="wx.html.HtmlWinParser.html#wx-html-htmlwinparser"><span class="std std-ref">  wx.html.HtmlWinParser</span></a>  for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Object</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.GetSource">
+<code class="sig-name descname">GetSource</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.GetSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to the source being parsed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.InitParser">
+<code class="sig-name descname">InitParser</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">source</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.InitParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setups the parser for parsing the <em class="xref py py-obj">source</em>  string.</p>
+<p>(Should be overridden in derived class)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.OpenURL">
+<code class="sig-name descname">OpenURL</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">type</em>, <em class="sig-param">url</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.OpenURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens given URL and returns  <a class="reference internal" href="wx.FSFile.html#wx-fsfile"><span class="std std-ref">  wx.FSFile</span></a>  object that can be used to read data from it.</p>
+<p>This method may return <code class="docutils literal notranslate"><span class="pre">None</span></code> in one of two cases: either the URL doesn’t point to any valid resource or the URL is blocked by overridden implementation of <a class="reference internal" href="#wx.html.HtmlParser.OpenURL" title="wx.html.HtmlParser.OpenURL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OpenURL</span></code></a>  in derived class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<a class="reference internal" href="wx.html.HtmlURLType.enumeration.html" title="HtmlURLType"><em>HtmlURLType</em></a>) – Indicates type of the resource. Is one of:
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HTML_URL_PAGE</span></code>: Opening a HTML page.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HTML_URL_IMAGE</span></code>: Opening an image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.html.HTML_URL_OTHER</span></code>: Opening a resource that doesn’t fall into any other category.</p></li>
+</ul>
+</p></li>
+<li><p><strong>url</strong> (<em>string</em>) – URL being opened.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">FSFile</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Always use this method in tag handlers instead of <a class="reference internal" href="#wx.html.HtmlParser.GetFS" title="wx.html.HtmlParser.GetFS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFS</span></code></a> .OpenFile() because it can block the URL and is thus more secure. Default behaviour is to call <a class="reference internal" href="wx.html.HtmlWindow.html#wx.html.HtmlWindow.OnOpeningURL" title="wx.html.HtmlWindow.OnOpeningURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlWindow.OnOpeningURL</span></code></a>   of the associated <a class="reference internal" href="wx.html.HtmlWindow.html#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>  object (which may decide to block the URL or redirect it to another one),if there’s any, and always open the URL if the parser is not used with <a class="reference internal" href="wx.html.HtmlWindow.html#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>. Returned <a class="reference internal" href="wx.FSFile.html#wx-fsfile"><span class="std std-ref">  wx.FSFile</span></a>  object is not guaranteed to point to url, it might have been redirected!</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.Parse">
+<code class="sig-name descname">Parse</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">source</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.Parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proceeds parsing of the document.</p>
+<p>This is end-user method. You can simply call it when you need to obtain parsed output (which is parser-specific).</p>
+<p>The method does these things:</p>
+<ul class="simple">
+<li><p>calls InitParser(source)</p></li>
+<li><p>calls <a class="reference internal" href="#wx.html.HtmlParser.DoParsing" title="wx.html.HtmlParser.DoParsing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoParsing</span></code></a></p></li>
+<li><p>calls <a class="reference internal" href="#wx.html.HtmlParser.GetProduct" title="wx.html.HtmlParser.GetProduct"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetProduct</span></code></a></p></li>
+<li><p>calls <a class="reference internal" href="#wx.html.HtmlParser.DoneParser" title="wx.html.HtmlParser.DoneParser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoneParser</span></code></a></p></li>
+<li><p>returns value returned by <a class="reference internal" href="#wx.html.HtmlParser.GetProduct" title="wx.html.HtmlParser.GetProduct"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetProduct</span></code></a></p></li>
+</ul>
+<p>You shouldn’t use <a class="reference internal" href="#wx.html.HtmlParser.InitParser" title="wx.html.HtmlParser.InitParser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InitParser</span></code></a> , <a class="reference internal" href="#wx.html.HtmlParser.DoParsing" title="wx.html.HtmlParser.DoParsing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoParsing</span></code></a> , <a class="reference internal" href="#wx.html.HtmlParser.GetProduct" title="wx.html.HtmlParser.GetProduct"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetProduct</span></code></a>   or <a class="reference internal" href="#wx.html.HtmlParser.DoneParser" title="wx.html.HtmlParser.DoneParser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoneParser</span></code></a>   directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Object</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.PopTagHandler">
+<code class="sig-name descname">PopTagHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.PopTagHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restores parser’s state before last call to <a class="reference internal" href="#wx.html.HtmlParser.PushTagHandler" title="wx.html.HtmlParser.PushTagHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PushTagHandler</span></code></a> .</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.PushTagHandler">
+<code class="sig-name descname">PushTagHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handler</em>, <em class="sig-param">tags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.PushTagHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces the handler to handle additional tags (not returned by <a class="reference internal" href="wx.html.HtmlTagHandler.html#wx.html.HtmlTagHandler.GetSupportedTags" title="wx.html.HtmlTagHandler.GetSupportedTags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.html.HtmlTagHandler.GetSupportedTags</span></code></a> ).</p>
+<p>The handler should already be added to this parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handler</strong> (<a class="reference internal" href="wx.html.HtmlTagHandler.html#wx.html.HtmlTagHandler" title="wx.html.HtmlTagHandler"><em>wx.html.HtmlTagHandler</em></a>) – the handler</p></li>
+<li><p><strong>tags</strong> (<em>string</em>) – List of tags (in same format as GetSupportedTags()’s return value). The parser will redirect these tags to handler (until call to <a class="reference internal" href="#wx.html.HtmlParser.PopTagHandler" title="wx.html.HtmlParser.PopTagHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PopTagHandler</span></code></a> ).</p></li>
+</ul>
+</dd>
+</dl>
+<p>Imagine you want to parse following pseudo-html structure:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;myitems&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"one"</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"two"</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/myitems&gt;</span>
+
+<span class="nt">&lt;execute&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">program=</span><span class="s">"text.exe"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/execute&gt;</span>
+</pre></div>
+</div>
+<p>It is obvious that you cannot use only one tag handler for &lt;param&gt; tag. Instead you must use context-sensitive handlers for &lt;param&gt; inside &lt;myitems&gt; and &lt;param&gt; inside &lt;execute&gt;. This is the preferred solution:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># some code in HandleTag for "MYITEMS"...</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">Parser</span><span class="o">.</span><span class="n">PushTagHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"PARAM"</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">ParseInner</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">Parser</span><span class="o">.</span><span class="n">PopTagHandler</span><span class="p">()</span>
+
+<span class="c1"># back to working on "MYITEMS"...</span>
+</pre></div>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.SetFS">
+<code class="sig-name descname">SetFS</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">fs</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.SetFS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the virtual file system that will be used to request additional files.</p>
+<p>(For example  <code class="docutils literal notranslate"><span class="pre">IMG</span></code>   tag handler requests  <a class="reference internal" href="wx.FSFile.html#wx-fsfile"><span class="std std-ref">  wx.FSFile</span></a>  with the image data.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fs</strong> (<a class="reference internal" href="wx.FileSystem.html#wx.FileSystem" title="wx.FileSystem"><em>wx.FileSystem</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.html.HtmlParser.StopParsing">
+<code class="sig-name descname">StopParsing</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.html.HtmlParser.StopParsing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to interrupt parsing from a tag handler.</p>
+<p>No more tags will be parsed afterward. This function may only be called from <a class="reference internal" href="#wx.html.HtmlParser.Parse" title="wx.html.HtmlParser.Parse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Parse</span></code></a>   or any function called by it (i.e. from tag handlers).</p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.html.HtmlParser.FS">
+<code class="sig-name descname">FS</code><a class="headerlink" href="#wx.html.HtmlParser.FS" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlParser.GetFS" title="wx.html.HtmlParser.GetFS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFS</span></code></a> and <a class="reference internal" href="#wx.html.HtmlParser.SetFS" title="wx.html.HtmlParser.SetFS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFS</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlParser.Product">
+<code class="sig-name descname">Product</code><a class="headerlink" href="#wx.html.HtmlParser.Product" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlParser.GetProduct" title="wx.html.HtmlParser.GetProduct"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetProduct</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.html.HtmlParser.Source">
+<code class="sig-name descname">Source</code><a class="headerlink" href="#wx.html.HtmlParser.Source" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.html.HtmlParser.GetSource" title="wx.html.HtmlParser.GetSource"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSource</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

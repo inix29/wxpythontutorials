@@ -1,0 +1,2147 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.ListCtrl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ListEvent.html" rel="next" title="wx.ListEvent"/>
+<link href="wx.ListColumnFormat.enumeration.html" rel="prev" title="wx.ListColumnFormat"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.ListCtrl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ListEvent.html" title="wx.ListEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.ListColumnFormat.enumeration.html" title="wx.ListColumnFormat">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.ListCtrl</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.ListCtrl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-listctrl">
+<span id="wx-listctrl"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.ListCtrl</strong><a class="headerlink" href="#phoenix-title-wx-listctrl" title="Permalink to this headline">¶</a></h1>
+<p>A list control presents lists in a number of formats: list view, report view, icon view and small icon view.</p>
+<p>In any case, elements are numbered from zero. For all these modes, the items are stored in the control and must be added to it using <a class="reference internal" href="#wx.ListCtrl.InsertItem" title="wx.ListCtrl.InsertItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.InsertItem</span></code></a>   method.</p>
+<p>A special case of report view quite different from the other modes of the list control is a virtual control in which the items data (including text, images and attributes) is managed by the main program and is requested by the control itself only when needed which allows having controls with millions of items without consuming much memory. To use virtual list control you must use <a class="reference internal" href="#wx.ListCtrl.SetItemCount" title="wx.ListCtrl.SetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.SetItemCount</span></code></a>   first and override at least <a class="reference internal" href="#wx.ListCtrl.OnGetItemText" title="wx.ListCtrl.OnGetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.OnGetItemText</span></code></a>   (and optionally <a class="reference internal" href="#wx.ListCtrl.OnGetItemImage" title="wx.ListCtrl.OnGetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.OnGetItemImage</span></code></a>   or <a class="reference internal" href="#wx.ListCtrl.OnGetItemColumnImage" title="wx.ListCtrl.OnGetItemColumnImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.OnGetItemColumnImage</span></code></a>   and <a class="reference internal" href="#wx.ListCtrl.OnGetItemAttr" title="wx.ListCtrl.OnGetItemAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.OnGetItemAttr</span></code></a> ) to return the information about the items when the control requests it.</p>
+<p>Virtual list control can be used as a normal one except that no operations which can take time proportional to the number of items in the control happen</p>
+<p>Using many of <a class="reference internal" href="#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  features is shown in the <span class="xref std std-ref">corresponding sample</span>.</p>
+<p>To intercept events from a list control, use the event table macros described in <a class="reference internal" href="wx.ListEvent.html#wx-listevent"><span class="std std-ref">  wx.ListEvent</span></a>.</p>
+<p><strong>Mac Note</strong>: Starting with wxWidgets 2.8, <a class="reference internal" href="#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  uses a native implementation for report mode, and uses a generic implementation for other modes. You can use the generic implementation for report mode as well by setting the  <code class="docutils literal notranslate"><span class="pre">mac.listctrl.always_use_generic</span></code>   system option (see  <a class="reference internal" href="wx.SystemOptions.html#wx-systemoptions"><span class="std std-ref">  wx.SystemOptions</span></a>) to 1.</p>
+<div class="section" id="styles-window-styles">
+<span id="listctrl-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_LIST</span></code>: Multicolumn list view, with optional small icons. Columns are computed automatically, i.e. you don’t set columns as in  <code class="docutils literal notranslate"><span class="pre">LC_REPORT</span></code> . In other words, the list wraps, unlike a  <a class="reference internal" href="wx.ListBox.html#wx-listbox"><span class="std std-ref">  wx.ListBox</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_REPORT</span></code>: Single or multicolumn report view, with optional header.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_VIRTUAL</span></code>: The application provides items text on demand. May only be used with  <code class="docutils literal notranslate"><span class="pre">LC_REPORT</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_ICON</span></code>: Large icon view, with optional labels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_SMALL_ICON</span></code>: Small icon view, with optional labels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_ALIGN_TOP</span></code>: Icons align to the top. Win32 default, Win32 only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_ALIGN_LEFT</span></code>: Icons align to the left.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_AUTOARRANGE</span></code>: Icons arrange themselves. Win32 only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_EDIT_LABELS</span></code>: Labels are editable: the application will be notified when editing starts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_NO_HEADER</span></code>: No header in report mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_SINGLE_SEL</span></code>: Single selection (default is multiple).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_SORT_ASCENDING</span></code>: Sort in ascending order. (You must still supply a comparison callback in <a class="reference internal" href="#wx.ListCtrl.SortItems" title="wx.ListCtrl.SortItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.SortItems</span></code></a> .)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_SORT_DESCENDING</span></code>: Sort in descending order. (You must still supply a comparison callback in <a class="reference internal" href="#wx.ListCtrl.SortItems" title="wx.ListCtrl.SortItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.SortItems</span></code></a> .)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_HRULES</span></code>: Draws light horizontal rules between rows in report mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LC_VRULES</span></code>: Draws light vertical rules between columns in report mode.</p></li>
+</ul>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="listctrl-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="wx.ListEvent.html#wx-listevent"><span class="std std-ref">  wx.ListEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_LIST_BEGIN_DRAG: Begin dragging with the left mouse button. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_BEGIN_DRAG</span></code>   event type.</p></li>
+<li><p>EVT_LIST_BEGIN_RDRAG: Begin dragging with the right mouse button. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_BEGIN_RDRAG</span></code>   event type.</p></li>
+<li><p>EVT_BEGIN_LABEL_EDIT: Begin editing a label. This can be prevented by calling Veto(). Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_BEGIN_LABEL_EDIT</span></code>   event type.</p></li>
+<li><p>EVT_LIST_END_LABEL_EDIT: Finish editing a label. This can be prevented by calling Veto(). Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_END_LABEL_EDIT</span></code>   event type.</p></li>
+<li><p>EVT_LIST_DELETE_ITEM: An item was deleted. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_DELETE_ITEM</span></code>   event type.</p></li>
+<li><p>EVT_LIST_DELETE_ALL_ITEMS: All items were deleted. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_DELETE_ALL_ITEMS</span></code>   event type.</p></li>
+<li><p>EVT_LIST_ITEM_SELECTED: The item has been selected. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_ITEM_SELECTED</span></code>   event type.</p></li>
+<li><p>EVT_LIST_ITEM_DESELECTED: The item has been deselected. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_ITEM_DESELECTED</span></code>   event type.</p></li>
+<li><p>EVT_LIST_ITEM_ACTIVATED: The item has been activated (<code class="docutils literal notranslate"><span class="pre">ENTER</span></code> or double click). Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_ITEM_ACTIVATED</span></code>   event type.</p></li>
+<li><p>EVT_LIST_ITEM_FOCUSED: The currently focused item has changed. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_ITEM_FOCUSED</span></code>   event type.</p></li>
+<li><p>EVT_LIST_ITEM_MIDDLE_CLICK: The middle mouse button has been clicked on an item. This is only supported by the generic control. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_ITEM_MIDDLE_CLICK</span></code>   event type.</p></li>
+<li><p>EVT_LIST_ITEM_RIGHT_CLICK: The right mouse button has been clicked on an item. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_ITEM_RIGHT_CLICK</span></code>   event type.</p></li>
+<li><p>EVT_LIST_KEY_DOWN: A key has been pressed. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_KEY_DOWN</span></code>   event type.</p></li>
+<li><p>EVT_LIST_INSERT_ITEM: An item has been inserted. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_INSERT_ITEM</span></code>   event type.</p></li>
+<li><p>EVT_LIST_COL_CLICK: A column (m_col) has been left-clicked. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_COL_CLICK</span></code>   event type.</p></li>
+<li><p>EVT_LIST_COL_RIGHT_CLICK: A column (m_col) has been right-clicked. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_COL_RIGHT_CLICK</span></code>   event type.</p></li>
+<li><p>EVT_LIST_COL_BEGIN_DRAG: The user started resizing a column - can be vetoed. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_COL_BEGIN_DRAG</span></code>   event type.</p></li>
+<li><p>EVT_LIST_COL_DRAGGING: The divider between columns is being dragged. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_COL_DRAGGING</span></code>   event type.</p></li>
+<li><p>EVT_LIST_COL_END_DRAG: A column has been resized by the user. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_COL_END_DRAG</span></code>   event type.</p></li>
+<li><p>EVT_LIST_CACHE_HINT: Prepare cache for a virtual list control. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_CACHE_HINT</span></code>   event type.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="listctrl_overview.html#listctrl-overview"><span class="std std-ref">ListCtrl Overview</span></a>, <a class="reference internal" href="wx.ListView.html#wx-listview"><span class="std std-ref">  wx.ListView</span></a>, <a class="reference internal" href="wx.ListBox.html#wx-listbox"><span class="std std-ref">  wx.ListBox</span></a>, <a class="reference internal" href="wx.TreeCtrl.html#wx-treectrl"><span class="std std-ref">  wx.TreeCtrl</span></a>, <a class="reference internal" href="wx.ImageList.html#wx-imagelist"><span class="std std-ref">  wx.ImageList</span></a>, <a class="reference internal" href="wx.ListEvent.html#wx-listevent"><span class="std std-ref">  wx.ListEvent</span></a>, <a class="reference internal" href="wx.ListItem.html#wx-listitem"><span class="std std-ref">  wx.ListItem</span></a>, <a class="reference internal" href="wx.adv.EditableListBox.html#wx-adv-editablelistbox"><span class="std std-ref">  wx.adv.EditableListBox</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ListCtrl</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ListCtrl" class="inheritance" src="_static/images/inheritance/wx.ListCtrl_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="65,315,157,344" href="wx.ListCtrl.html" id="node1" shape="rect" title="A list control presents lists in a number of formats: list view, report view, icon view and small icon view."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/wx.listctrl.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/wx.listctrl1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.listctrl2.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.ListView.html#wx-listview"><span class="std std-ref">  wx.ListView</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.__init__" title="wx.ListCtrl.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.Append" title="wx.ListCtrl.Append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Append</span></code></a></p></td>
+<td><p>Append an item to the list control.  The <em class="xref py py-obj">entry</em> parameter should be a</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.AppendColumn" title="wx.ListCtrl.AppendColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendColumn</span></code></a></p></td>
+<td><p>Adds a new column to the list control in report view mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.Arrange" title="wx.ListCtrl.Arrange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Arrange</span></code></a></p></td>
+<td><p>Arranges the items in icon or small icon view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.AssignImageList" title="wx.ListCtrl.AssignImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AssignImageList</span></code></a></p></td>
+<td><p>Sets the image list associated with the control and takes ownership of it (i.e.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.ClearAll" title="wx.ListCtrl.ClearAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearAll</span></code></a></p></td>
+<td><p>Deletes all items and all columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.ClearColumnImage" title="wx.ListCtrl.ClearColumnImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearColumnImage</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.Create" title="wx.ListCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates the list control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.DeleteAllColumns" title="wx.ListCtrl.DeleteAllColumns"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAllColumns</span></code></a></p></td>
+<td><p>Delete all columns in the list control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.DeleteAllItems" title="wx.ListCtrl.DeleteAllItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAllItems</span></code></a></p></td>
+<td><p>Deletes all items in the list control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.DeleteColumn" title="wx.ListCtrl.DeleteColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteColumn</span></code></a></p></td>
+<td><p>Deletes a column.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.DeleteItem" title="wx.ListCtrl.DeleteItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteItem</span></code></a></p></td>
+<td><p>Deletes the specified item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.EditLabel" title="wx.ListCtrl.EditLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EditLabel</span></code></a></p></td>
+<td><p>Starts editing the label of the given item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.EnableAlternateRowColours" title="wx.ListCtrl.EnableAlternateRowColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableAlternateRowColours</span></code></a></p></td>
+<td><p>Enable alternating row background colours (also called zebra striping).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.EnableBellOnNoMatch" title="wx.ListCtrl.EnableBellOnNoMatch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableBellOnNoMatch</span></code></a></p></td>
+<td><p>Enable or disable a beep if there is no match for the currently entered text when searching for the item from keyboard.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.EnsureVisible" title="wx.ListCtrl.EnsureVisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnsureVisible</span></code></a></p></td>
+<td><p>Ensures this item is visible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.FindItem" title="wx.ListCtrl.FindItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindItem</span></code></a></p></td>
+<td><p>Find an item whose label matches this string, starting from start or the beginning if start is  <code class="docutils literal notranslate"><span class="pre">-1</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.Focus" title="wx.ListCtrl.Focus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Focus</span></code></a></p></td>
+<td><p>Focus and show the given item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetClassDefaultAttributes" title="wx.ListCtrl.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetColumn" title="wx.ListCtrl.GetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumn</span></code></a></p></td>
+<td><p>Gets information about this column. See SetItem() for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetColumnCount" title="wx.ListCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p></td>
+<td><p>Returns the number of columns.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetColumnIndexFromOrder" title="wx.ListCtrl.GetColumnIndexFromOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnIndexFromOrder</span></code></a></p></td>
+<td><p>Gets the column index from its position in visual order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetColumnOrder" title="wx.ListCtrl.GetColumnOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnOrder</span></code></a></p></td>
+<td><p>Gets the column visual order position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetColumnWidth" title="wx.ListCtrl.GetColumnWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnWidth</span></code></a></p></td>
+<td><p>Gets the column width (report view only).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetColumnsOrder" title="wx.ListCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a></p></td>
+<td><p>Returns the array containing the orders of all columns.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetCountPerPage" title="wx.ListCtrl.GetCountPerPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCountPerPage</span></code></a></p></td>
+<td><p>Gets the number of items that can fit vertically in the visible area of the list control (list or report view) or the total number of items in the list control (icon or small icon view).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetEditControl" title="wx.ListCtrl.GetEditControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditControl</span></code></a></p></td>
+<td><p>Returns the edit control being currently used to edit a label.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetFirstSelected" title="wx.ListCtrl.GetFirstSelected"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstSelected</span></code></a></p></td>
+<td><p>Returns the first selected item, or -1 when none is selected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetFocusedItem" title="wx.ListCtrl.GetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFocusedItem</span></code></a></p></td>
+<td><p>Gets the currently focused item or -1 if none is focused.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetImageList" title="wx.ListCtrl.GetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageList</span></code></a></p></td>
+<td><p>Returns the specified image list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItem" title="wx.ListCtrl.GetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItem</span></code></a></p></td>
+<td><p>Gets information about the item. See SetItem() for more information.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemBackgroundColour" title="wx.ListCtrl.GetItemBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemBackgroundColour</span></code></a></p></td>
+<td><p>Returns the colour for this item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemCount" title="wx.ListCtrl.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a></p></td>
+<td><p>Returns the number of items in the list control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemData" title="wx.ListCtrl.GetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemData</span></code></a></p></td>
+<td><p>Gets the application-defined data associated with this item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemFont" title="wx.ListCtrl.GetItemFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemFont</span></code></a></p></td>
+<td><p>Returns the item’s font.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemPosition" title="wx.ListCtrl.GetItemPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemPosition</span></code></a></p></td>
+<td><p>Returns the position of the item, in icon or small icon view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemRect" title="wx.ListCtrl.GetItemRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemRect</span></code></a></p></td>
+<td><p>Returns the rectangle representing the item’s size and position, in physical coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemSpacing" title="wx.ListCtrl.GetItemSpacing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemSpacing</span></code></a></p></td>
+<td><p>Retrieves the spacing between icons in pixels: horizontal spacing is returned as  <code class="docutils literal notranslate"><span class="pre">x</span></code>   component of the  <a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a>  object and the vertical spacing as its  <code class="docutils literal notranslate"><span class="pre">y</span></code>   component.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemState" title="wx.ListCtrl.GetItemState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemState</span></code></a></p></td>
+<td><p>Gets the item state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemText" title="wx.ListCtrl.GetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemText</span></code></a></p></td>
+<td><p>Gets the item text for this item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetItemTextColour" title="wx.ListCtrl.GetItemTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemTextColour</span></code></a></p></td>
+<td><p>Returns the colour for this item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetMainWindow" title="wx.ListCtrl.GetMainWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMainWindow</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetNextItem" title="wx.ListCtrl.GetNextItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextItem</span></code></a></p></td>
+<td><p>Searches for an item with the given geometry or state, starting from <em class="xref py py-obj">item</em>  but excluding the <em class="xref py py-obj">item</em>  itself.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetNextSelected" title="wx.ListCtrl.GetNextSelected"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSelected</span></code></a></p></td>
+<td><p>Returns subsequent selected items, or -1 when no more are selected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetSelectedItemCount" title="wx.ListCtrl.GetSelectedItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedItemCount</span></code></a></p></td>
+<td><p>Returns the number of selected items in the list control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetSubItemRect" title="wx.ListCtrl.GetSubItemRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSubItemRect</span></code></a></p></td>
+<td><p>Returns the rectangle representing the size and position, in physical coordinates, of the given subitem, i.e.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetTextColour" title="wx.ListCtrl.GetTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTextColour</span></code></a></p></td>
+<td><p>Gets the text colour of the list control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.GetTopItem" title="wx.ListCtrl.GetTopItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTopItem</span></code></a></p></td>
+<td><p>Gets the index of the topmost visible item when in list or report view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.GetViewRect" title="wx.ListCtrl.GetViewRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetViewRect</span></code></a></p></td>
+<td><p>Returns the rectangle taken by all items in the control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.HasColumnOrderSupport" title="wx.ListCtrl.HasColumnOrderSupport"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasColumnOrderSupport</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.HitTest" title="wx.ListCtrl.HitTest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HitTest</span></code></a></p></td>
+<td><p>Determines which item (if any) is at the specified point, giving details in <em class="xref py py-obj">flags</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.HitTestSubItem" title="wx.ListCtrl.HitTestSubItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HitTestSubItem</span></code></a></p></td>
+<td><p>Determines which item (if any) is at the specified point, giving details in flags.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.InReportView" title="wx.ListCtrl.InReportView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InReportView</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the control is currently using <code class="docutils literal notranslate"><span class="pre">LC_REPORT</span></code>  style.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.InsertColumn" title="wx.ListCtrl.InsertColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertColumn</span></code></a></p></td>
+<td><p>For report view mode (only), inserts a column.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.InsertItem" title="wx.ListCtrl.InsertItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertItem</span></code></a></p></td>
+<td><p>Inserts an item, returning the index of the new item if successful, -1 otherwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.IsSelected" title="wx.ListCtrl.IsSelected"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSelected</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item is selected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.IsVirtual" title="wx.ListCtrl.IsVirtual"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsVirtual</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the control is currently in virtual report view.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.OnGetItemAttr" title="wx.ListCtrl.OnGetItemAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemAttr</span></code></a></p></td>
+<td><p>This function may be overridden in the derived class for a control with  <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>   style.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.OnGetItemColumnImage" title="wx.ListCtrl.OnGetItemColumnImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemColumnImage</span></code></a></p></td>
+<td><p>Override this function in the derived class for a control with  <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>   and   <code class="docutils literal notranslate"><span class="pre">LC_REPORT</span></code>   styles in order to specify the image index for the given line and column.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.OnGetItemImage" title="wx.ListCtrl.OnGetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemImage</span></code></a></p></td>
+<td><p>This function must be overridden in the derived class for a control with  <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>   style having an “image list” (see  <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code> ; if the control doesn’t have an image list, it is not necessary to override it).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.OnGetItemText" title="wx.ListCtrl.OnGetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemText</span></code></a></p></td>
+<td><p>This function <strong>must</strong>  be overridden in the derived class for a control with  <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>   style.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.RefreshItem" title="wx.ListCtrl.RefreshItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItem</span></code></a></p></td>
+<td><p>Redraws the given <em class="xref py py-obj">item</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.RefreshItems" title="wx.ListCtrl.RefreshItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItems</span></code></a></p></td>
+<td><p>Redraws the items between <em class="xref py py-obj">itemFrom</em>  and <em class="xref py py-obj">itemTo</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.ScrollList" title="wx.ListCtrl.ScrollList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ScrollList</span></code></a></p></td>
+<td><p>Scrolls the list control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.Select" title="wx.ListCtrl.Select"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Select</span></code></a></p></td>
+<td><p>Selects/deselects an item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetAlternateRowColour" title="wx.ListCtrl.SetAlternateRowColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAlternateRowColour</span></code></a></p></td>
+<td><p>Set the alternative row background colour to a specific colour.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetBackgroundColour" title="wx.ListCtrl.SetBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetBackgroundColour</span></code></a></p></td>
+<td><p>Sets the background colour.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetColumn" title="wx.ListCtrl.SetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumn</span></code></a></p></td>
+<td><p>Sets information about this column.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetColumnImage" title="wx.ListCtrl.SetColumnImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnImage</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetColumnWidth" title="wx.ListCtrl.SetColumnWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnWidth</span></code></a></p></td>
+<td><p>Sets the column width.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetColumnsOrder" title="wx.ListCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a></p></td>
+<td><p>Changes the order in which the columns are shown.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetImageList" title="wx.ListCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a></p></td>
+<td><p>Sets the image list associated with the control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItem" title="wx.ListCtrl.SetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItem</span></code></a></p></td>
+<td><p>Sets the data of an item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemBackgroundColour" title="wx.ListCtrl.SetItemBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemBackgroundColour</span></code></a></p></td>
+<td><p>Sets the background colour for this item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemColumnImage" title="wx.ListCtrl.SetItemColumnImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemColumnImage</span></code></a></p></td>
+<td><p>Sets the image associated with the item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemCount" title="wx.ListCtrl.SetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemCount</span></code></a></p></td>
+<td><p>This method can only be used with virtual list controls.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemData" title="wx.ListCtrl.SetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemData</span></code></a></p></td>
+<td><p>Associates application-defined data with this item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemFont" title="wx.ListCtrl.SetItemFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemFont</span></code></a></p></td>
+<td><p>Sets the item’s font.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemImage" title="wx.ListCtrl.SetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemImage</span></code></a></p></td>
+<td><p>Sets the unselected and selected images associated with the item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemPosition" title="wx.ListCtrl.SetItemPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemPosition</span></code></a></p></td>
+<td><p>Sets the position of the item, in icon or small icon view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemState" title="wx.ListCtrl.SetItemState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemState</span></code></a></p></td>
+<td><p>Sets the item state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemText" title="wx.ListCtrl.SetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemText</span></code></a></p></td>
+<td><p>Sets the item text for this item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetItemTextColour" title="wx.ListCtrl.SetItemTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemTextColour</span></code></a></p></td>
+<td><p>Sets the colour for this item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetSingleStyle" title="wx.ListCtrl.SetSingleStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSingleStyle</span></code></a></p></td>
+<td><p>Adds or removes a single window style.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SetTextColour" title="wx.ListCtrl.SetTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTextColour</span></code></a></p></td>
+<td><p>Sets the text colour of the list control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.SetWindowStyleFlag" title="wx.ListCtrl.SetWindowStyleFlag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWindowStyleFlag</span></code></a></p></td>
+<td><p>Sets the whole window style, deleting all items.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SortItems" title="wx.ListCtrl.SortItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SortItems</span></code></a></p></td>
+<td><p>Call this function to sort the items in the list control.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.Column" title="wx.ListCtrl.Column"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Column</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetColumn" title="wx.ListCtrl.GetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumn</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetColumn" title="wx.ListCtrl.SetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumn</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.ColumnCount" title="wx.ListCtrl.ColumnCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ColumnCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetColumnCount" title="wx.ListCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.ColumnsOrder" title="wx.ListCtrl.ColumnsOrder"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ColumnsOrder</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetColumnsOrder" title="wx.ListCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetColumnsOrder" title="wx.ListCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.CountPerPage" title="wx.ListCtrl.CountPerPage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CountPerPage</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetCountPerPage" title="wx.ListCtrl.GetCountPerPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCountPerPage</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.EditControl" title="wx.ListCtrl.EditControl"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EditControl</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetEditControl" title="wx.ListCtrl.GetEditControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditControl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.FocusedItem" title="wx.ListCtrl.FocusedItem"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FocusedItem</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetFocusedItem" title="wx.ListCtrl.GetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFocusedItem</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.Item" title="wx.ListCtrl.Item"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Item</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetItem" title="wx.ListCtrl.GetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItem</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetItem" title="wx.ListCtrl.SetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItem</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.ItemCount" title="wx.ListCtrl.ItemCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ItemCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetItemCount" title="wx.ListCtrl.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetItemCount" title="wx.ListCtrl.SetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemCount</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.ItemPosition" title="wx.ListCtrl.ItemPosition"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ItemPosition</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetItemPosition" title="wx.ListCtrl.GetItemPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemPosition</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetItemPosition" title="wx.ListCtrl.SetItemPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemPosition</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.ItemRect" title="wx.ListCtrl.ItemRect"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ItemRect</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetItemRect" title="wx.ListCtrl.GetItemRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemRect</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.ItemSpacing" title="wx.ListCtrl.ItemSpacing"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ItemSpacing</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetItemSpacing" title="wx.ListCtrl.GetItemSpacing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemSpacing</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.MainWindow" title="wx.ListCtrl.MainWindow"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MainWindow</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetMainWindow" title="wx.ListCtrl.GetMainWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMainWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.SelectedItemCount" title="wx.ListCtrl.SelectedItemCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SelectedItemCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetSelectedItemCount" title="wx.ListCtrl.GetSelectedItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedItemCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.TextColour" title="wx.ListCtrl.TextColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">TextColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetTextColour" title="wx.ListCtrl.GetTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTextColour</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetTextColour" title="wx.ListCtrl.SetTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTextColour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListCtrl.TopItem" title="wx.ListCtrl.TopItem"><code class="xref py py-attr docutils literal notranslate"><span class="pre">TopItem</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetTopItem" title="wx.ListCtrl.GetTopItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTopItem</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListCtrl.ViewRect" title="wx.ListCtrl.ViewRect"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ViewRect</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListCtrl.GetViewRect" title="wx.ListCtrl.GetViewRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetViewRect</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.ListCtrl">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">ListCtrl</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ListCtrl</span><span class="p">()</span>
+
+<span class="n">ListCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+         <span class="n">style</span><span class="o">=</span><span class="n">LC_ICON</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">DefaultValidator</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">ListCtrlNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A list control presents lists in a number of formats: list view,
+report view, icon view and small icon view.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.ListCtrl.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=LC_ICON, validator=DefaultValidator, name=ListCtrlNameStr)</em></p>
+<p>Constructor, creating and showing a list control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Parent window. Must not be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – Window identifier. The value <code class="docutils literal notranslate"><span class="pre">wx.ID_ANY</span></code> indicates a default value.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Window position. If <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultPosition</span></code>       is specified then a default position is chosen.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Window size. If <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultSize</span></code>       is specified then the window is sized appropriately.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – Window style. See <a class="reference internal" href="#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>.</p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – Window validator.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – Window name.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.Create" title="wx.ListCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a> , <a class="reference internal" href="wx.Validator.html#wx-validator"><span class="std std-ref">  wx.Validator</span></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.Append">
+<code class="sig-name descname">Append</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">entry</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.Append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append an item to the list control.  The <em class="xref py py-obj">entry</em> parameter should be a
+sequence with an item for each column</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.AppendColumn">
+<code class="sig-name descname">AppendColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">heading</em>, <em class="sig-param">format=LIST_FORMAT_LEFT</em>, <em class="sig-param">width=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.AppendColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new column to the list control in report view mode.</p>
+<p>This is just a convenient wrapper for <a class="reference internal" href="#wx.ListCtrl.InsertColumn" title="wx.ListCtrl.InsertColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertColumn</span></code></a>   which adds the new column after all the existing ones without having to specify its position explicitly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>heading</strong> (<em>string</em>) – </p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="wx.ListColumnFormat.enumeration.html" title="ListColumnFormat"><em>ListColumnFormat</em></a>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.4.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.Arrange">
+<code class="sig-name descname">Arrange</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flag=LIST_ALIGN_DEFAULT</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.Arrange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arranges the items in icon or small icon view.</p>
+<p>This only has effect on Win32. <em class="xref py py-obj">flag</em>  is one of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_ALIGN_DEFAULT</span></code>: Default alignment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_ALIGN_LEFT</span></code>: Align to the left side of the control.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_ALIGN_TOP</span></code>: Align to the top side of the control.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_ALIGN_SNAP_TO_GRID</span></code>: Snap to grid.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flag</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.AssignImageList">
+<code class="sig-name descname">AssignImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imageList</em>, <em class="sig-param">which</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.AssignImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the image list associated with the control and takes ownership of it (i.e.</p>
+<p>the control will, unlike when using <a class="reference internal" href="#wx.ListCtrl.SetImageList" title="wx.ListCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a> , delete the list when destroyed). <em class="xref py py-obj">which</em>  is one of  <code class="docutils literal notranslate"><span class="pre">IMAGE_LIST_NORMAL</span></code> ,   <code class="docutils literal notranslate"><span class="pre">IMAGE_LIST_SMALL</span></code> ,   <code class="docutils literal notranslate"><span class="pre">IMAGE_LIST_STATE</span></code>   (the last is unimplemented).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imageList</strong> (<a class="reference internal" href="wx.ImageList.html#wx.ImageList" title="wx.ImageList"><em>wx.ImageList</em></a>) – </p></li>
+<li><p><strong>which</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.SetImageList" title="wx.ListCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.ClearAll">
+<code class="sig-name descname">ClearAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.ClearAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all items and all columns.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This sends an event of type  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_DELETE_ALL_ITEMS</span></code>   under all platforms.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.ClearColumnImage">
+<code class="sig-name descname">ClearColumnImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.ClearColumnImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=LC_ICON</em>, <em class="sig-param">validator=DefaultValidator</em>, <em class="sig-param">name=ListCtrlNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the list control.</p>
+<p>See <a class="reference internal" href="#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  for further details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.DeleteAllColumns">
+<code class="sig-name descname">DeleteAllColumns</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.DeleteAllColumns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all columns in the list control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if all columns were successfully deleted, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.DeleteAllItems">
+<code class="sig-name descname">DeleteAllItems</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.DeleteAllItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all items in the list control.</p>
+<p>This function does <em class="xref py py-obj">not</em>  send the  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_DELETE_ITEM</span></code>   event because deleting many items from the control would be too slow then (unlike  <a class="reference internal" href="#wx.ListCtrl.DeleteItem" title="wx.ListCtrl.DeleteItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.DeleteItem</span></code></a> ) but it does send the special  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_DELETE_ALL_ITEMS</span></code>   event if the control was not empty. If it was already empty, nothing is done and no event is sent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the items were successfully deleted or if the control was already empty, <code class="docutils literal notranslate"><span class="pre">False</span></code> if an error occurred while deleting the items.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.DeleteColumn">
+<code class="sig-name descname">DeleteColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.DeleteColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.DeleteItem">
+<code class="sig-name descname">DeleteItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.DeleteItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the specified item.</p>
+<p>This function sends the  <code class="docutils literal notranslate"><span class="pre">wxEVT_LIST_DELETE_ITEM</span></code>   event for the item being deleted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.DeleteAllItems" title="wx.ListCtrl.DeleteAllItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAllItems</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.EditLabel">
+<code class="sig-name descname">EditLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.EditLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts editing the label of the given item.</p>
+<p>This function generates a  <code class="docutils literal notranslate"><span class="pre">EVT_LIST_BEGIN_LABEL_EDIT</span></code>   event which can be vetoed so that no text control will appear for in-place editing.</p>
+<p>If the user changed the label (i.e. s/he does not press <code class="docutils literal notranslate"><span class="pre">ESC</span></code> or leave the text control without changes, a  <code class="docutils literal notranslate"><span class="pre">EVT_LIST_END_LABEL_EDIT</span></code>   event will be sent which can be vetoed as well.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.EnableAlternateRowColours">
+<code class="sig-name descname">EnableAlternateRowColours</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.EnableAlternateRowColours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable alternating row background colours (also called zebra striping).</p>
+<p>This method can only be called for the control in virtual report mode, i.e. having <code class="docutils literal notranslate"><span class="pre">LC_REPORT</span></code>  and <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>  styles.</p>
+<p>When enabling alternating colours, the appropriate colour for the even rows is chosen automatically depending on the default foreground and background colours which are used for the odd rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, enable alternating row background colours, i.e. different colours for the odd and even rows. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, disable this feature and use the same background colour for all rows.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.SetAlternateRowColour" title="wx.ListCtrl.SetAlternateRowColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAlternateRowColour</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.EnableBellOnNoMatch">
+<code class="sig-name descname">EnableBellOnNoMatch</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">on=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.EnableBellOnNoMatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable a beep if there is no match for the currently entered text when searching for the item from keyboard.</p>
+<p>The default is to not beep in this case except in wxMSW where the beep is always generated by the native control and cannot be disabled, i.e. calls to this function do nothing there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>on</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.EnsureVisible">
+<code class="sig-name descname">EnsureVisible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.EnsureVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensures this item is visible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.FindItem">
+<code class="sig-name descname">FindItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.FindItem" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>FindItem</strong> <em class="xref py py-obj">(self, start, str, partial=False)</em></p>
+<p>Find an item whose label matches this string, starting from start or the beginning if start is  <code class="docutils literal notranslate"><span class="pre">-1</span></code> .</p>
+<p>The string comparison is case insensitive.</p>
+<p>If <em class="xref py py-obj">partial</em>  is <code class="docutils literal notranslate"><span class="pre">True</span></code> then this method will look for items which begin with <em class="xref py py-obj">str</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>long</em>) – </p></li>
+<li><p><strong>str</strong> (<em>string</em>) – </p></li>
+<li><p><strong>partial</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The next matching item if any or  <code class="docutils literal notranslate"><span class="pre">-1</span></code>   (wx``wx.NOT_FOUND``) otherwise.</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>FindItem</strong> <em class="xref py py-obj">(self, start, data)</em></p>
+<p>Find an item whose data matches this data, starting from start or the beginning if ‘start’ is  <code class="docutils literal notranslate"><span class="pre">-1</span></code> .</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>FindItem</strong> <em class="xref py py-obj">(self, start, pt, direction)</em></p>
+<p>Find an item nearest this position in the specified direction, starting from <em class="xref py py-obj">start</em>  or the beginning if <em class="xref py py-obj">start</em>  is -1.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.Focus">
+<code class="sig-name descname">Focus</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.Focus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Focus and show the given item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetColumn">
+<code class="sig-name descname">GetColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets information about this column. See SetItem() for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ListItem.html#wx-listitem"><span class="std std-ref">  wx.ListItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetColumnCount">
+<code class="sig-name descname">GetColumnCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetColumnIndexFromOrder">
+<code class="sig-name descname">GetColumnIndexFromOrder</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetColumnIndexFromOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the column index from its position in visual order.</p>
+<p>After calling <a class="reference internal" href="#wx.ListCtrl.SetColumnsOrder" title="wx.ListCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a> , the index returned by this function corresponds to the value of the element number <em class="xref py py-obj">pos</em>  in the array returned by <a class="reference internal" href="#wx.ListCtrl.GetColumnsOrder" title="wx.ListCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a> .</p>
+<p>Please see <a class="reference internal" href="#wx.ListCtrl.SetColumnsOrder" title="wx.ListCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a>   documentation for an example and additional remarks about the columns ordering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.GetColumnOrder" title="wx.ListCtrl.GetColumnOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnOrder</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetColumnOrder">
+<code class="sig-name descname">GetColumnOrder</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetColumnOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the column visual order position.</p>
+<p>This function returns the index of the column which appears at the given visual position, e.g. calling it with <em class="xref py py-obj">col</em>  equal to 0 returns the index of the first shown column.</p>
+<p>Please see <a class="reference internal" href="#wx.ListCtrl.SetColumnsOrder" title="wx.ListCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a>   documentation for an example and additional remarks about the columns ordering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.GetColumnsOrder" title="wx.ListCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.GetColumnIndexFromOrder" title="wx.ListCtrl.GetColumnIndexFromOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnIndexFromOrder</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetColumnWidth">
+<code class="sig-name descname">GetColumnWidth</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetColumnWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the column width (report view only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetColumnsOrder">
+<code class="sig-name descname">GetColumnsOrder</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetColumnsOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the array containing the orders of all columns.</p>
+<p>On error, an empty array is returned.</p>
+<p>Please see <a class="reference internal" href="#wx.ListCtrl.SetColumnsOrder" title="wx.ListCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a>   documentation for an example and additional remarks about the columns ordering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of integers</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.GetColumnOrder" title="wx.ListCtrl.GetColumnOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnOrder</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.GetColumnIndexFromOrder" title="wx.ListCtrl.GetColumnIndexFromOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnIndexFromOrder</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetCountPerPage">
+<code class="sig-name descname">GetCountPerPage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetCountPerPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of items that can fit vertically in the visible area of the list control (list or report view) or the total number of items in the list control (icon or small icon view).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetEditControl">
+<code class="sig-name descname">GetEditControl</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetEditControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the edit control being currently used to edit a label.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if no label is being edited.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is currently only implemented for wxMSW and the generic version, not for the native Mac OS X version.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetFirstSelected">
+<code class="sig-name descname">GetFirstSelected</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetFirstSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first selected item, or -1 when none is selected.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetFocusedItem">
+<code class="sig-name descname">GetFocusedItem</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetFocusedItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the currently focused item or -1 if none is focused.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetImageList">
+<code class="sig-name descname">GetImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">which</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the specified image list.</p>
+<p><em class="xref py py-obj">which</em>  may be one of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.IMAGE_LIST_NORMAL</span></code>: The normal (large icon) image list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.IMAGE_LIST_SMALL</span></code>: The small icon image list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.IMAGE_LIST_STATE</span></code>: The user-defined state image list (unimplemented).</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>which</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ImageList.html#wx-imagelist"><span class="std std-ref">  wx.ImageList</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItem">
+<code class="sig-name descname">GetItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">itemIdx</em>, <em class="sig-param">col=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets information about the item. See SetItem() for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ListItem.html#wx-listitem"><span class="std std-ref">  wx.ListItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemBackgroundColour">
+<code class="sig-name descname">GetItemBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the colour for this item.</p>
+<p>If the item has no specific colour, returns an invalid colour (and not the default background control of the control itself).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Colour.html#wx-colour"><span class="std std-ref">  wx.Colour</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.GetItemTextColour" title="wx.ListCtrl.GetItemTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemTextColour</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemCount">
+<code class="sig-name descname">GetItemCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of items in the list control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemData">
+<code class="sig-name descname">GetItemData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the application-defined data associated with this item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemFont">
+<code class="sig-name descname">GetItemFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the item’s font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemPosition">
+<code class="sig-name descname">GetItemPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the position of the item, in icon or small icon view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Point.html#wx-point"><span class="std std-ref">  wx.Point</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemRect">
+<code class="sig-name descname">GetItemRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">code=LIST_RECT_BOUNDS</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemRect" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns the rectangle representing the item’s size and position, in physical coordinates.
+code is one of wx.``wx.LIST_RECT_BOUNDS``, wx.``wx.LIST_RECT_ICON``, wx.``wx.LIST_RECT_LABEL``.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Rect.html#wx-rect"><span class="std std-ref">  wx.Rect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemSpacing">
+<code class="sig-name descname">GetItemSpacing</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemSpacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the spacing between icons in pixels: horizontal spacing is returned as  <code class="docutils literal notranslate"><span class="pre">x</span></code>   component of the  <a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a>  object and the vertical spacing as its  <code class="docutils literal notranslate"><span class="pre">y</span></code>   component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemState">
+<code class="sig-name descname">GetItemState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">stateMask</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the item state.</p>
+<p>For a list of state flags, see <a class="reference internal" href="#wx.ListCtrl.SetItem" title="wx.ListCtrl.SetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItem</span></code></a> . The <em class="xref py py-obj">stateMask</em>  indicates which state flags are of interest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>stateMask</strong> (<em>long</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemText">
+<code class="sig-name descname">GetItemText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the item text for this item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – Item (zero-based) index.</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – Item column (zero-based) index. Column 0 is the default. This parameter is new in wxWidgets 2.9.1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetItemTextColour">
+<code class="sig-name descname">GetItemTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetItemTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the colour for this item.</p>
+<p>If the item has no specific colour, returns an invalid colour (and not the default foreground control of the control itself as this wouldn’t allow distinguishing between items having the same colour as the current control foreground and items with default colour which, hence, have always the same colour as the control).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Colour.html#wx-colour"><span class="std std-ref">  wx.Colour</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetMainWindow">
+<code class="sig-name descname">GetMainWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetMainWindow" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetNextItem">
+<code class="sig-name descname">GetNextItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">geometry=LIST_NEXT_ALL</em>, <em class="sig-param">state=LIST_STATE_DONTCARE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetNextItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches for an item with the given geometry or state, starting from <em class="xref py py-obj">item</em>  but excluding the <em class="xref py py-obj">item</em>  itself.</p>
+<p>If <em class="xref py py-obj">item</em>  is -1, the first item that matches the specified flags will be returned. Returns the first item with given state following <em class="xref py py-obj">item</em>  or -1 if no such item found. This function may be used to find all selected items in the control like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">listctrl</span><span class="o">.</span><span class="n">GetNextItem</span><span class="p">(</span><span class="n">item</span><span class="p">,</span>
+                                <span class="n">wx</span><span class="o">.</span><span class="n">LIST_NEXT_ALL</span><span class="p">,</span>
+                                <span class="n">wx</span><span class="o">.</span><span class="n">LIST_STATE_SELECTED</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="c1"># This item is selected - do whatever is needed with it</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">LogMessage</span><span class="p">(</span><span class="s2">"Item </span><span class="si">%ld</span><span class="s2"> is selected"</span><span class="o">%</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref py py-obj">geometry</em>  can be one of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_NEXT_ABOVE</span></code>: Searches for an item above the specified item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_NEXT_ALL</span></code>: Searches for subsequent item by index.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_NEXT_BELOW</span></code>: Searches for an item below the specified item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_NEXT_LEFT</span></code>: Searches for an item to the left of the specified item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_NEXT_RIGHT</span></code>: Searches for an item to the right of the specified item.</p></li>
+</ul>
+<p><em class="xref py py-obj">state</em>  can be a bitlist of the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_STATE_DONTCARE</span></code>: Don’t care what the state is.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_STATE_DROPHILITED</span></code>: The item indicates it is a drop target.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_STATE_FOCUSED</span></code>: The item has the focus.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_STATE_SELECTED</span></code>: The item is selected.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_STATE_CUT</span></code>: The item is selected as part of a cut and paste operation.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>geometry</strong> (<em>int</em>) – </p></li>
+<li><p><strong>state</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this parameter is only supported by wxMSW currently and ignored on other platforms.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetNextSelected">
+<code class="sig-name descname">GetNextSelected</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetNextSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns subsequent selected items, or -1 when no more are selected.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetSelectedItemCount">
+<code class="sig-name descname">GetSelectedItemCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetSelectedItemCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of selected items in the list control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetSubItemRect">
+<code class="sig-name descname">GetSubItemRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">subItem</em>, <em class="sig-param">rect</em>, <em class="sig-param">code=LIST_RECT_BOUNDS</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetSubItemRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the rectangle representing the size and position, in physical coordinates, of the given subitem, i.e.</p>
+<p>the part of the row <em class="xref py py-obj">item</em>  in the column <em class="xref py py-obj">subItem</em>.</p>
+<p>This method is only meaningful when the <a class="reference internal" href="#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  is in the report mode. If <em class="xref py py-obj">subItem</em>  parameter is equal to the special value  <code class="docutils literal notranslate"><span class="pre">LIST_GETSUBITEMRECT_WHOLEITEM</span></code>   the return value is the same as for  <a class="reference internal" href="#wx.ListCtrl.GetItemRect" title="wx.ListCtrl.GetItemRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemRect</span></code></a> .</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">code</span></code>  can be one of  <code class="docutils literal notranslate"><span class="pre">LIST_RECT_BOUNDS</span></code> ,   <code class="docutils literal notranslate"><span class="pre">LIST_RECT_ICON</span></code>   or   <code class="docutils literal notranslate"><span class="pre">LIST_RECT_LABEL</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>subItem</strong> (<em>long</em>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>code</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.7.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetTextColour">
+<code class="sig-name descname">GetTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the text colour of the list control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Colour.html#wx-colour"><span class="std std-ref">  wx.Colour</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetTopItem">
+<code class="sig-name descname">GetTopItem</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetTopItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the index of the topmost visible item when in list or report view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.GetViewRect">
+<code class="sig-name descname">GetViewRect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.GetViewRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the rectangle taken by all items in the control.</p>
+<p>In other words, if the controls client size were equal to the size of this rectangle, no scrollbars would be needed and no free space would be left.</p>
+<p>Note that this function only works in the icon and small icon views, not in list or report views (this is a limitation of the native Win32 control).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Rect.html#wx-rect"><span class="std std-ref">  wx.Rect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.HasColumnOrderSupport">
+<code class="sig-name descname">HasColumnOrderSupport</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.HasColumnOrderSupport" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.HitTest">
+<code class="sig-name descname">HitTest</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">point</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.HitTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines which item (if any) is at the specified point, giving details in <em class="xref py py-obj">flags</em>.</p>
+<p>Returns index of the item or  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   if no item is at the specified point.</p>
+<p><em class="xref py py-obj">flags</em>  will be a combination of the following flags:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_ABOVE</span></code>: Above the client area.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_BELOW</span></code>: Below the client area.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_NOWHERE</span></code>: In the client area but below the last item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_ONITEMICON</span></code>: On the bitmap associated with an item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_ONITEMLABEL</span></code>: On the label (string) associated with an item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_ONITEMRIGHT</span></code>: In the area to the right of an item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_ONITEMSTATEICON</span></code>: On the state icon for a tree view item that is in a user-defined state.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_TOLEFT</span></code>: To the right of the client area.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_TORIGHT</span></code>: To the left of the client area.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LIST_HITTEST_ONITEM</span></code>: Combination of  <code class="docutils literal notranslate"><span class="pre">LIST_HITTEST_ONITEMICON</span></code> ,   <code class="docutils literal notranslate"><span class="pre">LIST_HITTEST_ONITEMLABEL</span></code> ,   <code class="docutils literal notranslate"><span class="pre">LIST_HITTEST_ONITEMSTATEICON</span></code> .</p></li>
+</ul>
+<p>If <em class="xref py py-obj">ptrSubItem</em>  is not <code class="docutils literal notranslate"><span class="pre">None</span></code> and the <a class="reference internal" href="#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  is in the report mode the subitem (or column) number will also be provided. This feature is only available in version 2.7.0 or higher and is currently only implemented under wxMSW and requires at least comctl32.dll of version 4.70 on the host system or the value stored in <em class="xref py py-obj">ptrSubItem</em>  will be always -1. To compile this feature into wxWidgets library you need to have access to commctrl.h of version 4.70 that is provided by Microsoft.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.HitTestSubItem">
+<code class="sig-name descname">HitTestSubItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">itTestSubItem(point</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.HitTestSubItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines which item (if any) is at the specified point, giving details in flags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>( <em class="xref py py-obj">item</em>, <em class="xref py py-obj">flags</em>, <em class="xref py py-obj">subitem</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.InReportView">
+<code class="sig-name descname">InReportView</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.InReportView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the control is currently using <code class="docutils literal notranslate"><span class="pre">LC_REPORT</span></code>  style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.InsertColumn">
+<code class="sig-name descname">InsertColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.InsertColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertColumn</strong> <em class="xref py py-obj">(self, col, info)</em></p>
+<p>For report view mode (only), inserts a column.</p>
+<p>For more details, see <a class="reference internal" href="#wx.ListCtrl.SetItem" title="wx.ListCtrl.SetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItem</span></code></a> . Also see InsertColumn(long,  <em class="xref py py-obj">String</em>     &amp;, int, int) overload for a usually more convenient alternative to this method and the description of how the item width is interpreted by this method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<em>long</em>) – </p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="wx.ListItem.html#wx.ListItem" title="wx.ListItem"><em>wx.ListItem</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertColumn</strong> <em class="xref py py-obj">(self, col, heading, format=LIST_FORMAT_LEFT, width=LIST_AUTOSIZE)</em></p>
+<p>For report view mode (only), inserts a column.</p>
+<p>Insert a new column in the list control in report view mode at the given position specifying its most common attributes.</p>
+<p>Notice that to set the image for the column you need to use Insert(long,  ListItem&amp;) overload and specify <code class="docutils literal notranslate"><span class="pre">LIST_MASK_IMAGE</span></code>  in the item mask.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<em>long</em>) – The index where the column should be inserted. Valid indices are from 0 up to <a class="reference internal" href="#wx.ListCtrl.GetColumnCount" title="wx.ListCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a>   inclusive and the latter can be used to append the new column after the last existing one.</p></li>
+<li><p><strong>heading</strong> (<em>string</em>) – The string specifying the column heading.</p></li>
+<li><p><strong>format</strong> (<em>int</em>) – The flags specifying the control heading text alignment.</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – If positive, the width of the column in pixels. Otherwise it can be  <code class="docutils literal notranslate"><span class="pre">LIST_AUTOSIZE</span></code>   to choose the default size for the column or   <code class="docutils literal notranslate"><span class="pre">LIST_AUTOSIZE_USEHEADER</span></code>   to fit the column width to   <em class="xref py py-obj">heading</em>  or to extend to fill all the remaining space for the last column. Notice that in case of  <code class="docutils literal notranslate"><span class="pre">LIST_AUTOSIZE</span></code>   fixed width is used as there are no items in this column to use for determining its best size yet. If you want to fit the column to its contents, use  <a class="reference internal" href="#wx.ListCtrl.SetColumnWidth" title="wx.ListCtrl.SetColumnWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnWidth</span></code></a>   after adding the items with values in this column.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The index of the inserted column or -1 if adding it failed.</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.InsertItem">
+<code class="sig-name descname">InsertItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.InsertItem" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertItem</strong> <em class="xref py py-obj">(self, info)</em></p>
+<p>Inserts an item, returning the index of the new item if successful, -1 otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>info</strong> (<a class="reference internal" href="wx.ListItem.html#wx.ListItem" title="wx.ListItem"><em>wx.ListItem</em></a>) – <a class="reference internal" href="wx.ListItem.html#wx-listitem"><span class="std std-ref">  wx.ListItem</span></a>  object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertItem</strong> <em class="xref py py-obj">(self, index, label)</em></p>
+<p>Insert an string item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>long</em>) – Index of the new item, supplied by the application</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – String label</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertItem</strong> <em class="xref py py-obj">(self, index, imageIndex)</em></p>
+<p>Insert an image item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>long</em>) – Index of the new item, supplied by the application</p></li>
+<li><p><strong>imageIndex</strong> (<em>int</em>) – Index into the image list associated with this control and view style</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertItem</strong> <em class="xref py py-obj">(self, index, label, imageIndex)</em></p>
+<p>Insert an image/string item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>long</em>) – Index of the new item, supplied by the application</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – String label</p></li>
+<li><p><strong>imageIndex</strong> (<em>int</em>) – Index into the image list associated with this control and view style</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.IsSelected">
+<code class="sig-name descname">IsSelected</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.IsSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item is selected.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.IsVirtual">
+<code class="sig-name descname">IsVirtual</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.IsVirtual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the control is currently in virtual report view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.OnGetItemAttr">
+<code class="sig-name descname">OnGetItemAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.OnGetItemAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function may be overridden in the derived class for a control with  <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>   style.</p>
+<p>It should return the attribute for the specified  <code class="docutils literal notranslate"><span class="pre">item</span></code>   or <code class="docutils literal notranslate"><span class="pre">None</span></code> to use the default appearance parameters.</p>
+<p><a class="reference internal" href="#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  will not delete the pointer or keep a reference of it. You can return the same <a class="reference internal" href="wx.ListItemAttr.html#wx-listitemattr"><span class="std std-ref">  wx.ListItemAttr</span></a>  pointer for every <a class="reference internal" href="#wx.ListCtrl.OnGetItemAttr" title="wx.ListCtrl.OnGetItemAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemAttr</span></code></a>   call.</p>
+<p>The base class version always returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ListItemAttr.html#wx-listitemattr"><span class="std std-ref">  wx.ListItemAttr</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.OnGetItemImage" title="wx.ListCtrl.OnGetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemImage</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.OnGetItemColumnImage" title="wx.ListCtrl.OnGetItemColumnImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemColumnImage</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.OnGetItemText" title="wx.ListCtrl.OnGetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemText</span></code></a> , <code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemColumnAttr</span></code></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.OnGetItemColumnImage">
+<code class="sig-name descname">OnGetItemColumnImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">column</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.OnGetItemColumnImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this function in the derived class for a control with  <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>   and   <code class="docutils literal notranslate"><span class="pre">LC_REPORT</span></code>   styles in order to specify the image index for the given line and column.</p>
+<p>The base class version always calls <a class="reference internal" href="#wx.ListCtrl.OnGetItemImage" title="wx.ListCtrl.OnGetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemImage</span></code></a>   for the first column, else it returns -1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>column</strong> (<em>long</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.OnGetItemText" title="wx.ListCtrl.OnGetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemText</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.OnGetItemImage" title="wx.ListCtrl.OnGetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemImage</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.OnGetItemAttr" title="wx.ListCtrl.OnGetItemAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemAttr</span></code></a> , <code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemColumnAttr</span></code></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.OnGetItemImage">
+<code class="sig-name descname">OnGetItemImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.OnGetItemImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function must be overridden in the derived class for a control with  <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>   style having an “image list” (see  <a class="reference internal" href="#wx.ListCtrl.SetImageList" title="wx.ListCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a> ; if the control doesn’t have an image list, it is not necessary to override it).</p>
+<p>It should return the index of the items image in the controls image list or -1 for no image.</p>
+<p>In a control with  <code class="docutils literal notranslate"><span class="pre">LC_REPORT</span></code>   style,  <a class="reference internal" href="#wx.ListCtrl.OnGetItemImage" title="wx.ListCtrl.OnGetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemImage</span></code></a>   only gets called for the first column of each line.</p>
+<p>The base class version always returns -1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.OnGetItemText" title="wx.ListCtrl.OnGetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemText</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.OnGetItemColumnImage" title="wx.ListCtrl.OnGetItemColumnImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemColumnImage</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.OnGetItemAttr" title="wx.ListCtrl.OnGetItemAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemAttr</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.OnGetItemText">
+<code class="sig-name descname">OnGetItemText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">column</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.OnGetItemText" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function <strong>must</strong>  be overridden in the derived class for a control with  <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>   style.</p>
+<p>It should return the string containing the text of the given <em class="xref py py-obj">column</em>  for the specified  <code class="docutils literal notranslate"><span class="pre">item</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>column</strong> (<em>long</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.SetItemCount" title="wx.ListCtrl.SetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemCount</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.OnGetItemImage" title="wx.ListCtrl.OnGetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemImage</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.OnGetItemColumnImage" title="wx.ListCtrl.OnGetItemColumnImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemColumnImage</span></code></a> , <a class="reference internal" href="#wx.ListCtrl.OnGetItemAttr" title="wx.ListCtrl.OnGetItemAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemAttr</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.RefreshItem">
+<code class="sig-name descname">RefreshItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.RefreshItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redraws the given <em class="xref py py-obj">item</em>.</p>
+<p>This is only useful for the virtual list controls as without calling this function the displayed value of the item doesn’t change even when the underlying data does change.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>long</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.RefreshItems" title="wx.ListCtrl.RefreshItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItems</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.RefreshItems">
+<code class="sig-name descname">RefreshItems</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">itemFrom</em>, <em class="sig-param">itemTo</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.RefreshItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redraws the items between <em class="xref py py-obj">itemFrom</em>  and <em class="xref py py-obj">itemTo</em>.</p>
+<p>The starting item must be less than or equal to the ending one.</p>
+<p>Just as <a class="reference internal" href="#wx.ListCtrl.RefreshItem" title="wx.ListCtrl.RefreshItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItem</span></code></a>   this is only useful for virtual list controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>itemFrom</strong> (<em>long</em>) – </p></li>
+<li><p><strong>itemTo</strong> (<em>long</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.ScrollList">
+<code class="sig-name descname">ScrollList</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.ScrollList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scrolls the list control.</p>
+<p>If in icon, small icon or report view mode, <em class="xref py py-obj">dx</em>  specifies the number of pixels to scroll. If in list view mode, <em class="xref py py-obj">dx</em>  specifies the number of columns to scroll. <em class="xref py py-obj">dy</em>  always specifies the number of pixels to scroll vertically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dx</strong> (<em>int</em>) – </p></li>
+<li><p><strong>dy</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is currently only implemented in the Windows version.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.Select">
+<code class="sig-name descname">Select</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em>, <em class="sig-param">on=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.Select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects/deselects an item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetAlternateRowColour">
+<code class="sig-name descname">SetAlternateRowColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colour</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetAlternateRowColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the alternative row background colour to a specific colour.</p>
+<p>It is recommended to call <a class="reference internal" href="#wx.ListCtrl.EnableAlternateRowColours" title="wx.ListCtrl.EnableAlternateRowColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableAlternateRowColours</span></code></a>   instead of using these methods as native implementations of this control might support alternating row colours but not setting the exact colour to be used for them.</p>
+<p>As <a class="reference internal" href="#wx.ListCtrl.EnableAlternateRowColours" title="wx.ListCtrl.EnableAlternateRowColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableAlternateRowColours</span></code></a> , this method can only be used with controls having <code class="docutils literal notranslate"><span class="pre">LC_REPORT</span></code>  and <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>  styles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>colour</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – A valid alternative row background colour to enable alternating rows or invalid colour to disable them and use the same colour for all rows.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetBackgroundColour">
+<code class="sig-name descname">SetBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the background colour.</p>
+<p>Note that the <a class="reference internal" href="wx.Window.html#wx.Window.GetBackgroundColour" title="wx.Window.GetBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetBackgroundColour</span></code></a>   function of <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  base class can be used to retrieve the current background colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetColumn">
+<code class="sig-name descname">SetColumn</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets information about this column.</p>
+<p>See <a class="reference internal" href="#wx.ListCtrl.SetItem" title="wx.ListCtrl.SetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItem</span></code></a>   for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.ListItem.html#wx.ListItem" title="wx.ListItem"><em>wx.ListItem</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetColumnImage">
+<code class="sig-name descname">SetColumnImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em>, <em class="sig-param">image</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetColumnImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetColumnWidth">
+<code class="sig-name descname">SetColumnWidth</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em>, <em class="sig-param">width</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetColumnWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the column width.</p>
+<p><em class="xref py py-obj">width</em>  can be a width in pixels or  <code class="docutils literal notranslate"><span class="pre">LIST_AUTOSIZE</span></code>   (-1) or   <code class="docutils literal notranslate"><span class="pre">LIST_AUTOSIZE_USEHEADER</span></code>   (-2).</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">LIST_AUTOSIZE</span></code>   will resize the column to the length of its longest item.</p>
+<p><code class="docutils literal notranslate"><span class="pre">LIST_AUTOSIZE_USEHEADER</span></code>   will resize the column to the length of the header (Win32) or 80 pixels (other platforms).</p>
+</div></blockquote>
+<p>In small or normal icon view, <em class="xref py py-obj">col</em>  must be -1, and the column width is set for all columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetColumnsOrder">
+<code class="sig-name descname">SetColumnsOrder</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">orders</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetColumnsOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes the order in which the columns are shown.</p>
+<p>By default, the columns of a list control appear on the screen in order of their indices, i.e. the column 0 appears first, the column 1 next and so on. However by using this function it is possible to arbitrarily reorder the columns visual order and the user can also rearrange the columns interactively by dragging them. In this case, the index of the column is not the same as its order and the functions <a class="reference internal" href="#wx.ListCtrl.GetColumnOrder" title="wx.ListCtrl.GetColumnOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnOrder</span></code></a>   and <a class="reference internal" href="#wx.ListCtrl.GetColumnIndexFromOrder" title="wx.ListCtrl.GetColumnIndexFromOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnIndexFromOrder</span></code></a>   should be used to translate between them. Notice that all the other functions still work with the column indices, i.e. the visual positioning of the columns on screen doesn’t affect the code setting or getting their values for example.</p>
+<p>The <em class="xref py py-obj">orders</em>  array must have the same number elements as the number of columns and contain each position exactly once. Its n-th element contains the index of the column to be shown in n-th position, so for a control with three columns passing an array with elements 2, 0 and 1 results in the third column being displayed first, the first one next and the second one last.</p>
+<p>Example of using it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">listCtrl</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ListCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LC_REPORT</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">listCtrl</span><span class="o">.</span><span class="n">InsertColumn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">"Column </span><span class="si">%d</span><span class="s2">"</span><span class="o">%</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">listCtrl</span><span class="o">.</span><span class="n">SetColumnsOrder</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+
+<span class="c1"># now listCtrl.GetColumnsOrder() will return order and</span>
+<span class="c1"># listCtrl.GetColumnIndexFromOrder(n) will return order[n] and</span>
+<span class="c1"># listCtrl.GetColumnOrder() will return 1, 2 and 0 for the column 0,</span>
+<span class="c1"># 1 and 2 respectively</span>
+</pre></div>
+</div>
+<p>Please notice that this function makes sense for report view only and currently is only implemented in wxMSW port. To avoid explicit tests for  <code class="docutils literal notranslate"><span class="pre">WXMSW</span></code>  in your code, please use   <code class="docutils literal notranslate"><span class="pre">HAS_LISTCTRL_COLUMN_ORDER</span></code>   as this will allow it to start working under the other platforms when support for the column reordering is added there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>orders</strong> (<em>list of integers</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.GetColumnsOrder" title="wx.ListCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetImageList">
+<code class="sig-name descname">SetImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imageList</em>, <em class="sig-param">which</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the image list associated with the control.</p>
+<p><em class="xref py py-obj">which</em>  is one of  <code class="docutils literal notranslate"><span class="pre">IMAGE_LIST_NORMAL</span></code> ,   <code class="docutils literal notranslate"><span class="pre">IMAGE_LIST_SMALL</span></code> ,   <code class="docutils literal notranslate"><span class="pre">IMAGE_LIST_STATE</span></code>   (the last is unimplemented).</p>
+<p>This method does not take ownership of the image list, you have to delete it yourself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imageList</strong> (<a class="reference internal" href="wx.ImageList.html#wx.ImageList" title="wx.ImageList"><em>wx.ImageList</em></a>) – </p></li>
+<li><p><strong>which</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListCtrl.AssignImageList" title="wx.ListCtrl.AssignImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AssignImageList</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItem">
+<code class="sig-name descname">SetItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItem" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetItem</strong> <em class="xref py py-obj">(self, info)</em></p>
+<p>Sets the data of an item.</p>
+<p>Using the <a class="reference internal" href="wx.ListItem.html#wx-listitem"><span class="std std-ref">  wx.ListItem</span></a>’s mask and state mask, you can change only selected attributes of a <a class="reference internal" href="#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>info</strong> (<a class="reference internal" href="wx.ListItem.html#wx.ListItem" title="wx.ListItem"><em>wx.ListItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetItem</strong> <em class="xref py py-obj">(self, index, column, label, imageId=-1)</em></p>
+<p>Sets an item string field at a particular column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>long</em>) – </p></li>
+<li><p><strong>column</strong> (<em>int</em>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>imageId</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemBackgroundColour">
+<code class="sig-name descname">SetItemBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the background colour for this item.</p>
+<p>This function only works in report view mode. The colour can be retrieved using <a class="reference internal" href="#wx.ListCtrl.GetItemBackgroundColour" title="wx.ListCtrl.GetItemBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemBackgroundColour</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemColumnImage">
+<code class="sig-name descname">SetItemColumnImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">column</em>, <em class="sig-param">image</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemColumnImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the image associated with the item.</p>
+<p>In report view, you can specify the column. The image is an index into the image list associated with the list control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>column</strong> (<em>long</em>) – </p></li>
+<li><p><strong>image</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemCount">
+<code class="sig-name descname">SetItemCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">count</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method can only be used with virtual list controls.</p>
+<p>It is used to indicate to the control the number of items it contains. After calling it, the main program should be ready to handle calls to various item callbacks (such as <a class="reference internal" href="#wx.ListCtrl.OnGetItemText" title="wx.ListCtrl.OnGetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.OnGetItemText</span></code></a> ) for all items in the range from 0 to <em class="xref py py-obj">count</em>.</p>
+<p>Notice that the control is not necessarily redrawn after this call as it may be undesirable if an item which is not visible on the screen anyhow was added to or removed from a control displaying many items, if you do need to refresh the display you can just call <code class="xref py py-meth docutils literal notranslate"><span class="pre">Refresh</span></code>   manually.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>count</strong> (<em>long</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemData">
+<code class="sig-name descname">SetItemData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates application-defined data with this item.</p>
+<p>Notice that this function cannot be used to associate pointers with the control items, use <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemPtrData</span></code>   instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>data</strong> (<em>long</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemFont">
+<code class="sig-name descname">SetItemFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">font</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the item’s font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>font</strong> (<a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><em>wx.Font</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemImage">
+<code class="sig-name descname">SetItemImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">image</em>, <em class="sig-param">selImage=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the unselected and selected images associated with the item.</p>
+<p>The images are indices into the image list associated with the list control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>image</strong> (<em>int</em>) – </p></li>
+<li><p><strong>selImage</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemPosition">
+<code class="sig-name descname">SetItemPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the position of the item, in icon or small icon view.</p>
+<p>Windows only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemState">
+<code class="sig-name descname">SetItemState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">state</em>, <em class="sig-param">stateMask</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the item state.</p>
+<p>The <em class="xref py py-obj">stateMask</em>  is a combination of  <code class="docutils literal notranslate"><span class="pre">LIST_STATE_XXX</span></code>   constants described in  <a class="reference internal" href="wx.ListItem.html#wx-listitem"><span class="std std-ref">  wx.ListItem</span></a>  documentation. For each of the bits specified in <em class="xref py py-obj">stateMask</em>, the corresponding state is set or cleared depending on whether <em class="xref py py-obj">state</em>  argument contains the same bit or not.</p>
+<p>So to select an item you can use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">listCtrl</span><span class="o">.</span><span class="n">SetItemState</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">LIST_STATE_SELECTED</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">LIST_STATE_SELECTED</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>while to deselect it you should use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">listCtrl</span><span class="o">.</span><span class="n">SetItemState</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">LIST_STATE_SELECTED</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Consider using <a class="reference internal" href="wx.ListView.html#wx-listview"><span class="std std-ref">  wx.ListView</span></a>  if possible to avoid dealing with this error-prone and confusing method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>state</strong> (<em>long</em>) – </p></li>
+<li><p><strong>stateMask</strong> (<em>long</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemText">
+<code class="sig-name descname">SetItemText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the item text for this item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetItemTextColour">
+<code class="sig-name descname">SetItemTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetItemTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the colour for this item.</p>
+<p>This function only works in report view. The colour can be retrieved using <a class="reference internal" href="#wx.ListCtrl.GetItemTextColour" title="wx.ListCtrl.GetItemTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemTextColour</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>long</em>) – </p></li>
+<li><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetSingleStyle">
+<code class="sig-name descname">SetSingleStyle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">style</em>, <em class="sig-param">add=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetSingleStyle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds or removes a single window style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>add</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetTextColour">
+<code class="sig-name descname">SetTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the text colour of the list control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SetWindowStyleFlag">
+<code class="sig-name descname">SetWindowStyleFlag</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">style</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SetWindowStyleFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the whole window style, deleting all items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>style</strong> (<em>long</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListCtrl.SortItems">
+<code class="sig-name descname">SortItems</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">fnSortCallBack</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListCtrl.SortItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to sort the items in the list control.</p>
+<p>Sorting is done using the specified <em class="xref py py-obj">fnSortCallBack</em>  function. This function must have the following prototype:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ListCompareFunction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">):</span>
+
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>It is called each time when the two items must be compared and should return 0 if the items are equal, negative value if the first item is less than the second one and positive value if the first one is greater than the second one (the same convention as used by  <code class="docutils literal notranslate"><span class="pre">qsort(3)</span></code> ).</p>
+<p>The parameter <em class="xref py py-obj">item1</em>  is the client data associated with the first item (NOT the index). The parameter <em class="xref py py-obj">item2</em>  is the client data associated with the second item (NOT the index). The parameter <em class="xref py py-obj">data</em>  is the value passed to <a class="reference internal" href="#wx.ListCtrl.SortItems" title="wx.ListCtrl.SortItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SortItems</span></code></a>   itself.</p>
+<p>Notice that the control may only be sorted on client data associated with the items, so you must use SetItemData if you want to be able to sort the items in the control.</p>
+<p>Please see the <span class="xref std std-ref">List Control Sample</span>  for an example of using this function.</p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.ListCtrl.Column">
+<code class="sig-name descname">Column</code><a class="headerlink" href="#wx.ListCtrl.Column" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetColumn" title="wx.ListCtrl.GetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumn</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetColumn" title="wx.ListCtrl.SetColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumn</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.ColumnCount">
+<code class="sig-name descname">ColumnCount</code><a class="headerlink" href="#wx.ListCtrl.ColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetColumnCount" title="wx.ListCtrl.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.ColumnsOrder">
+<code class="sig-name descname">ColumnsOrder</code><a class="headerlink" href="#wx.ListCtrl.ColumnsOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetColumnsOrder" title="wx.ListCtrl.GetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnsOrder</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetColumnsOrder" title="wx.ListCtrl.SetColumnsOrder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnsOrder</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.CountPerPage">
+<code class="sig-name descname">CountPerPage</code><a class="headerlink" href="#wx.ListCtrl.CountPerPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetCountPerPage" title="wx.ListCtrl.GetCountPerPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCountPerPage</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.EditControl">
+<code class="sig-name descname">EditControl</code><a class="headerlink" href="#wx.ListCtrl.EditControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetEditControl" title="wx.ListCtrl.GetEditControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditControl</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.FocusedItem">
+<code class="sig-name descname">FocusedItem</code><a class="headerlink" href="#wx.ListCtrl.FocusedItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetFocusedItem" title="wx.ListCtrl.GetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFocusedItem</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.Item">
+<code class="sig-name descname">Item</code><a class="headerlink" href="#wx.ListCtrl.Item" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetItem" title="wx.ListCtrl.GetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItem</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetItem" title="wx.ListCtrl.SetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItem</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.ItemCount">
+<code class="sig-name descname">ItemCount</code><a class="headerlink" href="#wx.ListCtrl.ItemCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetItemCount" title="wx.ListCtrl.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetItemCount" title="wx.ListCtrl.SetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.ItemPosition">
+<code class="sig-name descname">ItemPosition</code><a class="headerlink" href="#wx.ListCtrl.ItemPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetItemPosition" title="wx.ListCtrl.GetItemPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemPosition</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetItemPosition" title="wx.ListCtrl.SetItemPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemPosition</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.ItemRect">
+<code class="sig-name descname">ItemRect</code><a class="headerlink" href="#wx.ListCtrl.ItemRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetItemRect" title="wx.ListCtrl.GetItemRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemRect</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.ItemSpacing">
+<code class="sig-name descname">ItemSpacing</code><a class="headerlink" href="#wx.ListCtrl.ItemSpacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetItemSpacing" title="wx.ListCtrl.GetItemSpacing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemSpacing</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.MainWindow">
+<code class="sig-name descname">MainWindow</code><a class="headerlink" href="#wx.ListCtrl.MainWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetMainWindow" title="wx.ListCtrl.GetMainWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMainWindow</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.SelectedItemCount">
+<code class="sig-name descname">SelectedItemCount</code><a class="headerlink" href="#wx.ListCtrl.SelectedItemCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetSelectedItemCount" title="wx.ListCtrl.GetSelectedItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedItemCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.TextColour">
+<code class="sig-name descname">TextColour</code><a class="headerlink" href="#wx.ListCtrl.TextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetTextColour" title="wx.ListCtrl.GetTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTextColour</span></code></a> and <a class="reference internal" href="#wx.ListCtrl.SetTextColour" title="wx.ListCtrl.SetTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTextColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.TopItem">
+<code class="sig-name descname">TopItem</code><a class="headerlink" href="#wx.ListCtrl.TopItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetTopItem" title="wx.ListCtrl.GetTopItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTopItem</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListCtrl.ViewRect">
+<code class="sig-name descname">ViewRect</code><a class="headerlink" href="#wx.ListCtrl.ViewRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListCtrl.GetViewRect" title="wx.ListCtrl.GetViewRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetViewRect</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

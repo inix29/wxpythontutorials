@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Grid Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="html_overview.html" rel="next" title="HTML Overview"/>
+<link href="font_overview.html" rel="prev" title="Font Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Grid Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="html_overview.html" title="HTML Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="font_overview.html" title="Font Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Grid Overview</strong></a><ul>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#column-and-row-sizes">Column and Row Sizes</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/grid_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-grid-overview">
+<span id="grid-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Grid Overview</strong><a class="headerlink" href="#phoenix-title-grid-overview" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a> and its related classes are used for displaying
+and editing tabular data.</p>
+<p><a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a> supports custom attributes for the table cells,
+allowing to completely customize its appearance and uses a separate
+grid table (<a class="reference internal" href="wx.grid.GridTableBase.html#wx.grid.GridTableBase" title="wx.grid.GridTableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridTableBase</span></code></a> -derived) class for the
+data management meaning that it can be used to display arbitrary
+amounts of data.</p>
+<div class="section" id="getting-started">
+<span id="grid-getting-started"></span><h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>For simple applications you need only refer to the
+<a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a> class in your code.  This example shows how you
+might create a grid in a frame or dialog constructor and illustrates
+some of the formatting functions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wx</span>
+<span class="kn">import</span> <span class="nn">wx.grid</span>
+
+<span class="k">class</span> <span class="nc">GridFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+        <span class="c1"># Create a wxGrid object</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Then we call CreateGrid to set the dimensions of the grid</span>
+        <span class="c1"># (100 rows and 10 columns in this example)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">CreateGrid</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="c1"># We can set the sizes of individual rows and columns</span>
+        <span class="c1"># in pixels</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetRowSize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetColSize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+
+        <span class="c1"># And set grid cell contents as strings</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetCellValue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'wxGrid is good'</span><span class="p">)</span>
+
+        <span class="c1"># We can specify that some cells are read.only</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetCellValue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'This is read.only'</span><span class="p">)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetReadOnly</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+        <span class="c1"># Colours can be specified for grid cell contents</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetCellValue</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'green on grey'</span><span class="p">)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetCellTextColour</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetCellBackgroundColour</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">LIGHT_GREY</span><span class="p">)</span>
+
+        <span class="c1"># We can specify the some cells will store numeric</span>
+        <span class="c1"># values rather than strings. Here we set grid column 5</span>
+        <span class="c1"># to hold floating point values displayed with width of 6</span>
+        <span class="c1"># and precision of 2</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetColFormatFloat</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">SetCellValue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">'3.1415'</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+
+    <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">GridFrame</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here is a list of classes related to <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a>: The main grid control class itself.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridTableBase.html#wx.grid.GridTableBase" title="wx.grid.GridTableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridTableBase</span></code></a>: The base class for grid data provider.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridStringTable.html#wx.grid.GridStringTable" title="wx.grid.GridStringTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridStringTable</span></code></a>: Simple <a class="reference internal" href="wx.grid.GridTableBase.html#wx.grid.GridTableBase" title="wx.grid.GridTableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridTableBase</span></code></a> implementation
+supporting only string data items and storing them all in memory (hence suitable
+for not too large grids only).</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellAttr.html#wx.grid.GridCellAttr" title="wx.grid.GridCellAttr"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellAttr</span></code></a>: A cell attribute, allowing to customize its appearance
+as well as the renderer and editor used for displaying and editing it.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellAttrProvider.html#wx.grid.GridCellAttrProvider" title="wx.grid.GridCellAttrProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellAttrProvider</span></code></a>: The object responsible for storing and retrieving the cell attributes.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">GridColLabelWindow</span></code>: The window showing the grid columns labels.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">GridRowLabelWindow</span></code>: The window showing the grid rows labels.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCornerLabelWindow</span></code>: The window used in the upper left grid corner.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">GridWindow</span></code>: The window representing the main part of the grid.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellRenderer.html#wx.grid.GridCellRenderer" title="wx.grid.GridCellRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellRenderer</span></code></a>: Base class for objects used to display a cell value.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellStringRenderer.html#wx.grid.GridCellStringRenderer" title="wx.grid.GridCellStringRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellStringRenderer</span></code></a>: Renderer showing the cell as a text string.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellNumberRenderer.html#wx.grid.GridCellNumberRenderer" title="wx.grid.GridCellNumberRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellNumberRenderer</span></code></a>: Renderer showing the cell as an integer number.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellFloatRenderer.html#wx.grid.GridCellFloatRenderer" title="wx.grid.GridCellFloatRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellFloatRenderer</span></code></a>: Renderer showing the cell as a floating point number.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellBoolRenderer.html#wx.grid.GridCellBoolRenderer" title="wx.grid.GridCellBoolRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellBoolRenderer</span></code></a>: Renderer showing the cell as checked or unchecked box.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellEditor.html#wx.grid.GridCellEditor" title="wx.grid.GridCellEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellEditor</span></code></a>: Base class for objects used to edit the cell value.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellStringEditor</span></code>: Editor for cells containing text strings.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellNumberEditor.html#wx.grid.GridCellNumberEditor" title="wx.grid.GridCellNumberEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellNumberEditor</span></code></a>: Editor for cells containing integer numbers.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellFloatEditor.html#wx.grid.GridCellFloatEditor" title="wx.grid.GridCellFloatEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellFloatEditor</span></code></a>: Editor for cells containing floating point numbers.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellBoolEditor.html#wx.grid.GridCellBoolEditor" title="wx.grid.GridCellBoolEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellBoolEditor</span></code></a>: Editor for boolean-valued cells.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridCellChoiceEditor.html#wx.grid.GridCellChoiceEditor" title="wx.grid.GridCellChoiceEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridCellChoiceEditor</span></code></a>: Editor allowing to choose one of the predefined strings (and possibly enter new one).</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridEvent.html#wx.grid.GridEvent" title="wx.grid.GridEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridEvent</span></code></a>: The event sent by most of <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a> actions.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridSizeEvent.html#wx.grid.GridSizeEvent" title="wx.grid.GridSizeEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridSizeEvent</span></code></a>: The special event sent when a grid column or row is resized.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridRangeSelectEvent.html#wx.grid.GridRangeSelectEvent" title="wx.grid.GridRangeSelectEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridRangeSelectEvent</span></code></a>: The special event sent when a range of cells is selected in the grid.</p></li>
+<li><p><a class="reference internal" href="wx.grid.GridEditorCreatedEvent.html#wx.grid.GridEditorCreatedEvent" title="wx.grid.GridEditorCreatedEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridEditorCreatedEvent</span></code></a>: The special event sent when a cell editor is created.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">GridSelection</span></code>: The object efficiently representing the grid selection.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">GridTypeRegistry</span></code>: Contains information about the data types supported by the grid.</p></li>
+</ul>
+</div>
+<div class="section" id="column-and-row-sizes">
+<span id="grid-column-and-row-sizes"></span><h2>Column and Row Sizes<a class="headerlink" href="#column-and-row-sizes" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section will discuss the resizing of <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a> rows
+only to avoid repetitions but everything in it also applies to grid
+columns, just replace Row in the method names with Col.</p>
+</div>
+<p>Initially all <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a> rows have the same height, which
+can be modified for all of them at once using
+<a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.SetDefaultRowSize" title="wx.grid.Grid.SetDefaultRowSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDefaultRowSize</span></code></a>. However, unlike simpler
+controls such as <a class="reference internal" href="wx.ListBox.html#wx.ListBox" title="wx.ListBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ListBox</span></code></a> or <a class="reference internal" href="wx.ListCtrl.html#wx.ListCtrl" title="wx.ListCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ListCtrl</span></code></a>,
+<a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a> also allows its rows to be individually resized
+to have their own height using <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.SetRowSize" title="wx.grid.Grid.SetRowSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowSize</span></code></a> (as a
+special case, a row may be hidden entirely by setting its size to 0,
+which is done by a helper <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.HideRow" title="wx.grid.Grid.HideRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HideRow</span></code></a> method). It is
+also possible to resize a row to fit its contents with
+<a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.AutoSizeRow" title="wx.grid.Grid.AutoSizeRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AutoSizeRow</span></code></a> or do it for all rows at once with
+<a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.AutoSizeRows" title="wx.grid.Grid.AutoSizeRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AutoSizeRows</span></code></a>.</p>
+<p>Additionally, by default the user can also drag the row separator
+lines to resize the rows interactively.  This can be forbidden
+completely by calling <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.DisableDragRowSize" title="wx.grid.Grid.DisableDragRowSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisableDragRowSize</span></code></a> or just
+for the individual rows using <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.DisableRowResize" title="wx.grid.Grid.DisableRowResize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisableRowResize</span></code></a>.</p>
+<p>If you do allow the user to resize the grid rows, it may be a good
+idea to save their heights and restore it when the grid is recreated
+the next time (possibly during a next program execution): the
+functions <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.GetRowSizes" title="wx.grid.Grid.GetRowSizes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowSizes</span></code></a> and
+<a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.SetRowSizes" title="wx.grid.Grid.SetRowSizes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowSizes</span></code></a> can help with this, you will just
+need to serialize <a class="reference internal" href="wx.grid.GridSizesInfo.html#wx.grid.GridSizesInfo" title="wx.grid.GridSizesInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridSizesInfo</span></code></a> structure returned
+by the former in some way and deserialize it back before calling the
+latter.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

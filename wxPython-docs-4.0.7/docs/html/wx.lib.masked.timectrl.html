@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.masked.timectrl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.masked.timectrl.TimeCtrl.html" rel="next" title="wx.lib.masked.timectrl.TimeCtrl"/>
+<link href="wx.lib.masked.textctrl.TextCtrl.html" rel="prev" title="wx.lib.masked.textctrl.TextCtrl"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.masked.html">
+<strong>wx.lib.masked</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.masked.timectrl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.masked.timectrl.TimeCtrl.html" title="wx.lib.masked.timectrl.TimeCtrl">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.masked.textctrl.TextCtrl.html" title="wx.lib.masked.textctrl.TextCtrl">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.masked.timectrl</strong></a><ul>
+<li><a class="reference internal" href="#class-summary-classes-summary"> Classes Summary</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.masked.timectrl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.masked.timectrl"></span><div class="section" id="phoenix-title-wx-lib-masked-timectrl">
+<span id="wx-lib-masked-timectrl"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.masked.timectrl</strong><a class="headerlink" href="#phoenix-title-wx-lib-masked-timectrl" title="Permalink to this headline">¶</a></h1>
+<p><em>TimeCtrl</em> provides a multi-cell control that allows manipulation of a time
+value.  It supports 12 or 24 hour format, and you can use wxDateTime or mxDateTime
+to get/set values from the control.</p>
+<p>Left/right/tab keys to switch cells within a TimeCtrl, and the up/down arrows act
+like a spin control.  TimeCtrl also allows for an actual spin button to be attached
+to the control, so that it acts like the up/down arrow keys.</p>
+<p>The ! or c key sets the value of the control to the current time.</p>
+<blockquote>
+<div><p>Here’s the API for TimeCtrl:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wx.lib.masked</span> <span class="kn">import</span> <span class="n">TimeCtrl</span>
+
+<span class="n">TimeCtrl</span><span class="p">(</span>
+     <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+     <span class="n">value</span> <span class="o">=</span> <span class="s1">'00:00:00'</span><span class="p">,</span>
+     <span class="n">pos</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DefaultPosition</span><span class="p">,</span>
+     <span class="n">size</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DefaultSize</span><span class="p">,</span>
+     <span class="n">style</span> <span class="o">=</span> <span class="n">wxTE_PROCESS_TAB</span><span class="p">,</span>
+     <span class="n">validator</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DefaultValidator</span><span class="p">,</span>
+     <span class="n">name</span> <span class="o">=</span> <span class="s2">"time"</span><span class="p">,</span>
+     <span class="n">format</span> <span class="o">=</span> <span class="s1">'HHMMSS'</span><span class="p">,</span>
+     <span class="n">fmt24hr</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+     <span class="n">displaySeconds</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+     <span class="n">spinButton</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+     <span class="nb">min</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+     <span class="nb">max</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+     <span class="n">limited</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+     <span class="n">oob_color</span> <span class="o">=</span> <span class="s2">"Yellow"</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>value</dt><dd><p>If no initial value is set, the default will be midnight; if an illegal string
+is specified, a ValueError will result.  (You can always later set the initial time
+with SetValue() after instantiation of the control.)</p>
+</dd>
+<dt>size</dt><dd><p>The size of the control will be automatically adjusted for 12/24 hour format
+if wx.DefaultSize is specified.  NOTE: due to a problem with wx.DateTime, if the
+locale does not use ‘AM/PM’ for its values, the default format will automatically
+change to 24 hour format, and an AttributeError will be thrown if a non-24 format
+is specified.</p>
+</dd>
+<dt>style</dt><dd><p>By default, TimeCtrl will process TAB events, by allowing tab to the
+different cells within the control.</p>
+</dd>
+<dt>validator</dt><dd><p>By default, TimeCtrl just uses the default (empty) validator, as all
+of its validation for entry control is handled internally.  However, a validator
+can be supplied to provide data transfer capability to the control.</p>
+</dd>
+<dt>format</dt><dd><p>This parameter can be used instead of the fmt24hr and displaySeconds
+parameters, respectively; it provides a shorthand way to specify the time
+format you want.  Accepted values are ‘HHMMSS’, ‘HHMM’, ‘24HHMMSS’, and
+‘24HHMM’.  If the format is specified, the other two arguments will be ignored.</p>
+</dd>
+<dt>fmt24hr</dt><dd><p>If True, control will display time in 24 hour time format; if False, it will
+use 12 hour AM/PM format.  SetValue() will adjust values accordingly for the
+control, based on the format specified.  (This value is ignored if the <em>format</em>
+parameter is specified.)</p>
+</dd>
+<dt>displaySeconds</dt><dd><p>If True, control will include a seconds field; if False, it will
+just show hours and minutes. (This value is ignored if the <em>format</em>
+parameter is specified.)</p>
+</dd>
+<dt>spinButton</dt><dd><p>If specified, this button’s events will be bound to the behavior of the
+TimeCtrl, working like up/down cursor key events.  (See BindSpinButton.)</p>
+</dd>
+<dt>min</dt><dd><p>Defines the lower bound for “valid” selections in the control.
+By default, TimeCtrl doesn’t have bounds.  You must set both upper and lower
+bounds to make the control pay attention to them, (as only one bound makes no sense
+with times.) “Valid” times will fall between the min and max “pie wedge” of the
+clock.</p>
+</dd>
+<dt>max</dt><dd><p>Defines the upper bound for “valid” selections in the control.
+“Valid” times will fall between the min and max “pie wedge” of the
+clock. (This can be a “big piece”, ie. min = 11pm, max= 10pm
+means <em>all but the hour from 10:00pm to 11pm are valid times.</em>)</p>
+</dd>
+<dt>limited</dt><dd><p>If True, the control will not permit entry of values that fall outside the
+set bounds.</p>
+</dd>
+<dt>oob_color</dt><dd><p>Sets the background color used to indicate out-of-bounds values for the control
+when the control is not limited.  This is set to “Yellow” by default.</p>
+</dd>
+</dl>
+</div></blockquote>
+<hr class="docutils"/>
+<dl>
+<dt>EVT_TIMEUPDATE(win, id, func)</dt><dd><p>func is fired whenever the value of the control changes.</p>
+</dd>
+<dt>SetValue(time_string | wxDateTime | wxTimeSpan | mx.DateTime | mx.DateTimeDelta)</dt><dd><p>Sets the value of the control to a particular time, given a valid
+value; raises ValueError on invalid value.</p>
+</dd>
+<dt><em>NOTE:</em> This will only allow mx.DateTime or mx.DateTimeDelta if mx.DateTime</dt><dd><p>was successfully imported by the class module.</p>
+</dd>
+<dt>GetValue(as_wxDateTime = False, as_mxDateTime = False, as_wxTimeSpan=False, as mxDateTimeDelta=False)</dt><dd><p>Retrieves the value of the time from the control.  By default this is
+returned as a string, unless one of the other arguments is set; args are
+searched in the order listed; only one value will be returned.</p>
+</dd>
+<dt>GetWxDateTime(value=None)</dt><dd><p>When called without arguments, retrieves the value of the control, and applies
+it to the wxDateTimeFromHMS() constructor, and returns the resulting value.
+The date portion will always be set to Jan 1, 1970. This form is the same
+as GetValue(as_wxDateTime=True).  GetWxDateTime can also be called with any of the
+other valid time formats settable with SetValue, to regularize it to a single
+wxDateTime form.  The function will raise ValueError on an unconvertable argument.</p>
+</dd>
+<dt>GetMxDateTime()</dt><dd><p>Retrieves the value of the control and applies it to the DateTime.Time()
+constructor,and returns the resulting value.  (The date portion will always be
+set to Jan 1, 1970.) (Same as GetValue(as_wxDateTime=True); provided for backward
+compatibility with previous release.)</p>
+</dd>
+<dt>BindSpinButton(SpinBtton)</dt><dd><p>Binds an externally created spin button to the control, so that up/down spin
+events change the active cell or selection in the control (in addition to the
+up/down cursor keys.)  (This is primarily to allow you to create a “standard”
+interface to time controls, as seen in Windows.)</p>
+</dd>
+<dt>SetMin(min=None)</dt><dd><p>Sets the expected minimum value, or lower bound, of the control.
+(The lower bound will only be enforced if the control is
+configured to limit its values to the set bounds.)
+If a value of <em>None</em> is provided, then the control will have
+explicit lower bound.  If the value specified is greater than
+the current lower bound, then the function returns <code class="docutils literal notranslate"><span class="pre">False</span></code> and the
+lower bound will not change from its current setting.  On success,
+the function returns True.  Even if set, if there is no corresponding
+upper bound, the control will behave as if it is unbounded.</p>
+<p>If successful and the current value is outside the
+new bounds, if the control is limited the value will be
+automatically adjusted to the nearest bound; if not limited,
+the background of the control will be colored with the current
+out-of-bounds color.</p>
+</dd>
+<dt>GetMin(as_string=False)</dt><dd><p>Gets the current lower bound value for the control, returning
+None, if not set, or a wxDateTime, unless the as_string parameter
+is set to True, at which point it will return the string
+representation of the lower bound.</p>
+</dd>
+<dt>SetMax(max=None)</dt><dd><p>Sets the expected maximum value, or upper bound, of the control.
+(The upper bound will only be enforced if the control is
+configured to limit its values to the set bounds.)
+If a value of <em>None</em> is provided, then the control will
+have no explicit upper bound.  If the value specified is less
+than the current lower bound, then the function returns <code class="docutils literal notranslate"><span class="pre">False</span></code> and
+the maximum will not change from its current setting. On success,
+the function returns True.  Even if set, if there is no corresponding
+lower bound, the control will behave as if it is unbounded.</p>
+<p>If successful and the current value is outside the
+new bounds, if the control is limited the value will be
+automatically adjusted to the nearest bound; if not limited,
+the background of the control will be colored with the current
+out-of-bounds color.</p>
+</dd>
+<dt>GetMax(as_string = False)</dt><dd><p>Gets the current upper bound value for the control, returning
+None, if not set, or a wxDateTime, unless the as_string parameter
+is set to True, at which point it will return the string
+representation of the lower bound.</p>
+</dd>
+<dt>SetBounds(min=None,max=None)</dt><dd><p>This function is a convenience function for setting the min and max
+values at the same time.  The function only applies the maximum bound
+if setting the minimum bound is successful, and returns <code class="docutils literal notranslate"><span class="pre">True</span></code>     only if both operations succeed.  <em>Note: leaving out an argument
+will remove the corresponding bound, and result in the behavior of
+an unbounded control.</em></p>
+</dd>
+<dt>GetBounds(as_string = False)</dt><dd><p>This function returns a two-tuple (min,max), indicating the
+current bounds of the control.  Each value can be None if
+that bound is not set.  The values will otherwise be wxDateTimes
+unless the as_string argument is set to True, at which point they
+will be returned as string representations of the bounds.</p>
+</dd>
+<dt>IsInBounds(value=None)</dt><dd><p>Returns <em>True</em> if no value is specified and the current value
+of the control falls within the current bounds.  This function can also
+be called with a value to see if that value would fall within the current
+bounds of the given control.  It will raise ValueError if the value
+specified is not a wxDateTime, mxDateTime (if available) or parsable string.</p>
+</dd>
+<dt>IsValid(value)</dt><dd><p>Returns <em>True</em> if specified value is a legal time value and
+falls within the current bounds of the given control.</p>
+</dd>
+<dt>SetLimited(bool)</dt><dd><p>If called with a value of True, this function will cause the control
+to limit the value to fall within the bounds currently specified.
+(Provided both bounds have been set.)
+If the control’s value currently exceeds the bounds, it will then
+be set to the nearest bound.
+If called with a value of False, this function will disable value
+limiting, but coloring of out-of-bounds values will still take
+place if bounds have been set for the control.</p>
+</dd>
+<dt>IsLimited()</dt><dd><p>Returns <em>True</em> if the control is currently limiting the
+value to fall within the current bounds.</p>
+</dd>
+</dl>
+<div class="section" id="class-summary-classes-summary">
+<h2><a class="reference internal" href="_images/class_summary.png"><img alt="class_summary" class="align-middle" src="_images/class_summary.png" style="width: 32px;"/></a> Classes Summary<a class="headerlink" href="#class-summary-classes-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.masked.timectrl.TimeCtrl.html#wx.lib.masked.timectrl.TimeCtrl" title="wx.lib.masked.timectrl.TimeCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeCtrl</span></code></a></p></td>
+<td><p>Masked control providing several time formats and manipulation of time values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.masked.timectrl.TimeCtrlAccessorsMixin.html#wx.lib.masked.timectrl.TimeCtrlAccessorsMixin" title="wx.lib.masked.timectrl.TimeCtrlAccessorsMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeCtrlAccessorsMixin</span></code></a></p></td>
+<td><p>Defines TimeCtrl’s list of attributes having their own Get/Set functions,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.masked.timectrl.TimeUpdatedEvent.html#wx.lib.masked.timectrl.TimeUpdatedEvent" title="wx.lib.masked.timectrl.TimeUpdatedEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeUpdatedEvent</span></code></a></p></td>
+<td><p>Used to fire an EVT_TIMEUPDATE event whenever the value in a TimeCtrl changes.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

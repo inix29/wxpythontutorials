@@ -1,0 +1,1085 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.propgrid.PropertyGridManager — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.propgrid.PropertyGridPage.html" rel="next" title="wx.propgrid.PropertyGridPage"/>
+<link href="wx.propgrid.PropertyGridIteratorBase.html" rel="prev" title="wx.propgrid.PropertyGridIteratorBase"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.propgrid.1moduleindex.html">
+<strong>wx.propgrid</strong></a> »</li>
+<li class="reltitle"> <strong>wx.propgrid.PropertyGridManager</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.propgrid.PropertyGridPage.html" title="wx.propgrid.PropertyGridPage">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.propgrid.PropertyGridIteratorBase.html" title="wx.propgrid.PropertyGridIteratorBase">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.propgrid.PropertyGridManager</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#phoenix-title-event-handling"> Event Handling</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.propgrid.PropertyGridManager.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-propgrid-propertygridmanager">
+<span id="wx-propgrid-propertygridmanager"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.propgrid.PropertyGridManager</strong><a class="headerlink" href="#phoenix-title-wx-propgrid-propertygridmanager" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>  is an efficient multi-page version of <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>, which can optionally have toolbar for mode and page selection, a help text box, and a header.</p>
+<p><a class="reference internal" href="#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>  inherits from <a class="reference internal" href="wx.propgrid.PropertyGridInterface.html#wx-propgrid-propertygridinterface"><span class="std std-ref">  wx.propgrid.PropertyGridInterface</span></a>, and as such it has most property manipulation functions. However, only some of them affect properties on all pages (eg. <a class="reference internal" href="wx.propgrid.PropertyGridInterface.html#wx.propgrid.PropertyGridInterface.GetPropertyByName" title="wx.propgrid.PropertyGridInterface.GetPropertyByName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPropertyByName</span></code></a>  and <a class="reference internal" href="wx.propgrid.PropertyGridInterface.html#wx.propgrid.PropertyGridInterface.ExpandAll" title="wx.propgrid.PropertyGridInterface.ExpandAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ExpandAll</span></code></a> while some (eg. <a class="reference internal" href="wx.propgrid.PropertyGridInterface.html#wx.propgrid.PropertyGridInterface.Append" title="wx.propgrid.PropertyGridInterface.Append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Append</span></code></a> only apply to the currently selected page.</p>
+<p>To operate explicitly on properties on specific page, use <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetPage" title="wx.propgrid.PropertyGridManager.GetPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PropertyGridManager.GetPage</span></code></a>   to obtain pointer to page’s <a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a>  object.</p>
+<p>Visual methods, such as SetCellBackgroundColour() are only available in <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>. Use <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetGrid" title="wx.propgrid.PropertyGridManager.GetGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PropertyGridManager.GetGrid</span></code></a>   to obtain pointer to it.</p>
+<p>Non-virtual iterators will not work in <a class="reference internal" href="#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>. Instead, you must acquire the internal grid ( <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetGrid" title="wx.propgrid.PropertyGridManager.GetGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetGrid</span></code></a>) or <a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a>  object ( <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetPage" title="wx.propgrid.PropertyGridManager.GetPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPage</span></code></a>).</p>
+<p><a class="reference internal" href="#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>  constructor has exact same format as <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  constructor, and basically accepts same extra window style flags (albeit also has some extra ones).</p>
+<p>Here’s some example code for creating and populating a <a class="reference internal" href="#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgMan</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PropertyGridManager</span><span class="p">(</span>
+    <span class="n">parent</span><span class="p">,</span>
+    <span class="n">PGID</span><span class="p">,</span>
+    <span class="c1"># These and other similar styles are automatically</span>
+    <span class="c1"># passed to the embedded wx.PropertyGrid.</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PG_BOLD_MODIFIED</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">PG_SPLITTER_AUTO_CENTER</span><span class="o">|</span>
+    <span class="c1"># Include toolbar.</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">PG_TOOLBAR</span> <span class="o">|</span>
+    <span class="c1"># Include description box.</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">PG_DESCRIPTION</span> <span class="o">|</span>
+    <span class="c1"># Include compactor.</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">PG_COMPACTOR</span> <span class="o">|</span>
+    <span class="c1"># Plus defaults.</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">PGMAN_DEFAULT_STYLE</span>
+  <span class="p">)</span>
+
+<span class="n">page</span> <span class="o">=</span> <span class="n">pgMan</span><span class="o">.</span><span class="n">AddPage</span><span class="p">(</span><span class="s2">"First Page"</span><span class="p">)</span>
+<span class="n">page</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PropertyCategory</span><span class="p">(</span><span class="s2">"Category A1"</span><span class="p">))</span>
+<span class="n">page</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">IntProperty</span><span class="p">(</span><span class="s2">"Number"</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PG_LABEL</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">page</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">ColourProperty</span><span class="p">(</span><span class="s2">"Colour"</span><span class="p">,</span><span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PG_LABEL</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">WHITE</span><span class="p">))</span>
+
+<span class="n">page</span> <span class="o">=</span> <span class="n">pgMan</span><span class="o">.</span><span class="n">AddPage</span><span class="p">(</span><span class="s2">"Second Page"</span><span class="p">)</span>
+<span class="n">page</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="s2">"Text"</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PG_LABEL</span><span class="p">,</span> <span class="s2">"(no text)"</span><span class="p">)</span>
+<span class="n">page</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">FontProperty</span><span class="p">(</span><span class="s2">"Font"</span><span class="p">,</span><span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PG_LABEL</span><span class="p">))</span>
+
+<span class="c1"># Display a header above the grid</span>
+<span class="n">pgMan</span><span class="o">.</span><span class="n">ShowHeader</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="phoenix-title-window-styles">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#phoenix-title-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>See <span class="xref std std-ref">PropertyGrid Window Styles</span>.</p>
+</div>
+<div class="section" id="phoenix-title-event-handling">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Event Handling<a class="headerlink" href="#phoenix-title-event-handling" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">PropertyGrid Event Handling</span></a>  for more information.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>PropertyGridManager</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of PropertyGridManager" class="inheritance" src="_static/images/inheritance/wx.propgrid.PropertyGridManager_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="81,315,330,344" href="wx.propgrid.PropertyGridManager.html" id="node1" shape="rect" title="wx.propgrid.PropertyGridManager  is an efficient multi-page version of wx.propgrid.PropertyGrid, which can optionally have toolbar for mode and page selection, a help text box, and a header."/> <area alt="" coords="70,237,151,267" href="wx.Panel.html" id="node2" shape="rect" title="A panel is a window on which controls are placed."/> <area alt="" coords="176,237,427,267" href="wx.propgrid.PropertyGridInterface.html" id="node3" shape="rect" title="Most of the shared property manipulation interface shared by wx.propgrid.PropertyGrid, wx.propgrid.PropertyGridPage, and wx.propgrid.PropertyGridManager  is defined in this class."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node4" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node5" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node6" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node7" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 67%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.__init__" title="wx.propgrid.PropertyGridManager.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Two step constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.AddPage" title="wx.propgrid.PropertyGridManager.AddPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddPage</span></code></a></p></td>
+<td><p>Creates new property page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.Clear" title="wx.propgrid.PropertyGridManager.Clear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Clear</span></code></a></p></td>
+<td><p>Deletes all properties and all pages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.ClearPage" title="wx.propgrid.PropertyGridManager.ClearPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearPage</span></code></a></p></td>
+<td><p>Deletes all properties on given page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.CommitChangesFromEditor" title="wx.propgrid.PropertyGridManager.CommitChangesFromEditor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CommitChangesFromEditor</span></code></a></p></td>
+<td><p>Forces updating the value of property from the editor control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.Create" title="wx.propgrid.PropertyGridManager.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Two step creation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.CreatePropertyGrid" title="wx.propgrid.PropertyGridManager.CreatePropertyGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreatePropertyGrid</span></code></a></p></td>
+<td><p>Creates property grid for the manager.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.EnableCategories" title="wx.propgrid.PropertyGridManager.EnableCategories"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableCategories</span></code></a></p></td>
+<td><p>Enables or disables (shows/hides) categories according to parameter enable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.EnsureVisible" title="wx.propgrid.PropertyGridManager.EnsureVisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnsureVisible</span></code></a></p></td>
+<td><p>Selects page, scrolls and/or expands items to ensure that the given item is visible.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetClassDefaultAttributes" title="wx.propgrid.PropertyGridManager.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetColumnCount" title="wx.propgrid.PropertyGridManager.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p></td>
+<td><p>Returns number of columns on given page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetCurrentPage" title="wx.propgrid.PropertyGridManager.GetCurrentPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentPage</span></code></a></p></td>
+<td><p>Returns currently selected page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetDescBoxHeight" title="wx.propgrid.PropertyGridManager.GetDescBoxHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescBoxHeight</span></code></a></p></td>
+<td><p>Returns height of the description text box.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetGrid" title="wx.propgrid.PropertyGridManager.GetGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetGrid</span></code></a></p></td>
+<td><p>Returns pointer to the contained <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetPage" title="wx.propgrid.PropertyGridManager.GetPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPage</span></code></a></p></td>
+<td><p>Returns page object for given page index.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetPageByName" title="wx.propgrid.PropertyGridManager.GetPageByName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageByName</span></code></a></p></td>
+<td><p>Returns index for a page name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetPageCount" title="wx.propgrid.PropertyGridManager.GetPageCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageCount</span></code></a></p></td>
+<td><p>Returns number of managed pages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetPageName" title="wx.propgrid.PropertyGridManager.GetPageName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageName</span></code></a></p></td>
+<td><p>Returns name of given page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetPageRoot" title="wx.propgrid.PropertyGridManager.GetPageRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageRoot</span></code></a></p></td>
+<td><p>Returns “root property” of the given page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelectedPage" title="wx.propgrid.PropertyGridManager.GetSelectedPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedPage</span></code></a></p></td>
+<td><p>Returns index to currently selected page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelectedProperty" title="wx.propgrid.PropertyGridManager.GetSelectedProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedProperty</span></code></a></p></td>
+<td><p>Alias for <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelection" title="wx.propgrid.PropertyGridManager.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a></p></td>
+<td><p>Shortcut for <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetGrid</span></code> . <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetToolBar" title="wx.propgrid.PropertyGridManager.GetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBar</span></code></a></p></td>
+<td><p>Returns a pointer to the toolbar currently associated with the <a class="reference internal" href="#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>  (if any).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetVIterator" title="wx.propgrid.PropertyGridManager.GetVIterator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVIterator</span></code></a></p></td>
+<td><p>Similar to GetIterator, but instead returns <a class="reference internal" href="wx.propgrid.PGVIterator.html#wx-propgrid-pgviterator"><span class="std std-ref">  wx.propgrid.PGVIterator</span></a>  instance, which can be useful for forward-iterating through arbitrary property containers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.InsertPage" title="wx.propgrid.PropertyGridManager.InsertPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertPage</span></code></a></p></td>
+<td><p>Creates new property page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.IsAnyModified" title="wx.propgrid.PropertyGridManager.IsAnyModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsAnyModified</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if any property on any page has been modified by the user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.IsFrozen" title="wx.propgrid.PropertyGridManager.IsFrozen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsFrozen</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if updating is frozen (ie.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.IsPageModified" title="wx.propgrid.PropertyGridManager.IsPageModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsPageModified</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if any property on given page has been modified by the user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.IsPropertySelected" title="wx.propgrid.PropertyGridManager.IsPropertySelected"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsPropertySelected</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if property is selected.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.RemovePage" title="wx.propgrid.PropertyGridManager.RemovePage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemovePage</span></code></a></p></td>
+<td><p>Removes a page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SelectPage" title="wx.propgrid.PropertyGridManager.SelectPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectPage</span></code></a></p></td>
+<td><p>Select and displays a given page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SelectProperty" title="wx.propgrid.PropertyGridManager.SelectProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectProperty</span></code></a></p></td>
+<td><p>Select a property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetColumnCount" title="wx.propgrid.PropertyGridManager.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p></td>
+<td><p>Sets number of columns on given page (default is current page).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetColumnTitle" title="wx.propgrid.PropertyGridManager.SetColumnTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnTitle</span></code></a></p></td>
+<td><p>Sets a column title.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetDescBoxHeight" title="wx.propgrid.PropertyGridManager.SetDescBoxHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDescBoxHeight</span></code></a></p></td>
+<td><p>Sets y coordinate of the description box splitter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetDescription" title="wx.propgrid.PropertyGridManager.SetDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDescription</span></code></a></p></td>
+<td><p>Sets label and text in description box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetPageSplitterLeft" title="wx.propgrid.PropertyGridManager.SetPageSplitterLeft"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPageSplitterLeft</span></code></a></p></td>
+<td><p>Moves splitter as left as possible on an individual page, while still allowing all labels to be shown in full.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetPageSplitterPosition" title="wx.propgrid.PropertyGridManager.SetPageSplitterPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPageSplitterPosition</span></code></a></p></td>
+<td><p>Sets splitter position on individual page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetSplitterLeft" title="wx.propgrid.PropertyGridManager.SetSplitterLeft"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSplitterLeft</span></code></a></p></td>
+<td><p>Moves splitter as left as possible, while still allowing all labels to be shown in full.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetSplitterPosition" title="wx.propgrid.PropertyGridManager.SetSplitterPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSplitterPosition</span></code></a></p></td>
+<td><p>Sets splitter position for all pages.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.ShowHeader" title="wx.propgrid.PropertyGridManager.ShowHeader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowHeader</span></code></a></p></td>
+<td><p>Show or hide the property grid header control.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%"/>
+<col style="width: 61%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.ColumnCount" title="wx.propgrid.PropertyGridManager.ColumnCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ColumnCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetColumnCount" title="wx.propgrid.PropertyGridManager.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetColumnCount" title="wx.propgrid.PropertyGridManager.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.CurrentPage" title="wx.propgrid.PropertyGridManager.CurrentPage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CurrentPage</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetCurrentPage" title="wx.propgrid.PropertyGridManager.GetCurrentPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentPage</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.DescBoxHeight" title="wx.propgrid.PropertyGridManager.DescBoxHeight"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DescBoxHeight</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetDescBoxHeight" title="wx.propgrid.PropertyGridManager.GetDescBoxHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescBoxHeight</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetDescBoxHeight" title="wx.propgrid.PropertyGridManager.SetDescBoxHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDescBoxHeight</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.Grid" title="wx.propgrid.PropertyGridManager.Grid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Grid</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetGrid" title="wx.propgrid.PropertyGridManager.GetGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetGrid</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.PageCount" title="wx.propgrid.PropertyGridManager.PageCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PageCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetPageCount" title="wx.propgrid.PropertyGridManager.GetPageCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SelectedPage" title="wx.propgrid.PropertyGridManager.SelectedPage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SelectedPage</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelectedPage" title="wx.propgrid.PropertyGridManager.GetSelectedPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedPage</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.SelectedProperty" title="wx.propgrid.PropertyGridManager.SelectedProperty"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SelectedProperty</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelectedProperty" title="wx.propgrid.PropertyGridManager.GetSelectedProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedProperty</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.Selection" title="wx.propgrid.PropertyGridManager.Selection"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Selection</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelection" title="wx.propgrid.PropertyGridManager.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.ToolBar" title="wx.propgrid.PropertyGridManager.ToolBar"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ToolBar</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetToolBar" title="wx.propgrid.PropertyGridManager.GetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBar</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.propgrid.PropertyGridManager">
+<em class="property">class </em><code class="sig-prename descclassname">wx.propgrid.</code><code class="sig-name descname">PropertyGridManager</code><span class="sig-paren">(</span><em class="sig-param">Panel</em>, <em class="sig-param">PropertyGridInterface</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PropertyGridManager</span><span class="p">()</span>
+
+<span class="n">PropertyGridManager</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span>
+                    <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">PGMAN_DEFAULT_STYLE</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">PropertyGridManagerNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>PropertyGridManager is an efficient multi-page version of
+PropertyGrid, which can optionally have toolbar for mode and page
+selection, a help text box, and a header.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Two step constructor.</p>
+<p>Call Create when this constructor is called to build up the <a class="reference internal" href="#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=PGMAN_DEFAULT_STYLE, name=PropertyGridManagerNameStr)</em></p>
+<p>The default constructor.</p>
+<p>The styles to be used are styles valid for the <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">Additional Window Styles</span></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.AddPage">
+<code class="sig-name descname">AddPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label=""</em>, <em class="sig-param">bmp=PG_NULL_BITMAP</em>, <em class="sig-param">pageObj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.AddPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates new property page.</p>
+<p>Note that the first page is not created automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>string</em>) – A label for the page. This may be shown as a toolbar tooltip etc.</p></li>
+<li><p><strong>bmp</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – Bitmap image for toolbar. If NullBitmap is used, then a built-in default image is used.</p></li>
+<li><p><strong>pageObj</strong> (<a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx.propgrid.PropertyGridPage" title="wx.propgrid.PropertyGridPage"><em>wx.propgrid.PropertyGridPage</em></a>) – <a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a>  instance. Manager will take ownership of this object. <code class="docutils literal notranslate"><span class="pre">None</span></code> indicates that a default page instance should be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns pointer to created property grid page.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If toolbar is used, it is highly recommended that the pages are added when the toolbar is not turned off using window style flag switching. Otherwise toolbar buttons might not be added properly.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.Clear">
+<code class="sig-name descname">Clear</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all properties and all pages.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.ClearPage">
+<code class="sig-name descname">ClearPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">page</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.ClearPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all properties on given page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>page</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.CommitChangesFromEditor">
+<code class="sig-name descname">CommitChangesFromEditor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.CommitChangesFromEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces updating the value of property from the editor control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>wx.int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if value was actually updated.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=PGMAN_DEFAULT_STYLE</em>, <em class="sig-param">name=PropertyGridManagerNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two step creation.</p>
+<p>Whenever the control is created without any parameters, use Create to actually create it. Don’t access the control’s public methods before this is called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">PropertyGrid Window Styles</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.CreatePropertyGrid">
+<code class="sig-name descname">CreatePropertyGrid</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.CreatePropertyGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates property grid for the manager.</p>
+<p>Reimplement in derived class to use subclassed <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>. However, if you do this then you must also use the two-step construction (ie. default constructor and <a class="reference internal" href="#wx.propgrid.PropertyGridManager.Create" title="wx.propgrid.PropertyGridManager.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   instead of constructor with arguments) when creating the manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.EnableCategories">
+<code class="sig-name descname">EnableCategories</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.EnableCategories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables or disables (shows/hides) categories according to parameter enable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Calling his may not properly update toolbar buttons.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.EnsureVisible">
+<code class="sig-name descname">EnsureVisible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.EnsureVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects page, scrolls and/or expands items to ensure that the given item is visible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if something was actually done.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">VisualAttributes</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetColumnCount">
+<code class="sig-name descname">GetColumnCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">page=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of columns on given page.</p>
+<p>By the default, returns number of columns on current page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>page</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetCurrentPage">
+<code class="sig-name descname">GetCurrentPage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetCurrentPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns currently selected page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetDescBoxHeight">
+<code class="sig-name descname">GetDescBoxHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetDescBoxHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns height of the description text box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetGrid">
+<code class="sig-name descname">GetGrid</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to the contained <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>.</p>
+<p>This does not change after <a class="reference internal" href="#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>  has been created, so you can safely obtain pointer once and use it for the entire lifetime of the manager instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetPage">
+<code class="sig-name descname">GetPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetPage" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetPage</strong> <em class="xref py py-obj">(self, ind)</em></p>
+<p>Returns page object for given page index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ind</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetPage</strong> <em class="xref py py-obj">(self, name)</em></p>
+<p>Returns page object for given page name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetPageByName">
+<code class="sig-name descname">GetPageByName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetPageByName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns index for a page name.</p>
+<p>If no match is found, <code class="docutils literal notranslate"><span class="pre">wx.NOT_FOUND</span></code> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetPageCount">
+<code class="sig-name descname">GetPageCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetPageCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of managed pages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetPageName">
+<code class="sig-name descname">GetPageName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetPageName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns name of given page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetPageRoot">
+<code class="sig-name descname">GetPageRoot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetPageRoot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns “root property” of the given page.</p>
+<p>It does not have name, etc. and it is not visible. It is only useful for accessing its children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PGProperty.html#wx-propgrid-pgproperty"><span class="std std-ref">  wx.propgrid.PGProperty</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetSelectedPage">
+<code class="sig-name descname">GetSelectedPage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetSelectedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns index to currently selected page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetSelectedProperty">
+<code class="sig-name descname">GetSelectedProperty</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetSelectedProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelection" title="wx.propgrid.PropertyGridManager.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.propgrid.PGProperty.html#wx-propgrid-pgproperty"><span class="std std-ref">  wx.propgrid.PGProperty</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetSelection">
+<code class="sig-name descname">GetSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortcut for <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetGrid" title="wx.propgrid.PropertyGridManager.GetGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetGrid</span></code></a> . <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelection" title="wx.propgrid.PropertyGridManager.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.propgrid.PGProperty.html#wx-propgrid-pgproperty"><span class="std std-ref">  wx.propgrid.PGProperty</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetToolBar">
+<code class="sig-name descname">GetToolBar</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetToolBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the toolbar currently associated with the <a class="reference internal" href="#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>  (if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx.propgrid.PropertyGridManager.ToolBar" title="wx.propgrid.PropertyGridManager.ToolBar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ToolBar</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.GetVIterator">
+<code class="sig-name descname">GetVIterator</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.GetVIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to GetIterator, but instead returns <a class="reference internal" href="wx.propgrid.PGVIterator.html#wx-propgrid-pgviterator"><span class="std std-ref">  wx.propgrid.PGVIterator</span></a>  instance, which can be useful for forward-iterating through arbitrary property containers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PGVIterator.html#wx-propgrid-pgviterator"><span class="std std-ref">  wx.propgrid.PGVIterator</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.InsertPage">
+<code class="sig-name descname">InsertPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em>, <em class="sig-param">label</em>, <em class="sig-param">bmp=NullBitmap</em>, <em class="sig-param">pageObj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.InsertPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates new property page.</p>
+<p>Note that the first page is not created automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – Add to this position. -1 will add as the last item.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – A label for the page. This may be shown as a toolbar tooltip etc.</p></li>
+<li><p><strong>bmp</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – Bitmap image for toolbar. If NullBitmap is used, then a built-in default image is used.</p></li>
+<li><p><strong>pageObj</strong> (<a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx.propgrid.PropertyGridPage" title="wx.propgrid.PropertyGridPage"><em>wx.propgrid.PropertyGridPage</em></a>) – <a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a>  instance. Manager will take ownership of this object. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, default page object is constructed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns pointer to created page.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.IsAnyModified">
+<code class="sig-name descname">IsAnyModified</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.IsAnyModified" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if any property on any page has been modified by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.IsFrozen">
+<code class="sig-name descname">IsFrozen</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.IsFrozen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if updating is frozen (ie.</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Freeze</span></code>   called but not yet <code class="xref py py-meth docutils literal notranslate"><span class="pre">Thaw</span></code>   ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.IsPageModified">
+<code class="sig-name descname">IsPageModified</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.IsPageModified" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if any property on given page has been modified by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.IsPropertySelected">
+<code class="sig-name descname">IsPropertySelected</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.IsPropertySelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if property is selected.</p>
+<p>Since selection is page based, this function checks every page in the manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.RemovePage">
+<code class="sig-name descname">RemovePage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">page</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.RemovePage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>page</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if it was not possible to remove page in question.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SelectPage">
+<code class="sig-name descname">SelectPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SelectPage" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SelectPage</strong> <em class="xref py py-obj">(self, index)</em></p>
+<p>Select and displays a given page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – Index of page being seleced. Can be -1 to select nothing.</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SelectPage</strong> <em class="xref py py-obj">(self, label)</em></p>
+<p>Select and displays a given page (by label).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SelectPage</strong> <em class="xref py py-obj">(self, page)</em></p>
+<p>Select and displays a given page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>page</strong> (<a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx.propgrid.PropertyGridPage" title="wx.propgrid.PropertyGridPage"><em>wx.propgrid.PropertyGridPage</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SelectProperty">
+<code class="sig-name descname">SelectProperty</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">focus=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SelectProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – </p></li>
+<li><p><strong>focus</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx.propgrid.PropertyGrid.SelectProperty" title="wx.propgrid.PropertyGrid.SelectProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PropertyGrid.SelectProperty</span></code></a> , <a class="reference internal" href="wx.propgrid.PropertyGridInterface.html#wx.propgrid.PropertyGridInterface.ClearSelection" title="wx.propgrid.PropertyGridInterface.ClearSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PropertyGridInterface.ClearSelection</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SetColumnCount">
+<code class="sig-name descname">SetColumnCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colCount</em>, <em class="sig-param">page=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SetColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets number of columns on given page (default is current page).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colCount</strong> (<em>int</em>) – </p></li>
+<li><p><strong>page</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use header, then you should always use this member function to set the column count, instead of ones present in <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  or <a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SetColumnTitle">
+<code class="sig-name descname">SetColumnTitle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SetColumnTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a column title.</p>
+<p>Default title for column 0 is “Property”, and “Value” for column 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> (<em>int</em>) – </p></li>
+<li><p><strong>title</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If header is not shown yet, then calling this member function will make it visible.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SetDescBoxHeight">
+<code class="sig-name descname">SetDescBoxHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">ht</em>, <em class="sig-param">refresh=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SetDescBoxHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets y coordinate of the description box splitter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ht</strong> (<em>int</em>) – </p></li>
+<li><p><strong>refresh</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SetDescription">
+<code class="sig-name descname">SetDescription</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label</em>, <em class="sig-param">content</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SetDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets label and text in description box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>content</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SetPageSplitterLeft">
+<code class="sig-name descname">SetPageSplitterLeft</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">page</em>, <em class="sig-param">subProps=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SetPageSplitterLeft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves splitter as left as possible on an individual page, while still allowing all labels to be shown in full.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page</strong> (<em>int</em>) – </p></li>
+<li><p><strong>subProps</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SetPageSplitterPosition">
+<code class="sig-name descname">SetPageSplitterPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">page</em>, <em class="sig-param">pos</em>, <em class="sig-param">column=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SetPageSplitterPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets splitter position on individual page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page</strong> (<em>int</em>) – </p></li>
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>column</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use header, then you should always use this member function to set the splitter position, instead of ones present in <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  or <a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SetSplitterLeft">
+<code class="sig-name descname">SetSplitterLeft</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">subProps=False</em>, <em class="sig-param">allPages=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SetSplitterLeft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves splitter as left as possible, while still allowing all labels to be shown in full.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subProps</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">False</span></code>, will still allow sub-properties (ie. properties which parent is not root or category) to be cropped.</p></li>
+<li><p><strong>allPages</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, takes labels on all pages into account.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.SetSplitterPosition">
+<code class="sig-name descname">SetSplitterPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em>, <em class="sig-param">column=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SetSplitterPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets splitter position for all pages.</p>
+<p>If you use header, then you should always use this member function to set the splitter position, instead of ones present in  <a class="reference internal" href="wx.propgrid.PropertyGrid.html#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  or <a class="reference internal" href="wx.propgrid.PropertyGridPage.html#wx-propgrid-propertygridpage"><span class="std std-ref">  wx.propgrid.PropertyGridPage</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>column</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Splitter position cannot exceed grid size, and therefore setting it during form creation may fail as initial grid size is often smaller than desired splitter position, especially when sizers are being used.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGridManager.ShowHeader">
+<code class="sig-name descname">ShowHeader</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">show=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGridManager.ShowHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show or hide the property grid header control.</p>
+<p>It is hidden by the default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Grid may look better if you use <code class="docutils literal notranslate"><span class="pre">wx.propgrid.PG_NO_INTERNAL_BORDER</span></code> window style when showing a header.</p>
+</div>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGridManager.ColumnCount">
+<code class="sig-name descname">ColumnCount</code><a class="headerlink" href="#wx.propgrid.PropertyGridManager.ColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetColumnCount" title="wx.propgrid.PropertyGridManager.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetColumnCount" title="wx.propgrid.PropertyGridManager.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGridManager.CurrentPage">
+<code class="sig-name descname">CurrentPage</code><a class="headerlink" href="#wx.propgrid.PropertyGridManager.CurrentPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetCurrentPage" title="wx.propgrid.PropertyGridManager.GetCurrentPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentPage</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGridManager.DescBoxHeight">
+<code class="sig-name descname">DescBoxHeight</code><a class="headerlink" href="#wx.propgrid.PropertyGridManager.DescBoxHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetDescBoxHeight" title="wx.propgrid.PropertyGridManager.GetDescBoxHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescBoxHeight</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGridManager.SetDescBoxHeight" title="wx.propgrid.PropertyGridManager.SetDescBoxHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDescBoxHeight</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGridManager.Grid">
+<code class="sig-name descname">Grid</code><a class="headerlink" href="#wx.propgrid.PropertyGridManager.Grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetGrid" title="wx.propgrid.PropertyGridManager.GetGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetGrid</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGridManager.PageCount">
+<code class="sig-name descname">PageCount</code><a class="headerlink" href="#wx.propgrid.PropertyGridManager.PageCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetPageCount" title="wx.propgrid.PropertyGridManager.GetPageCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGridManager.SelectedPage">
+<code class="sig-name descname">SelectedPage</code><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SelectedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelectedPage" title="wx.propgrid.PropertyGridManager.GetSelectedPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedPage</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGridManager.SelectedProperty">
+<code class="sig-name descname">SelectedProperty</code><a class="headerlink" href="#wx.propgrid.PropertyGridManager.SelectedProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelectedProperty" title="wx.propgrid.PropertyGridManager.GetSelectedProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedProperty</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGridManager.Selection">
+<code class="sig-name descname">Selection</code><a class="headerlink" href="#wx.propgrid.PropertyGridManager.Selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetSelection" title="wx.propgrid.PropertyGridManager.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGridManager.ToolBar">
+<code class="sig-name descname">ToolBar</code><a class="headerlink" href="#wx.propgrid.PropertyGridManager.ToolBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGridManager.GetToolBar" title="wx.propgrid.PropertyGridManager.GetToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBar</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

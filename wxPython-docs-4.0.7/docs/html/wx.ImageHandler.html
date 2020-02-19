@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.ImageHandler — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ImageHistogram.html" rel="next" title="wx.ImageHistogram"/>
+<link href="wx.Image.RGBValue.html" rel="prev" title="wx.Image.RGBValue"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.ImageHandler</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ImageHistogram.html" title="wx.ImageHistogram">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.Image.RGBValue.html" title="wx.Image.RGBValue">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.ImageHandler</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-note-legal-issue"> Note (Legal Issue)</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.ImageHandler.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-imagehandler">
+<span id="wx-imagehandler"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.ImageHandler</strong><a class="headerlink" href="#phoenix-title-wx-imagehandler" title="Permalink to this headline">¶</a></h1>
+<p>This is the base class for implementing image file loading/saving, and image creation from data.</p>
+<p>It is used within <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  and is not normally seen by the application.</p>
+<p>If you wish to extend the capabilities of <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>, derive a class from <a class="reference internal" href="#wx-imagehandler"><span class="std std-ref">  wx.ImageHandler</span></a>  and add the handler using <a class="reference internal" href="wx.Image.html#wx.Image.AddHandler" title="wx.Image.AddHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.AddHandler</span></code></a>   in your application initialization.</p>
+<p>Note that all ImageHandlers provided by wxWidgets are part of the <em class="xref py py-obj">Core</em>       library. For details about the default handlers, please see the section <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">Available image handlers</span></a>  in the <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  class documentation.</p>
+<div class="section" id="phoenix-title-note-legal-issue">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Note (Legal Issue)<a class="headerlink" href="#phoenix-title-note-legal-issue" title="Permalink to this headline">¶</a></h2>
+<p>This software is based in part on the work of the Independent <code class="docutils literal notranslate"><span class="pre">JPEG</span></code> Group. (Applies when wxWidgets is linked with <code class="docutils literal notranslate"><span class="pre">JPEG</span></code> support. <a class="reference internal" href="wx.JPEGHandler.html#wx-jpeghandler"><span class="std std-ref">  wx.JPEGHandler</span></a>  uses libjpeg created by <code class="docutils literal notranslate"><span class="pre">IJG</span></code>.)</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>, <a class="reference internal" href="wx.functions.html#wx.InitAllImageHandlers" title="wx.InitAllImageHandlers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.InitAllImageHandlers</span></code></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ImageHandler</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ImageHandler" class="inheritance" src="_static/images/inheritance/wx.ImageHandler_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,144,112" href="wx.ImageHandler.html" id="node1" shape="rect" title="This is the base class for implementing image file loading/saving, and image creation from data."/> <area alt="" coords="31,5,119,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.GIFHandler.html#wx-gifhandler"><span class="std std-ref">  wx.GIFHandler</span></a>, <a class="reference internal" href="wx.IFFHandler.html#wx-iffhandler"><span class="std std-ref">  wx.IFFHandler</span></a>, <a class="reference internal" href="wx.JPEGHandler.html#wx-jpeghandler"><span class="std std-ref">  wx.JPEGHandler</span></a>, <a class="reference internal" href="wx.PCXHandler.html#wx-pcxhandler"><span class="std std-ref">  wx.PCXHandler</span></a>, <a class="reference internal" href="wx.PNGHandler.html#wx-pnghandler"><span class="std std-ref">  wx.PNGHandler</span></a>, <a class="reference internal" href="wx.PNMHandler.html#wx-pnmhandler"><span class="std std-ref">  wx.PNMHandler</span></a>, <a class="reference internal" href="wx.TGAHandler.html#wx-tgahandler"><span class="std std-ref">  wx.TGAHandler</span></a>, <a class="reference internal" href="wx.TIFFHandler.html#wx-tiffhandler"><span class="std std-ref">  wx.TIFFHandler</span></a>, <a class="reference internal" href="wx.XPMHandler.html#wx-xpmhandler"><span class="std std-ref">  wx.XPMHandler</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%"/>
+<col style="width: 68%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.__init__" title="wx.ImageHandler.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.CanRead" title="wx.ImageHandler.CanRead"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanRead</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this handler supports the image format contained in the given stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.DoCanRead" title="wx.ImageHandler.DoCanRead"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoCanRead</span></code></a></p></td>
+<td><p>Called to test if this handler can read an image from the given stream.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.DoGetImageCount" title="wx.ImageHandler.DoGetImageCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoGetImageCount</span></code></a></p></td>
+<td><p>Called to get the number of images available in a multi-image file type, if supported.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.GetAltExtensions" title="wx.ImageHandler.GetAltExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAltExtensions</span></code></a></p></td>
+<td><p>Returns the other file extensions associated with this handler.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.GetExtension" title="wx.ImageHandler.GetExtension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtension</span></code></a></p></td>
+<td><p>Gets the preferred file extension associated with this handler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.GetImageCount" title="wx.ImageHandler.GetImageCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageCount</span></code></a></p></td>
+<td><p>If the image file contains more than one image and the image handler is capable of retrieving these individually, this function will return the number of available images.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.GetMimeType" title="wx.ImageHandler.GetMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMimeType</span></code></a></p></td>
+<td><p>Gets the MIME type associated with this handler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.GetName" title="wx.ImageHandler.GetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetName</span></code></a></p></td>
+<td><p>Gets the name of this handler.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.GetType" title="wx.ImageHandler.GetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetType</span></code></a></p></td>
+<td><p>Gets the image type associated with this handler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.LoadFile" title="wx.ImageHandler.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p></td>
+<td><p>Loads a image from a stream, putting the resulting data into <em class="xref py py-obj">image</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.SaveFile" title="wx.ImageHandler.SaveFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SaveFile</span></code></a></p></td>
+<td><p>Saves a image in the output stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.SetAltExtensions" title="wx.ImageHandler.SetAltExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAltExtensions</span></code></a></p></td>
+<td><p>Sets the alternative file extensions associated with this handler.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.SetExtension" title="wx.ImageHandler.SetExtension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExtension</span></code></a></p></td>
+<td><p>Sets the preferred file extension associated with this handler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.SetMimeType" title="wx.ImageHandler.SetMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMimeType</span></code></a></p></td>
+<td><p>Sets the handler MIME type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.SetName" title="wx.ImageHandler.SetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetName</span></code></a></p></td>
+<td><p>Sets the handler name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.SetType" title="wx.ImageHandler.SetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetType</span></code></a></p></td>
+<td><p>Sets the bitmap type for the handler.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%"/>
+<col style="width: 53%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.AltExtensions" title="wx.ImageHandler.AltExtensions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">AltExtensions</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ImageHandler.GetAltExtensions" title="wx.ImageHandler.GetAltExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAltExtensions</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetAltExtensions" title="wx.ImageHandler.SetAltExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAltExtensions</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.Extension" title="wx.ImageHandler.Extension"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Extension</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ImageHandler.GetExtension" title="wx.ImageHandler.GetExtension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtension</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetExtension" title="wx.ImageHandler.SetExtension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExtension</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.MimeType" title="wx.ImageHandler.MimeType"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MimeType</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ImageHandler.GetMimeType" title="wx.ImageHandler.GetMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMimeType</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetMimeType" title="wx.ImageHandler.SetMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMimeType</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ImageHandler.Name" title="wx.ImageHandler.Name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Name</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ImageHandler.GetName" title="wx.ImageHandler.GetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetName</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetName" title="wx.ImageHandler.SetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ImageHandler.Type" title="wx.ImageHandler.Type"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Type</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ImageHandler.GetType" title="wx.ImageHandler.GetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetType</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetType" title="wx.ImageHandler.SetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetType</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.ImageHandler">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">ImageHandler</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ImageHandler</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This is the base class for implementing image file loading/saving, and
+image creation from data.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.ImageHandler.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+<p>In your own default constructor, initialise the members m_name, m_extension and m_type.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.CanRead">
+<code class="sig-name descname">CanRead</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.CanRead" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CanRead</strong> <em class="xref py py-obj">(self, stream)</em></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this handler supports the image format contained in the given stream.</p>
+<p>This function doesn’t modify the current stream position (because it restores the original position before returning; this however requires the stream to be seekable; see <a class="reference internal" href="wx.StreamBase.html#wx.StreamBase.IsSeekable" title="wx.StreamBase.IsSeekable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StreamBase.IsSeekable</span></code></a> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream</strong> (<a class="reference internal" href="wx.InputStream.html#wx.InputStream" title="wx.InputStream"><em>wx.InputStream</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CanRead</strong> <em class="xref py py-obj">(self, filename)</em></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this handler supports the image format contained in the file with the given name.</p>
+<p>This function doesn’t modify the current stream position (because it restores the original position before returning; this however requires the stream to be seekable; see <a class="reference internal" href="wx.StreamBase.html#wx.StreamBase.IsSeekable" title="wx.StreamBase.IsSeekable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StreamBase.IsSeekable</span></code></a> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.DoCanRead">
+<code class="sig-name descname">DoCanRead</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.DoCanRead" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called to test if this handler can read an image from the given stream.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NOTE</span></code>: this function is allowed to change the current stream position since CallDoCanRead() will take care of restoring it later</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream</strong> (<a class="reference internal" href="wx.InputStream.html#wx.InputStream" title="wx.InputStream"><em>wx.InputStream</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.DoGetImageCount">
+<code class="sig-name descname">DoGetImageCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.DoGetImageCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called to get the number of images available in a multi-image file type, if supported.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NOTE</span></code>: this function is allowed to change the current stream position since <a class="reference internal" href="#wx.ImageHandler.GetImageCount" title="wx.ImageHandler.GetImageCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageCount</span></code></a>   will take care of restoring it later</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream</strong> (<a class="reference internal" href="wx.InputStream.html#wx.InputStream" title="wx.InputStream"><em>wx.InputStream</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.GetAltExtensions">
+<code class="sig-name descname">GetAltExtensions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.GetAltExtensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the other file extensions associated with this handler.</p>
+<p>The preferred extension for this handler is returned by <a class="reference internal" href="#wx.ImageHandler.GetExtension" title="wx.ImageHandler.GetExtension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtension</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of strings</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.GetExtension">
+<code class="sig-name descname">GetExtension</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.GetExtension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the preferred file extension associated with this handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ImageHandler.GetAltExtensions" title="wx.ImageHandler.GetAltExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAltExtensions</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.GetImageCount">
+<code class="sig-name descname">GetImageCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">stream</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.GetImageCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the image file contains more than one image and the image handler is capable of retrieving these individually, this function will return the number of available images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream</strong> (<a class="reference internal" href="wx.InputStream.html#wx.InputStream" title="wx.InputStream"><em>wx.InputStream</em></a>) – Opened input stream for reading image data. This function doesn’t modify the current stream position (because it restores the original position before returning; this however requires the stream to be seekable; see <a class="reference internal" href="wx.StreamBase.html#wx.StreamBase.IsSeekable" title="wx.StreamBase.IsSeekable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StreamBase.IsSeekable</span></code></a> ).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of available images. For most image handlers, this is 1 (exceptions are <code class="docutils literal notranslate"><span class="pre">TIFF</span></code> and <code class="docutils literal notranslate"><span class="pre">ICO</span></code> formats as well as animated GIFs for which this function returns the number of frames in the animation).</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.GetMimeType">
+<code class="sig-name descname">GetMimeType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.GetMimeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the MIME type associated with this handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.GetName">
+<code class="sig-name descname">GetName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.GetName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the name of this handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.GetType">
+<code class="sig-name descname">GetType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.GetType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the image type associated with this handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.BitmapType.enumeration.html#wx-bitmaptype"><span class="std std-ref">  wx.BitmapType</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.LoadFile">
+<code class="sig-name descname">LoadFile</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em>, <em class="sig-param">stream</em>, <em class="sig-param">verbose=True</em>, <em class="sig-param">index=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.LoadFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a image from a stream, putting the resulting data into <em class="xref py py-obj">image</em>.</p>
+<p>If the image file contains more than one image and the image handler is capable of retrieving these individually, <em class="xref py py-obj">index</em>  indicates which image to read from the stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="wx.Image.html#wx.Image" title="wx.Image"><em>wx.Image</em></a>) – The image object which is to be affected by this operation.</p></li>
+<li><p><strong>stream</strong> (<a class="reference internal" href="wx.InputStream.html#wx.InputStream" title="wx.InputStream"><em>wx.InputStream</em></a>) – Opened input stream for reading image data.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, errors reported by the image handler will produce LogMessages.</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – The index of the image in the file (starting from zero).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the operation succeeded, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Image.html#wx.Image.LoadFile" title="wx.Image.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.LoadFile</span></code></a> , <a class="reference internal" href="wx.Image.html#wx.Image.SaveFile" title="wx.Image.SaveFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.SaveFile</span></code></a> , <a class="reference internal" href="#wx.ImageHandler.SaveFile" title="wx.ImageHandler.SaveFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SaveFile</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.SaveFile">
+<code class="sig-name descname">SaveFile</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em>, <em class="sig-param">stream</em>, <em class="sig-param">verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.SaveFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a image in the output stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="wx.Image.html#wx.Image" title="wx.Image"><em>wx.Image</em></a>) – The image object which is to be affected by this operation.</p></li>
+<li><p><strong>stream</strong> (<a class="reference internal" href="wx.OutputStream.html#wx.OutputStream" title="wx.OutputStream"><em>wx.OutputStream</em></a>) – Opened output stream for writing the data.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, errors reported by the image handler will produce LogMessages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the operation succeeded, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Image.html#wx.Image.LoadFile" title="wx.Image.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.LoadFile</span></code></a> , <a class="reference internal" href="wx.Image.html#wx.Image.SaveFile" title="wx.Image.SaveFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.SaveFile</span></code></a> , <a class="reference internal" href="#wx.ImageHandler.LoadFile" title="wx.ImageHandler.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.SetAltExtensions">
+<code class="sig-name descname">SetAltExtensions</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">extensions</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.SetAltExtensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the alternative file extensions associated with this handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extensions</strong> (<em>list of strings</em>) – Array of file extensions.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ImageHandler.SetExtension" title="wx.ImageHandler.SetExtension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExtension</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.SetExtension">
+<code class="sig-name descname">SetExtension</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">extension</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.SetExtension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the preferred file extension associated with this handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extension</strong> (<em>string</em>) – File extension without leading dot.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ImageHandler.SetAltExtensions" title="wx.ImageHandler.SetAltExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAltExtensions</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.SetMimeType">
+<code class="sig-name descname">SetMimeType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">mimetype</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.SetMimeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the handler MIME type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mimetype</strong> (<em>string</em>) – Handler MIME type.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.SetName">
+<code class="sig-name descname">SetName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.SetName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the handler name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – Handler name.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ImageHandler.SetType">
+<code class="sig-name descname">SetType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">type</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ImageHandler.SetType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the bitmap type for the handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="wx.BitmapType.enumeration.html" title="BitmapType"><em>BitmapType</em></a>) – </p>
+</dd>
+</dl>
+<p>The bitmap type.</p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.ImageHandler.AltExtensions">
+<code class="sig-name descname">AltExtensions</code><a class="headerlink" href="#wx.ImageHandler.AltExtensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ImageHandler.GetAltExtensions" title="wx.ImageHandler.GetAltExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAltExtensions</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetAltExtensions" title="wx.ImageHandler.SetAltExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAltExtensions</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ImageHandler.Extension">
+<code class="sig-name descname">Extension</code><a class="headerlink" href="#wx.ImageHandler.Extension" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ImageHandler.GetExtension" title="wx.ImageHandler.GetExtension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtension</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetExtension" title="wx.ImageHandler.SetExtension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetExtension</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ImageHandler.MimeType">
+<code class="sig-name descname">MimeType</code><a class="headerlink" href="#wx.ImageHandler.MimeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ImageHandler.GetMimeType" title="wx.ImageHandler.GetMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMimeType</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetMimeType" title="wx.ImageHandler.SetMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMimeType</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ImageHandler.Name">
+<code class="sig-name descname">Name</code><a class="headerlink" href="#wx.ImageHandler.Name" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ImageHandler.GetName" title="wx.ImageHandler.GetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetName</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetName" title="wx.ImageHandler.SetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetName</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ImageHandler.Type">
+<code class="sig-name descname">Type</code><a class="headerlink" href="#wx.ImageHandler.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ImageHandler.GetType" title="wx.ImageHandler.GetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetType</span></code></a> and <a class="reference internal" href="#wx.ImageHandler.SetType" title="wx.ImageHandler.SetType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetType</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

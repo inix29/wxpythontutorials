@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Log — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.LogBuffer.html" rel="next" title="wx.LogBuffer"/>
+<link href="wx.LocaleInitFlags.enumeration.html" rel="prev" title="wx.LocaleInitFlags"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Log</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.LogBuffer.html" title="wx.LogBuffer">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.LocaleInitFlags.enumeration.html" title="wx.LocaleInitFlags">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Log</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Log.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-log">
+<span id="wx-log"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Log</strong><a class="headerlink" href="#phoenix-title-wx-log" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a>  class defines the interface for the <em class="xref py py-obj">log targets</em>  used by wxWidgets logging functions as explained in the <a class="reference internal" href="log_classes_overview.html#logging-overview"><span class="std std-ref">Logging Overview</span></a>.</p>
+<p>The only situations when you need to directly use this class is when you want to derive your own log target because the existing ones don’t satisfy your needs.</p>
+<p>Otherwise, it is completely hidden behind the <em class="xref py py-obj">LogXXX</em>       and you may not even know about its existence.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For console-mode applications, the default target is <a class="reference internal" href="wx.LogStderr.html#wx-logstderr"><span class="std std-ref">  wx.LogStderr</span></a>, so that all <em class="xref py py-obj">LogXXX()</em>  functions print on  <code class="docutils literal notranslate"><span class="pre">stderr</span></code>   when   <code class="docutils literal notranslate"><span class="pre">USE_GUI</span></code>   = 0.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="log_classes_overview.html#logging-overview"><span class="std std-ref">Logging Overview</span></a>, <em class="xref py py-obj">LogXXX</em></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Log</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Log" class="inheritance" src="_static/images/inheritance/wx.Log_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,77,35" href="wx.Log.html" id="node1" shape="rect" title="wx.Log  class defines the interface for the `log targets`  used by wxWidgets logging functions as explained in the Logging Overview &lt;logging overview&gt;."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.LogBuffer.html#wx-logbuffer"><span class="std std-ref">  wx.LogBuffer</span></a>, <a class="reference internal" href="wx.LogChain.html#wx-logchain"><span class="std std-ref">  wx.LogChain</span></a>, <a class="reference internal" href="wx.LogGui.html#wx-loggui"><span class="std std-ref">  wx.LogGui</span></a>, <a class="reference internal" href="wx.LogStderr.html#wx-logstderr"><span class="std std-ref">  wx.LogStderr</span></a>, <em class="xref py py-obj">LogStream</em>     , <a class="reference internal" href="wx.LogTextCtrl.html#wx-logtextctrl"><span class="std std-ref">  wx.LogTextCtrl</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%"/>
+<col style="width: 72%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.AddTraceMask" title="wx.Log.AddTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTraceMask</span></code></a></p></td>
+<td><p>Add the <em class="xref py py-obj">mask</em>  to the list of allowed masks for <em class="xref py py-obj">wx.LogTrace</em>     .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.ClearTraceMasks" title="wx.Log.ClearTraceMasks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearTraceMasks</span></code></a></p></td>
+<td><p>Removes all trace masks previously set with <code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTraceMask</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.DisableTimestamp" title="wx.Log.DisableTimestamp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisableTimestamp</span></code></a></p></td>
+<td><p>Disables time stamping of the log messages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.DoLogRecord" title="wx.Log.DoLogRecord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLogRecord</span></code></a></p></td>
+<td><p>Called to log a new record.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.DoLogText" title="wx.Log.DoLogText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLogText</span></code></a></p></td>
+<td><p>Called to log the specified string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.DoLogTextAtLevel" title="wx.Log.DoLogTextAtLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLogTextAtLevel</span></code></a></p></td>
+<td><p>Called to log the specified string at given level.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.DontCreateOnDemand" title="wx.Log.DontCreateOnDemand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DontCreateOnDemand</span></code></a></p></td>
+<td><p>Instructs <a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a>  to not create new log targets on the fly if there is none currently (see <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetActiveTarget</span></code> ).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.EnableLogging" title="wx.Log.EnableLogging"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableLogging</span></code></a></p></td>
+<td><p>Globally enable or disable logging.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.Flush" title="wx.Log.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a></p></td>
+<td><p>Some of <a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a>  implementations, most notably the standard <a class="reference internal" href="wx.LogGui.html#wx-loggui"><span class="std std-ref">  wx.LogGui</span></a>  class, buffer the messages (for example, to avoid showing the user a zillion of modal message boxes one after another</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.FlushActive" title="wx.Log.FlushActive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FlushActive</span></code></a></p></td>
+<td><p>Flushes the current log target if any, does nothing if there is none.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.GetActiveTarget" title="wx.Log.GetActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetActiveTarget</span></code></a></p></td>
+<td><p>Returns the pointer to the active log target (may be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.GetLogLevel" title="wx.Log.GetLogLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLogLevel</span></code></a></p></td>
+<td><p>Returns the current log level limit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.GetRepetitionCounting" title="wx.Log.GetRepetitionCounting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRepetitionCounting</span></code></a></p></td>
+<td><p>Returns whether the repetition counting mode is enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.GetTimestamp" title="wx.Log.GetTimestamp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTimestamp</span></code></a></p></td>
+<td><p>Returns the current timestamp format string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.GetTraceMasks" title="wx.Log.GetTraceMasks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTraceMasks</span></code></a></p></td>
+<td><p>Returns the currently allowed list of string trace masks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.GetVerbose" title="wx.Log.GetVerbose"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVerbose</span></code></a></p></td>
+<td><p>Returns whether the verbose mode is currently active.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.IsAllowedTraceMask" title="wx.Log.IsAllowedTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsAllowedTraceMask</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the <em class="xref py py-obj">mask</em>  is one of allowed masks for <em class="xref py py-obj">wx.LogTrace</em>     .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.IsEnabled" title="wx.Log.IsEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEnabled</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if logging is enabled at all now.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.IsLevelEnabled" title="wx.Log.IsLevelEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsLevelEnabled</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if logging at this level is enabled for the current thread.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.LogRecord" title="wx.Log.LogRecord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LogRecord</span></code></a></p></td>
+<td><p>Log the given record.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.RemoveTraceMask" title="wx.Log.RemoveTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveTraceMask</span></code></a></p></td>
+<td><p>Remove the <em class="xref py py-obj">mask</em>  from the list of allowed masks for <em class="xref py py-obj">wx.LogTrace</em>     .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.Resume" title="wx.Log.Resume"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Resume</span></code></a></p></td>
+<td><p>Resumes logging previously suspended by a call to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Suspend</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.SetActiveTarget" title="wx.Log.SetActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetActiveTarget</span></code></a></p></td>
+<td><p>Sets the specified log target as the active one.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.SetComponentLevel" title="wx.Log.SetComponentLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetComponentLevel</span></code></a></p></td>
+<td><p>Sets the log level for the given component.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.SetFormatter" title="wx.Log.SetFormatter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFormatter</span></code></a></p></td>
+<td><p>Sets the specified formatter as the active one.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.SetLogLevel" title="wx.Log.SetLogLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLogLevel</span></code></a></p></td>
+<td><p>Specifies that log messages with level greater (numerically) than <em class="xref py py-obj">logLevel</em>  should be ignored and not sent to the active log target.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.SetRepetitionCounting" title="wx.Log.SetRepetitionCounting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRepetitionCounting</span></code></a></p></td>
+<td><p>Enables logging mode in which a log message is logged once, and in case exactly the same message successively repeats one or more times, only the number of repetitions is logged.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.SetThreadActiveTarget" title="wx.Log.SetThreadActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetThreadActiveTarget</span></code></a></p></td>
+<td><p>Sets a thread-specific log target.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.SetTimestamp" title="wx.Log.SetTimestamp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTimestamp</span></code></a></p></td>
+<td><p>Sets the timestamp format prepended by the default log targets to all messages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Log.SetVerbose" title="wx.Log.SetVerbose"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetVerbose</span></code></a></p></td>
+<td><p>Activates or deactivates verbose mode in which the verbose messages are logged as the normal ones instead of being silently dropped.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Log.Suspend" title="wx.Log.Suspend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Suspend</span></code></a></p></td>
+<td><p>Suspends the logging until <code class="xref py py-meth docutils literal notranslate"><span class="pre">Resume</span></code>   is called.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Log">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Log</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log class defines the interface for the log targets used by
+wxWidgets logging functions as explained in the Logging Overview.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Log.AddTraceMask">
+<em class="property">static </em><code class="sig-name descname">AddTraceMask</code><span class="sig-paren">(</span><em class="sig-param">mask</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.AddTraceMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the <em class="xref py py-obj">mask</em>  to the list of allowed masks for <em class="xref py py-obj">wx.LogTrace</em>     .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mask</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.RemoveTraceMask" title="wx.Log.RemoveTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveTraceMask</span></code></a> , <a class="reference internal" href="#wx.Log.GetTraceMasks" title="wx.Log.GetTraceMasks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTraceMasks</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.ClearTraceMasks">
+<em class="property">static </em><code class="sig-name descname">ClearTraceMasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.ClearTraceMasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all trace masks previously set with <a class="reference internal" href="#wx.Log.AddTraceMask" title="wx.Log.AddTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTraceMask</span></code></a> .</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.RemoveTraceMask" title="wx.Log.RemoveTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveTraceMask</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.DisableTimestamp">
+<em class="property">static </em><code class="sig-name descname">DisableTimestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.DisableTimestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables time stamping of the log messages.</p>
+<p>Notice that the current time stamp is only used by the default log formatter and custom formatters may ignore calls to this function.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.DoLogRecord">
+<code class="sig-name descname">DoLogRecord</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">level</em>, <em class="sig-param">msg</em>, <em class="sig-param">info</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.DoLogRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called to log a new record.</p>
+<p>Any log message created by LogXXX() functions is passed to this method of the active log target. The default implementation prepends the timestamp and, for some log levels (e.g. error and warning), the corresponding prefix to <em class="xref py py-obj">msg</em>  and passes it to <a class="reference internal" href="#wx.Log.DoLogTextAtLevel" title="wx.Log.DoLogTextAtLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLogTextAtLevel</span></code></a> .</p>
+<p>You may override this method to implement custom formatting of the log messages or to implement custom filtering of log messages (e.g. you could discard all log messages coming from the given source file).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>wx.LogLevel</em>) – </p></li>
+<li><p><strong>msg</strong> (<em>string</em>) – </p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="wx.LogRecordInfo.html#wx.LogRecordInfo" title="wx.LogRecordInfo"><em>wx.LogRecordInfo</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.DoLogText">
+<code class="sig-name descname">DoLogText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.DoLogText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called to log the specified string.</p>
+<p>A simple implementation might just send the string to  <code class="docutils literal notranslate"><span class="pre">stdout</span></code>   or   <code class="docutils literal notranslate"><span class="pre">stderr</span></code>   or save it in a file (of course, the already existing  <a class="reference internal" href="wx.LogStderr.html#wx-logstderr"><span class="std std-ref">  wx.LogStderr</span></a>  can be used for this).</p>
+<p>The base class version of this function asserts so it must be overridden if you don’t override <a class="reference internal" href="#wx.Log.DoLogRecord" title="wx.Log.DoLogRecord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLogRecord</span></code></a>   or <a class="reference internal" href="#wx.Log.DoLogTextAtLevel" title="wx.Log.DoLogTextAtLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLogTextAtLevel</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.DoLogTextAtLevel">
+<code class="sig-name descname">DoLogTextAtLevel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">level</em>, <em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.DoLogTextAtLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called to log the specified string at given level.</p>
+<p>The base class versions logs debug and trace messages on the system default debug output channel and passes all the other messages to <a class="reference internal" href="#wx.Log.DoLogText" title="wx.Log.DoLogText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLogText</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>wx.LogLevel</em>) – </p></li>
+<li><p><strong>msg</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.DontCreateOnDemand">
+<em class="property">static </em><code class="sig-name descname">DontCreateOnDemand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.DontCreateOnDemand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instructs <a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a>  to not create new log targets on the fly if there is none currently (see <a class="reference internal" href="#wx.Log.GetActiveTarget" title="wx.Log.GetActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetActiveTarget</span></code></a> ).</p>
+<p>(Almost) for internal use only: it is supposed to be called by the application shutdown code (where you don’t want the log target to be automatically created anymore).</p>
+<p>Note that this function also calls <a class="reference internal" href="#wx.Log.ClearTraceMasks" title="wx.Log.ClearTraceMasks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearTraceMasks</span></code></a> .</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.EnableLogging">
+<em class="property">static </em><code class="sig-name descname">EnableLogging</code><span class="sig-paren">(</span><em class="sig-param">enable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.EnableLogging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Globally enable or disable logging.</p>
+<p>Calling this function with <code class="docutils literal notranslate"><span class="pre">False</span></code> argument disables all log messages for the current thread.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The old state, i.e. <code class="docutils literal notranslate"><span class="pre">True</span></code> if logging was previously enabled and <code class="docutils literal notranslate"><span class="pre">False</span></code> if it was disabled.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.LogNull.html#wx-lognull"><span class="std std-ref">  wx.LogNull</span></a>, <a class="reference internal" href="#wx.Log.IsEnabled" title="wx.Log.IsEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEnabled</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.Flush">
+<code class="sig-name descname">Flush</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.Flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some of <a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a>  implementations, most notably the standard <a class="reference internal" href="wx.LogGui.html#wx-loggui"><span class="std std-ref">  wx.LogGui</span></a>  class, buffer the messages (for example, to avoid showing the user a zillion of modal message boxes one after another</p>
+<p>This function shows them all and clears the buffer contents. If the buffer is already empty, nothing happens.</p>
+<p>If you override this method in a derived class, call the base class version first, before doing anything else.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.FlushActive">
+<em class="property">static </em><code class="sig-name descname">FlushActive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.FlushActive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flushes the current log target if any, does nothing if there is none.</p>
+<p>When this method is called from the main thread context, it also flushes any previously buffered messages logged by the other threads. When it is called from the other threads it simply calls <a class="reference internal" href="#wx.Log.Flush" title="wx.Log.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a>   on the currently active log target, so it mostly makes sense to do this if a thread has its own logger set with <a class="reference internal" href="#wx.Log.SetThreadActiveTarget" title="wx.Log.SetThreadActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetThreadActiveTarget</span></code></a> .</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.GetActiveTarget">
+<em class="property">static </em><code class="sig-name descname">GetActiveTarget</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.GetActiveTarget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the pointer to the active log target (may be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<p>Notice that if <a class="reference internal" href="#wx.Log.SetActiveTarget" title="wx.Log.SetActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetActiveTarget</span></code></a>   hadn’t been previously explicitly called, this function will by default try to create a log target by calling <a class="reference internal" href="wx.AppTraits.html#wx.AppTraits.CreateLogTarget" title="wx.AppTraits.CreateLogTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppTraits.CreateLogTarget</span></code></a>   which may be overridden in a user-defined traits class to change the default behaviour. You may also call <a class="reference internal" href="#wx.Log.DontCreateOnDemand" title="wx.Log.DontCreateOnDemand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DontCreateOnDemand</span></code></a>   to disable this behaviour.</p>
+<p>When this function is called from threads other than main one, auto-creation doesn’t happen. But if the thread has a thread-specific log target previously set by <a class="reference internal" href="#wx.Log.SetThreadActiveTarget" title="wx.Log.SetThreadActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetThreadActiveTarget</span></code></a> , it is returned instead of the global one. Otherwise, the global log target is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.GetLogLevel">
+<em class="property">static </em><code class="sig-name descname">GetLogLevel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.GetLogLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current log level limit.</p>
+<p>All messages at levels strictly greater than the value returned by this function are not logged at all.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">wx.LogLevel</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.SetLogLevel" title="wx.Log.SetLogLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLogLevel</span></code></a> , <a class="reference internal" href="#wx.Log.IsLevelEnabled" title="wx.Log.IsLevelEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsLevelEnabled</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.GetRepetitionCounting">
+<em class="property">static </em><code class="sig-name descname">GetRepetitionCounting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.GetRepetitionCounting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the repetition counting mode is enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.GetTimestamp">
+<em class="property">static </em><code class="sig-name descname">GetTimestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.GetTimestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current timestamp format string.</p>
+<p>Notice that the current time stamp is only used by the default log formatter and custom formatters may ignore this format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.GetTraceMasks">
+<em class="property">static </em><code class="sig-name descname">GetTraceMasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.GetTraceMasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the currently allowed list of string trace masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of strings</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.AddTraceMask" title="wx.Log.AddTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTraceMask</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.GetVerbose">
+<em class="property">static </em><code class="sig-name descname">GetVerbose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.GetVerbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the verbose mode is currently active.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.IsAllowedTraceMask">
+<em class="property">static </em><code class="sig-name descname">IsAllowedTraceMask</code><span class="sig-paren">(</span><em class="sig-param">mask</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.IsAllowedTraceMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the <em class="xref py py-obj">mask</em>  is one of allowed masks for <em class="xref py py-obj">wx.LogTrace</em>     .</p>
+<p>See also: <a class="reference internal" href="#wx.Log.AddTraceMask" title="wx.Log.AddTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTraceMask</span></code></a> , <a class="reference internal" href="#wx.Log.RemoveTraceMask" title="wx.Log.RemoveTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveTraceMask</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mask</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.IsEnabled">
+<em class="property">static </em><code class="sig-name descname">IsEnabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.IsEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if logging is enabled at all now.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.IsLevelEnabled" title="wx.Log.IsLevelEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsLevelEnabled</span></code></a> , <a class="reference internal" href="#wx.Log.EnableLogging" title="wx.Log.EnableLogging"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableLogging</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.IsLevelEnabled">
+<em class="property">static </em><code class="sig-name descname">IsLevelEnabled</code><span class="sig-paren">(</span><em class="sig-param">level</em>, <em class="sig-param">component</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.IsLevelEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if logging at this level is enabled for the current thread.</p>
+<p>This function only returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if logging is globally enabled and if <em class="xref py py-obj">level</em>  is less than or equal to the maximal log level enabled for the given <em class="xref py py-obj">component</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>wx.LogLevel</em>) – </p></li>
+<li><p><strong>component</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.IsEnabled" title="wx.Log.IsEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEnabled</span></code></a> , <a class="reference internal" href="#wx.Log.SetLogLevel" title="wx.Log.SetLogLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLogLevel</span></code></a> , <a class="reference internal" href="#wx.Log.GetLogLevel" title="wx.Log.GetLogLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLogLevel</span></code></a> , <a class="reference internal" href="#wx.Log.SetComponentLevel" title="wx.Log.SetComponentLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetComponentLevel</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.LogRecord">
+<code class="sig-name descname">LogRecord</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">level</em>, <em class="sig-param">msg</em>, <em class="sig-param">info</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.LogRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log the given record.</p>
+<p>This function should only be called from the DoLog() implementations in the derived classes if they need to call <a class="reference internal" href="#wx.Log.DoLogRecord" title="wx.Log.DoLogRecord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLogRecord</span></code></a>   on another log object (they can, of course, just use <a class="reference internal" href="#wx.Log.DoLogRecord" title="wx.Log.DoLogRecord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.DoLogRecord</span></code></a>   call syntax to call it on the object itself). It should not be used for logging new messages which can be only sent to the currently active logger using OnLog() which also checks if the logging (for this level) is enabled while this method just directly calls DoLog().</p>
+<p>Example of use of this class from <a class="reference internal" href="wx.LogChain.html#wx-logchain"><span class="std std-ref">  wx.LogChain</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">DoLogRecord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">info</span><span class="p">):</span>
+
+    <span class="c1"># let the previous logger show it</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">logOld</span> <span class="ow">and</span> <span class="n">IsPassingMessages</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logOld</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+
+    <span class="c1"># and also send it to the one</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">logNew</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">logNew</span> <span class="o">!=</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logNew</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>wx.LogLevel</em>) – </p></li>
+<li><p><strong>msg</strong> (<em>string</em>) – </p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="wx.LogRecordInfo.html#wx.LogRecordInfo" title="wx.LogRecordInfo"><em>wx.LogRecordInfo</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.RemoveTraceMask">
+<em class="property">static </em><code class="sig-name descname">RemoveTraceMask</code><span class="sig-paren">(</span><em class="sig-param">mask</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.RemoveTraceMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the <em class="xref py py-obj">mask</em>  from the list of allowed masks for <em class="xref py py-obj">wx.LogTrace</em>     .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mask</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.AddTraceMask" title="wx.Log.AddTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTraceMask</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.Resume">
+<em class="property">static </em><code class="sig-name descname">Resume</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.Resume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resumes logging previously suspended by a call to <a class="reference internal" href="#wx.Log.Suspend" title="wx.Log.Suspend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Suspend</span></code></a> .</p>
+<p>All messages logged in the meanwhile will be flushed soon.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.SetActiveTarget">
+<em class="property">static </em><code class="sig-name descname">SetActiveTarget</code><span class="sig-paren">(</span><em class="sig-param">logtarget</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.SetActiveTarget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the specified log target as the active one.</p>
+<p>Returns the pointer to the previous active log target (may be <code class="docutils literal notranslate"><span class="pre">None</span></code>). To suppress logging use a new instance of <a class="reference internal" href="wx.LogNull.html#wx-lognull"><span class="std std-ref">  wx.LogNull</span></a>  not <code class="docutils literal notranslate"><span class="pre">None</span></code>. If the active log target is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> a new default log target will be created when logging occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logtarget</strong> (<a class="reference internal" href="#wx.Log" title="wx.Log"><em>wx.Log</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.SetThreadActiveTarget" title="wx.Log.SetThreadActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetThreadActiveTarget</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.SetComponentLevel">
+<em class="property">static </em><code class="sig-name descname">SetComponentLevel</code><span class="sig-paren">(</span><em class="sig-param">component</em>, <em class="sig-param">level</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.SetComponentLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the log level for the given component.</p>
+<p>For example, to disable all but error messages from wxWidgets network classes you may use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">SetComponentLevel</span><span class="p">(</span><span class="s2">"wx./net"</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">LOG_Error</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#wx.Log.SetLogLevel" title="wx.Log.SetLogLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLogLevel</span></code></a>   may be used to set the global log level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>component</strong> (<em>string</em>) – Non-empty component name, possibly using slashes ( <code class="docutils literal notranslate"><span class="pre">/</span></code> ) to separate it into several parts.</p></li>
+<li><p><strong>level</strong> (<em>wx.LogLevel</em>) – Maximal level of log messages from this component which will be handled instead of being simply discarded.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.SetFormatter">
+<code class="sig-name descname">SetFormatter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">formatter</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.SetFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the specified formatter as the active one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>formatter</strong> (<a class="reference internal" href="wx.LogFormatter.html#wx.LogFormatter" title="wx.LogFormatter"><em>wx.LogFormatter</em></a>) – The new formatter. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, reset to the default formatter.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.LogFormatter.html#wx-logformatter"><span class="std std-ref">  wx.LogFormatter</span></a></p>
+</dd>
+</dl>
+<p><a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a>  object later.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.4.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.SetLogLevel">
+<em class="property">static </em><code class="sig-name descname">SetLogLevel</code><span class="sig-paren">(</span><em class="sig-param">logLevel</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.SetLogLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies that log messages with level greater (numerically) than <em class="xref py py-obj">logLevel</em>  should be ignored and not sent to the active log target.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logLevel</strong> (<em>wx.LogLevel</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.SetComponentLevel" title="wx.Log.SetComponentLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetComponentLevel</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.SetRepetitionCounting">
+<em class="property">static </em><code class="sig-name descname">SetRepetitionCounting</code><span class="sig-paren">(</span><em class="sig-param">repetCounting=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.SetRepetitionCounting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables logging mode in which a log message is logged once, and in case exactly the same message successively repeats one or more times, only the number of repetitions is logged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repetCounting</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.SetThreadActiveTarget">
+<em class="property">static </em><code class="sig-name descname">SetThreadActiveTarget</code><span class="sig-paren">(</span><em class="sig-param">logger</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.SetThreadActiveTarget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a thread-specific log target.</p>
+<p>The log target passed to this function will be used for all messages logged by the current thread using the usual <a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a>  functions. This shouldn’t be called from the main thread which never uses a thread- specific log target but can be used for the other threads to handle thread logging completely separately; instead of buffering thread log messages in the main thread logger.</p>
+<p>Notice that unlike for <a class="reference internal" href="#wx.Log.SetActiveTarget" title="wx.Log.SetActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetActiveTarget</span></code></a> , wxWidgets does not destroy the thread-specific log targets when the thread terminates so doing this is your responsibility.</p>
+<p>This method is only available if  <code class="docutils literal notranslate"><span class="pre">USE_THREADS</span></code>   is 1, i.e. wxWidgets was compiled with threads support.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference internal" href="#wx.Log" title="wx.Log"><em>wx.Log</em></a>) – The new thread-specific log target, possibly <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-log"><span class="std std-ref">  wx.Log</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The previous thread-specific log target, initially <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.SetTimestamp">
+<em class="property">static </em><code class="sig-name descname">SetTimestamp</code><span class="sig-paren">(</span><em class="sig-param">format</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.SetTimestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the timestamp format prepended by the default log targets to all messages.</p>
+<p>The string may contain any normal characters as well as % prefixed format specifiers, see <em class="xref py py-obj">strftime()</em>  manual for details. Passing an empty string to this function disables message time stamping.</p>
+<p>Notice that the current time stamp is only used by the default log formatter and custom formatters may ignore this format. You can also define a custom <a class="reference internal" href="wx.LogFormatter.html#wx-logformatter"><span class="std std-ref">  wx.LogFormatter</span></a>  to customize the time stamp handling beyond changing its format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>format</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.SetVerbose">
+<em class="property">static </em><code class="sig-name descname">SetVerbose</code><span class="sig-paren">(</span><em class="sig-param">verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.SetVerbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Activates or deactivates verbose mode in which the verbose messages are logged as the normal ones instead of being silently dropped.</p>
+<p>The verbose messages are the trace messages which are not disabled in the release mode and are generated by <a class="reference internal" href="wx.functions.html#wx.LogVerbose" title="wx.LogVerbose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.LogVerbose</span></code></a>     .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>verbose</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="log_classes_overview.html#logging-overview"><span class="std std-ref">Logging Overview</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Log.Suspend">
+<em class="property">static </em><code class="sig-name descname">Suspend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Log.Suspend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suspends the logging until <a class="reference internal" href="#wx.Log.Resume" title="wx.Log.Resume"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Resume</span></code></a>   is called.</p>
+<p>Note that the latter must be called the same number of times as the former to undo it, i.e. if you call <a class="reference internal" href="#wx.Log.Suspend" title="wx.Log.Suspend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Suspend</span></code></a>   twice you must call <a class="reference internal" href="#wx.Log.Resume" title="wx.Log.Resume"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Resume</span></code></a>   twice as well.</p>
+<p>Note that suspending the logging means that the log sink won’t be flushed periodically, it doesn’t have any effect if the current log target does the logging immediately without waiting for <a class="reference internal" href="#wx.Log.Flush" title="wx.Log.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a>   to be called (the standard GUI log target only shows the log dialog when it is flushed, so <a class="reference internal" href="#wx.Log.Suspend" title="wx.Log.Suspend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Suspend</span></code></a>   works as expected with it).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Log.Resume" title="wx.Log.Resume"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Resume</span></code></a> , <a class="reference internal" href="wx.LogNull.html#wx-lognull"><span class="std std-ref">  wx.LogNull</span></a></p>
+</div>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

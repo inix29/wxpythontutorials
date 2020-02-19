@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.ConfigPathChanger — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ContextHelp.html" rel="next" title="wx.ContextHelp"/>
+<link href="wx.ConfigBase.EntryType.enumeration.html" rel="prev" title="wx.ConfigBase.EntryType"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.ConfigPathChanger</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ContextHelp.html" title="wx.ContextHelp">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.ConfigBase.EntryType.enumeration.html" title="wx.ConfigBase.EntryType">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.ConfigPathChanger</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.ConfigPathChanger.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-configpathchanger">
+<span id="wx-configpathchanger"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.ConfigPathChanger</strong><a class="headerlink" href="#phoenix-title-wx-configpathchanger" title="Permalink to this headline">¶</a></h1>
+<p>A handy little class which changes the current path in a Config object and restores it in dtor.</p>
+<p>Declaring a local variable of this type, it’s possible to work in a specific directory and ensure that the path is automatically restored when the function returns.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this function loads somes settings from the given wx.Config object</span>
+<span class="c1"># the path selected inside it is left unchanged</span>
+<span class="k">def</span> <span class="nf">LoadMySettings</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+
+    <span class="n">changer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ConfigPathChanger</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">"/Foo/Data/SomeString"</span><span class="p">)</span>
+
+    <span class="n">strs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">Read</span><span class="p">(</span><span class="s2">"SomeString"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">strs</span><span class="p">:</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">LogError</span><span class="p">(</span><span class="s2">"Couldn't read SomeString!"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># NOTE: without wx.ConfigPathChanger it would be easy to forget to</span>
+    <span class="c1">#       set the old path back into the wx.Config object before this return!</span>
+
+
+    <span class="c1"># do something useful with SomeString...</span>
+
+    <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># again: wx.ConfigPathChanger dtor will restore the original wx.Config path</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ConfigPathChanger</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ConfigPathChanger" class="inheritance" src="_static/images/inheritance/wx.ConfigPathChanger_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,180,35" href="wx.ConfigPathChanger.html" id="node1" shape="rect" title="A handy little class which changes the current path in a Config object and restores it in dtor."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%"/>
+<col style="width: 60%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigPathChanger.__init__" title="wx.ConfigPathChanger.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Changes the path of the given <a class="reference internal" href="wx.ConfigBase.html#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a>  object so that the key <em class="xref py py-obj">strEntry</em>  is accessible (for read or write).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigPathChanger.Name" title="wx.ConfigPathChanger.Name"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Name</span></code></a></p></td>
+<td><p>Returns the name of the key which was passed to the constructor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigPathChanger.UpdateIfDeleted" title="wx.ConfigPathChanger.UpdateIfDeleted"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateIfDeleted</span></code></a></p></td>
+<td><p>This method must be called if the original path inside the Config object (i.e.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ConfigPathChanger.__enter__" title="wx.ConfigPathChanger.__enter__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__enter__</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ConfigPathChanger.__exit__" title="wx.ConfigPathChanger.__exit__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__exit__</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.ConfigPathChanger">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">ConfigPathChanger</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigPathChanger" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ConfigPathChanger</span><span class="p">(</span><span class="n">pContainer</span><span class="p">,</span> <span class="n">strEntry</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A handy little class which changes the current path in a Config
+object and restores it in dtor.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.ConfigPathChanger.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pContainer</em>, <em class="sig-param">strEntry</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigPathChanger.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes the path of the given <a class="reference internal" href="wx.ConfigBase.html#wx-configbase"><span class="std std-ref">  wx.ConfigBase</span></a>  object so that the key <em class="xref py py-obj">strEntry</em>  is accessible (for read or write).</p>
+<p>In other words, the constructor uses <a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase.SetPath" title="wx.ConfigBase.SetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ConfigBase.SetPath</span></code></a>   with everything which precedes the last slash of <em class="xref py py-obj">strEntry</em>, so that:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">ConfigPathChanger</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ConfigBase</span><span class="o">.</span><span class="n">Get</span><span class="p">(),</span> <span class="s2">"/MyProgram/SomeKeyName"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>has the same effect of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">ConfigPathChanger</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ConfigBase</span><span class="o">.</span><span class="n">Get</span><span class="p">(),</span> <span class="s2">"/MyProgram/"</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pContainer</strong> (<a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase" title="wx.ConfigBase"><em>wx.ConfigBase</em></a>) – </p></li>
+<li><p><strong>strEntry</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigPathChanger.Name">
+<code class="sig-name descname">Name</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigPathChanger.Name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of the key which was passed to the constructor.</p>
+<p>The “name” is just anything which follows the last slash of the string given to the constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigPathChanger.UpdateIfDeleted">
+<code class="sig-name descname">UpdateIfDeleted</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigPathChanger.UpdateIfDeleted" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method must be called if the original path inside the Config object (i.e.</p>
+<p>the current path at the moment of creation of this <a class="reference internal" href="#wx-configpathchanger"><span class="std std-ref">  wx.ConfigPathChanger</span></a>  object) could have been deleted, thus preventing <a class="reference internal" href="#wx-configpathchanger"><span class="std std-ref">  wx.ConfigPathChanger</span></a>  from restoring the not existing (any more) path.</p>
+<p>If the original path doesn’t exist any more, the path will be restored to the deepest still existing component of the old path.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigPathChanger.__enter__">
+<code class="sig-name descname">__enter__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigPathChanger.__enter__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ConfigPathChanger.__exit__">
+<code class="sig-name descname">__exit__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">exc_type</em>, <em class="sig-param">exc_val</em>, <em class="sig-param">exc_tb</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ConfigPathChanger.__exit__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

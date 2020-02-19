@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>TipProvider Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="toolbar_overview.html" rel="next" title="ToolBar Overview"/>
+<link href="stock_items.html" rel="prev" title="Stock items"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>TipProvider Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="toolbar_overview.html" title="ToolBar Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="stock_items.html" title="Stock items">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/tipprovider_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-tipprovider-overview">
+<span id="tipprovider-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>TipProvider Overview</strong><a class="headerlink" href="#phoenix-title-tipprovider-overview" title="Permalink to this headline">¶</a></h1>
+<p>Many “modern” Windows programs have a feature (some would say
+annoyance) of presenting the user tips at program startup.</p>
+<p>While this is probably useless to the advanced users of the program,
+the experience shows that the tips may be quite helpful for the
+novices and so more and more programs now do this. For a wxPython
+programmer, implementing this feature is extremely easy. To show a
+tip, it is enough to just call <code class="xref py py-func docutils literal notranslate"><span class="pre">wx.ShowTip</span></code> function like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">showTipsAtStartup</span><span class="p">:</span>
+
+    <span class="n">tipProvider</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CreateFileTipProvider</span><span class="p">(</span><span class="s2">"tips.txt"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">ShowTip</span><span class="p">(</span><span class="n">windowParent</span><span class="p">,</span> <span class="n">tipProvider</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">tipProvider</span>
+</pre></div>
+</div>
+<p>Of course, you need to get the text of the tips from somewhere - in
+the example above, the text is supposed to be in the file <em class="xref py py-obj">tips.txt</em>
+from where it is read by the tip provider. The tip provider is just an
+object of a class deriving from <a class="reference internal" href="wx.adv.TipProvider.html#wx.adv.TipProvider" title="wx.adv.TipProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">TipProvider</span></code></a>.  It has
+to implement one pure virtual function of the base class, <em class="xref py py-obj">GetTip</em>. In
+the case of the tip provider created by
+<code class="xref py py-func docutils literal notranslate"><span class="pre">wx.CreateFileTipProvider</span></code>, the tips are just the lines of the
+text file.</p>
+<p>If you want to implement your own tip provider (for example, if you
+wish to hardcode the tips inside your program), you just have to
+derive another class from <a class="reference internal" href="wx.adv.TipProvider.html#wx.adv.TipProvider" title="wx.adv.TipProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">TipProvider</span></code></a> and pass a
+pointer to the object of this class to func:<em class="xref py py-obj">wx.ShowTip</em> - then you
+don’t need <code class="xref py py-func docutils literal notranslate"><span class="pre">wx.CreateFileTipProvider</span></code> at all.</p>
+<p>You will probably want to save somewhere the index of the tip last
+shown - so that the program doesn’t always show the same tip on
+startup. As you also need to remember whether to show tips or not (you
+shouldn’t do it if the user unchecked “Show tips on startup” checkbox
+in the dialog), you will probably want to store both the index of the
+last shown tip (as returned by
+<a class="reference internal" href="wx.adv.TipProvider.html#wx.adv.TipProvider.GetCurrentTip" title="wx.adv.TipProvider.GetCurrentTip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentTip</span></code></a> and the flag telling whether
+to show the tips at startup at all.</p>
+<p>In a <em class="xref py py-obj">tips.txt</em> file, lines that begin with a <code class="docutils literal notranslate"><span class="pre">#</span></code> character are
+considered comments and are automatically skipped. Blank lines and
+lines only having spaces are also skipped.</p>
+<p>You can easily add runtime-translation capacity by placing each line
+of the <em class="xref py py-obj">tips.txt</em> file inside the usual translation function. For
+example, your <em class="xref py py-obj">tips.txt</em> file would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">(</span><span class="s2">"This is my first tip"</span><span class="p">)</span>
+<span class="n">_</span><span class="p">(</span><span class="s2">"This is my second tip"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now add your <em class="xref py py-obj">tips.txt</em> file into the list of files that gettext
+searches for translatable strings. The tips will thus get included
+into your generated .po file catalog and be translated at runtime
+along with the rest of your application’s translatable strings.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each line in the <em class="xref py py-obj">tips.txt</em> file needs to strictly begin with
+exactly the 3 characters of underscore-parenthesis-doublequote, and
+end with doublequote-parenthesis, as shown above. Also, remember to
+escape any doublequote characters within the tip string with a
+backslash-doublequote.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

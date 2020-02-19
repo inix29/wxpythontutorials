@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.adv.GenericCalendarCtrl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.adv.GenericDatePickerCtrl.html" rel="next" title="wx.adv.GenericDatePickerCtrl"/>
+<link href="wx.adv.ExtHelpController.html" rel="prev" title="wx.adv.ExtHelpController"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.adv.1moduleindex.html">
+<strong>wx.adv</strong></a> »</li>
+<li class="reltitle"> <strong>wx.adv.GenericCalendarCtrl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.adv.GenericDatePickerCtrl.html" title="wx.adv.GenericDatePickerCtrl">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.adv.ExtHelpController.html" title="wx.adv.ExtHelpController">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.adv.GenericCalendarCtrl</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.adv.GenericCalendarCtrl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-adv-genericcalendarctrl">
+<span id="wx-adv-genericcalendarctrl"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.adv.GenericCalendarCtrl</strong><a class="headerlink" href="#phoenix-title-wx-adv-genericcalendarctrl" title="Permalink to this headline">¶</a></h1>
+<p>The calendar control allows the user to pick a date.</p>
+<p>The user can move the current selection using the keyboard and select the date (generating  <code class="docutils literal notranslate"><span class="pre">EVT_CALENDAR</span></code>   event) by pressing   <code class="docutils literal notranslate"><span class="pre">&lt;Return&gt;</span></code>   or double clicking it.</p>
+<p>Generic calendar has advanced possibilities for the customization of its display, described below. If you want to use these possibilities on every platform, use GenericCalendarCtrl instead of <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>.</p>
+<p>All global settings (such as colours and fonts used) can, of course, be changed. But also, the display style for each day in the month can be set independently using <a class="reference internal" href="wx.adv.CalendarDateAttr.html#wx-adv-calendardateattr"><span class="std std-ref">  wx.adv.CalendarDateAttr</span></a>  class.</p>
+<p>An item without custom attributes is drawn with the default colours and font and without border, but setting custom attributes with <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetAttr" title="wx.adv.GenericCalendarCtrl.SetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttr</span></code></a>  allows modifying its appearance. Just create a custom attribute object and set it for the day you want to be displayed specially (note that the control will take ownership of the pointer, i.e. it will delete it itself). A day may be marked as being a holiday, even if it is not recognized as one by <a class="reference internal" href="wx.DateTime.html#wx-datetime"><span class="std std-ref">  wx.DateTime</span></a>  using the <a class="reference internal" href="wx.adv.CalendarDateAttr.html#wx.adv.CalendarDateAttr.SetHoliday" title="wx.adv.CalendarDateAttr.SetHoliday"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.adv.CalendarDateAttr.SetHoliday</span></code></a>   method.</p>
+<p>As the attributes are specified for each day, they may change when the month is changed, so you will often want to update them in  <code class="docutils literal notranslate"><span class="pre">EVT_CALENDAR_PAGE_CHANGED</span></code>   event handler.</p>
+<div class="section" id="styles-window-styles">
+<span id="genericcalendarctrl-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.adv.CAL_SUNDAY_FIRST</span></code>: Show Sunday as the first day in the week (not in wxGTK)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.adv.CAL_MONDAY_FIRST</span></code>: Show Monday as the first day in the week (not in wxGTK)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.adv.CAL_SHOW_HOLIDAYS</span></code>: Highlight holidays in the calendar (only generic)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.adv.CAL_NO_YEAR_CHANGE</span></code>: Disable the year changing (deprecated, only generic)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.adv.CAL_NO_MONTH_CHANGE</span></code>: Disable the month (and, implicitly, the year) changing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.adv.CAL_SHOW_SURROUNDING_WEEKS</span></code>: Show the neighbouring weeks in the previous and next months (only generic, always on for the native controls)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.adv.CAL_SEQUENTIAL_MONTH_SELECTION</span></code>: Use alternative, more compact, style for the month and year selection controls. (only generic)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.adv.CAL_SHOW_WEEK_NUMBERS</span></code>: Show week numbers on the left side of the calendar. (not in generic)</p></li>
+</ul>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="genericcalendarctrl-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="wx.adv.CalendarEvent.html#wx-adv-calendarevent"><span class="std std-ref">  wx.adv.CalendarEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_CALENDAR: A day was double clicked in the calendar.</p></li>
+<li><p>EVT_CALENDAR_SEL_CHANGED: The selected date changed.</p></li>
+<li><p>EVT_CALENDAR_PAGE_CHANGED: The selected month (and/or year) changed.</p></li>
+<li><p>EVT_CALENDAR_WEEKDAY_CLICKED: User clicked on the week day header (only generic).</p></li>
+<li><p>EVT_CALENDAR_WEEK_CLICKED: User clicked on the week of the year number (only generic).</p></li>
+</ul>
+<p>Implementations:GTK, MSW ports; a generic implementation is used elsewhere.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing the selected date will trigger an <code class="docutils literal notranslate"><span class="pre">EVT_CALENDAR_DAY</span></code>, <code class="docutils literal notranslate"><span class="pre">MONTH</span></code> or <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> event as well as an <code class="docutils literal notranslate"><span class="pre">EVT_CALENDAR_SEL_CHANGED</span></code> event.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">Calendar Sample</span>, <a class="reference internal" href="wx.adv.CalendarDateAttr.html#wx-adv-calendardateattr"><span class="std std-ref">  wx.adv.CalendarDateAttr</span></a>, <a class="reference internal" href="wx.adv.CalendarEvent.html#wx-adv-calendarevent"><span class="std std-ref">  wx.adv.CalendarEvent</span></a>, <a class="reference internal" href="wx.adv.DatePickerCtrl.html#wx-adv-datepickerctrl"><span class="std std-ref">  wx.adv.DatePickerCtrl</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>GenericCalendarCtrl</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of GenericCalendarCtrl" class="inheritance" src="_static/images/inheritance/wx.adv.CalendarCtrl_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="32,315,189,344" href="wx.adv.CalendarCtrl.html" id="node1" shape="rect" title="The calendar control allows the user to pick a date."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%"/>
+<col style="width: 65%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.__init__" title="wx.adv.GenericCalendarCtrl.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.Create" title="wx.adv.GenericCalendarCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates the control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.EnableHolidayDisplay" title="wx.adv.GenericCalendarCtrl.EnableHolidayDisplay"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableHolidayDisplay</span></code></a></p></td>
+<td><p>This function should be used instead of changing  <code class="docutils literal notranslate"><span class="pre">CAL_SHOW_HOLIDAYS</span></code>   style bit directly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.EnableMonthChange" title="wx.adv.GenericCalendarCtrl.EnableMonthChange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableMonthChange</span></code></a></p></td>
+<td><p>This function should be used instead of changing  <code class="docutils literal notranslate"><span class="pre">CAL_NO_MONTH_CHANGE</span></code>   style bit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.EnableYearChange" title="wx.adv.GenericCalendarCtrl.EnableYearChange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableYearChange</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetAttr" title="wx.adv.GenericCalendarCtrl.GetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttr</span></code></a></p></td>
+<td><p>Returns the attribute for the given date (should be in the range 1…31).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetClassDefaultAttributes" title="wx.adv.GenericCalendarCtrl.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetDate" title="wx.adv.GenericCalendarCtrl.GetDate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDate</span></code></a></p></td>
+<td><p>Gets the currently selected date.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetDateRange" title="wx.adv.GenericCalendarCtrl.GetDateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDateRange</span></code></a></p></td>
+<td><p>Returns the limits currently being used.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHeaderColourBg" title="wx.adv.GenericCalendarCtrl.GetHeaderColourBg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeaderColourBg</span></code></a></p></td>
+<td><p>Gets the background colour of the header part of the calendar window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHeaderColourFg" title="wx.adv.GenericCalendarCtrl.GetHeaderColourFg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeaderColourFg</span></code></a></p></td>
+<td><p>Gets the foreground colour of the header part of the calendar window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHighlightColourBg" title="wx.adv.GenericCalendarCtrl.GetHighlightColourBg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHighlightColourBg</span></code></a></p></td>
+<td><p>Gets the background highlight colour.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHighlightColourFg" title="wx.adv.GenericCalendarCtrl.GetHighlightColourFg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHighlightColourFg</span></code></a></p></td>
+<td><p>Gets the foreground highlight colour.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHolidayColourBg" title="wx.adv.GenericCalendarCtrl.GetHolidayColourBg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHolidayColourBg</span></code></a></p></td>
+<td><p>Return the background colour currently used for holiday highlighting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHolidayColourFg" title="wx.adv.GenericCalendarCtrl.GetHolidayColourFg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHolidayColourFg</span></code></a></p></td>
+<td><p>Return the foreground colour currently used for holiday highlighting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.HitTest" title="wx.adv.GenericCalendarCtrl.HitTest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HitTest</span></code></a></p></td>
+<td><p>Returns one of CalendarHitTestResult constants and fills either <em class="xref py py-obj">date</em>  or <em class="xref py py-obj">wd</em>  pointer with the corresponding value depending on the hit test code.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.Mark" title="wx.adv.GenericCalendarCtrl.Mark"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Mark</span></code></a></p></td>
+<td><p>Mark or unmark the day.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.PyGetDate" title="wx.adv.GenericCalendarCtrl.PyGetDate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PyGetDate</span></code></a></p></td>
+<td><p>Return the date as a Python datetime.date object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.ResetAttr" title="wx.adv.GenericCalendarCtrl.ResetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ResetAttr</span></code></a></p></td>
+<td><p>Clears any attributes associated with the given day (in the range 1…31).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetAttr" title="wx.adv.GenericCalendarCtrl.SetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttr</span></code></a></p></td>
+<td><p>Associates the attribute with the specified date (in the range 1…31).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetDate" title="wx.adv.GenericCalendarCtrl.SetDate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDate</span></code></a></p></td>
+<td><p>Sets the current date.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetDateRange" title="wx.adv.GenericCalendarCtrl.SetDateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDateRange</span></code></a></p></td>
+<td><p>Restrict the dates that can be selected in the control to the specified range.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHeaderColours" title="wx.adv.GenericCalendarCtrl.SetHeaderColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHeaderColours</span></code></a></p></td>
+<td><p>Set the colours used for painting the weekdays at the top of the control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHighlightColours" title="wx.adv.GenericCalendarCtrl.SetHighlightColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHighlightColours</span></code></a></p></td>
+<td><p>Set the colours to be used for highlighting the currently selected date.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHoliday" title="wx.adv.GenericCalendarCtrl.SetHoliday"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHoliday</span></code></a></p></td>
+<td><p>Marks the specified day as being a holiday in the current month.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHolidayColours" title="wx.adv.GenericCalendarCtrl.SetHolidayColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHolidayColours</span></code></a></p></td>
+<td><p>Sets the colours to be used for the holidays highlighting.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%"/>
+<col style="width: 57%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.Date" title="wx.adv.GenericCalendarCtrl.Date"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Date</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetDate" title="wx.adv.GenericCalendarCtrl.GetDate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDate</span></code></a> and <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetDate" title="wx.adv.GenericCalendarCtrl.SetDate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDate</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.DateRange" title="wx.adv.GenericCalendarCtrl.DateRange"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DateRange</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetDateRange" title="wx.adv.GenericCalendarCtrl.GetDateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDateRange</span></code></a> and <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetDateRange" title="wx.adv.GenericCalendarCtrl.SetDateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDateRange</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.HeaderColourBg" title="wx.adv.GenericCalendarCtrl.HeaderColourBg"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HeaderColourBg</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHeaderColourBg" title="wx.adv.GenericCalendarCtrl.GetHeaderColourBg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeaderColourBg</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.HeaderColourFg" title="wx.adv.GenericCalendarCtrl.HeaderColourFg"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HeaderColourFg</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHeaderColourFg" title="wx.adv.GenericCalendarCtrl.GetHeaderColourFg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeaderColourFg</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.HighlightColourBg" title="wx.adv.GenericCalendarCtrl.HighlightColourBg"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HighlightColourBg</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHighlightColourBg" title="wx.adv.GenericCalendarCtrl.GetHighlightColourBg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHighlightColourBg</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.HighlightColourFg" title="wx.adv.GenericCalendarCtrl.HighlightColourFg"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HighlightColourFg</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHighlightColourFg" title="wx.adv.GenericCalendarCtrl.GetHighlightColourFg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHighlightColourFg</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.HolidayColourBg" title="wx.adv.GenericCalendarCtrl.HolidayColourBg"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HolidayColourBg</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHolidayColourBg" title="wx.adv.GenericCalendarCtrl.GetHolidayColourBg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHolidayColourBg</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.HolidayColourFg" title="wx.adv.GenericCalendarCtrl.HolidayColourFg"><code class="xref py py-attr docutils literal notranslate"><span class="pre">HolidayColourFg</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHolidayColourFg" title="wx.adv.GenericCalendarCtrl.GetHolidayColourFg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHolidayColourFg</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.adv.GenericCalendarCtrl">
+<em class="property">class </em><code class="sig-prename descclassname">wx.adv.</code><code class="sig-name descname">GenericCalendarCtrl</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GenericCalendarCtrl</span><span class="p">()</span>
+
+<span class="n">GenericCalendarCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">DefaultDateTime</span><span class="p">,</span>
+                    <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">CAL_SHOW_HOLIDAYS</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">CalendarNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The calendar control allows the user to pick a date.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, date=DefaultDateTime, pos=DefaultPosition, size=DefaultSize, style=CAL_SHOW_HOLIDAYS, name=CalendarNameStr)</em></p>
+<p>Does the same as <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.Create" title="wx.adv.GenericCalendarCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>date</strong> (<a class="reference internal" href="wx.DateTime.html#wx.DateTime" title="wx.DateTime"><em>wx.DateTime</em></a>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">date=DefaultDateTime</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=CAL_SHOW_HOLIDAYS</em>, <em class="sig-param">name=CalendarNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the control.</p>
+<p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">Window.__init__</span></code>   for the meaning of the parameters and the control overview for the possible styles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>date</strong> (<a class="reference internal" href="wx.DateTime.html#wx.DateTime" title="wx.DateTime"><em>wx.DateTime</em></a>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.EnableHolidayDisplay">
+<code class="sig-name descname">EnableHolidayDisplay</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">display=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.EnableHolidayDisplay" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function should be used instead of changing  <code class="docutils literal notranslate"><span class="pre">CAL_SHOW_HOLIDAYS</span></code>   style bit directly.</p>
+<p>It enables or disables the special highlighting of the holidays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>display</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.EnableMonthChange">
+<code class="sig-name descname">EnableMonthChange</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.EnableMonthChange" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function should be used instead of changing  <code class="docutils literal notranslate"><span class="pre">CAL_NO_MONTH_CHANGE</span></code>   style bit.</p>
+<p>It allows or disallows the user to change the month interactively. Note that if the month cannot be changed, the year cannot be changed neither.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the value of this option really changed or <code class="docutils literal notranslate"><span class="pre">False</span></code> if it was already set to the requested value.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.EnableYearChange">
+<code class="sig-name descname">EnableYearChange</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.EnableYearChange" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function should be used instead of changing  <code class="docutils literal notranslate"><span class="pre">CAL_NO_YEAR_CHANGE</span></code>   style bit directly. It allows or disallows the user to change the year interactively. Only in generic  <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetAttr">
+<code class="sig-name descname">GetAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">day</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the attribute for the given date (should be in the range 1…31).</p>
+<p>The returned pointer may be <code class="docutils literal notranslate"><span class="pre">None</span></code>. Only in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>day</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.adv.CalendarDateAttr.html#wx-adv-calendardateattr"><span class="std std-ref">  wx.adv.CalendarDateAttr</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">VisualAttributes</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetDate">
+<code class="sig-name descname">GetDate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the currently selected date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">DateTime</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetDateRange">
+<code class="sig-name descname">GetDateRange</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetDateRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the limits currently being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>( <em class="xref py py-obj">bool</em>, <em class="xref py py-obj">lowerdate</em>, <em class="xref py py-obj">upperdate</em> )</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetDateRange" title="wx.adv.GenericCalendarCtrl.SetDateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDateRange</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetHeaderColourBg">
+<code class="sig-name descname">GetHeaderColourBg</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetHeaderColourBg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the background colour of the header part of the calendar window.</p>
+<p>This method is currently only implemented in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>  and always returns  <code class="docutils literal notranslate"><span class="pre">NullColour</span></code>   in the native versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHeaderColours" title="wx.adv.GenericCalendarCtrl.SetHeaderColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHeaderColours</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetHeaderColourFg">
+<code class="sig-name descname">GetHeaderColourFg</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetHeaderColourFg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the foreground colour of the header part of the calendar window.</p>
+<p>This method is currently only implemented in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>  and always returns  <code class="docutils literal notranslate"><span class="pre">NullColour</span></code>   in the native versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHeaderColours" title="wx.adv.GenericCalendarCtrl.SetHeaderColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHeaderColours</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetHighlightColourBg">
+<code class="sig-name descname">GetHighlightColourBg</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetHighlightColourBg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the background highlight colour.</p>
+<p>Only in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>.</p>
+<p>This method is currently only implemented in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>  and always returns  <code class="docutils literal notranslate"><span class="pre">NullColour</span></code>   in the native versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHighlightColours" title="wx.adv.GenericCalendarCtrl.SetHighlightColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHighlightColours</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetHighlightColourFg">
+<code class="sig-name descname">GetHighlightColourFg</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetHighlightColourFg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the foreground highlight colour.</p>
+<p>Only in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>.</p>
+<p>This method is currently only implemented in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>  and always returns  <code class="docutils literal notranslate"><span class="pre">NullColour</span></code>   in the native versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHighlightColours" title="wx.adv.GenericCalendarCtrl.SetHighlightColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHighlightColours</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetHolidayColourBg">
+<code class="sig-name descname">GetHolidayColourBg</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetHolidayColourBg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the background colour currently used for holiday highlighting.</p>
+<p>Only useful with generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>  as native versions currently don’t support holidays display at all and always return  <code class="docutils literal notranslate"><span class="pre">NullColour</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHolidayColours" title="wx.adv.GenericCalendarCtrl.SetHolidayColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHolidayColours</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.GetHolidayColourFg">
+<code class="sig-name descname">GetHolidayColourFg</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.GetHolidayColourFg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the foreground colour currently used for holiday highlighting.</p>
+<p>Only useful with generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>  as native versions currently don’t support holidays display at all and always return  <code class="docutils literal notranslate"><span class="pre">NullColour</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetHolidayColours" title="wx.adv.GenericCalendarCtrl.SetHolidayColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHolidayColours</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.HitTest">
+<code class="sig-name descname">HitTest</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.HitTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns one of CalendarHitTestResult constants and fills either <em class="xref py py-obj">date</em>  or <em class="xref py py-obj">wd</em>  pointer with the corresponding value depending on the hit test code.</p>
+<p>Not implemented in wxGTK currently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.adv.CalendarHitTestResult.enumeration.html#wx-adv-calendarhittestresult"><span class="std std-ref">  wx.adv.CalendarHitTestResult</span></a>, <em class="xref py py-obj">date</em>, <em class="xref py py-obj">wd</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.Mark">
+<code class="sig-name descname">Mark</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">day</em>, <em class="sig-param">mark</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.Mark" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark or unmark the day.</p>
+<p>This day of month will be marked in every month. In generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>,</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>day</strong> (<em>int</em>) – </p></li>
+<li><p><strong>mark</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.PyGetDate">
+<code class="sig-name descname">PyGetDate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.PyGetDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the date as a Python datetime.date object.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.ResetAttr">
+<code class="sig-name descname">ResetAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">day</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.ResetAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears any attributes associated with the given day (in the range 1…31).</p>
+<p>Only in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>day</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.SetAttr">
+<code class="sig-name descname">SetAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">day</em>, <em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.SetAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates the attribute with the specified date (in the range 1…31).</p>
+<p>If the pointer is <code class="docutils literal notranslate"><span class="pre">None</span></code>, the items attribute is cleared. Only in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>day</strong> (<em>int</em>) – </p></li>
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.adv.CalendarDateAttr.html#wx.adv.CalendarDateAttr" title="wx.adv.CalendarDateAttr"><em>wx.adv.CalendarDateAttr</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.SetDate">
+<code class="sig-name descname">SetDate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">date</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.SetDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the current date.</p>
+<p>The <em class="xref py py-obj">date</em>  parameter must be valid and in the currently valid range as set by <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetDateRange" title="wx.adv.GenericCalendarCtrl.SetDateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDateRange</span></code></a> , otherwise the current date is not changed and the function returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>date</strong> (<a class="reference internal" href="wx.DateTime.html#wx.DateTime" title="wx.DateTime"><em>wx.DateTime</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.SetDateRange">
+<code class="sig-name descname">SetDateRange</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">lowerdate=DefaultDateTime</em>, <em class="sig-param">upperdate=DefaultDateTime</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.SetDateRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restrict the dates that can be selected in the control to the specified range.</p>
+<p>If either date is set, the corresponding limit will be enforced and <code class="docutils literal notranslate"><span class="pre">True</span></code> returned. If none are set, the existing restrictions are removed and <code class="docutils literal notranslate"><span class="pre">False</span></code> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lowerdate</strong> (<a class="reference internal" href="wx.DateTime.html#wx.DateTime" title="wx.DateTime"><em>wx.DateTime</em></a>) – The low limit for the dates shown by the control or <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultDateTime</span></code>     .</p></li>
+<li><p><strong>upperdate</strong> (<a class="reference internal" href="wx.DateTime.html#wx.DateTime" title="wx.DateTime"><em>wx.DateTime</em></a>) – The high limit for the dates shown by the control or <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultDateTime</span></code>     .</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if either limit is valid, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetDateRange" title="wx.adv.GenericCalendarCtrl.GetDateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDateRange</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.SetHeaderColours">
+<code class="sig-name descname">SetHeaderColours</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colFg</em>, <em class="sig-param">colBg</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.SetHeaderColours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the colours used for painting the weekdays at the top of the control.</p>
+<p>This method is currently only implemented in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>  and does nothing in the native versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colFg</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+<li><p><strong>colBg</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.SetHighlightColours">
+<code class="sig-name descname">SetHighlightColours</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colFg</em>, <em class="sig-param">colBg</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.SetHighlightColours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the colours to be used for highlighting the currently selected date.</p>
+<p>This method is currently only implemented in generic <a class="reference internal" href="wx.adv.CalendarCtrl.html#wx-adv-calendarctrl"><span class="std std-ref">  wx.adv.CalendarCtrl</span></a>  and does nothing in the native versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colFg</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+<li><p><strong>colBg</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.SetHoliday">
+<code class="sig-name descname">SetHoliday</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">day</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.SetHoliday" title="Permalink to this definition">¶</a></dt>
+<dd><p>Marks the specified day as being a holiday in the current month.</p>
+<p>This method is only implemented in the generic version of the control and does nothing in the native ones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>day</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.GenericCalendarCtrl.SetHolidayColours">
+<code class="sig-name descname">SetHolidayColours</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colFg</em>, <em class="sig-param">colBg</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.SetHolidayColours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the colours to be used for the holidays highlighting.</p>
+<p>This method is only implemented in the generic version of the control and does nothing in the native ones. It should also only be called if the window style includes  <code class="docutils literal notranslate"><span class="pre">CAL_SHOW_HOLIDAYS</span></code>   flag or  <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.EnableHolidayDisplay" title="wx.adv.GenericCalendarCtrl.EnableHolidayDisplay"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableHolidayDisplay</span></code></a>   had been called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colFg</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+<li><p><strong>colBg</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.adv.GenericCalendarCtrl.Date">
+<code class="sig-name descname">Date</code><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.Date" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetDate" title="wx.adv.GenericCalendarCtrl.GetDate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDate</span></code></a> and <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetDate" title="wx.adv.GenericCalendarCtrl.SetDate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDate</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.adv.GenericCalendarCtrl.DateRange">
+<code class="sig-name descname">DateRange</code><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.DateRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetDateRange" title="wx.adv.GenericCalendarCtrl.GetDateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDateRange</span></code></a> and <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.SetDateRange" title="wx.adv.GenericCalendarCtrl.SetDateRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDateRange</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.adv.GenericCalendarCtrl.HeaderColourBg">
+<code class="sig-name descname">HeaderColourBg</code><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.HeaderColourBg" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHeaderColourBg" title="wx.adv.GenericCalendarCtrl.GetHeaderColourBg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeaderColourBg</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.adv.GenericCalendarCtrl.HeaderColourFg">
+<code class="sig-name descname">HeaderColourFg</code><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.HeaderColourFg" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHeaderColourFg" title="wx.adv.GenericCalendarCtrl.GetHeaderColourFg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeaderColourFg</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.adv.GenericCalendarCtrl.HighlightColourBg">
+<code class="sig-name descname">HighlightColourBg</code><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.HighlightColourBg" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHighlightColourBg" title="wx.adv.GenericCalendarCtrl.GetHighlightColourBg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHighlightColourBg</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.adv.GenericCalendarCtrl.HighlightColourFg">
+<code class="sig-name descname">HighlightColourFg</code><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.HighlightColourFg" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHighlightColourFg" title="wx.adv.GenericCalendarCtrl.GetHighlightColourFg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHighlightColourFg</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.adv.GenericCalendarCtrl.HolidayColourBg">
+<code class="sig-name descname">HolidayColourBg</code><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.HolidayColourBg" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHolidayColourBg" title="wx.adv.GenericCalendarCtrl.GetHolidayColourBg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHolidayColourBg</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.adv.GenericCalendarCtrl.HolidayColourFg">
+<code class="sig-name descname">HolidayColourFg</code><a class="headerlink" href="#wx.adv.GenericCalendarCtrl.HolidayColourFg" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.GenericCalendarCtrl.GetHolidayColourFg" title="wx.adv.GenericCalendarCtrl.GetHolidayColourFg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHolidayColourFg</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

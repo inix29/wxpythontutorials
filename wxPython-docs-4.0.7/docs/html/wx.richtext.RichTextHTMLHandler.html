@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.richtext.RichTextHTMLHandler — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.richtext.RichTextHeaderFooterData.html" rel="next" title="wx.richtext.RichTextHeaderFooterData"/>
+<link href="wx.richtext.RichTextFormattingDialogFactory.html" rel="prev" title="wx.richtext.RichTextFormattingDialogFactory"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.richtext.1moduleindex.html">
+<strong>wx.richtext</strong></a> »</li>
+<li class="reltitle"> <strong>wx.richtext.RichTextHTMLHandler</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.richtext.RichTextHeaderFooterData.html" title="wx.richtext.RichTextHeaderFooterData">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.richtext.RichTextFormattingDialogFactory.html" title="wx.richtext.RichTextFormattingDialogFactory">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.richtext.RichTextHTMLHandler</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-handler-flags"> Handler flags</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.richtext.RichTextHTMLHandler.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-richtext-richtexthtmlhandler">
+<span id="wx-richtext-richtexthtmlhandler"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.richtext.RichTextHTMLHandler</strong><a class="headerlink" href="#phoenix-title-wx-richtext-richtexthtmlhandler" title="Permalink to this headline">¶</a></h1>
+<p>Handles HTML output (only) for <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx-richtext-richtextctrl"><span class="std std-ref">  wx.richtext.RichTextCtrl</span></a>  content.</p>
+<p>The most flexible way to use this class is to create a temporary object and call its functions directly, rather than use <a class="reference internal" href="wx.richtext.RichTextBuffer.html#wx.richtext.RichTextBuffer.SaveFile" title="wx.richtext.RichTextBuffer.SaveFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.richtext.RichTextBuffer.SaveFile</span></code></a>   or <a class="reference internal" href="wx.richtext.RichTextCtrl.html#wx.richtext.RichTextCtrl.SaveFile" title="wx.richtext.RichTextCtrl.SaveFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.richtext.RichTextCtrl.SaveFile</span></code></a> .</p>
+<p>Image handling requires a little extra work from the application, to choose an appropriate image format for the target HTML viewer and to clean up the temporary images later. If you are planning to load the HTML into a standard web browser, you can specify the handler flag <code class="docutils literal notranslate"><span class="pre">wx.richtext.RICHTEXT_HANDLER_SAVE_IMAGES_TO_BASE64</span></code> (the default) and no extra work is required: the images will be written with the HTML.</p>
+<p>However, if you want HTML compatibility, you will need to use  <code class="docutils literal notranslate"><span class="pre">RICHTEXT_HANDLER_SAVE_IMAGES_TO_MEMORY</span></code>   or   <code class="docutils literal notranslate"><span class="pre">RICHTEXT_HANDLER_SAVE_IMAGES_TO_FILES</span></code> .</p>
+<p>In this case, you must either call <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.DeleteTemporaryImages" title="wx.richtext.RichTextHTMLHandler.DeleteTemporaryImages"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.richtext.RichTextHTMLHandler.DeleteTemporaryImages</span></code></a>   before the next load operation, or you must store the image locations and delete them yourself when appropriate.</p>
+<p>You can call <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations" title="wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations</span></code></a>   to get the array of temporary image names.</p>
+<div class="section" id="phoenix-title-handler-flags">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Handler flags<a class="headerlink" href="#phoenix-title-handler-flags" title="Permalink to this headline">¶</a></h2>
+<p>The following flags can be used with this handler, via the handler’s <a class="reference internal" href="wx.richtext.RichTextFileHandler.html#wx.richtext.RichTextFileHandler.SetFlags" title="wx.richtext.RichTextFileHandler.SetFlags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlags</span></code></a>  function or the buffer or control’s SetHandlerFlags() function:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.richtext.RICHTEXT_HANDLER_SAVE_IMAGES_TO_MEMORY</span></code> Images are saved to the memory filesystem: suitable for showing HTML windows.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.richtext.RICHTEXT_HANDLER_SAVE_IMAGES_TO_FILES</span></code> Images are saved to temporary files: suitable for showing in HTML windows.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.richtext.RICHTEXT_HANDLER_SAVE_IMAGES_TO_BASE64</span></code> Images are written with the HTML files in Base 64 format: suitable for showing in web browsers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.richtext.RICHTEXT_HANDLER_NO_HEADER_FOOTER</span></code> Don’t include header and footer tags (HTML, <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>, <code class="docutils literal notranslate"><span class="pre">BODY</span></code>), so that the HTML can be used as part of a larger document.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RICHTEXT_HANDLER_USE_CSS</span></code> Use CSS where possible, otherwise use workarounds that will show in <a class="reference internal" href="wx.html.HtmlWindow.html#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>RichTextHTMLHandler</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of RichTextHTMLHandler" class="inheritance" src="_static/images/inheritance/wx.richtext.RichTextHTMLHandler_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,160,253,189" href="wx.richtext.RichTextHTMLHandler.html" id="node1" shape="rect" title="Handles HTML output (only) for wx.richtext.RichTextCtrl  content."/> <area alt="" coords="12,83,247,112" href="wx.richtext.RichTextFileHandler.html" id="node2" shape="rect" title="The base class for file handlers."/> <area alt="" coords="85,5,173,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 49%"/>
+<col style="width: 51%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.__init__" title="wx.richtext.RichTextHTMLHandler.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.ClearTemporaryImageLocations" title="wx.richtext.RichTextHTMLHandler.ClearTemporaryImageLocations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearTemporaryImageLocations</span></code></a></p></td>
+<td><p>Clears the image locations generated by the last operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.DeleteTemporaryImages" title="wx.richtext.RichTextHTMLHandler.DeleteTemporaryImages"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteTemporaryImages</span></code></a></p></td>
+<td><p>Deletes the in-memory or temporary files generated by the last operation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetFontSizeMapping" title="wx.richtext.RichTextHTMLHandler.GetFontSizeMapping"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFontSizeMapping</span></code></a></p></td>
+<td><p>Returns the mapping for converting point sizes to HTML font sizes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetTempDir" title="wx.richtext.RichTextHTMLHandler.GetTempDir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTempDir</span></code></a></p></td>
+<td><p>Returns the directory used to store temporary image files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations" title="wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTemporaryImageLocations</span></code></a></p></td>
+<td><p>Returns the image locations for the last operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetFileCounter" title="wx.richtext.RichTextHTMLHandler.SetFileCounter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFileCounter</span></code></a></p></td>
+<td><p>Reset the file counter, in case, for example, the same names are required each time.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetFontSizeMapping" title="wx.richtext.RichTextHTMLHandler.SetFontSizeMapping"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFontSizeMapping</span></code></a></p></td>
+<td><p>Sets the mapping for converting point sizes to HTML font sizes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetTempDir" title="wx.richtext.RichTextHTMLHandler.SetTempDir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTempDir</span></code></a></p></td>
+<td><p>Sets the directory for storing temporary files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetTemporaryImageLocations" title="wx.richtext.RichTextHTMLHandler.SetTemporaryImageLocations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTemporaryImageLocations</span></code></a></p></td>
+<td><p>Sets the list of image locations generated by the last operation.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%"/>
+<col style="width: 64%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.FontSizeMapping" title="wx.richtext.RichTextHTMLHandler.FontSizeMapping"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FontSizeMapping</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetFontSizeMapping" title="wx.richtext.RichTextHTMLHandler.GetFontSizeMapping"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFontSizeMapping</span></code></a> and <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetFontSizeMapping" title="wx.richtext.RichTextHTMLHandler.SetFontSizeMapping"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFontSizeMapping</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.TempDir" title="wx.richtext.RichTextHTMLHandler.TempDir"><code class="xref py py-attr docutils literal notranslate"><span class="pre">TempDir</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetTempDir" title="wx.richtext.RichTextHTMLHandler.GetTempDir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTempDir</span></code></a> and <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetTempDir" title="wx.richtext.RichTextHTMLHandler.SetTempDir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTempDir</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.TemporaryImageLocations" title="wx.richtext.RichTextHTMLHandler.TemporaryImageLocations"><code class="xref py py-attr docutils literal notranslate"><span class="pre">TemporaryImageLocations</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations" title="wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTemporaryImageLocations</span></code></a> and <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetTemporaryImageLocations" title="wx.richtext.RichTextHTMLHandler.SetTemporaryImageLocations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTemporaryImageLocations</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.richtext.RichTextHTMLHandler">
+<em class="property">class </em><code class="sig-prename descclassname">wx.richtext.</code><code class="sig-name descname">RichTextHTMLHandler</code><span class="sig-paren">(</span><em class="sig-param">RichTextFileHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RichTextHTMLHandler</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"HTML"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"html"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">RICHTEXT_TYPE_HTML</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Handles HTML output (only) for RichTextCtrl content.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name="HTML"</em>, <em class="sig-param">ext="html"</em>, <em class="sig-param">type=RICHTEXT_TYPE_HTML</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>ext</strong> (<em>string</em>) – </p></li>
+<li><p><strong>type</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.ClearTemporaryImageLocations">
+<code class="sig-name descname">ClearTemporaryImageLocations</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.ClearTemporaryImageLocations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the image locations generated by the last operation.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.DeleteTemporaryImages">
+<code class="sig-name descname">DeleteTemporaryImages</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.DeleteTemporaryImages" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DeleteTemporaryImages</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Deletes the in-memory or temporary files generated by the last operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DeleteTemporaryImages</strong> <em class="xref py py-obj">(flags, imageLocations)</em></p>
+<p>Delete the in-memory or temporary files generated by the last operation.</p>
+<p>This is a static function that can be used to delete the saved locations from an earlier operation, for example after the user has viewed the HTML file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+<li><p><strong>imageLocations</strong> (<em>list of strings</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.GetFontSizeMapping">
+<code class="sig-name descname">GetFontSizeMapping</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.GetFontSizeMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mapping for converting point sizes to HTML font sizes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of integers</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.GetTempDir">
+<code class="sig-name descname">GetTempDir</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.GetTempDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the directory used to store temporary image files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations">
+<code class="sig-name descname">GetTemporaryImageLocations</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the image locations for the last operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of strings</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.SetFileCounter">
+<em class="property">static </em><code class="sig-name descname">SetFileCounter</code><span class="sig-paren">(</span><em class="sig-param">counter</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.SetFileCounter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the file counter, in case, for example, the same names are required each time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>counter</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.SetFontSizeMapping">
+<code class="sig-name descname">SetFontSizeMapping</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">fontSizeMapping</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.SetFontSizeMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the mapping for converting point sizes to HTML font sizes.</p>
+<p>There should be 7 elements, one for each HTML font size, each element specifying the maximum point size for that HTML font size. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fontSizeMapping</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">htmlHandler</span><span class="o">.</span><span class="n">SetFontSizeMapping</span><span class="p">(</span><span class="n">fontSizeMapping</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fontSizeMapping</strong> (<em>list of integers</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.SetTempDir">
+<code class="sig-name descname">SetTempDir</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">tempDir</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.SetTempDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the directory for storing temporary files.</p>
+<p>If empty, the system temporary directory will be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tempDir</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.richtext.RichTextHTMLHandler.SetTemporaryImageLocations">
+<code class="sig-name descname">SetTemporaryImageLocations</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">locations</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.SetTemporaryImageLocations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the list of image locations generated by the last operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>locations</strong> (<em>list of strings</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.richtext.RichTextHTMLHandler.FontSizeMapping">
+<code class="sig-name descname">FontSizeMapping</code><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.FontSizeMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetFontSizeMapping" title="wx.richtext.RichTextHTMLHandler.GetFontSizeMapping"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFontSizeMapping</span></code></a> and <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetFontSizeMapping" title="wx.richtext.RichTextHTMLHandler.SetFontSizeMapping"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFontSizeMapping</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.richtext.RichTextHTMLHandler.TempDir">
+<code class="sig-name descname">TempDir</code><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.TempDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetTempDir" title="wx.richtext.RichTextHTMLHandler.GetTempDir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTempDir</span></code></a> and <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetTempDir" title="wx.richtext.RichTextHTMLHandler.SetTempDir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTempDir</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.richtext.RichTextHTMLHandler.TemporaryImageLocations">
+<code class="sig-name descname">TemporaryImageLocations</code><a class="headerlink" href="#wx.richtext.RichTextHTMLHandler.TemporaryImageLocations" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations" title="wx.richtext.RichTextHTMLHandler.GetTemporaryImageLocations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTemporaryImageLocations</span></code></a> and <a class="reference internal" href="#wx.richtext.RichTextHTMLHandler.SetTemporaryImageLocations" title="wx.richtext.RichTextHTMLHandler.SetTemporaryImageLocations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTemporaryImageLocations</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

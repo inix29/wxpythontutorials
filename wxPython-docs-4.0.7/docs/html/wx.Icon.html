@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Icon — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.IconBundle.html" rel="next" title="wx.IconBundle"/>
+<link href="wx.IFFHandler.html" rel="prev" title="wx.IFFHandler"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Icon</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.IconBundle.html" title="wx.IconBundle">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.IFFHandler.html" title="wx.IFFHandler">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Icon</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Icon.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-icon">
+<span id="wx-icon"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Icon</strong><a class="headerlink" href="#phoenix-title-wx-icon" title="Permalink to this headline">¶</a></h1>
+<p>An icon is a small rectangular bitmap usually used for denoting a minimized application.</p>
+<p>It differs from a <a class="reference internal" href="wx.Bitmap.html#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>  in always having a mask associated with it for transparent drawing. On some platforms, icons and bitmaps are implemented identically, since there is no real distinction between a <a class="reference internal" href="wx.Bitmap.html#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>  with a mask and an icon; and there is no specific icon format on some platforms (X-based applications usually standardize on XPMs for small bitmaps and icons). However, some platforms (such as Windows) make the distinction, so a separate class is provided.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is usually desirable to associate a pertinent icon with a frame. Icons can also be used for other purposes, for example with <a class="reference internal" href="wx.TreeCtrl.html#wx-treectrl"><span class="std std-ref">  wx.TreeCtrl</span></a>  and <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>. Icons have different formats on different platforms therefore separate icons will usually be created for the different environments. Platform-specific methods for creating a <a class="reference internal" href="#wx-icon"><span class="std std-ref">  wx.Icon</span></a>  structure are catered for, and this is an occasion where conditional compilation will probably be required. Note that a new icon must be created for every time the icon is to be used for a new window. In Windows, the icon will not be reloaded if it has already been used. An icon allocated to a frame will be deleted when the frame is deleted. For more information please see <a class="reference internal" href="bitmap_overview.html#bitmaps-and-icons"><span class="std std-ref">Bitmaps and Icons</span></a>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="bitmap_overview.html#bitmaps-and-icons"><span class="std std-ref">Bitmaps and Icons</span></a>, <a class="reference internal" href="bitmap_overview.html#supported-bitmap-file-formats"><span class="std std-ref">Supported Bitmap File Formats</span></a>, <a class="reference internal" href="wx.DC.html#wx.DC.DrawIcon" title="wx.DC.DrawIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawIcon</span></code></a> , <a class="reference internal" href="wx.Cursor.html#wx-cursor"><span class="std std-ref">  wx.Cursor</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Icon</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Icon" class="inheritance" src="_static/images/inheritance/wx.Icon_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="25,160,99,189" href="wx.Icon.html" id="node1" shape="rect" title="An icon is a small rectangular bitmap usually used for denoting a minimized application."/> <area alt="" coords="5,83,119,112" href="wx.GDIObject.html" id="node2" shape="rect" title="This class allows platforms to implement functionality to optimise GDI objects, such as wx.Pen, wx.Brush  and wx.Font."/> <area alt="" coords="18,5,106,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.__init__" title="wx.Icon.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Icon.CopyFromBitmap" title="wx.Icon.CopyFromBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CopyFromBitmap</span></code></a></p></td>
+<td><p>Copies <em class="xref py py-obj">bmp</em>  bitmap to this icon.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.CreateFromHICON" title="wx.Icon.CreateFromHICON"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateFromHICON</span></code></a></p></td>
+<td><p>MSW-only method to create a wx.Icon from a native icon handle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Icon.GetDepth" title="wx.Icon.GetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDepth</span></code></a></p></td>
+<td><p>Gets the colour depth of the icon.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.GetHandle" title="wx.Icon.GetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHandle</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Icon.GetHeight" title="wx.Icon.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a></p></td>
+<td><p>Gets the height of the icon in pixels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.GetWidth" title="wx.Icon.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a></p></td>
+<td><p>Gets the width of the icon in pixels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Icon.IsOk" title="wx.Icon.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsOk</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if icon data is present.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.LoadFile" title="wx.Icon.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p></td>
+<td><p>Loads an icon from a file or resource.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Icon.SetDepth" title="wx.Icon.SetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDepth</span></code></a></p></td>
+<td><p>Sets the depth member (does not affect the icon data).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.SetHandle" title="wx.Icon.SetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHandle</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Icon.SetHeight" title="wx.Icon.SetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHeight</span></code></a></p></td>
+<td><p>Sets the height member (does not affect the icon data).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.SetWidth" title="wx.Icon.SetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWidth</span></code></a></p></td>
+<td><p>Sets the width member (does not affect the icon data).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Icon.__bool__" title="wx.Icon.__bool__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__bool__</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.__nonzero__" title="wx.Icon.__nonzero__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__nonzero__</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.Depth" title="wx.Icon.Depth"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Depth</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Icon.GetDepth" title="wx.Icon.GetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDepth</span></code></a> and <a class="reference internal" href="#wx.Icon.SetDepth" title="wx.Icon.SetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDepth</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Icon.Handle" title="wx.Icon.Handle"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Handle</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Icon.GetHandle" title="wx.Icon.GetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHandle</span></code></a> and <a class="reference internal" href="#wx.Icon.SetHandle" title="wx.Icon.SetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHandle</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Icon.Height" title="wx.Icon.Height"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Height</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Icon.GetHeight" title="wx.Icon.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a> and <a class="reference internal" href="#wx.Icon.SetHeight" title="wx.Icon.SetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHeight</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Icon.Width" title="wx.Icon.Width"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Width</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Icon.GetWidth" title="wx.Icon.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a> and <a class="reference internal" href="#wx.Icon.SetWidth" title="wx.Icon.SetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWidth</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Icon">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Icon</code><span class="sig-paren">(</span><em class="sig-param">GDIObject</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Icon</span><span class="p">()</span>
+
+<span class="n">Icon</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
+
+<span class="n">Icon</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">BITMAP_TYPE_ANY</span><span class="p">,</span> <span class="n">desiredWidth</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">desiredHeight</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">Icon</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+
+<span class="n">Icon</span><span class="p">(</span><span class="n">bmp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An icon is a small rectangular bitmap usually used for denoting a
+minimized application.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Icon.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p>Constructs an icon object with no data; an assignment or another member function such as <a class="reference internal" href="#wx.Icon.LoadFile" title="wx.Icon.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a>   must be called subsequently.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, icon)</em></p>
+<p>Copy constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>icon</strong> (<a class="reference internal" href="#wx.Icon" title="wx.Icon"><em>wx.Icon</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, name, type=BITMAP_TYPE_ANY, desiredWidth=-1, desiredHeight=-1)</em></p>
+<p>Loads an icon from a file or resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – This can refer to a resource name or a filename under MS Windows and X. Its meaning is determined by the  <em class="xref py py-obj">type</em>  parameter.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="wx.BitmapType.enumeration.html" title="BitmapType"><em>BitmapType</em></a>) – May be one of the <a class="reference internal" href="wx.BitmapType.enumeration.html#wx-bitmaptype"><span class="std std-ref">  wx.BitmapType</span></a>  values and indicates which type of bitmap should be loaded. See the note in the class detailed description. Note that the <code class="docutils literal notranslate"><span class="pre">ICON_DEFAULT_TYPE</span></code> constant has different value under different wxWidgets ports. See the <em class="xref py py-obj">icon.h</em>       header for the value it takes for a specific port.</p></li>
+<li><p><strong>desiredWidth</strong> (<em>int</em>) – Specifies the desired width of the icon. This parameter only has an effect in Windows where icon resources can contain several icons of different sizes.</p></li>
+<li><p><strong>desiredHeight</strong> (<em>int</em>) – Specifies the desired height of the icon. This parameter only has an effect in Windows where icon resources can contain several icons of different sizes.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Icon.LoadFile" title="wx.Icon.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, loc)</em></p>
+<p>Loads an icon from the specified location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>loc</strong> (<a class="reference internal" href="wx.IconLocation.html#wx.IconLocation" title="wx.IconLocation"><em>wx.IconLocation</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, bmp)</em></p>
+<p>Construct an Icon from a Bitmap.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.CopyFromBitmap">
+<code class="sig-name descname">CopyFromBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bmp</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.CopyFromBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies <em class="xref py py-obj">bmp</em>  bitmap to this icon.</p>
+<p>Under MS Windows the bitmap must have mask colour set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bmp</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Icon.LoadFile" title="wx.Icon.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.CreateFromHICON">
+<code class="sig-name descname">CreateFromHICON</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">hicon</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.CreateFromHICON" title="Permalink to this definition">¶</a></dt>
+<dd><p>MSW-only method to create a wx.Icon from a native icon handle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.GetDepth">
+<code class="sig-name descname">GetDepth</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.GetDepth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the colour depth of the icon.</p>
+<p>A value of 1 indicates a monochrome icon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.GetHandle">
+<code class="sig-name descname">GetHandle</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.GetHeight">
+<code class="sig-name descname">GetHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.GetHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the height of the icon in pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Icon.GetWidth" title="wx.Icon.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.GetWidth">
+<code class="sig-name descname">GetWidth</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.GetWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the width of the icon in pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Icon.GetHeight" title="wx.Icon.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.IsOk">
+<code class="sig-name descname">IsOk</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.IsOk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if icon data is present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.LoadFile">
+<code class="sig-name descname">LoadFile</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em>, <em class="sig-param">type=BITMAP_TYPE_ANY</em>, <em class="sig-param">desiredWidth=-1</em>, <em class="sig-param">desiredHeight=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.LoadFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads an icon from a file or resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – Either a filename or a Windows resource name. The meaning of name is determined by the  <em class="xref py py-obj">type</em>  parameter.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="wx.BitmapType.enumeration.html" title="BitmapType"><em>BitmapType</em></a>) – One of the <a class="reference internal" href="wx.BitmapType.enumeration.html#wx-bitmaptype"><span class="std std-ref">  wx.BitmapType</span></a>  values; see the note in the class detailed description. Note that the <code class="docutils literal notranslate"><span class="pre">ICON_DEFAULT_TYPE</span></code> constant has different value under different wxWidgets ports. See the <em class="xref py py-obj">icon.h</em>       header for the value it takes for a specific port.</p></li>
+<li><p><strong>desiredWidth</strong> (<em>int</em>) – Specifies the desired width of the icon. This parameter only has an effect in Windows where icon resources can contain several icons of different sizes.</p></li>
+<li><p><strong>desiredHeight</strong> (<em>int</em>) – Specifies the desired height of the icon. This parameter only has an effect in Windows where icon resources can contain several icons of different sizes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the operation succeeded, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.SetDepth">
+<code class="sig-name descname">SetDepth</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">depth</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.SetDepth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the depth member (does not affect the icon data).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>depth</strong> (<em>int</em>) – Icon depth.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.SetHandle">
+<code class="sig-name descname">SetHandle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handle</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.SetHandle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.SetHeight">
+<code class="sig-name descname">SetHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">height</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.SetHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the height member (does not affect the icon data).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>height</strong> (<em>int</em>) – Icon height in pixels.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.SetWidth">
+<code class="sig-name descname">SetWidth</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">width</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.SetWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the width member (does not affect the icon data).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>width</strong> (<em>int</em>) – Icon width in pixels.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.__bool__">
+<code class="sig-name descname">__bool__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.__bool__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Icon.__nonzero__">
+<code class="sig-name descname">__nonzero__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Icon.__nonzero__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.Icon.Depth">
+<code class="sig-name descname">Depth</code><a class="headerlink" href="#wx.Icon.Depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Icon.GetDepth" title="wx.Icon.GetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDepth</span></code></a> and <a class="reference internal" href="#wx.Icon.SetDepth" title="wx.Icon.SetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDepth</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Icon.Handle">
+<code class="sig-name descname">Handle</code><a class="headerlink" href="#wx.Icon.Handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Icon.GetHandle" title="wx.Icon.GetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHandle</span></code></a> and <a class="reference internal" href="#wx.Icon.SetHandle" title="wx.Icon.SetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHandle</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Icon.Height">
+<code class="sig-name descname">Height</code><a class="headerlink" href="#wx.Icon.Height" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Icon.GetHeight" title="wx.Icon.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a> and <a class="reference internal" href="#wx.Icon.SetHeight" title="wx.Icon.SetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHeight</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Icon.Width">
+<code class="sig-name descname">Width</code><a class="headerlink" href="#wx.Icon.Width" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Icon.GetWidth" title="wx.Icon.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a> and <a class="reference internal" href="#wx.Icon.SetWidth" title="wx.Icon.SetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWidth</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

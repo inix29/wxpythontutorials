@@ -1,0 +1,913 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.PlatformInformation — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.Point.html" rel="next" title="wx.Point"/>
+<link href="wx.PixelDataBase.html" rel="prev" title="wx.PixelDataBase"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.PlatformInformation</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.Point.html" title="wx.Point">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.PixelDataBase.html" title="wx.PixelDataBase">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.PlatformInformation</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.PlatformInformation.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-platforminformation">
+<span id="wx-platforminformation"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.PlatformInformation</strong><a class="headerlink" href="#phoenix-title-wx-platforminformation" title="Permalink to this headline">¶</a></h1>
+<p>This class holds information about the operating system, the toolkit and the basic architecture of the machine where the application is currently running.</p>
+<p>This class does not only have <em class="xref py py-obj">getters</em>  for the information above, it also has <em class="xref py py-obj">setters</em>. This allows you to e.g. save the current platform information in a data file (maybe in string form) so that when you later load it, you can easily retrieve (see the static getters for string.enum conversion functions) and store inside a <em class="xref py py-obj">PlatformInfo</em>       instance (using its setters) the signature of the system which generated it.</p>
+<p>In general however you only need to use the static <a class="reference internal" href="#wx.PlatformInformation.Get" title="wx.PlatformInformation.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a>  function and then access the various information for the current platform:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">LogMessage</span><span class="p">(</span><span class="s2">"This application is running under </span><span class="si">%s</span><span class="s2">."</span> <span class="o">%</span> <span class="n">wx</span><span class="o">.</span><span class="n">PlatformInformation</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span><span class="o">.</span><span class="n">GetOperatingSystemIdName</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.functions.html#wx.GetOsVersion" title="wx.GetOsVersion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetOsVersion</span></code></a>     , <a class="reference internal" href="wx.functions.html#wx.IsPlatformLittleEndian" title="wx.IsPlatformLittleEndian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.IsPlatformLittleEndian</span></code></a>     , <a class="reference internal" href="wx.functions.html#wx.IsPlatform64Bit" title="wx.IsPlatform64Bit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.IsPlatform64Bit</span></code></a>     , <a class="reference internal" href="wx.AppTraits.html#wx-apptraits"><span class="std std-ref">  wx.AppTraits</span></a>, <span class="xref std std-ref">Network, User and OS</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>PlatformInformation</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of PlatformInformation" class="inheritance" src="_static/images/inheritance/PlatformInfo_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,109,35" href="PlatformInfo.html" id="node1" shape="rect" title="PlatformInfo"/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%"/>
+<col style="width: 64%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.__init__" title="wx.PlatformInformation.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Initializes the instance with the values corresponding to the currently running platform.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.CheckOSVersion" title="wx.PlatformInformation.CheckOSVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CheckOSVersion</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the OS version is at least  <code class="docutils literal notranslate"><span class="pre">major.minor</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.CheckToolkitVersion" title="wx.PlatformInformation.CheckToolkitVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CheckToolkitVersion</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the toolkit version is at least  <code class="docutils literal notranslate"><span class="pre">major.minor</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.Get" title="wx.PlatformInformation.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a></p></td>
+<td><p>Returns the global <em class="xref py py-obj">PlatformInfo</em>       object, initialized with the values for the currently running platform.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetArch" title="wx.PlatformInformation.GetArch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArch</span></code></a></p></td>
+<td><p>Converts the given string to a Architecture enum value or to  <code class="docutils literal notranslate"><span class="pre">ARCH_INVALID</span></code>   if the given string is not a valid architecture string (i.e.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetArchName" title="wx.PlatformInformation.GetArchName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArchName</span></code></a></p></td>
+<td><p>Returns the name for the architecture of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetArchitecture" title="wx.PlatformInformation.GetArchitecture"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArchitecture</span></code></a></p></td>
+<td><p>Returns the architecture <code class="docutils literal notranslate"><span class="pre">ID</span></code> of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetDesktopEnvironment" title="wx.PlatformInformation.GetDesktopEnvironment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDesktopEnvironment</span></code></a></p></td>
+<td><p>Returns the desktop environment associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetEndianness" title="wx.PlatformInformation.GetEndianness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEndianness</span></code></a></p></td>
+<td><p>Returns the endianness <code class="docutils literal notranslate"><span class="pre">ID</span></code> of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetEndiannessName" title="wx.PlatformInformation.GetEndiannessName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEndiannessName</span></code></a></p></td>
+<td><p>Returns the name for the endianness of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetLinuxDistributionInfo" title="wx.PlatformInformation.GetLinuxDistributionInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLinuxDistributionInfo</span></code></a></p></td>
+<td><p>Returns the Linux distribution info associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetOSMajorVersion" title="wx.PlatformInformation.GetOSMajorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOSMajorVersion</span></code></a></p></td>
+<td><p>Returns the run-time major version of the OS associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetOSMinorVersion" title="wx.PlatformInformation.GetOSMinorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOSMinorVersion</span></code></a></p></td>
+<td><p>Returns the run-time minor version of the OS associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemDescription" title="wx.PlatformInformation.GetOperatingSystemDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemDescription</span></code></a></p></td>
+<td><p>Returns the description of the operating system of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemDirectory" title="wx.PlatformInformation.GetOperatingSystemDirectory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemDirectory</span></code></a></p></td>
+<td><p>Returns the operating system directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemFamilyName" title="wx.PlatformInformation.GetOperatingSystemFamilyName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemFamilyName</span></code></a></p></td>
+<td><p>Returns the operating system family name of the OS associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemId" title="wx.PlatformInformation.GetOperatingSystemId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemId</span></code></a></p></td>
+<td><p>Returns the operating system <code class="docutils literal notranslate"><span class="pre">ID</span></code> of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemIdName" title="wx.PlatformInformation.GetOperatingSystemIdName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemIdName</span></code></a></p></td>
+<td><p>Returns the operating system name of the OS associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetPortId" title="wx.PlatformInformation.GetPortId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortId</span></code></a></p></td>
+<td><p>Returns the wxWidgets port <code class="docutils literal notranslate"><span class="pre">ID</span></code> associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetPortIdName" title="wx.PlatformInformation.GetPortIdName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortIdName</span></code></a></p></td>
+<td><p>Returns the name of the wxWidgets port <code class="docutils literal notranslate"><span class="pre">ID</span></code> associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetPortIdShortName" title="wx.PlatformInformation.GetPortIdShortName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortIdShortName</span></code></a></p></td>
+<td><p>Returns the short name of the wxWidgets port <code class="docutils literal notranslate"><span class="pre">ID</span></code> associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetToolkitMajorVersion" title="wx.PlatformInformation.GetToolkitMajorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolkitMajorVersion</span></code></a></p></td>
+<td><p>Returns the run-time major version of the toolkit associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.GetToolkitMinorVersion" title="wx.PlatformInformation.GetToolkitMinorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolkitMinorVersion</span></code></a></p></td>
+<td><p>Returns the run-time minor version of the toolkit associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.IsOk" title="wx.PlatformInformation.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsOk</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this instance is fully initialized with valid values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.IsUsingUniversalWidgets" title="wx.PlatformInformation.IsUsingUniversalWidgets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsUsingUniversalWidgets</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this <em class="xref py py-obj">PlatformInfo</em>       describes wxUniversal build.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.SetArchitecture" title="wx.PlatformInformation.SetArchitecture"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetArchitecture</span></code></a></p></td>
+<td><p>Sets the architecture enum value associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.SetDesktopEnvironment" title="wx.PlatformInformation.SetDesktopEnvironment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDesktopEnvironment</span></code></a></p></td>
+<td><p>Sets the desktop environment associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.SetEndianness" title="wx.PlatformInformation.SetEndianness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEndianness</span></code></a></p></td>
+<td><p>Sets the endianness enum value associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.SetLinuxDistributionInfo" title="wx.PlatformInformation.SetLinuxDistributionInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLinuxDistributionInfo</span></code></a></p></td>
+<td><p>Sets the linux distribution info associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.SetOSVersion" title="wx.PlatformInformation.SetOSVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOSVersion</span></code></a></p></td>
+<td><p>Sets the version of the operating system associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.SetOperatingSystemDescription" title="wx.PlatformInformation.SetOperatingSystemDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOperatingSystemDescription</span></code></a></p></td>
+<td><p>Sets the operating system description associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.SetOperatingSystemId" title="wx.PlatformInformation.SetOperatingSystemId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOperatingSystemId</span></code></a></p></td>
+<td><p>Sets the operating system associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.SetPortId" title="wx.PlatformInformation.SetPortId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPortId</span></code></a></p></td>
+<td><p>Sets the wxWidgets port <code class="docutils literal notranslate"><span class="pre">ID</span></code> associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.SetToolkitVersion" title="wx.PlatformInformation.SetToolkitVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolkitVersion</span></code></a></p></td>
+<td><p>Sets the version of the toolkit associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.__ne__" title="wx.PlatformInformation.__ne__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__ne__</span></code></a></p></td>
+<td><p>Inequality operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.__eq__" title="wx.PlatformInformation.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__</span></code></a></p></td>
+<td><p>Equality operator.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%"/>
+<col style="width: 62%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.ArchName" title="wx.PlatformInformation.ArchName"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ArchName</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetArchName" title="wx.PlatformInformation.GetArchName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArchName</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.Architecture" title="wx.PlatformInformation.Architecture"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Architecture</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetArchitecture" title="wx.PlatformInformation.GetArchitecture"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArchitecture</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetArchitecture" title="wx.PlatformInformation.SetArchitecture"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetArchitecture</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.DesktopEnvironment" title="wx.PlatformInformation.DesktopEnvironment"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DesktopEnvironment</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetDesktopEnvironment" title="wx.PlatformInformation.GetDesktopEnvironment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDesktopEnvironment</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetDesktopEnvironment" title="wx.PlatformInformation.SetDesktopEnvironment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDesktopEnvironment</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.Endianness" title="wx.PlatformInformation.Endianness"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Endianness</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetEndianness" title="wx.PlatformInformation.GetEndianness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEndianness</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetEndianness" title="wx.PlatformInformation.SetEndianness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEndianness</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.EndiannessName" title="wx.PlatformInformation.EndiannessName"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EndiannessName</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetEndiannessName" title="wx.PlatformInformation.GetEndiannessName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEndiannessName</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.LinuxDistributionInfo" title="wx.PlatformInformation.LinuxDistributionInfo"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LinuxDistributionInfo</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetLinuxDistributionInfo" title="wx.PlatformInformation.GetLinuxDistributionInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLinuxDistributionInfo</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetLinuxDistributionInfo" title="wx.PlatformInformation.SetLinuxDistributionInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLinuxDistributionInfo</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.OSMajorVersion" title="wx.PlatformInformation.OSMajorVersion"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OSMajorVersion</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOSMajorVersion" title="wx.PlatformInformation.GetOSMajorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOSMajorVersion</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.OSMinorVersion" title="wx.PlatformInformation.OSMinorVersion"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OSMinorVersion</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOSMinorVersion" title="wx.PlatformInformation.GetOSMinorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOSMinorVersion</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.OperatingSystemDescription" title="wx.PlatformInformation.OperatingSystemDescription"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OperatingSystemDescription</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemDescription" title="wx.PlatformInformation.GetOperatingSystemDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemDescription</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetOperatingSystemDescription" title="wx.PlatformInformation.SetOperatingSystemDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOperatingSystemDescription</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.OperatingSystemFamilyName" title="wx.PlatformInformation.OperatingSystemFamilyName"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OperatingSystemFamilyName</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemFamilyName" title="wx.PlatformInformation.GetOperatingSystemFamilyName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemFamilyName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.OperatingSystemId" title="wx.PlatformInformation.OperatingSystemId"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OperatingSystemId</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemId" title="wx.PlatformInformation.GetOperatingSystemId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemId</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetOperatingSystemId" title="wx.PlatformInformation.SetOperatingSystemId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOperatingSystemId</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.OperatingSystemIdName" title="wx.PlatformInformation.OperatingSystemIdName"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OperatingSystemIdName</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemIdName" title="wx.PlatformInformation.GetOperatingSystemIdName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemIdName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.PortId" title="wx.PlatformInformation.PortId"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PortId</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetPortId" title="wx.PlatformInformation.GetPortId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortId</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetPortId" title="wx.PlatformInformation.SetPortId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPortId</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.PortIdName" title="wx.PlatformInformation.PortIdName"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PortIdName</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetPortIdName" title="wx.PlatformInformation.GetPortIdName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortIdName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.PortIdShortName" title="wx.PlatformInformation.PortIdShortName"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PortIdShortName</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetPortIdShortName" title="wx.PlatformInformation.GetPortIdShortName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortIdShortName</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PlatformInformation.ToolkitMajorVersion" title="wx.PlatformInformation.ToolkitMajorVersion"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ToolkitMajorVersion</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetToolkitMajorVersion" title="wx.PlatformInformation.GetToolkitMajorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolkitMajorVersion</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PlatformInformation.ToolkitMinorVersion" title="wx.PlatformInformation.ToolkitMinorVersion"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ToolkitMinorVersion</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PlatformInformation.GetToolkitMinorVersion" title="wx.PlatformInformation.GetToolkitMinorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolkitMinorVersion</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.PlatformInformation">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">PlatformInformation</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>PlatformInfo()
+PlatformInfo(pid, tkMajor=-1, tkMinor=-1, id=OS_UNKNOWN, osMajor=-1, osMinor=-1, arch=ARCH_INVALID, endian=ENDIAN_INVALID)</p>
+<p>This class holds information about the operating system, the toolkit
+and the basic architecture of the machine where the application is
+currently running.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.PlatformInformation.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Initializes the instance with the values corresponding to the currently running platform.</p>
+<p>This is a fast operation because it only requires to copy the values internally cached for the currently running platform.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.PlatformInformation.Get" title="wx.PlatformInformation.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, pid, tkMajor=-1, tkMinor=-1, id=OS_UNKNOWN, osMajor=-1, osMinor=-1, arch=ARCH_INVALID, endian=ENDIAN_INVALID)</em></p>
+<p>Initializes the object using given values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pid</strong> (<a class="reference internal" href="wx.PortId.enumeration.html" title="PortId"><em>PortId</em></a>) – </p></li>
+<li><p><strong>tkMajor</strong> (<em>int</em>) – </p></li>
+<li><p><strong>tkMinor</strong> (<em>int</em>) – </p></li>
+<li><p><strong>id</strong> (<a class="reference internal" href="wx.OperatingSystemId.enumeration.html" title="OperatingSystemId"><em>OperatingSystemId</em></a>) – </p></li>
+<li><p><strong>osMajor</strong> (<em>int</em>) – </p></li>
+<li><p><strong>osMinor</strong> (<em>int</em>) – </p></li>
+<li><p><strong>arch</strong> (<a class="reference internal" href="wx.Architecture.enumeration.html" title="Architecture"><em>Architecture</em></a>) – </p></li>
+<li><p><strong>endian</strong> (<a class="reference internal" href="wx.Endianness.enumeration.html" title="Endianness"><em>Endianness</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.CheckOSVersion">
+<code class="sig-name descname">CheckOSVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">major</em>, <em class="sig-param">minor</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.CheckOSVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the OS version is at least  <code class="docutils literal notranslate"><span class="pre">major.minor</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>major</strong> (<em>int</em>) – </p></li>
+<li><p><strong>minor</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.PlatformInformation.GetOSMajorVersion" title="wx.PlatformInformation.GetOSMajorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOSMajorVersion</span></code></a> , <a class="reference internal" href="#wx.PlatformInformation.GetOSMinorVersion" title="wx.PlatformInformation.GetOSMinorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOSMinorVersion</span></code></a> , <a class="reference internal" href="#wx.PlatformInformation.CheckToolkitVersion" title="wx.PlatformInformation.CheckToolkitVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CheckToolkitVersion</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.CheckToolkitVersion">
+<code class="sig-name descname">CheckToolkitVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">major</em>, <em class="sig-param">minor</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.CheckToolkitVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the toolkit version is at least  <code class="docutils literal notranslate"><span class="pre">major.minor</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>major</strong> (<em>int</em>) – </p></li>
+<li><p><strong>minor</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.PlatformInformation.GetToolkitMajorVersion" title="wx.PlatformInformation.GetToolkitMajorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolkitMajorVersion</span></code></a> , <a class="reference internal" href="#wx.PlatformInformation.GetToolkitMinorVersion" title="wx.PlatformInformation.GetToolkitMinorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolkitMinorVersion</span></code></a> , <a class="reference internal" href="#wx.PlatformInformation.CheckOSVersion" title="wx.PlatformInformation.CheckOSVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CheckOSVersion</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.Get">
+<em class="property">static </em><code class="sig-name descname">Get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.Get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the global <em class="xref py py-obj">PlatformInfo</em>       object, initialized with the values for the currently running platform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PlatformInfo</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetArch">
+<em class="property">static </em><code class="sig-name descname">GetArch</code><span class="sig-paren">(</span><em class="sig-param">arch</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetArch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the given string to a Architecture enum value or to  <code class="docutils literal notranslate"><span class="pre">ARCH_INVALID</span></code>   if the given string is not a valid architecture string (i.e.</p>
+<p>does not contain nor  <code class="docutils literal notranslate"><span class="pre">32</span></code>   nor   <code class="docutils literal notranslate"><span class="pre">64</span></code>   strings).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>arch</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Architecture.enumeration.html#wx-architecture"><span class="std std-ref">  wx.Architecture</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetArchName">
+<code class="sig-name descname">GetArchName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetArchName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name for the architecture of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetArchitecture">
+<code class="sig-name descname">GetArchitecture</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetArchitecture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the architecture <code class="docutils literal notranslate"><span class="pre">ID</span></code> of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Architecture.enumeration.html#wx-architecture"><span class="std std-ref">  wx.Architecture</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetDesktopEnvironment">
+<code class="sig-name descname">GetDesktopEnvironment</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetDesktopEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the desktop environment associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<p>See <a class="reference internal" href="wx.AppTraits.html#wx.AppTraits.GetDesktopEnvironment" title="wx.AppTraits.GetDesktopEnvironment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppTraits.GetDesktopEnvironment</span></code></a>   for more info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetEndianness">
+<code class="sig-name descname">GetEndianness</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetEndianness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the endianness <code class="docutils literal notranslate"><span class="pre">ID</span></code> of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Endianness.enumeration.html#wx-endianness"><span class="std std-ref">  wx.Endianness</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetEndiannessName">
+<code class="sig-name descname">GetEndiannessName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetEndiannessName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name for the endianness of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetLinuxDistributionInfo">
+<code class="sig-name descname">GetLinuxDistributionInfo</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetLinuxDistributionInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Linux distribution info associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<p>See <em class="xref py py-obj">wx.GetLinuxDistributionInfo</em>       for more info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.LinuxDistributionInfo.html#wx-linuxdistributioninfo"><span class="std std-ref">  wx.LinuxDistributionInfo</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetOSMajorVersion">
+<code class="sig-name descname">GetOSMajorVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetOSMajorVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the run-time major version of the OS associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.functions.html#wx.GetOsVersion" title="wx.GetOsVersion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetOsVersion</span></code></a>     , <a class="reference internal" href="#wx.PlatformInformation.CheckOSVersion" title="wx.PlatformInformation.CheckOSVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CheckOSVersion</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetOSMinorVersion">
+<code class="sig-name descname">GetOSMinorVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetOSMinorVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the run-time minor version of the OS associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.functions.html#wx.GetOsVersion" title="wx.GetOsVersion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetOsVersion</span></code></a>     , <a class="reference internal" href="#wx.PlatformInformation.CheckOSVersion" title="wx.PlatformInformation.CheckOSVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CheckOSVersion</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetOperatingSystemDescription">
+<code class="sig-name descname">GetOperatingSystemDescription</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetOperatingSystemDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the description of the operating system of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<p>See <a class="reference internal" href="wx.functions.html#wx.GetOsDescription" title="wx.GetOsDescription"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetOsDescription</span></code></a>       for more info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetOperatingSystemDirectory">
+<em class="property">static </em><code class="sig-name descname">GetOperatingSystemDirectory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetOperatingSystemDirectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the operating system directory.</p>
+<p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOSDirectory</span></code>   for more info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetOperatingSystemFamilyName">
+<code class="sig-name descname">GetOperatingSystemFamilyName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetOperatingSystemFamilyName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the operating system family name of the OS associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetOperatingSystemId">
+<code class="sig-name descname">GetOperatingSystemId</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetOperatingSystemId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the operating system <code class="docutils literal notranslate"><span class="pre">ID</span></code> of this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<p>See <a class="reference internal" href="wx.functions.html#wx.GetOsVersion" title="wx.GetOsVersion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetOsVersion</span></code></a>       for more info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.OperatingSystemId.enumeration.html#wx-operatingsystemid"><span class="std std-ref">  wx.OperatingSystemId</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetOperatingSystemIdName">
+<code class="sig-name descname">GetOperatingSystemIdName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetOperatingSystemIdName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the operating system name of the OS associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetPortId">
+<code class="sig-name descname">GetPortId</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetPortId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wxWidgets port <code class="docutils literal notranslate"><span class="pre">ID</span></code> associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.PortId.enumeration.html#wx-portid"><span class="std std-ref">  wx.PortId</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetPortIdName">
+<code class="sig-name descname">GetPortIdName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetPortIdName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of the wxWidgets port <code class="docutils literal notranslate"><span class="pre">ID</span></code> associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetPortIdShortName">
+<code class="sig-name descname">GetPortIdShortName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetPortIdShortName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the short name of the wxWidgets port <code class="docutils literal notranslate"><span class="pre">ID</span></code> associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetToolkitMajorVersion">
+<code class="sig-name descname">GetToolkitMajorVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetToolkitMajorVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the run-time major version of the toolkit associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<p>Note that if <a class="reference internal" href="#wx.PlatformInformation.GetPortId" title="wx.PlatformInformation.GetPortId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortId</span></code></a>   returns  <code class="docutils literal notranslate"><span class="pre">PORT_BASE</span></code> , then this value is zero (unless externally modified with  <a class="reference internal" href="#wx.PlatformInformation.SetToolkitVersion" title="wx.PlatformInformation.SetToolkitVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolkitVersion</span></code></a> ); that is, no native toolkit is in use. See <a class="reference internal" href="wx.AppTraits.html#wx.AppTraits.GetToolkitVersion" title="wx.AppTraits.GetToolkitVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppTraits.GetToolkitVersion</span></code></a>   for more info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.PlatformInformation.CheckToolkitVersion" title="wx.PlatformInformation.CheckToolkitVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CheckToolkitVersion</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.GetToolkitMinorVersion">
+<code class="sig-name descname">GetToolkitMinorVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.GetToolkitMinorVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the run-time minor version of the toolkit associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<p>Note that if <a class="reference internal" href="#wx.PlatformInformation.GetPortId" title="wx.PlatformInformation.GetPortId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortId</span></code></a>   returns  <code class="docutils literal notranslate"><span class="pre">PORT_BASE</span></code> , then this value is zero (unless externally modified with  <a class="reference internal" href="#wx.PlatformInformation.SetToolkitVersion" title="wx.PlatformInformation.SetToolkitVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolkitVersion</span></code></a> ); that is, no native toolkit is in use. See <a class="reference internal" href="wx.AppTraits.html#wx.AppTraits.GetToolkitVersion" title="wx.AppTraits.GetToolkitVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppTraits.GetToolkitVersion</span></code></a>   for more info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.PlatformInformation.CheckToolkitVersion" title="wx.PlatformInformation.CheckToolkitVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CheckToolkitVersion</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.IsOk">
+<code class="sig-name descname">IsOk</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.IsOk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this instance is fully initialized with valid values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.IsUsingUniversalWidgets">
+<code class="sig-name descname">IsUsingUniversalWidgets</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.IsUsingUniversalWidgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this <em class="xref py py-obj">PlatformInfo</em>       describes wxUniversal build.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.SetArchitecture">
+<code class="sig-name descname">SetArchitecture</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.SetArchitecture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the architecture enum value associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference internal" href="wx.Architecture.enumeration.html" title="Architecture"><em>Architecture</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.SetDesktopEnvironment">
+<code class="sig-name descname">SetDesktopEnvironment</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">de</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.SetDesktopEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the desktop environment associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>de</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.SetEndianness">
+<code class="sig-name descname">SetEndianness</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.SetEndianness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the endianness enum value associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference internal" href="wx.Endianness.enumeration.html" title="Endianness"><em>Endianness</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.SetLinuxDistributionInfo">
+<code class="sig-name descname">SetLinuxDistributionInfo</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">di</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.SetLinuxDistributionInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the linux distribution info associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>di</strong> (<a class="reference internal" href="wx.LinuxDistributionInfo.html#wx.LinuxDistributionInfo" title="wx.LinuxDistributionInfo"><em>wx.LinuxDistributionInfo</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.SetOSVersion">
+<code class="sig-name descname">SetOSVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">major</em>, <em class="sig-param">minor</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.SetOSVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the version of the operating system associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>major</strong> (<em>int</em>) – </p></li>
+<li><p><strong>minor</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.SetOperatingSystemDescription">
+<code class="sig-name descname">SetOperatingSystemDescription</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">desc</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.SetOperatingSystemDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the operating system description associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>desc</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.SetOperatingSystemId">
+<code class="sig-name descname">SetOperatingSystemId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.SetOperatingSystemId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the operating system associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference internal" href="wx.OperatingSystemId.enumeration.html" title="OperatingSystemId"><em>OperatingSystemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.SetPortId">
+<code class="sig-name descname">SetPortId</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.SetPortId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the wxWidgets port <code class="docutils literal notranslate"><span class="pre">ID</span></code> associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference internal" href="wx.PortId.enumeration.html" title="PortId"><em>PortId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.SetToolkitVersion">
+<code class="sig-name descname">SetToolkitVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">major</em>, <em class="sig-param">minor</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.SetToolkitVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the version of the toolkit associated with this <em class="xref py py-obj">PlatformInfo</em>       instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>major</strong> (<em>int</em>) – </p></li>
+<li><p><strong>minor</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.__ne__">
+<code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inequality operator.</p>
+<p>Tests all class’ internal variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<em>PlatformInfo</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PlatformInformation.__eq__">
+<code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PlatformInformation.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equality operator.</p>
+<p>Tests all class’ internal variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<em>PlatformInfo</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.ArchName">
+<code class="sig-name descname">ArchName</code><a class="headerlink" href="#wx.PlatformInformation.ArchName" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetArchName" title="wx.PlatformInformation.GetArchName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArchName</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.Architecture">
+<code class="sig-name descname">Architecture</code><a class="headerlink" href="#wx.PlatformInformation.Architecture" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetArchitecture" title="wx.PlatformInformation.GetArchitecture"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArchitecture</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetArchitecture" title="wx.PlatformInformation.SetArchitecture"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetArchitecture</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.DesktopEnvironment">
+<code class="sig-name descname">DesktopEnvironment</code><a class="headerlink" href="#wx.PlatformInformation.DesktopEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetDesktopEnvironment" title="wx.PlatformInformation.GetDesktopEnvironment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDesktopEnvironment</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetDesktopEnvironment" title="wx.PlatformInformation.SetDesktopEnvironment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDesktopEnvironment</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.Endianness">
+<code class="sig-name descname">Endianness</code><a class="headerlink" href="#wx.PlatformInformation.Endianness" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetEndianness" title="wx.PlatformInformation.GetEndianness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEndianness</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetEndianness" title="wx.PlatformInformation.SetEndianness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEndianness</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.EndiannessName">
+<code class="sig-name descname">EndiannessName</code><a class="headerlink" href="#wx.PlatformInformation.EndiannessName" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetEndiannessName" title="wx.PlatformInformation.GetEndiannessName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEndiannessName</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.LinuxDistributionInfo">
+<code class="sig-name descname">LinuxDistributionInfo</code><a class="headerlink" href="#wx.PlatformInformation.LinuxDistributionInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetLinuxDistributionInfo" title="wx.PlatformInformation.GetLinuxDistributionInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLinuxDistributionInfo</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetLinuxDistributionInfo" title="wx.PlatformInformation.SetLinuxDistributionInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLinuxDistributionInfo</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.OSMajorVersion">
+<code class="sig-name descname">OSMajorVersion</code><a class="headerlink" href="#wx.PlatformInformation.OSMajorVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOSMajorVersion" title="wx.PlatformInformation.GetOSMajorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOSMajorVersion</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.OSMinorVersion">
+<code class="sig-name descname">OSMinorVersion</code><a class="headerlink" href="#wx.PlatformInformation.OSMinorVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOSMinorVersion" title="wx.PlatformInformation.GetOSMinorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOSMinorVersion</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.OperatingSystemDescription">
+<code class="sig-name descname">OperatingSystemDescription</code><a class="headerlink" href="#wx.PlatformInformation.OperatingSystemDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemDescription" title="wx.PlatformInformation.GetOperatingSystemDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemDescription</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetOperatingSystemDescription" title="wx.PlatformInformation.SetOperatingSystemDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOperatingSystemDescription</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.OperatingSystemFamilyName">
+<code class="sig-name descname">OperatingSystemFamilyName</code><a class="headerlink" href="#wx.PlatformInformation.OperatingSystemFamilyName" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemFamilyName" title="wx.PlatformInformation.GetOperatingSystemFamilyName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemFamilyName</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.OperatingSystemId">
+<code class="sig-name descname">OperatingSystemId</code><a class="headerlink" href="#wx.PlatformInformation.OperatingSystemId" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemId" title="wx.PlatformInformation.GetOperatingSystemId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemId</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetOperatingSystemId" title="wx.PlatformInformation.SetOperatingSystemId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOperatingSystemId</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.OperatingSystemIdName">
+<code class="sig-name descname">OperatingSystemIdName</code><a class="headerlink" href="#wx.PlatformInformation.OperatingSystemIdName" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetOperatingSystemIdName" title="wx.PlatformInformation.GetOperatingSystemIdName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOperatingSystemIdName</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.PortId">
+<code class="sig-name descname">PortId</code><a class="headerlink" href="#wx.PlatformInformation.PortId" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetPortId" title="wx.PlatformInformation.GetPortId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortId</span></code></a> and <a class="reference internal" href="#wx.PlatformInformation.SetPortId" title="wx.PlatformInformation.SetPortId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPortId</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.PortIdName">
+<code class="sig-name descname">PortIdName</code><a class="headerlink" href="#wx.PlatformInformation.PortIdName" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetPortIdName" title="wx.PlatformInformation.GetPortIdName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortIdName</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.PortIdShortName">
+<code class="sig-name descname">PortIdShortName</code><a class="headerlink" href="#wx.PlatformInformation.PortIdShortName" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetPortIdShortName" title="wx.PlatformInformation.GetPortIdShortName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPortIdShortName</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.ToolkitMajorVersion">
+<code class="sig-name descname">ToolkitMajorVersion</code><a class="headerlink" href="#wx.PlatformInformation.ToolkitMajorVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetToolkitMajorVersion" title="wx.PlatformInformation.GetToolkitMajorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolkitMajorVersion</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PlatformInformation.ToolkitMinorVersion">
+<code class="sig-name descname">ToolkitMinorVersion</code><a class="headerlink" href="#wx.PlatformInformation.ToolkitMinorVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PlatformInformation.GetToolkitMinorVersion" title="wx.PlatformInformation.GetToolkitMinorVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolkitMinorVersion</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Printing Framework Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="refcount_overview.html" rel="next" title="Reference Counting Overview"/>
+<link href="log_classes_overview.html" rel="prev" title="Log Classes Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Printing Framework Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="refcount_overview.html" title="Reference Counting Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="log_classes_overview.html" title="Log Classes Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Printing Framework Overview</strong></a><ul>
+<li><a class="reference internal" href="#printout">Printout</a></li>
+<li><a class="reference internal" href="#printer">Printer</a></li>
+<li><a class="reference internal" href="#printpreview">PrintPreview</a></li>
+<li><a class="reference internal" href="#printerdc">PrinterDC</a></li>
+<li><a class="reference internal" href="#postscriptdc">PostScriptDC</a></li>
+<li><a class="reference internal" href="#printdialog">PrintDialog</a></li>
+<li><a class="reference internal" href="#printdata">PrintData</a></li>
+<li><a class="reference internal" href="#printdialogdata">PrintDialogData</a></li>
+<li><a class="reference internal" href="#pagesetupdialog">PageSetupDialog</a></li>
+<li><a class="reference internal" href="#pagesetupdialogdata">PageSetupDialogData</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/printing_framework_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-printing-framework-overview">
+<span id="printing-framework-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Printing Framework Overview</strong><a class="headerlink" href="#phoenix-title-printing-framework-overview" title="Permalink to this headline">¶</a></h1>
+<p>The printing framework relies on the application to provide classes
+whose member functions can respond to particular requests, such as
+‘print this page’ or ‘does this page exist in the document?’. This
+method allows wxPython to take over the housekeeping duties of turning
+preview pages, calling the print dialog box, creating the printer
+device context, and so on: the application can concentrate on the
+rendering of the information onto a device context.</p>
+<p>In most cases, the only class you will need to derive from is
+<a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a>; all others will be used as-is.</p>
+<p>A brief description of each class’s role and how they work together follows.</p>
+<div class="section" id="printout">
+<h2>Printout<a class="headerlink" href="#printout" title="Permalink to this headline">¶</a></h2>
+<p>A document’s printing ability is represented in an application by a
+derived <a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a> class. This class prints a page on request,
+and can be passed to the Print function of a <a class="reference internal" href="wx.Printer.html#wx-printer"><span class="std std-ref">  wx.Printer</span></a> object to
+actually print the document, or can be passed to a <a class="reference internal" href="wx.PrintPreview.html#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>
+object to initiate previewing. The following code shows how easy it is
+to initiate printing, previewing and the print setup dialog, once the
+<a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a> functionality has been defined. Notice the use of
+<em class="xref py py-obj">MyPrintout</em> for both printing and previewing. All the preview user
+interface functionality is taken care of by wxPython:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">printing</span><span class="p">:</span>
+    <span class="n">printer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Printer</span><span class="p">()</span>
+    <span class="n">printout</span> <span class="o">=</span> <span class="n">MyPrintout</span><span class="p">(</span><span class="s2">"My printout"</span><span class="p">)</span>
+    <span class="n">printer</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">printout</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">preview</span><span class="p">:</span>
+    <span class="c1"># Pass two printout objects: for preview, and possible printing.</span>
+    <span class="n">preview</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PrintPreview</span><span class="p">(</span><span class="n">MyPrintout</span><span class="p">(),</span> <span class="n">MyPrintout</span><span class="p">())</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">PreviewFrame</span><span class="p">(</span><span class="n">preview</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="s2">"Demo Print Preview"</span><span class="p">,</span>
+                            <span class="n">wx</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">650</span><span class="p">))</span>
+    <span class="n">frame</span><span class="o">.</span><span class="n">Centre</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span>
+    <span class="n">frame</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+    <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a> assembles the printed page and (using your subclass’s
+overrides) writes requested pages to a <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a> that is passed to
+it. This <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a> could be a <a class="reference internal" href="wx.MemoryDC.html#wx-memorydc"><span class="std std-ref">  wx.MemoryDC</span></a> (for displaying the
+preview image on-screen), a <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a> (for printing under MSW
+and Mac), or a <a class="reference internal" href="wx.PostScriptDC.html#wx-postscriptdc"><span class="std std-ref">  wx.PostScriptDC</span></a> (for printing under GTK or
+generating PostScript output).</p>
+<p>If your window classes have a <em class="xref py py-obj">Draw(dc)</em> routine to do screen
+rendering, your <a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a> subclass will typically call those
+routines to create portions of the image on your printout. Your
+<a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a> subclass can also make its own calls to its <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>
+to draw headers, footers, page numbers, etc.</p>
+<p>The scaling of the drawn image typically differs from the screen to
+the preview and printed images. This class provides a set of routines
+named <em class="xref py py-obj">FitThisSizeToXXX()</em>, <em class="xref py py-obj">MapScreenSizeToXXX()</em>, and
+<em class="xref py py-obj">GetLogicalXXXRect</em>, which can be used to set the user scale and
+origin of the Printout’s DC so that your class can easily map your
+image to the printout withouth getting into the details of screen and
+printer PPI and scaling.</p>
+</div>
+<div class="section" id="printer">
+<h2>Printer<a class="headerlink" href="#printer" title="Permalink to this headline">¶</a></h2>
+<p>Class <a class="reference internal" href="wx.Printer.html#wx-printer"><span class="std std-ref">  wx.Printer</span></a> encapsulates the platform-dependent print
+function with a common interface. In most cases, you will not need to
+derive a class from <a class="reference internal" href="wx.Printer.html#wx-printer"><span class="std std-ref">  wx.Printer</span></a>; simply create a <a class="reference internal" href="wx.Printer.html#wx-printer"><span class="std std-ref">  wx.Printer</span></a>
+object in your <em class="xref py py-obj">Print</em> function as in the example above.</p>
+</div>
+<div class="section" id="printpreview">
+<h2>PrintPreview<a class="headerlink" href="#printpreview" title="Permalink to this headline">¶</a></h2>
+<p>Class <a class="reference internal" href="wx.PrintPreview.html#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a> manages the print preview process. Among
+other things, it constructs the DCs that get passed to your
+<a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a> subclass for printing and manages the display of
+multiple pages, a zoomable preview image, and so forth.  In most cases
+you will use this class as-is, but you can create your own subclass,
+for example, to change the layout or contents of the preview window.</p>
+</div>
+<div class="section" id="printerdc">
+<h2>PrinterDC<a class="headerlink" href="#printerdc" title="Permalink to this headline">¶</a></h2>
+<p>Class <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a> is the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a> that represents the actual
+printed page under MSW and Mac. During printing, an object of this
+class will be passed to your derived <a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a> object to draw
+upon. The size of the <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a> will depend on the paper
+orientation and the resolution of the printer.</p>
+<p>There are two important rectangles in printing: the page rectangle
+defines the printable area seen by the application, and under MSW and
+Mac, it is the printable area specified by the printer. (For
+PostScript printing, the page rectangle is the entire page.)  The
+inherited function <a class="reference internal" href="wx.DC.html#wx.DC.GetSize" title="wx.DC.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetSize</span></code></a> returns the page size in device
+pixels. The point (0,0) on the <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a> represents the top
+left corner of the page rectangle; that is, the page rect is given by
+<em class="xref py py-obj">Rect(0, 0, w, h)</em>, where (w,h) are the values returned by <em class="xref py py-obj">GetSize</em>.</p>
+<p>The paper rectangle, on the other hand, represents the entire paper
+area including the non-printable border. Thus, the coordinates of the
+top left corner of the paper rectangle will have small negative
+values, while the width and height will be somewhat larger than that
+of the page rectangle. The <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a> -specific function
+<a class="reference internal" href="wx.PrinterDC.html#wx.PrinterDC.GetPaperRect" title="wx.PrinterDC.GetPaperRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PrinterDC.GetPaperRect</span></code></a> returns the paper rectangle of the
+given <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a>.</p>
+</div>
+<div class="section" id="postscriptdc">
+<h2>PostScriptDC<a class="headerlink" href="#postscriptdc" title="Permalink to this headline">¶</a></h2>
+<p>Class <a class="reference internal" href="wx.PostScriptDC.html#wx-postscriptdc"><span class="std std-ref">  wx.PostScriptDC</span></a> is the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a> that represents the actual
+printed page under GTK and other PostScript printing.  During
+printing, an object of this class will be passed to your derived
+<a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a> object to draw upon. The size of the
+<a class="reference internal" href="wx.PostScriptDC.html#wx-postscriptdc"><span class="std std-ref">  wx.PostScriptDC</span></a> will depend upon the <a class="reference internal" href="wx.PrintData.html#wx-printdata"><span class="std std-ref">  wx.PrintData</span></a> used to
+construct it.</p>
+<p>Unlike a <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a>, there is no distinction between the page
+rectangle and the paper rectangle in a <a class="reference internal" href="wx.PostScriptDC.html#wx-postscriptdc"><span class="std std-ref">  wx.PostScriptDC</span></a>; both
+rectangles are taken to represent the entire sheet of paper.</p>
+</div>
+<div class="section" id="printdialog">
+<h2>PrintDialog<a class="headerlink" href="#printdialog" title="Permalink to this headline">¶</a></h2>
+<p>Class <a class="reference internal" href="wx.PrintDialog.html#wx-printdialog"><span class="std std-ref">  wx.PrintDialog</span></a> puts up the standard print dialog, which
+allows you to select the page range for printing (as well as many
+other print settings, which may vary from platform to platform). You
+provide an object of type <a class="reference internal" href="wx.PrintDialogData.html#wx-printdialogdata"><span class="std std-ref">  wx.PrintDialogData</span></a> to the
+<a class="reference internal" href="wx.PrintDialog.html#wx-printdialog"><span class="std std-ref">  wx.PrintDialog</span></a> at construction, which is used to populate the
+dialog.</p>
+</div>
+<div class="section" id="printdata">
+<span id="print-data"></span><h2>PrintData<a class="headerlink" href="#printdata" title="Permalink to this headline">¶</a></h2>
+<p>Class <a class="reference internal" href="wx.PrintData.html#wx-printdata"><span class="std std-ref">  wx.PrintData</span></a> is a subset of <a class="reference internal" href="wx.PrintDialogData.html#wx-printdialogdata"><span class="std std-ref">  wx.PrintDialogData</span></a> that is
+used (internally) to initialize a <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a> or
+<a class="reference internal" href="wx.PostScriptDC.html#wx-postscriptdc"><span class="std std-ref">  wx.PostScriptDC</span></a>. (In fact, a <a class="reference internal" href="wx.PrintData.html#wx-printdata"><span class="std std-ref">  wx.PrintData</span></a> is a data member of
+a <a class="reference internal" href="wx.PrintDialogData.html#wx-printdialogdata"><span class="std std-ref">  wx.PrintDialogData</span></a> and a <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a>).
+Essentially, <a class="reference internal" href="wx.PrintData.html#wx-printdata"><span class="std std-ref">  wx.PrintData</span></a> contains those bits of information from
+the two dialogs necessary to configure the <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a> or
+<a class="reference internal" href="wx.PostScriptDC.html#wx-postscriptdc"><span class="std std-ref">  wx.PostScriptDC</span></a> (e.g., size, orientation, etc.). You might wish to
+create a global instance of this object to provide call-to-call
+persistence to your application’s print settings.</p>
+</div>
+<div class="section" id="printdialogdata">
+<span id="print-dialog-data"></span><h2>PrintDialogData<a class="headerlink" href="#printdialogdata" title="Permalink to this headline">¶</a></h2>
+<p>Class <a class="reference internal" href="wx.PrintDialogData.html#wx-printdialogdata"><span class="std std-ref">  wx.PrintDialogData</span></a> contains the settings entered by the user
+in the print dialog. It contains such things as page range, number of
+copies, and so forth. In most cases, you won’t need to access this
+information; the framework takes care of asking your <a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a>
+derived object for the pages requested by the user.</p>
+</div>
+<div class="section" id="pagesetupdialog">
+<h2>PageSetupDialog<a class="headerlink" href="#pagesetupdialog" title="Permalink to this headline">¶</a></h2>
+<p>Class <a class="reference internal" href="wx.PageSetupDialog.html#wx-pagesetupdialog"><span class="std std-ref">  wx.PageSetupDialog</span></a> puts up the standard page setup dialog,
+which allows you to specify the orientation, paper size, and related
+settings. You provide it with a <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a> object at
+intialization, which is used to populate the dialog; when the dialog
+is dismissed, this object contains the settings chosen by the user,
+including orientation and/or page margins.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that on Macintosh, the native page setup dialog does
+not contain entries that allow you to change the page margins.</p>
+</div>
+</div>
+<div class="section" id="pagesetupdialogdata">
+<h2>PageSetupDialogData<a class="headerlink" href="#pagesetupdialogdata" title="Permalink to this headline">¶</a></h2>
+<p>Class <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a> contains settings affecting the page
+size (paper size), orientation, margins, and so forth. Note that not
+all platforms populate all fields; for example, the MSW page setup
+dialog lets you set the page margins while the Mac setup dialog does
+not.</p>
+<p>You will typically create a global instance of each of a
+<a class="reference internal" href="wx.PrintData.html#wx-printdata"><span class="std std-ref">  wx.PrintData</span></a> and <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a> at program initiation,
+which will contain the default settings provided by the system. Each
+time the user calls up either the <a class="reference internal" href="wx.PrintDialog.html#wx-printdialog"><span class="std std-ref">  wx.PrintDialog</span></a> or the
+<a class="reference internal" href="wx.PageSetupDialog.html#wx-pagesetupdialog"><span class="std std-ref">  wx.PageSetupDialog</span></a>, you pass these data structures to initialize
+the dialog values and to be updated by the dialog.  The framework then
+queries these data structures to get information like the printed page
+range (from the <a class="reference internal" href="wx.PrintDialogData.html#wx-printdialogdata"><span class="std std-ref">  wx.PrintDialogData</span></a>) or the paper size and/or page
+orientation (from the <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

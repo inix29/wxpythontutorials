@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.FileSystemWatcher — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.FileSystemWatcherEvent.html" rel="next" title="wx.FileSystemWatcherEvent"/>
+<link href="wx.FileSystemOpenFlags.enumeration.html" rel="prev" title="wx.FileSystemOpenFlags"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.FileSystemWatcher</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.FileSystemWatcherEvent.html" title="wx.FileSystemWatcherEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.FileSystemOpenFlags.enumeration.html" title="wx.FileSystemOpenFlags">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.FileSystemWatcher</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.FileSystemWatcher.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-filesystemwatcher">
+<span id="wx-filesystemwatcher"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.FileSystemWatcher</strong><a class="headerlink" href="#phoenix-title-wx-filesystemwatcher" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#wx-filesystemwatcher"><span class="std std-ref">  wx.FileSystemWatcher</span></a>  class allows receiving notifications of file system changes.</p>
+<p>For the full list of change types that are reported see FSWFlags.</p>
+<p>This class notifies the application about the file system changes by sending events of <a class="reference internal" href="wx.FileSystemWatcherEvent.html#wx-filesystemwatcherevent"><span class="std std-ref">  wx.FileSystemWatcherEvent</span></a>  class. By default these events are sent to the <a class="reference internal" href="#wx-filesystemwatcher"><span class="std std-ref">  wx.FileSystemWatcher</span></a>  object itself so you can derive from it and use the event table  <code class="docutils literal notranslate"><span class="pre">EVT_FSWATCHER</span></code>   macro to handle these events in a derived class method. Alternatively, you can use  <a class="reference internal" href="#wx.FileSystemWatcher.SetOwner" title="wx.FileSystemWatcher.SetOwner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileSystemWatcher.SetOwner</span></code></a>   to send the events to another object. Or you could use <a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.Connect" title="wx.EvtHandler.Connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.Connect</span></code></a>   with  <code class="docutils literal notranslate"><span class="pre">wxEVT_FSWATCHER</span></code>   to handle these events in any other object. See the fswatcher sample for an example of the latter approach.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Implementation limitations: this class is currently implemented for MSW, OS X and GTK ports but doesn’t detect all changes correctly everywhere: under MSW accessing the file is not detected (only modifying it is) and under OS X neither accessing nor modifying is detected (only creating and deleting files is). Moreover, OS X version doesn’t currently collapse pairs of create/delete events in a rename event, unlike the other ones.</p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>FileSystemWatcher</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of FileSystemWatcher" class="inheritance" src="_static/images/inheritance/wx.FileSystemWatcher_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="23,160,198,189" href="wx.FileSystemWatcher.html" id="node1" shape="rect" title="The wx.FileSystemWatcher  class allows receiving notifications of file system changes."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node2" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node4" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%"/>
+<col style="width: 62%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.__init__" title="wx.FileSystemWatcher.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.Add" title="wx.FileSystemWatcher.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a></p></td>
+<td><p>Adds <em class="xref py py-obj">path</em>  to currently watched files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.AddTree" title="wx.FileSystemWatcher.AddTree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTree</span></code></a></p></td>
+<td><p>This is the same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code> , but also recursively adds every file/directory in the tree rooted at <em class="xref py py-obj">path</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.GetWatchedPaths" title="wx.FileSystemWatcher.GetWatchedPaths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWatchedPaths</span></code></a></p></td>
+<td><p>Retrieves all watched paths and places them in <em class="xref py py-obj">paths</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.GetWatchedPathsCount" title="wx.FileSystemWatcher.GetWatchedPathsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWatchedPathsCount</span></code></a></p></td>
+<td><p>Returns the number of currently watched paths.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.Remove" title="wx.FileSystemWatcher.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code></a></p></td>
+<td><p>Removes <em class="xref py py-obj">path</em>  from the list of watched paths.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.RemoveAll" title="wx.FileSystemWatcher.RemoveAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveAll</span></code></a></p></td>
+<td><p>Clears the list of currently watched paths.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.RemoveTree" title="wx.FileSystemWatcher.RemoveTree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveTree</span></code></a></p></td>
+<td><p>This is the same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code> , but also removes every file/directory belonging to the tree rooted at <em class="xref py py-obj">path</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.SetOwner" title="wx.FileSystemWatcher.SetOwner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOwner</span></code></a></p></td>
+<td><p>Associates the file system watcher with the given <em class="xref py py-obj">handler</em>  object.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileSystemWatcher.WatchedPathsCount" title="wx.FileSystemWatcher.WatchedPathsCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">WatchedPathsCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileSystemWatcher.GetWatchedPathsCount" title="wx.FileSystemWatcher.GetWatchedPathsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWatchedPathsCount</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.FileSystemWatcher">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">FileSystemWatcher</code><span class="sig-paren">(</span><em class="sig-param">EvtHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FileSystemWatcher</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The FileSystemWatcher class allows receiving notifications of file
+system changes.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.FileSystemWatcher.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileSystemWatcher.Add">
+<code class="sig-name descname">Add</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em>, <em class="sig-param">events=FSW_EVENT_ALL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher.Add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds <em class="xref py py-obj">path</em>  to currently watched files.</p>
+<p>The <em class="xref py py-obj">path</em>  argument can currently only be a directory and any changes to this directory itself or its immediate children will generate the events. Use <a class="reference internal" href="#wx.FileSystemWatcher.AddTree" title="wx.FileSystemWatcher.AddTree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTree</span></code></a>   to monitor the directory recursively.</p>
+<p>Note that on platforms that use symbolic links, you should consider the possibility that <em class="xref py py-obj">path</em>  is a symlink. To watch the symlink itself and not its target you may call <code class="xref py py-meth docutils literal notranslate"><span class="pre">FileName.DontFollowLink</span></code>   on <em class="xref py py-obj">path</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>string</em>) – The name of the path to watch.</p></li>
+<li><p><strong>events</strong> (<em>int</em>) – An optional filter to receive only events of particular types. This is currently implemented only for GTK.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileSystemWatcher.AddTree">
+<code class="sig-name descname">AddTree</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em>, <em class="sig-param">events=FSW_EVENT_ALL</em>, <em class="sig-param">filter=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher.AddTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the same as <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a> , but also recursively adds every file/directory in the tree rooted at <em class="xref py py-obj">path</em>.</p>
+<p>Additionally a file mask can be specified to include only files matching that particular mask.</p>
+<p>This method is implemented efficiently on MSW, but should be used with care on other platforms for directories with lots of children (e.g. the root directory) as it calls <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   for each subdirectory, potentially creating a lot of watches and taking a long time to execute.</p>
+<p>Note that on platforms that use symbolic links, you will probably want to have called <code class="xref py py-meth docutils literal notranslate"><span class="pre">FileName.DontFollowLink</span></code>   on <em class="xref py py-obj">path</em>. This is especially important if the symlink targets may themselves be watched.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>string</em>) – </p></li>
+<li><p><strong>events</strong> (<em>int</em>) – </p></li>
+<li><p><strong>filter</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileSystemWatcher.GetWatchedPaths">
+<code class="sig-name descname">GetWatchedPaths</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">paths</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher.GetWatchedPaths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves all watched paths and places them in <em class="xref py py-obj">paths</em>.</p>
+<p>Returns the number of watched paths, which is also the number of entries added to <em class="xref py py-obj">paths</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>paths</strong> (<em>list of strings</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileSystemWatcher.GetWatchedPathsCount">
+<code class="sig-name descname">GetWatchedPathsCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher.GetWatchedPathsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of currently watched paths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.FileSystemWatcher.GetWatchedPaths" title="wx.FileSystemWatcher.GetWatchedPaths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWatchedPaths</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileSystemWatcher.Remove">
+<code class="sig-name descname">Remove</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes <em class="xref py py-obj">path</em>  from the list of watched paths.</p>
+<p>See the comment in <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   about symbolic links. <em class="xref py py-obj">path</em>  should treat symbolic links in the same way as in the original <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileSystemWatcher.RemoveAll">
+<code class="sig-name descname">RemoveAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher.RemoveAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the list of currently watched paths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileSystemWatcher.RemoveTree">
+<code class="sig-name descname">RemoveTree</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher.RemoveTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the same as <a class="reference internal" href="#wx.FileSystemWatcher.Remove" title="wx.FileSystemWatcher.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code></a> , but also removes every file/directory belonging to the tree rooted at <em class="xref py py-obj">path</em>.</p>
+<p>See the comment in <a class="reference internal" href="#wx.FileSystemWatcher.AddTree" title="wx.FileSystemWatcher.AddTree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTree</span></code></a>   about symbolic links. <em class="xref py py-obj">path</em>  should treat symbolic links in the same way as in the original <a class="reference internal" href="#wx.FileSystemWatcher.AddTree" title="wx.FileSystemWatcher.AddTree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTree</span></code></a>   call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileSystemWatcher.SetOwner">
+<code class="sig-name descname">SetOwner</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileSystemWatcher.SetOwner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates the file system watcher with the given <em class="xref py py-obj">handler</em>  object.</p>
+<p>All the events generated by this object will be passed to the specified owner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>handler</strong> (<a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler" title="wx.EvtHandler"><em>wx.EvtHandler</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.FileSystemWatcher.WatchedPathsCount">
+<code class="sig-name descname">WatchedPathsCount</code><a class="headerlink" href="#wx.FileSystemWatcher.WatchedPathsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileSystemWatcher.GetWatchedPathsCount" title="wx.FileSystemWatcher.GetWatchedPathsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWatchedPathsCount</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

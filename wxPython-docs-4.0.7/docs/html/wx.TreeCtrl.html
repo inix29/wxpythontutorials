@@ -1,0 +1,1881 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.TreeCtrl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.TreeEvent.html" rel="next" title="wx.TreeEvent"/>
+<link href="wx.TranslationsLoader.html" rel="prev" title="wx.TranslationsLoader"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.TreeCtrl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.TreeEvent.html" title="wx.TreeEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.TranslationsLoader.html" title="wx.TranslationsLoader">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.TreeCtrl</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.TreeCtrl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-treectrl">
+<span id="wx-treectrl"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.TreeCtrl</strong><a class="headerlink" href="#phoenix-title-wx-treectrl" title="Permalink to this headline">¶</a></h1>
+<p>A tree control presents information as a hierarchy, with items that may be expanded to show further items.</p>
+<p>Items in a tree control are referenced by <a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a>  handles, which may be tested for validity by calling <a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId.IsOk" title="wx.TreeItemId.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TreeItemId.IsOk</span></code></a> .</p>
+<p>A similar control with a fully native implementation for GTK+ and OS X as well is <a class="reference internal" href="wx.dataview.DataViewTreeCtrl.html#wx-dataview-dataviewtreectrl"><span class="std std-ref">  wx.dataview.DataViewTreeCtrl</span></a>.</p>
+<p>To intercept events from a tree control, use the event table macros described in <a class="reference internal" href="wx.TreeEvent.html#wx-treeevent"><span class="std std-ref">  wx.TreeEvent</span></a>.</p>
+<div class="section" id="styles-window-styles">
+<span id="treectrl-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_EDIT_LABELS</span></code>: Use this style if you wish the user to be able to edit labels in the tree control.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_NO_BUTTONS</span></code>: For convenience to document that no buttons are to be drawn.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_HAS_BUTTONS</span></code>: Use this style to show + and - buttons to the left of parent items.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_TWIST_BUTTONS</span></code>: Selects alternative style of  +/ <code class="docutils literal notranslate"><span class="pre">-</span></code>   buttons  and shows rotating (“twisting”) arrows instead. Currently this style is only implemented under Microsoft Windows Vista and later Windows versions and is ignored under the other platforms. Notice that under Vista this style results in the same appearance as used by the tree control in Explorer and other built-in programs and so using it may be preferable to the default style.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_NO_LINES</span></code>: Use this style to hide vertical level connectors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_FULL_ROW_HIGHLIGHT</span></code>: Use this style to have the background colour and the selection highlight extend over the entire horizontal row of the tree control window. (This flag is ignored under Windows unless you specify  <code class="docutils literal notranslate"><span class="pre">TR_NO_LINES</span></code>   as well.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_LINES_AT_ROOT</span></code>: Use this style to show lines between root nodes. Only applicable if  <code class="docutils literal notranslate"><span class="pre">TR_HIDE_ROOT</span></code>   is set and   <code class="docutils literal notranslate"><span class="pre">TR_NO_LINES</span></code>   is not set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_HIDE_ROOT</span></code>: Use this style to suppress the display of the root node, effectively causing the first-level nodes to appear as a series of root nodes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_ROW_LINES</span></code>: Use this style to draw a contrasting border between displayed rows.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_HAS_VARIABLE_ROW_HEIGHT</span></code>: Use this style to cause row heights to be just big enough to fit the content. If not set, all rows use the largest row height. The default is that this flag is unset. Generic only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_SINGLE</span></code>: For convenience to document that only one item may be selected at a time. Selecting another item causes the current selection, if any, to be deselected. This is the default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_MULTIPLE</span></code>: Use this style to allow a range of items to be selected. If a second range is selected, the current range, if any, is deselected.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TR_DEFAULT_STYLE</span></code>: The set of flags that are closest to the defaults for the native control for a particular toolkit.</p></li>
+</ul>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="treectrl-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="wx.TreeEvent.html#wx-treeevent"><span class="std std-ref">  wx.TreeEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_TREE_BEGIN_DRAG: Begin dragging with the left mouse button. If you want to enable left-dragging you need to intercept this event and explicitly call <a class="reference internal" href="wx.NotifyEvent.html#wx.NotifyEvent.Allow" title="wx.NotifyEvent.Allow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TreeEvent.Allow</span></code></a> , as it’s vetoed by default. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_BEGIN_DRAG</span></code>   event type.</p></li>
+<li><p>EVT_TREE_BEGIN_RDRAG: Begin dragging with the right mouse button. If you want to enable right-dragging you need to intercept this event and explicitly call <a class="reference internal" href="wx.NotifyEvent.html#wx.NotifyEvent.Allow" title="wx.NotifyEvent.Allow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TreeEvent.Allow</span></code></a> , as it’s vetoed by default. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_BEGIN_RDRAG</span></code>   event type.</p></li>
+<li><p>EVT_TREE_END_DRAG: End dragging with the left or right mouse button. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_END_DRAG</span></code>   event type.</p></li>
+<li><p>EVT_TREE_BEGIN_LABEL_EDIT: Begin editing a label. This can be prevented by calling Veto(). Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_BEGIN_LABEL_EDIT</span></code>   event type.</p></li>
+<li><p>EVT_TREE_END_LABEL_EDIT: Finish editing a label. This can be prevented by calling Veto(). Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_END_LABEL_EDIT</span></code>   event type.</p></li>
+<li><p>EVT_TREE_DELETE_ITEM: An item was deleted. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_DELETE_ITEM</span></code>   event type.</p></li>
+<li><p>EVT_TREE_GET_INFO: Request information from the application. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_GET_INFO</span></code>   event type.</p></li>
+<li><p>EVT_TREE_SET_INFO: Information is being supplied. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_SET_INFO</span></code>   event type.</p></li>
+<li><p>EVT_TREE_ITEM_ACTIVATED: The item has been activated, i.e. chosen by double clicking it with mouse or from keyboard. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_ITEM_ACTIVATED</span></code>   event type.</p></li>
+<li><p>EVT_TREE_ITEM_COLLAPSED: The item has been collapsed. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_ITEM_COLLAPSED</span></code>   event type.</p></li>
+<li><p>EVT_TREE_ITEM_COLLAPSING: The item is being collapsed. This can be prevented by calling Veto(). Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_ITEM_COLLAPSING</span></code>   event type.</p></li>
+<li><p>EVT_TREE_ITEM_EXPANDED: The item has been expanded. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_ITEM_EXPANDED</span></code>   event type.</p></li>
+<li><p>EVT_TREE_ITEM_EXPANDING: The item is being expanded. This can be prevented by calling Veto(). Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_ITEM_EXPANDING</span></code>   event type.</p></li>
+<li><p>EVT_TREE_ITEM_RIGHT_CLICK: The user has clicked the item with the right mouse button. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_ITEM_RIGHT_CLICK</span></code>   event type.</p></li>
+<li><p>EVT_TREE_ITEM_MIDDLE_CLICK: The user has clicked the item with the middle mouse button. This is only supported by the generic control. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_ITEM_MIDDLE_CLICK</span></code>   event type.</p></li>
+<li><p>EVT_TREE_SEL_CHANGED: Selection has changed. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_SEL_CHANGED</span></code>   event type.</p></li>
+<li><p>EVT_TREE_SEL_CHANGING: Selection is changing. This can be prevented by calling Veto(). Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_SEL_CHANGING</span></code>   event type.</p></li>
+<li><p>EVT_TREE_KEY_DOWN: A key has been pressed. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_KEY_DOWN</span></code>   event type.</p></li>
+<li><p>EVT_TREE_ITEM_GETTOOLTIP: The opportunity to set the item tooltip is being given to the application (call <a class="reference internal" href="wx.TreeEvent.html#wx.TreeEvent.SetToolTip" title="wx.TreeEvent.SetToolTip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TreeEvent.SetToolTip</span></code></a> ). Windows only. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_ITEM_GETTOOLTIP</span></code>   event type.</p></li>
+<li><p>EVT_TREE_ITEM_MENU: The context menu for the selected item has been requested, either by a right click or by using the menu key. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_ITEM_MENU</span></code>   event type.</p></li>
+<li><p>EVT_TREE_STATE_IMAGE_CLICK: The state image has been clicked. Processes a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_STATE_IMAGE_CLICK</span></code>   event type.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="window_styles_overview.html#window-styles"><span class="std std-ref">Window Styles</span></a>.</p>
+</div>
+<p><strong>Win32</strong> <strong>notes:</strong></p>
+<p><a class="reference internal" href="#wx-treectrl"><span class="std std-ref">  wx.TreeCtrl</span></a>  class uses the standard common treeview control under Win32 implemented in the system library comctl32.dll. Some versions of this library are known to have bugs with handling the tree control colours: the usual symptom is that the expanded items leave black (or otherwise incorrectly coloured) background behind them, especially for the controls using non-default background colour. The recommended solution is to upgrade the comctl32.dll to a newer version: see <a class="reference external" href="http://www.microsoft.com/downloads/details.aspx?familyid=cb2cf3a2-8025-4e8f-8511-9b476a8d35d2">http://www.microsoft.com/downloads/details.aspx?familyid=cb2cf3a2-8025-4e8f-8511-9b476a8d35d2</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.dataview.DataViewTreeCtrl.html#wx-dataview-dataviewtreectrl"><span class="std std-ref">  wx.dataview.DataViewTreeCtrl</span></a>, <a class="reference internal" href="wx.TreeEvent.html#wx-treeevent"><span class="std std-ref">  wx.TreeEvent</span></a>, <em class="xref py py-obj">TreeItemData</em>     , <a class="reference internal" href="treectrl_overview.html#treectrl-overview"><span class="std std-ref">TreeCtrl Overview</span></a>, <a class="reference internal" href="wx.ListBox.html#wx-listbox"><span class="std std-ref">  wx.ListBox</span></a>, <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>, <a class="reference internal" href="wx.ImageList.html#wx-imagelist"><span class="std std-ref">  wx.ImageList</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>TreeCtrl</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of TreeCtrl" class="inheritance" src="_static/images/inheritance/wx.TreeCtrl_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="61,315,160,344" href="wx.TreeCtrl.html" id="node1" shape="rect" title="A tree control presents information as a hierarchy, with items that may be expanded to show further items."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/wx.treectrl.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/wx.treectrl1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.treectrl2.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.__init__" title="wx.TreeCtrl.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.AddRoot" title="wx.TreeCtrl.AddRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddRoot</span></code></a></p></td>
+<td><p>Adds the root node to the tree, returning the new item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.AppendItem" title="wx.TreeCtrl.AppendItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendItem</span></code></a></p></td>
+<td><p>Appends an item to the end of the branch identified by <em class="xref py py-obj">parent</em>, return a new item id.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.AssignImageList" title="wx.TreeCtrl.AssignImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AssignImageList</span></code></a></p></td>
+<td><p>Sets the normal image list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.AssignStateImageList" title="wx.TreeCtrl.AssignStateImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AssignStateImageList</span></code></a></p></td>
+<td><p>Sets the state image list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.ClearFocusedItem" title="wx.TreeCtrl.ClearFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearFocusedItem</span></code></a></p></td>
+<td><p>Clears the currently focused item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.Collapse" title="wx.TreeCtrl.Collapse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Collapse</span></code></a></p></td>
+<td><p>Collapses the given item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.CollapseAll" title="wx.TreeCtrl.CollapseAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CollapseAll</span></code></a></p></td>
+<td><p>Collapses the root item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.CollapseAllChildren" title="wx.TreeCtrl.CollapseAllChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CollapseAllChildren</span></code></a></p></td>
+<td><p>Collapses this item and all of its children, recursively.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.CollapseAndReset" title="wx.TreeCtrl.CollapseAndReset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CollapseAndReset</span></code></a></p></td>
+<td><p>Collapses the given item and removes all children.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.Create" title="wx.TreeCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates the tree control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.Delete" title="wx.TreeCtrl.Delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Delete</span></code></a></p></td>
+<td><p>Deletes the specified item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.DeleteAllItems" title="wx.TreeCtrl.DeleteAllItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAllItems</span></code></a></p></td>
+<td><p>Deletes all items in the control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.DeleteChildren" title="wx.TreeCtrl.DeleteChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteChildren</span></code></a></p></td>
+<td><p>Deletes all children of the given item (but not the item itself).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.EditLabel" title="wx.TreeCtrl.EditLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EditLabel</span></code></a></p></td>
+<td><p>Starts editing the label of the given <em class="xref py py-obj">item</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.EnableBellOnNoMatch" title="wx.TreeCtrl.EnableBellOnNoMatch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableBellOnNoMatch</span></code></a></p></td>
+<td><p>Enable or disable a beep if there is no match for the currently entered text when searching for the item from keyboard.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.EndEditLabel" title="wx.TreeCtrl.EndEditLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndEditLabel</span></code></a></p></td>
+<td><p>Ends label editing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.EnsureVisible" title="wx.TreeCtrl.EnsureVisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnsureVisible</span></code></a></p></td>
+<td><p>Scrolls and/or expands items to ensure that the given item is visible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.Expand" title="wx.TreeCtrl.Expand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Expand</span></code></a></p></td>
+<td><p>Expands the given item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.ExpandAll" title="wx.TreeCtrl.ExpandAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ExpandAll</span></code></a></p></td>
+<td><p>Expands all items in the tree.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.ExpandAllChildren" title="wx.TreeCtrl.ExpandAllChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ExpandAllChildren</span></code></a></p></td>
+<td><p>Expands the given item and all its children recursively.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetBoundingRect" title="wx.TreeCtrl.GetBoundingRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBoundingRect</span></code></a></p></td>
+<td><p>Returns the rectangle bounding the item. If textOnly is <code class="docutils literal notranslate"><span class="pre">True</span></code>,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetChildrenCount" title="wx.TreeCtrl.GetChildrenCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildrenCount</span></code></a></p></td>
+<td><p>Returns the number of items in the branch.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetClassDefaultAttributes" title="wx.TreeCtrl.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetCount" title="wx.TreeCtrl.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCount</span></code></a></p></td>
+<td><p>Returns the number of items in the control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetEditControl" title="wx.TreeCtrl.GetEditControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditControl</span></code></a></p></td>
+<td><p>Returns the edit control being currently used to edit a label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetFirstChild" title="wx.TreeCtrl.GetFirstChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstChild</span></code></a></p></td>
+<td><p>Returns the first child; call <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextChild</span></code>   for the next child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetFirstVisibleItem" title="wx.TreeCtrl.GetFirstVisibleItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstVisibleItem</span></code></a></p></td>
+<td><p>Returns the first visible item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetFocusedItem" title="wx.TreeCtrl.GetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFocusedItem</span></code></a></p></td>
+<td><p>Returns the item last clicked or otherwise selected.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetImageList" title="wx.TreeCtrl.GetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageList</span></code></a></p></td>
+<td><p>Returns the normal image list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetIndent" title="wx.TreeCtrl.GetIndent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIndent</span></code></a></p></td>
+<td><p>Returns the current tree control indentation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetItemBackgroundColour" title="wx.TreeCtrl.GetItemBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemBackgroundColour</span></code></a></p></td>
+<td><p>Returns the background colour of the item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetItemData" title="wx.TreeCtrl.GetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemData</span></code></a></p></td>
+<td><p>Returns the tree item data associated with the item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetItemFont" title="wx.TreeCtrl.GetItemFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemFont</span></code></a></p></td>
+<td><p>Returns the font of the item label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetItemImage" title="wx.TreeCtrl.GetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemImage</span></code></a></p></td>
+<td><p>Gets the specified item image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetItemParent" title="wx.TreeCtrl.GetItemParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemParent</span></code></a></p></td>
+<td><p>Returns the item’s parent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetItemState" title="wx.TreeCtrl.GetItemState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemState</span></code></a></p></td>
+<td><p>Gets the specified item state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetItemText" title="wx.TreeCtrl.GetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemText</span></code></a></p></td>
+<td><p>Returns the item label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetItemTextColour" title="wx.TreeCtrl.GetItemTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemTextColour</span></code></a></p></td>
+<td><p>Returns the colour of the item label.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetLastChild" title="wx.TreeCtrl.GetLastChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLastChild</span></code></a></p></td>
+<td><p>Returns the last child of the item (or an invalid tree item if this item has no children).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetNextChild" title="wx.TreeCtrl.GetNextChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextChild</span></code></a></p></td>
+<td><p>Returns the next child; call <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstChild</span></code>   for the first child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetNextSibling" title="wx.TreeCtrl.GetNextSibling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSibling</span></code></a></p></td>
+<td><p>Returns the next sibling of the specified item; call <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrevSibling</span></code>   for the previous sibling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetNextVisible" title="wx.TreeCtrl.GetNextVisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextVisible</span></code></a></p></td>
+<td><p>Returns the next visible item or an invalid item if this item is the last visible one.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetPrevSibling" title="wx.TreeCtrl.GetPrevSibling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrevSibling</span></code></a></p></td>
+<td><p>Returns the previous sibling of the specified item; call <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSibling</span></code>   for the next sibling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetPrevVisible" title="wx.TreeCtrl.GetPrevVisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrevVisible</span></code></a></p></td>
+<td><p>Returns the previous visible item or an invalid item if this item is the first visible one.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetQuickBestSize" title="wx.TreeCtrl.GetQuickBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetQuickBestSize</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the control will use a quick calculation for the best size, looking only at the first and last items.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetRootItem" title="wx.TreeCtrl.GetRootItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRootItem</span></code></a></p></td>
+<td><p>Returns the root item for the tree control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetSelection" title="wx.TreeCtrl.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a></p></td>
+<td><p>Returns the selection, or an invalid item if there is no selection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetSelections" title="wx.TreeCtrl.GetSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelections</span></code></a></p></td>
+<td><p>Returns a list of currently selected items in the tree.  This function can be called only if the control has the wx.``wx.TR_MULTIPLE`` style.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.GetStateImageList" title="wx.TreeCtrl.GetStateImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStateImageList</span></code></a></p></td>
+<td><p>Returns the state image list (from which application-defined state images are taken).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.HitTest" title="wx.TreeCtrl.HitTest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HitTest</span></code></a></p></td>
+<td><p>Calculates which (if any) item is under the given <em class="xref py py-obj">point</em>, returning the tree item id at this point plus extra information <em class="xref py py-obj">flags</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.InsertItem" title="wx.TreeCtrl.InsertItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertItem</span></code></a></p></td>
+<td><p>Inserts an item after a given one (<em class="xref py py-obj">previous</em>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.IsBold" title="wx.TreeCtrl.IsBold"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsBold</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given item is in bold state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.IsEmpty" title="wx.TreeCtrl.IsEmpty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmpty</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the control is empty (i.e. has no items, even no root one).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.IsExpanded" title="wx.TreeCtrl.IsExpanded"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsExpanded</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item is expanded (only makes sense if it has children).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.IsSelected" title="wx.TreeCtrl.IsSelected"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSelected</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item is selected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.IsVisible" title="wx.TreeCtrl.IsVisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsVisible</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item is visible on the screen.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.ItemHasChildren" title="wx.TreeCtrl.ItemHasChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ItemHasChildren</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item has children.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.OnCompareItems" title="wx.TreeCtrl.OnCompareItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCompareItems</span></code></a></p></td>
+<td><p>Override this function in the derived class to change the sort order of the items in the tree control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.PrependItem" title="wx.TreeCtrl.PrependItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PrependItem</span></code></a></p></td>
+<td><p>Appends an item as the first child of <em class="xref py py-obj">parent</em>, return a new item id.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.ScrollTo" title="wx.TreeCtrl.ScrollTo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ScrollTo</span></code></a></p></td>
+<td><p>Scrolls the specified item into view.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SelectChildren" title="wx.TreeCtrl.SelectChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectChildren</span></code></a></p></td>
+<td><p>Select all the immediate children of the given parent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.SelectItem" title="wx.TreeCtrl.SelectItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectItem</span></code></a></p></td>
+<td><p>Selects the given item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetFocusedItem" title="wx.TreeCtrl.SetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFocusedItem</span></code></a></p></td>
+<td><p>Sets the currently focused item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetImageList" title="wx.TreeCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a></p></td>
+<td><p>Sets the normal image list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetIndent" title="wx.TreeCtrl.SetIndent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetIndent</span></code></a></p></td>
+<td><p>Sets the indentation for the tree control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemBackgroundColour" title="wx.TreeCtrl.SetItemBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemBackgroundColour</span></code></a></p></td>
+<td><p>Sets the colour of the item’s background.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemBold" title="wx.TreeCtrl.SetItemBold"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemBold</span></code></a></p></td>
+<td><p>Makes item appear in bold font if <em class="xref py py-obj">bold</em>  parameter is <code class="docutils literal notranslate"><span class="pre">True</span></code> or resets it to the normal state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemData" title="wx.TreeCtrl.SetItemData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemData</span></code></a></p></td>
+<td><p>Sets the item client data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemDropHighlight" title="wx.TreeCtrl.SetItemDropHighlight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemDropHighlight</span></code></a></p></td>
+<td><p>Gives the item the visual feedback for Drag’n’Drop actions, which is useful if something is dragged from the outside onto the tree control (as opposed to a DnD operation within the tree control, which already is implemented internally).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemFont" title="wx.TreeCtrl.SetItemFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemFont</span></code></a></p></td>
+<td><p>Sets the item’s font.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemHasChildren" title="wx.TreeCtrl.SetItemHasChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemHasChildren</span></code></a></p></td>
+<td><p>Force appearance of the button next to the item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemImage" title="wx.TreeCtrl.SetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemImage</span></code></a></p></td>
+<td><p>Sets the specified item’s image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemState" title="wx.TreeCtrl.SetItemState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemState</span></code></a></p></td>
+<td><p>Sets the specified item state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemText" title="wx.TreeCtrl.SetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemText</span></code></a></p></td>
+<td><p>Sets the item label.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetItemTextColour" title="wx.TreeCtrl.SetItemTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemTextColour</span></code></a></p></td>
+<td><p>Sets the colour of the item’s text.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetQuickBestSize" title="wx.TreeCtrl.SetQuickBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetQuickBestSize</span></code></a></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> is passed, specifies that the control will use a quick calculation for the best size, looking only at the first and last items.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetStateImageList" title="wx.TreeCtrl.SetStateImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStateImageList</span></code></a></p></td>
+<td><p>Sets the state image list (from which application-defined state images are taken).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.SetWindowStyle" title="wx.TreeCtrl.SetWindowStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWindowStyle</span></code></a></p></td>
+<td><p>Sets the mode flags associated with the display of the tree control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.SortChildren" title="wx.TreeCtrl.SortChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SortChildren</span></code></a></p></td>
+<td><p>Sorts the children of the given item using <code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCompareItems</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.Toggle" title="wx.TreeCtrl.Toggle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Toggle</span></code></a></p></td>
+<td><p>Toggles the given item between collapsed and expanded states.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.ToggleItemSelection" title="wx.TreeCtrl.ToggleItemSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ToggleItemSelection</span></code></a></p></td>
+<td><p>Toggles the given item between selected and unselected states.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.Unselect" title="wx.TreeCtrl.Unselect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Unselect</span></code></a></p></td>
+<td><p>Removes the selection from the currently selected item (if any).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.UnselectAll" title="wx.TreeCtrl.UnselectAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UnselectAll</span></code></a></p></td>
+<td><p>This function either behaves the same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">Unselect</span></code>   if the control doesn’t have  <code class="docutils literal notranslate"><span class="pre">TR_MULTIPLE</span></code>   style, or removes the selection from all items if it does have this style.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.UnselectItem" title="wx.TreeCtrl.UnselectItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UnselectItem</span></code></a></p></td>
+<td><p>Unselects the given item.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 48%"/>
+<col style="width: 52%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.BoundingRect" title="wx.TreeCtrl.BoundingRect"><code class="xref py py-attr docutils literal notranslate"><span class="pre">BoundingRect</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetBoundingRect" title="wx.TreeCtrl.GetBoundingRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBoundingRect</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.Count" title="wx.TreeCtrl.Count"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Count</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetCount" title="wx.TreeCtrl.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCount</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.EditControl" title="wx.TreeCtrl.EditControl"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EditControl</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetEditControl" title="wx.TreeCtrl.GetEditControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditControl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.FirstVisibleItem" title="wx.TreeCtrl.FirstVisibleItem"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FirstVisibleItem</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetFirstVisibleItem" title="wx.TreeCtrl.GetFirstVisibleItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstVisibleItem</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.FocusedItem" title="wx.TreeCtrl.FocusedItem"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FocusedItem</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetFocusedItem" title="wx.TreeCtrl.GetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFocusedItem</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetFocusedItem" title="wx.TreeCtrl.SetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFocusedItem</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.ImageList" title="wx.TreeCtrl.ImageList"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ImageList</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetImageList" title="wx.TreeCtrl.GetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageList</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetImageList" title="wx.TreeCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.Indent" title="wx.TreeCtrl.Indent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Indent</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetIndent" title="wx.TreeCtrl.GetIndent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIndent</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetIndent" title="wx.TreeCtrl.SetIndent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetIndent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.QuickBestSize" title="wx.TreeCtrl.QuickBestSize"><code class="xref py py-attr docutils literal notranslate"><span class="pre">QuickBestSize</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetQuickBestSize" title="wx.TreeCtrl.GetQuickBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetQuickBestSize</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetQuickBestSize" title="wx.TreeCtrl.SetQuickBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetQuickBestSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.RootItem" title="wx.TreeCtrl.RootItem"><code class="xref py py-attr docutils literal notranslate"><span class="pre">RootItem</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetRootItem" title="wx.TreeCtrl.GetRootItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRootItem</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.Selection" title="wx.TreeCtrl.Selection"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Selection</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetSelection" title="wx.TreeCtrl.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TreeCtrl.Selections" title="wx.TreeCtrl.Selections"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Selections</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetSelections" title="wx.TreeCtrl.GetSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelections</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TreeCtrl.StateImageList" title="wx.TreeCtrl.StateImageList"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StateImageList</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TreeCtrl.GetStateImageList" title="wx.TreeCtrl.GetStateImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStateImageList</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetStateImageList" title="wx.TreeCtrl.SetStateImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStateImageList</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.TreeCtrl">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">TreeCtrl</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TreeCtrl</span><span class="p">()</span>
+
+<span class="n">TreeCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+         <span class="n">style</span><span class="o">=</span><span class="n">TR_DEFAULT_STYLE</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">DefaultValidator</span><span class="p">,</span>
+         <span class="n">name</span><span class="o">=</span><span class="n">TreeCtrlNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A tree control presents information as a hierarchy, with items that
+may be expanded to show further items.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.TreeCtrl.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default Constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=TR_DEFAULT_STYLE, validator=DefaultValidator, name=TreeCtrlNameStr)</em></p>
+<p>Constructor, creating and showing a tree control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Parent window. Must not be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – Window identifier. The value  <code class="docutils literal notranslate"><span class="pre">ID_ANY</span></code>   indicates a default value.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Window position. If <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultPosition</span></code>       is specified then a default position is chosen.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Window size. If <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultSize</span></code>       is specified then the window is sized appropriately.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – Window style. See <a class="reference internal" href="#wx-treectrl"><span class="std std-ref">  wx.TreeCtrl</span></a>.</p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – Window validator.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – Window name.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.Create" title="wx.TreeCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a> , <a class="reference internal" href="wx.Validator.html#wx-validator"><span class="std std-ref">  wx.Validator</span></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.AddRoot">
+<code class="sig-name descname">AddRoot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">text</em>, <em class="sig-param">image=-1</em>, <em class="sig-param">selImage=-1</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.AddRoot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the root node to the tree, returning the new item.</p>
+<p>The <em class="xref py py-obj">image</em>  and <em class="xref py py-obj">selImage</em>  parameters are an index within the normal image list specifying the image to use for unselected and selected items, respectively. If <em class="xref py py-obj">image</em>  -1 and <em class="xref py py-obj">selImage</em>  is -1, the same image is used for both selected and unselected items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>image</strong> (<em>int</em>) – </p></li>
+<li><p><strong>selImage</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>TreeItemData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.AppendItem">
+<code class="sig-name descname">AppendItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">text</em>, <em class="sig-param">image=-1</em>, <em class="sig-param">selImage=-1</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.AppendItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends an item to the end of the branch identified by <em class="xref py py-obj">parent</em>, return a new item id.</p>
+<p>The <em class="xref py py-obj">image</em>  and <em class="xref py py-obj">selImage</em>  parameters are an index within the normal image list specifying the image to use for unselected and selected items, respectively. If <em class="xref py py-obj">image</em>  &gt; -1 and <em class="xref py py-obj">selImage</em>  is -1, the same image is used for both selected and unselected items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>image</strong> (<em>int</em>) – </p></li>
+<li><p><strong>selImage</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>TreeItemData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.AssignImageList">
+<code class="sig-name descname">AssignImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imageList</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.AssignImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the normal image list.</p>
+<p>The image list assigned with this method will be automatically deleted by <a class="reference internal" href="#wx-treectrl"><span class="std std-ref">  wx.TreeCtrl</span></a>  as appropriate (i.e. it takes ownership of the list).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>imageList</strong> (<a class="reference internal" href="wx.ImageList.html#wx.ImageList" title="wx.ImageList"><em>wx.ImageList</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.SetImageList" title="wx.TreeCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.AssignStateImageList">
+<code class="sig-name descname">AssignStateImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imageList</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.AssignStateImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the state image list.</p>
+<p>Image list assigned with this method will be automatically deleted by <a class="reference internal" href="#wx-treectrl"><span class="std std-ref">  wx.TreeCtrl</span></a>  as appropriate (i.e. it takes ownership of the list).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>imageList</strong> (<a class="reference internal" href="wx.ImageList.html#wx.ImageList" title="wx.ImageList"><em>wx.ImageList</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.SetStateImageList" title="wx.TreeCtrl.SetStateImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStateImageList</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.ClearFocusedItem">
+<code class="sig-name descname">ClearFocusedItem</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.ClearFocusedItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the currently focused item.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.Collapse">
+<code class="sig-name descname">Collapse</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.Collapse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collapses the given item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.CollapseAll">
+<code class="sig-name descname">CollapseAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.CollapseAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collapses the root item.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.ExpandAll" title="wx.TreeCtrl.ExpandAll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ExpandAll</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.CollapseAllChildren">
+<code class="sig-name descname">CollapseAllChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.CollapseAllChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collapses this item and all of its children, recursively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.ExpandAllChildren" title="wx.TreeCtrl.ExpandAllChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ExpandAllChildren</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.CollapseAndReset">
+<code class="sig-name descname">CollapseAndReset</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.CollapseAndReset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collapses the given item and removes all children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=TR_DEFAULT_STYLE</em>, <em class="sig-param">validator=DefaultValidator</em>, <em class="sig-param">name=TreeCtrlNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the tree control.</p>
+<p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeCtrl.__init__</span></code>   for further details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.Delete">
+<code class="sig-name descname">Delete</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.Delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the specified item.</p>
+<p>A  <code class="docutils literal notranslate"><span class="pre">EVT_TREE_DELETE_ITEM</span></code>   event will be generated.</p>
+<p>This function may cause a subsequent call to <a class="reference internal" href="#wx.TreeCtrl.GetNextChild" title="wx.TreeCtrl.GetNextChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextChild</span></code></a>   to fail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.DeleteAllItems">
+<code class="sig-name descname">DeleteAllItems</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.DeleteAllItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all items in the control.</p>
+<p>Note that this may not generate  <code class="docutils literal notranslate"><span class="pre">EVT_TREE_DELETE_ITEM</span></code>   events under some Windows versions although normally such event is generated for each removed item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.DeleteChildren">
+<code class="sig-name descname">DeleteChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.DeleteChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all children of the given item (but not the item itself).</p>
+<p>Note that this will <strong>not</strong>  generate any events unlike <a class="reference internal" href="#wx.TreeCtrl.Delete" title="wx.TreeCtrl.Delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Delete</span></code></a>   method.</p>
+<p>If you have called <a class="reference internal" href="#wx.TreeCtrl.SetItemHasChildren" title="wx.TreeCtrl.SetItemHasChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemHasChildren</span></code></a> , you may need to call it again since <a class="reference internal" href="#wx.TreeCtrl.DeleteChildren" title="wx.TreeCtrl.DeleteChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteChildren</span></code></a>   does not automatically clear the setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.EditLabel">
+<code class="sig-name descname">EditLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.EditLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts editing the label of the given <em class="xref py py-obj">item</em>.</p>
+<p>This function generates a  <code class="docutils literal notranslate"><span class="pre">EVT_TREE_BEGIN_LABEL_EDIT</span></code>   event which can be vetoed so that no text control will appear for in-place editing.</p>
+<p>If the user changed the label (i.e. s/he does not press <code class="docutils literal notranslate"><span class="pre">ESC</span></code> or leave the text control without changes, a  <code class="docutils literal notranslate"><span class="pre">EVT_TREE_END_LABEL_EDIT</span></code>   event will be sent which can be vetoed as well.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.EndEditLabel" title="wx.TreeCtrl.EndEditLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndEditLabel</span></code></a> , <a class="reference internal" href="wx.TreeEvent.html#wx-treeevent"><span class="std std-ref">  wx.TreeEvent</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.EnableBellOnNoMatch">
+<code class="sig-name descname">EnableBellOnNoMatch</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">on=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.EnableBellOnNoMatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable a beep if there is no match for the currently entered text when searching for the item from keyboard.</p>
+<p>The default is to not beep in this case except in wxMSW where the beep is always generated by the native control and cannot be disabled, i.e. calls to this function do nothing there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>on</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.EndEditLabel">
+<code class="sig-name descname">EndEditLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">discardChanges=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.EndEditLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ends label editing.</p>
+<p>If <em class="xref py py-obj">cancelEdit</em>  is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the edit will be cancelled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>discardChanges</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function is currently supported under Windows only.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.EditLabel" title="wx.TreeCtrl.EditLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EditLabel</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.EnsureVisible">
+<code class="sig-name descname">EnsureVisible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.EnsureVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scrolls and/or expands items to ensure that the given item is visible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.Expand">
+<code class="sig-name descname">Expand</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.Expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expands the given item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.ExpandAll">
+<code class="sig-name descname">ExpandAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.ExpandAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expands all items in the tree.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.ExpandAllChildren">
+<code class="sig-name descname">ExpandAllChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.ExpandAllChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expands the given item and all its children recursively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetBoundingRect">
+<code class="sig-name descname">GetBoundingRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">textOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetBoundingRect" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns the rectangle bounding the item. If textOnly is <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+only the rectangle around the item’s label will be returned, otherwise
+the item’s image is also taken into account. The return value may be None
+if the rectangle was not successfully retrieved, such as if the item is
+currently not visible.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetChildrenCount">
+<code class="sig-name descname">GetChildrenCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">recursively=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetChildrenCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of items in the branch.</p>
+<p>If <em class="xref py py-obj">recursively</em>  is <code class="docutils literal notranslate"><span class="pre">True</span></code>, returns the total number of descendants, otherwise only one level of children is counted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>recursively</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetCount">
+<code class="sig-name descname">GetCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of items in the control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetEditControl">
+<code class="sig-name descname">GetEditControl</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetEditControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the edit control being currently used to edit a label.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if no label is being edited.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is currently only implemented for wxMSW.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetFirstChild">
+<code class="sig-name descname">GetFirstChild</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetFirstChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first child; call <a class="reference internal" href="#wx.TreeCtrl.GetNextChild" title="wx.TreeCtrl.GetNextChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextChild</span></code></a>   for the next child.</p>
+<p>For this enumeration function you must pass in a ‘cookie’ parameter which is opaque for the application but is necessary for the library to make these functions reentrant (i.e. allow more than one enumeration on one and the same object simultaneously). The cookie passed to <a class="reference internal" href="#wx.TreeCtrl.GetFirstChild" title="wx.TreeCtrl.GetFirstChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstChild</span></code></a>   and <a class="reference internal" href="#wx.TreeCtrl.GetNextChild" title="wx.TreeCtrl.GetNextChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextChild</span></code></a>   should be the same variable.</p>
+<p>Returns an invalid tree item (i.e. <a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId.IsOk" title="wx.TreeItemId.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TreeItemId.IsOk</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">False</span></code>) if there are no further children.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetFirstVisibleItem">
+<code class="sig-name descname">GetFirstVisibleItem</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetFirstVisibleItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first visible item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetFocusedItem">
+<code class="sig-name descname">GetFocusedItem</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetFocusedItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the item last clicked or otherwise selected.</p>
+<p>Unlike <a class="reference internal" href="#wx.TreeCtrl.GetSelection" title="wx.TreeCtrl.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a> , it can be used whether or not the control has the  <code class="docutils literal notranslate"><span class="pre">TR_MULTIPLE</span></code>   style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetImageList">
+<code class="sig-name descname">GetImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the normal image list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ImageList.html#wx-imagelist"><span class="std std-ref">  wx.ImageList</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetIndent">
+<code class="sig-name descname">GetIndent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetIndent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current tree control indentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetItemBackgroundColour">
+<code class="sig-name descname">GetItemBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetItemBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the background colour of the item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Colour.html#wx-colour"><span class="std std-ref">  wx.Colour</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetItemData">
+<code class="sig-name descname">GetItemData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetItemData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the tree item data associated with the item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetItemFont">
+<code class="sig-name descname">GetItemFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetItemFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the font of the item label.</p>
+<p>If the font hadn’t been explicitly set for the specified <em class="xref py py-obj">item</em>  with <a class="reference internal" href="#wx.TreeCtrl.SetItemFont" title="wx.TreeCtrl.SetItemFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemFont</span></code></a> , returns an invalid <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.NullFont</span></code>       font. <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFont</span></code>   can be used to retrieve the global tree control font used for the items without any specific font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetItemImage">
+<code class="sig-name descname">GetItemImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">which=TreeItemIcon_Normal</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetItemImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the specified item image.</p>
+<p>The value of <em class="xref py py-obj">which</em>  may be:</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.TreeItemIcon_Normal</span></code>     : to get the normal item image.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.TreeItemIcon_Selected</span></code>     : to get the selected item image (i.e. the image which is shown when the item is currently selected).</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.TreeItemIcon_Expanded</span></code>     : to get the expanded image (this only makes sense for items which have children - then this image is shown when the item is expanded and the normal image is shown when it is collapsed).</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.TreeItemIcon_SelectedExpanded</span></code>     : to get the selected expanded image (which is shown when an expanded item is currently selected).</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>which</strong> (<a class="reference internal" href="wx.TreeItemIcon.enumeration.html" title="TreeItemIcon"><em>TreeItemIcon</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetItemParent">
+<code class="sig-name descname">GetItemParent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetItemParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the item’s parent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetItemState">
+<code class="sig-name descname">GetItemState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetItemState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the specified item state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetItemText">
+<code class="sig-name descname">GetItemText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetItemText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the item label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetItemTextColour">
+<code class="sig-name descname">GetItemTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetItemTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the colour of the item label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Colour.html#wx-colour"><span class="std std-ref">  wx.Colour</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetLastChild">
+<code class="sig-name descname">GetLastChild</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetLastChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the last child of the item (or an invalid tree item if this item has no children).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.GetFirstChild" title="wx.TreeCtrl.GetFirstChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstChild</span></code></a> , <a class="reference internal" href="#wx.TreeCtrl.GetNextSibling" title="wx.TreeCtrl.GetNextSibling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSibling</span></code></a> , <a class="reference internal" href="#wx.TreeCtrl.GetLastChild" title="wx.TreeCtrl.GetLastChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLastChild</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetNextChild">
+<code class="sig-name descname">GetNextChild</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">cookie</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetNextChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the next child; call <a class="reference internal" href="#wx.TreeCtrl.GetFirstChild" title="wx.TreeCtrl.GetFirstChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstChild</span></code></a>   for the first child.</p>
+<p>For this enumeration function you must pass in a ‘cookie’ parameter which is opaque for the application but is necessary for the library to make these functions reentrant (i.e. allow more than one enumeration on one and the same object simultaneously). The cookie passed to <a class="reference internal" href="#wx.TreeCtrl.GetFirstChild" title="wx.TreeCtrl.GetFirstChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstChild</span></code></a>   and <a class="reference internal" href="#wx.TreeCtrl.GetNextChild" title="wx.TreeCtrl.GetNextChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextChild</span></code></a>   should be the same.</p>
+<p>Returns an invalid tree item if there are no further children.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetNextSibling">
+<code class="sig-name descname">GetNextSibling</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetNextSibling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the next sibling of the specified item; call <a class="reference internal" href="#wx.TreeCtrl.GetPrevSibling" title="wx.TreeCtrl.GetPrevSibling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrevSibling</span></code></a>   for the previous sibling.</p>
+<p>Returns an invalid tree item if there are no further siblings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.GetPrevSibling" title="wx.TreeCtrl.GetPrevSibling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrevSibling</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetNextVisible">
+<code class="sig-name descname">GetNextVisible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetNextVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the next visible item or an invalid item if this item is the last visible one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <em class="xref py py-obj">item</em>  itself must be visible.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetPrevSibling">
+<code class="sig-name descname">GetPrevSibling</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetPrevSibling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the previous sibling of the specified item; call <a class="reference internal" href="#wx.TreeCtrl.GetNextSibling" title="wx.TreeCtrl.GetNextSibling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSibling</span></code></a>   for the next sibling.</p>
+<p>Returns an invalid tree item if there are no further children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.GetNextSibling" title="wx.TreeCtrl.GetNextSibling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSibling</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetPrevVisible">
+<code class="sig-name descname">GetPrevVisible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetPrevVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the previous visible item or an invalid item if this item is the first visible one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <em class="xref py py-obj">item</em>  itself must be visible.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetQuickBestSize">
+<code class="sig-name descname">GetQuickBestSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetQuickBestSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the control will use a quick calculation for the best size, looking only at the first and last items.</p>
+<p>The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.SetQuickBestSize" title="wx.TreeCtrl.SetQuickBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetQuickBestSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetRootItem">
+<code class="sig-name descname">GetRootItem</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetRootItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the root item for the tree control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetSelection">
+<code class="sig-name descname">GetSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the selection, or an invalid item if there is no selection.</p>
+<p>This function only works with the controls without  <code class="docutils literal notranslate"><span class="pre">TR_MULTIPLE</span></code>   style, use  <a class="reference internal" href="#wx.TreeCtrl.GetSelections" title="wx.TreeCtrl.GetSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelections</span></code></a>   for the controls which do have this style or, if a single item is wanted, use <a class="reference internal" href="#wx.TreeCtrl.GetFocusedItem" title="wx.TreeCtrl.GetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFocusedItem</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetSelections">
+<code class="sig-name descname">GetSelections</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetSelections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of currently selected items in the tree.  This function can be called only if the control has the wx.``wx.TR_MULTIPLE`` style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.GetStateImageList">
+<code class="sig-name descname">GetStateImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.GetStateImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the state image list (from which application-defined state images are taken).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ImageList.html#wx-imagelist"><span class="std std-ref">  wx.ImageList</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.HitTest">
+<code class="sig-name descname">HitTest</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">point</em>, <em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.HitTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates which (if any) item is under the given <em class="xref py py-obj">point</em>, returning the tree item id at this point plus extra information <em class="xref py py-obj">flags</em>.</p>
+<p><em class="xref py py-obj">flags</em>  is a bitlist of the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_ABOVE:</span></code>   Above the client area.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_BELOW:</span></code>   Below the client area.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_NOWHERE:</span></code>   In the client area but below the last item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_ONITEMBUTTON:</span></code>   On the button associated with an item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_ONITEMICON:</span></code>   On the bitmap associated with an item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_ONITEMINDENT:</span></code>   In the indentation associated with an item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_ONITEMLABEL:</span></code>   On the label (string) associated with an item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_ONITEMRIGHT:</span></code>   In the area to the right of an item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_ONITEMSTATEICON:</span></code>   On the state icon for a tree view item that is in a user-defined state.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_TOLEFT:</span></code>   To the right of the client area.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_HITTEST_TORIGHT:</span></code>   To the left of the client area.</p></li>
+</ul>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.InsertItem">
+<code class="sig-name descname">InsertItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.InsertItem" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertItem</strong> <em class="xref py py-obj">(self, parent, previous, text, image=-1, selImage=-1, data=None)</em></p>
+<p>Inserts an item after a given one (<em class="xref py py-obj">previous</em>).</p>
+<p>The <em class="xref py py-obj">image</em>  and <em class="xref py py-obj">selImage</em>  parameters are an index within the normal image list specifying the image to use for unselected and selected items, respectively. If <em class="xref py py-obj">image</em>  -1 and <em class="xref py py-obj">selImage</em>  is -1, the same image is used for both selected and unselected items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>previous</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>image</strong> (<em>int</em>) – </p></li>
+<li><p><strong>selImage</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>TreeItemData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertItem</strong> <em class="xref py py-obj">(self, parent, pos, text, image=-1, selImage=-1, data=None)</em></p>
+<p>Inserts an item before one identified by its position (<em class="xref py py-obj">pos</em>).</p>
+<p><em class="xref py py-obj">pos</em>  must be less than or equal to the number of children.</p>
+<p>The <em class="xref py py-obj">image</em>  and <em class="xref py py-obj">selImage</em>  parameters are an index within the normal image list specifying the image to use for unselected and selected items, respectively. If <em class="xref py py-obj">image</em>  -1 and <em class="xref py py-obj">selImage</em>  is -1, the same image is used for both selected and unselected items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>image</strong> (<em>int</em>) – </p></li>
+<li><p><strong>selImage</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>TreeItemData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.IsBold">
+<code class="sig-name descname">IsBold</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.IsBold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given item is in bold state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.SetItemBold" title="wx.TreeCtrl.SetItemBold"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemBold</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.IsEmpty">
+<code class="sig-name descname">IsEmpty</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the control is empty (i.e. has no items, even no root one).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.IsExpanded">
+<code class="sig-name descname">IsExpanded</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.IsExpanded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item is expanded (only makes sense if it has children).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.IsSelected">
+<code class="sig-name descname">IsSelected</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.IsSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item is selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.IsVisible">
+<code class="sig-name descname">IsVisible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.IsVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item is visible on the screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.ItemHasChildren">
+<code class="sig-name descname">ItemHasChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.ItemHasChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item has children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.OnCompareItems">
+<code class="sig-name descname">OnCompareItems</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item1</em>, <em class="sig-param">item2</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.OnCompareItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this function in the derived class to change the sort order of the items in the tree control.</p>
+<p>The function should return a negative, zero or positive value if the first item is less than, equal to or greater than the second one.</p>
+<p>Please note that you <strong>must</strong>  use <code class="docutils literal notranslate"><span class="pre">RTTI</span></code> macros <code class="docutils literal notranslate"><span class="pre">DECLARE_DYNAMIC_CLASS</span></code>  and <code class="docutils literal notranslate"><span class="pre">IMPLEMENT_DYNAMIC_CLASS</span></code>  if you override this function because otherwise the base class considers that it is not overridden and uses the default comparison, i.e. sorts the items alphabetically, which allows it optimize away the calls to the virtual function completely.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item1</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>item2</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.SortChildren" title="wx.TreeCtrl.SortChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SortChildren</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.PrependItem">
+<code class="sig-name descname">PrependItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">text</em>, <em class="sig-param">image=-1</em>, <em class="sig-param">selImage=-1</em>, <em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.PrependItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends an item as the first child of <em class="xref py py-obj">parent</em>, return a new item id.</p>
+<p>The <em class="xref py py-obj">image</em>  and <em class="xref py py-obj">selImage</em>  parameters are an index within the normal image list specifying the image to use for unselected and selected items, respectively. If <em class="xref py py-obj">image</em>  -1 and <em class="xref py py-obj">selImage</em>  is -1, the same image is used for both selected and unselected items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+<li><p><strong>image</strong> (<em>int</em>) – </p></li>
+<li><p><strong>selImage</strong> (<em>int</em>) – </p></li>
+<li><p><strong>data</strong> (<em>TreeItemData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.TreeItemId.html#wx-treeitemid"><span class="std std-ref">  wx.TreeItemId</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.ScrollTo">
+<code class="sig-name descname">ScrollTo</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.ScrollTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scrolls the specified item into view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SelectChildren">
+<code class="sig-name descname">SelectChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SelectChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select all the immediate children of the given parent.</p>
+<p>This function can be used with multiselection controls only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parent</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SelectItem">
+<code class="sig-name descname">SelectItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">select=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SelectItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the given item.</p>
+<p>In multiple selection controls, can be also used to deselect a currently selected item if the value of <code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code>  is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Notice that calling this method will generate  <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_SEL_CHANGING</span></code>   and   <code class="docutils literal notranslate"><span class="pre">wxEVT_TREE_SEL_CHANGED</span></code>   events and that the change could be vetoed by the former event handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>select</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetFocusedItem">
+<code class="sig-name descname">SetFocusedItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetFocusedItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the currently focused item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – The item to make the current one. It must be valid.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetImageList">
+<code class="sig-name descname">SetImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imageList</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the normal image list.</p>
+<p>The image list assigned with this method will <strong>not</strong>  be deleted by <a class="reference internal" href="#wx-treectrl"><span class="std std-ref">  wx.TreeCtrl</span></a>’s destructor, you must delete it yourself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>imageList</strong> (<a class="reference internal" href="wx.ImageList.html#wx.ImageList" title="wx.ImageList"><em>wx.ImageList</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.AssignImageList" title="wx.TreeCtrl.AssignImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AssignImageList</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetIndent">
+<code class="sig-name descname">SetIndent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">indent</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetIndent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the indentation for the tree control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indent</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemBackgroundColour">
+<code class="sig-name descname">SetItemBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the colour of the item’s background.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemBold">
+<code class="sig-name descname">SetItemBold</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">bold=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemBold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes item appear in bold font if <em class="xref py py-obj">bold</em>  parameter is <code class="docutils literal notranslate"><span class="pre">True</span></code> or resets it to the normal state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>bold</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.IsBold" title="wx.TreeCtrl.IsBold"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsBold</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemData">
+<code class="sig-name descname">SetItemData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the item client data.</p>
+<p>Notice that the client data previously associated with the <em class="xref py py-obj">item</em>  (if any) is <em class="xref py py-obj">not</em>  freed by this function and so calling this function multiple times for the same item will result in memory leaks unless you delete the old item data pointer yourself.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemDropHighlight">
+<code class="sig-name descname">SetItemDropHighlight</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">highlight=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemDropHighlight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the item the visual feedback for Drag’n’Drop actions, which is useful if something is dragged from the outside onto the tree control (as opposed to a DnD operation within the tree control, which already is implemented internally).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>highlight</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemFont">
+<code class="sig-name descname">SetItemFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">font</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the item’s font.</p>
+<p>All items in the tree should have the same height to avoid text clipping, so the fonts height should be the same for all of them, although font attributes may vary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>font</strong> (<a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><em>wx.Font</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.SetItemBold" title="wx.TreeCtrl.SetItemBold"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemBold</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemHasChildren">
+<code class="sig-name descname">SetItemHasChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">hasChildren=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemHasChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force appearance of the button next to the item.</p>
+<p>This is useful to allow the user to expand the items which don’t have any children now, but instead adding them only when needed, thus minimizing memory usage and loading time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>hasChildren</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemImage">
+<code class="sig-name descname">SetItemImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">image</em>, <em class="sig-param">which=TreeItemIcon_Normal</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the specified item’s image.</p>
+<p>See <a class="reference internal" href="#wx.TreeCtrl.GetItemImage" title="wx.TreeCtrl.GetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemImage</span></code></a>   for the description of the <em class="xref py py-obj">which</em>  parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>image</strong> (<em>int</em>) – </p></li>
+<li><p><strong>which</strong> (<a class="reference internal" href="wx.TreeItemIcon.enumeration.html" title="TreeItemIcon"><em>TreeItemIcon</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemState">
+<code class="sig-name descname">SetItemState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">state</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the specified item state.</p>
+<p>The value of <em class="xref py py-obj">state</em>  may be an index into the state image list, or one of the special values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_ITEMSTATE_NONE:</span></code>   to disable the item state (the state image will be not displayed).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_ITEMSTATE_NEXT:</span></code>   to set the next item state.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREE_ITEMSTATE_PREV:</span></code>   to set the previous item state.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>state</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemText">
+<code class="sig-name descname">SetItemText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the item label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>text</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetItemTextColour">
+<code class="sig-name descname">SetItemTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetItemTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the colour of the item’s text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p></li>
+<li><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetQuickBestSize">
+<code class="sig-name descname">SetQuickBestSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">quickBestSize</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetQuickBestSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> is passed, specifies that the control will use a quick calculation for the best size, looking only at the first and last items.</p>
+<p>Otherwise, it will look at all items. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>quickBestSize</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.GetQuickBestSize" title="wx.TreeCtrl.GetQuickBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetQuickBestSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetStateImageList">
+<code class="sig-name descname">SetStateImageList</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imageList</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetStateImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the state image list (from which application-defined state images are taken).</p>
+<p>Image list assigned with this method will <strong>not</strong>  be deleted by <a class="reference internal" href="#wx-treectrl"><span class="std std-ref">  wx.TreeCtrl</span></a>’s destructor, you must delete it yourself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>imageList</strong> (<a class="reference internal" href="wx.ImageList.html#wx.ImageList" title="wx.ImageList"><em>wx.ImageList</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.TreeCtrl.AssignStateImageList" title="wx.TreeCtrl.AssignStateImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AssignStateImageList</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SetWindowStyle">
+<code class="sig-name descname">SetWindowStyle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">styles</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SetWindowStyle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the mode flags associated with the display of the tree control.</p>
+<p>The new mode takes effect immediately.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>styles</strong> (<em>long</em>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Generic only; MSW ignores changes.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.SortChildren">
+<code class="sig-name descname">SortChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.SortChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sorts the children of the given item using <a class="reference internal" href="#wx.TreeCtrl.OnCompareItems" title="wx.TreeCtrl.OnCompareItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCompareItems</span></code></a> .</p>
+<p>You should override that method to change the sort order (the default is ascending case-sensitive alphabetical order).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><em class="xref py py-obj">TreeItemData</em>     , <a class="reference internal" href="#wx.TreeCtrl.OnCompareItems" title="wx.TreeCtrl.OnCompareItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCompareItems</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.Toggle">
+<code class="sig-name descname">Toggle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.Toggle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggles the given item between collapsed and expanded states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.ToggleItemSelection">
+<code class="sig-name descname">ToggleItemSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.ToggleItemSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggles the given item between selected and unselected states.</p>
+<p>For multiselection controls only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.Unselect">
+<code class="sig-name descname">Unselect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.Unselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the selection from the currently selected item (if any).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.UnselectAll">
+<code class="sig-name descname">UnselectAll</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.UnselectAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function either behaves the same as <a class="reference internal" href="#wx.TreeCtrl.Unselect" title="wx.TreeCtrl.Unselect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Unselect</span></code></a>   if the control doesn’t have  <code class="docutils literal notranslate"><span class="pre">TR_MULTIPLE</span></code>   style, or removes the selection from all items if it does have this style.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TreeCtrl.UnselectItem">
+<code class="sig-name descname">UnselectItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TreeCtrl.UnselectItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unselects the given item.</p>
+<p>This works in multiselection controls only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><em>wx.TreeItemId</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.BoundingRect">
+<code class="sig-name descname">BoundingRect</code><a class="headerlink" href="#wx.TreeCtrl.BoundingRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetBoundingRect" title="wx.TreeCtrl.GetBoundingRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBoundingRect</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.Count">
+<code class="sig-name descname">Count</code><a class="headerlink" href="#wx.TreeCtrl.Count" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetCount" title="wx.TreeCtrl.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.EditControl">
+<code class="sig-name descname">EditControl</code><a class="headerlink" href="#wx.TreeCtrl.EditControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetEditControl" title="wx.TreeCtrl.GetEditControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditControl</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.FirstVisibleItem">
+<code class="sig-name descname">FirstVisibleItem</code><a class="headerlink" href="#wx.TreeCtrl.FirstVisibleItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetFirstVisibleItem" title="wx.TreeCtrl.GetFirstVisibleItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstVisibleItem</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.FocusedItem">
+<code class="sig-name descname">FocusedItem</code><a class="headerlink" href="#wx.TreeCtrl.FocusedItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetFocusedItem" title="wx.TreeCtrl.GetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFocusedItem</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetFocusedItem" title="wx.TreeCtrl.SetFocusedItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFocusedItem</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.ImageList">
+<code class="sig-name descname">ImageList</code><a class="headerlink" href="#wx.TreeCtrl.ImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetImageList" title="wx.TreeCtrl.GetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageList</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetImageList" title="wx.TreeCtrl.SetImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetImageList</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.Indent">
+<code class="sig-name descname">Indent</code><a class="headerlink" href="#wx.TreeCtrl.Indent" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetIndent" title="wx.TreeCtrl.GetIndent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIndent</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetIndent" title="wx.TreeCtrl.SetIndent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetIndent</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.QuickBestSize">
+<code class="sig-name descname">QuickBestSize</code><a class="headerlink" href="#wx.TreeCtrl.QuickBestSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetQuickBestSize" title="wx.TreeCtrl.GetQuickBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetQuickBestSize</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetQuickBestSize" title="wx.TreeCtrl.SetQuickBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetQuickBestSize</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.RootItem">
+<code class="sig-name descname">RootItem</code><a class="headerlink" href="#wx.TreeCtrl.RootItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetRootItem" title="wx.TreeCtrl.GetRootItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRootItem</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.Selection">
+<code class="sig-name descname">Selection</code><a class="headerlink" href="#wx.TreeCtrl.Selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetSelection" title="wx.TreeCtrl.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.Selections">
+<code class="sig-name descname">Selections</code><a class="headerlink" href="#wx.TreeCtrl.Selections" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetSelections" title="wx.TreeCtrl.GetSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelections</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TreeCtrl.StateImageList">
+<code class="sig-name descname">StateImageList</code><a class="headerlink" href="#wx.TreeCtrl.StateImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TreeCtrl.GetStateImageList" title="wx.TreeCtrl.GetStateImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStateImageList</span></code></a> and <a class="reference internal" href="#wx.TreeCtrl.SetStateImageList" title="wx.TreeCtrl.SetStateImageList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStateImageList</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

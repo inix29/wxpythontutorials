@@ -1,0 +1,1842 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Sizer — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.SizerFlagBits.enumeration.html" rel="next" title="wx.SizerFlagBits"/>
+<link href="wx.SizeEvent.html" rel="prev" title="wx.SizeEvent"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Sizer</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.SizerFlagBits.enumeration.html" title="wx.SizerFlagBits">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.SizeEvent.html" title="wx.SizeEvent">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Sizer</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-sizer-flags"> Sizer flags</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Sizer.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-sizer">
+<span id="wx-sizer"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Sizer</strong><a class="headerlink" href="#phoenix-title-wx-sizer" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  is the abstract base class used for laying out subwindows in a window.</p>
+<p>You cannot use <a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  directly; instead, you will have to use one of the sizer classes derived from it. Currently there are <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>, <a class="reference internal" href="wx.StaticBoxSizer.html#wx-staticboxsizer"><span class="std std-ref">  wx.StaticBoxSizer</span></a>, <a class="reference internal" href="wx.GridSizer.html#wx-gridsizer"><span class="std std-ref">  wx.GridSizer</span></a>, <a class="reference internal" href="wx.FlexGridSizer.html#wx-flexgridsizer"><span class="std std-ref">  wx.FlexGridSizer</span></a>, <a class="reference internal" href="wx.WrapSizer.html#wx-wrapsizer"><span class="std std-ref">  wx.WrapSizer</span></a>  and <a class="reference internal" href="wx.GridBagSizer.html#wx-gridbagsizer"><span class="std std-ref">  wx.GridBagSizer</span></a>.</p>
+<p>The layout algorithm used by sizers in wxWidgets is closely related to layout in other GUI toolkits, such as Java’s <code class="docutils literal notranslate"><span class="pre">AWT</span></code>, the GTK toolkit or the Qt toolkit. It is based upon the idea of the individual subwindows reporting their minimal required size and their ability to get stretched if the size of the parent window has changed.</p>
+<p>This will most often mean that the programmer does not set the original size of a dialog in the beginning, rather the dialog will be assigned a sizer and this sizer will be queried about the recommended size. The sizer in turn will query its children, which can be normal windows, empty space or other sizers, so that a hierarchy of sizers can be constructed. Note that <a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  does not derive from <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  and thus does not interfere with tab ordering and requires very little resources compared to a real window on screen.</p>
+<p>What makes sizers so well fitted for use in wxWidgets is the fact that every control reports its own minimal size and the algorithm can handle differences in font sizes or different window (dialog item) sizes on different platforms without problems. If e.g. the standard font as well as the overall design of Motif widgets requires more space than on Windows, the initial dialog size will automatically be bigger on Motif than on Windows.</p>
+<p>Sizers may also be used to control the layout of custom drawn items on the window. The <a class="reference internal" href="#wx.Sizer.Add" title="wx.Sizer.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Add</span></code></a> , <a class="reference internal" href="#wx.Sizer.Insert" title="wx.Sizer.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Insert</span></code></a> , and <a class="reference internal" href="#wx.Sizer.Prepend" title="wx.Sizer.Prepend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Prepend</span></code></a>   functions return a pointer to the newly added <a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a>. Just add empty space of the desired size and attributes, and then use the <a class="reference internal" href="wx.SizerItem.html#wx.SizerItem.GetRect" title="wx.SizerItem.GetRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SizerItem.GetRect</span></code></a>   method to determine where the drawing operations should take place.</p>
+<p>Please notice that sizers, like child windows, are owned by the library and will be deleted by it which implies that they must be allocated on the heap. However if you create a sizer and do not add it to another sizer or window, the library wouldn’t be able to delete such an orphan sizer and in this, and only this, case it should be deleted explicitly.</p>
+<div class="section" id="phoenix-title-sizer-flags">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Sizer flags<a class="headerlink" href="#phoenix-title-sizer-flags" title="Permalink to this headline">¶</a></h2>
+<p>The “flag” argument accepted by <a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a>  constructors and other functions, e.g. <a class="reference internal" href="#wx.Sizer.Add" title="wx.Sizer.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Add</span></code></a> , is an OR-combination of the following flags. Two main behaviours are defined using these flags. One is the border around a window: the border parameter determines the border width whereas the flags given here determine which side(s) of the item that the border will be added. The other flags determine how the sizer item behaves when the space allotted to the sizer changes, and is somewhat dependent on the specific kind of sizer used.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 48%"/>
+<col style="width: 52%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Sizer Flag</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.TOP</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.BOTTOM</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.LEFT</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.RIGHT</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.ALL</span></code></div>
+</div>
+</td>
+<td><p>These flags are used to specify which side(s) of the sizer
+item the border width will apply to.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wx.EXPAND</span></code></p></td>
+<td><p>The item will be expanded to fill the space assigned to
+the item.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wx.SHAPED</span></code></p></td>
+<td><p>The item will be expanded as much as possible while also
+maintaining its aspect ratio</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wx.FIXED_MINSIZE</span></code></p></td>
+<td><p>Normally <em class="xref py py-obj">wx.Sizers</em> will use
+<a class="reference internal" href="wx.Window.html#wx.Window.GetEffectiveMinSize" title="wx.Window.GetEffectiveMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetEffectiveMinSize</span></code></a> to
+determine what the minimal size of window items should be, and will use that
+size to calculate the layout. This allows layouts to adjust when an item
+changes and its best size becomes different. If you would rather have a
+window item stay the size it started with then use <code class="docutils literal notranslate"><span class="pre">wx.FIXED_MINSIZE</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wx.RESERVE_SPACE_EVEN_IF_HIDDEN</span></code></p></td>
+<td><p>Normally <em class="xref py py-obj">wx.Sizers</em> don’t allocate space for hidden windows or other items.
+This flag overrides this behavior so that sufficient space is allocated for
+the window even if it isn’t visible. This makes it possible to dynamically
+show and hide controls without resizing parent dialog, for example.</p></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.ALIGN_CENTER</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">wx.ALIGN_CENTRE</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.ALIGN_LEFT</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.ALIGN_RIGHT</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.ALIGN_RIGHT</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.ALIGN_TOP</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.ALIGN_BOTTOM</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.ALIGN_CENTER_VERTICAL</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">wx.ALIGN_CENTRE_VERTICAL</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wx.ALIGN_CENTER_HORIZONTAL</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">wx.ALIGN_CENTRE_HORIZONTAL</span></code></div>
+</div>
+</td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">wx.ALIGN*</span></code> flags allow you to specify the alignment of the item
+within the space allotted to it by the sizer, adjusted for the border if
+any.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="sizers_overview.html#sizers-overview"><span class="std std-ref">Sizers Overview</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Sizer</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Sizer" class="inheritance" src="_static/images/inheritance/wx.Sizer_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="11,83,88,112" href="wx.Sizer.html" id="node1" shape="rect" title="wx.Sizer  is the abstract base class used for laying out subwindows in a window."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>, <a class="reference internal" href="wx.GridSizer.html#wx-gridsizer"><span class="std std-ref">  wx.GridSizer</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.__init__" title="wx.Sizer.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>The constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.Add" title="wx.Sizer.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a></p></td>
+<td><p>Appends a child to the sizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.AddMany" title="wx.Sizer.AddMany"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddMany</span></code></a></p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddMany</span></code> is a convenience method for adding several items to a sizer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.AddSpacer" title="wx.Sizer.AddSpacer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSpacer</span></code></a></p></td>
+<td><p>This base function adds non-stretchable space to both the horizontal and vertical orientation of the sizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.AddStretchSpacer" title="wx.Sizer.AddStretchSpacer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddStretchSpacer</span></code></a></p></td>
+<td><p>Adds stretchable space to the sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.CalcMin" title="wx.Sizer.CalcMin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CalcMin</span></code></a></p></td>
+<td><p>This method is abstract and has to be overwritten by any derived class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.Clear" title="wx.Sizer.Clear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Clear</span></code></a></p></td>
+<td><p>Detaches all children from the sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.ComputeFittingClientSize" title="wx.Sizer.ComputeFittingClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingClientSize</span></code></a></p></td>
+<td><p>Computes client area size for <em class="xref py py-obj">window</em>  so that it matches the sizer’s minimal size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.ComputeFittingWindowSize" title="wx.Sizer.ComputeFittingWindowSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingWindowSize</span></code></a></p></td>
+<td><p>Like <code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingClientSize</span></code> , but converts the result into window size.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.Detach" title="wx.Sizer.Detach"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Detach</span></code></a></p></td>
+<td><p>Detach the child <em class="xref py py-obj">window</em>  from the sizer without destroying it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.Fit" title="wx.Sizer.Fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Fit</span></code></a></p></td>
+<td><p>Tell the sizer to resize the <em class="xref py py-obj">window</em>  so that its client area matches the sizer’s minimal size ( <code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingClientSize</span></code>   is called to determine it).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.FitInside" title="wx.Sizer.FitInside"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FitInside</span></code></a></p></td>
+<td><p>Tell the sizer to resize the virtual size of the <em class="xref py py-obj">window</em>  to match the sizer’s minimal size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.GetChildren" title="wx.Sizer.GetChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildren</span></code></a></p></td>
+<td><p>Returns the list of the items in this sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.GetContainingWindow" title="wx.Sizer.GetContainingWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetContainingWindow</span></code></a></p></td>
+<td><p>Returns the window this sizer is used in or <code class="docutils literal notranslate"><span class="pre">None</span></code> if none.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.GetItem" title="wx.Sizer.GetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItem</span></code></a></p></td>
+<td><p>Finds <a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a>  which holds the given <em class="xref py py-obj">window</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.GetItemById" title="wx.Sizer.GetItemById"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemById</span></code></a></p></td>
+<td><p>Finds item of the sizer which has the given <em class="xref py py-obj">id</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.GetItemCount" title="wx.Sizer.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a></p></td>
+<td><p>Returns the number of items in the sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.GetMinSize" title="wx.Sizer.GetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMinSize</span></code></a></p></td>
+<td><p>Returns the minimal size of the sizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.GetPosition" title="wx.Sizer.GetPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPosition</span></code></a></p></td>
+<td><p>Returns the current position of the sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.GetSize" title="wx.Sizer.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSize</span></code></a></p></td>
+<td><p>Returns the current size of the sizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a></p></td>
+<td><p>Hides the child <em class="xref py py-obj">window</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.InformFirstDirection" title="wx.Sizer.InformFirstDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InformFirstDirection</span></code></a></p></td>
+<td><p>Inform sizer about the first direction that has been decided (by parent item).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.Insert" title="wx.Sizer.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Insert</span></code></a></p></td>
+<td><p>Insert a child into the sizer before any existing item at <em class="xref py py-obj">index</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.InsertSpacer" title="wx.Sizer.InsertSpacer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertSpacer</span></code></a></p></td>
+<td><p>Inserts non-stretchable space to the sizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.InsertStretchSpacer" title="wx.Sizer.InsertStretchSpacer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertStretchSpacer</span></code></a></p></td>
+<td><p>Inserts stretchable space to the sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.IsEmpty" title="wx.Sizer.IsEmpty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmpty</span></code></a></p></td>
+<td><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the sizer has no elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.IsShown" title="wx.Sizer.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsShown</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the <em class="xref py py-obj">window</em>  is shown.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a></p></td>
+<td><p>Call this to force layout of the children anew, e.g. after having added a child to or removed a child (window, other sizer or space) from the sizer while keeping the current dimension.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.Prepend" title="wx.Sizer.Prepend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Prepend</span></code></a></p></td>
+<td><p>Same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code> , but prepends the items to the beginning of the list of items (windows, subsizers or spaces) owned by this sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.PrependSpacer" title="wx.Sizer.PrependSpacer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PrependSpacer</span></code></a></p></td>
+<td><p>Prepends non-stretchable space to the sizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.PrependStretchSpacer" title="wx.Sizer.PrependStretchSpacer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PrependStretchSpacer</span></code></a></p></td>
+<td><p>Prepends stretchable space to the sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.RecalcSizes" title="wx.Sizer.RecalcSizes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RecalcSizes</span></code></a></p></td>
+<td><p>This method is abstract and has to be overwritten by any derived class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.Remove" title="wx.Sizer.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code></a></p></td>
+<td><p>Removes a sizer child from the sizer and destroys it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.Replace" title="wx.Sizer.Replace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Replace</span></code></a></p></td>
+<td><p>Detaches the given <em class="xref py py-obj">oldwin</em>  from the sizer and replaces it with the given <em class="xref py py-obj">newwin</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.SetContainingWindow" title="wx.Sizer.SetContainingWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetContainingWindow</span></code></a></p></td>
+<td><p>Set the window this sizer is used in.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.SetDimension" title="wx.Sizer.SetDimension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDimension</span></code></a></p></td>
+<td><p>Call this to force the sizer to take the given dimension and thus force the items owned by the sizer to resize themselves according to the rules defined by the parameter in the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code>   and <code class="xref py py-meth docutils literal notranslate"><span class="pre">Prepend</span></code>   methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.SetItemMinSize" title="wx.Sizer.SetItemMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemMinSize</span></code></a></p></td>
+<td><p>Set an item’s minimum size by window, sizer, or position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.SetMinSize" title="wx.Sizer.SetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMinSize</span></code></a></p></td>
+<td><p>Call this to give the sizer a minimal size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.SetSizeHints" title="wx.Sizer.SetSizeHints"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSizeHints</span></code></a></p></td>
+<td><p>This method first calls <code class="xref py py-meth docutils literal notranslate"><span class="pre">Fit</span></code>   and then <a class="reference internal" href="wx.TopLevelWindow.html#wx.TopLevelWindow.SetSizeHints" title="wx.TopLevelWindow.SetSizeHints"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TopLevelWindow.SetSizeHints</span></code></a>   on the <em class="xref py py-obj">window</em>  passed to it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.SetVirtualSizeHints" title="wx.Sizer.SetVirtualSizeHints"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetVirtualSizeHints</span></code></a></p></td>
+<td><p>Tell the sizer to set the minimal size of the <em class="xref py py-obj">window</em>  virtual area to match the sizer’s minimal size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p></td>
+<td><p>Shows or hides the <em class="xref py py-obj">window</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.ShowItems" title="wx.Sizer.ShowItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowItems</span></code></a></p></td>
+<td><p>Show or hide all items managed by the sizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.__iter__" title="wx.Sizer.__iter__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__</span></code></a></p></td>
+<td><p>A Py convenience method that allows Sizers to act as iterables that will yield their wx.SizerItems.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.__nonzero__" title="wx.Sizer.__nonzero__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__nonzero__</span></code></a></p></td>
+<td><p>Can be used to test if the C++ part of the sizer still exists, with</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 49%"/>
+<col style="width: 51%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.Children" title="wx.Sizer.Children"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Children</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Sizer.GetChildren" title="wx.Sizer.GetChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildren</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.ContainingWindow" title="wx.Sizer.ContainingWindow"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ContainingWindow</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Sizer.GetContainingWindow" title="wx.Sizer.GetContainingWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetContainingWindow</span></code></a> and <a class="reference internal" href="#wx.Sizer.SetContainingWindow" title="wx.Sizer.SetContainingWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetContainingWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.ItemCount" title="wx.Sizer.ItemCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ItemCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Sizer.GetItemCount" title="wx.Sizer.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.MinSize" title="wx.Sizer.MinSize"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MinSize</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Sizer.GetMinSize" title="wx.Sizer.GetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMinSize</span></code></a> and <a class="reference internal" href="#wx.Sizer.SetMinSize" title="wx.Sizer.SetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMinSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Sizer.Position" title="wx.Sizer.Position"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Position</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Sizer.GetPosition" title="wx.Sizer.GetPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPosition</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Sizer.Size" title="wx.Sizer.Size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Size</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Sizer.GetSize" title="wx.Sizer.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSize</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Sizer">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Sizer</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sizer</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sizer is the abstract base class used for laying out subwindows in a
+window.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Sizer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor.</p>
+<p>Note that <a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  is an abstract base class and may not be instantiated.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Add">
+<code class="sig-name descname">Add</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Add" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, window, flags)</em></p>
+<p>Appends a child to the sizer.</p>
+<p><a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  itself is an abstract class, but the parameters are equivalent in the derived classes that you will instantiate to use it so they are described here:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – The window to be added to the sizer. Its initial size (either set explicitly by the user or calculated internally when using DefaultSize) is interpreted as the minimal and in many cases also the initial size.</p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags" title="wx.SizerFlags"><em>wx.SizerFlags</em></a>) – A <a class="reference internal" href="wx.SizerFlags.html#wx-sizerflags"><span class="std std-ref">  wx.SizerFlags</span></a>  object that enables you to specify most of the above parameters more conveniently.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, window, proportion=0, flag=0, border=0, userData=None)</em></p>
+<p>Appends a child to the sizer.</p>
+<p><a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  itself is an abstract class, but the parameters are equivalent in the derived classes that you will instantiate to use it so they are described here:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – The window to be added to the sizer. Its initial size (either set explicitly by the user or calculated internally when using DefaultSize) is interpreted as the minimal and in many cases also the initial size.</p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – Although the meaning of this parameter is undefined in <a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>, it is used in <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  to indicate if a child of a sizer can change its size in the main orientation of the <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  - where 0 stands for not changeable and a value of more than zero is interpreted relative to the value of other children of the same <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>. For example, you might have a horizontal <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  with three children, two of which are supposed to change their size with the sizer. Then the two stretchable windows would get a value of 1 each to make them grow and shrink equally with the sizer’s horizontal dimension.</p></li>
+<li><p><strong>flag</strong> (<em>int</em>) – OR-combination of flags affecting sizer’s behaviour. See <a class="reference internal" href="#wx-sizer"><span class="std std-ref">Sizer flags list</span></a>  for details.</p></li>
+<li><p><strong>border</strong> (<em>int</em>) – Determines the border width, if the flag parameter is set to include any border flag.</p></li>
+<li><p><strong>userData</strong> (<em>PyUserData</em>) – Allows an extra object to be attached to the sizer item, for use in derived classes when sizing information is more complex than the proportion and flag will allow for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, sizer, flags)</em></p>
+<p>Appends a child to the sizer.</p>
+<p><a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  itself is an abstract class, but the parameters are equivalent in the derived classes that you will instantiate to use it so they are described here:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – The (child-)sizer to be added to the sizer. This allows placing a child sizer in a sizer and thus to create hierarchies of sizers (typically a vertical box as the top sizer and several horizontal boxes on the level beneath).</p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags" title="wx.SizerFlags"><em>wx.SizerFlags</em></a>) – A <a class="reference internal" href="wx.SizerFlags.html#wx-sizerflags"><span class="std std-ref">  wx.SizerFlags</span></a>  object that enables you to specify most of the above parameters more conveniently.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, sizer, proportion=0, flag=0, border=0, userData=None)</em></p>
+<p>Appends a child to the sizer.</p>
+<p><a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  itself is an abstract class, but the parameters are equivalent in the derived classes that you will instantiate to use it so they are described here:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – The (child-)sizer to be added to the sizer. This allows placing a child sizer in a sizer and thus to create hierarchies of sizers (typically a vertical box as the top sizer and several horizontal boxes on the level beneath).</p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – Although the meaning of this parameter is undefined in <a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>, it is used in <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  to indicate if a child of a sizer can change its size in the main orientation of the <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  - where 0 stands for not changeable and a value of more than zero is interpreted relative to the value of other children of the same <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>. For example, you might have a horizontal <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  with three children, two of which are supposed to change their size with the sizer. Then the two stretchable windows would get a value of 1 each to make them grow and shrink equally with the sizer’s horizontal dimension.</p></li>
+<li><p><strong>flag</strong> (<em>int</em>) – OR-combination of flags affecting sizer’s behaviour. See <a class="reference internal" href="#wx-sizer"><span class="std std-ref">Sizer flags list</span></a>  for details.</p></li>
+<li><p><strong>border</strong> (<em>int</em>) – Determines the border width, if the flag parameter is set to include any border flag.</p></li>
+<li><p><strong>userData</strong> (<em>PyUserData</em>) – Allows an extra object to be attached to the sizer item, for use in derived classes when sizing information is more complex than the proportion and flag will allow for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, width, height, proportion=0, flag=0, border=0, userData=None)</em></p>
+<p>Appends a spacer child to the sizer.</p>
+<p><a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  itself is an abstract class, but the parameters are equivalent in the derived classes that you will instantiate to use it so they are described here.</p>
+<p><em class="xref py py-obj">width</em>  and <em class="xref py py-obj">height</em>  specify the dimension of a spacer to be added to the sizer. Adding spacers to sizers gives more flexibility in the design of dialogs; imagine for example a horizontal box with two buttons at the bottom of a dialog: you might want to insert a space between the two buttons and make that space stretchable using the proportion flag and the result will be that the left button will be aligned with the left side of the dialog and the right button with the right side - the space in between will shrink and grow with the dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – Width of the spacer.</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height of the spacer.</p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – Although the meaning of this parameter is undefined in <a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>, it is used in <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  to indicate if a child of a sizer can change its size in the main orientation of the <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  - where 0 stands for not changeable and a value of more than zero is interpreted relative to the value of other children of the same <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>. For example, you might have a horizontal <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>  with three children, two of which are supposed to change their size with the sizer. Then the two stretchable windows would get a value of 1 each to make them grow and shrink equally with the sizer’s horizontal dimension.</p></li>
+<li><p><strong>flag</strong> (<em>int</em>) – OR-combination of flags affecting sizer’s behaviour. See <a class="reference internal" href="#wx-sizer"><span class="std std-ref">Sizer flags list</span></a>  for details.</p></li>
+<li><p><strong>border</strong> (<em>int</em>) – Determines the border width, if the flag parameter is set to include any border flag.</p></li>
+<li><p><strong>userData</strong> (<em>PyUserData</em>) – Allows an extra object to be attached to the sizer item, for use in derived classes when sizing information is more complex than the proportion and flag will allow for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, width, height, flags)</em></p>
+<p>Appends a spacer child to the sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – Width of the spacer.</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height of the spacer.</p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags" title="wx.SizerFlags"><em>wx.SizerFlags</em></a>) – A <a class="reference internal" href="wx.SizerFlags.html#wx-sizerflags"><span class="std std-ref">  wx.SizerFlags</span></a>  object that enables you to specify most of the other parameters more conveniently.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, item)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.SizerItem.html#wx.SizerItem" title="wx.SizerItem"><em>wx.SizerItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, size, proportion=0, flag=0, border=0, /Transfer/=None)</em></p>
+<p>Add a spacer using a <a class="reference internal" href="#wx.Sizer.Size" title="wx.Sizer.Size"><code class="xref py py-class docutils literal notranslate"><span class="pre">Size</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Add</strong> <em class="xref py py-obj">(self, size, flags)</em></p>
+<p>Add a spacer using a <a class="reference internal" href="#wx.Sizer.Size" title="wx.Sizer.Size"><code class="xref py py-class docutils literal notranslate"><span class="pre">Size</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.AddMany">
+<code class="sig-name descname">AddMany</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.AddMany" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#wx.Sizer.AddMany" title="wx.Sizer.AddMany"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddMany</span></code></a> is a convenience method for adding several items to a sizer
+at one time. Simply pass it a list of tuples, where each tuple
+consists of the parameters that you would normally pass to the <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>
+method.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.AddSpacer">
+<code class="sig-name descname">AddSpacer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">size</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.AddSpacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>This base function adds non-stretchable space to both the horizontal and vertical orientation of the sizer.</p>
+<p>More readable way of calling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">Sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.BoxSizer.html#wx.BoxSizer.AddSpacer" title="wx.BoxSizer.AddSpacer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.BoxSizer.AddSpacer</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.AddStretchSpacer">
+<code class="sig-name descname">AddStretchSpacer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">prop=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.AddStretchSpacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds stretchable space to the sizer.</p>
+<p>More readable way of calling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">Sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">proportion</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prop</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.CalcMin">
+<code class="sig-name descname">CalcMin</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.CalcMin" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is abstract and has to be overwritten by any derived class.</p>
+<p>Here, the sizer will do the actual calculation of its children’s minimal sizes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Clear">
+<code class="sig-name descname">Clear</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">delete_windows=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detaches all children from the sizer.</p>
+<p>If <em class="xref py py-obj">delete_windows</em>  is <code class="docutils literal notranslate"><span class="pre">True</span></code> then child windows will also be deleted.</p>
+<p>Notice that child sizers are always deleted, as a general consequence of the principle that sizers own their sizer children, but don’t own their window children (because they are already owned by their parent windows).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delete_windows</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.ComputeFittingClientSize">
+<code class="sig-name descname">ComputeFittingClientSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.ComputeFittingClientSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes client area size for <em class="xref py py-obj">window</em>  so that it matches the sizer’s minimal size.</p>
+<p>Unlike <a class="reference internal" href="#wx.Sizer.GetMinSize" title="wx.Sizer.GetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMinSize</span></code></a> , this method accounts for other constraints imposed on <em class="xref py py-obj">window</em>, namely display’s size (returned size will never be too large for the display) and maximum window size if previously set by <a class="reference internal" href="wx.Window.html#wx.Window.SetMaxSize" title="wx.Window.SetMaxSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetMaxSize</span></code></a> .</p>
+<p>The returned value is suitable for passing to <a class="reference internal" href="wx.Window.html#wx.Window.SetClientSize" title="wx.Window.SetClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetClientSize</span></code></a>   or <a class="reference internal" href="wx.Window.html#wx.Window.SetMinClientSize" title="wx.Window.SetMinClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetMinClientSize</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.8.8.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.ComputeFittingWindowSize" title="wx.Sizer.ComputeFittingWindowSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingWindowSize</span></code></a> , <a class="reference internal" href="#wx.Sizer.Fit" title="wx.Sizer.Fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Fit</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.ComputeFittingWindowSize">
+<code class="sig-name descname">ComputeFittingWindowSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.ComputeFittingWindowSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like <a class="reference internal" href="#wx.Sizer.ComputeFittingClientSize" title="wx.Sizer.ComputeFittingClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingClientSize</span></code></a> , but converts the result into window size.</p>
+<p>The returned value is suitable for passing to <a class="reference internal" href="wx.Window.html#wx.Window.SetSize" title="wx.Window.SetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSize</span></code></a>   or <a class="reference internal" href="wx.Window.html#wx.Window.SetMinSize" title="wx.Window.SetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetMinSize</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.8.8.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.ComputeFittingClientSize" title="wx.Sizer.ComputeFittingClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingClientSize</span></code></a> , <a class="reference internal" href="#wx.Sizer.Fit" title="wx.Sizer.Fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Fit</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Detach">
+<code class="sig-name descname">Detach</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Detach" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Detach</strong> <em class="xref py py-obj">(self, window)</em></p>
+<p>Detach the child <em class="xref py py-obj">window</em>  from the sizer without destroying it.</p>
+<p>This method does not cause any layout or resizing to take place, call <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   to update the layout “on screen” after detaching a child from the sizer.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found and detached, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.Remove" title="wx.Sizer.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Detach</strong> <em class="xref py py-obj">(self, sizer)</em></p>
+<p>Detach the child <em class="xref py py-obj">sizer</em>  from the sizer without destroying it.</p>
+<p>This method does not cause any layout or resizing to take place, call <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   to update the layout “on screen” after detaching a child from the sizer.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found and detached, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.Remove" title="wx.Sizer.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Detach</strong> <em class="xref py py-obj">(self, index)</em></p>
+<p>Detach a item at position <em class="xref py py-obj">index</em>  from the sizer without destroying it.</p>
+<p>This method does not cause any layout or resizing to take place, call <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   to update the layout “on screen” after detaching a child from the sizer. Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found and detached, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.Remove" title="wx.Sizer.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Fit">
+<code class="sig-name descname">Fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell the sizer to resize the <em class="xref py py-obj">window</em>  so that its client area matches the sizer’s minimal size ( <a class="reference internal" href="#wx.Sizer.ComputeFittingClientSize" title="wx.Sizer.ComputeFittingClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingClientSize</span></code></a>   is called to determine it).</p>
+<p>This is commonly done in the constructor of the window itself, see sample in the description of <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The new window size.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.ComputeFittingClientSize" title="wx.Sizer.ComputeFittingClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingClientSize</span></code></a> , <a class="reference internal" href="#wx.Sizer.ComputeFittingWindowSize" title="wx.Sizer.ComputeFittingWindowSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ComputeFittingWindowSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.FitInside">
+<code class="sig-name descname">FitInside</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.FitInside" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell the sizer to resize the virtual size of the <em class="xref py py-obj">window</em>  to match the sizer’s minimal size.</p>
+<p>This will not alter the on screen size of the window, but may cause the addition/removal/alteration of scrollbars required to view the virtual area in windows which manage it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Scrolled.html#wx.Scrolled.SetScrollbars" title="wx.Scrolled.SetScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Scrolled.SetScrollbars</span></code></a> , <a class="reference internal" href="#wx.Sizer.SetVirtualSizeHints" title="wx.Sizer.SetVirtualSizeHints"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetVirtualSizeHints</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.GetChildren">
+<code class="sig-name descname">GetChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.GetChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of the items in this sizer.</p>
+<p>The elements of type-safe List  <code class="docutils literal notranslate"><span class="pre">SizerItemList</span></code>   are pointers to objects of type  <a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">SizerItemList</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.GetContainingWindow">
+<code class="sig-name descname">GetContainingWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.GetContainingWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the window this sizer is used in or <code class="docutils literal notranslate"><span class="pre">None</span></code> if none.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.GetItem">
+<code class="sig-name descname">GetItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.GetItem" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetItem</strong> <em class="xref py py-obj">(self, window, recursive=False)</em></p>
+<p>Finds <a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a>  which holds the given <em class="xref py py-obj">window</em>.</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to search in subsizers too. Returns pointer to item or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetItem</strong> <em class="xref py py-obj">(self, sizer, recursive=False)</em></p>
+<p>Finds <a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a>  which holds the given <em class="xref py py-obj">sizer</em>.</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to search in subsizers too. Returns pointer to item or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetItem</strong> <em class="xref py py-obj">(self, index)</em></p>
+<p>Finds <a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a>  which is located in the sizer at position <em class="xref py py-obj">index</em>.</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to search in subsizers too. Returns pointer to item or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.GetItemById">
+<code class="sig-name descname">GetItemById</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">recursive=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.GetItemById" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds item of the sizer which has the given <em class="xref py py-obj">id</em>.</p>
+<p>This <em class="xref py py-obj">id</em>  is not the window id but the id of the <a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a>  itself. This is mainly useful for retrieving the sizers created from <code class="docutils literal notranslate"><span class="pre">XRC</span></code> resources. Use parameter <em class="xref py py-obj">recursive</em>  to search in subsizers too. Returns pointer to item or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.GetItemCount">
+<code class="sig-name descname">GetItemCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.GetItemCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of items in the sizer.</p>
+<p>If you just need to test whether the sizer is empty or not you can also use <a class="reference internal" href="#wx.Sizer.IsEmpty" title="wx.Sizer.IsEmpty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmpty</span></code></a>   function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.GetMinSize">
+<code class="sig-name descname">GetMinSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.GetMinSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the minimal size of the sizer.</p>
+<p>This is either the combined minimal size of all the children and their borders or the minimal size set by <a class="reference internal" href="#wx.Sizer.SetMinSize" title="wx.Sizer.SetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMinSize</span></code></a> , depending on which is bigger. Note that the returned value is client size, not window size. In particular, if you use the value to set toplevel window’s minimal or actual size, use <a class="reference internal" href="wx.Window.html#wx.Window.SetMinClientSize" title="wx.Window.SetMinClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetMinClientSize</span></code></a>   or <a class="reference internal" href="wx.Window.html#wx.Window.SetClientSize" title="wx.Window.SetClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetClientSize</span></code></a> , not <a class="reference internal" href="wx.Window.html#wx.Window.SetMinSize" title="wx.Window.SetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetMinSize</span></code></a>   or <a class="reference internal" href="wx.Window.html#wx.Window.SetSize" title="wx.Window.SetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSize</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.GetPosition">
+<code class="sig-name descname">GetPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.GetPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current position of the sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Point.html#wx-point"><span class="std std-ref">  wx.Point</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.GetSize">
+<code class="sig-name descname">GetSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.GetSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current size of the sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Hide">
+<code class="sig-name descname">Hide</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Hide" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Hide</strong> <em class="xref py py-obj">(self, window, recursive=False)</em></p>
+<p>Hides the child <em class="xref py py-obj">window</em>.</p>
+<p>To make a sizer item disappear, use <a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a>   followed by <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a> .</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to hide elements found in subsizers. Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.IsShown" title="wx.Sizer.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsShown</span></code></a> , <a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Hide</strong> <em class="xref py py-obj">(self, sizer, recursive=False)</em></p>
+<p>Hides the child <em class="xref py py-obj">sizer</em>.</p>
+<p>To make a sizer item disappear, use <a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a>   followed by <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a> .</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to hide elements found in subsizers. Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.IsShown" title="wx.Sizer.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsShown</span></code></a> , <a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Hide</strong> <em class="xref py py-obj">(self, index)</em></p>
+<p>Hides the item at position <em class="xref py py-obj">index</em>.</p>
+<p>To make a sizer item disappear, use <a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a>   followed by <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a> .</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to hide elements found in subsizers. Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.IsShown" title="wx.Sizer.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsShown</span></code></a> , <a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.InformFirstDirection">
+<code class="sig-name descname">InformFirstDirection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">direction</em>, <em class="sig-param">size</em>, <em class="sig-param">availableOtherDir</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.InformFirstDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inform sizer about the first direction that has been decided (by parent item).</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it made use of the information (and recalculated min size).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (<em>int</em>) – </p></li>
+<li><p><strong>size</strong> (<em>int</em>) – </p></li>
+<li><p><strong>availableOtherDir</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Insert">
+<code class="sig-name descname">Insert</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Insert" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Insert</strong> <em class="xref py py-obj">(self, index, window, flags)</em></p>
+<p>Insert a child into the sizer before any existing item at <em class="xref py py-obj">index</em>.</p>
+<p>See <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   for the meaning of the other parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags" title="wx.SizerFlags"><em>wx.SizerFlags</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Insert</strong> <em class="xref py py-obj">(self, index, window, proportion=0, flag=0, border=0, userData=None)</em></p>
+<p>Insert a child into the sizer before any existing item at <em class="xref py py-obj">index</em>.</p>
+<p>See <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   for the meaning of the other parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – </p></li>
+<li><p><strong>flag</strong> (<em>int</em>) – </p></li>
+<li><p><strong>border</strong> (<em>int</em>) – </p></li>
+<li><p><strong>userData</strong> (<em>PyUserData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Insert</strong> <em class="xref py py-obj">(self, index, sizer, flags)</em></p>
+<p>Insert a child into the sizer before any existing item at <em class="xref py py-obj">index</em>.</p>
+<p>See <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   for the meaning of the other parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags" title="wx.SizerFlags"><em>wx.SizerFlags</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Insert</strong> <em class="xref py py-obj">(self, index, sizer, proportion=0, flag=0, border=0, userData=None)</em></p>
+<p>Insert a child into the sizer before any existing item at <em class="xref py py-obj">index</em>.</p>
+<p>See <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   for the meaning of the other parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – </p></li>
+<li><p><strong>flag</strong> (<em>int</em>) – </p></li>
+<li><p><strong>border</strong> (<em>int</em>) – </p></li>
+<li><p><strong>userData</strong> (<em>PyUserData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Insert</strong> <em class="xref py py-obj">(self, index, width, height, proportion=0, flag=0, border=0, userData=None)</em></p>
+<p>Insert a child into the sizer before any existing item at <em class="xref py py-obj">index</em>.</p>
+<p>See <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   for the meaning of the other parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – </p></li>
+<li><p><strong>flag</strong> (<em>int</em>) – </p></li>
+<li><p><strong>border</strong> (<em>int</em>) – </p></li>
+<li><p><strong>userData</strong> (<em>PyUserData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Insert</strong> <em class="xref py py-obj">(self, index, width, height, flags)</em></p>
+<p>Insert a child into the sizer before any existing item at <em class="xref py py-obj">index</em>.</p>
+<p>See <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   for the meaning of the other parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags" title="wx.SizerFlags"><em>wx.SizerFlags</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Insert</strong> <em class="xref py py-obj">(self, index, item)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.SizerItem.html#wx.SizerItem" title="wx.SizerItem"><em>wx.SizerItem</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Insert</strong> <em class="xref py py-obj">(self, index, size, proportion=0, flag=0, border=0, /Transfer/=None)</em></p>
+<p>Insert a spacer using a <a class="reference internal" href="#wx.Sizer.Size" title="wx.Sizer.Size"><code class="xref py py-class docutils literal notranslate"><span class="pre">Size</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Insert</strong> <em class="xref py py-obj">(self, index, size, flags)</em></p>
+<p>Insert a spacer using a <a class="reference internal" href="#wx.Sizer.Size" title="wx.Sizer.Size"><code class="xref py py-class docutils literal notranslate"><span class="pre">Size</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.InsertSpacer">
+<code class="sig-name descname">InsertSpacer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em>, <em class="sig-param">size</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.InsertSpacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts non-stretchable space to the sizer.</p>
+<p>More readable way of calling <em class="xref py py-obj">Sizer.Insert(index,</em> size, size).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>size</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.InsertStretchSpacer">
+<code class="sig-name descname">InsertStretchSpacer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em>, <em class="sig-param">prop=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.InsertStretchSpacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts stretchable space to the sizer.</p>
+<p>More readable way of calling <em class="xref py py-obj">Sizer.Insert(0,</em> 0, prop).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>prop</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.IsEmpty">
+<code class="sig-name descname">IsEmpty</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the sizer has no elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.GetItemCount" title="wx.Sizer.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.IsShown">
+<code class="sig-name descname">IsShown</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.IsShown" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>IsShown</strong> <em class="xref py py-obj">(self, window)</em></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the <em class="xref py py-obj">window</em>  is shown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a> , <a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a> , <a class="reference internal" href="wx.SizerItem.html#wx.SizerItem.IsShown" title="wx.SizerItem.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SizerItem.IsShown</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>IsShown</strong> <em class="xref py py-obj">(self, sizer)</em></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the <em class="xref py py-obj">sizer</em>  is shown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a> , <a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a> , <a class="reference internal" href="wx.SizerItem.html#wx.SizerItem.IsShown" title="wx.SizerItem.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SizerItem.IsShown</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>IsShown</strong> <em class="xref py py-obj">(self, index)</em></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the item at <em class="xref py py-obj">index</em>  is shown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a> , <a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a> , <a class="reference internal" href="wx.SizerItem.html#wx.SizerItem.IsShown" title="wx.SizerItem.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SizerItem.IsShown</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Layout">
+<code class="sig-name descname">Layout</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to force layout of the children anew, e.g. after having added a child to or removed a child (window, other sizer or space) from the sizer while keeping the current dimension.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Prepend">
+<code class="sig-name descname">Prepend</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Prepend" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Prepend</strong> <em class="xref py py-obj">(self, window, flags)</em></p>
+<p>Same as <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a> , but prepends the items to the beginning of the list of items (windows, subsizers or spaces) owned by this sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags" title="wx.SizerFlags"><em>wx.SizerFlags</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Prepend</strong> <em class="xref py py-obj">(self, window, proportion=0, flag=0, border=0, userData=None)</em></p>
+<p>Same as <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a> , but prepends the items to the beginning of the list of items (windows, subsizers or spaces) owned by this sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – </p></li>
+<li><p><strong>flag</strong> (<em>int</em>) – </p></li>
+<li><p><strong>border</strong> (<em>int</em>) – </p></li>
+<li><p><strong>userData</strong> (<em>PyUserData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Prepend</strong> <em class="xref py py-obj">(self, sizer, flags)</em></p>
+<p>Same as <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a> , but prepends the items to the beginning of the list of items (windows, subsizers or spaces) owned by this sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags" title="wx.SizerFlags"><em>wx.SizerFlags</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Prepend</strong> <em class="xref py py-obj">(self, sizer, proportion=0, flag=0, border=0, userData=None)</em></p>
+<p>Same as <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a> , but prepends the items to the beginning of the list of items (windows, subsizers or spaces) owned by this sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – </p></li>
+<li><p><strong>flag</strong> (<em>int</em>) – </p></li>
+<li><p><strong>border</strong> (<em>int</em>) – </p></li>
+<li><p><strong>userData</strong> (<em>PyUserData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Prepend</strong> <em class="xref py py-obj">(self, width, height, proportion=0, flag=0, border=0, userData=None)</em></p>
+<p>Same as <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a> , but prepends the items to the beginning of the list of items (windows, subsizers or spaces) owned by this sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – </p></li>
+<li><p><strong>flag</strong> (<em>int</em>) – </p></li>
+<li><p><strong>border</strong> (<em>int</em>) – </p></li>
+<li><p><strong>userData</strong> (<em>PyUserData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Prepend</strong> <em class="xref py py-obj">(self, width, height, flags)</em></p>
+<p>Same as <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a> , but prepends the items to the beginning of the list of items (windows, subsizers or spaces) owned by this sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+<li><p><strong>flags</strong> (<a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags" title="wx.SizerFlags"><em>wx.SizerFlags</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Prepend</strong> <em class="xref py py-obj">(self, item)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.SizerItem.html#wx.SizerItem" title="wx.SizerItem"><em>wx.SizerItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Prepend</strong> <em class="xref py py-obj">(self, size, proportion=0, flag=0, border=0, /Transfer/=None)</em></p>
+<p>Prepend a spacer using a <a class="reference internal" href="#wx.Sizer.Size" title="wx.Sizer.Size"><code class="xref py py-class docutils literal notranslate"><span class="pre">Size</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Prepend</strong> <em class="xref py py-obj">(self, size, flags)</em></p>
+<p>Prepend a spacer using a <a class="reference internal" href="#wx.Sizer.Size" title="wx.Sizer.Size"><code class="xref py py-class docutils literal notranslate"><span class="pre">Size</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.PrependSpacer">
+<code class="sig-name descname">PrependSpacer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">size</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.PrependSpacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepends non-stretchable space to the sizer.</p>
+<p>More readable way of calling <em class="xref py py-obj">Sizer.Prepend(size,</em> size, 0).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.PrependStretchSpacer">
+<code class="sig-name descname">PrependStretchSpacer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">prop=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.PrependStretchSpacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepends stretchable space to the sizer.</p>
+<p>More readable way of calling <em class="xref py py-obj">Sizer.Prepend(0,</em> 0, prop).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prop</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.RecalcSizes">
+<code class="sig-name descname">RecalcSizes</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.RecalcSizes" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is abstract and has to be overwritten by any derived class.</p>
+<p>Here, the sizer will do the actual calculation of its children’s positions and sizes.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Remove">
+<code class="sig-name descname">Remove</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Remove</strong> <em class="xref py py-obj">(self, sizer)</em></p>
+<p>Removes a sizer child from the sizer and destroys it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – The <a class="reference internal" href="#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>  to be removed.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found and removed, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method does not cause any layout or resizing to take place, call <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   to update the layout “on screen” after removing a child from the sizer.</p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Remove</strong> <em class="xref py py-obj">(self, index)</em></p>
+<p>Removes a child from the sizer and destroys it if it is a sizer or a spacer, but not if it is a window (because windows are owned by their parent window, not the sizer).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The position of the child in the sizer, e.g. 0 for the first item.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found and removed, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method does not cause any layout or resizing to take place, call <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   to update the layout “on screen” after removing a child from the sizer.</p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Replace">
+<code class="sig-name descname">Replace</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Replace" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Replace</strong> <em class="xref py py-obj">(self, oldwin, newwin, recursive=False)</em></p>
+<p>Detaches the given <em class="xref py py-obj">oldwin</em>  from the sizer and replaces it with the given <em class="xref py py-obj">newwin</em>.</p>
+<p>The detached child window is <strong>not</strong>  deleted (because windows are owned by their parent window, not the sizer).</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to search the given element recursively in subsizers.</p>
+<p>This method does not cause any layout or resizing to take place, call <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   to update the layout “on screen” after replacing a child from the sizer.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found and removed, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oldwin</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>newwin</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Replace</strong> <em class="xref py py-obj">(self, oldsz, newsz, recursive=False)</em></p>
+<p>Detaches the given <em class="xref py py-obj">oldsz</em>  from the sizer and replaces it with the given <em class="xref py py-obj">newsz</em>.</p>
+<p>The detached child sizer is deleted.</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to search the given element recursively in subsizers.</p>
+<p>This method does not cause any layout or resizing to take place, call <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   to update the layout “on screen” after replacing a child from the sizer.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found and removed, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oldsz</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>newsz</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Replace</strong> <em class="xref py py-obj">(self, index, newitem)</em></p>
+<p>Detaches the given item at position <em class="xref py py-obj">index</em>  from the sizer and replaces it with the given <a class="reference internal" href="wx.SizerItem.html#wx-sizeritem"><span class="std std-ref">  wx.SizerItem</span></a> <em class="xref py py-obj">newitem</em>.</p>
+<p>The detached child is deleted <strong>only</strong>  if it is a sizer or a spacer (but not if it is a <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  because windows are owned by their parent window, not the sizer).</p>
+<p>This method does not cause any layout or resizing to take place, call <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a>   to update the layout “on screen” after replacing a child from the sizer.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found and removed, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>newitem</strong> (<a class="reference internal" href="wx.SizerItem.html#wx.SizerItem" title="wx.SizerItem"><em>wx.SizerItem</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.SetContainingWindow">
+<code class="sig-name descname">SetContainingWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.SetContainingWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the window this sizer is used in.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.SetDimension">
+<code class="sig-name descname">SetDimension</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.SetDimension" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetDimension</strong> <em class="xref py py-obj">(self, x, y, width, height)</em></p>
+<p>Call this to force the sizer to take the given dimension and thus force the items owned by the sizer to resize themselves according to the rules defined by the parameter in the <a class="reference internal" href="sizers_overview.html#Add" title="Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Add</span></code></a>   and <a class="reference internal" href="#wx.Sizer.Prepend" title="wx.Sizer.Prepend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Prepend</span></code></a>   methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetDimension</strong> <em class="xref py py-obj">(self, pos, size)</em></p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.SetItemMinSize">
+<code class="sig-name descname">SetItemMinSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.SetItemMinSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set an item’s minimum size by window, sizer, or position.</p>
+<p>This function enables an application to set the size of an item after initial creation.</p>
+<p>The <em class="xref py py-obj">window</em>  or <em class="xref py py-obj">sizer</em>  will be found recursively in the sizer’s descendants.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the minimal size was successfully set or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the item was not found.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.SizerItem.html#wx.SizerItem.SetMinSize" title="wx.SizerItem.SetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SizerItem.SetMinSize</span></code></a></p>
+</div>
+<p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetItemMinSize</strong> <em class="xref py py-obj">(self, window, width, height)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetItemMinSize</strong> <em class="xref py py-obj">(self, window, size)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetItemMinSize</strong> <em class="xref py py-obj">(self, sizer, width, height)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetItemMinSize</strong> <em class="xref py py-obj">(self, sizer, size)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetItemMinSize</strong> <em class="xref py py-obj">(self, index, width, height)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetItemMinSize</strong> <em class="xref py py-obj">(self, index, size)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.SetMinSize">
+<code class="sig-name descname">SetMinSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.SetMinSize" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetMinSize</strong> <em class="xref py py-obj">(self, size)</em></p>
+<p>Call this to give the sizer a minimal size.</p>
+<p>Normally, the sizer will calculate its minimal size based purely on how much space its children need. After calling this method <a class="reference internal" href="#wx.Sizer.GetMinSize" title="wx.Sizer.GetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMinSize</span></code></a>   will return either the minimal size as requested by its children or the minimal size set here, depending on which is bigger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetMinSize</strong> <em class="xref py py-obj">(self, width, height)</em></p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.SetSizeHints">
+<code class="sig-name descname">SetSizeHints</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.SetSizeHints" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method first calls <a class="reference internal" href="#wx.Sizer.Fit" title="wx.Sizer.Fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Fit</span></code></a>   and then <a class="reference internal" href="wx.TopLevelWindow.html#wx.TopLevelWindow.SetSizeHints" title="wx.TopLevelWindow.SetSizeHints"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TopLevelWindow.SetSizeHints</span></code></a>   on the <em class="xref py py-obj">window</em>  passed to it.</p>
+<p>This only makes sense when <em class="xref py py-obj">window</em>  is actually a <a class="reference internal" href="wx.TopLevelWindow.html#wx-toplevelwindow"><span class="std std-ref">  wx.TopLevelWindow</span></a>  such as a <a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a>  or a <a class="reference internal" href="wx.Dialog.html#wx-dialog"><span class="std std-ref">  wx.Dialog</span></a>, since SetSizeHints only has any effect in these classes. It does nothing in normal windows or controls.</p>
+<p>This method is implicitly used by <a class="reference internal" href="wx.Window.html#wx.Window.SetSizerAndFit" title="wx.Window.SetSizerAndFit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSizerAndFit</span></code></a>   which is commonly invoked in the constructor of a toplevel window itself (see the sample in the description of <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>) if the toplevel window is resizable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.SetVirtualSizeHints">
+<code class="sig-name descname">SetVirtualSizeHints</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.SetVirtualSizeHints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell the sizer to set the minimal size of the <em class="xref py py-obj">window</em>  virtual area to match the sizer’s minimal size.</p>
+<p>For windows with managed scrollbars this will set them appropriately.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition wxdeprecated" id="deprecated-0">
+<p class="admonition-title">Deprecated</p>
+<p>This is exactly the same as <a class="reference internal" href="#wx.Sizer.FitInside" title="wx.Sizer.FitInside"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FitInside</span></code></a>   in wxWidgets 2.9 and later, please replace calls to it with <a class="reference internal" href="#wx.Sizer.FitInside" title="wx.Sizer.FitInside"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FitInside</span></code></a> .</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Scrolled.html#wx.Scrolled.SetScrollbars" title="wx.Scrolled.SetScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Scrolled.SetScrollbars</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.Show">
+<code class="sig-name descname">Show</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.Show" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Show</strong> <em class="xref py py-obj">(self, window, show=True, recursive=False)</em></p>
+<p>Shows or hides the <em class="xref py py-obj">window</em>.</p>
+<p>To make a sizer item disappear or reappear, use <a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>   followed by <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a> .</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to show or hide elements found in subsizers.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>show</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a> , <a class="reference internal" href="#wx.Sizer.IsShown" title="wx.Sizer.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsShown</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Show</strong> <em class="xref py py-obj">(self, sizer, show=True, recursive=False)</em></p>
+<p>Shows or hides <em class="xref py py-obj">sizer</em>.</p>
+<p>To make a sizer item disappear or reappear, use <a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>   followed by <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a> .</p>
+<p>Use parameter <em class="xref py py-obj">recursive</em>  to show or hide elements found in subsizers.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizer</strong> (<a class="reference internal" href="#wx.Sizer" title="wx.Sizer"><em>wx.Sizer</em></a>) – </p></li>
+<li><p><strong>show</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a> , <a class="reference internal" href="#wx.Sizer.IsShown" title="wx.Sizer.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsShown</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Show</strong> <em class="xref py py-obj">(self, index, show=True)</em></p>
+<p>Shows the item at <em class="xref py py-obj">index</em>.</p>
+<p>To make a sizer item disappear or reappear, use <a class="reference internal" href="#wx.Sizer.Show" title="wx.Sizer.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>   followed by <a class="reference internal" href="#wx.Sizer.Layout" title="wx.Sizer.Layout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Layout</span></code></a> .</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child item was found, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – </p></li>
+<li><p><strong>show</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Sizer.Hide" title="wx.Sizer.Hide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Hide</span></code></a> , <a class="reference internal" href="#wx.Sizer.IsShown" title="wx.Sizer.IsShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsShown</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.ShowItems">
+<code class="sig-name descname">ShowItems</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">show</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.ShowItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show or hide all items managed by the sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.__iter__">
+<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Py convenience method that allows Sizers to act as iterables that will yield their wx.SizerItems.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Sizer.__nonzero__">
+<code class="sig-name descname">__nonzero__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Sizer.__nonzero__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can be used to test if the C++ part of the sizer still exists, with
+code like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">theSizer</span><span class="p">:</span>
+        <span class="n">doSomething</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.Sizer.Children">
+<code class="sig-name descname">Children</code><a class="headerlink" href="#wx.Sizer.Children" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Sizer.GetChildren" title="wx.Sizer.GetChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildren</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Sizer.ContainingWindow">
+<code class="sig-name descname">ContainingWindow</code><a class="headerlink" href="#wx.Sizer.ContainingWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Sizer.GetContainingWindow" title="wx.Sizer.GetContainingWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetContainingWindow</span></code></a> and <a class="reference internal" href="#wx.Sizer.SetContainingWindow" title="wx.Sizer.SetContainingWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetContainingWindow</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Sizer.ItemCount">
+<code class="sig-name descname">ItemCount</code><a class="headerlink" href="#wx.Sizer.ItemCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Sizer.GetItemCount" title="wx.Sizer.GetItemCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetItemCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Sizer.MinSize">
+<code class="sig-name descname">MinSize</code><a class="headerlink" href="#wx.Sizer.MinSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Sizer.GetMinSize" title="wx.Sizer.GetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMinSize</span></code></a> and <a class="reference internal" href="#wx.Sizer.SetMinSize" title="wx.Sizer.SetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMinSize</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Sizer.Position">
+<code class="sig-name descname">Position</code><a class="headerlink" href="#wx.Sizer.Position" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Sizer.GetPosition" title="wx.Sizer.GetPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPosition</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Sizer.Size">
+<code class="sig-name descname">Size</code><a class="headerlink" href="#wx.Sizer.Size" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Sizer.GetSize" title="wx.Sizer.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSize</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

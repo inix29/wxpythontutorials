@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.floatcanvas — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.floatcanvas.Utilities.html" rel="next" title="wx.lib.floatcanvas.Utilities"/>
+<link href="wx.lib.editor.selection.html" rel="prev" title="wx.lib.editor.selection"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.floatcanvas</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.floatcanvas.Utilities.html" title="wx.lib.floatcanvas.Utilities">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.editor.selection.html" title="wx.lib.editor.selection">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.floatcanvas</strong></a><ul>
+<li><a class="reference internal" href="#package-summary-packages-summary"> Packages Summary</a></li>
+<li><a class="reference internal" href="#module-summary-modules-summary"> Modules Summary</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.floatcanvas.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.floatcanvas"></span><div class="section" id="phoenix-title-wx-lib-floatcanvas">
+<span id="wx-lib-floatcanvas"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.floatcanvas</strong><a class="headerlink" href="#phoenix-title-wx-lib-floatcanvas" title="Permalink to this headline">¶</a></h1>
+<p>This is the floatcanvas package, the main classes are
+<code class="xref py py-class docutils literal notranslate"><span class="pre">FloatCanvas</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">NavCanvas</span></code>, in each class documentation there
+is at least one sample on how to use them and many more samples are provided
+in <em class="xref py py-obj">wxPhoenix/samples</em> folder.</p>
+<p>FloatCanvas.py contains the main <code class="xref py py-class docutils literal notranslate"><span class="pre">FloatCanvas</span></code>
+class, and its supporting classes.  NavCanvas.py contains the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">NavCanvas</span></code> wrapper for the FloatCanvas that
+provides the canvas and a toolbar with tools that allow you to navigate
+the canvas (zooming, panning, etc.)  Resources.py is a module that
+contains a few resources required by the FloatCanvas (icons, etc)</p>
+<p>The FloatCanvas is a high level window for drawing maps and anything
+else in an arbitrary coordinate system.</p>
+<p>The goal is to provide a convenient way to draw stuff on the screen
+without having to deal with handling OnPaint events, converting to pixel
+coordinates, knowing about wxWindows brushes, pens, and colors, etc. It
+also provides virtually unlimited zooming and scrolling</p>
+<p>I am using it for two things:</p>
+<ol class="arabic simple">
+<li><p>general purpose drawing in floating point coordinates</p></li>
+<li><p>displaying map data in Lat-long coordinates</p></li>
+</ol>
+<p>If the projection is set to None, it will draw in general purpose
+floating point coordinates. If the projection is set to ‘FlatEarth’, it
+will draw a FlatEarth projection, centered on the part of the map that
+you are viewing. You can also pass in your own projection function.</p>
+<p>It is double buffered, so re-draws after the window is uncovered by
+something else are very quick.</p>
+<p>It relies on <a class="reference external" href="http://www.numpy.org/">NumPy</a>, which is needed for speed
+(maybe, I haven’t profiled properly) and convenience.</p>
+<p>Bugs and Limitations: Lots: patches, fixes welcome</p>
+<p>For Map drawing: It ignores the fact that the world is, in fact, a
+sphere, so it will do strange things if you are looking at stuff near
+the poles or the date line. so far I don’t have a need to do that, so I
+havn’t bothered to add any checks for that yet.</p>
+<p>Zooming: I have set no zoom limits. What this means is that if you zoom
+in really far, you can get integer overflows, and get weird results. It
+doesn’t seem to actually cause any problems other than weird output, at
+least when I have run it.</p>
+<p>Speed: I have done a couple of things to improve speed in this app. The
+one thing I have done is used <a class="reference external" href="http://www.numpy.org/">NumPy</a> Arrays to
+store the coordinates of the points of the objects. This allowed me to use
+array oriented functions when doing transformations, and should provide some
+speed improvement for objects with a lot of points (big polygons, polylines,
+pointsets).</p>
+<p>The real slowdown comes when you have to draw a lot of objects, because
+you have to call the wx.DC.DrawSomething call each time. This is plenty
+fast for tens of objects, OK for hundreds of objects, but pretty darn
+slow for thousands of objects.</p>
+<p>If you are zoomed in, it checks the Bounding box of an object before
+drawing it. This makes it a great deal faster when there are a lot of
+objects and you are zoomed in so that only a few are shown.</p>
+<p>Mouse Events:</p>
+<p>There are a full set of custom mouse events. They are just like the
+regular mouse events, but include an extra attribute: Event.GetCoords(),
+that returns the (x,y) position in world coordinates, as a length-2
+<a class="reference external" href="http://www.numpy.org/">NumPy</a> vector of Floats.</p>
+<p>There are also a full set of bindings to mouse events on objects, so
+that you can specify a given function be called when an object is
+clicked, mouse-over’d, etc.</p>
+<p>See the Demo for what it can do, and how to use it.</p>
+<p>Copyright: Christopher Barker
+License: Same as the version of wxPython you are using it with.</p>
+<p>TRAC site for some docs and updates:</p>
+<p><a class="reference external" href="http://trac.paulmcnett.com/floatcanvas">http://trac.paulmcnett.com/floatcanvas</a></p>
+<p>Mailing List:</p>
+<p><a class="reference external" href="http://mail.paulmcnett.com/cgi-bin/mailman/listinfo/floatcanvas">http://mail.paulmcnett.com/cgi-bin/mailman/listinfo/floatcanvas</a></p>
+<p>The latest code is in the main wx SVN:</p>
+<p>For classic:</p>
+<p><a class="reference external" href="http://svn.wxwidgets.org/viewvc/wx/wxPython/3rdParty/FloatCanvas/">http://svn.wxwidgets.org/viewvc/wx/wxPython/3rdParty/FloatCanvas/</a></p>
+<p>For Phoenix:</p>
+<p><a class="reference external" href="http://svn.wxwidgets.org/svn/wx/wxPython/Phoenix/trunk/wx/lib/floatcanvas">http://svn.wxwidgets.org/svn/wx/wxPython/Phoenix/trunk/wx/lib/floatcanvas</a></p>
+<p>Check for updates or answers to questions, send me an email.
+Please let me know if you’re using this!!!</p>
+<p>Contact me at:</p>
+<p><a class="reference external" href="mailto:Chris.Barker%40noaa.gov">Chris<span>.</span>Barker<span>@</span>noaa<span>.</span>gov</a></p>
+<div class="section" id="package-summary-packages-summary">
+<h2><a class="reference internal" href="_images/package_summary.png"><img alt="package_summary" class="align-middle" src="_images/package_summary.png" style="width: 32px;"/></a> Packages Summary<a class="headerlink" href="#package-summary-packages-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.floatcanvas.Utilities.html#module-wx.lib.floatcanvas.Utilities" title="wx.lib.floatcanvas.Utilities"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Utilities</span></code></a></p></td>
+<td><p>__init__ for the floatcanvas Utilities package</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="module-summary-modules-summary">
+<h2><a class="reference internal" href="_images/module_summary.png"><img alt="module_summary" class="align-middle" src="_images/module_summary.png" style="width: 32px;"/></a> Modules Summary<a class="headerlink" href="#module-summary-modules-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%"/>
+<col style="width: 59%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.floatcanvas.FCEvents.html#module-wx.lib.floatcanvas.FCEvents" title="wx.lib.floatcanvas.FCEvents"><code class="xref py py-mod docutils literal notranslate"><span class="pre">FCEvents</span></code></a></p></td>
+<td><p>This is where FloatCanvas defines its event types and binders.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.floatcanvas.FCObjects.html#module-wx.lib.floatcanvas.FCObjects" title="wx.lib.floatcanvas.FCObjects"><code class="xref py py-mod docutils literal notranslate"><span class="pre">FCObjects</span></code></a></p></td>
+<td><p>This is where FloatCanvas defines its drawings objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.floatcanvas.FloatCanvas.html#module-wx.lib.floatcanvas.FloatCanvas" title="wx.lib.floatcanvas.FloatCanvas"><code class="xref py py-mod docutils literal notranslate"><span class="pre">FloatCanvas</span></code></a></p></td>
+<td><p>This is the main module of the floatcanvas package, it contains the <code class="xref py py-class docutils literal notranslate"><span class="pre">FloatCanvas</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.floatcanvas.GUIMode.html#module-wx.lib.floatcanvas.GUIMode" title="wx.lib.floatcanvas.GUIMode"><code class="xref py py-mod docutils literal notranslate"><span class="pre">GUIMode</span></code></a></p></td>
+<td><p>Module that holds the GUI modes used by FloatCanvas</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.floatcanvas.NavCanvas.html#module-wx.lib.floatcanvas.NavCanvas" title="wx.lib.floatcanvas.NavCanvas"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NavCanvas</span></code></a></p></td>
+<td><p>Combines <code class="xref py py-class docutils literal notranslate"><span class="pre">FloatCanvas</span></code> with Navigation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.floatcanvas.Resources.html#module-wx.lib.floatcanvas.Resources" title="wx.lib.floatcanvas.Resources"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Resources</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.floatcanvas.ScreenShot.html#module-wx.lib.floatcanvas.ScreenShot" title="wx.lib.floatcanvas.ScreenShot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ScreenShot</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.agw.shortcuteditor.ShortcutEditor — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.agw.shortcuteditor.ShortcutEvent.html" rel="next" title="wx.lib.agw.shortcuteditor.ShortcutEvent"/>
+<link href="wx.lib.agw.shortcuteditor.Shortcut.html" rel="prev" title="wx.lib.agw.shortcuteditor.Shortcut"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a href="wx.lib.agw.html">
+<strong>wx.lib.agw</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.agw.shortcuteditor.html">
+<strong>wx.lib.agw.shortcuteditor</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.agw.shortcuteditor.ShortcutEditor</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.agw.shortcuteditor.ShortcutEvent.html" title="wx.lib.agw.shortcuteditor.ShortcutEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.agw.shortcuteditor.Shortcut.html" title="wx.lib.agw.shortcuteditor.Shortcut">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.agw.shortcuteditor.ShortcutEditor</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#super-classes-known-superclasses"> Known Superclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.agw.shortcuteditor.ShortcutEditor.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-lib-agw-shortcuteditor-shortcuteditor">
+<span id="wx-lib-agw-shortcuteditor-shortcuteditor"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.agw.shortcuteditor.ShortcutEditor</strong><a class="headerlink" href="#phoenix-title-wx-lib-agw-shortcuteditor-shortcuteditor" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> is a widget that allows the user to customize and change keyboard
+shortcuts via a dialog. It can be used to edit <a class="reference internal" href="wx.MenuItem.html#wx.MenuItem" title="wx.MenuItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuItem</span></code></a> shortcuts or accelerators
+defined in a <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code>.</p>
+<p>The interface itself is very much inpired by the GIMP shortcut editor:</p>
+<p><a class="reference external" href="http://graphicssoft.about.com/od/gimptutorials/tp/keyboard-shortcut-editor.htm">http://graphicssoft.about.com/od/gimptutorials/tp/keyboard-shortcut-editor.htm</a></p>
+<p>There are very few minor UI differences between <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> and the GIMP one,
+although the behaviour should be pretty much equivalent.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ShortcutEditor</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ShortcutEditor" class="inheritance" src="_static/images/inheritance/wx.lib.agw.shortcuteditor.ShortcutEditor_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,547,297,576" href="wx.lib.agw.shortcuteditor.ShortcutEditor.html" id="node1" shape="rect" title="ShortcutEditor is a widget that allows the user to customize and change keyboard"/> <area alt="" coords="107,469,195,499" href="wx.Dialog.html" id="node2" shape="rect" title="A dialog box is a window with a title bar and sometimes a system menu, which can be moved around the screen."/> <area alt="" coords="72,392,231,421" href="wx.TopLevelWindow.html" id="node3" shape="rect" title="wx.TopLevelWindow  is a common base class for wx.Dialog  and wx.Frame."/> <area alt="" coords="66,315,237,344" href="wx.NonOwnedWindow.html" id="node4" shape="rect" title="Common base class for all non-child windows."/> <area alt="" coords="103,237,200,267" href="wx.Window.html" id="node5" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="86,160,217,189" href="wx.WindowBase.html" id="node6" shape="rect" title="wx.WindowBase"/> <area alt="" coords="92,83,211,112" href="wx.EvtHandler.html" id="node7" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="46,5,134,35" href="wx.Object.html" id="node8" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="159,5,269,35" href="wx.Trackable.html" id="node9" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/wx.lib.agw.shortcuteditor.shortcuteditor.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/no_appearance.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.lib.agw.shortcuteditor.shortcuteditor1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="super-classes-known-superclasses">
+<h2><a class="reference internal" href="_images/super_classes.png"><img alt="super_classes" class="align-middle" src="_images/super_classes.png" style="width: 32px;"/></a> Known Superclasses<a class="headerlink" href="#super-classes-known-superclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.Dialog.html#wx.Dialog" title="wx.Dialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Dialog</span></code></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.__init__" title="wx.lib.agw.shortcuteditor.ShortcutEditor.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default class constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.BindEvents" title="wx.lib.agw.shortcuteditor.ShortcutEditor.BindEvents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BindEvents</span></code></a></p></td>
+<td><p>Binds a few events we will need to process</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.CreateWidgets" title="wx.lib.agw.shortcuteditor.ShortcutEditor.CreateWidgets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateWidgets</span></code></a></p></td>
+<td><p>Creates all the widgets needed to populate the interface, such as buttons,</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.DoLayout" title="wx.lib.agw.shortcuteditor.ShortcutEditor.DoLayout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoLayout</span></code></a></p></td>
+<td><p>Lays out the widgets using sizers in a platform-independent way.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.FromAcceleratorTable" title="wx.lib.agw.shortcuteditor.ShortcutEditor.FromAcceleratorTable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FromAcceleratorTable</span></code></a></p></td>
+<td><p>Builds the entire shortcut hierarchy starting from a modified version of a <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.FromMenuBar" title="wx.lib.agw.shortcuteditor.ShortcutEditor.FromMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FromMenuBar</span></code></a></p></td>
+<td><p>Builds the entire shortcut hierarchy starting from a <a class="reference internal" href="wx.MenuBar.html#wx.MenuBar" title="wx.MenuBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuBar</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.GetShortcutManager" title="wx.lib.agw.shortcuteditor.ShortcutEditor.GetShortcutManager"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetShortcutManager</span></code></a></p></td>
+<td><p>Returns the root <a class="reference internal" href="wx.lib.agw.shortcuteditor.Shortcut.html#wx.lib.agw.shortcuteditor.Shortcut" title="wx.lib.agw.shortcuteditor.Shortcut"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shortcut</span></code></a> containing the whole shortcut hierarchy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.Init" title="wx.lib.agw.shortcuteditor.ShortcutEditor.Init"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Init</span></code></a></p></td>
+<td><p>Common initialization procedures.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.OnClearFilter" title="wx.lib.agw.shortcuteditor.ShortcutEditor.OnClearFilter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnClearFilter</span></code></a></p></td>
+<td><p>Handles the <code class="docutils literal notranslate"><span class="pre">wx.EVT_BUTTON</span></code> event for <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> when the user clears the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.OnHTMLHelp" title="wx.lib.agw.shortcuteditor.ShortcutEditor.OnHTMLHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnHTMLHelp</span></code></a></p></td>
+<td><p>Handles the <code class="docutils literal notranslate"><span class="pre">wx.EVT_BUTTON</span></code> event for <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> when the user presses the <code class="docutils literal notranslate"><span class="pre">Help</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.OnRestoreDefaults" title="wx.lib.agw.shortcuteditor.ShortcutEditor.OnRestoreDefaults"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnRestoreDefaults</span></code></a></p></td>
+<td><p>Handles the <code class="docutils literal notranslate"><span class="pre">wx.EVT_BUTTON</span></code> event for <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> when the user restores the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.OnSetFilter" title="wx.lib.agw.shortcuteditor.ShortcutEditor.OnSetFilter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSetFilter</span></code></a></p></td>
+<td><p>Handles the <code class="docutils literal notranslate"><span class="pre">wx.EVT_TEXT</span></code> event for <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.PreShow" title="wx.lib.agw.shortcuteditor.ShortcutEditor.PreShow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PreShow</span></code></a></p></td>
+<td><p>Does some more common initialization before showing <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.SetColumnWidths" title="wx.lib.agw.shortcuteditor.ShortcutEditor.SetColumnWidths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnWidths</span></code></a></p></td>
+<td><p>Sets the <a class="reference internal" href="wx.lib.agw.shortcuteditor.ListShortcut.html#wx.lib.agw.shortcuteditor.ListShortcut" title="wx.lib.agw.shortcuteditor.ListShortcut"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListShortcut</span></code></a> columns widths to acceptable and eye-pleasing</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.SetHTMLHelpFile" title="wx.lib.agw.shortcuteditor.ShortcutEditor.SetHTMLHelpFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHTMLHelpFile</span></code></a></p></td>
+<td><p>Sets a new HTML help file (a valid html file) to be loaded when the user seeks</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.Show" title="wx.lib.agw.shortcuteditor.ShortcutEditor.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p></td>
+<td><p>Hides or shows the <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.ShowModal" title="wx.lib.agw.shortcuteditor.ShortcutEditor.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a></p></td>
+<td><p>Shows the <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> dialog in an application-modal way.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.ToAcceleratorTable" title="wx.lib.agw.shortcuteditor.ShortcutEditor.ToAcceleratorTable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ToAcceleratorTable</span></code></a></p></td>
+<td><p>Dumps the entire shortcut hierarchy (for shortcuts associated with a <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code>), into</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.ToMenuBar" title="wx.lib.agw.shortcuteditor.ShortcutEditor.ToMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ToMenuBar</span></code></a></p></td>
+<td><p>Dumps the entire shortcut hierarchy (for shortcuts associated with a <a class="reference internal" href="wx.MenuItem.html#wx.MenuItem" title="wx.MenuItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuItem</span></code></a>), into</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor">
+<em class="property">class </em><code class="sig-name descname">ShortcutEditor</code><span class="sig-paren">(</span><em class="sig-param">wx.Dialog</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> is a widget that allows the user to customize and change keyboard
+shortcuts via a dialog. It can be used to edit <a class="reference internal" href="wx.MenuItem.html#wx.MenuItem" title="wx.MenuItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuItem</span></code></a> shortcuts or accelerators
+defined in a <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code>.</p>
+<p>The interface itself is very much inpired by the GIMP shortcut editor:</p>
+<p><a class="reference external" href="http://graphicssoft.about.com/od/gimptutorials/tp/keyboard-shortcut-editor.htm">http://graphicssoft.about.com/od/gimptutorials/tp/keyboard-shortcut-editor.htm</a></p>
+<p>There are very few minor UI differences between <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> and the GIMP one,
+although the behaviour should be pretty much equivalent.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parent</strong> – an instance of <a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Window</span></code></a>, it can also be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.BindEvents">
+<code class="sig-name descname">BindEvents</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.BindEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Binds a few events we will need to process:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.EVT_TEXT</span></code> for the label filtering;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.EVT_BUTTON</span></code> for clearing the filtering, for the HTML help window and
+to reset all the shortcuts to their defaults.</p></li>
+</ul>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.CreateWidgets">
+<code class="sig-name descname">CreateWidgets</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.CreateWidgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates all the widgets needed to populate the interface, such as buttons,
+texts and, most importantly, <a class="reference internal" href="wx.lib.agw.shortcuteditor.ListShortcut.html#wx.lib.agw.shortcuteditor.ListShortcut" title="wx.lib.agw.shortcuteditor.ListShortcut"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListShortcut</span></code></a>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.DoLayout">
+<code class="sig-name descname">DoLayout</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.DoLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lays out the widgets using sizers in a platform-independent way.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.FromAcceleratorTable">
+<code class="sig-name descname">FromAcceleratorTable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">accelTable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.FromAcceleratorTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the entire shortcut hierarchy starting from a modified version of a <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>accelTable</strong> – <p>a modified version of <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code>, is a list of tuples (4 elements per tuple),
+populated like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">accelTable</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Every tuple is defined in this way:</span>
+
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">keyCode</span><span class="p">,</span> <span class="n">cmdID</span> <span class="ow">in</span> <span class="n">my_accelerators</span><span class="p">:</span>
+    <span class="c1"># label:   the string used to show the accelerator into the ShortcutEditor dialog</span>
+    <span class="c1"># flags:   a bitmask of wx.ACCEL_ALT, wx.ACCEL_SHIFT, wx.ACCEL_CTRL, wx.ACCEL_CMD,</span>
+    <span class="c1">#          or wx.ACCEL_NORMAL used to specify which modifier keys are held down</span>
+    <span class="c1"># keyCode: the keycode to be detected (i.e., ord('b'), wx.WXK_F10, etc...)</span>
+    <span class="c1"># cmdID:   the menu or control command ID to use for the accelerator event.</span>
+
+    <span class="n">accel_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">keyCode</span><span class="p">,</span> <span class="n">cmdID</span><span class="p">)</span>
+    <span class="n">accelTable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accel_tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.FromMenuBar">
+<code class="sig-name descname">FromMenuBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">topWindow</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.FromMenuBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the entire shortcut hierarchy starting from a <a class="reference internal" href="wx.MenuBar.html#wx.MenuBar" title="wx.MenuBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuBar</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>topWindow</strong> – an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">TopLevelWindow</span></code>, containing the <a class="reference internal" href="wx.MenuBar.html#wx.MenuBar" title="wx.MenuBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuBar</span></code></a>
+we wish to scan.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.GetShortcutManager">
+<code class="sig-name descname">GetShortcutManager</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.GetShortcutManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the root <a class="reference internal" href="wx.lib.agw.shortcuteditor.Shortcut.html#wx.lib.agw.shortcuteditor.Shortcut" title="wx.lib.agw.shortcuteditor.Shortcut"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shortcut</span></code></a> containing the whole shortcut hierarchy.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.Init">
+<code class="sig-name descname">Init</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.Init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Common initialization procedures.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.OnClearFilter">
+<code class="sig-name descname">OnClearFilter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.OnClearFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the <code class="docutils literal notranslate"><span class="pre">wx.EVT_BUTTON</span></code> event for <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> when the user clears the
+label filter at the top of the user interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">CommandEvent</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.OnHTMLHelp">
+<code class="sig-name descname">OnHTMLHelp</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.OnHTMLHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the <code class="docutils literal notranslate"><span class="pre">wx.EVT_BUTTON</span></code> event for <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> when the user presses the <code class="docutils literal notranslate"><span class="pre">Help</span></code>
+button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">CommandEvent</span></code>.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, this method launches a <code class="xref py py-class docutils literal notranslate"><span class="pre">html.HtmlWindow</span></code> containing the default
+HTML help file. If you wish to load another help file, you should call <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.SetHTMLHelpFile" title="wx.lib.agw.shortcuteditor.ShortcutEditor.SetHTMLHelpFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHTMLHelpFile</span></code></a>
+with another input HTML file.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.OnRestoreDefaults">
+<code class="sig-name descname">OnRestoreDefaults</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.OnRestoreDefaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the <code class="docutils literal notranslate"><span class="pre">wx.EVT_BUTTON</span></code> event for <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> when the user restores the
+original shortcuts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">CommandEvent</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.OnSetFilter">
+<code class="sig-name descname">OnSetFilter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.OnSetFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the <code class="docutils literal notranslate"><span class="pre">wx.EVT_TEXT</span></code> event for <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">KeyEvent</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.PreShow">
+<code class="sig-name descname">PreShow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.PreShow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does some more common initialization before showing <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.SetColumnWidths">
+<code class="sig-name descname">SetColumnWidths</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.SetColumnWidths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the <a class="reference internal" href="wx.lib.agw.shortcuteditor.ListShortcut.html#wx.lib.agw.shortcuteditor.ListShortcut" title="wx.lib.agw.shortcuteditor.ListShortcut"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListShortcut</span></code></a> columns widths to acceptable and eye-pleasing
+numbers (in pixels).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.SetHTMLHelpFile">
+<code class="sig-name descname">SetHTMLHelpFile</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">htmlFile</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.SetHTMLHelpFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new HTML help file (a valid html file) to be loaded when the user seeks
+for an explanation on how the UI works.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>htmlFile</strong> (<em>string</em>) – a valid HTML file.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.Show">
+<code class="sig-name descname">Show</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">show=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.Show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hides or shows the <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> dialog.</p>
+<p>The preferred way of dismissing a modal dialog is to use <code class="xref py py-obj docutils literal notranslate"><span class="pre">EndModal</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, the dialog box is shown and brought to the front,
+otherwise the box is hidden. If <code class="docutils literal notranslate"><span class="pre">False</span></code> and the dialog is modal, control is
+returned to the calling program.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reimplemented from <a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Window</span></code></a>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.ShowModal">
+<code class="sig-name descname">ShowModal</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.ShowModal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor" title="wx.lib.agw.shortcuteditor.ShortcutEditor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortcutEditor</span></code></a> dialog in an application-modal way.</p>
+<p>Program flow does not return until the dialog has been dismissed with <code class="xref py py-obj docutils literal notranslate"><span class="pre">EndModal</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The value set with <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetReturnCode</span></code>.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice that it is possible to call <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.ShowModal" title="wx.lib.agw.shortcuteditor.ShortcutEditor.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a> for a dialog which had been
+previously shown with <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.Show" title="wx.lib.agw.shortcuteditor.ShortcutEditor.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a>, this allows to make an existing modeless dialog
+modal. However <a class="reference internal" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.ShowModal" title="wx.lib.agw.shortcuteditor.ShortcutEditor.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowModal</span></code></a> can’t be called twice without intervening <code class="xref py py-obj docutils literal notranslate"><span class="pre">EndModal</span></code> calls.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this function creates a temporary event loop which takes precedence
+over the application’s main event loop (see <code class="xref py py-class docutils literal notranslate"><span class="pre">EventLoopBase</span></code>) and which is
+destroyed when the dialog is dismissed. This also results in a call to
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">AppConsole.ProcessPendingEvents</span></code> ().</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.ToAcceleratorTable">
+<code class="sig-name descname">ToAcceleratorTable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.ToAcceleratorTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dumps the entire shortcut hierarchy (for shortcuts associated with a <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code>), into
+a <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code>. This method <strong>does</strong> rebuild the <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code> and sets it back
+to the input <em class="xref py py-obj">window</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> – an instance of <a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Window</span></code></a>, to which the new <code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratorTable</span></code> should be set.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.agw.shortcuteditor.ShortcutEditor.ToMenuBar">
+<code class="sig-name descname">ToMenuBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">topWindow</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.agw.shortcuteditor.ShortcutEditor.ToMenuBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dumps the entire shortcut hierarchy (for shortcuts associated with a <a class="reference internal" href="wx.MenuItem.html#wx.MenuItem" title="wx.MenuItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuItem</span></code></a>), into
+a <a class="reference internal" href="wx.MenuBar.html#wx.MenuBar" title="wx.MenuBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuBar</span></code></a>, changing only the <a class="reference internal" href="wx.Menu.html#wx.Menu" title="wx.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Menu</span></code></a> / <a class="reference internal" href="wx.MenuItem.html#wx.MenuItem" title="wx.MenuItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuItem</span></code></a> labels (it does <strong>not</strong> rebuild
+the <a class="reference internal" href="wx.MenuBar.html#wx.MenuBar" title="wx.MenuBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuBar</span></code></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>topWindow</strong> – an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">TopLevelWindow</span></code>, containing the <a class="reference internal" href="wx.MenuBar.html#wx.MenuBar" title="wx.MenuBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MenuBar</span></code></a>
+we wish to repopulate.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

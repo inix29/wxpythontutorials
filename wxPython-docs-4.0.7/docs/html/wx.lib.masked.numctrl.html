@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.masked.numctrl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.masked.numctrl.NumberUpdatedEvent.html" rel="next" title="wx.lib.masked.numctrl.NumberUpdatedEvent"/>
+<link href="wx.lib.masked.maskededit.MaskedEditMixin.html" rel="prev" title="wx.lib.masked.maskededit.MaskedEditMixin"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.masked.html">
+<strong>wx.lib.masked</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.masked.numctrl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.masked.numctrl.NumberUpdatedEvent.html" title="wx.lib.masked.numctrl.NumberUpdatedEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.masked.maskededit.MaskedEditMixin.html" title="wx.lib.masked.maskededit.MaskedEditMixin">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.masked.numctrl</strong></a><ul>
+<li><a class="reference internal" href="#class-summary-classes-summary"> Classes Summary</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.masked.numctrl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.masked.numctrl"></span><div class="section" id="phoenix-title-wx-lib-masked-numctrl">
+<span id="wx-lib-masked-numctrl"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.masked.numctrl</strong><a class="headerlink" href="#phoenix-title-wx-lib-masked-numctrl" title="Permalink to this headline">¶</a></h1>
+<dl>
+<dt>masked.NumCtrl:</dt><dd><ul class="simple">
+<li><p>allows you to get and set integer or floating point numbers as value,</p></li>
+<li><p>provides bounds support and optional value limiting,</p></li>
+<li><p>has the right-insert input style that MaskedTextCtrl supports,</p></li>
+<li><p>provides optional automatic grouping, sign control and format, grouping and decimal
+character selection, etc. etc.</p></li>
+</ul>
+<p>Being derived from masked.TextCtrl, the control only allows
+fixed-point  notation.  That is, it has a fixed (though reconfigurable)
+maximum width for the integer portion and optional fixed width
+fractional portion.</p>
+<p>Here’s the API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wx.lib.masked</span> <span class="kn">import</span> <span class="n">NumCtrl</span>
+
+<span class="n">NumCtrl</span><span class="p">(</span>
+     <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+     <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="n">pos</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DefaultPosition</span><span class="p">,</span>
+     <span class="n">size</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DefaultSize</span><span class="p">,</span>
+     <span class="n">style</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="n">validator</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DefaultValidator</span><span class="p">,</span>
+     <span class="n">name</span> <span class="o">=</span> <span class="s2">"masked.number"</span><span class="p">,</span>
+     <span class="n">integerWidth</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+     <span class="n">fractionWidth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="n">allowNone</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+     <span class="n">allowNegative</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+     <span class="n">useParensForNegatives</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+     <span class="n">groupDigits</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+     <span class="n">groupChar</span> <span class="o">=</span> <span class="s1">','</span><span class="p">,</span>
+     <span class="n">decimalChar</span> <span class="o">=</span> <span class="s1">'.'</span><span class="p">,</span>
+     <span class="nb">min</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+     <span class="nb">max</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+     <span class="n">limited</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+     <span class="n">limitOnFieldChange</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+     <span class="n">selectOnEntry</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+     <span class="n">foregroundColour</span> <span class="o">=</span> <span class="s2">"Black"</span><span class="p">,</span>
+     <span class="n">signedForegroundColour</span> <span class="o">=</span> <span class="s2">"Red"</span><span class="p">,</span>
+     <span class="n">emptyBackgroundColour</span> <span class="o">=</span> <span class="s2">"White"</span><span class="p">,</span>
+     <span class="n">validBackgroundColour</span> <span class="o">=</span> <span class="s2">"White"</span><span class="p">,</span>
+     <span class="n">invalidBackgroundColour</span> <span class="o">=</span> <span class="s2">"Yellow"</span><span class="p">,</span>
+     <span class="n">autoSize</span> <span class="o">=</span> <span class="sb">``</span><span class="bp">True</span><span class="sb">``</span>              <span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>value</dt><dd><p>If no initial value is set, the default will be zero, or
+the minimum value, if specified.  If an illegal string is specified,
+a ValueError will result. (You can always later set the initial
+value with SetValue() after instantiation of the control.)</p>
+</dd>
+<dt>integerWidth</dt><dd><p>Indicates how many places to the right of any decimal point
+should be allowed in the control.  This will, perforce, limit
+the size of the values that can be entered. This number need
+not include space for grouping characters or the sign, if either
+of these options are enabled, as the resulting underlying
+mask is automatically by the control.  The default of 10
+will allow any 32 bit integer value.  The minimum value
+for integerWidth is 1.</p>
+</dd>
+<dt>fractionWidth</dt><dd><p>Indicates how many decimal places to show for numeric value.
+If default (0), then the control will display and return only
+integer or long values.</p>
+</dd>
+<dt>allowNone</dt><dd><p>Boolean indicating whether or not the control is allowed to be
+empty, representing a value of None for the control.</p>
+</dd>
+<dt>allowNegative</dt><dd><p>Boolean indicating whether or not control is allowed to hold
+negative numbers.</p>
+</dd>
+<dt>useParensForNegatives</dt><dd><p>If true, this will cause negative numbers to be displayed with ()s
+rather than -, (although ‘-‘ will still trigger a negative number.)</p>
+</dd>
+<dt>groupDigits</dt><dd><p>Indicates whether or not grouping characters should be allowed and/or
+inserted when leaving the control or the decimal character is entered.</p>
+</dd>
+<dt>groupChar</dt><dd><p>What grouping character will be used if allowed. (By default ‘,’)</p>
+</dd>
+<dt>decimalChar</dt><dd><p>If fractionWidth is &gt; 0, what character will be used to represent
+the decimal point.  (By default ‘.’)</p>
+</dd>
+<dt>min</dt><dd><p>The minimum value that the control should allow.  This can be also be
+adjusted with SetMin().  If the control is not limited, any value
+below this bound will result in a background colored with the current
+invalidBackgroundColour.  If the min specified will not fit into the
+control, the min setting will be ignored.</p>
+</dd>
+<dt>max</dt><dd><p>The maximum value that the control should allow.  This can be
+adjusted with SetMax().  If the control is not limited, any value
+above this bound will result in a background colored with the current
+invalidBackgroundColour.  If the max specified will not fit into the
+control, the max setting will be ignored.</p>
+</dd>
+<dt>limited</dt><dd><p>Boolean indicating whether the control prevents values from
+exceeding the currently set minimum and maximum values (bounds).
+If <code class="docutils literal notranslate"><span class="pre">False</span></code> and bounds are set, out-of-bounds values will
+result in a background colored with the current invalidBackgroundColour.</p>
+</dd>
+<dt>limitOnFieldChange</dt><dd><p>An alternative to limited, this boolean indicates whether or not a
+field change should be allowed if the value in the control
+is out of bounds.  If True, and control focus is lost, this will also
+cause the control to take on the nearest bound value.</p>
+</dd>
+<dt>selectOnEntry</dt><dd><p>Boolean indicating whether or not the value in each field of the
+control should be automatically selected (for replacement) when
+that field is entered, either by cursor movement or tabbing.
+This can be desirable when using these controls for rapid data entry.</p>
+</dd>
+<dt>foregroundColour</dt><dd><p>Color value used for positive values of the control.</p>
+</dd>
+<dt>signedForegroundColour</dt><dd><p>Color value used for negative values of the control.</p>
+</dd>
+<dt>emptyBackgroundColour</dt><dd><p>What background color to use when the control is considered
+“empty.” (allow_none must be set to trigger this behavior.)</p>
+</dd>
+<dt>validBackgroundColour</dt><dd><p>What background color to use when the control value is
+considered valid.</p>
+</dd>
+<dt>invalidBackgroundColour</dt><dd><p>Color value used for illegal values or values out-of-bounds of the
+control when the bounds are set but the control is not limited.</p>
+</dd>
+<dt>autoSize</dt><dd><p>Boolean indicating whether or not the control should set its own
+width based on the integer and fraction widths.  <code class="docutils literal notranslate"><span class="pre">True</span></code> by default.
+&lt;I&gt;Note:&lt;/I&gt; Setting this to <code class="docutils literal notranslate"><span class="pre">False</span></code> will produce seemingly odd
+behavior unless the control is large enough to hold the maximum
+specified value given the widths and the sign positions; if not,
+the control will appear to “jump around” as the contents scroll.
+(ie. autoSize is highly recommended.)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<hr class="docutils"/>
+<dl>
+<dt>masked.EVT_NUM(win, id, func)</dt><dd><p>Respond to a EVT_COMMAND_MASKED_NUMBER_UPDATED event, generated when
+the value changes. Notice that this event will always be sent when the
+control’s contents changes - whether this is due to user input or
+comes from the program itself (for example, if SetValue() is called.)</p>
+</dd>
+<dt>SetValue(int|long|float|string)</dt><dd><p>Sets the value of the control to the value specified, if
+possible.  The resulting actual value of the control may be
+altered to conform to the format of the control, changed
+to conform with the bounds set on the control if limited,
+or colored if not limited but the value is out-of-bounds.
+A ValueError exception will be raised if an invalid value
+is specified.</p>
+</dd>
+<dt>GetValue()</dt><dd><p>Retrieves the numeric value from the control.  The value
+retrieved will be either be returned as a long if the
+fractionWidth is 0, or a float otherwise.</p>
+</dd>
+<dt>SetParameters(**kwargs)</dt><dd><p>Allows simultaneous setting of various attributes
+of the control after construction.  Keyword arguments
+allowed are the same parameters as supported in the constructor.</p>
+</dd>
+<dt>SetIntegerWidth(value)</dt><dd><p>Resets the width of the integer portion of the control.  The
+value must be &gt;= 1, or an AttributeError exception will result.
+This value should account for any grouping characters that might
+be inserted (if grouping is enabled), but does not need to account
+for the sign, as that is handled separately by the control.</p>
+</dd>
+<dt>GetIntegerWidth()</dt><dd><p>Returns the current width of the integer portion of the control,
+not including any reserved sign position.</p>
+</dd>
+<dt>SetFractionWidth(value)</dt><dd><p>Resets the width of the fractional portion of the control.  The
+value must be &gt;= 0, or an AttributeError exception will result.  If
+0, the current value of the control will be truncated to an integer
+value.</p>
+</dd>
+<dt>GetFractionWidth()</dt><dd><p>Returns the current width of the fractional portion of the control.</p>
+</dd>
+<dt>SetMin(min=None)</dt><dd><p>Resets the minimum value of the control.  If a value of &lt;I&gt;None&lt;/I&gt;
+is provided, then the control will have no explicit minimum value.
+If the value specified is greater than the current maximum value,
+then the function returns <code class="docutils literal notranslate"><span class="pre">False</span></code> and the minimum will not change from
+its current setting.  On success, the function returns True.</p>
+<p>If successful and the current value is lower than the new lower
+bound, if the control is limited, the value will be automatically
+adjusted to the new minimum value; if not limited, the value in the
+control will be colored as invalid.</p>
+<p>If min &gt; the max value allowed by the width of the control,
+the function will return False, and the min will not be set.</p>
+</dd>
+<dt>GetMin()</dt><dd><p>Gets the current lower bound value for the control.
+It will return None if no lower bound is currently specified.</p>
+</dd>
+<dt>SetMax(max=None)</dt><dd><p>Resets the maximum value of the control. If a value of &lt;I&gt;None&lt;/I&gt;
+is provided, then the control will have no explicit maximum value.
+If the value specified is less than the current minimum value, then
+the function returns <code class="docutils literal notranslate"><span class="pre">False</span></code> and the maximum will not change from its
+current setting. On success, the function returns True.</p>
+<p>If successful and the current value is greater than the new upper
+bound, if the control is limited the value will be automatically
+adjusted to this maximum value; if not limited, the value in the
+control will be colored as invalid.</p>
+<p>If max &gt; the max value allowed by the width of the control,
+the function will return False, and the max will not be set.</p>
+</dd>
+<dt>GetMax()</dt><dd><p>Gets the current upper bound value for the control.
+It will return None if no upper bound is currently specified.</p>
+</dd>
+<dt>SetBounds(min=None,max=None)</dt><dd><p>This function is a convenience function for setting the min and max
+values at the same time.  The function only applies the maximum bound
+if setting the minimum bound is successful, and returns <code class="docutils literal notranslate"><span class="pre">True</span></code>     only if both operations succeed.  &lt;B&gt;&lt;I&gt;Note:&lt;/I&gt; leaving out an argument
+will remove the corresponding bound.</p>
+</dd>
+<dt>GetBounds()</dt><dd><p>This function returns a two-tuple (min,max), indicating the
+current bounds of the control.  Each value can be None if
+that bound is not set.</p>
+</dd>
+<dt>IsInBounds(value=None)</dt><dd><p>Returns &lt;I&gt;True&lt;/I&gt; if no value is specified and the current value
+of the control falls within the current bounds.  This function can also
+be called with a value to see if that value would fall within the current
+bounds of the given control.</p>
+</dd>
+<dt>SetLimited(bool)</dt><dd><p>If called with a value of True, this function will cause the control
+to limit the value to fall within the bounds currently specified.
+If the control’s value currently exceeds the bounds, it will then
+be limited accordingly.
+If called with a value of False, this function will disable value
+limiting, but coloring of out-of-bounds values will still take
+place if bounds have been set for the control.</p>
+</dd>
+</dl>
+<p>GetLimited()</p>
+<dl class="simple">
+<dt>IsLimited()</dt><dd><p>Returns &lt;I&gt;True&lt;/I&gt; if the control is currently limiting the
+value to fall within the current bounds.</p>
+</dd>
+<dt>SetLimitOnFieldChange()</dt><dd><p>If called with a value of True, will cause the control to allow
+out-of-bounds values, but will prevent field change if attempted
+via navigation, and if the control loses focus, it will change
+the value to the nearest bound.</p>
+</dd>
+</dl>
+<p>GetLimitOnFieldChange()</p>
+<dl class="simple">
+<dt>IsLimitedOnFieldChange()</dt><dd><p>Returns &lt;I&gt;True&lt;/I&gt; if the control is currently limiting the
+value on field change.</p>
+</dd>
+<dt>SetAllowNone(bool)</dt><dd><p>If called with a value of True, this function will cause the control
+to allow the value to be empty, representing a value of None.
+If called with a value of False, this function will prevent the value
+from being None.  If the value of the control is currently None,
+ie. the control is empty, then the value will be changed to that
+of the lower bound of the control, or 0 if no lower bound is set.</p>
+</dd>
+</dl>
+<p>GetAllowNone()</p>
+<dl class="simple">
+<dt>IsNoneAllowed()</dt><dd><p>Returns &lt;I&gt;True&lt;/I&gt; if the control currently allows its
+value to be None.</p>
+</dd>
+<dt>SetAllowNegative(bool)</dt><dd><p>If called with a value of True, this function will cause the
+control to allow the value to be negative (and reserve space for
+displaying the sign. If called with a value of False, and the
+value of the control is currently negative, the value of the
+control will be converted to the absolute value, and then
+limited appropriately based on the existing bounds of the control
+(if any).</p>
+</dd>
+</dl>
+<p>GetAllowNegative()</p>
+<dl class="simple">
+<dt>IsNegativeAllowed()</dt><dd><p>Returns &lt;I&gt;True&lt;/I&gt; if the control currently permits values
+to be negative.</p>
+</dd>
+<dt>SetGroupDigits(bool)</dt><dd><p>If called with a value of True, this will make the control
+automatically add and manage grouping characters to the presented
+value in integer portion of the control.</p>
+</dd>
+</dl>
+<p>GetGroupDigits()</p>
+<dl class="simple">
+<dt>IsGroupingAllowed()</dt><dd><p>Returns &lt;I&gt;True&lt;/I&gt; if the control is currently set to group digits.</p>
+</dd>
+<dt>SetGroupChar()</dt><dd><p>Sets the grouping character for the integer portion of the
+control.  (The default grouping character this is ‘,’.</p>
+</dd>
+<dt>GetGroupChar()</dt><dd><p>Returns the current grouping character for the control.</p>
+</dd>
+<dt>SetSelectOnEntry()</dt><dd><p>If called with a value of &lt;I&gt;True&lt;/I&gt;, this will make the control
+automatically select the contents of each field as it is entered
+within the control.  (The default is True.)
+GetSelectOnEntry()
+Returns &lt;I&gt;True&lt;/I&gt; if the control currently auto selects
+the field values on entry.</p>
+</dd>
+<dt>SetAutoSize(bool)</dt><dd><p>Resets the autoSize attribute of the control.</p>
+</dd>
+<dt>GetAutoSize()</dt><dd><p>Returns the current state of the autoSize attribute for the control.</p>
+</dd>
+</dl>
+<div class="section" id="class-summary-classes-summary">
+<h2><a class="reference internal" href="_images/class_summary.png"><img alt="class_summary" class="align-middle" src="_images/class_summary.png" style="width: 32px;"/></a> Classes Summary<a class="headerlink" href="#class-summary-classes-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.masked.numctrl.NumberUpdatedEvent.html#wx.lib.masked.numctrl.NumberUpdatedEvent" title="wx.lib.masked.numctrl.NumberUpdatedEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumberUpdatedEvent</span></code></a></p></td>
+<td><p>Used to fire an EVT_NUM event whenever the value in a NumCtrl changes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.masked.numctrl.NumCtrl.html#wx.lib.masked.numctrl.NumCtrl" title="wx.lib.masked.numctrl.NumCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumCtrl</span></code></a></p></td>
+<td><p>Masked edit control supporting “native” numeric values, ie. .SetValue(3), for</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.masked.numctrl.NumCtrlAccessorsMixin.html#wx.lib.masked.numctrl.NumCtrlAccessorsMixin" title="wx.lib.masked.numctrl.NumCtrlAccessorsMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumCtrlAccessorsMixin</span></code></a></p></td>
+<td><p>Defines masked.NumCtrl’s list of attributes having their own</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

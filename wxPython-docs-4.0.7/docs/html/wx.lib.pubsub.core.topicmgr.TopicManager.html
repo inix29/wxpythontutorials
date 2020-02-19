@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.pubsub.core.topicmgr.TopicManager — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.pubsub.core.topicmgrimpl.html" rel="next" title="wx.lib.pubsub.core.topicmgrimpl"/>
+<link href="wx.lib.pubsub.core.topicmgr._MasterTopicDefnProvider.html" rel="prev" title="wx.lib.pubsub.core.topicmgr._MasterTopicDefnProvider"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a href="wx.lib.pubsub.html">
+<strong>wx.lib.pubsub</strong></a> »</li>
+<li><a href="wx.lib.pubsub.core.html">
+<strong>wx.lib.pubsub.core</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.pubsub.core.topicmgr.html">
+<strong>wx.lib.pubsub.core.topicmgr</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.pubsub.core.topicmgr.TopicManager</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.pubsub.core.topicmgrimpl.html" title="wx.lib.pubsub.core.topicmgrimpl">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.pubsub.core.topicmgr._MasterTopicDefnProvider.html" title="wx.lib.pubsub.core.topicmgr._MasterTopicDefnProvider">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.pubsub.core.topicmgr.TopicManager</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.pubsub.core.topicmgr.TopicManager.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-lib-pubsub-core-topicmgr-topicmanager">
+<span id="wx-lib-pubsub-core-topicmgr-topicmanager"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.pubsub.core.topicmgr.TopicManager</strong><a class="headerlink" href="#phoenix-title-wx-lib-pubsub-core-topicmgr-topicmanager" title="Permalink to this headline">¶</a></h1>
+<p>Manages the registry of all topics and creation/deletion
+of topics.</p>
+<p>Note that any method that accepts a topic name can accept it in the
+‘dotted’ format such as <code class="docutils literal notranslate"><span class="pre">'a.b.c.'</span></code> or in tuple format such as
+<code class="docutils literal notranslate"><span class="pre">('a',</span> <span class="pre">'b',</span> <span class="pre">'c')</span></code>. Any such method will raise a ValueError
+if name not valid (empty, invalid characters, etc).</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>TopicManager</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of TopicManager" class="inheritance" src="_static/images/inheritance/wx.lib.pubsub.core.topicmgr.TopicManager_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,316,35" href="wx.lib.pubsub.core.topicmgr.TopicManager.html" id="node1" shape="rect" title="Manages the registry of all topics and creation/deletion"/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%"/>
+<col style="width: 64%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.__init__" title="wx.lib.pubsub.core.topicmgr.TopicManager.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>The optional treeConfig is an instance of TreeConfig, used to</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.addDefnProvider" title="wx.lib.pubsub.core.topicmgr.TopicManager.addDefnProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addDefnProvider</span></code></a></p></td>
+<td><p>Register a topic definition provider. After this method is called, whenever a topic must be created,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.checkAllTopicsHaveMDS" title="wx.lib.pubsub.core.topicmgr.TopicManager.checkAllTopicsHaveMDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">checkAllTopicsHaveMDS</span></code></a></p></td>
+<td><p>Check that all topics that have been created for their MDS.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.clearDefnProviders" title="wx.lib.pubsub.core.topicmgr.TopicManager.clearDefnProviders"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clearDefnProviders</span></code></a></p></td>
+<td><p>Remove all registered topic definition providers</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.delTopic" title="wx.lib.pubsub.core.topicmgr.TopicManager.delTopic"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delTopic</span></code></a></p></td>
+<td><p>Delete the named topic, including all sub-topics. Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if topic does not exist; <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise. Also unsubscribe any listeners</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getNumDefnProviders" title="wx.lib.pubsub.core.topicmgr.TopicManager.getNumDefnProviders"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getNumDefnProviders</span></code></a></p></td>
+<td><p>Get how many topic definitions providers are registered.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getOrCreateTopic" title="wx.lib.pubsub.core.topicmgr.TopicManager.getOrCreateTopic"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getOrCreateTopic</span></code></a></p></td>
+<td><p>Get the Topic instance for topic of given name, creating it</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getRootAllTopics" title="wx.lib.pubsub.core.topicmgr.TopicManager.getRootAllTopics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getRootAllTopics</span></code></a></p></td>
+<td><p>Get the topic that is parent of all root (ie top-level) topics,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getTopic" title="wx.lib.pubsub.core.topicmgr.TopicManager.getTopic"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getTopic</span></code></a></p></td>
+<td><p>Get the Topic instance for the given topic name. By default, raises</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getTopicsSubscribed" title="wx.lib.pubsub.core.topicmgr.TopicManager.getTopicsSubscribed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getTopicsSubscribed</span></code></a></p></td>
+<td><p>Get the list of Topic objects that have given listener</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.hasTopicDefinition" title="wx.lib.pubsub.core.topicmgr.TopicManager.hasTopicDefinition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hasTopicDefinition</span></code></a></p></td>
+<td><p>Determine if there is a definition avaiable for topic ‘name’. Return</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.isTopicInUse" title="wx.lib.pubsub.core.topicmgr.TopicManager.isTopicInUse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">isTopicInUse</span></code></a></p></td>
+<td><p>Determine if topic ‘name’ is in use. <code class="docutils literal notranslate"><span class="pre">True</span></code> if a Topic object exists</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.pubsub.core.topicmgr.TopicManager.newTopic" title="wx.lib.pubsub.core.topicmgr.TopicManager.newTopic"><code class="xref py py-meth docutils literal notranslate"><span class="pre">newTopic</span></code></a></p></td>
+<td><p>Deprecated legacy method.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager">
+<em class="property">class </em><code class="sig-name descname">TopicManager</code><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages the registry of all topics and creation/deletion
+of topics.</p>
+<p>Note that any method that accepts a topic name can accept it in the
+‘dotted’ format such as <code class="docutils literal notranslate"><span class="pre">'a.b.c.'</span></code> or in tuple format such as
+<code class="docutils literal notranslate"><span class="pre">('a',</span> <span class="pre">'b',</span> <span class="pre">'c')</span></code>. Any such method will raise a ValueError
+if name not valid (empty, invalid characters, etc).</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">treeConfig=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The optional treeConfig is an instance of TreeConfig, used to
+configure the topic tree such as notification settings, etc. A
+default config is created if not given. This method should only be
+called by an instance of Publisher (see Publisher.getTopicManager()).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.addDefnProvider">
+<code class="sig-name descname">addDefnProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">providerOrSource</em>, <em class="sig-param">format=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.addDefnProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register a topic definition provider. After this method is called, whenever a topic must be created,
+the first definition provider that has a definition
+for the required topic is used to instantiate the topic.</p>
+<p>If providerOrSource is an instance of ITopicDefnProvider, register
+it as a provider of topic definitions. Otherwise, register a new
+instance of TopicDefnProvider(providerOrSource, format). In that case,
+if format is not given, it defaults to TOPIC_TREE_FROM_MODULE. Either
+way, returns the instance of ITopicDefnProvider registered.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.checkAllTopicsHaveMDS">
+<code class="sig-name descname">checkAllTopicsHaveMDS</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.checkAllTopicsHaveMDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that all topics that have been created for their MDS.
+Raise a TopicDefnError if one is found that does not have one.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.clearDefnProviders">
+<code class="sig-name descname">clearDefnProviders</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.clearDefnProviders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all registered topic definition providers</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.delTopic">
+<code class="sig-name descname">delTopic</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.delTopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the named topic, including all sub-topics. Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if topic does not exist; <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise. Also unsubscribe any listeners
+of topic and all subtopics.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.getNumDefnProviders">
+<code class="sig-name descname">getNumDefnProviders</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getNumDefnProviders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get how many topic definitions providers are registered.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.getOrCreateTopic">
+<code class="sig-name descname">getOrCreateTopic</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em>, <em class="sig-param">protoListener=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getOrCreateTopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the Topic instance for topic of given name, creating it
+(and any of its missing parent topics) as necessary. Pubsub
+functions such as subscribe() use this to obtain the Topic object
+corresponding to a topic name.</p>
+<p>The name can be in dotted or string format (<code class="docutils literal notranslate"><span class="pre">'a.b.'</span></code> or <code class="docutils literal notranslate"><span class="pre">('a','b')</span></code>).</p>
+<p>This method always attempts to return a “complete” topic, i.e. one
+with a Message Data Specification (MDS). So if the topic does not have
+an MDS, it attempts to add it. It first tries to find an MDS
+from a TopicDefnProvider (see addDefnProvider()). If none is available,
+it attempts to set it from protoListener, if it has been given. If not,
+the topic has no MDS.</p>
+<p>Once a topic’s MDS has been set, it is never again changed or accessed
+by this method.</p>
+<p>Examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># assume no topics exist</span>
+<span class="c1"># but a topic definition provider has been added via</span>
+<span class="c1"># pub.addTopicDefnProvider() and has definition for topics 'a' and 'a.b'</span>
+
+<span class="c1"># creates topic a and a.b; both will have MDS from the defn provider:</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">topicMgr</span><span class="o">.</span><span class="n">getOrCreateTopic</span><span class="p">(</span><span class="s1">'a.b'</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">topicMgr</span><span class="o">.</span><span class="n">getOrCreateTopic</span><span class="p">(</span><span class="s1">'a.b'</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">t1</span> <span class="ow">is</span> <span class="n">t2</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">getParent</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'a'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">proto</span><span class="p">(</span><span class="n">req1</span><span class="p">,</span> <span class="n">optarg1</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span> <span class="k">pass</span>
+<span class="c1"># creates topic c.d with MDS based on proto; creates c without an MDS</span>
+<span class="c1"># since no proto for it, nor defn provider:</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">topicMgr</span><span class="o">.</span><span class="n">getOrCreateTopic</span><span class="p">(</span><span class="s1">'c.d'</span><span class="p">,</span> <span class="n">proto</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The MDS can also be defined via a call to subscribe(listener, topicName),
+which indirectly calls getOrCreateTopic(topicName, listener).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.getRootAllTopics">
+<code class="sig-name descname">getRootAllTopics</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getRootAllTopics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the topic that is parent of all root (ie top-level) topics,
+for default TopicManager instance created when this module is imported.
+Some notes:</p>
+<ul class="simple">
+<li><p>“root of all topics” topic satisfies isAll()==True, isRoot()==False,
+getParent() is None;</p></li>
+<li><p>all root-level topics satisfy isAll()==False, isRoot()==True, and
+getParent() is getDefaultTopicTreeRoot();</p></li>
+<li><p>all other topics satisfy neither.</p></li>
+</ul>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.getTopic">
+<code class="sig-name descname">getTopic</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em>, <em class="sig-param">okIfNone=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getTopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the Topic instance for the given topic name. By default, raises
+an TopicNameError exception if a topic with given name doesn’t exist. If
+okIfNone=True, returns None instead of raising an exception.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.getTopicsSubscribed">
+<code class="sig-name descname">getTopicsSubscribed</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">listener</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.getTopicsSubscribed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of Topic objects that have given listener
+subscribed. Note: the listener can also get messages from any
+sub-topic of returned list.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.hasTopicDefinition">
+<code class="sig-name descname">hasTopicDefinition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.hasTopicDefinition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if there is a definition avaiable for topic ‘name’. Return
+true if there is, false otherwise. Note: a topic may have a
+definition without being in use, and vice versa.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.isTopicInUse">
+<code class="sig-name descname">isTopicInUse</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.isTopicInUse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if topic ‘name’ is in use. <code class="docutils literal notranslate"><span class="pre">True</span></code> if a Topic object exists
+for topic name (i.e. message has already been sent for that topic, or a
+least one listener subscribed), false otherwise. Note: a topic may be in use
+but not have a definition (MDS and docstring); or a topic may have a
+definition, but not be in use.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.pubsub.core.topicmgr.TopicManager.newTopic">
+<code class="sig-name descname">newTopic</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">_name</em>, <em class="sig-param">_desc</em>, <em class="sig-param">_required=()</em>, <em class="sig-param">**_argDocs</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.pubsub.core.topicmgr.TopicManager.newTopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated legacy method.
+If topic _name already exists, just returns it and does nothing else.
+Otherwise, uses getOrCreateTopic() to create it, then sets its
+description (_desc) and its message data specification (_argDocs
+and _required). Replaced by getOrCreateTopic().</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

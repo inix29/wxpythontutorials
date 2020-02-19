@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Scrolled — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ScrolledCanvas.html" rel="next" title="wx.ScrolledCanvas"/>
+<link href="wx.ScrollbarVisibility.enumeration.html" rel="prev" title="wx.ScrollbarVisibility"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Scrolled</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ScrolledCanvas.html" title="wx.ScrolledCanvas">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.ScrollbarVisibility.enumeration.html" title="wx.ScrollbarVisibility">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Scrolled</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Scrolled.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-scrolled">
+<span id="wx-scrolled"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Scrolled</strong><a class="headerlink" href="#phoenix-title-wx-scrolled" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  class manages scrolling for its client area, transforming the coordinates according to the scrollbar positions, and setting the scroll positions, thumb sizes and ranges according to the area in view.</p>
+<p>There are two commonly used (but not the only possible!) specializations of this class:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="wx.ScrolledWindow.html#wx-scrolledwindow"><span class="std std-ref">  wx.ScrolledWindow</span></a>, aka ScrolledPanel, is equivalent to <a class="reference internal" href="wx.ScrolledWindow.html#wx-scrolledwindow"><span class="std std-ref">  wx.ScrolledWindow</span></a>  from earlier versions. Derived from <a class="reference internal" href="wx.Panel.html#wx-panel"><span class="std std-ref">  wx.Panel</span></a>, it shares <a class="reference internal" href="wx.Panel.html#wx-panel"><span class="std std-ref">  wx.Panel</span></a>’s behaviour with regard to <code class="docutils literal notranslate"><span class="pre">TAB</span></code> traversal and focus handling. Use this if the scrolled window will have child controls.</p></li>
+<li><p><a class="reference internal" href="wx.ScrolledCanvas.html#wx-scrolledcanvas"><span class="std std-ref">  wx.ScrolledCanvas</span></a>, aka ScrolledWindow, derives from <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  and so doesn’t handle children specially. This is suitable e.g. for implementing scrollable controls such as tree or list controls.</p></li>
+</ul>
+<p>Starting from version 2.4 of wxWidgets, there are several ways to use a <a class="reference internal" href="wx.ScrolledWindow.html#wx-scrolledwindow"><span class="std std-ref">  wx.ScrolledWindow</span></a>  (and now <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>). In particular, there are three ways to set the size of the scrolling area:</p>
+<p>One way is to set the scrollbars directly using a call to <a class="reference internal" href="#wx.Scrolled.SetScrollbars" title="wx.Scrolled.SetScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollbars</span></code></a>. This is the way it used to be in any previous version of wxWidgets and it will be kept for backwards compatibility.</p>
+<p>An additional method of manual control, which requires a little less computation of your own, is to set the total size of the scrolling area by calling either <a class="reference internal" href="wx.Window.html#wx.Window.SetVirtualSize" title="wx.Window.SetVirtualSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetVirtualSize</span></code></a> , or <a class="reference internal" href="wx.Window.html#wx.Window.FitInside" title="wx.Window.FitInside"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.FitInside</span></code></a> , and setting the scrolling increments for it by calling <a class="reference internal" href="#wx.Scrolled.SetScrollRate" title="wx.Scrolled.SetScrollRate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollRate</span></code></a>. Scrolling in some orientation is enabled by setting a non-zero increment for it.</p>
+<p>The most automatic and newest way is to simply let sizers determine the scrolling area. This is now the default when you set an interior sizer into a <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  with <a class="reference internal" href="wx.Window.html#wx.Window.SetSizer" title="wx.Window.SetSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSizer</span></code></a> . The scrolling area will be set to the size requested by the sizer and the scrollbars will be assigned for each orientation according to the need for them and the scrolling increment set by <a class="reference internal" href="#wx.Scrolled.SetScrollRate" title="wx.Scrolled.SetScrollRate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollRate</span></code></a>. As above, scrolling is only enabled in orientations with a non-zero increment. You can influence the minimum size of the scrolled area controlled by a sizer by calling <em class="xref py py-obj">Window.SetVirtualSizeHints().</em> (Calling <a class="reference internal" href="#wx.Scrolled.SetScrollbars" title="wx.Scrolled.SetScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollbars</span></code></a>  has analogous effects in wxWidgets 2.4</p>
+<p>Note that if maximum size hints are still supported by <em class="xref py py-obj">Window.SetVirtualSizeHints(),</em> use them at your own dire risk. They may or may not have been removed for 2.4, but it really only makes sense to set minimum size hints here. We should probably replace <em class="xref py py-obj">Window.SetVirtualSizeHints()</em> with <em class="xref py py-obj">Window.SetMinVirtualSize()</em> or similar and remove it entirely in future.</p>
+<p>As with all windows, an application can draw onto a <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  using a <a class="reference internal" href="dc_overview.html#device-contexts"><span class="std std-ref">device context</span></a>.</p>
+<p>You have the option of handling the OnPaint handler or overriding the <a class="reference internal" href="#wx.Scrolled.OnDraw" title="wx.Scrolled.OnDraw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Scrolled.OnDraw</span></code></a>   function, which is passed a pre-scrolled device context (prepared by <a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Scrolled.DoPrepareDC</span></code></a> ).</p>
+<p>If you don’t wish to calculate your own scrolling, you must call <a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code></a>  when not drawing from within <a class="reference internal" href="#wx.Scrolled.OnDraw" title="wx.Scrolled.OnDraw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnDraw</span></code></a>, to set the device origin for the device context according to the current scroll position.</p>
+<p>A <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  will normally scroll itself and therefore its child windows as well. It might however be desired to scroll a different window than itself: e.g. when designing a spreadsheet, you will normally only have to scroll the (usually white) cell area, whereas the (usually grey) label area will scroll very differently. For this special purpose, you can call <a class="reference internal" href="#wx.Scrolled.SetTargetWindow" title="wx.Scrolled.SetTargetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTargetWindow</span></code></a>  which means that pressing the scrollbars will scroll a different window.</p>
+<p>Note that the underlying system knows nothing about scrolling coordinates, so that all system functions (mouse events, expose events, refresh calls etc) as well as the position of subwindows are relative to the “physical” origin of the scrolled window. If the user insert a child window at position (10,10) and scrolls the window down 100 pixels (moving the child window out of the visible area), the child window will report a position of (10,-90).</p>
+<div class="section" id="styles-window-styles">
+<span id="scrolled-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.HSCROLL</span></code>: If this style is specified and <code class="docutils literal notranslate"><span class="pre">VSCROLL</span></code>  isn’t, the window will be scrollable only in horizontal direction (by default, i.e. if neither this style nor <code class="docutils literal notranslate"><span class="pre">VSCROLL</span></code>  is specified, it scrolls in both directions).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.VSCROLL</span></code>: If this style is specified and <code class="docutils literal notranslate"><span class="pre">HSCROLL</span></code>  isn’t, the window will be scrollable only in vertical direction (by default, i.e. if neither this style nor <code class="docutils literal notranslate"><span class="pre">HSCROLL</span></code>  is specified, it scrolls in both directions).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ALWAYS_SHOW_SB</span></code>: Since wxWidgets 2.9.5, specifying this style makes the window always show its scrollbars, even if they are not used. See <a class="reference internal" href="#wx.Scrolled.ShowScrollbars" title="wx.Scrolled.ShowScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowScrollbars</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.RETAINED</span></code>: Uses a backing pixmap to speed refreshes. Motif only.</p></li>
+</ul>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="scrolled-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="wx.ScrollWinEvent.html#wx-scrollwinevent"><span class="std std-ref">  wx.ScrollWinEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_SCROLLWIN: Process all scroll events.</p></li>
+<li><p>EVT_SCROLLWIN_TOP: Process  <code class="docutils literal notranslate"><span class="pre">wxEVT_SCROLLWIN_TOP</span></code>   scroll-to-top events.</p></li>
+<li><p>EVT_SCROLLWIN_BOTTOM: Process  <code class="docutils literal notranslate"><span class="pre">wxEVT_SCROLLWIN_BOTTOM</span></code>   scroll-to-bottom events.</p></li>
+<li><p>EVT_SCROLLWIN_LINEUP: Process  <code class="docutils literal notranslate"><span class="pre">wxEVT_SCROLLWIN_LINEUP</span></code>   line up events.</p></li>
+<li><p>EVT_SCROLLWIN_LINEDOWN: Process  <code class="docutils literal notranslate"><span class="pre">wxEVT_SCROLLWIN_LINEDOWN</span></code>   line down events.</p></li>
+<li><p>EVT_SCROLLWIN_PAGEUP: Process  <code class="docutils literal notranslate"><span class="pre">wxEVT_SCROLLWIN_PAGEUP</span></code>   page up events.</p></li>
+<li><p>EVT_SCROLLWIN_PAGEDOWN: Process  <code class="docutils literal notranslate"><span class="pre">wxEVT_SCROLLWIN_PAGEDOWN</span></code>   page down events.</p></li>
+<li><p>EVT_SCROLLWIN_THUMBTRACK: Process  <code class="docutils literal notranslate"><span class="pre">wxEVT_SCROLLWIN_THUMBTRACK</span></code>   thumbtrack events (frequent events sent as the user drags the thumbtrack).</p></li>
+<li><p>EVT_SCROLLWIN_THUMBRELEASE: Process  <code class="docutils literal notranslate"><span class="pre">wxEVT_SCROLLWIN_THUMBRELEASE</span></code>   thumb release events.</p></li>
+</ul>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0: </span>The <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  template exists since version 2.9.0. In older versions, only <a class="reference internal" href="wx.ScrolledWindow.html#wx-scrolledwindow"><span class="std std-ref">  wx.ScrolledWindow</span></a>  (equivalent of ScrolledPanel) was available.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  for applications where the user scrolls by a fixed amount, and where a ‘page’ can be interpreted to be the current visible portion of the window. For more sophisticated applications, use the <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  implementation as a guide to build your own scroll behaviour or use <a class="reference internal" href="wx.VScrolledWindow.html#wx-vscrolledwindow"><span class="std std-ref">  wx.VScrolledWindow</span></a>  or its variants.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t confuse ScrollWinEvents generated by this class with <a class="reference internal" href="wx.ScrollEvent.html#wx-scrollevent"><span class="std std-ref">  wx.ScrollEvent</span></a>  objects generated by <a class="reference internal" href="wx.ScrollBar.html#wx-scrollbar"><span class="std std-ref">  wx.ScrollBar</span></a>  and <a class="reference internal" href="wx.Slider.html#wx-slider"><span class="std std-ref">  wx.Slider</span></a>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.ScrollBar.html#wx-scrollbar"><span class="std std-ref">  wx.ScrollBar</span></a>, <a class="reference internal" href="wx.ClientDC.html#wx-clientdc"><span class="std std-ref">  wx.ClientDC</span></a>, <a class="reference internal" href="wx.PaintDC.html#wx-paintdc"><span class="std std-ref">  wx.PaintDC</span></a>, <a class="reference internal" href="wx.VScrolledWindow.html#wx-vscrolledwindow"><span class="std std-ref">  wx.VScrolledWindow</span></a>, <a class="reference internal" href="wx.HScrolledWindow.html#wx-hscrolledwindow"><span class="std std-ref">  wx.HScrolledWindow</span></a>, <a class="reference internal" href="wx.HVScrolledWindow.html#wx-hvscrolledwindow"><span class="std std-ref">  wx.HVScrolledWindow</span></a>,</p>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>review docs for this class replacing SetVirtualSizeHints() with SetMinClientSize().</p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Scrolled</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Scrolled" class="inheritance" src="_static/images/inheritance/wx.Scrolled_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,101,104,131" href="wx.Scrolled.html" id="node1" shape="rect" title="The wx.Scrolled  class manages scrolling for its client area, transforming the coordinates according to the scrollbar positions, and setting the scroll positions, thumb sizes and ranges according to the area in view."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.grid.Grid.html#wx-grid-grid"><span class="std std-ref">  wx.grid.Grid</span></a>, <a class="reference internal" href="wx.html.HtmlWindow.html#wx-html-htmlwindow"><span class="std std-ref">  wx.html.HtmlWindow</span></a>, <a class="reference internal" href="wx.PreviewCanvas.html#wx-previewcanvas"><span class="std std-ref">  wx.PreviewCanvas</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%"/>
+<col style="width: 78%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.__init__" title="wx.Scrolled.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.AdjustScrollbars" title="wx.Scrolled.AdjustScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AdjustScrollbars</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.CalcScrolledPosition" title="wx.Scrolled.CalcScrolledPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CalcScrolledPosition</span></code></a></p></td>
+<td><p>Translates the logical coordinates to the device ones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.CalcUnscrolledPosition" title="wx.Scrolled.CalcUnscrolledPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CalcUnscrolledPosition</span></code></a></p></td>
+<td><p>Translates the device coordinates to the logical ones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.Create" title="wx.Scrolled.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates the window for two-step construction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.DisableKeyboardScrolling" title="wx.Scrolled.DisableKeyboardScrolling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisableKeyboardScrolling</span></code></a></p></td>
+<td><p>Disable use of keyboard keys for scrolling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code></a></p></td>
+<td><p>Call this function to prepare the device context for drawing a scrolled image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.EnableScrolling" title="wx.Scrolled.EnableScrolling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableScrolling</span></code></a></p></td>
+<td><p>Enable or disable use of <a class="reference internal" href="wx.Window.html#wx.Window.ScrollWindow" title="wx.Window.ScrollWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.ScrollWindow</span></code></a>   for scrolling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.GetClassDefaultAttributes" title="wx.Scrolled.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.GetScaleX" title="wx.Scrolled.GetScaleX"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScaleX</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.GetScaleY" title="wx.Scrolled.GetScaleY"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScaleY</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.GetScrollLines" title="wx.Scrolled.GetScrollLines"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScrollLines</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.GetScrollPageSize" title="wx.Scrolled.GetScrollPageSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScrollPageSize</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.GetScrollPixelsPerUnit" title="wx.Scrolled.GetScrollPixelsPerUnit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScrollPixelsPerUnit</span></code></a></p></td>
+<td><p>Get the number of pixels per scroll unit (line), in each direction, as set by <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollbars</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.GetSizeAvailableForScrollTarget" title="wx.Scrolled.GetSizeAvailableForScrollTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSizeAvailableForScrollTarget</span></code></a></p></td>
+<td><p>Function which must be overridden to implement the size available for the scroll target for the given size of the main window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.GetTargetRect" title="wx.Scrolled.GetTargetRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTargetRect</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.GetTargetWindow" title="wx.Scrolled.GetTargetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTargetWindow</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.GetViewStart" title="wx.Scrolled.GetViewStart"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetViewStart</span></code></a></p></td>
+<td><p>Get the position at which the visible portion of the window starts.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.IsAutoScrolling" title="wx.Scrolled.IsAutoScrolling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsAutoScrolling</span></code></a></p></td>
+<td><p>Are we generating the autoscroll events?</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.IsRetained" title="wx.Scrolled.IsRetained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsRetained</span></code></a></p></td>
+<td><p>Motif only: <code class="docutils literal notranslate"><span class="pre">True</span></code> if the window has a backing bitmap.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.OnDraw" title="wx.Scrolled.OnDraw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnDraw</span></code></a></p></td>
+<td><p>Called by the default paint event handler to allow the application to define painting behaviour without having to worry about calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.PrepareDC" title="wx.Scrolled.PrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PrepareDC</span></code></a></p></td>
+<td><p>This function is for backwards compatibility only and simply calls <code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code>   now.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.Scroll" title="wx.Scrolled.Scroll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Scroll</span></code></a></p></td>
+<td><p>Scrolls a window so the view start is at the given point.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.SendAutoScrollEvents" title="wx.Scrolled.SendAutoScrollEvents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SendAutoScrollEvents</span></code></a></p></td>
+<td><p>This method can be overridden in a derived class to forbid sending the auto scroll events - note that unlike <code class="xref py py-meth docutils literal notranslate"><span class="pre">StopAutoScrolling</span></code>   it doesn’t stop the timer, so it will be called repeatedly and will typically return different values depending on the current mouse position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.SetScale" title="wx.Scrolled.SetScale"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScale</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.SetScrollPageSize" title="wx.Scrolled.SetScrollPageSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollPageSize</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.SetScrollRate" title="wx.Scrolled.SetScrollRate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollRate</span></code></a></p></td>
+<td><p>Set the horizontal and vertical scrolling increment only.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.SetScrollbars" title="wx.Scrolled.SetScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollbars</span></code></a></p></td>
+<td><p>Sets up vertical and/or horizontal scrollbars.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.SetTargetRect" title="wx.Scrolled.SetTargetRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTargetRect</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.SetTargetWindow" title="wx.Scrolled.SetTargetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTargetWindow</span></code></a></p></td>
+<td><p>Call this function to tell <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  to perform the actual scrolling on a different window (and not on itself).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.ShowScrollbars" title="wx.Scrolled.ShowScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowScrollbars</span></code></a></p></td>
+<td><p>Set the scrollbar visibility.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.StopAutoScrolling" title="wx.Scrolled.StopAutoScrolling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StopAutoScrolling</span></code></a></p></td>
+<td><p>Stop generating the scroll events when mouse is held outside the window.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.ScaleX" title="wx.Scrolled.ScaleX"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ScaleX</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Scrolled.GetScaleX" title="wx.Scrolled.GetScaleX"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScaleX</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.ScaleY" title="wx.Scrolled.ScaleY"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ScaleY</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Scrolled.GetScaleY" title="wx.Scrolled.GetScaleY"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScaleY</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Scrolled.TargetRect" title="wx.Scrolled.TargetRect"><code class="xref py py-attr docutils literal notranslate"><span class="pre">TargetRect</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Scrolled.GetTargetRect" title="wx.Scrolled.GetTargetRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTargetRect</span></code></a> and <a class="reference internal" href="#wx.Scrolled.SetTargetRect" title="wx.Scrolled.SetTargetRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTargetRect</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Scrolled.TargetWindow" title="wx.Scrolled.TargetWindow"><code class="xref py py-attr docutils literal notranslate"><span class="pre">TargetWindow</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Scrolled.GetTargetWindow" title="wx.Scrolled.GetTargetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTargetWindow</span></code></a> and <a class="reference internal" href="#wx.Scrolled.SetTargetWindow" title="wx.Scrolled.SetTargetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTargetWindow</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Scrolled">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Scrolled</code><span class="sig-paren">(</span><em class="sig-param">T</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrolled</span><span class="p">()</span>
+
+<span class="n">Scrolled</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+         <span class="n">style</span><span class="o">=</span><span class="n">HSCROLL</span><span class="o">|</span><span class="n">VSCROLL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"scrolledWindow"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The Scrolled class manages scrolling for its client area,
+transforming the coordinates according to the scrollbar positions, and
+setting the scroll positions, thumb sizes and ranges according to the
+area in view.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Scrolled.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=-1, pos=DefaultPosition, size=DefaultSize, style=HSCROLL|VSCROLL, name=”scrolledWindow”)</em></p>
+<p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Parent window.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – Window identifier. The value  <code class="docutils literal notranslate"><span class="pre">ID_ANY</span></code>   indicates a default value.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Window position. If a position of <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultPosition</span></code>       is specified then a default position is chosen.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Window size. If a size of <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultSize</span></code>       is specified then the window is sized appropriately.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – Window style. See <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – Window name.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The window is initially created without visible scrollbars. Call <a class="reference internal" href="#wx.Scrolled.SetScrollbars" title="wx.Scrolled.SetScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollbars</span></code></a>   to specify how big the virtual window size should be.</p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.AdjustScrollbars">
+<code class="sig-name descname">AdjustScrollbars</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.AdjustScrollbars" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.CalcScrolledPosition">
+<code class="sig-name descname">CalcScrolledPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.CalcScrolledPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CalcScrolledPosition</strong> <em class="xref py py-obj">(self, x, y)</em></p>
+<p>Translates the logical coordinates to the device ones.</p>
+<p>For example, if a window is scrolled 10 pixels to the bottom, the device coordinates of the origin are (0, 0) (as always), but the logical coordinates are (0, 10) and so the call to CalcScrolledPosition(0, 10, xx, yy) will return 0 in yy.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CalcScrolledPosition</strong> <em class="xref py py-obj">(self, pt)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Point.html#wx-point"><span class="std std-ref">  wx.Point</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.CalcUnscrolledPosition">
+<code class="sig-name descname">CalcUnscrolledPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.CalcUnscrolledPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CalcUnscrolledPosition</strong> <em class="xref py py-obj">(self, x, y)</em></p>
+<p>Translates the device coordinates to the logical ones.</p>
+<p>For example, if a window is scrolled 10 pixels to the bottom, the device coordinates of the origin are (0, 0) (as always), but the logical coordinates are (0, 10) and so the call to CalcUnscrolledPosition(0, 0, xx, yy) will return 10 in yy.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CalcUnscrolledPosition</strong> <em class="xref py py-obj">(self, pt)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Point.html#wx-point"><span class="std std-ref">  wx.Point</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=-1</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=HSCROLL|VSCROLL</em>, <em class="sig-param">name="scrolledWindow"</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the window for two-step construction.</p>
+<p>Derived classes should call or replace this function. See <code class="xref py py-meth docutils literal notranslate"><span class="pre">Scrolled.__init__</span></code>   for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.DisableKeyboardScrolling">
+<code class="sig-name descname">DisableKeyboardScrolling</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.DisableKeyboardScrolling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable use of keyboard keys for scrolling.</p>
+<p>By default cursor movement keys (including Home, End, Page Up and Down) are used to scroll the window appropriately. If the derived class uses these keys for something else, e.g. changing the currently selected item, this function can be used to disable this behaviour as it’s not only not necessary then but can actually be actively harmful if another object forwards a keyboard event corresponding to one of the above keys to us using ProcessWindowEvent() because the event will always be processed which can be undesirable.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.DoPrepareDC">
+<code class="sig-name descname">DoPrepareDC</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.DoPrepareDC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to prepare the device context for drawing a scrolled image.</p>
+<p>It sets the device origin according to the current scroll position. <a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code></a>   is called automatically within the default  <code class="docutils literal notranslate"><span class="pre">wxEVT_PAINT</span></code>   event handler, so your  <a class="reference internal" href="#wx.Scrolled.OnDraw" title="wx.Scrolled.OnDraw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnDraw</span></code></a>   override will be passed an already ‘pre-scrolled’ device context. However, if you wish to draw from outside of <a class="reference internal" href="#wx.Scrolled.OnDraw" title="wx.Scrolled.OnDraw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnDraw</span></code></a>   (e.g. from your own  <code class="docutils literal notranslate"><span class="pre">wxEVT_PAINT</span></code>   handler), you must call this function yourself.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">OnEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+    <span class="n">dc</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ClientDC</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">DoPrepareDC</span><span class="p">(</span><span class="n">dc</span><span class="p">)</span>
+
+    <span class="n">dc</span><span class="o">.</span><span class="n">SetPen</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLACK_PEN</span><span class="p">)</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">GetPosition</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">xpos</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">ypos</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">Dragging</span><span class="p">()):</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">DrawLine</span><span class="p">(</span><span class="n">xpos</span><span class="p">,</span> <span class="n">ypos</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">xpos</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">ypos</span> <span class="o">=</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>Notice that the function sets the origin by moving it relatively to the current origin position, so you shouldn’t change the origin before calling <a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code></a>   or, if you do, reset it to (0, 0) later. If you call <a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code></a>   immediately after device context creation, as in the example above, this problem doesn’t arise, of course, so it is customary to do it like this.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.EnableScrolling">
+<code class="sig-name descname">EnableScrolling</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">xScrolling</em>, <em class="sig-param">yScrolling</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.EnableScrolling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable use of <a class="reference internal" href="wx.Window.html#wx.Window.ScrollWindow" title="wx.Window.ScrollWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.ScrollWindow</span></code></a>   for scrolling.</p>
+<p>By default, when a scrolled window is logically scrolled, <a class="reference internal" href="wx.Window.html#wx.Window.ScrollWindow" title="wx.Window.ScrollWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.ScrollWindow</span></code></a>   is called on the underlying window which scrolls the window contents and only invalidates the part of the window newly brought into view. If <code class="docutils literal notranslate"><span class="pre">False</span></code> is passed as an argument, then this “physical scrolling” is disabled and the window is entirely invalidated whenever it is scrolled by calling <a class="reference internal" href="wx.Window.html#wx.Window.Refresh" title="wx.Window.Refresh"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Refresh</span></code></a> .</p>
+<p>It should be rarely necessary to disable physical scrolling, so this method shouldn’t be called in normal circumstances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xScrolling</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, enables physical scrolling in the x direction.</p></li>
+<li><p><strong>yScrolling</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, enables physical scrolling in the y direction.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetScaleX">
+<code class="sig-name descname">GetScaleX</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetScaleX" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">float</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetScaleY">
+<code class="sig-name descname">GetScaleY</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetScaleY" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">float</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetScrollLines">
+<code class="sig-name descname">GetScrollLines</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">orient</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetScrollLines" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>orient</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetScrollPageSize">
+<code class="sig-name descname">GetScrollPageSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">orient</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetScrollPageSize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>orient</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetScrollPixelsPerUnit">
+<code class="sig-name descname">GetScrollPixelsPerUnit</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetScrollPixelsPerUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of pixels per scroll unit (line), in each direction, as set by <a class="reference internal" href="#wx.Scrolled.SetScrollbars" title="wx.Scrolled.SetScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollbars</span></code></a> .</p>
+<p>A value of zero indicates no scrolling in that direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetSizeAvailableForScrollTarget">
+<code class="sig-name descname">GetSizeAvailableForScrollTarget</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">size</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetSizeAvailableForScrollTarget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function which must be overridden to implement the size available for the scroll target for the given size of the main window.</p>
+<p>This method must be overridden if <a class="reference internal" href="#wx.Scrolled.SetTargetWindow" title="wx.Scrolled.SetTargetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTargetWindow</span></code></a>   is used (it is never called otherwise). The implementation should decrease the <em class="xref py py-obj">size</em>  to account for the size of the non-scrollable parts of the main window and return only the size available for the scrollable window itself. E.g. in the example given in <a class="reference internal" href="#wx.Scrolled.SetTargetWindow" title="wx.Scrolled.SetTargetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTargetWindow</span></code></a>   documentation the function would subtract the height of the header window from the vertical component of <em class="xref py py-obj">size</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetTargetRect">
+<code class="sig-name descname">GetTargetRect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetTargetRect" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Rect.html#wx-rect"><span class="std std-ref">  wx.Rect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetTargetWindow">
+<code class="sig-name descname">GetTargetWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetTargetWindow" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.GetViewStart">
+<code class="sig-name descname">GetViewStart</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.GetViewStart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the position at which the visible portion of the window starts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.IsAutoScrolling">
+<code class="sig-name descname">IsAutoScrolling</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.IsAutoScrolling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Are we generating the autoscroll events?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.IsRetained">
+<code class="sig-name descname">IsRetained</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.IsRetained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Motif only: <code class="docutils literal notranslate"><span class="pre">True</span></code> if the window has a backing bitmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.OnDraw">
+<code class="sig-name descname">OnDraw</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.OnDraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the default paint event handler to allow the application to define painting behaviour without having to worry about calling <a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code></a> .</p>
+<p>Instead of overriding this function you may also just process the paint event in the derived class as usual, but then you will have to call <a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code></a>   yourself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.PrepareDC">
+<code class="sig-name descname">PrepareDC</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dc</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.PrepareDC" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is for backwards compatibility only and simply calls <a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code></a>   now.</p>
+<p>Notice that it is not called by the default paint event handle ( <a class="reference internal" href="#wx.Scrolled.DoPrepareDC" title="wx.Scrolled.DoPrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoPrepareDC</span></code></a>   is), so overriding this method in your derived class is useless.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.Scroll">
+<code class="sig-name descname">Scroll</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.Scroll" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Scroll</strong> <em class="xref py py-obj">(self, x, y)</em></p>
+<p>Scrolls a window so the view start is at the given point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – The x position to scroll to, in scroll units.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – The y position to scroll to, in scroll units.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The positions are in scroll units, not pixels, so to convert to pixels you will have to multiply by the number of pixels per scroll increment. If either parameter is <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultCoord</span></code>       (-1), that position will be ignored (no change in that direction).</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Scrolled.SetScrollbars" title="wx.Scrolled.SetScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollbars</span></code></a> , <a class="reference internal" href="#wx.Scrolled.GetScrollPixelsPerUnit" title="wx.Scrolled.GetScrollPixelsPerUnit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScrollPixelsPerUnit</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Scroll</strong> <em class="xref py py-obj">(self, pt)</em></p>
+<p>This is an overload of <a class="reference internal" href="#wx.Scrolled.Scroll" title="wx.Scrolled.Scroll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Scroll</span></code></a> ; see that function for more info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.SendAutoScrollEvents">
+<code class="sig-name descname">SendAutoScrollEvents</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.SendAutoScrollEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method can be overridden in a derived class to forbid sending the auto scroll events - note that unlike <a class="reference internal" href="#wx.Scrolled.StopAutoScrolling" title="wx.Scrolled.StopAutoScrolling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StopAutoScrolling</span></code></a>   it doesn’t stop the timer, so it will be called repeatedly and will typically return different values depending on the current mouse position.</p>
+<p>The base class version just returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.ScrollWinEvent.html#wx.ScrollWinEvent" title="wx.ScrollWinEvent"><em>wx.ScrollWinEvent</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.SetScale">
+<code class="sig-name descname">SetScale</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">xs</em>, <em class="sig-param">ys</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.SetScale" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xs</strong> (<em>float</em>) – </p></li>
+<li><p><strong>ys</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.SetScrollPageSize">
+<code class="sig-name descname">SetScrollPageSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">orient</em>, <em class="sig-param">pageSize</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.SetScrollPageSize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>orient</strong> (<em>int</em>) – </p></li>
+<li><p><strong>pageSize</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.SetScrollRate">
+<code class="sig-name descname">SetScrollRate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">xstep</em>, <em class="sig-param">ystep</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.SetScrollRate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the horizontal and vertical scrolling increment only.</p>
+<p>See the pixelsPerUnit parameter in <a class="reference internal" href="#wx.Scrolled.SetScrollbars" title="wx.Scrolled.SetScrollbars"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetScrollbars</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xstep</strong> (<em>int</em>) – </p></li>
+<li><p><strong>ystep</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.SetScrollbars">
+<code class="sig-name descname">SetScrollbars</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pixelsPerUnitX</em>, <em class="sig-param">pixelsPerUnitY</em>, <em class="sig-param">noUnitsX</em>, <em class="sig-param">noUnitsY</em>, <em class="sig-param">xPos=0</em>, <em class="sig-param">yPos=0</em>, <em class="sig-param">noRefresh=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.SetScrollbars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up vertical and/or horizontal scrollbars.</p>
+<p>The first pair of parameters give the number of pixels per ‘scroll step’, i.e. amount moved when the up or down scroll arrows are pressed. The second pair gives the length of scrollbar in scroll steps, which sets the size of the virtual window.</p>
+<p><em class="xref py py-obj">xPos</em>  and <em class="xref py py-obj">yPos</em>  optionally specify a position to scroll to immediately.</p>
+<p>For example, the following gives a window horizontal and vertical scrollbars with 20 pixels per scroll step, and a size of 50 steps (1000 pixels) in each direction:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">window</span><span class="o">.</span><span class="n">SetScrollbars</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  manages the page size itself, using the current client window size as the page size.</p>
+<p>Note that for more sophisticated scrolling applications, for example where scroll steps may be variable according to the position in the document, it will be necessary to derive a new class from <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>, overriding OnSize() and adjusting the scrollbars appropriately.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pixelsPerUnitX</strong> (<em>int</em>) – Pixels per scroll unit in the horizontal direction.</p></li>
+<li><p><strong>pixelsPerUnitY</strong> (<em>int</em>) – Pixels per scroll unit in the vertical direction.</p></li>
+<li><p><strong>noUnitsX</strong> (<em>int</em>) – Number of units in the horizontal direction.</p></li>
+<li><p><strong>noUnitsY</strong> (<em>int</em>) – Number of units in the vertical direction.</p></li>
+<li><p><strong>xPos</strong> (<em>int</em>) – Position to initialize the scrollbars in the horizontal direction, in scroll units.</p></li>
+<li><p><strong>yPos</strong> (<em>int</em>) – Position to initialize the scrollbars in the vertical direction, in scroll units.</p></li>
+<li><p><strong>noRefresh</strong> (<em>bool</em>) – Will not refresh window if <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Window.html#wx.Window.SetVirtualSize" title="wx.Window.SetVirtualSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetVirtualSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.SetTargetRect">
+<code class="sig-name descname">SetTargetRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rect</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.SetTargetRect" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.SetTargetWindow">
+<code class="sig-name descname">SetTargetWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.SetTargetWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to tell <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>  to perform the actual scrolling on a different window (and not on itself).</p>
+<p>This method is useful when only a part of the window should be scrolled. A typical example is a control consisting of a fixed header and the scrollable contents window: the scrollbars are attached to the main window itself, hence it, and not the contents window must be derived from <a class="reference internal" href="#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>, but only the contents window scrolls when the scrollbars are used. To implement such setup, you need to call this method with the contents window as argument.</p>
+<p>Notice that if this method is used, <a class="reference internal" href="#wx.Scrolled.GetSizeAvailableForScrollTarget" title="wx.Scrolled.GetSizeAvailableForScrollTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSizeAvailableForScrollTarget</span></code></a>   method must be overridden.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.ShowScrollbars">
+<code class="sig-name descname">ShowScrollbars</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">horz</em>, <em class="sig-param">vert</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.ShowScrollbars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the scrollbar visibility.</p>
+<p>By default the scrollbar in the corresponding direction is only shown if it is needed, i.e. if the virtual size of the scrolled window in this direction is greater than the current physical window size. Using this function the scrollbar visibility can be changed to be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.SHOW_SB_ALWAYS</span></code>: To always show the scrollbar, even if it is not needed currently (wx``wx.ALWAYS_SHOW_SB`` style can be used during the window creation to achieve the same effect but it applies in both directions).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.SHOW_SB_NEVER</span></code>: To never show the scrollbar at all. In this case the program should presumably provide some other way for the user to scroll the window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.SHOW_SB_DEFAULT</span></code>: To restore the default behaviour described above.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>horz</strong> (<a class="reference internal" href="wx.ScrollbarVisibility.enumeration.html" title="ScrollbarVisibility"><em>ScrollbarVisibility</em></a>) – The desired visibility for the horizontal scrollbar.</p></li>
+<li><p><strong>vert</strong> (<a class="reference internal" href="wx.ScrollbarVisibility.enumeration.html" title="ScrollbarVisibility"><em>ScrollbarVisibility</em></a>) – The desired visibility for the vertical scrollbar.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Scrolled.StopAutoScrolling">
+<code class="sig-name descname">StopAutoScrolling</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Scrolled.StopAutoScrolling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop generating the scroll events when mouse is held outside the window.</p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.Scrolled.ScaleX">
+<code class="sig-name descname">ScaleX</code><a class="headerlink" href="#wx.Scrolled.ScaleX" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Scrolled.GetScaleX" title="wx.Scrolled.GetScaleX"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScaleX</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Scrolled.ScaleY">
+<code class="sig-name descname">ScaleY</code><a class="headerlink" href="#wx.Scrolled.ScaleY" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Scrolled.GetScaleY" title="wx.Scrolled.GetScaleY"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetScaleY</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Scrolled.TargetRect">
+<code class="sig-name descname">TargetRect</code><a class="headerlink" href="#wx.Scrolled.TargetRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Scrolled.GetTargetRect" title="wx.Scrolled.GetTargetRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTargetRect</span></code></a> and <a class="reference internal" href="#wx.Scrolled.SetTargetRect" title="wx.Scrolled.SetTargetRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTargetRect</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Scrolled.TargetWindow">
+<code class="sig-name descname">TargetWindow</code><a class="headerlink" href="#wx.Scrolled.TargetWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Scrolled.GetTargetWindow" title="wx.Scrolled.GetTargetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTargetWindow</span></code></a> and <a class="reference internal" href="#wx.Scrolled.SetTargetWindow" title="wx.Scrolled.SetTargetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTargetWindow</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

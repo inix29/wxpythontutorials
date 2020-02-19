@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.UpdateUIEvent — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.UpdateUIMode.enumeration.html" rel="next" title="wx.UpdateUIMode"/>
+<link href="wx.UpdateUI.enumeration.html" rel="prev" title="wx.UpdateUI"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.UpdateUIEvent</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.UpdateUIMode.enumeration.html" title="wx.UpdateUIMode">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.UpdateUI.enumeration.html" title="wx.UpdateUI">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.UpdateUIEvent</strong></a><ul>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.UpdateUIEvent.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-updateuievent">
+<span id="wx-updateuievent"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.UpdateUIEvent</strong><a class="headerlink" href="#phoenix-title-wx-updateuievent" title="Permalink to this headline">¶</a></h1>
+<p>This class is used for pseudo-events which are called by wxWidgets to give an application the chance to update various user interface elements.</p>
+<p>Without update UI events, an application has to work hard to check/uncheck, enable/disable, show/hide, and set the text for elements such as menu items and toolbar buttons. The code for doing this has to be mixed up with the code that is invoked when an action is invoked for a menu item or button.</p>
+<p>With update UI events, you define an event handler to look at the state of the application and change UI elements accordingly. wxWidgets will call your member functions in idle time, so you don’t have to worry where to call this code.</p>
+<p>In addition to being a clearer and more declarative method, it also means you don’t have to worry whether you’re updating a toolbar or menubar identifier. The same handler can update a menu item and toolbar button, if the identifier is the same. Instead of directly manipulating the menu or button, you call functions in the event object, such as <a class="reference internal" href="#wx.UpdateUIEvent.Check" title="wx.UpdateUIEvent.Check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.Check</span></code></a> . wxWidgets will determine whether such a call has been made, and which UI element to update.</p>
+<p>These events will work for popup menus as well as menubars. Just before a menu is popped up, <a class="reference internal" href="wx.Menu.html#wx.Menu.UpdateUI" title="wx.Menu.UpdateUI"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Menu.UpdateUI</span></code></a>   is called to process any UI events for the window that owns the menu.</p>
+<p>If you find that the overhead of UI update processing is affecting your application, you can do one or both of the following:</p>
+<ul class="simple">
+<li><p>Call <a class="reference internal" href="#wx.UpdateUIEvent.SetMode" title="wx.UpdateUIEvent.SetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.SetMode</span></code></a>   with a value of <code class="docutils literal notranslate"><span class="pre">wx.UPDATE_UI_PROCESS_SPECIFIED</span></code>, and set the extra style <code class="docutils literal notranslate"><span class="pre">wx.WS_EX_PROCESS_UI_UPDATES</span></code> for every window that should receive update events. No other windows will receive update events.</p></li>
+<li><p>Call <a class="reference internal" href="#wx.UpdateUIEvent.SetUpdateInterval" title="wx.UpdateUIEvent.SetUpdateInterval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.SetUpdateInterval</span></code></a>   with a millisecond value to set the delay between updates. You may need to call <a class="reference internal" href="wx.Window.html#wx.Window.UpdateWindowUI" title="wx.Window.UpdateWindowUI"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.UpdateWindowUI</span></code></a>   at critical points, for example when a dialog is about to be shown, in case the user sees a slight delay before windows are updated.</p></li>
+</ul>
+<p>Note that although events are sent in idle time, defining a
+<a class="reference internal" href="wx.IdleEvent.html#wx-idleevent"><span class="std std-ref">  wx.IdleEvent</span></a>  handler for a window does not affect this because the events are sent from <a class="reference internal" href="wx.Window.html#wx.Window.OnInternalIdle" title="wx.Window.OnInternalIdle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.OnInternalIdle</span></code></a>   which is always called in idle time.</p>
+<p>wxWidgets tries to optimize update events on some platforms. On Windows and GTK+, events for menubar items are only sent when the menu is about to be shown, and not in idle time.</p>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="updateuievent-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="#wx-updateuievent"><span class="std std-ref">  wx.UpdateUIEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_UPDATE_UI: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_UPDATE_UI</span></code>   event for the command with the given id.</p></li>
+<li><p>EVT_UPDATE_UI_RANGE: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_UPDATE_UI</span></code>   event for any command with id included in the given range.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="events_overview.html#events-and-event-handling"><span class="std std-ref">Events and Event Handling</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>UpdateUIEvent</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of UpdateUIEvent" class="inheritance" src="_static/images/inheritance/wx.UpdateUIEvent_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="9,237,154,267" href="wx.UpdateUIEvent.html" id="node1" shape="rect" title="This class is used for pseudo-events which are called by wxWidgets to give an application the chance to update various user interface elements."/> <area alt="" coords="5,160,157,189" href="wx.CommandEvent.html" id="node2" shape="rect" title="This event class contains information about command events, which originate from a variety of simple controls."/> <area alt="" coords="40,83,123,112" href="wx.Event.html" id="node3" shape="rect" title="An event is a structure holding information about an event passed to a callback or member function."/> <area alt="" coords="37,5,125,35" href="wx.Object.html" id="node4" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 67%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.__init__" title="wx.UpdateUIEvent.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.CanUpdate" title="wx.UpdateUIEvent.CanUpdate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanUpdate</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is appropriate to update (send UI update events to) this window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.Check" title="wx.UpdateUIEvent.Check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Check</span></code></a></p></td>
+<td><p>Check or uncheck the UI element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.Enable" title="wx.UpdateUIEvent.Enable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enable</span></code></a></p></td>
+<td><p>Enable or disable the UI element.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetChecked" title="wx.UpdateUIEvent.GetChecked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChecked</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the UI element should be checked.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetEnabled" title="wx.UpdateUIEvent.GetEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEnabled</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the UI element should be enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetMode" title="wx.UpdateUIEvent.GetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMode</span></code></a></p></td>
+<td><p>Static function returning a value specifying how wxWidgets will send update events: to all windows, or only to those which specify that they will process the events.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetSetChecked" title="wx.UpdateUIEvent.GetSetChecked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSetChecked</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the application has called <code class="xref py py-meth docutils literal notranslate"><span class="pre">Check</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetSetEnabled" title="wx.UpdateUIEvent.GetSetEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSetEnabled</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the application has called <code class="xref py py-meth docutils literal notranslate"><span class="pre">Enable</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetSetShown" title="wx.UpdateUIEvent.GetSetShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSetShown</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the application has called <code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetSetText" title="wx.UpdateUIEvent.GetSetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSetText</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the application has called <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetShown" title="wx.UpdateUIEvent.GetShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetShown</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the UI element should be shown.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetText" title="wx.UpdateUIEvent.GetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetText</span></code></a></p></td>
+<td><p>Returns the text that should be set for the UI element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.GetUpdateInterval" title="wx.UpdateUIEvent.GetUpdateInterval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUpdateInterval</span></code></a></p></td>
+<td><p>Returns the current interval between updates in milliseconds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.ResetUpdateTime" title="wx.UpdateUIEvent.ResetUpdateTime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ResetUpdateTime</span></code></a></p></td>
+<td><p>Used internally to reset the last-updated time to the current time.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.SetMode" title="wx.UpdateUIEvent.SetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMode</span></code></a></p></td>
+<td><p>Specify how wxWidgets will send update events: to all windows, or only to those which specify that they will process the events.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.SetText" title="wx.UpdateUIEvent.SetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code></a></p></td>
+<td><p>Sets the text for this UI element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.SetUpdateInterval" title="wx.UpdateUIEvent.SetUpdateInterval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetUpdateInterval</span></code></a></p></td>
+<td><p>Sets the interval between updates in milliseconds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.Show" title="wx.UpdateUIEvent.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p></td>
+<td><p>Show or hide the UI element.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.Checked" title="wx.UpdateUIEvent.Checked"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Checked</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.UpdateUIEvent.GetChecked" title="wx.UpdateUIEvent.GetChecked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChecked</span></code></a> and <a class="reference internal" href="#wx.UpdateUIEvent.Check" title="wx.UpdateUIEvent.Check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Check</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.Enabled" title="wx.UpdateUIEvent.Enabled"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Enabled</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.UpdateUIEvent.GetEnabled" title="wx.UpdateUIEvent.GetEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEnabled</span></code></a> and <a class="reference internal" href="#wx.UpdateUIEvent.Enable" title="wx.UpdateUIEvent.Enable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enable</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.Shown" title="wx.UpdateUIEvent.Shown"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Shown</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.UpdateUIEvent.GetShown" title="wx.UpdateUIEvent.GetShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetShown</span></code></a> and <a class="reference internal" href="#wx.UpdateUIEvent.Show" title="wx.UpdateUIEvent.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.UpdateUIEvent.Text" title="wx.UpdateUIEvent.Text"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Text</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.UpdateUIEvent.GetText" title="wx.UpdateUIEvent.GetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetText</span></code></a> and <a class="reference internal" href="#wx.UpdateUIEvent.SetText" title="wx.UpdateUIEvent.SetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.UpdateUIEvent">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">UpdateUIEvent</code><span class="sig-paren">(</span><em class="sig-param">CommandEvent</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UpdateUIEvent</span><span class="p">(</span><span class="n">commandId</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class is used for pseudo-events which are called by wxWidgets to
+give an application the chance to update various user interface
+elements.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">commandId=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>commandId</strong> (<em>wx.WindowID</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.CanUpdate">
+<em class="property">static </em><code class="sig-name descname">CanUpdate</code><span class="sig-paren">(</span><em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.CanUpdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is appropriate to update (send UI update events to) this window.</p>
+<p>This function looks at the mode used (see <a class="reference internal" href="#wx.UpdateUIEvent.SetMode" title="wx.UpdateUIEvent.SetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.SetMode</span></code></a> ), the <code class="docutils literal notranslate"><span class="pre">wx.WS_EX_PROCESS_UI_UPDATES</span></code> flag in <em class="xref py py-obj">window</em>, the time update events were last sent in idle time, and the update interval, to determine whether events should be sent to this window now. By default this will always return <code class="docutils literal notranslate"><span class="pre">True</span></code> because the update mode is initially <code class="docutils literal notranslate"><span class="pre">wx.UPDATE_UI_PROCESS_ALL</span></code> and the interval is set to 0; so update events will be sent as often as possible. You can reduce the frequency that events are sent by changing the mode and/or setting an update interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.UpdateUIEvent.ResetUpdateTime" title="wx.UpdateUIEvent.ResetUpdateTime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ResetUpdateTime</span></code></a> , <a class="reference internal" href="#wx.UpdateUIEvent.SetUpdateInterval" title="wx.UpdateUIEvent.SetUpdateInterval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetUpdateInterval</span></code></a> , <a class="reference internal" href="#wx.UpdateUIEvent.SetMode" title="wx.UpdateUIEvent.SetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMode</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.Check">
+<code class="sig-name descname">Check</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">check</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.Check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check or uncheck the UI element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>check</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.Enable">
+<code class="sig-name descname">Enable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.Enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable the UI element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetChecked">
+<code class="sig-name descname">GetChecked</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetChecked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the UI element should be checked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetEnabled">
+<code class="sig-name descname">GetEnabled</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the UI element should be enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetMode">
+<em class="property">static </em><code class="sig-name descname">GetMode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static function returning a value specifying how wxWidgets will send update events: to all windows, or only to those which specify that they will process the events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.UpdateUIMode.enumeration.html#wx-updateuimode"><span class="std std-ref">  wx.UpdateUIMode</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.UpdateUIEvent.SetMode" title="wx.UpdateUIEvent.SetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMode</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetSetChecked">
+<code class="sig-name descname">GetSetChecked</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetSetChecked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the application has called <a class="reference internal" href="#wx.UpdateUIEvent.Check" title="wx.UpdateUIEvent.Check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Check</span></code></a> .</p>
+<p>For wxWidgets internal use only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetSetEnabled">
+<code class="sig-name descname">GetSetEnabled</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetSetEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the application has called <a class="reference internal" href="#wx.UpdateUIEvent.Enable" title="wx.UpdateUIEvent.Enable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enable</span></code></a> .</p>
+<p>For wxWidgets internal use only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetSetShown">
+<code class="sig-name descname">GetSetShown</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetSetShown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the application has called <a class="reference internal" href="#wx.UpdateUIEvent.Show" title="wx.UpdateUIEvent.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a> .</p>
+<p>For wxWidgets internal use only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetSetText">
+<code class="sig-name descname">GetSetText</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetSetText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the application has called <a class="reference internal" href="#wx.UpdateUIEvent.SetText" title="wx.UpdateUIEvent.SetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code></a> .</p>
+<p>For wxWidgets internal use only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetShown">
+<code class="sig-name descname">GetShown</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetShown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the UI element should be shown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetText">
+<code class="sig-name descname">GetText</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the text that should be set for the UI element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.GetUpdateInterval">
+<em class="property">static </em><code class="sig-name descname">GetUpdateInterval</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.GetUpdateInterval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current interval between updates in milliseconds.</p>
+<p>The value -1 disables updates, 0 updates as frequently as possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.UpdateUIEvent.SetUpdateInterval" title="wx.UpdateUIEvent.SetUpdateInterval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetUpdateInterval</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.ResetUpdateTime">
+<em class="property">static </em><code class="sig-name descname">ResetUpdateTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.ResetUpdateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used internally to reset the last-updated time to the current time.</p>
+<p>It is assumed that update events are normally sent in idle time, so this is called at the end of idle processing.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.UpdateUIEvent.CanUpdate" title="wx.UpdateUIEvent.CanUpdate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanUpdate</span></code></a> , <a class="reference internal" href="#wx.UpdateUIEvent.SetUpdateInterval" title="wx.UpdateUIEvent.SetUpdateInterval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetUpdateInterval</span></code></a> , <a class="reference internal" href="#wx.UpdateUIEvent.SetMode" title="wx.UpdateUIEvent.SetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMode</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.SetMode">
+<em class="property">static </em><code class="sig-name descname">SetMode</code><span class="sig-paren">(</span><em class="sig-param">mode</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.SetMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify how wxWidgets will send update events: to all windows, or only to those which specify that they will process the events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="wx.UpdateUIMode.enumeration.html" title="UpdateUIMode"><em>UpdateUIMode</em></a>) – this parameter may be one of the <a class="reference internal" href="wx.UpdateUIMode.enumeration.html#wx-updateuimode"><span class="std std-ref">  wx.UpdateUIMode</span></a>  enumeration values. The default mode is <code class="docutils literal notranslate"><span class="pre">wx.UPDATE_UI_PROCESS_ALL</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.SetText">
+<code class="sig-name descname">SetText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.SetText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the text for this UI element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.SetUpdateInterval">
+<em class="property">static </em><code class="sig-name descname">SetUpdateInterval</code><span class="sig-paren">(</span><em class="sig-param">updateInterval</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.SetUpdateInterval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the interval between updates in milliseconds.</p>
+<p>Set to -1 to disable updates, or to 0 to update as frequently as possible. The default is 0.</p>
+<p>Use this to reduce the overhead of UI update events if your application has a lot of windows. If you set the value to -1 or greater than 0, you may also need to call <a class="reference internal" href="wx.Window.html#wx.Window.UpdateWindowUI" title="wx.Window.UpdateWindowUI"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.UpdateWindowUI</span></code></a>   at appropriate points in your application, such as when a dialog is about to be shown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>updateInterval</strong> (<em>long</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.UpdateUIEvent.Show">
+<code class="sig-name descname">Show</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">show</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.UpdateUIEvent.Show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show or hide the UI element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.UpdateUIEvent.Checked">
+<code class="sig-name descname">Checked</code><a class="headerlink" href="#wx.UpdateUIEvent.Checked" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.UpdateUIEvent.GetChecked" title="wx.UpdateUIEvent.GetChecked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChecked</span></code></a> and <a class="reference internal" href="#wx.UpdateUIEvent.Check" title="wx.UpdateUIEvent.Check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Check</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.UpdateUIEvent.Enabled">
+<code class="sig-name descname">Enabled</code><a class="headerlink" href="#wx.UpdateUIEvent.Enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.UpdateUIEvent.GetEnabled" title="wx.UpdateUIEvent.GetEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEnabled</span></code></a> and <a class="reference internal" href="#wx.UpdateUIEvent.Enable" title="wx.UpdateUIEvent.Enable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enable</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.UpdateUIEvent.Shown">
+<code class="sig-name descname">Shown</code><a class="headerlink" href="#wx.UpdateUIEvent.Shown" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.UpdateUIEvent.GetShown" title="wx.UpdateUIEvent.GetShown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetShown</span></code></a> and <a class="reference internal" href="#wx.UpdateUIEvent.Show" title="wx.UpdateUIEvent.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Show</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.UpdateUIEvent.Text">
+<code class="sig-name descname">Text</code><a class="headerlink" href="#wx.UpdateUIEvent.Text" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.UpdateUIEvent.GetText" title="wx.UpdateUIEvent.GetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetText</span></code></a> and <a class="reference internal" href="#wx.UpdateUIEvent.SetText" title="wx.UpdateUIEvent.SetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

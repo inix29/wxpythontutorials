@@ -1,0 +1,988 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Bitmap — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.BitmapBufferFormat.enumeration.html" rel="next" title="wx.BitmapBufferFormat"/>
+<link href="wx.BatteryState.enumeration.html" rel="prev" title="wx.BatteryState"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Bitmap</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.BitmapBufferFormat.enumeration.html" title="wx.BitmapBufferFormat">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.BatteryState.enumeration.html" title="wx.BatteryState">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Bitmap</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Bitmap.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-bitmap">
+<span id="wx-bitmap"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Bitmap</strong><a class="headerlink" href="#phoenix-title-wx-bitmap" title="Permalink to this headline">¶</a></h1>
+<p>This class encapsulates the concept of a platform-dependent bitmap, either monochrome or colour or colour with alpha channel support.</p>
+<p>If you need direct access the bitmap data instead going through drawing to it using <a class="reference internal" href="wx.MemoryDC.html#wx-memorydc"><span class="std std-ref">  wx.MemoryDC</span></a>  you need to use the <em class="xref py py-obj">PixelData</em>       class (either NativePixelData for <code class="docutils literal notranslate"><span class="pre">RGB</span></code> bitmaps or AlphaPixelData for bitmaps with an additionally alpha channel).</p>
+<p>Note that many <a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>  functions take a <em class="xref py py-obj">type</em>  parameter, which is a value of the <a class="reference internal" href="wx.BitmapType.enumeration.html#wx-bitmaptype"><span class="std std-ref">  wx.BitmapType</span></a>  enumeration. The validity of those values depends however on the platform where your program is running and from the wxWidgets configuration. If all possible wxWidgets settings are used:</p>
+<ul class="simple">
+<li><p>wxMSW supports <code class="docutils literal notranslate"><span class="pre">BMP</span></code> and <code class="docutils literal notranslate"><span class="pre">ICO</span></code> files, <code class="docutils literal notranslate"><span class="pre">BMP</span></code> and <code class="docutils literal notranslate"><span class="pre">ICO</span></code> resources;</p></li>
+<li><p>wxGTK supports any file supported by gdk-pixbuf;</p></li>
+<li><p>Mac supports <code class="docutils literal notranslate"><span class="pre">PICT</span></code> resources;</p></li>
+<li><p>X11 supports XPM files, XPM data, <code class="docutils literal notranslate"><span class="pre">XBM</span></code> data;</p></li>
+</ul>
+<p>In addition, <a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>  can load and save all formats that <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  can; see <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  for more info. Of course, you must have loaded the <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  handlers (see <a class="reference internal" href="wx.functions.html#wx.InitAllImageHandlers" title="wx.InitAllImageHandlers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.InitAllImageHandlers</span></code></a>       and <a class="reference internal" href="wx.Image.html#wx.Image.AddHandler" title="wx.Image.AddHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.AddHandler</span></code></a> ). Note that all available BitmapHandlers for a given wxWidgets port are automatically loaded at startup so you won’t need to use <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Bitmap.AddHandler</span></code> .</p>
+<p>More on the difference between <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  and <a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>: <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  is just a buffer of <code class="docutils literal notranslate"><span class="pre">RGB</span></code> bytes with an optional buffer for the alpha bytes. It is all generic, platform independent and image file format independent code. It includes generic code for scaling, resizing, clipping, and other manipulations of the image data. OTOH, <a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>  is intended to be a wrapper of whatever is the native image format that is quickest/easiest to draw to a DC or to be the target of the drawing operations performed on a <a class="reference internal" href="wx.MemoryDC.html#wx-memorydc"><span class="std std-ref">  wx.MemoryDC</span></a>. By splitting the responsibilities between Image/wxBitmap like this then it’s easier to use generic code shared by all platforms and image types for generic operations and platform specific code where performance or compatibility is needed.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="bitmap_overview.html#bitmaps-and-icons"><span class="std std-ref">Bitmaps and Icons</span></a>, <a class="reference internal" href="bitmap_overview.html#supported-bitmap-file-formats"><span class="std std-ref">Supported Bitmap File Formats</span></a>, <a class="reference internal" href="wx.DC.html#wx.DC.Blit" title="wx.DC.Blit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.Blit</span></code></a> , <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>, <a class="reference internal" href="wx.Cursor.html#wx-cursor"><span class="std std-ref">  wx.Cursor</span></a>, <a class="reference internal" href="wx.MemoryDC.html#wx-memorydc"><span class="std std-ref">  wx.MemoryDC</span></a>, <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>, <em class="xref py py-obj">PixelData</em></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Bitmap</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Bitmap" class="inheritance" src="_static/images/inheritance/wx.Bitmap_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="15,160,109,189" href="wx.Bitmap.html" id="node1" shape="rect" title="This class encapsulates the concept of a platform-dependent bitmap, either monochrome or colour or colour with alpha channel support."/> <area alt="" coords="5,83,119,112" href="wx.GDIObject.html" id="node2" shape="rect" title="This class allows platforms to implement functionality to optimise GDI objects, such as wx.Pen, wx.Brush  and wx.Font."/> <area alt="" coords="18,5,106,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45%"/>
+<col style="width: 55%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.__init__" title="wx.Bitmap.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.ConvertToDisabled" title="wx.Bitmap.ConvertToDisabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ConvertToDisabled</span></code></a></p></td>
+<td><p>Returns disabled (dimmed) version of the bitmap.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.ConvertToImage" title="wx.Bitmap.ConvertToImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ConvertToImage</span></code></a></p></td>
+<td><p>Creates an image from a platform-dependent bitmap.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.CopyFromBuffer" title="wx.Bitmap.CopyFromBuffer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CopyFromBuffer</span></code></a></p></td>
+<td><p>Copy data from a buffer object to replace the bitmap pixel data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.CopyFromIcon" title="wx.Bitmap.CopyFromIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CopyFromIcon</span></code></a></p></td>
+<td><p>Creates the bitmap from an icon.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.CopyToBuffer" title="wx.Bitmap.CopyToBuffer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CopyToBuffer</span></code></a></p></td>
+<td><p>Copy pixel data to a buffer object.  See <code class="xref py py-meth docutils literal notranslate"><span class="pre">CopyFromBuffer</span></code> for buffer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.Create" title="wx.Bitmap.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates a fresh bitmap.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.FromBuffer" title="wx.Bitmap.FromBuffer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FromBuffer</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a> from in-memory data.  The data parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.FromBufferAndAlpha" title="wx.Bitmap.FromBufferAndAlpha"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FromBufferAndAlpha</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a> from in-memory data.  The data and alpha</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.FromBufferRGBA" title="wx.Bitmap.FromBufferRGBA"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FromBufferRGBA</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a> from in-memory data.  The data parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.FromRGBA" title="wx.Bitmap.FromRGBA"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FromRGBA</span></code></a></p></td>
+<td><p>Creates a new empty 32-bit <a class="reference internal" href="#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a> where every pixel has been</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.GetDepth" title="wx.Bitmap.GetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDepth</span></code></a></p></td>
+<td><p>Gets the colour depth of the bitmap.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.GetHandle" title="wx.Bitmap.GetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHandle</span></code></a></p></td>
+<td><p>MSW-only method to fetch the windows handle for the bitmap.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.GetHeight" title="wx.Bitmap.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a></p></td>
+<td><p>Gets the height of the bitmap in pixels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.GetMask" title="wx.Bitmap.GetMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMask</span></code></a></p></td>
+<td><p>Gets the associated mask (if any) which may have been loaded from a file or set for the bitmap.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.GetPalette" title="wx.Bitmap.GetPalette"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPalette</span></code></a></p></td>
+<td><p>Gets the associated palette (if any) which may have been loaded from a file or set for the bitmap.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.GetSize" title="wx.Bitmap.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSize</span></code></a></p></td>
+<td><p>Returns the size of the bitmap in pixels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.GetSubBitmap" title="wx.Bitmap.GetSubBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSubBitmap</span></code></a></p></td>
+<td><p>Returns a sub bitmap of the current one as long as the rect belongs entirely to the bitmap.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.GetWidth" title="wx.Bitmap.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a></p></td>
+<td><p>Gets the width of the bitmap in pixels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.IsOk" title="wx.Bitmap.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsOk</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if bitmap data is present.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.LoadFile" title="wx.Bitmap.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p></td>
+<td><p>Loads a bitmap from a file or resource.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.NewFromPNGData" title="wx.Bitmap.NewFromPNGData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NewFromPNGData</span></code></a></p></td>
+<td><p>Loads a bitmap from the memory containing image data in <code class="docutils literal notranslate"><span class="pre">PNG</span></code> format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.SaveFile" title="wx.Bitmap.SaveFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SaveFile</span></code></a></p></td>
+<td><p>Saves a bitmap in the named file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.SetDepth" title="wx.Bitmap.SetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDepth</span></code></a></p></td>
+<td><p>Sets the depth member (does not affect the bitmap data).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.SetHandle" title="wx.Bitmap.SetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHandle</span></code></a></p></td>
+<td><p>MSW-only method to set the windows handle for the bitmap.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.SetHeight" title="wx.Bitmap.SetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHeight</span></code></a></p></td>
+<td><p>Sets the height member (does not affect the bitmap data).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.SetMask" title="wx.Bitmap.SetMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMask</span></code></a></p></td>
+<td><p>Sets the mask for this bitmap.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.SetMaskColour" title="wx.Bitmap.SetMaskColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMaskColour</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.SetPalette" title="wx.Bitmap.SetPalette"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPalette</span></code></a></p></td>
+<td><p>Sets the associated palette.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.SetSize" title="wx.Bitmap.SetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSize</span></code></a></p></td>
+<td><p>Set the bitmap size (does not alter the existing native bitmap data or image size).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.SetWidth" title="wx.Bitmap.SetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWidth</span></code></a></p></td>
+<td><p>Sets the width member (does not affect the bitmap data).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.__bool__" title="wx.Bitmap.__bool__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__bool__</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.__nonzero__" title="wx.Bitmap.__nonzero__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__nonzero__</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.Depth" title="wx.Bitmap.Depth"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Depth</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Bitmap.GetDepth" title="wx.Bitmap.GetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDepth</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetDepth" title="wx.Bitmap.SetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDepth</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.Handle" title="wx.Bitmap.Handle"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Handle</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Bitmap.GetHandle" title="wx.Bitmap.GetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHandle</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetHandle" title="wx.Bitmap.SetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHandle</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.Height" title="wx.Bitmap.Height"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Height</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Bitmap.GetHeight" title="wx.Bitmap.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetHeight" title="wx.Bitmap.SetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHeight</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.Mask" title="wx.Bitmap.Mask"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Mask</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Bitmap.GetMask" title="wx.Bitmap.GetMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMask</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetMask" title="wx.Bitmap.SetMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMask</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.Palette" title="wx.Bitmap.Palette"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Palette</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Bitmap.GetPalette" title="wx.Bitmap.GetPalette"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPalette</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetPalette" title="wx.Bitmap.SetPalette"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPalette</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Bitmap.Size" title="wx.Bitmap.Size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Size</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Bitmap.GetSize" title="wx.Bitmap.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSize</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetSize" title="wx.Bitmap.SetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Bitmap.Width" title="wx.Bitmap.Width"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Width</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Bitmap.GetWidth" title="wx.Bitmap.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetWidth" title="wx.Bitmap.SetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWidth</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Bitmap">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Bitmap</code><span class="sig-paren">(</span><em class="sig-param">GDIObject</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bitmap</span><span class="p">()</span>
+
+<span class="n">Bitmap</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
+
+<span class="n">Bitmap</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">Bitmap</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">BITMAP_SCREEN_DEPTH</span><span class="p">)</span>
+
+<span class="n">Bitmap</span><span class="p">(</span><span class="n">sz</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">BITMAP_SCREEN_DEPTH</span><span class="p">)</span>
+
+<span class="n">Bitmap</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">BITMAP_TYPE_ANY</span><span class="p">)</span>
+
+<span class="n">Bitmap</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">BITMAP_SCREEN_DEPTH</span><span class="p">)</span>
+
+<span class="n">Bitmap</span><span class="p">(</span><span class="n">listOfBytes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class encapsulates the concept of a platform-dependent bitmap,
+either monochrome or colour or colour with alpha channel support.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Bitmap.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p>Constructs a bitmap object with no data; an assignment or another member function such as <a class="reference internal" href="#wx.Bitmap.Create" title="wx.Bitmap.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   or <a class="reference internal" href="#wx.Bitmap.LoadFile" title="wx.Bitmap.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a>   must be called subsequently.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, bitmap)</em></p>
+<p>Copy constructor, uses <a class="reference internal" href="refcount_overview.html#reference-counting"><span class="std std-ref">reference counting</span></a>.</p>
+<p>To make a real copy, you can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newBitmap</span> <span class="o">=</span> <span class="n">oldBitmap</span><span class="o">.</span><span class="n">GetSubBitmap</span><span class="p">(</span>
+                      <span class="n">wx</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">oldBitmap</span><span class="o">.</span><span class="n">GetWidth</span><span class="p">(),</span> <span class="n">oldBitmap</span><span class="o">.</span><span class="n">GetHeight</span><span class="p">()))</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bitmap</strong> (<a class="reference internal" href="#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, bits, width, height, depth=1)</em></p>
+<p>Creates a bitmap from the given array <em class="xref py py-obj">bits</em>.</p>
+<p>You should only use this function for monochrome bitmaps (depth 1) in portable programs: in this case the bits parameter should contain an <code class="docutils literal notranslate"><span class="pre">XBM</span></code> image.</p>
+<p>For other bit depths, the behaviour is platform dependent: under Windows, the data is passed without any changes to the underlying CreateBitmap() API. Under other platforms, only monochrome bitmaps may be created using this constructor and <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  should be used for creating colour bitmaps from static data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bits</strong> (<em>string</em>) – Specifies an array of pixel values.</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – Specifies the width of the bitmap.</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Specifies the height of the bitmap.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Specifies the depth of the bitmap. If this is omitted, then a value of 1 (monochrome bitmap) is used.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, width, height, depth=BITMAP_SCREEN_DEPTH)</em></p>
+<p>Creates a new bitmap.</p>
+<p>A depth of <code class="docutils literal notranslate"><span class="pre">BITMAP_SCREEN_DEPTH</span></code>  indicates the depth of the current screen or visual.</p>
+<p>Some platforms only support 1 for monochrome and <code class="docutils literal notranslate"><span class="pre">BITMAP_SCREEN_DEPTH</span></code>  for the current colour setting.</p>
+<p>A depth of 32 including an alpha channel is supported under MSW, Mac and GTK+.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, sz, depth=BITMAP_SCREEN_DEPTH)</em></p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sz</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, name, type=BITMAP_TYPE_ANY)</em></p>
+<p>Loads a bitmap from a file or resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – This can refer to a resource name or a filename under MS Windows and X. Its meaning is determined by the  <em class="xref py py-obj">type</em>  parameter.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="wx.BitmapType.enumeration.html" title="BitmapType"><em>BitmapType</em></a>) – May be one of the <a class="reference internal" href="wx.BitmapType.enumeration.html#wx-bitmaptype"><span class="std std-ref">  wx.BitmapType</span></a>  values and indicates which type of bitmap should be loaded. See the note in the class detailed description. Note that the <code class="docutils literal notranslate"><span class="pre">BITMAP_DEFAULT_TYPE</span></code> constant has different value under different wxWidgets ports. See the bitmap.h header for the value it takes for a specific port.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Bitmap.LoadFile" title="wx.Bitmap.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, img, depth=BITMAP_SCREEN_DEPTH)</em></p>
+<p>Creates this bitmap object from the given image.</p>
+<p>This has to be done to actually display an image as you cannot draw an image directly on a window.</p>
+<p>The resulting bitmap will use the provided colour depth (or that of the current system if depth is <code class="docutils literal notranslate"><span class="pre">BITMAP_SCREEN_DEPTH</span></code>) which entails that a colour reduction may take place.</p>
+<p>On Windows, if there is a palette present (set with SetPalette), it will be used when creating the <a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>  (most useful in 8-bit display mode). On other platforms, the palette is currently ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> (<a class="reference internal" href="wx.Image.html#wx.Image" title="wx.Image"><em>wx.Image</em></a>) – Platform-independent <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  object.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Specifies the depth of the bitmap. If this is omitted, the display depth of the screen is used.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, listOfBytes)</em></p>
+<p>Construct a Bitmap from a list of strings formatted as XPM data.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.ConvertToDisabled">
+<code class="sig-name descname">ConvertToDisabled</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">brightness=255</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.ConvertToDisabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns disabled (dimmed) version of the bitmap.</p>
+<p>This method is not available when  <code class="docutils literal notranslate"><span class="pre">USE_IMAGE</span> <span class="pre">==</span> <span class="pre">0</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>brightness</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.ConvertToImage">
+<code class="sig-name descname">ConvertToImage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.ConvertToImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an image from a platform-dependent bitmap.</p>
+<p>This preserves mask information so that bitmaps and images can be converted back and forth without loss in that respect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.CopyFromBuffer">
+<code class="sig-name descname">CopyFromBuffer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em>, <em class="sig-param">format=BitmapBufferFormat_RGB</em>, <em class="sig-param">stride=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.CopyFromBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy data from a buffer object to replace the bitmap pixel data.
+Default format is plain <code class="docutils literal notranslate"><span class="pre">RGB</span></code>, but other formats are now supported as
+well.  The following symbols are used to specify the format of the
+bytes in the buffer:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 20%"/>
+<col style="width: 80%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>wx.BitmapBufferFormat_RGB</p></td>
+<td><p>A simple sequence of <code class="docutils literal notranslate"><span class="pre">RGB</span></code> bytes</p></td>
+</tr>
+<tr class="row-even"><td><p>wx.BitmapBufferFormat_RGBA</p></td>
+<td><p>A simple sequence of <code class="docutils literal notranslate"><span class="pre">RGBA</span></code> bytes</p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.BitmapBufferFormat_ARGB32</p></td>
+<td><p>A sequence of 32-bit values in native endian order, with alpha in the upper 8 bits, followed by red, green, and blue.</p></td>
+</tr>
+<tr class="row-even"><td><p>wx.BitmapBufferFormat_RGB32</p></td>
+<td><p>Same as above but the alpha byte is ignored.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.CopyFromIcon">
+<code class="sig-name descname">CopyFromIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">icon</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.CopyFromIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the bitmap from an icon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>icon</strong> (<a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><em>wx.Icon</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.CopyToBuffer">
+<code class="sig-name descname">CopyToBuffer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em>, <em class="sig-param">format=BitmapBufferFormat_RGB</em>, <em class="sig-param">stride=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.CopyToBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy pixel data to a buffer object.  See <a class="reference internal" href="#wx.Bitmap.CopyFromBuffer" title="wx.Bitmap.CopyFromBuffer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CopyFromBuffer</span></code></a> for buffer
+format details.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Create</strong> <em class="xref py py-obj">(self, width, height, depth=BITMAP_SCREEN_DEPTH)</em></p>
+<p>Creates a fresh bitmap.</p>
+<p>If the final argument is omitted, the display depth of the screen is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – </p></li>
+<li><p><strong>height</strong> (<em>int</em>) – </p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the creation was successful.</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Create</strong> <em class="xref py py-obj">(self, sz, depth=BITMAP_SCREEN_DEPTH)</em></p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sz</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.FromBuffer">
+<em class="property">static </em><code class="sig-name descname">FromBuffer</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.FromBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Creates a <a class="reference internal" href="#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a> from in-memory data.  The data parameter
+must be a Python object that implements the buffer interface, such
+as a string, bytearray, etc.  The data object is expected to contain
+a series of <code class="docutils literal notranslate"><span class="pre">RGB</span></code> bytes and be at least widthheight3 bytes long.</p>
+<p>Unlike <a class="reference internal" href="wx.functions.html#wx.ImageFromBuffer" title="wx.ImageFromBuffer"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.ImageFromBuffer</span></code></a> the bitmap created with this function
+does not share the memory block with the buffer object.  This is
+because the native pixel buffer format varies on different
+platforms, and so instead an efficient as possible copy of the
+data is made from the buffer object to the bitmap’s native pixel
+buffer.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.FromBufferAndAlpha">
+<em class="property">static </em><code class="sig-name descname">FromBufferAndAlpha</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">data</em>, <em class="sig-param">alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.FromBufferAndAlpha" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Creates a <a class="reference internal" href="#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a> from in-memory data.  The data and alpha
+parameters must be a Python object that implements the buffer
+interface, such as a string, bytearray, etc.  The data object
+is expected to contain a series of <code class="docutils literal notranslate"><span class="pre">RGB</span></code> bytes and be at least
+widthheight3 bytes long, while the alpha object is expected
+to be widthheight bytes long and represents the image’s alpha
+channel.  On Windows and Mac the <code class="docutils literal notranslate"><span class="pre">RGB</span></code> values will be
+‘premultiplied’ by the alpha values.  (The other platforms do
+the multiplication themselves.)</p>
+<p>Unlike <a class="reference internal" href="wx.functions.html#wx.ImageFromBuffer" title="wx.ImageFromBuffer"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.ImageFromBuffer</span></code></a> the bitmap created with this function
+does not share the memory block with the buffer object.  This is
+because the native pixel buffer format varies on different
+platforms, and so instead an efficient as possible copy of the
+data is made from the buffer object to the bitmap’s native pixel
+buffer.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.FromBufferRGBA">
+<em class="property">static </em><code class="sig-name descname">FromBufferRGBA</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.FromBufferRGBA" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Creates a <a class="reference internal" href="#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a> from in-memory data.  The data parameter
+must be a Python object that implements the buffer interface, such
+as a string, bytearray, etc.  The data object is expected to contain
+a series of <code class="docutils literal notranslate"><span class="pre">RGBA</span></code> bytes and be at least widthheight4 bytes long.
+On Windows and Mac the <code class="docutils literal notranslate"><span class="pre">RGB</span></code> values will be ‘premultiplied’ by the
+alpha values.  (The other platforms do the multiplication themselves.)</p>
+<p>Unlike <a class="reference internal" href="wx.functions.html#wx.ImageFromBuffer" title="wx.ImageFromBuffer"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.ImageFromBuffer</span></code></a> the bitmap created with this function
+does not share the memory block with the buffer object.  This is
+because the native pixel buffer format varies on different
+platforms, and so instead an efficient as possible copy of the
+data is made from the buffer object to the bitmap’s native pixel
+buffer.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.FromRGBA">
+<em class="property">static </em><code class="sig-name descname">FromRGBA</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">red=0</em>, <em class="sig-param">green=0</em>, <em class="sig-param">blue=0</em>, <em class="sig-param">alpha=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.FromRGBA" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Creates a new empty 32-bit <a class="reference internal" href="#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a> where every pixel has been
+initialized with the given <code class="docutils literal notranslate"><span class="pre">RGBA</span></code> values.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.GetDepth">
+<code class="sig-name descname">GetDepth</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.GetDepth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the colour depth of the bitmap.</p>
+<p>A value of 1 indicates a monochrome bitmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.GetHandle">
+<code class="sig-name descname">GetHandle</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.GetHandle" title="Permalink to this definition">¶</a></dt>
+<dd><p>MSW-only method to fetch the windows handle for the bitmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.GetHeight">
+<code class="sig-name descname">GetHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.GetHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the height of the bitmap in pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Bitmap.GetWidth" title="wx.Bitmap.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a> , <a class="reference internal" href="#wx.Bitmap.GetSize" title="wx.Bitmap.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.GetMask">
+<code class="sig-name descname">GetMask</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.GetMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the associated mask (if any) which may have been loaded from a file or set for the bitmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Mask.html#wx-mask"><span class="std std-ref">  wx.Mask</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Bitmap.SetMask" title="wx.Bitmap.SetMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMask</span></code></a> , <a class="reference internal" href="wx.Mask.html#wx-mask"><span class="std std-ref">  wx.Mask</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.GetPalette">
+<code class="sig-name descname">GetPalette</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.GetPalette" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the associated palette (if any) which may have been loaded from a file or set for the bitmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Palette.html#wx-palette"><span class="std std-ref">  wx.Palette</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Palette.html#wx-palette"><span class="std std-ref">  wx.Palette</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.GetSize">
+<code class="sig-name descname">GetSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.GetSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of the bitmap in pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Bitmap.GetHeight" title="wx.Bitmap.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a> , <a class="reference internal" href="#wx.Bitmap.GetWidth" title="wx.Bitmap.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.GetSubBitmap">
+<code class="sig-name descname">GetSubBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rect</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.GetSubBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a sub bitmap of the current one as long as the rect belongs entirely to the bitmap.</p>
+<p>This function preserves bit depth and mask information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.GetWidth">
+<code class="sig-name descname">GetWidth</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.GetWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the width of the bitmap in pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Bitmap.GetHeight" title="wx.Bitmap.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a> , <a class="reference internal" href="#wx.Bitmap.GetSize" title="wx.Bitmap.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.IsOk">
+<code class="sig-name descname">IsOk</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.IsOk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if bitmap data is present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.LoadFile">
+<code class="sig-name descname">LoadFile</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em>, <em class="sig-param">type=BITMAP_TYPE_ANY</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.LoadFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a bitmap from a file or resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – Either a filename or a Windows resource name. The meaning of name is determined by the  <em class="xref py py-obj">type</em>  parameter.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="wx.BitmapType.enumeration.html" title="BitmapType"><em>BitmapType</em></a>) – One of the <a class="reference internal" href="wx.BitmapType.enumeration.html#wx-bitmaptype"><span class="std std-ref">  wx.BitmapType</span></a>  values; see the note in the class detailed description. Note that the <code class="docutils literal notranslate"><span class="pre">BITMAP_DEFAULT_TYPE</span></code> constant has different value under different wxWidgets ports. See the bitmap.h header for the value it takes for a specific port.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the operation succeeded, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A palette may be associated with the bitmap if one exists (especially for colour Windows bitmaps), and if the code supports it. You can check if one has been created by using the <a class="reference internal" href="#wx.Bitmap.GetPalette" title="wx.Bitmap.GetPalette"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPalette</span></code></a>   member.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Bitmap.SaveFile" title="wx.Bitmap.SaveFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SaveFile</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.NewFromPNGData">
+<em class="property">static </em><code class="sig-name descname">NewFromPNGData</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">size</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.NewFromPNGData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a bitmap from the memory containing image data in <code class="docutils literal notranslate"><span class="pre">PNG</span></code> format.</p>
+<p>This helper function provides the simplest way to create a <a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>  from <code class="docutils literal notranslate"><span class="pre">PNG</span></code> image data. On most platforms, it’s simply a wrapper around <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  loading functions and so requires the <code class="docutils literal notranslate"><span class="pre">PNG</span></code> image handler to be registered by either calling <a class="reference internal" href="wx.functions.html#wx.InitAllImageHandlers" title="wx.InitAllImageHandlers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.InitAllImageHandlers</span></code></a>       which also registers all the other image formats or including the necessary header:</p>
+<p>and calling</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">PNGHandler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>in your application startup code.</p>
+<p>However under OS X this function uses native image loading and so doesn’t require wxWidgets <code class="docutils literal notranslate"><span class="pre">PNG</span></code> support.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – </p></li>
+<li><p><strong>size</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.SaveFile">
+<code class="sig-name descname">SaveFile</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em>, <em class="sig-param">type</em>, <em class="sig-param">palette=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.SaveFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a bitmap in the named file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – A filename. The meaning of name is determined by the type parameter.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="wx.BitmapType.enumeration.html" title="BitmapType"><em>BitmapType</em></a>) – One of the <a class="reference internal" href="wx.BitmapType.enumeration.html#wx-bitmaptype"><span class="std std-ref">  wx.BitmapType</span></a>  values; see the note in the class detailed description.</p></li>
+<li><p><strong>palette</strong> (<a class="reference internal" href="wx.Palette.html#wx.Palette" title="wx.Palette"><em>wx.Palette</em></a>) – An optional palette used for saving the bitmap.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the operation succeeded, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on how wxWidgets has been configured, not all formats may be available.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Bitmap.LoadFile" title="wx.Bitmap.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.SetDepth">
+<code class="sig-name descname">SetDepth</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">depth</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.SetDepth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the depth member (does not affect the bitmap data).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>depth</strong> (<em>int</em>) – Bitmap depth.</p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>since these functions do not affect the bitmap data, why they exist??</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.SetHandle">
+<code class="sig-name descname">SetHandle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handle</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.SetHandle" title="Permalink to this definition">¶</a></dt>
+<dd><p>MSW-only method to set the windows handle for the bitmap.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.SetHeight">
+<code class="sig-name descname">SetHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">height</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.SetHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the height member (does not affect the bitmap data).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>height</strong> (<em>int</em>) – Bitmap height in pixels.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.SetMask">
+<code class="sig-name descname">SetMask</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">mask</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.SetMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the mask for this bitmap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mask</strong> (<a class="reference internal" href="wx.Mask.html#wx.Mask" title="wx.Mask"><em>wx.Mask</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The bitmap object owns the mask once this has been called.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Bitmap.GetMask" title="wx.Bitmap.GetMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMask</span></code></a> , <a class="reference internal" href="wx.Mask.html#wx-mask"><span class="std std-ref">  wx.Mask</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.SetMaskColour">
+<code class="sig-name descname">SetMaskColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colour</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.SetMaskColour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.SetPalette">
+<code class="sig-name descname">SetPalette</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">palette</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.SetPalette" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the associated palette.</p>
+<p>(Not implemented under GTK+).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>palette</strong> (<a class="reference internal" href="wx.Palette.html#wx.Palette" title="wx.Palette"><em>wx.Palette</em></a>) – The palette to set.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Palette.html#wx-palette"><span class="std std-ref">  wx.Palette</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.SetSize">
+<code class="sig-name descname">SetSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">size</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.SetSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the bitmap size (does not alter the existing native bitmap data or image size).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.SetWidth">
+<code class="sig-name descname">SetWidth</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">width</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.SetWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the width member (does not affect the bitmap data).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>width</strong> (<em>int</em>) – Bitmap width in pixels.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.__bool__">
+<code class="sig-name descname">__bool__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.__bool__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Bitmap.__nonzero__">
+<code class="sig-name descname">__nonzero__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Bitmap.__nonzero__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.Bitmap.Depth">
+<code class="sig-name descname">Depth</code><a class="headerlink" href="#wx.Bitmap.Depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Bitmap.GetDepth" title="wx.Bitmap.GetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDepth</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetDepth" title="wx.Bitmap.SetDepth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDepth</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Bitmap.Handle">
+<code class="sig-name descname">Handle</code><a class="headerlink" href="#wx.Bitmap.Handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Bitmap.GetHandle" title="wx.Bitmap.GetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHandle</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetHandle" title="wx.Bitmap.SetHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHandle</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Bitmap.Height">
+<code class="sig-name descname">Height</code><a class="headerlink" href="#wx.Bitmap.Height" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Bitmap.GetHeight" title="wx.Bitmap.GetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHeight</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetHeight" title="wx.Bitmap.SetHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHeight</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Bitmap.Mask">
+<code class="sig-name descname">Mask</code><a class="headerlink" href="#wx.Bitmap.Mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Bitmap.GetMask" title="wx.Bitmap.GetMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMask</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetMask" title="wx.Bitmap.SetMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMask</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Bitmap.Palette">
+<code class="sig-name descname">Palette</code><a class="headerlink" href="#wx.Bitmap.Palette" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Bitmap.GetPalette" title="wx.Bitmap.GetPalette"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPalette</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetPalette" title="wx.Bitmap.SetPalette"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPalette</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Bitmap.Size">
+<code class="sig-name descname">Size</code><a class="headerlink" href="#wx.Bitmap.Size" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Bitmap.GetSize" title="wx.Bitmap.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSize</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetSize" title="wx.Bitmap.SetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSize</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Bitmap.Width">
+<code class="sig-name descname">Width</code><a class="headerlink" href="#wx.Bitmap.Width" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Bitmap.GetWidth" title="wx.Bitmap.GetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWidth</span></code></a> and <a class="reference internal" href="#wx.Bitmap.SetWidth" title="wx.Bitmap.SetWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWidth</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

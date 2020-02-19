@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Events and Event Handling — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="filesystem_overview.html" rel="next" title="FileSystem Overview"/>
+<link href="dnd_overview.html" rel="prev" title="Drag and Drop Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Events and Event Handling</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="filesystem_overview.html" title="FileSystem Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="dnd_overview.html" title="Drag and Drop Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Events and Event Handling</strong></a><ul>
+<li><a class="reference internal" href="#event-handling">Event Handling</a></li>
+<li><a class="reference internal" href="#dynamic-event-handling">Dynamic Event Handling</a></li>
+<li><a class="reference internal" href="#how-events-are-processed">How Events are Processed</a><ul>
+<li><a class="reference internal" href="#how-events-propagate-upwards">How Events Propagate Upwards</a></li>
+<li><a class="reference internal" href="#event-handlers-chain">Event Handlers Chain</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#custom-event-summary">Custom Event Summary</a><ul>
+<li><a class="reference internal" href="#general-approach">General approach</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#miscellaneous-notes">Miscellaneous Notes</a><ul>
+<li><a class="reference internal" href="#user-generated-events-vs-programmatically-generated-events">User Generated Events vs Programmatically Generated Events</a></li>
+<li><a class="reference internal" href="#window-identifiers">Window Identifiers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/events_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-events-and-event-handling">
+<span id="events-and-event-handling"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Events and Event Handling</strong><a class="headerlink" href="#phoenix-title-events-and-event-handling" title="Permalink to this headline">¶</a></h1>
+<p>Like with all the other GUI frameworks, the control of flow in
+wxPython applications is event-based: the program normally performs
+most of its actions in response to the events generated by the
+user. These events can be triggered by using the input devices (such
+as keyboard, mouse, joystick) directly or, more commonly, by a
+standard control which synthesizes such input events into higher level
+events: for example, a <a class="reference internal" href="wx.Button.html#wx-button"><span class="std std-ref">  wx.Button</span></a> can generate a click event when
+the user presses the left mouse button on it and then releases it
+without pressing <code class="docutils literal notranslate"><span class="pre">Esc</span></code> in the meanwhile. There are also events which
+don’t directly correspond to the user actions, such as
+<a class="reference internal" href="wx.TimerEvent.html#wx-timerevent"><span class="std std-ref">  wx.TimerEvent</span></a>.</p>
+<p>But in all cases wxPython represents these events in a uniform way and
+allows you to handle them in the same way wherever they originate
+from. And while the events are normally generated by wxPython itself,
+you can also do this, which is especially useful when using custom
+events (see <a class="reference internal" href="#custom-event-summary"><span class="std std-ref">Custom Event Summary</span></a>).</p>
+<p>To be more precise, each event is described by:</p>
+<ul class="simple">
+<li><p><strong>Event type</strong>: this is simply a value of type <em class="xref py py-obj">EventType</em> which
+uniquely identifies the type of the event.  For example, clicking on
+a button, selecting an item from a list box and pressing a key on
+the keyboard all generate events with different event types.</p></li>
+<li><p><strong>Event class</strong>: carried by the event: each event has some information
+associated with it and this data is represented by an object of a
+class derived from <a class="reference internal" href="wx.Event.html#wx-event"><span class="std std-ref">  wx.Event</span></a>. Events of different types can
+use the same event class, for example both button click and listbox
+selection events use <a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a> class (as do all the
+other simple control events), but the key press event uses
+<a class="reference internal" href="wx.KeyEvent.html#wx-keyevent"><span class="std std-ref">  wx.KeyEvent</span></a> as the information associated with it is
+different.</p></li>
+<li><p><strong>Event source</strong>: <a class="reference internal" href="wx.Event.html#wx-event"><span class="std std-ref">  wx.Event</span></a> stores the object which generated the
+event and, for windows, its identifier (see <a class="reference internal" href="#window-identifiers"><span class="std std-ref">Window Identifiers</span></a>). As it is common to have more than one object
+generating events of the same type (e.g. a typical window contains
+several buttons, all generating the same button click event),
+checking the event source object or its id allows to distinguish
+between them.</p></li>
+</ul>
+<div class="section" id="event-handling">
+<span id="id1"></span><h2>Event Handling<a class="headerlink" href="#event-handling" title="Permalink to this headline">¶</a></h2>
+<p>There is one principal way to handle events in wxPython, which uses
+the <a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.Bind" title="wx.EvtHandler.Bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.Bind</span></code></a> call and can be used to bind and unbind
+the handlers dynamically, i.e. during run-time depending on some
+conditions. It also allows the direct binding of events to:</p>
+<ul class="simple">
+<li><p>A handler method in the same or another object.</p></li>
+<li><p>An ordinary function like a static method or a global function.</p></li>
+<li><p>An arbitrary callable object.</p></li>
+</ul>
+</div>
+<div class="section" id="dynamic-event-handling">
+<span id="id2"></span><h2>Dynamic Event Handling<a class="headerlink" href="#dynamic-event-handling" title="Permalink to this headline">¶</a></h2>
+<p>Let us start by looking at the syntax: in any place in your code, but
+usually in the code of the class defining the handler itself, call its
+<code class="docutils literal notranslate"><span class="pre">Bind()</span></code> method like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+        <span class="c1"># Other initialization code...</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_MENU</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnExit</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_EXIT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Event handlers can be bound at any moment. For example, it’s possible
+to do some initialization first and only bind the handlers if and when
+it succeeds. This can avoid the need to test that the object was
+properly initialized in the event handlers themselves. With <code class="docutils literal notranslate"><span class="pre">Bind()</span></code>
+they simply won’t be called if it wasn’t correctly initialized.</p>
+<p>As a slight extension of the above, the handlers can also be unbound
+at any time with <a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.Unbind" title="wx.EvtHandler.Unbind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.Unbind</span></code></a> (and maybe rebound
+later).</p>
+<p>Almost last but very, very far from least is the flexibility which
+allows to bind an event to:</p>
+<ul class="simple">
+<li><p>A method in another object.</p></li>
+<li><p>An ordinary function like a static method or a global function.</p></li>
+<li><p>An arbitrary function.</p></li>
+</ul>
+<p>Let us now look at more examples of how to use different event
+handlers using the two overloads of <code class="docutils literal notranslate"><span class="pre">Bind()</span></code> function: first one for
+the object methods and the other one for arbitrary functors (callable
+objects, including simple functions).</p>
+<p>In addition to using a method of the object generating the event
+itself, you can use a method from a completely different object as an
+event handler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">OnFrameExit</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c1"># Do something useful.</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">MyFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+        <span class="c1"># Other initialization code...</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_MENU</span><span class="p">,</span> <span class="n">OnFrameExit</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_EXIT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that <em class="xref py py-obj">MyFrameHandler</em> doesn’t need to derive from
+<a class="reference internal" href="wx.EvtHandler.html#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a>.</p>
+</div>
+<div class="section" id="how-events-are-processed">
+<span id="id3"></span><h2>How Events are Processed<a class="headerlink" href="#how-events-are-processed" title="Permalink to this headline">¶</a></h2>
+<p>The previous sections explain how to define event handlers but don’t
+address the question of how exactly wxPython finds the handler to call
+for the given event. This section describes the algorithm used in
+detail.</p>
+<p>When an event is received from the windowing system, wxPython calls
+<a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.ProcessEvent" title="wx.EvtHandler.ProcessEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.ProcessEvent</span></code></a> on the first event handler object
+belonging to the window generating the event. The normal order of
+event table searching by <code class="docutils literal notranslate"><span class="pre">ProcessEvent</span></code> is as follows, with the
+event processing stopping as soon as a handler is found (unless the
+handler calls <a class="reference internal" href="wx.Event.html#wx.Event.Skip" title="wx.Event.Skip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Event.Skip</span></code></a> in which case it doesn’t count as
+having handled the event and the search continues):</p>
+<ol class="arabic simple">
+<li><p>Before anything else happens, <a class="reference internal" href="wx.AppConsole.html#wx.AppConsole.FilterEvent" title="wx.AppConsole.FilterEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AppConsole.FilterEvent</span></code></a> is
+called. If it returns anything but -1 (default), the event handling
+stops immediately.</p></li>
+<li><p>If this event handler is disabled via a call to
+<a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.SetEvtHandlerEnabled" title="wx.EvtHandler.SetEvtHandlerEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.SetEvtHandlerEnabled</span></code></a> the next three steps are
+skipped and the event handler resumes at step (5).</p></li>
+<li><p>If the object is a <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> and has an associated validator,
+<a class="reference internal" href="wx.Validator.html#wx-validator"><span class="std std-ref">  wx.Validator</span></a> gets a chance to process the event.</p></li>
+<li><p>The list of dynamically bound event handlers, i.e., those for which
+<code class="docutils literal notranslate"><span class="pre">Bind()</span></code> was called, is consulted.</p></li>
+<li><p>The event table containing all the handlers defined using the event
+table macros in this class and its base classes is examined. Notice
+that this means that any event handler defined in a base class will
+be executed at this step.</p></li>
+<li><p>The event is passed to the next event handler, if any, in the event
+handler chain, i.e., the steps (1) to (4) are done for it. Usually
+there is no next event handler so the control passes to the next
+step but see <a class="reference internal" href="#event-handlers-chain"><span class="std std-ref">Event Handlers Chain</span></a> for
+how the next handler may be defined.</p></li>
+<li><p>If the object is a <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> and the event is set to
+propagate (by default only event types derived from
+<a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a> are set to propagate), then the processing
+restarts from the step (1) (and excluding the step (7)) for the
+parent window. If this object is not a window but the next handler
+exists, the event is passed to its parent if it is a window. This
+ensures that in a common case of (possibly several) non-window
+event handlers pushed on top of a window, the event eventually
+reaches the window parent.</p></li>
+<li><p>Finally, i.e., if the event is still not processed, the
+<a class="reference internal" href="wx.App.html#wx-app"><span class="std std-ref">  wx.App</span></a> object itself (which derives from
+<a class="reference internal" href="wx.EvtHandler.html#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a>) gets a last chance to process it.</p></li>
+</ol>
+<p><strong>Please pay close attention to step 6!</strong> People often overlook or get
+confused by this powerful feature of the wxPython event processing
+system. The details of event propagation up the window hierarchy are
+described in the next section.</p>
+<div class="section" id="how-events-propagate-upwards">
+<span id="id4"></span><h3>How Events Propagate Upwards<a class="headerlink" href="#how-events-propagate-upwards" title="Permalink to this headline">¶</a></h3>
+<p>As mentioned above, the events of the classes deriving from
+<a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a> are propagated by default to the parent window if
+they are not processed in this window itself. But although by default
+only the command events are propagated like this, other events can be
+propagated as well because the event handling code uses
+<a class="reference internal" href="wx.Event.html#wx.Event.ShouldPropagate" title="wx.Event.ShouldPropagate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Event.ShouldPropagate</span></code></a> to check whether an event should be
+propagated. It is also possible to propagate the event only a limited
+number of times and not until it is processed (or a top level parent
+window is reached).</p>
+<p>Finally, there is another additional complication (which, in fact,
+simplifies life of wxPython programmers significantly): when
+propagating the command events up to the parent window, the event
+propagation stops when it reaches the parent dialog, if any. This
+means that you don’t risk getting unexpected events from the dialog
+controls (which might be left unprocessed by the dialog itself because
+it doesn’t care about them) when a modal dialog is popped up. The
+events do propagate beyond the frames, however. The rationale for this
+choice is that there are only a few frames in a typical application
+and their parent-child relation are well understood by the programmer
+while it may be difficult, if not impossible, to track down all the
+dialogs that may be popped up in a complex program (remember that some
+are created automatically by wxPython).  If you need to specify a
+different behaviour for some reason, you can use
+<a class="reference internal" href="wx.Window.html#wx.Window.SetExtraStyle" title="wx.Window.SetExtraStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetExtraStyle</span></code></a> (<code class="docutils literal notranslate"><span class="pre">wx.WS_EX_BLOCK_EVENTS</span></code>) explicitly
+to prevent the events from being propagated beyond the given window or
+unset this flag for the dialogs that have it on by default.</p>
+<p>Typically events that deal with a window as a window (size, motion,
+paint, mouse, keyboard, etc.) are sent only to the window.  Events
+that have a higher level of meaning or are generated by the window
+itself (button click, menu select, tree expand, etc.)  are command
+events and are sent up to the parent to see if it is interested in the
+event. More precisely, as said above, all event classes not deriving
+from <a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a> (see the <a class="reference internal" href="wx.Event.html#wx-event"><span class="std std-ref">  wx.Event</span></a> inheritance
+diagram) do not propagate upward.</p>
+<p>In some cases, it might be desired by the programmer to get a certain
+number of system events in a parent window, for example all key events
+sent to, but not used by, the native controls in a dialog. In this
+case, a special event handler will have to be written that will
+override <code class="docutils literal notranslate"><span class="pre">ProcessEvent()</span></code> in order to pass all events (or any
+selection of them) to the parent window.</p>
+</div>
+<div class="section" id="event-handlers-chain">
+<span id="id5"></span><h3>Event Handlers Chain<a class="headerlink" href="#event-handlers-chain" title="Permalink to this headline">¶</a></h3>
+<p>Step 4 of the event propagation algorithm checks for the next
+handler in the event handler chain. This chain can be formed using
+<a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.SetNextHandler" title="wx.EvtHandler.SetNextHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.SetNextHandler</span></code></a>:</p>
+<div class="figure align-center">
+<img alt="_images/overview_events_chain.png" src="_images/overview_events_chain.png"/>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<p>(Referring to the image, if <code class="docutils literal notranslate"><span class="pre">A.ProcessEvent</span></code> is called and it doesn’t
+handle the event, <code class="docutils literal notranslate"><span class="pre">B.ProcessEvent</span></code> will be called and so on…).</p>
+<p>Additionally, in the case of <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> you can build a stack
+(implemented using <a class="reference internal" href="wx.EvtHandler.html#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a> double-linked list) using
+<a class="reference internal" href="wx.Window.html#wx.Window.PushEventHandler" title="wx.Window.PushEventHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.PushEventHandler</span></code></a>:</p>
+<div class="figure align-center">
+<img alt="_images/overview_events_winstack.png" src="_images/overview_events_winstack.png"/>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<p>(Referring to the image, if <code class="docutils literal notranslate"><span class="pre">W.ProcessEvent</span></code> is called, it
+immediately calls <code class="docutils literal notranslate"><span class="pre">A.ProcessEvent</span></code>; if nor A nor B handle the event,
+then the <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> itself is used – i.e. the dynamically bind
+event handlers and static event table entries of <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> are
+looked as the last possibility, after all pushed event handlers were
+tested).</p>
+<p>By default the chain is empty, i.e. there is no next handler.</p>
+</div>
+</div>
+<div class="section" id="custom-event-summary">
+<span id="id6"></span><h2>Custom Event Summary<a class="headerlink" href="#custom-event-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-approach">
+<h3>General approach<a class="headerlink" href="#general-approach" title="Permalink to this headline">¶</a></h3>
+<p>Custom event classes allow you to create more polished-seeming
+controls by allowing the control’s user to process updates without
+needing to sub-class the control. However, to effectively use events,
+you normally need to create custom event classes.</p>
+<p>This recipe gives you some boilerplate code for creating your own
+custom event classes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wx</span>
+<span class="kn">import</span> <span class="nn">wx.lib.newevent</span>
+
+<span class="n">SomeNewEvent</span><span class="p">,</span> <span class="n">EVT_SOME_NEW_EVENT</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">newevent</span><span class="o">.</span><span class="n">NewEvent</span><span class="p">()</span>
+<span class="n">SomeNewCommandEvent</span><span class="p">,</span> <span class="n">EVT_SOME_NEW_COMMAND_EVENT</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">newevent</span><span class="o">.</span><span class="n">NewCommandEvent</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can bind the events normally via either binding syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">EVT_SOME_NEW_EVENT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
+<span class="n">EVT_SOME_NEW_EVENT</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also attach arbitrary data to the event during its creation,
+then post it to whatever window you choose:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the event</span>
+<span class="n">evt</span> <span class="o">=</span> <span class="n">SomeNewEvent</span><span class="p">(</span><span class="n">attr1</span><span class="o">=</span><span class="s2">"hello"</span><span class="p">,</span> <span class="n">attr2</span><span class="o">=</span><span class="mi">654</span><span class="p">)</span>
+<span class="c1"># Post the event</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">PostEvent</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">evt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When handling events with such arbitrary data, you can fetch the data
+via attributes, named the same as the names passed in during the event
+instance creation. That is, given the two keyword arguments passed to
+<code class="docutils literal notranslate"><span class="pre">SomeNewEvent</span></code> above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
+    <span class="c1"># Given the above constructed event, the following is true</span>
+    <span class="n">evt</span><span class="o">.</span><span class="n">attr1</span> <span class="o">==</span> <span class="s2">"hello"</span>
+    <span class="n">evt</span><span class="o">.</span><span class="n">attr2</span> <span class="o">==</span> <span class="mi">654</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="miscellaneous-notes">
+<h2>Miscellaneous Notes<a class="headerlink" href="#miscellaneous-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-generated-events-vs-programmatically-generated-events">
+<span id="id7"></span><h3>User Generated Events vs Programmatically Generated Events<a class="headerlink" href="#user-generated-events-vs-programmatically-generated-events" title="Permalink to this headline">¶</a></h3>
+<p>While generically a <a class="reference internal" href="wx.Event.html#wx-event"><span class="std std-ref">  wx.Event</span></a> can be generated both by user actions
+(e.g., resize of a <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>) and by calls to functions (e.g.,
+<a class="reference internal" href="wx.Window.html#wx.Window.SetSize" title="wx.Window.SetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSize</span></code></a>), wxPython controls normally send
+<a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a> -derived events only for the user-generated
+events. The only exceptions to this rule are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="wx.BookCtrlBase.html#wx.BookCtrlBase.AddPage" title="wx.BookCtrlBase.AddPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.BookCtrlBase.AddPage</span></code></a> No event-free alternatives</p></li>
+<li><p><a class="reference internal" href="wx.BookCtrlBase.html#wx.BookCtrlBase.AdvanceSelection" title="wx.BookCtrlBase.AdvanceSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.BookCtrlBase.AdvanceSelection</span></code></a> No event-free alternatives</p></li>
+<li><p><a class="reference internal" href="wx.BookCtrlBase.html#wx.BookCtrlBase.DeletePage" title="wx.BookCtrlBase.DeletePage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.BookCtrlBase.DeletePage</span></code></a> No event-free alternatives</p></li>
+<li><p><a class="reference internal" href="wx.Notebook.html#wx.Notebook.SetSelection" title="wx.Notebook.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Notebook.SetSelection</span></code></a>: Use <a class="reference internal" href="wx.Notebook.html#wx.Notebook.ChangeSelection" title="wx.Notebook.ChangeSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Notebook.ChangeSelection</span></code></a>
+instead, as <a class="reference internal" href="wx.Notebook.html#wx.Notebook.SetSelection" title="wx.Notebook.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Notebook.SetSelection</span></code></a> is deprecated</p></li>
+<li><p><a class="reference internal" href="wx.TreeCtrl.html#wx.TreeCtrl.Delete" title="wx.TreeCtrl.Delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TreeCtrl.Delete</span></code></a>: No event-free alternatives</p></li>
+<li><p><a class="reference internal" href="wx.TreeCtrl.html#wx.TreeCtrl.DeleteAllItems" title="wx.TreeCtrl.DeleteAllItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TreeCtrl.DeleteAllItems</span></code></a>: No event-free alternatives</p></li>
+<li><p><a class="reference internal" href="wx.TreeCtrl.html#wx.TreeCtrl.EditLabel" title="wx.TreeCtrl.EditLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TreeCtrl.EditLabel</span></code></a>: No event-free alternatives</p></li>
+<li><p>All <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a> methods</p></li>
+</ul>
+<p><a class="reference internal" href="wx.TextEntry.html#wx.TextEntry.ChangeValue" title="wx.TextEntry.ChangeValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TextEntry.ChangeValue</span></code></a> can be used instead of
+<a class="reference internal" href="wx.TextEntry.html#wx.TextEntry.SetValue" title="wx.TextEntry.SetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TextEntry.SetValue</span></code></a> but the other functions, such as
+<a class="reference internal" href="wx.TextEntry.html#wx.TextEntry.Replace" title="wx.TextEntry.Replace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TextEntry.Replace</span></code></a> or <a class="reference internal" href="wx.TextEntry.html#wx.TextEntry.WriteText" title="wx.TextEntry.WriteText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TextCtrl.WriteText</span></code></a> don’t
+have event-free equivalents.</p>
+</div>
+<div class="section" id="window-identifiers">
+<span id="id8"></span><h3>Window Identifiers<a class="headerlink" href="#window-identifiers" title="Permalink to this headline">¶</a></h3>
+<p>Window identifiers are integers, and are used to uniquely determine
+window identity in the event system (though you can use it for other
+purposes). In fact, identifiers do not need to be unique across your
+entire application as long they are unique within the particular
+context you’re interested in, such as a frame and its children. You
+may use the <code class="docutils literal notranslate"><span class="pre">wx.ID_OK</span></code> identifier, for example, on any number of
+dialogs as long as you don’t have several within the same dialog.</p>
+<p>If you pass <code class="docutils literal notranslate"><span class="pre">wx.ID_ANY</span></code> or -1 to a window constructor, an identifier
+will be generated for you automatically by wxPython. This is useful
+when you don’t care about the exact identifier either because you’re
+not going to process the events from the control being created or
+because you process the events from all controls in one place (in
+which case you should specify <code class="docutils literal notranslate"><span class="pre">wx.ID_ANY</span></code> in the
+<a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.Bind" title="wx.EvtHandler.Bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.Bind</span></code></a> call as well). The automatically generated
+identifiers are always negative and so will never conflict with the
+user-specified identifiers which must be always positive.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See <a class="reference internal" href="standard_event_identifiers.html#standard-event-identifiers"><span class="std std-ref">Standard event identifiers</span></a>
+for the list of standard identifiers available.</p>
+</div>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">wx.ID_HIGHEST</span></code> to determine the number above which it is
+safe to define your own identifiers. Or, you can use identifiers below
+<code class="docutils literal notranslate"><span class="pre">wx.ID_LOWEST</span></code>.  Finally, you can allocate identifiers dynamically
+using <a class="reference internal" href="wx.functions.html#wx.NewIdRef" title="wx.NewIdRef"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.NewIdRef</span></code></a> function too. If you use <a class="reference internal" href="wx.functions.html#wx.NewIdRef" title="wx.NewIdRef"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.NewIdRef</span></code></a>
+consistently in your application, you can be sure that your
+identifiers don’t conflict accidentally.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

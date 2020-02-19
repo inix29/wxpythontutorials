@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.LogGui — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.LogInterposer.html" rel="next" title="wx.LogInterposer"/>
+<link href="wx.LogFormatter.html" rel="prev" title="wx.LogFormatter"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.LogGui</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.LogInterposer.html" title="wx.LogInterposer">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.LogFormatter.html" title="wx.LogFormatter">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.LogGui</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.LogGui.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-loggui">
+<span id="wx-loggui"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.LogGui</strong><a class="headerlink" href="#phoenix-title-wx-loggui" title="Permalink to this headline">¶</a></h1>
+<p>This is the default log target for the GUI wxWidgets applications.</p>
+<p>Please see <a class="reference internal" href="log_classes_overview.html#logging-customization"><span class="std std-ref">Logging Customization</span></a>  for explanation of how to change the default log target.</p>
+<p>An object of this class is used by default to show the log messages created by using <a class="reference internal" href="wx.functions.html#wx.LogMessage" title="wx.LogMessage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.LogMessage</span></code></a>     , <a class="reference internal" href="wx.functions.html#wx.LogError" title="wx.LogError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.LogError</span></code></a>       and other logging functions. It doesn’t display the messages logged by them immediately however but accumulates all messages logged during an event handler execution and then shows them all at once when its <a class="reference internal" href="#wx.LogGui.Flush" title="wx.LogGui.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a>  method is called during the idle time processing. This has the important advantage of showing only a single dialog to the user even if several messages were logged because of a single error as it often happens (e.g. a low level function could log a message because it failed to open a file resulting in its caller logging another message due to the failure of higher level operation requiring the use of this file). If you need to force the display of all previously logged messages immediately you can use <a class="reference internal" href="wx.Log.html#wx.Log.FlushActive" title="wx.Log.FlushActive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.FlushActive</span></code></a>   to force the dialog display.</p>
+<p>Also notice that if an error message is logged when several informative messages had been already logged before, the informative messages are discarded on the assumption that they are not useful</p>
+<p>At any rate, it is possible that that several messages were accumulated before this class <a class="reference internal" href="#wx.LogGui.Flush" title="wx.LogGui.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a>  method is called. If this is the case, <a class="reference internal" href="#wx.LogGui.Flush" title="wx.LogGui.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a>  uses a custom dialog which shows the last message directly and allows the user to view the previously logged ones by expanding the “Details” <a class="reference internal" href="wx.CollapsiblePane.html#wx-collapsiblepane"><span class="std std-ref">  wx.CollapsiblePane</span></a>  inside it. This custom dialog also provides the buttons for copying the log messages to the clipboard and saving them to a file.</p>
+<p>However if only a single message is present when <a class="reference internal" href="#wx.LogGui.Flush" title="wx.LogGui.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a>  is called, just a <a class="reference internal" href="wx.functions.html#wx.MessageBox" title="wx.MessageBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.MessageBox</span></code></a>       is used to show it. This has the advantage of being closer to the native behaviour but it doesn’t give the user any possibility to copy or save the message (except for the recent Windows versions where  <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code>   may be pressed in the message box to copy its contents to the clipboard) so you may want to override DoShowSingleLogMessage() to customize  <a class="reference internal" href="#wx-loggui"><span class="std std-ref">  wx.LogGui</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>LogGui</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of LogGui" class="inheritance" src="_static/images/inheritance/wx.LogGui_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,97,112" href="wx.LogGui.html" id="node1" shape="rect" title="This is the default log target for the GUI wxWidgets applications."/> <area alt="" coords="15,5,87,35" href="wx.Log.html" id="node2" shape="rect" title="wx.Log  class defines the interface for the `log targets`  used by wxWidgets logging functions as explained in the Logging Overview &lt;logging overview&gt;."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.LogGui.__init__" title="wx.LogGui.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.LogGui.Flush" title="wx.LogGui.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a></p></td>
+<td><p>Presents the accumulated log messages, if any, to the user.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.LogGui">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">LogGui</code><span class="sig-paren">(</span><em class="sig-param">Log</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.LogGui" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LogGui</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This is the default log target for the GUI wxWidgets applications.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.LogGui.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.LogGui.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.LogGui.Flush">
+<code class="sig-name descname">Flush</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.LogGui.Flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Presents the accumulated log messages, if any, to the user.</p>
+<p>This method is called during the idle time and should show any messages accumulated in <code class="docutils literal notranslate"><span class="pre">LogGui.m_aMessages</span></code>  field to the user.</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

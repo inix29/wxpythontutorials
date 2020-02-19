@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.FileType — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.FileType.MessageParameters.html" rel="next" title="wx.FileType.MessageParameters"/>
+<link href="wx.FileTranslationsLoader.html" rel="prev" title="wx.FileTranslationsLoader"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.FileType</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.FileType.MessageParameters.html" title="wx.FileType.MessageParameters">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.FileTranslationsLoader.html" title="wx.FileTranslationsLoader">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.FileType</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-messageparameters-class"> MessageParameters class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.FileType.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-filetype">
+<span id="wx-filetype"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.FileType</strong><a class="headerlink" href="#phoenix-title-wx-filetype" title="Permalink to this headline">¶</a></h1>
+<p>This class holds information about a given <em class="xref py py-obj">file</em>  type.</p>
+<p>File type is the same as MIME type under Unix, but under Windows it corresponds more to an extension than to MIME type (in fact, several extensions may correspond to a file type).</p>
+<p>This object may be created in several different ways: the program might know the file extension and wish to find out the corresponding MIME type or, conversely, it might want to find the right extension for the file to which it writes the contents of given MIME type. Depending on how it was created some fields may be unknown so the return value of all the accessors <strong>must</strong>  be checked: <code class="docutils literal notranslate"><span class="pre">False</span></code> will be returned if the corresponding information couldn’t be found.</p>
+<p>The objects of this class are never created by the application code but are returned by <a class="reference internal" href="wx.MimeTypesManager.html#wx.MimeTypesManager.GetFileTypeFromMimeType" title="wx.MimeTypesManager.GetFileTypeFromMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.MimeTypesManager.GetFileTypeFromMimeType</span></code></a>   and <a class="reference internal" href="wx.MimeTypesManager.html#wx.MimeTypesManager.GetFileTypeFromExtension" title="wx.MimeTypesManager.GetFileTypeFromExtension"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.MimeTypesManager.GetFileTypeFromExtension</span></code></a>   methods. But it is your responsibility to delete the returned pointer when you’re done with it!</p>
+<p>A brief reminder about what the MIME types are (see the <code class="docutils literal notranslate"><span class="pre">RFC</span></code> 1341 for more information): basically, it is just a pair category/type (for example, “text/plain”) where the category is a basic indication of what a file is. Examples of categories are “application”, “image”, “text”, “binary”, and type is a precise definition of the document format: “plain” in the example above means just <code class="docutils literal notranslate"><span class="pre">ASCII</span></code> text without any formatting, while “text/html” is the HTML document source.</p>
+<p>A MIME type may have one or more associated extensions: “text/plain” will typically correspond to the extension “.txt”, but may as well be associated with “.ini” or “.conf”.</p>
+<div class="section" id="phoenix-title-messageparameters-class">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> MessageParameters class<a class="headerlink" href="#phoenix-title-messageparameters-class" title="Permalink to this headline">¶</a></h2>
+<p>One of the most common usages of MIME is to encode an e-mail message. The MIME type of the encoded message is an example of a message parameter. These parameters are found in the message headers (“Content-XXX”). At the very least, they must specify the MIME type and the version of MIME used, but almost always they provide additional information about the message such as the original file name or the charset (for the text documents). These parameters may be useful to the program used to open, edit, view or print the message, so, for example, an e-mail client program will have to pass them to this program. Because <a class="reference internal" href="#wx-filetype"><span class="std std-ref">  wx.FileType</span></a>  itself cannot know about these parameters, it uses <a class="reference internal" href="wx.FileType.MessageParameters.html#wx-filetype-messageparameters"><span class="std std-ref">  wx.FileType.MessageParameters</span></a>  class to query them. The default implementation only requires the caller to provide the file name (always used by the program to be called - it must know which file to open) and the MIME type and supposes that there are no other parameters. If you wish to supply additional parameters, you must derive your own class from <a class="reference internal" href="wx.FileType.MessageParameters.html#wx-filetype-messageparameters"><span class="std std-ref">  wx.FileType.MessageParameters</span></a>  and override GetParamValue() function, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># provide the message parameters for the MIME type manager</span>
+<span class="k">class</span> <span class="nc">MailMessageParameters</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MessageParameters</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mimetype</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">MessageParameters</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mimetype</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">GetParamValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+
+        <span class="c1"># parameter names are not case-sensitive</span>
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"charset"</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">"US-ASCII"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">wx</span><span class="o">.</span><span class="n">MessageParameters</span><span class="o">.</span><span class="n">GetParamValue</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now you only need to create an object of this class and pass it to, for example, GetOpenCommand like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">filetype</span><span class="o">.</span><span class="n">GetOpenCommand</span><span class="p">(</span><span class="n">MailMessageParameters</span><span class="p">(</span><span class="s2">"foo.txt"</span><span class="p">,</span> <span class="s2">"text/plain"</span><span class="p">)):</span>
+
+    <span class="c1"># the full command for opening the text documents is in 'command'</span>
+    <span class="c1"># (it might be "notepad foo.txt" under Windows or "cat foo.txt" under Unix)</span>
+    <span class="n">HandleCommand</span><span class="p">()</span>
+
+<span class="k">else</span><span class="p">:</span>
+
+    <span class="c1"># we don't know how to handle such files...</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Windows: As only the file name is used by the program associated with the given extension anyhow (but no other message parameters), there is no need to ever derive from <a class="reference internal" href="wx.FileType.MessageParameters.html#wx-filetype-messageparameters"><span class="std std-ref">  wx.FileType.MessageParameters</span></a>  class for a Windows-only program.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.MimeTypesManager.html#wx-mimetypesmanager"><span class="std std-ref">  wx.MimeTypesManager</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>FileType</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of FileType" class="inheritance" src="_static/images/inheritance/wx.FileType_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,107,35" href="wx.FileType.html" id="node1" shape="rect" title="This class holds information about a given `file`  type."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%"/>
+<col style="width: 72%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.__init__" title="wx.FileType.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Copy constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.ExpandCommand" title="wx.FileType.ExpandCommand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ExpandCommand</span></code></a></p></td>
+<td><p>This function is primarily intended for GetOpenCommand and GetPrintCommand usage but may be also used by the application directly if, for example, you want to use some non-default command to open the file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.GetAllCommands" title="wx.FileType.GetAllCommands"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAllCommands</span></code></a></p></td>
+<td><p>Returns a tuple containing the <em class="xref py py-obj">verbs</em> and <em class="xref py py-obj">commands</em> arrays, corresponding for the registered information for this mime type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.GetDescription" title="wx.FileType.GetDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescription</span></code></a></p></td>
+<td><p>Returns a brief description for this file type: for example, “text document” for</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.GetExtensions" title="wx.FileType.GetExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtensions</span></code></a></p></td>
+<td><p>Returns all extensions associated with this file type: for</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.GetIcon" title="wx.FileType.GetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIcon</span></code></a></p></td>
+<td><p>Return the icon associated with this mime type, if any.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.GetIconInfo" title="wx.FileType.GetIconInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIconInfo</span></code></a></p></td>
+<td><p>Returns a tuple containing the Icon for this file type, the file where the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.GetIconLocation" title="wx.FileType.GetIconLocation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIconLocation</span></code></a></p></td>
+<td><p>Returns a wx.IconLocation that can be used to fetch the icon for this mime type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.GetMimeType" title="wx.FileType.GetMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMimeType</span></code></a></p></td>
+<td><p>Returns full MIME type specification for this file type: for example, “text/plain”.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.GetMimeTypes" title="wx.FileType.GetMimeTypes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMimeTypes</span></code></a></p></td>
+<td><p>Same as GetMimeType but returns a list of types.  This will usually contain</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.GetOpenCommand" title="wx.FileType.GetOpenCommand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenCommand</span></code></a></p></td>
+<td><p>Returns the command which must be executed (see wx.Execute()) in order</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.GetPrintCommand" title="wx.FileType.GetPrintCommand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintCommand</span></code></a></p></td>
+<td><p>Returns the command which must be executed (see Execute()) in order to</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.Description" title="wx.FileType.Description"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Description</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileType.GetDescription" title="wx.FileType.GetDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescription</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.Extensions" title="wx.FileType.Extensions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Extensions</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileType.GetExtensions" title="wx.FileType.GetExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtensions</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.Icon" title="wx.FileType.Icon"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Icon</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileType.GetIcon" title="wx.FileType.GetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIcon</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.IconInfo" title="wx.FileType.IconInfo"><code class="xref py py-attr docutils literal notranslate"><span class="pre">IconInfo</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileType.GetIconInfo" title="wx.FileType.GetIconInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIconInfo</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.IconLocation" title="wx.FileType.IconLocation"><code class="xref py py-attr docutils literal notranslate"><span class="pre">IconLocation</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileType.GetIconLocation" title="wx.FileType.GetIconLocation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIconLocation</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.MimeType" title="wx.FileType.MimeType"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MimeType</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileType.GetMimeType" title="wx.FileType.GetMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMimeType</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.MimeTypes" title="wx.FileType.MimeTypes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MimeTypes</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileType.GetMimeTypes" title="wx.FileType.GetMimeTypes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMimeTypes</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileType.OpenCommand" title="wx.FileType.OpenCommand"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OpenCommand</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileType.GetOpenCommand" title="wx.FileType.GetOpenCommand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenCommand</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileType.PrintCommand" title="wx.FileType.PrintCommand"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PrintCommand</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileType.GetPrintCommand" title="wx.FileType.GetPrintCommand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintCommand</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.FileType">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">FileType</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FileType</span><span class="p">(</span><span class="n">ftInfo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class holds information about a given file type.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.FileType.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">ftInfo</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ftInfo</strong> (<a class="reference internal" href="wx.FileTypeInfo.html#wx.FileTypeInfo" title="wx.FileTypeInfo"><em>wx.FileTypeInfo</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.ExpandCommand">
+<em class="property">static </em><code class="sig-name descname">ExpandCommand</code><span class="sig-paren">(</span><em class="sig-param">command</em>, <em class="sig-param">params</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.ExpandCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is primarily intended for GetOpenCommand and GetPrintCommand usage but may be also used by the application directly if, for example, you want to use some non-default command to open the file.</p>
+<p>The function replaces all occurrences of:</p>
+<ul class="simple">
+<li><p>s with the full file name</p></li>
+<li><p>t with the MIME type</p></li>
+<li><p>%{param} with the value of the parameter <em class="xref py py-obj">param</em>  using the <a class="reference internal" href="wx.FileType.MessageParameters.html#wx-filetype-messageparameters"><span class="std std-ref">  wx.FileType.MessageParameters</span></a>  object you pass to it.</p></li>
+</ul>
+<p>If there is no ‘s’ in the command string (and the string is not empty), it is assumed that the command reads the data on stdin and so the effect is the same as ” %s” were appended to the string.</p>
+<p>Unlike all other functions of this class, there is no error return for this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command</strong> (<em>string</em>) – </p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="wx.FileType.MessageParameters.html#wx.FileType.MessageParameters" title="wx.FileType.MessageParameters"><em>wx.FileType.MessageParameters</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetAllCommands">
+<code class="sig-name descname">GetAllCommands</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">params</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetAllCommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple containing the <em class="xref py py-obj">verbs</em> and <em class="xref py py-obj">commands</em> arrays, corresponding for the registered information for this mime type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="wx.FileType.MessageParameters.html#wx.FileType.MessageParameters" title="wx.FileType.MessageParameters"><em>FileType.MessageParameters</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <em class="xref py py-obj">verbs</em>, <em class="xref py py-obj">commands</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetDescription">
+<code class="sig-name descname">GetDescription</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetDescription" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns a brief description for this file type: for example, “text document” for
+the “text/plain” MIME type.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetExtensions">
+<code class="sig-name descname">GetExtensions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetExtensions" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns all extensions associated with this file type: for
+example, it may contain the following two elements for the MIME
+type “text/html” (notice the absence of the leading dot): “html”
+and “htm”.</p>
+<p>This function is not implemented on Windows, there is no (efficient)
+way to retrieve associated extensions from the given MIME type on
+this platform.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of strings</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetIcon">
+<code class="sig-name descname">GetIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the icon associated with this mime type, if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetIconInfo">
+<code class="sig-name descname">GetIconInfo</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetIconInfo" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns a tuple containing the Icon for this file type, the file where the
+icon is found, and the index of the image in that file, if applicable.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetIconLocation">
+<code class="sig-name descname">GetIconLocation</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetIconLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a wx.IconLocation that can be used to fetch the icon for this mime type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.IconLocation.html#wx-iconlocation"><span class="std std-ref">  wx.IconLocation</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetMimeType">
+<code class="sig-name descname">GetMimeType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetMimeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns full MIME type specification for this file type: for example, “text/plain”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetMimeTypes">
+<code class="sig-name descname">GetMimeTypes</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetMimeTypes" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Same as GetMimeType but returns a list of types.  This will usually contain
+only one item, but sometimes, such as on Unix with KDE more than one type
+if there are differences between KDE&lt; mailcap and mime.types.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of strings</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetOpenCommand">
+<code class="sig-name descname">GetOpenCommand</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetOpenCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetOpenCommand</strong> <em class="xref py py-obj">(self, params)</em></p>
+<blockquote>
+<div><p>Returns the command which must be executed (see wx.Execute()) in order
+to open the file of the given type. The name of the file as well as
+any other parameters is retrieved from MessageParameters() class.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetOpenCommand</strong> <em class="xref py py-obj">(self, filename)</em></p>
+<blockquote>
+<div><p>Returns the command which should be used to open the given
+filename. An empty string is returned to indicate that an error
+occurred (typically meaning that there is no standard way to open
+this kind of files).</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileType.GetPrintCommand">
+<code class="sig-name descname">GetPrintCommand</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">params</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileType.GetPrintCommand" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns the command which must be executed (see Execute()) in order to
+print the file of the given type. The name of the file is retrieved from
+the MessageParameters class.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.FileType.Description">
+<code class="sig-name descname">Description</code><a class="headerlink" href="#wx.FileType.Description" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileType.GetDescription" title="wx.FileType.GetDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescription</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileType.Extensions">
+<code class="sig-name descname">Extensions</code><a class="headerlink" href="#wx.FileType.Extensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileType.GetExtensions" title="wx.FileType.GetExtensions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetExtensions</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileType.Icon">
+<code class="sig-name descname">Icon</code><a class="headerlink" href="#wx.FileType.Icon" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileType.GetIcon" title="wx.FileType.GetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIcon</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileType.IconInfo">
+<code class="sig-name descname">IconInfo</code><a class="headerlink" href="#wx.FileType.IconInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileType.GetIconInfo" title="wx.FileType.GetIconInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIconInfo</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileType.IconLocation">
+<code class="sig-name descname">IconLocation</code><a class="headerlink" href="#wx.FileType.IconLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileType.GetIconLocation" title="wx.FileType.GetIconLocation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIconLocation</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileType.MimeType">
+<code class="sig-name descname">MimeType</code><a class="headerlink" href="#wx.FileType.MimeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileType.GetMimeType" title="wx.FileType.GetMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMimeType</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileType.MimeTypes">
+<code class="sig-name descname">MimeTypes</code><a class="headerlink" href="#wx.FileType.MimeTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileType.GetMimeTypes" title="wx.FileType.GetMimeTypes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMimeTypes</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileType.OpenCommand">
+<code class="sig-name descname">OpenCommand</code><a class="headerlink" href="#wx.FileType.OpenCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileType.GetOpenCommand" title="wx.FileType.GetOpenCommand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOpenCommand</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileType.PrintCommand">
+<code class="sig-name descname">PrintCommand</code><a class="headerlink" href="#wx.FileType.PrintCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileType.GetPrintCommand" title="wx.FileType.GetPrintCommand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintCommand</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

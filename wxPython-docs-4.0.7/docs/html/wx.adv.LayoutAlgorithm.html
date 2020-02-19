@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.adv.LayoutAlgorithm — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.adv.LayoutAlignment.enumeration.html" rel="next" title="wx.adv.LayoutAlignment"/>
+<link href="wx.adv.Joystick.html" rel="prev" title="wx.adv.Joystick"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.adv.1moduleindex.html">
+<strong>wx.adv</strong></a> »</li>
+<li class="reltitle"> <strong>wx.adv.LayoutAlgorithm</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.adv.LayoutAlignment.enumeration.html" title="wx.adv.LayoutAlignment">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.adv.Joystick.html" title="wx.adv.Joystick">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.adv.LayoutAlgorithm</strong></a><ul>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.adv.LayoutAlgorithm.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-adv-layoutalgorithm">
+<span id="wx-adv-layoutalgorithm"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.adv.LayoutAlgorithm</strong><a class="headerlink" href="#phoenix-title-wx-adv-layoutalgorithm" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-adv-layoutalgorithm"><span class="std std-ref">  wx.adv.LayoutAlgorithm</span></a>  implements layout of subwindows in MDI or SDI frames.</p>
+<p>It sends a <a class="reference internal" href="wx.adv.CalculateLayoutEvent.html#wx-adv-calculatelayoutevent"><span class="std std-ref">  wx.adv.CalculateLayoutEvent</span></a>  event to children of the frame, asking them for information about their size. For MDI parent frames, the algorithm allocates the remaining space to the MDI client window (which contains the MDI child frames).</p>
+<p>For SDI (normal) frames, a ‘main’ window is specified as taking up the remaining space.</p>
+<p>Because the event system is used, this technique can be applied to any windows, which are not necessarily ‘aware’ of the layout classes (no virtual functions in <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  refer to <a class="reference internal" href="#wx-adv-layoutalgorithm"><span class="std std-ref">  wx.adv.LayoutAlgorithm</span></a>  or its events). However, you may wish to use <a class="reference internal" href="wx.adv.SashLayoutWindow.html#wx-adv-sashlayoutwindow"><span class="std std-ref">  wx.adv.SashLayoutWindow</span></a>  for your subwindows since this class provides handlers for the required events, and accessors to specify the desired size of the window. The sash behaviour in the base class can be used, optionally, to make the windows user-resizable.</p>
+<p><a class="reference internal" href="#wx-adv-layoutalgorithm"><span class="std std-ref">  wx.adv.LayoutAlgorithm</span></a>  is typically used in <code class="docutils literal notranslate"><span class="pre">IDE</span></code> (integrated development environment) applications, where there are several resizable windows in addition to the MDI client window, or other primary editing window. Resizable windows might include toolbars, a project window, and a window for displaying error and warning messages.</p>
+<p>When a window receives an OnCalculateLayout event, it should call SetRect in the given event object, to be the old supplied rectangle minus whatever space the window takes up. It should also set its own size accordingly. <a class="reference internal" href="wx.adv.SashLayoutWindow.html#wx.adv.SashLayoutWindow.OnCalculateLayout" title="wx.adv.SashLayoutWindow.OnCalculateLayout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.adv.SashLayoutWindow.OnCalculateLayout</span></code></a>   generates an OnQueryLayoutInfo event which it sends to itself to determine the orientation, alignment and size of the window, which it gets from internal member variables set by the application.</p>
+<p>The algorithm works by starting off with a rectangle equal to the whole frame client area. It iterates through the frame children, generating <em class="xref py py-obj">LayoutAlgorithm.OnCalculateLayout</em> events which subtract the window size and return the remaining rectangle for the next window to process. It is assumed (by <a class="reference internal" href="wx.adv.SashLayoutWindow.html#wx.adv.SashLayoutWindow.OnCalculateLayout" title="wx.adv.SashLayoutWindow.OnCalculateLayout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.adv.SashLayoutWindow.OnCalculateLayout</span></code></a> ) that a window stretches the full dimension of the frame client, according to the orientation it specifies. For example, a horizontal window will stretch the full width of the remaining portion of the frame client area. In the other orientation, the window will be fixed to whatever size was specified by <em class="xref py py-obj">LayoutAlgorithm.OnQueryLayoutInfo.</em> An alignment setting will make the window ‘stick’ to the left, top, right or bottom of the remaining client area. This scheme implies that order of window creation is important. Say you wish to have an extra toolbar at the top of the frame, a project window to the left of the MDI client window, and an output window above the status bar. You should therefore create the windows in this order: toolbar, output window, project window. This ensures that the toolbar and output window take up space at the top and bottom, and then the remaining height in-between is used for the project window.</p>
+<p><a class="reference internal" href="#wx-adv-layoutalgorithm"><span class="std std-ref">  wx.adv.LayoutAlgorithm</span></a>  is quite independent of the way in which <em class="xref py py-obj">LayoutAlgorithm.OnCalculateLayout</em> chooses to interpret a window’s size and alignment. Therefore you could implement a different window class with a new <em class="xref py py-obj">LayoutAlgorithm.OnCalculateLayout</em> event handler, that has a more sophisticated way of laying out the windows. It might allow specification of whether stretching occurs in the specified orientation, for example, rather than always assuming stretching. (This could, and probably should, be added to the existing implementation).</p>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="layoutalgorithm-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive one of the <a class="reference internal" href="wx.adv.QueryLayoutInfoEvent.html#wx-adv-querylayoutinfoevent"><span class="std std-ref">  wx.adv.QueryLayoutInfoEvent</span></a><a class="reference internal" href="wx.adv.CalculateLayoutEvent.html#wx-adv-calculatelayoutevent"><span class="std std-ref">  wx.adv.CalculateLayoutEvent</span></a> parameters.</p>
+<ul class="simple">
+<li><p>EVT_QUERY_LAYOUT_INFO: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_QUERY_LAYOUT_INFO</span></code>   event, to get size, orientation and alignment from a window. See  <a class="reference internal" href="wx.adv.QueryLayoutInfoEvent.html#wx-adv-querylayoutinfoevent"><span class="std std-ref">  wx.adv.QueryLayoutInfoEvent</span></a>.</p></li>
+<li><p>EVT_CALCULATE_LAYOUT: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_CALCULATE_LAYOUT</span></code>   event, which asks the window to take a ‘bite’ out of a rectangle provided by the algorithm. See  <a class="reference internal" href="wx.adv.CalculateLayoutEvent.html#wx-adv-calculatelayoutevent"><span class="std std-ref">  wx.adv.CalculateLayoutEvent</span></a>.</p></li>
+</ul>
+<p>Note that the algorithm object does not respond to events, but itself generates the previous events in order to calculate window sizes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#wx-adv-layoutalgorithm"><span class="std std-ref">  wx.adv.LayoutAlgorithm</span></a>  has nothing to do with <a class="reference internal" href="wx.LayoutConstraints.html#wx-layoutconstraints"><span class="std std-ref">  wx.LayoutConstraints</span></a>. It is an alternative way of specifying layouts for which the normal constraint system is unsuitable.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.adv.SashEvent.html#wx-adv-sashevent"><span class="std std-ref">  wx.adv.SashEvent</span></a>, <a class="reference internal" href="wx.adv.SashLayoutWindow.html#wx-adv-sashlayoutwindow"><span class="std std-ref">  wx.adv.SashLayoutWindow</span></a>, <a class="reference internal" href="events_overview.html#events-and-event-handling"><span class="std std-ref">Events and Event Handling</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>LayoutAlgorithm</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of LayoutAlgorithm" class="inheritance" src="_static/images/inheritance/wx.adv.LayoutAlgorithm_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,189,112" href="wx.adv.LayoutAlgorithm.html" id="node1" shape="rect" title="wx.adv.LayoutAlgorithm  implements layout of subwindows in MDI or SDI frames."/> <area alt="" coords="53,5,141,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.LayoutAlgorithm.__init__" title="wx.adv.LayoutAlgorithm.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.LayoutAlgorithm.LayoutFrame" title="wx.adv.LayoutAlgorithm.LayoutFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LayoutFrame</span></code></a></p></td>
+<td><p>Lays out the children of a normal frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.LayoutAlgorithm.LayoutMDIFrame" title="wx.adv.LayoutAlgorithm.LayoutMDIFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LayoutMDIFrame</span></code></a></p></td>
+<td><p>Lays out the children of an MDI parent frame.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.LayoutAlgorithm.LayoutWindow" title="wx.adv.LayoutAlgorithm.LayoutWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LayoutWindow</span></code></a></p></td>
+<td><p>Lays out the children of a normal frame or other window.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.adv.LayoutAlgorithm">
+<em class="property">class </em><code class="sig-prename descclassname">wx.adv.</code><code class="sig-name descname">LayoutAlgorithm</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.LayoutAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LayoutAlgorithm</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>LayoutAlgorithm implements layout of subwindows in MDI or SDI
+frames.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.adv.LayoutAlgorithm.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.LayoutAlgorithm.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.LayoutAlgorithm.LayoutFrame">
+<code class="sig-name descname">LayoutFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">frame</em>, <em class="sig-param">mainWindow=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.LayoutAlgorithm.LayoutFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lays out the children of a normal frame.</p>
+<p><em class="xref py py-obj">mainWindow</em>  is set to occupy the remaining space. This function simply calls <a class="reference internal" href="#wx.adv.LayoutAlgorithm.LayoutWindow" title="wx.adv.LayoutAlgorithm.LayoutWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LayoutWindow</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<a class="reference internal" href="wx.Frame.html#wx.Frame" title="wx.Frame"><em>wx.Frame</em></a>) – </p></li>
+<li><p><strong>mainWindow</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.LayoutAlgorithm.LayoutMDIFrame">
+<code class="sig-name descname">LayoutMDIFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">frame</em>, <em class="sig-param">rect=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.LayoutAlgorithm.LayoutMDIFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lays out the children of an MDI parent frame.</p>
+<p>If <em class="xref py py-obj">rect</em>  is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, the given rectangle will be used as a starting point instead of the frame’s client area. The MDI client window is set to occupy the remaining space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<a class="reference internal" href="wx.MDIParentFrame.html#wx.MDIParentFrame" title="wx.MDIParentFrame"><em>wx.MDIParentFrame</em></a>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.LayoutAlgorithm.LayoutWindow">
+<code class="sig-name descname">LayoutWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">mainWindow=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.LayoutAlgorithm.LayoutWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lays out the children of a normal frame or other window.</p>
+<p><em class="xref py py-obj">mainWindow</em>  is set to occupy the remaining space. If this is not specified, then the last window that responds to a calculate layout event in query mode will get the remaining space (that is, a non-query OnCalculateLayout event will not be sent to this window and the window will be set to the remaining size).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>mainWindow</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

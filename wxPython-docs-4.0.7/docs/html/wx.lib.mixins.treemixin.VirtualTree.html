@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.mixins.treemixin.VirtualTree — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.ogl.html" rel="next" title="wx.lib.ogl"/>
+<link href="wx.lib.mixins.treemixin.TreeHelper.html" rel="prev" title="wx.lib.mixins.treemixin.TreeHelper"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a href="wx.lib.mixins.html">
+<strong>wx.lib.mixins</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.mixins.treemixin.html">
+<strong>wx.lib.mixins.treemixin</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.mixins.treemixin.VirtualTree</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.ogl.html" title="wx.lib.ogl">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.mixins.treemixin.TreeHelper.html" title="wx.lib.mixins.treemixin.TreeHelper">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.mixins.treemixin.VirtualTree</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#super-classes-known-superclasses"> Known Superclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.mixins.treemixin.VirtualTree.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-lib-mixins-treemixin-virtualtree">
+<span id="wx-lib-mixins-treemixin-virtualtree"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.mixins.treemixin.VirtualTree</strong><a class="headerlink" href="#phoenix-title-wx-lib-mixins-treemixin-virtualtree" title="Permalink to this headline">¶</a></h1>
+<p>This is a mixin class that can be used to allow for virtual tree
+controls. It can be mixed in with wx.TreeCtrl, wx.gizmos.TreeListCtrl,
+wx.lib.customtree.CustomTreeCtrl.</p>
+<p>To use it derive a new class from this class and one of the tree
+controls, e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyTree</span><span class="p">(</span><span class="n">VirtualTree</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">TreeCtrl</span><span class="p">):</span>
+    <span class="c1"># Other code here</span>
+</pre></div>
+</div>
+<p>VirtualTree uses several callbacks (such as OnGetItemText) to
+retrieve information needed to construct the tree and render the
+items. To specify what item the callback needs information about,
+the callback passes an item index. Whereas for list controls a simple
+integer index can be used, for tree controls indicating a specific
+item is a little bit more complicated. See below for a more detailed
+explanation of the how index works.</p>
+<p>Note that VirtualTree forces the wx.TR_HIDE_ROOT style.</p>
+<p>In your subclass you <em>must</em> override OnGetItemText and
+OnGetChildrenCount. These two methods are the minimum needed to
+construct the tree and render the item labels. If you want to add
+images, change fonts our colours, etc., you need to override the
+appropriate OnGetXXX method as well.</p>
+<p>About indices: your callbacks are passed a tuple of integers that
+identifies the item the VirtualTree wants information about. An
+empty tuple, i.e. (), represents the hidden root item.  A tuple with
+one integer, e.g. (3,), represents a visible root item, in this case
+the fourth one. A tuple with two integers, e.g. (3,0), represents a
+child of a visible root item, in this case the first child of the
+fourth root item.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>VirtualTree</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of VirtualTree" class="inheritance" src="_static/images/inheritance/wx.lib.mixins.treemixin.VirtualTree_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="186,83,441,112" href="wx.lib.mixins.treemixin.VirtualTree.html" id="node1" shape="rect" title="This is a mixin class that can be used to allow for virtual tree"/> <area alt="" coords="5,5,315,35" href="wx.lib.mixins.treemixin.TreeAPIHarmonizer.html" id="node2" shape="rect" title="This class attempts to hide the differences in API between the"/> <area alt="" coords="339,5,594,35" href="wx.lib.mixins.treemixin.TreeHelper.html" id="node3" shape="rect" title="This class provides methods that are not part of the API of any"/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="super-classes-known-superclasses">
+<h2><a class="reference internal" href="_images/super_classes.png"><img alt="super_classes" class="align-middle" src="_images/super_classes.png" style="width: 32px;"/></a> Known Superclasses<a class="headerlink" href="#super-classes-known-superclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.lib.mixins.treemixin.TreeAPIHarmonizer.html#wx.lib.mixins.treemixin.TreeAPIHarmonizer" title="wx.lib.mixins.treemixin.TreeAPIHarmonizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.lib.mixins.treemixin.TreeAPIHarmonizer</span></code></a>, <a class="reference internal" href="wx.lib.mixins.treemixin.TreeHelper.html#wx.lib.mixins.treemixin.TreeHelper" title="wx.lib.mixins.treemixin.TreeHelper"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.lib.mixins.treemixin.TreeHelper</span></code></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.__init__" title="wx.lib.mixins.treemixin.VirtualTree.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Initialize self.  See help(type(self)) for accurate signature.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.ChildIndices" title="wx.lib.mixins.treemixin.VirtualTree.ChildIndices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ChildIndices</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.DoRefreshItem" title="wx.lib.mixins.treemixin.VirtualTree.DoRefreshItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoRefreshItem</span></code></a></p></td>
+<td><p>Refresh one item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetChildrenCount" title="wx.lib.mixins.treemixin.VirtualTree.OnGetChildrenCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetChildrenCount</span></code></a></p></td>
+<td><p>This function <em>must</em> be overloaded in the derived class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemBackgroundColour" title="wx.lib.mixins.treemixin.VirtualTree.OnGetItemBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemBackgroundColour</span></code></a></p></td>
+<td><p>This function may be overloaded in the derived class. It</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemChecked" title="wx.lib.mixins.treemixin.VirtualTree.OnGetItemChecked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemChecked</span></code></a></p></td>
+<td><p>This function may be overloaded in the derived class, but</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemFont" title="wx.lib.mixins.treemixin.VirtualTree.OnGetItemFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemFont</span></code></a></p></td>
+<td><p>This function may be overloaded in the derived class. It</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemImage" title="wx.lib.mixins.treemixin.VirtualTree.OnGetItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemImage</span></code></a></p></td>
+<td><p>This function may be overloaded in the derived class. It</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemText" title="wx.lib.mixins.treemixin.VirtualTree.OnGetItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemText</span></code></a></p></td>
+<td><p>This function <em>must</em> be overloaded in the derived class. It</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemTextColour" title="wx.lib.mixins.treemixin.VirtualTree.OnGetItemTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemTextColour</span></code></a></p></td>
+<td><p>This function may be overloaded in the derived class. It</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemType" title="wx.lib.mixins.treemixin.VirtualTree.OnGetItemType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnGetItemType</span></code></a></p></td>
+<td><p>This function may be overloaded in the derived class, but</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnItemCollapsed" title="wx.lib.mixins.treemixin.VirtualTree.OnItemCollapsed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnItemCollapsed</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.OnItemExpanding" title="wx.lib.mixins.treemixin.VirtualTree.OnItemExpanding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnItemExpanding</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshBackgroundColour" title="wx.lib.mixins.treemixin.VirtualTree.RefreshBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshBackgroundColour</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshCheckedState" title="wx.lib.mixins.treemixin.VirtualTree.RefreshCheckedState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshCheckedState</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshChildrenRecursively" title="wx.lib.mixins.treemixin.VirtualTree.RefreshChildrenRecursively"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshChildrenRecursively</span></code></a></p></td>
+<td><p>Refresh the children of item, reusing as much of the</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshColumns" title="wx.lib.mixins.treemixin.VirtualTree.RefreshColumns"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshColumns</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItem" title="wx.lib.mixins.treemixin.VirtualTree.RefreshItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItem</span></code></a></p></td>
+<td><p>Redraws the item with the specified index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemFont" title="wx.lib.mixins.treemixin.VirtualTree.RefreshItemFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItemFont</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemImage" title="wx.lib.mixins.treemixin.VirtualTree.RefreshItemImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItemImage</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemRecursively" title="wx.lib.mixins.treemixin.VirtualTree.RefreshItemRecursively"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItemRecursively</span></code></a></p></td>
+<td><p>Refresh the item and its children recursively.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItems" title="wx.lib.mixins.treemixin.VirtualTree.RefreshItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItems</span></code></a></p></td>
+<td><p>Redraws all visible items.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemText" title="wx.lib.mixins.treemixin.VirtualTree.RefreshItemText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItemText</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemType" title="wx.lib.mixins.treemixin.VirtualTree.RefreshItemType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshItemType</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshTextColour" title="wx.lib.mixins.treemixin.VirtualTree.RefreshTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshTextColour</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.lib.mixins.treemixin.VirtualTree">
+<em class="property">class </em><code class="sig-name descname">VirtualTree</code><span class="sig-paren">(</span><em class="sig-param">TreeAPIHarmonizer</em>, <em class="sig-param">TreeHelper</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a mixin class that can be used to allow for virtual tree
+controls. It can be mixed in with wx.TreeCtrl, wx.gizmos.TreeListCtrl,
+wx.lib.customtree.CustomTreeCtrl.</p>
+<p>To use it derive a new class from this class and one of the tree
+controls, e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyTree</span><span class="p">(</span><span class="n">VirtualTree</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">TreeCtrl</span><span class="p">):</span>
+    <span class="c1"># Other code here</span>
+</pre></div>
+</div>
+<p>VirtualTree uses several callbacks (such as OnGetItemText) to
+retrieve information needed to construct the tree and render the
+items. To specify what item the callback needs information about,
+the callback passes an item index. Whereas for list controls a simple
+integer index can be used, for tree controls indicating a specific
+item is a little bit more complicated. See below for a more detailed
+explanation of the how index works.</p>
+<p>Note that VirtualTree forces the wx.TR_HIDE_ROOT style.</p>
+<p>In your subclass you <em>must</em> override OnGetItemText and
+OnGetChildrenCount. These two methods are the minimum needed to
+construct the tree and render the item labels. If you want to add
+images, change fonts our colours, etc., you need to override the
+appropriate OnGetXXX method as well.</p>
+<p>About indices: your callbacks are passed a tuple of integers that
+identifies the item the VirtualTree wants information about. An
+empty tuple, i.e. (), represents the hidden root item.  A tuple with
+one integer, e.g. (3,), represents a visible root item, in this case
+the fourth one. A tuple with two integers, e.g. (3,0), represents a
+child of a visible root item, in this case the first child of the
+fourth root item.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.ChildIndices">
+<code class="sig-name descname">ChildIndices</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">itemIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.ChildIndices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.DoRefreshItem">
+<code class="sig-name descname">DoRefreshItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">index</em>, <em class="sig-param">hasChildren</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.DoRefreshItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refresh one item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnGetChildrenCount">
+<code class="sig-name descname">OnGetChildrenCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetChildrenCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function <em>must</em> be overloaded in the derived class.
+It should return the number of child items of the item with the
+provided index. If index == () it should return the number of
+root items.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnGetItemBackgroundColour">
+<code class="sig-name descname">OnGetItemBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function may be overloaded in the derived class. It
+should return the wx.Colour to be used as background colour for
+the specified item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnGetItemChecked">
+<code class="sig-name descname">OnGetItemChecked</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemChecked" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function may be overloaded in the derived class, but
+that only makes sense when this class is mixed in with a tree
+control that supports checkable items, i.e. CustomTreeCtrl.
+This method should return whether the item is to be checked.
+Note that OnGetItemType should return 1 (checkbox) or 2
+(radiobutton) for this item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnGetItemFont">
+<code class="sig-name descname">OnGetItemFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function may be overloaded in the derived class. It
+should return the wx.Font to be used for the specified item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnGetItemImage">
+<code class="sig-name descname">OnGetItemImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em>, <em class="sig-param">which=wx.TreeItemIcon_Normal</em>, <em class="sig-param">column=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function may be overloaded in the derived class. It
+should return the index of the image to be used. Don’t forget
+to associate an ImageList with the tree control.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnGetItemText">
+<code class="sig-name descname">OnGetItemText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em>, <em class="sig-param">column=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemText" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function <em>must</em> be overloaded in the derived class. It
+should return the string containing the text of the specified
+item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnGetItemTextColour">
+<code class="sig-name descname">OnGetItemTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function may be overloaded in the derived class. It
+should return the wx.Colour to be used as text colour for the
+specified item.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnGetItemType">
+<code class="sig-name descname">OnGetItemType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnGetItemType" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function may be overloaded in the derived class, but
+that only makes sense when this class is mixed in with a tree
+control that supports checkable items, i.e. CustomTreeCtrl.
+This method should return whether the item is to be normal (0,
+the default), a checkbox (1) or a radiobutton (2).
+Note that OnGetItemChecked needs to be implemented as well; it
+should return whether the item is actually checked.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnItemCollapsed">
+<code class="sig-name descname">OnItemCollapsed</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnItemCollapsed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.OnItemExpanding">
+<code class="sig-name descname">OnItemExpanding</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.OnItemExpanding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshBackgroundColour">
+<code class="sig-name descname">RefreshBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshCheckedState">
+<code class="sig-name descname">RefreshCheckedState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshCheckedState" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshChildrenRecursively">
+<code class="sig-name descname">RefreshChildrenRecursively</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">itemIndex=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshChildrenRecursively" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refresh the children of item, reusing as much of the
+existing items in the tree as possible.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshColumns">
+<code class="sig-name descname">RefreshColumns</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshColumns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshItem">
+<code class="sig-name descname">RefreshItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redraws the item with the specified index.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshItemFont">
+<code class="sig-name descname">RefreshItemFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemFont" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshItemImage">
+<code class="sig-name descname">RefreshItemImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">index</em>, <em class="sig-param">hasChildren</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshItemRecursively">
+<code class="sig-name descname">RefreshItemRecursively</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">itemIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemRecursively" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refresh the item and its children recursively.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshItems">
+<code class="sig-name descname">RefreshItems</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redraws all visible items.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshItemText">
+<code class="sig-name descname">RefreshItemText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemText" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshItemType">
+<code class="sig-name descname">RefreshItemType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshItemType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.treemixin.VirtualTree.RefreshTextColour">
+<code class="sig-name descname">RefreshTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">index</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.treemixin.VirtualTree.RefreshTextColour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

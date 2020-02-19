@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.ListBox — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ListColumnFormat.enumeration.html" rel="next" title="wx.ListColumnFormat"/>
+<link href="wx.LinuxDistributionInfo.html" rel="prev" title="wx.LinuxDistributionInfo"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.ListBox</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ListColumnFormat.enumeration.html" title="wx.ListColumnFormat">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.LinuxDistributionInfo.html" title="wx.LinuxDistributionInfo">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.ListBox</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.ListBox.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-listbox">
+<span id="wx-listbox"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.ListBox</strong><a class="headerlink" href="#phoenix-title-wx-listbox" title="Permalink to this headline">¶</a></h1>
+<p>A listbox is used to select one or more of a list of strings.</p>
+<p>The strings are displayed in a scrolling box, with the selected string(s) marked in reverse video. A listbox can be single selection (if an item is selected, the previous selection is removed) or multiple selection (clicking an item toggles the item on or off independently of other selections).</p>
+<p>List box elements are numbered from zero and while the maximal number of elements is unlimited, it is usually better to use a virtual control, not requiring to add all the items to it at once, such as <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  or <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  with  <code class="docutils literal notranslate"><span class="pre">LC_VIRTUAL</span></code>   style, once more than a few hundreds items need to be displayed because this control is not optimized, neither from performance nor from user interface point of view, for large number of items.</p>
+<p>Notice that currently  <code class="docutils literal notranslate"><span class="pre">TAB</span></code>   characters in list box items text are not handled consistently under all platforms, so they should be replaced by spaces to display strings properly everywhere. The list box doesn’t support any other control characters at all.</p>
+<div class="section" id="styles-window-styles">
+<span id="listbox-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LB_SINGLE</span></code>: Single-selection list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LB_MULTIPLE</span></code>: Multiple-selection list: the user can toggle multiple items on and off. This is the same as <code class="docutils literal notranslate"><span class="pre">wx.LB_EXTENDED</span></code> in wxGTK2 port.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LB_EXTENDED</span></code>: Extended-selection list: the user can extend the selection by using  <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code>   or   <code class="docutils literal notranslate"><span class="pre">CTRL</span></code>   keys together with the cursor movement keys or the mouse.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LB_HSCROLL</span></code>: Create horizontal scrollbar if contents are too wide (Windows only).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LB_ALWAYS_SB</span></code>: Always show a vertical scrollbar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LB_NEEDED_SB</span></code>: Only create a vertical scrollbar if needed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LB_NO_SB</span></code>: Don’t create vertical scrollbar (wxMSW and wxGTK only).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.LB_SORT</span></code>: The listbox contents are sorted in alphabetical order.</p></li>
+</ul>
+<dl class="simple">
+<dt>Note that</dt><dd><p><code class="docutils literal notranslate"><span class="pre">LB_SINGLE</span></code> ,   <code class="docutils literal notranslate"><span class="pre">LB_MULTIPLE</span></code>   and   <code class="docutils literal notranslate"><span class="pre">LB_EXTENDED</span></code>   styles are mutually exclusive and you can specify at most one of them (single selection is the default). See also  <a class="reference internal" href="window_styles_overview.html#window-styles"><span class="std std-ref">Window Styles</span></a>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="listbox-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_LISTBOX: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LISTBOX</span></code>   event, when an item on the list is selected or the selection changes.</p></li>
+<li><p>EVT_LISTBOX_DCLICK: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_LISTBOX_DCLICK</span></code>   event, when the listbox is double-clicked.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.adv.EditableListBox.html#wx-adv-editablelistbox"><span class="std std-ref">  wx.adv.EditableListBox</span></a>, <a class="reference internal" href="wx.Choice.html#wx-choice"><span class="std std-ref">  wx.Choice</span></a>, <a class="reference internal" href="wx.ComboBox.html#wx-combobox"><span class="std std-ref">  wx.ComboBox</span></a>, <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>, <a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ListBox</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ListBox" class="inheritance" src="_static/images/inheritance/wx.ListBox_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="153,315,247,344" href="wx.ListBox.html" id="node1" shape="rect" title="A listbox is used to select one or more of a list of strings."/> <area alt="" coords="83,237,176,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="210,237,350,267" href="wx.ItemContainer.html" id="node3" shape="rect" title="This class is an abstract base class for some wxWidgets controls which contain several items such as wx.ListBox, wx.CheckListBox, wx.ComboBox  or wx.Choice."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node4" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node5" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node6" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node7" shape="rect" title="Add-on base class for a trackable object."/> <area alt="" coords="183,160,395,189" href="wx.ItemContainerImmutable.html" id="node8" shape="rect" title="wx.ItemContainer  defines an interface which is implemented by all controls which have string subitems each of which may be selected."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/wx.listbox.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/wx.listbox1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.listbox2.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.CheckListBox.html#wx-checklistbox"><span class="std std-ref">  wx.CheckListBox</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.__init__" title="wx.ListBox.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.Create" title="wx.ListBox.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Creates the listbox for two-step construction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.Deselect" title="wx.ListBox.Deselect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Deselect</span></code></a></p></td>
+<td><p>Deselects an item in the list box.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.EnsureVisible" title="wx.ListBox.EnsureVisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnsureVisible</span></code></a></p></td>
+<td><p>Ensure that the item with the given index is currently shown.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.FindString" title="wx.ListBox.FindString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindString</span></code></a></p></td>
+<td><p>Finds an item whose label matches the given string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.GetClassDefaultAttributes" title="wx.ListBox.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.GetCount" title="wx.ListBox.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCount</span></code></a></p></td>
+<td><p>Returns the number of items in the control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.GetSelection" title="wx.ListBox.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a></p></td>
+<td><p>Returns the index of the selected item or  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   if no item is selected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.GetSelections" title="wx.ListBox.GetSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelections</span></code></a></p></td>
+<td><p>Fill an array of ints with the positions of the currently selected items.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.GetString" title="wx.ListBox.GetString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetString</span></code></a></p></td>
+<td><p>Returns the label of the item with the given index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.HitTest" title="wx.ListBox.HitTest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HitTest</span></code></a></p></td>
+<td><p>Returns the item located at <em class="xref py py-obj">point</em>, or  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   if there is no item located at  <em class="xref py py-obj">point</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.InsertItems" title="wx.ListBox.InsertItems"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertItems</span></code></a></p></td>
+<td><p>Insert the given number of strings before the specified position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.IsSelected" title="wx.ListBox.IsSelected"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSelected</span></code></a></p></td>
+<td><p>Determines whether an item is selected.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.IsSorted" title="wx.ListBox.IsSorted"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSorted</span></code></a></p></td>
+<td><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the listbox has <code class="docutils literal notranslate"><span class="pre">LB_SORT</span></code>  style.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.SetFirstItem" title="wx.ListBox.SetFirstItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFirstItem</span></code></a></p></td>
+<td><p>Set the specified item to be the first visible item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.SetItemBackgroundColour" title="wx.ListBox.SetItemBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemBackgroundColour</span></code></a></p></td>
+<td><p>Set the background colour of an item in the ListBox.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.SetItemFont" title="wx.ListBox.SetItemFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemFont</span></code></a></p></td>
+<td><p>Set the font of an item in the ListBox.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.SetItemForegroundColour" title="wx.ListBox.SetItemForegroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetItemForegroundColour</span></code></a></p></td>
+<td><p>Set the foreground colour of an item in the ListBox.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.SetSelection" title="wx.ListBox.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelection</span></code></a></p></td>
+<td><p>Sets the selection to the given item <em class="xref py py-obj">n</em>  or removes the selection entirely if <em class="xref py py-obj">n</em>  ==  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.SetString" title="wx.ListBox.SetString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetString</span></code></a></p></td>
+<td><p>Sets the label for the given item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.SetStringSelection" title="wx.ListBox.SetStringSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStringSelection</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.Count" title="wx.ListBox.Count"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Count</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListBox.GetCount" title="wx.ListBox.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ListBox.Selection" title="wx.ListBox.Selection"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Selection</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListBox.GetSelection" title="wx.ListBox.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a> and <a class="reference internal" href="#wx.ListBox.SetSelection" title="wx.ListBox.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelection</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ListBox.Selections" title="wx.ListBox.Selections"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Selections</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ListBox.GetSelections" title="wx.ListBox.GetSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelections</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.ListBox">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">ListBox</code><span class="sig-paren">(</span><em class="sig-param">Control</em>, <em class="sig-param">ItemContainer</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ListBox</span><span class="p">()</span>
+
+<span class="n">ListBox</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[],</span> <span class="n">style</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">DefaultValidator</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">ListBoxNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A listbox is used to select one or more of a list of strings.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.ListBox.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, choices=[], style=0, validator=DefaultValidator, name=ListBoxNameStr)</em></p>
+<p>Constructor, creating and showing a list box.</p>
+<p>See the other <a class="reference internal" href="#wx-listbox"><span class="std std-ref">  wx.ListBox</span></a>  constructor; the only difference is that this overload takes a list of strings       instead of a pointer to an array of <em class="xref py py-obj">String</em>     .</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">choices=[]</em>, <em class="sig-param">style=0</em>, <em class="sig-param">validator=DefaultValidator</em>, <em class="sig-param">name=ListBoxNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the listbox for two-step construction.</p>
+<p>See <a class="reference internal" href="#wx-listbox"><span class="std std-ref">  wx.ListBox</span></a>  for further details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>choices</strong> (<em>list of strings</em>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.Deselect">
+<code class="sig-name descname">Deselect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.Deselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deselects an item in the list box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – The zero-based item to deselect.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This applies to multiple selection listboxes only.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.EnsureVisible">
+<code class="sig-name descname">EnsureVisible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.EnsureVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure that the item with the given index is currently shown.</p>
+<p>Scroll the listbox if necessary.</p>
+<p>This method is currently only implemented in wxGTK and wxOSX and does nothing in other ports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListBox.SetFirstItem" title="wx.ListBox.SetFirstItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFirstItem</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.FindString">
+<code class="sig-name descname">FindString</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">string</em>, <em class="sig-param">caseSensitive=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.FindString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds an item whose label matches the given string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>string</em>) – String to find.</p></li>
+<li><p><strong>caseSensitive</strong> (<em>bool</em>) – Whether search is case sensitive (default is not).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The zero-based position of the item, or <code class="docutils literal notranslate"><span class="pre">wx.NOT_FOUND</span></code> if the string was not found.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.GetCount">
+<code class="sig-name descname">GetCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.GetCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of items in the control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmpty</span></code></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.GetSelection">
+<code class="sig-name descname">GetSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.GetSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the index of the selected item or  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   if no item is selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The position of the current selection.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method can be used with single selection list boxes only, you should use <a class="reference internal" href="#wx.ListBox.GetSelections" title="wx.ListBox.GetSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListBox.GetSelections</span></code></a>   for the list boxes with <code class="docutils literal notranslate"><span class="pre">wx.LB_MULTIPLE</span></code> style.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListBox.SetSelection" title="wx.ListBox.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelection</span></code></a> , <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStringSelection</span></code></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.GetSelections">
+<code class="sig-name descname">GetSelections</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.GetSelections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill an array of ints with the positions of the currently selected items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of integers</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.GetString">
+<code class="sig-name descname">GetString</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.GetString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label of the item with the given index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – The zero-based index.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The label of the item or an empty string if the position was invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.HitTest">
+<code class="sig-name descname">HitTest</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.HitTest" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>HitTest</strong> <em class="xref py py-obj">(self, point)</em></p>
+<p>Returns the item located at <em class="xref py py-obj">point</em>, or  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   if there is no item located at  <em class="xref py py-obj">point</em>.</p>
+<p>It is currently implemented for wxMSW, Mac and wxGTK2 ports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>point</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Point of item (in client coordinates) to obtain</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Item located at point, or <code class="docutils literal notranslate"><span class="pre">wx.NOT_FOUND</span></code> if unimplemented or the item does not exist.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.7.0.</span></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>HitTest</strong> <em class="xref py py-obj">(self, x, y)</em></p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.InsertItems">
+<code class="sig-name descname">InsertItems</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">items</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.InsertItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the given number of strings before the specified position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>items</strong> (<em>list of strings</em>) – Labels of items to be inserted</p></li>
+<li><p><strong>pos</strong> (<em>int</em>) – Position before which to insert the items: if pos is  <code class="docutils literal notranslate"><span class="pre">0</span></code>   the items will be inserted in the beginning of the listbox</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.IsSelected">
+<code class="sig-name descname">IsSelected</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.IsSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether an item is selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – The zero-based item index.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the given item is selected, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.IsSorted">
+<code class="sig-name descname">IsSorted</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.IsSorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the listbox has <code class="docutils literal notranslate"><span class="pre">LB_SORT</span></code>  style.</p>
+<p>This method is mostly meant for internal use only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.SetFirstItem">
+<code class="sig-name descname">SetFirstItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.SetFirstItem" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetFirstItem</strong> <em class="xref py py-obj">(self, n)</em></p>
+<p>Set the specified item to be the first visible item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – The zero-based item index that should be visible.</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetFirstItem</strong> <em class="xref py py-obj">(self, string)</em></p>
+<p>Set the specified item to be the first visible item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>string</em>) – The string that should be visible.</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.SetItemBackgroundColour">
+<code class="sig-name descname">SetItemBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">c</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.SetItemBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the background colour of an item in the ListBox.
+Only valid on MSW and if the <code class="docutils literal notranslate"><span class="pre">wx.LB_OWNERDRAW</span></code> flag is set.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.SetItemFont">
+<code class="sig-name descname">SetItemFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">f</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.SetItemFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the font of an item in the ListBox.
+Only valid on MSW and if the <code class="docutils literal notranslate"><span class="pre">wx.LB_OWNERDRAW</span></code> flag is set.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.SetItemForegroundColour">
+<code class="sig-name descname">SetItemForegroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">c</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.SetItemForegroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the foreground colour of an item in the ListBox.
+Only valid on MSW and if the <code class="docutils literal notranslate"><span class="pre">wx.LB_OWNERDRAW</span></code> flag is set.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.SetSelection">
+<code class="sig-name descname">SetSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.SetSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the selection to the given item <em class="xref py py-obj">n</em>  or removes the selection entirely if <em class="xref py py-obj">n</em>  ==  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code> .</p>
+<p>Note that this does not cause any command events to be emitted nor does it deselect any other items in the controls which support multiple selections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – The string position to select, starting from zero.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ListBox.SetString" title="wx.ListBox.SetString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetString</span></code></a> , <a class="reference internal" href="#wx.ListBox.SetStringSelection" title="wx.ListBox.SetStringSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetStringSelection</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.SetString">
+<code class="sig-name descname">SetString</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em>, <em class="sig-param">string</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.SetString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the label for the given item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>int</em>) – The zero-based item index.</p></li>
+<li><p><strong>string</strong> (<em>string</em>) – The label to set.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ListBox.SetStringSelection">
+<code class="sig-name descname">SetStringSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ListBox.SetStringSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetStringSelection</strong> <em class="xref py py-obj">(self, s, select)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<em>string</em>) – </p></li>
+<li><p><strong>select</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetStringSelection</strong> <em class="xref py py-obj">(self, s)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.ListBox.Count">
+<code class="sig-name descname">Count</code><a class="headerlink" href="#wx.ListBox.Count" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListBox.GetCount" title="wx.ListBox.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListBox.Selection">
+<code class="sig-name descname">Selection</code><a class="headerlink" href="#wx.ListBox.Selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListBox.GetSelection" title="wx.ListBox.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a> and <a class="reference internal" href="#wx.ListBox.SetSelection" title="wx.ListBox.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelection</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ListBox.Selections">
+<code class="sig-name descname">Selections</code><a class="headerlink" href="#wx.ListBox.Selections" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ListBox.GetSelections" title="wx.ListBox.GetSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelections</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

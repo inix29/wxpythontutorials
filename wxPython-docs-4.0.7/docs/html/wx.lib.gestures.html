@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.gestures — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.gestures.MouseGestures.html" rel="next" title="wx.lib.gestures.MouseGestures"/>
+<link href="wx.lib.foldmenu.FoldOutWindow.html" rel="prev" title="wx.lib.foldmenu.FoldOutWindow"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.gestures</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.gestures.MouseGestures.html" title="wx.lib.gestures.MouseGestures">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.foldmenu.FoldOutWindow.html" title="wx.lib.foldmenu.FoldOutWindow">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.gestures</strong></a><ul>
+<li><a class="reference internal" href="#class-summary-classes-summary"> Classes Summary</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.gestures.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.gestures"></span><div class="section" id="phoenix-title-wx-lib-gestures">
+<span id="wx-lib-gestures"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.gestures</strong><a class="headerlink" href="#phoenix-title-wx-lib-gestures" title="Permalink to this headline">¶</a></h1>
+<p>This is a class to add Mouse Gestures to a program.
+It can be used in two ways:</p>
+<ol class="arabic simple">
+<li><p>Automatic:
+Automatically runs mouse gestures.
+You need to set the gestures, and their associated actions,
+as well as the Mouse Button/Modifiers to use.</p></li>
+<li><p>Manual:
+Same as above, but you do not need to set the mouse button/modifiers.
+You can launch this from events as you wish.</p></li>
+</ol>
+<p>An example is provided in the demo.
+The parent window is where the mouse events will be recorded.
+(So if you want to record them in a pop up window, use manual mode,
+and set the pop up as the parent).</p>
+<p>Start() starts recording mouse movement.
+End() stops the recording, compiles all the gestures into a list,
+and looks through the registered gestures to find a match.
+The first matchs associated    action is then run.</p>
+<p>The marginoferror is how much to forgive when calculating movement:
+If the margin is 25, then movement less than 25 pixels will not be detected.</p>
+<p>Recognized:  L, R, U, D, 1, 3, 7, 9</p>
+<p>Styles:  Manual (Automatic By Default), DisplayNumbersForDiagonals (Off By Default).
+Not Yet Implemented</p>
+<p>The criteria for a direction is as follows:
+x in a row.  (Where x is the WobbleTolerance).
+So if the WobbleTolerance is 9
+‘URUUUUUUUUUUUUUUURUURUUUU1’ is Up.</p>
+<p>The higher this number, the less sensitive this class is.
+So the more likely something like 1L will translate to 1.</p>
+<p>This is good, since the mouse does tend to wobble somewhat,
+and a higher number allows for this.</p>
+<p>To change this, use SetWobbleTolerance</p>
+<p>Also, to help with recognition of a diagonal versus
+a vey messy straight line, if the greater absolute value
+is not greater than twice the lesser, only the grater value
+is counted.</p>
+<p>In automatic mode, EVT_MOUSE_EVENTS is used.
+This allows the user to change the mouse button/modifiers at runtime.</p>
+<div class="section" id="class-summary-classes-summary">
+<h2><a class="reference internal" href="_images/class_summary.png"><img alt="class_summary" class="align-middle" src="_images/class_summary.png" style="width: 32px;"/></a> Classes Summary<a class="headerlink" href="#class-summary-classes-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MouseGestures</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

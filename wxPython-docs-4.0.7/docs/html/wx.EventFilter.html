@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.EventFilter — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.EventLoopActivator.html" rel="next" title="wx.EventLoopActivator"/>
+<link href="wx.EventCategory.enumeration.html" rel="prev" title="wx.EventCategory"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.EventFilter</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.EventLoopActivator.html" title="wx.EventLoopActivator">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.EventCategory.enumeration.html" title="wx.EventCategory">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.EventFilter</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.EventFilter.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-eventfilter">
+<span id="wx-eventfilter"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.EventFilter</strong><a class="headerlink" href="#phoenix-title-wx-eventfilter" title="Permalink to this headline">¶</a></h1>
+<p>A global event filter for pre-processing all the events generated in the program.</p>
+<p>This is a very simple class which just provides <a class="reference internal" href="#wx.EventFilter.FilterEvent" title="wx.EventFilter.FilterEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FilterEvent</span></code></a>  virtual method to be called by <a class="reference internal" href="wx.EvtHandler.html#wx-evthandler"><span class="std std-ref">  wx.EvtHandler</span></a>  before starting process of any event. Thus, inheriting from this class and overriding <a class="reference internal" href="#wx.EventFilter.FilterEvent" title="wx.EventFilter.FilterEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FilterEvent</span></code></a>  allows capturing and possibly handling or ignoring all the events happening in the program. Of course, having event filters adds additional overhead to every event processing and so should not be used lightly and your <a class="reference internal" href="#wx.EventFilter.FilterEvent" title="wx.EventFilter.FilterEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FilterEvent</span></code></a>  code should try to return as quickly as possible, especially for the events it is not interested in.</p>
+<p>An example of using this class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This class allows to determine the last time the user has worked with</span>
+<span class="c1"># this application:</span>
+<span class="k">class</span> <span class="nc">LastActivityTimeDetector</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EventFilter</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">EventFilter</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">EvtHandler</span><span class="o">.</span><span class="n">AddFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">last</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">EvtHandler</span><span class="o">.</span><span class="n">RemoveFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">FilterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+        <span class="c1"># Update the last user activity</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">GetEventType</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">EVT_KEY_DOWN</span><span class="o">.</span><span class="n">typeId</span> <span class="ow">or</span> <span class="n">t</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">EVT_MOTION</span><span class="o">.</span><span class="n">typeId</span> <span class="ow">or</span> \
+           <span class="n">t</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">EVT_LEFT_DOWN</span><span class="o">.</span><span class="n">typeId</span> <span class="ow">or</span> <span class="n">t</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">EVT_RIGHT_DOWN</span><span class="o">.</span><span class="n">typeId</span> <span class="ow">or</span> \
+           <span class="n">t</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">EVT_MIDDLE_DOWN</span><span class="o">.</span><span class="n">typeId</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">last</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span>
+
+
+        <span class="c1"># Continue processing the event normally as well.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Event_Skip</span>
+
+
+    <span class="c1"># This function could be called periodically from some timer to</span>
+    <span class="c1"># do something (e.g. hide sensitive data or log out from remote</span>
+    <span class="c1"># server) if the user has been inactive for some time period.</span>
+    <span class="k">def</span> <span class="nf">IsInactiveFor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diff</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span> <span class="o">-</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">last</span>
+</pre></div>
+</div>
+<p>Notice that <a class="reference internal" href="wx.App.html#wx-app"><span class="std std-ref">  wx.App</span></a>  derives from <a class="reference internal" href="#wx-eventfilter"><span class="std std-ref">  wx.EventFilter</span></a>  and is registered as an event filter during its creation so you may also override <a class="reference internal" href="#wx.EventFilter.FilterEvent" title="wx.EventFilter.FilterEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FilterEvent</span></code></a>  method in your App-derived class and, in fact, this is often the most convenient way to do it. However creating a new class deriving directly from <a class="reference internal" href="#wx-eventfilter"><span class="std std-ref">  wx.EventFilter</span></a>  allows isolating the event filtering code in its own separate class and also having several independent filters, if necessary.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.3.</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>EventFilter</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of EventFilter" class="inheritance" src="_static/images/inheritance/wx.EventFilter_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,123,35" href="wx.EventFilter.html" id="node1" shape="rect" title="A global event filter for pre-processing all the events generated in the program."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.AppConsole.html#wx-appconsole"><span class="std std-ref">  wx.AppConsole</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.EventFilter.__init__" title="wx.EventFilter.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.EventFilter.FilterEvent" title="wx.EventFilter.FilterEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FilterEvent</span></code></a></p></td>
+<td><p>Override this method to implement event pre-processing.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.EventFilter">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">EventFilter</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EventFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EventFilter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A global event filter for pre-processing all the events generated in
+the program.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.EventFilter.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EventFilter.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+<p>Constructor does not register this filter using <a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.AddFilter" title="wx.EvtHandler.AddFilter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.AddFilter</span></code></a> , it’s your responsibility to do it when necessary.</p>
+<p>Notice that the objects of this class can’t be copied.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.EventFilter.FilterEvent">
+<code class="sig-name descname">FilterEvent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.EventFilter.FilterEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to implement event pre-processing.</p>
+<p>This method allows filtering all the events processed by the program, so you should try to return quickly from it to avoid slowing down the program to a crawl.</p>
+<p>Although the return type of this method is  <code class="docutils literal notranslate"><span class="pre">int</span></code> , this is only due to backwards compatibility concerns and the actual return value must be one of the   <code class="docutils literal notranslate"><span class="pre">Event_XXX</span></code>   constants defined above:</p>
+<ul class="simple">
+<li><p>Event_Skip to continue processing the event normally (this should be used in most cases).</p></li>
+<li><p>Event_Ignore to not process this event at all (this can be used to suppress some events).</p></li>
+<li><p>Event_Processed to not process this event normally but indicate that it was already processed by the event filter and so no default processing should take place neither (this should only be used if the filter really did process the event).</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="wx.Event.html#wx.Event" title="wx.Event"><em>wx.Event</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

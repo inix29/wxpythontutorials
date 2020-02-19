@@ -1,0 +1,709 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Printout — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.Process.html" rel="next" title="wx.Process"/>
+<link href="wx.PrinterError.enumeration.html" rel="prev" title="wx.PrinterError"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Printout</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.Process.html" title="wx.Process">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.PrinterError.enumeration.html" title="wx.PrinterError">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Printout</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Printout.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-printout">
+<span id="wx-printout"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Printout</strong><a class="headerlink" href="#phoenix-title-wx-printout" title="Permalink to this headline">¶</a></h1>
+<p>This class encapsulates the functionality of printing out an application document.</p>
+<p>A new class must be derived and members overridden to respond to calls such as <a class="reference internal" href="#wx.Printout.OnPrintPage" title="wx.Printout.OnPrintPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnPrintPage</span></code></a>  and <a class="reference internal" href="#wx.Printout.HasPage" title="wx.Printout.HasPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasPage</span></code></a>  and to render the print image onto an associated <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>. Instances of this class are passed to <a class="reference internal" href="wx.Printer.html#wx.Printer.Print" title="wx.Printer.Print"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Printer.Print</span></code></a>   or to a <a class="reference internal" href="wx.PrintPreview.html#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  object to initiate printing or previewing.</p>
+<p>Your derived <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  is responsible for drawing both the preview image and the printed page. If your windows’ drawing routines accept an arbitrary DC as an argument, you can re-use those routines within your <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  subclass to draw the printout image. You may also add additional drawing elements within your <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  subclass, like headers, footers, and/or page numbers. However, the image on the printed page will often differ from the image drawn on the screen, as will the print preview image <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  subclass to set the user scale and origin of the associated DC, you can easily use a single drawing routine to draw on your application’s windows, to create the print preview image, and to create the printed paper image, and achieve a common appearance to the preview image and the printed page.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="printing_framework_overview.html#printing-framework-overview"><span class="std std-ref">Printing Framework Overview</span></a>, <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a>, <a class="reference internal" href="wx.PrintDialog.html#wx-printdialog"><span class="std std-ref">  wx.PrintDialog</span></a>, <a class="reference internal" href="wx.PageSetupDialog.html#wx-pagesetupdialog"><span class="std std-ref">  wx.PageSetupDialog</span></a>, <a class="reference internal" href="wx.Printer.html#wx-printer"><span class="std std-ref">  wx.Printer</span></a>, <a class="reference internal" href="wx.PrintPreview.html#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Printout</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Printout" class="inheritance" src="_static/images/inheritance/wx.Printout_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,103,112" href="wx.Printout.html" id="node1" shape="rect" title="This class encapsulates the functionality of printing out an application document."/> <area alt="" coords="10,5,98,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.html.HtmlPrintout.html#wx-html-htmlprintout"><span class="std std-ref">  wx.html.HtmlPrintout</span></a>, <a class="reference internal" href="wx.richtext.RichTextPrintout.html#wx-richtext-richtextprintout"><span class="std std-ref">  wx.richtext.RichTextPrintout</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%"/>
+<col style="width: 78%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.__init__" title="wx.Printout.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.FitThisSizeToPage" title="wx.Printout.FitThisSizeToPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FitThisSizeToPage</span></code></a></p></td>
+<td><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that the given image size fits entirely within the page rectangle and the origin is at the top left corner of the page rectangle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.FitThisSizeToPageMargins" title="wx.Printout.FitThisSizeToPageMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FitThisSizeToPageMargins</span></code></a></p></td>
+<td><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that the given image size fits entirely within the page margins set in the given <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a>  object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.FitThisSizeToPaper" title="wx.Printout.FitThisSizeToPaper"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FitThisSizeToPaper</span></code></a></p></td>
+<td><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that the given image size fits entirely within the paper and the origin is at the top left corner of the paper.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.GetDC" title="wx.Printout.GetDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDC</span></code></a></p></td>
+<td><p>Returns the device context associated with the printout (given to the printout at start of printing or previewing).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.GetLogicalPageMarginsRect" title="wx.Printout.GetLogicalPageMarginsRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLogicalPageMarginsRect</span></code></a></p></td>
+<td><p>Return the rectangle corresponding to the page margins specified by the given <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a>  object in the associated <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>’s logical coordinates for the current user scale and device origin.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.GetLogicalPageRect" title="wx.Printout.GetLogicalPageRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLogicalPageRect</span></code></a></p></td>
+<td><p>Return the rectangle corresponding to the page in the associated <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  ‘s logical coordinates for the current user scale and device origin.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.GetLogicalPaperRect" title="wx.Printout.GetLogicalPaperRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLogicalPaperRect</span></code></a></p></td>
+<td><p>Return the rectangle corresponding to the paper in the associated <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  ‘s logical coordinates for the current user scale and device origin.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.GetPPIPrinter" title="wx.Printout.GetPPIPrinter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPPIPrinter</span></code></a></p></td>
+<td><p>Returns the number of pixels per logical inch of the printer device context.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.GetPPIScreen" title="wx.Printout.GetPPIScreen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPPIScreen</span></code></a></p></td>
+<td><p>Returns the number of pixels per logical inch of the screen device context.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.GetPageInfo" title="wx.Printout.GetPageInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageInfo</span></code></a></p></td>
+<td><p>Called by the framework to obtain information from the application about minimum and maximum page values that the user can select, and the required page range to be printed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.GetPageSizeMM" title="wx.Printout.GetPageSizeMM"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageSizeMM</span></code></a></p></td>
+<td><p>Returns the size of the printer page in millimetres.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.GetPageSizePixels" title="wx.Printout.GetPageSizePixels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPageSizePixels</span></code></a></p></td>
+<td><p>Returns the size of the printer page in pixels, called the page rectangle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.GetPaperRectPixels" title="wx.Printout.GetPaperRectPixels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPaperRectPixels</span></code></a></p></td>
+<td><p>Returns the rectangle that corresponds to the entire paper in pixels, called the paper rectangle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.GetPreview" title="wx.Printout.GetPreview"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPreview</span></code></a></p></td>
+<td><p>Returns the associated preview object if any.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.GetTitle" title="wx.Printout.GetTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTitle</span></code></a></p></td>
+<td><p>Returns the title of the printout.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.HasPage" title="wx.Printout.HasPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasPage</span></code></a></p></td>
+<td><p>Should be overridden to return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the document has this page, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if not.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.IsPreview" title="wx.Printout.IsPreview"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsPreview</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the printout is currently being used for previewing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.MapScreenSizeToDevice" title="wx.Printout.MapScreenSizeToDevice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MapScreenSizeToDevice</span></code></a></p></td>
+<td><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that one screen pixel maps to one device pixel on the DC.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.MapScreenSizeToPage" title="wx.Printout.MapScreenSizeToPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MapScreenSizeToPage</span></code></a></p></td>
+<td><p>This sets the user scale of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  to the same scale as <code class="xref py py-meth docutils literal notranslate"><span class="pre">MapScreenSizeToPaper</span></code>   but sets the logical origin to the top left corner of the page rectangle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.MapScreenSizeToPageMargins" title="wx.Printout.MapScreenSizeToPageMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MapScreenSizeToPageMargins</span></code></a></p></td>
+<td><p>This sets the user scale of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  to the same scale as <code class="xref py py-meth docutils literal notranslate"><span class="pre">MapScreenSizeToPageMargins</span></code>   but sets the logical origin to the top left corner of the page margins specified by the given <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a>  object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.MapScreenSizeToPaper" title="wx.Printout.MapScreenSizeToPaper"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MapScreenSizeToPaper</span></code></a></p></td>
+<td><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that the printed page matches the screen size as closely as possible and the logical origin is in the top left corner of the paper rectangle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.OffsetLogicalOrigin" title="wx.Printout.OffsetLogicalOrigin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OffsetLogicalOrigin</span></code></a></p></td>
+<td><p>Shift the device origin by an amount specified in logical coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.OnBeginDocument" title="wx.Printout.OnBeginDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnBeginDocument</span></code></a></p></td>
+<td><p>Called by the framework at the start of document printing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.OnBeginPrinting" title="wx.Printout.OnBeginPrinting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnBeginPrinting</span></code></a></p></td>
+<td><p>Called by the framework at the start of printing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.OnEndDocument" title="wx.Printout.OnEndDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnEndDocument</span></code></a></p></td>
+<td><p>Called by the framework at the end of document printing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.OnEndPrinting" title="wx.Printout.OnEndPrinting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnEndPrinting</span></code></a></p></td>
+<td><p>Called by the framework at the end of printing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.OnPreparePrinting" title="wx.Printout.OnPreparePrinting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnPreparePrinting</span></code></a></p></td>
+<td><p>Called once by the framework before any other demands are made of the <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.OnPrintPage" title="wx.Printout.OnPrintPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnPrintPage</span></code></a></p></td>
+<td><p>Called by the framework when a page should be printed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.SetLogicalOrigin" title="wx.Printout.SetLogicalOrigin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLogicalOrigin</span></code></a></p></td>
+<td><p>Set the device origin of the associated <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  so that the current logical point becomes the new logical origin.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.DC" title="wx.Printout.DC"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DC</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Printout.GetDC" title="wx.Printout.GetDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDC</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.LogicalPageRect" title="wx.Printout.LogicalPageRect"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LogicalPageRect</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Printout.GetLogicalPageRect" title="wx.Printout.GetLogicalPageRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLogicalPageRect</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.LogicalPaperRect" title="wx.Printout.LogicalPaperRect"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LogicalPaperRect</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Printout.GetLogicalPaperRect" title="wx.Printout.GetLogicalPaperRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLogicalPaperRect</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.PaperRectPixels" title="wx.Printout.PaperRectPixels"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PaperRectPixels</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Printout.GetPaperRectPixels" title="wx.Printout.GetPaperRectPixels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPaperRectPixels</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Printout.Preview" title="wx.Printout.Preview"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Preview</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Printout.GetPreview" title="wx.Printout.GetPreview"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPreview</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Printout.Title" title="wx.Printout.Title"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Title</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Printout.GetTitle" title="wx.Printout.GetTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTitle</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Printout">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Printout</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Printout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Printout"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class encapsulates the functionality of printing out an
+application document.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Printout.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">title="Printout"</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<p>Pass an optional title argument - the current filename would be a good idea. This will appear in the printing list (at least in MSW)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.FitThisSizeToPage">
+<code class="sig-name descname">FitThisSizeToPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imageSize</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.FitThisSizeToPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that the given image size fits entirely within the page rectangle and the origin is at the top left corner of the page rectangle.</p>
+<p>On MSW and Mac, the page rectangle is the printable area of the page. On other platforms and PostScript printing, the page rectangle is the entire paper.</p>
+<p>Use this if you want your printed image as large as possible, but with the caveat that on some platforms, portions of the image might be cut off at the edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>imageSize</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.FitThisSizeToPageMargins">
+<code class="sig-name descname">FitThisSizeToPageMargins</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imageSize</em>, <em class="sig-param">pageSetupData</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.FitThisSizeToPageMargins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that the given image size fits entirely within the page margins set in the given <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a>  object.</p>
+<p>This function provides the greatest consistency across all platforms because it does not depend on having access to the printable area of the paper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imageSize</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>pageSetupData</strong> (<a class="reference internal" href="wx.PageSetupDialogData.html#wx.PageSetupDialogData" title="wx.PageSetupDialogData"><em>wx.PageSetupDialogData</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Mac, the native <a class="reference internal" href="wx.PageSetupDialog.html#wx-pagesetupdialog"><span class="std std-ref">  wx.PageSetupDialog</span></a>  does not let you set the page margins; you’ll have to provide your own mechanism, or you can use the Mac-only class MacPageMarginsDialog.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.FitThisSizeToPaper">
+<code class="sig-name descname">FitThisSizeToPaper</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">imageSize</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.FitThisSizeToPaper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that the given image size fits entirely within the paper and the origin is at the top left corner of the paper.</p>
+<p>Use this if you’re managing your own page margins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>imageSize</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With most printers, the region around the edges of the paper are not printable so that the edges of the image could be cut off.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetDC">
+<code class="sig-name descname">GetDC</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetDC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the device context associated with the printout (given to the printout at start of printing or previewing).</p>
+<p>The application can use <a class="reference internal" href="#wx.Printout.GetDC" title="wx.Printout.GetDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDC</span></code></a>   to obtain a device context to draw on.</p>
+<p>This will be a <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a>  if printing under Windows or Mac, a <a class="reference internal" href="wx.PostScriptDC.html#wx-postscriptdc"><span class="std std-ref">  wx.PostScriptDC</span></a>  if printing on other platforms, and a <a class="reference internal" href="wx.MemoryDC.html#wx-memorydc"><span class="std std-ref">  wx.MemoryDC</span></a>  if previewing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetLogicalPageMarginsRect">
+<code class="sig-name descname">GetLogicalPageMarginsRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pageSetupData</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetLogicalPageMarginsRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the rectangle corresponding to the page margins specified by the given <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a>  object in the associated <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>’s logical coordinates for the current user scale and device origin.</p>
+<p>The page margins are specified with respect to the edges of the paper on all platforms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pageSetupData</strong> (<a class="reference internal" href="wx.PageSetupDialogData.html#wx.PageSetupDialogData" title="wx.PageSetupDialogData"><em>wx.PageSetupDialogData</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Rect.html#wx-rect"><span class="std std-ref">  wx.Rect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetLogicalPageRect">
+<code class="sig-name descname">GetLogicalPageRect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetLogicalPageRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the rectangle corresponding to the page in the associated <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  ‘s logical coordinates for the current user scale and device origin.</p>
+<p>On MSW and Mac, this will be the printable area of the paper. On other platforms and PostScript printing, this will be the full paper rectangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Rect.html#wx-rect"><span class="std std-ref">  wx.Rect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetLogicalPaperRect">
+<code class="sig-name descname">GetLogicalPaperRect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetLogicalPaperRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the rectangle corresponding to the paper in the associated <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  ‘s logical coordinates for the current user scale and device origin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Rect.html#wx-rect"><span class="std std-ref">  wx.Rect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetPPIPrinter">
+<code class="sig-name descname">GetPPIPrinter</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetPPIPrinter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of pixels per logical inch of the printer device context.</p>
+<p>Dividing the printer <code class="docutils literal notranslate"><span class="pre">PPI</span></code> by the screen <code class="docutils literal notranslate"><span class="pre">PPI</span></code> can give a suitable scaling factor for drawing text onto the printer.</p>
+<p>Remember to multiply this by a scaling factor to take the preview DC size into account. Or you can just use the FitThisSizeToXXX() and MapScreenSizeToXXX routines below, which do most of the scaling calculations for you.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetPPIScreen">
+<code class="sig-name descname">GetPPIScreen</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetPPIScreen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of pixels per logical inch of the screen device context.</p>
+<p>Dividing the printer <code class="docutils literal notranslate"><span class="pre">PPI</span></code> by the screen <code class="docutils literal notranslate"><span class="pre">PPI</span></code> can give a suitable scaling factor for drawing text onto the printer.</p>
+<p>If you are doing your own scaling, remember to multiply this by a scaling factor to take the preview DC size into account.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetPageInfo">
+<code class="sig-name descname">GetPageInfo</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetPageInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the framework to obtain information from the application about minimum and maximum page values that the user can select, and the required page range to be printed.</p>
+<p>By default this returns (1, 32000) for the page minimum and maximum values, and (1, 1) for the required page range.</p>
+<p><em class="xref py py-obj">minPage</em>  must be greater than zero and <em class="xref py py-obj">maxPage</em>  must be greater than <em class="xref py py-obj">minPage</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>( <em class="xref py py-obj">minPage</em>, <em class="xref py py-obj">maxPage</em>, <em class="xref py py-obj">pageFrom</em>, <em class="xref py py-obj">pageTo</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetPageSizeMM">
+<code class="sig-name descname">GetPageSizeMM</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetPageSizeMM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of the printer page in millimetres.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetPageSizePixels">
+<code class="sig-name descname">GetPageSizePixels</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetPageSizePixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of the printer page in pixels, called the page rectangle.</p>
+<p>The page rectangle has a top left corner at (0,0) and a bottom right corner at (w,h). These values may not be the same as the values returned from <a class="reference internal" href="wx.DC.html#wx.DC.GetSize" title="wx.DC.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetSize</span></code></a> ; if the printout is being used for previewing, a memory device context is used, which uses a bitmap size reflecting the current preview zoom. The application must take this discrepancy into account if previewing is to be supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>( <em class="xref py py-obj">w</em>, <em class="xref py py-obj">h</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetPaperRectPixels">
+<code class="sig-name descname">GetPaperRectPixels</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetPaperRectPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the rectangle that corresponds to the entire paper in pixels, called the paper rectangle.</p>
+<p>This distinction between paper rectangle and page rectangle reflects the fact that most printers cannot print all the way to the edge of the paper. The page rectangle is a rectangle whose top left corner is at (0,0) and whose width and height are given by <em class="xref py py-obj">DC.GetPageSizePixels().</em></p>
+<p>On MSW and Mac, the page rectangle gives the printable area of the paper, while the paper rectangle represents the entire paper, including non-printable borders. Thus, the rectangle returned by <em class="xref py py-obj">DC.GetPaperRectPixels()</em> will have a top left corner whose coordinates are small negative numbers and the bottom right corner will have values somewhat larger than the width and height given by <em class="xref py py-obj">DC.GetPageSizePixels().</em></p>
+<p>On other platforms and for PostScript printing, the paper is treated as if its entire area were printable, so this function will return the same rectangle as the page rectangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Rect.html#wx-rect"><span class="std std-ref">  wx.Rect</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetPreview">
+<code class="sig-name descname">GetPreview</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetPreview" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the associated preview object if any.</p>
+<p>If this printout object is used for previewing, returns the associated <a class="reference internal" href="wx.PrintPreview.html#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>. Otherwise returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>The returned pointer is not owned by the printout and must not be deleted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.PrintPreview.html#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1..</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Printout.IsPreview" title="wx.Printout.IsPreview"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsPreview</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.GetTitle">
+<code class="sig-name descname">GetTitle</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.GetTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the title of the printout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>the python note here was wrong</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.HasPage">
+<code class="sig-name descname">HasPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pageNum</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.HasPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should be overridden to return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the document has this page, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if not.</p>
+<p>Returning <code class="docutils literal notranslate"><span class="pre">False</span></code> signifies the end of the document. By default, HasPage behaves as if the document has only one page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pageNum</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.IsPreview">
+<code class="sig-name descname">IsPreview</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.IsPreview" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the printout is currently being used for previewing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Printout.GetPreview" title="wx.Printout.GetPreview"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPreview</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.MapScreenSizeToDevice">
+<code class="sig-name descname">MapScreenSizeToDevice</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.MapScreenSizeToDevice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that one screen pixel maps to one device pixel on the DC.</p>
+<p>That is, the user scale is set to (1,1) and the device origin is set to (0,0).</p>
+<p>Use this if you want to do your own scaling prior to calling <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  drawing calls, for example, if your underlying model is floating-point and you want to achieve maximum drawing precision on high-resolution printers.</p>
+<p>You can use the GetLogicalXXXRect() routines below to obtain the paper rectangle, page rectangle, or page margins rectangle to perform your own scaling.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While the underlying drawing model of Mac OS X is floating-point, Widgets’s drawing model scales from integer coordinates.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.MapScreenSizeToPage">
+<code class="sig-name descname">MapScreenSizeToPage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.MapScreenSizeToPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This sets the user scale of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  to the same scale as <a class="reference internal" href="#wx.Printout.MapScreenSizeToPaper" title="wx.Printout.MapScreenSizeToPaper"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MapScreenSizeToPaper</span></code></a>   but sets the logical origin to the top left corner of the page rectangle.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.MapScreenSizeToPageMargins">
+<code class="sig-name descname">MapScreenSizeToPageMargins</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pageSetupData</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.MapScreenSizeToPageMargins" title="Permalink to this definition">¶</a></dt>
+<dd><p>This sets the user scale of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  to the same scale as <a class="reference internal" href="#wx.Printout.MapScreenSizeToPageMargins" title="wx.Printout.MapScreenSizeToPageMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MapScreenSizeToPageMargins</span></code></a>   but sets the logical origin to the top left corner of the page margins specified by the given <a class="reference internal" href="wx.PageSetupDialogData.html#wx-pagesetupdialogdata"><span class="std std-ref">  wx.PageSetupDialogData</span></a>  object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pageSetupData</strong> (<a class="reference internal" href="wx.PageSetupDialogData.html#wx.PageSetupDialogData" title="wx.PageSetupDialogData"><em>wx.PageSetupDialogData</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.MapScreenSizeToPaper">
+<code class="sig-name descname">MapScreenSizeToPaper</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.MapScreenSizeToPaper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the user scale and device origin of the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  associated with this <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  so that the printed page matches the screen size as closely as possible and the logical origin is in the top left corner of the paper rectangle.</p>
+<p>That is, a 100-pixel object on screen should appear at the same size on the printed page. (It will, of course, be larger or smaller in the preview image, depending on the zoom factor.)</p>
+<p>Use this if you want <code class="docutils literal notranslate"><span class="pre">WYSIWYG</span></code> behaviour, e.g., in a text editor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.OffsetLogicalOrigin">
+<code class="sig-name descname">OffsetLogicalOrigin</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">xoff</em>, <em class="sig-param">yoff</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.OffsetLogicalOrigin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shift the device origin by an amount specified in logical coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xoff</strong> (<em>int</em>) – </p></li>
+<li><p><strong>yoff</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.OnBeginDocument">
+<code class="sig-name descname">OnBeginDocument</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">startPage</em>, <em class="sig-param">endPage</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.OnBeginDocument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the framework at the start of document printing.</p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">False</span></code> from this function cancels the print job.</p>
+<p><a class="reference internal" href="#wx.Printout.OnBeginDocument" title="wx.Printout.OnBeginDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnBeginDocument</span></code></a>   is called once for every copy printed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>startPage</strong> (<em>int</em>) – </p></li>
+<li><p><strong>endPage</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The base <a class="reference internal" href="#wx.Printout.OnBeginDocument" title="wx.Printout.OnBeginDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnBeginDocument</span></code></a>   must be called (and the return value checked) from within the overridden function, since it calls <a class="reference internal" href="wx.DC.html#wx.DC.StartDoc" title="wx.DC.StartDoc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.StartDoc</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.OnBeginPrinting">
+<code class="sig-name descname">OnBeginPrinting</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.OnBeginPrinting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the framework at the start of printing.</p>
+<p><a class="reference internal" href="#wx.Printout.OnBeginPrinting" title="wx.Printout.OnBeginPrinting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnBeginPrinting</span></code></a>   is called once for every print job (regardless of how many copies are being printed).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.OnEndDocument">
+<code class="sig-name descname">OnEndDocument</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.OnEndDocument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the framework at the end of document printing.</p>
+<p><a class="reference internal" href="#wx.Printout.OnEndDocument" title="wx.Printout.OnEndDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnEndDocument</span></code></a>   is called once for every copy printed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The base <a class="reference internal" href="#wx.Printout.OnEndDocument" title="wx.Printout.OnEndDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnEndDocument</span></code></a>   must be called from within the overridden function, since it calls <a class="reference internal" href="wx.DC.html#wx.DC.EndDoc" title="wx.DC.EndDoc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.EndDoc</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.OnEndPrinting">
+<code class="sig-name descname">OnEndPrinting</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.OnEndPrinting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the framework at the end of printing.</p>
+<p>OnEndPrinting is called once for every print job (regardless of how many copies are being printed).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.OnPreparePrinting">
+<code class="sig-name descname">OnPreparePrinting</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.OnPreparePrinting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called once by the framework before any other demands are made of the <a class="reference internal" href="#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  object.</p>
+<p>This gives the object an opportunity to calculate the number of pages in the document, for example.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.OnPrintPage">
+<code class="sig-name descname">OnPrintPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pageNum</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.OnPrintPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the framework when a page should be printed.</p>
+<p>Returning <code class="docutils literal notranslate"><span class="pre">False</span></code> cancels the print job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pageNum</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Printout.SetLogicalOrigin">
+<code class="sig-name descname">SetLogicalOrigin</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Printout.SetLogicalOrigin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the device origin of the associated <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  so that the current logical point becomes the new logical origin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – </p></li>
+<li><p><strong>y</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.Printout.DC">
+<code class="sig-name descname">DC</code><a class="headerlink" href="#wx.Printout.DC" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Printout.GetDC" title="wx.Printout.GetDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDC</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Printout.LogicalPageRect">
+<code class="sig-name descname">LogicalPageRect</code><a class="headerlink" href="#wx.Printout.LogicalPageRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Printout.GetLogicalPageRect" title="wx.Printout.GetLogicalPageRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLogicalPageRect</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Printout.LogicalPaperRect">
+<code class="sig-name descname">LogicalPaperRect</code><a class="headerlink" href="#wx.Printout.LogicalPaperRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Printout.GetLogicalPaperRect" title="wx.Printout.GetLogicalPaperRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLogicalPaperRect</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Printout.PaperRectPixels">
+<code class="sig-name descname">PaperRectPixels</code><a class="headerlink" href="#wx.Printout.PaperRectPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Printout.GetPaperRectPixels" title="wx.Printout.GetPaperRectPixels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPaperRectPixels</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Printout.Preview">
+<code class="sig-name descname">Preview</code><a class="headerlink" href="#wx.Printout.Preview" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Printout.GetPreview" title="wx.Printout.GetPreview"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPreview</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Printout.Title">
+<code class="sig-name descname">Title</code><a class="headerlink" href="#wx.Printout.Title" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Printout.GetTitle" title="wx.Printout.GetTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTitle</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

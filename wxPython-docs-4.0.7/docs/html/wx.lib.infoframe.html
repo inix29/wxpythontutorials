@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.infoframe — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.infoframe._MyStatusBar.html" rel="next" title="wx.lib.infoframe._MyStatusBar"/>
+<link href="wx.lib.imageutils.html" rel="prev" title="wx.lib.imageutils"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.infoframe</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.infoframe._MyStatusBar.html" title="wx.lib.infoframe._MyStatusBar">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.imageutils.html" title="wx.lib.imageutils">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.infoframe</strong></a><ul>
+<li><a class="reference internal" href="#class-summary-classes-summary"> Classes Summary</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.infoframe.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.infoframe"></span><div class="section" id="phoenix-title-wx-lib-infoframe">
+<span id="wx-lib-infoframe"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.infoframe</strong><a class="headerlink" href="#phoenix-title-wx-lib-infoframe" title="Permalink to this headline">¶</a></h1>
+<p>infoframe.py
+Released under wxWindows license etc.</p>
+<p>This is a fairly rudimentary, but slightly fancier tha
+wxPyOnDemandOutputWindow (on which it’s based; thanks Robin), version
+of the same sort of thing: a file-like class called
+wxInformationalMessagesFrame. This window also has a status bar with a
+couple of buttons for controlling the echoing of all output to a file
+with a randomly-chosen filename…</p>
+<p>The class behaves similarly to wxPyOnDemandOutputWindow in that (at
+least by default) the frame does not appear until written to, but is
+somewhat different in that, either under programmatic (the
+DisableOutput method) or user (the frame’s close button, it’s status
+bar’s “Dismiss” button, or a “Disable output” item of some menu,
+perhaps of some other frame), the frame will be destroyed, an
+associated file closed, and writing to it will then do nothing.  This
+can be reversed: either under programmatic (the EnableOutput method)
+or user (an “Enable output” item of some menu), a new frame will be
+opened,And an associated file (with a “randomly”selected filename)
+opened for writing [to which all subsequent displayed messages will be
+echoed].</p>
+<p>Please note that, like wxPyOnDemandOutputWindow, the instance is not
+itself a subclass of wxWindow: when the window is open (and ONLY
+then), it’s “frame” attribute is the actual instance of wFrame…</p>
+<p>Typical usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wx.lib.infoframe</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">...</span> <span class="c1"># ... modify your wxApp as follows:</span>
+<span class="k">class</span> <span class="nc">myApp</span><span class="p">(</span><span class="n">wxApp</span><span class="p">):</span>
+    <span class="n">outputWindowClass</span> <span class="o">=</span> <span class="n">PyInformationalMessagesFrame</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>If you’re running on Linux, you’ll also have to supply an argument 1 to your
+constructor of myApp to redirect stdout/stderr to this window (it’s done
+automatically for you on Windows).</p>
+<p>If you don’t want to redirect stdout/stderr, but use the class directly: do
+it this way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">InformationalMessagesFrame</span> <span class="o">=</span> <span class="n">PyInformationalMessagesFrame</span><span class="p">(</span>                                                 <span class="n">options_from_progname</span><span class="p">,</span>  <span class="c1"># (default = "")</span>
+                                            <span class="n">txt</span><span class="p">),</span>                   <span class="c1"># (default = "informational messages")</span>
+
+<span class="c1">#^^^^ early in the program</span>
+<span class="c1"># ...</span>
+
+<span class="n">InformationalMessagesFrame</span><span class="p">(</span><span class="n">list_of_items</span><span class="p">)</span>
+
+<span class="c1"># where list_of_items:</span>
+<span class="c1">#</span>
+<span class="c1"># comma-separated list of items to display.</span>
+<span class="c1"># Note that these will never be separated by spaces as they may</span>
+<span class="c1"># be when used in the Python 'print' command</span>
+</pre></div>
+</div>
+<p>The latter statement, of course, may be repeated arbitrarily often.
+The window will not appear until it is written to, and it may be
+manually closed by the user, after which it will reappear again until
+written to… Also note that all output is echoed to a file with a
+randomly-generated name [see the mktemp module in the standard
+library], in the directory given as the ‘dir’ keyword argument to the
+InformationalMessagesFrame constructor [which has a default value of
+‘.’), or set via the method SetOutputDirectory… This file will be
+closed with the window–a new one will be created [by default] upon
+each subsequent reopening.</p>
+<p>Please also note the methods EnableOutput and DisableOutput, and the
+possible arguments for the constructor in the code below… (* TO DO:
+explain this here…*) Neither of these methods need be used at all,
+and in this case the frame will only be displayed once it has been
+written to, like wxPyOnDemandOutputWindow.</p>
+<p>The former, EnableOutput, displays the frame with an introductory
+message, opens a random file to which future displayed output also
+goes (unless the nofile attribute is present), and sets the __debug__
+variable of each module to 1 (unless the no __debug__ attribute is
+present].  This is so that you can say, in any module whatsoever:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__debug__</span><span class="p">:</span>
+    <span class="n">InformationalMessagesFrame</span><span class="p">(</span><span class="s2">"... with lots of %&lt;Character&gt; constructs"</span>
+                                <span class="o">%</span> <span class="n">TUPLE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>without worrying about the overhead of evaluating the arguments, and
+calling the wxInformationalMessagesFrame instance, in the case where
+debugging is not turned on.  (This won’t happen if the instance has an
+attribute no__debug__; you can arrange this by sub-classing…)</p>
+<p>“Debug mode” can also be turned on by selecting the item-“Enable
+output” from the “Debug” menu [the default–see the optional arguments
+to the SetOtherMenuBar method] of a frame which has been either passed
+appropriately to the constructor of the wxInformationalMessagesFrame
+(see the code), or set via the SetOtherMenuBar method thereof.  This
+also writes an empty string to the instance, meaning that the frame
+will open (unless DisablOutput has been called) with an appropriate
+introductory message (which will vary according to whether the
+instance/class has the “no __debug__” attribute)^  I have found this to
+be an extremely useful tool, in lieu of a full wxPython debugger…</p>
+<p>Following this, the menu item is also disabled, and an item “Disable
+output” (again, by default) is enabled.  Note that these need not be
+done: e.g., you don’t NEED to have a menu with appropriate items; in
+this case simply do not call the SetOtherMenuBar method or use the
+othermenubar keyword argument of the class instance constructor.</p>
+<p>The DisableOutput method does the reverse of this; it closes the
+window (and associated file), and sets the __debug__ variable of each
+module whose name begins with a capital letter {this happens to be the
+author’s personal practice; all my python module start with capital
+letters} to 0.  It also enables/disabled the appropriate menu items,
+if this was done previously (or SetOtherMenuBar has been called…).
+Note too that after a call to DisableOutput, nothing further will be
+done upon subsequent write()’s, until the EnableOutput method is
+called, either explicitly or by the menu selection above…</p>
+<p>Finally, note that the file-like method close() destroys the window
+(and closes any associated file) and there is a file-like method
+write() which displays it’s argument.</p>
+<p>All (well, most) of this is made clear by the example code at the end
+of this file, which is run if the file is run by itself; otherwise,
+see the appropriate “stub” file in the wxPython demo.</p>
+<div class="section" id="class-summary-classes-summary">
+<h2><a class="reference internal" href="_images/class_summary.png"><img alt="class_summary" class="align-middle" src="_images/class_summary.png" style="width: 32px;"/></a> Classes Summary<a class="headerlink" href="#class-summary-classes-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.infoframe._MyStatusBar.html#wx.lib.infoframe._MyStatusBar" title="wx.lib.infoframe._MyStatusBar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_MyStatusBar</span></code></a></p></td>
+<td><p>StatusBar()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.infoframe.Dummy_PyInformationalMessagesFrame.html#wx.lib.infoframe.Dummy_PyInformationalMessagesFrame" title="wx.lib.infoframe.Dummy_PyInformationalMessagesFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dummy_PyInformationalMessagesFrame</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.infoframe.PyInformationalMessagesFrame.html#wx.lib.infoframe.PyInformationalMessagesFrame" title="wx.lib.infoframe.PyInformationalMessagesFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PyInformationalMessagesFrame</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

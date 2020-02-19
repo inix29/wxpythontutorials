@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.FileCtrl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.FileCtrlEvent.html" rel="next" title="wx.FileCtrlEvent"/>
+<link href="wx.FileConfig.html" rel="prev" title="wx.FileConfig"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.FileCtrl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.FileCtrlEvent.html" title="wx.FileCtrlEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.FileConfig.html" title="wx.FileConfig">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.FileCtrl</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#appearance-control-appearance"> Control Appearance</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.FileCtrl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-filectrl">
+<span id="wx-filectrl"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.FileCtrl</strong><a class="headerlink" href="#phoenix-title-wx-filectrl" title="Permalink to this headline">¶</a></h1>
+<p>This control allows the user to select a file.</p>
+<p>Two implementations of this class exist, one for Gtk and another generic one for all the other ports.</p>
+<p>This class is only available if  <code class="docutils literal notranslate"><span class="pre">USE_FILECTRL</span></code>   is set to 1.</p>
+<div class="section" id="styles-window-styles">
+<span id="filectrl-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FC_DEFAULT_STYLE</span></code>: The default style: <code class="docutils literal notranslate"><span class="pre">wx.FC_OPEN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FC_OPEN</span></code>: Creates an file control suitable for opening files. Cannot be combined with <code class="docutils literal notranslate"><span class="pre">wx.FC_SAVE</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FC_SAVE</span></code>: Creates an file control suitable for saving files. Cannot be combined with <code class="docutils literal notranslate"><span class="pre">wx.FC_OPEN</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FC_MULTIPLE</span></code>: For open control only, Allows selecting multiple files. Cannot be combined with <code class="docutils literal notranslate"><span class="pre">wx.FC_SAVE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FC_NOSHOWHIDDEN</span></code>: Hides the “Show Hidden Files” checkbox (Generic only)</p></li>
+</ul>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="filectrl-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="wx.FileCtrlEvent.html#wx-filectrlevent"><span class="std std-ref">  wx.FileCtrlEvent</span></a> parameter.</p>
+<ul>
+<li><p>EVT_FILECTRL_FILEACTIVATED: The user activated a file(by double-clicking or pressing Enter)</p></li>
+<li><p>EVT_FILECTRL_SELECTIONCHANGED: The user changed the current selection(by selecting or deselecting a file)</p></li>
+<li><p>EVT_FILECTRL_FOLDERCHANGED: The current folder of the file control has been changed</p></li>
+<li><p>EVT_FILECTRL_FILTERCHANGED: The current file filter of the file control has been changed.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1..</span></p>
+</div>
+</li>
+</ul>
+<p>Implementations:GTK port; a generic implementation is used elsewhere.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.GenericDirCtrl.html#wx-genericdirctrl"><span class="std std-ref">  wx.GenericDirCtrl</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>FileCtrl</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of FileCtrl" class="inheritance" src="_static/images/inheritance/wx.FileCtrl_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="65,315,157,344" href="wx.FileCtrl.html" id="node1" shape="rect" title="This control allows the user to select a file."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="appearance-control-appearance">
+<h2><a class="reference internal" href="_images/appearance.png"><img alt="appearance" class="align-middle" src="_images/appearance.png" style="width: 32px;"/></a> Control Appearance<a class="headerlink" href="#appearance-control-appearance" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="floatleft figure align-default" id="id1">
+<img alt="wxMSW" src="_images/no_appearance1.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMSW</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatright figure align-default" id="id2">
+<img alt="wxMAC" src="_images/no_appearance.png"/>
+<p class="caption"><span class="caption-text"><strong>wxMAC</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="floatcenter figure align-default" id="id3">
+<img alt="wxGTK" src="_images/wx.filectrl.png"/>
+<p class="caption"><span class="caption-text"><strong>wxGTK</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%"/>
+<col style="width: 60%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.__init__" title="wx.FileCtrl.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.Create" title="wx.FileCtrl.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Create function for two-step construction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.GetClassDefaultAttributes" title="wx.FileCtrl.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.GetDirectory" title="wx.FileCtrl.GetDirectory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDirectory</span></code></a></p></td>
+<td><p>Returns the current directory of the file control (i.e. the directory shown by it).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.GetFilename" title="wx.FileCtrl.GetFilename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilename</span></code></a></p></td>
+<td><p>Returns the currently selected filename.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.GetFilenames" title="wx.FileCtrl.GetFilenames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilenames</span></code></a></p></td>
+<td><p>Returns a list of filenames selected in the control.  This function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.GetFilterIndex" title="wx.FileCtrl.GetFilterIndex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilterIndex</span></code></a></p></td>
+<td><p>Returns the zero-based index of the currently selected filter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.GetPath" title="wx.FileCtrl.GetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPath</span></code></a></p></td>
+<td><p>Returns the full path (directory and filename) of the currently selected file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.GetPaths" title="wx.FileCtrl.GetPaths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPaths</span></code></a></p></td>
+<td><p>Returns a list of the full paths (directory and filename) of the files</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.GetWildcard" title="wx.FileCtrl.GetWildcard"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWildcard</span></code></a></p></td>
+<td><p>Returns the current wildcard.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.SetDirectory" title="wx.FileCtrl.SetDirectory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDirectory</span></code></a></p></td>
+<td><p>Sets(changes) the current directory displayed in the control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.SetFilename" title="wx.FileCtrl.SetFilename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFilename</span></code></a></p></td>
+<td><p>Selects a certain file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.SetFilterIndex" title="wx.FileCtrl.SetFilterIndex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFilterIndex</span></code></a></p></td>
+<td><p>Sets the current filter index, starting from zero.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.SetPath" title="wx.FileCtrl.SetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPath</span></code></a></p></td>
+<td><p>Changes to a certain directory and selects a certain file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.SetWildcard" title="wx.FileCtrl.SetWildcard"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWildcard</span></code></a></p></td>
+<td><p>Sets the wildcard, which can contain multiple file types, for example: “<code class="docutils literal notranslate"><span class="pre">BMP</span></code> files (.bmp)|.bmp|GIF files (.gif)|.gif”.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.ShowHidden" title="wx.FileCtrl.ShowHidden"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowHidden</span></code></a></p></td>
+<td><p>Sets whether hidden files and folders are shown or not.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.Directory" title="wx.FileCtrl.Directory"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Directory</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileCtrl.GetDirectory" title="wx.FileCtrl.GetDirectory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDirectory</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetDirectory" title="wx.FileCtrl.SetDirectory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDirectory</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.Filename" title="wx.FileCtrl.Filename"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Filename</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileCtrl.GetFilename" title="wx.FileCtrl.GetFilename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilename</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetFilename" title="wx.FileCtrl.SetFilename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFilename</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.Filenames" title="wx.FileCtrl.Filenames"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Filenames</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileCtrl.GetFilenames" title="wx.FileCtrl.GetFilenames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilenames</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.FilterIndex" title="wx.FileCtrl.FilterIndex"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FilterIndex</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileCtrl.GetFilterIndex" title="wx.FileCtrl.GetFilterIndex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilterIndex</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetFilterIndex" title="wx.FileCtrl.SetFilterIndex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFilterIndex</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.Path" title="wx.FileCtrl.Path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Path</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileCtrl.GetPath" title="wx.FileCtrl.GetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPath</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetPath" title="wx.FileCtrl.SetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPath</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FileCtrl.Paths" title="wx.FileCtrl.Paths"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Paths</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileCtrl.GetPaths" title="wx.FileCtrl.GetPaths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPaths</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FileCtrl.Wildcard" title="wx.FileCtrl.Wildcard"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Wildcard</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FileCtrl.GetWildcard" title="wx.FileCtrl.GetWildcard"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWildcard</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetWildcard" title="wx.FileCtrl.SetWildcard"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWildcard</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.FileCtrl">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">FileCtrl</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FileCtrl</span><span class="p">()</span>
+
+<span class="n">FileCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">defaultDirectory</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
+         <span class="n">defaultFilename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">wildCard</span><span class="o">=</span><span class="n">FileSelectorDefaultWildcardStr</span><span class="p">,</span>
+         <span class="n">style</span><span class="o">=</span><span class="n">FC_DEFAULT_STYLE</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+         <span class="n">name</span><span class="o">=</span><span class="n">FileCtrlNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This control allows the user to select a file.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.FileCtrl.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, defaultDirectory=””, defaultFilename=””, wildCard=FileSelectorDefaultWildcardStr, style=FC_DEFAULT_STYLE, pos=DefaultPosition, size=DefaultSize, name=FileCtrlNameStr)</em></p>
+<p>Constructs the window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Parent window, must not be not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – The identifier for the control.</p></li>
+<li><p><strong>defaultDirectory</strong> (<em>string</em>) – The initial directory shown in the control. Must be a valid path to a directory or the empty string. In case it is the empty string, the current working directory is used.</p></li>
+<li><p><strong>defaultFilename</strong> (<em>string</em>) – The default filename, or the empty string.</p></li>
+<li><p><strong>wildCard</strong> (<em>string</em>) – A wildcard specifying which files can be selected, such as “x.x” or “<code class="docutils literal notranslate"><span class="pre">BMP</span></code> files (.bmp)|.bmp|GIF files (.gif)|.gif”.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – The window style, see <code class="docutils literal notranslate"><span class="pre">FC_</span></code> flags.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Initial position.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Initial size.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – Control name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the control was successfully created or <code class="docutils literal notranslate"><span class="pre">False</span></code> if creation failed.</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">defaultDirectory=""</em>, <em class="sig-param">defaultFilename=""</em>, <em class="sig-param">wildCard=FileSelectorDefaultWildcardStr</em>, <em class="sig-param">style=FC_DEFAULT_STYLE</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">name=FileCtrlNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create function for two-step construction.</p>
+<p>See <a class="reference internal" href="#wx-filectrl"><span class="std std-ref">  wx.FileCtrl</span></a>  for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>defaultDirectory</strong> (<em>string</em>) – </p></li>
+<li><p><strong>defaultFilename</strong> (<em>string</em>) – </p></li>
+<li><p><strong>wildCard</strong> (<em>string</em>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.GetDirectory">
+<code class="sig-name descname">GetDirectory</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.GetDirectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current directory of the file control (i.e. the directory shown by it).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.GetFilename">
+<code class="sig-name descname">GetFilename</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.GetFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the currently selected filename.</p>
+<p>For the controls having the  <code class="docutils literal notranslate"><span class="pre">FC_MULTIPLE</span></code>   style, use  <a class="reference internal" href="#wx.FileCtrl.GetFilenames" title="wx.FileCtrl.GetFilenames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilenames</span></code></a>   instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.GetFilenames">
+<code class="sig-name descname">GetFilenames</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.GetFilenames" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns a list of filenames selected in the control.  This function
+should only be used with controls which have the wx.``wx.FC_MULTIPLE`` style,
+use GetFilename for the others.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of strings</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.GetFilterIndex">
+<code class="sig-name descname">GetFilterIndex</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.GetFilterIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the zero-based index of the currently selected filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.GetPath">
+<code class="sig-name descname">GetPath</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.GetPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the full path (directory and filename) of the currently selected file.</p>
+<p>For the controls having the  <code class="docutils literal notranslate"><span class="pre">FC_MULTIPLE</span></code>   style, use  <a class="reference internal" href="#wx.FileCtrl.GetPaths" title="wx.FileCtrl.GetPaths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPaths</span></code></a>   instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.GetPaths">
+<code class="sig-name descname">GetPaths</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.GetPaths" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns a list of the full paths (directory and filename) of the files
+chosen. This function should only be used with controlss which have
+the wx.``wx.FC_MULTIPLE`` style, use GetPath for the others.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of strings</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.GetWildcard">
+<code class="sig-name descname">GetWildcard</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.GetWildcard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current wildcard.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.SetDirectory">
+<code class="sig-name descname">SetDirectory</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">directory</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.SetDirectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets(changes) the current directory displayed in the control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>directory</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> on success, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.SetFilename">
+<code class="sig-name descname">SetFilename</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.SetFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects a certain file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> on success, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.SetFilterIndex">
+<code class="sig-name descname">SetFilterIndex</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filterIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.SetFilterIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the current filter index, starting from zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filterIndex</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.SetPath">
+<code class="sig-name descname">SetPath</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.SetPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes to a certain directory and selects a certain file.</p>
+<p>In case the filename specified isn’t found/couldn’t be shown with currently selected filter, <code class="docutils literal notranslate"><span class="pre">False</span></code> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> on success, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.SetWildcard">
+<code class="sig-name descname">SetWildcard</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">wildCard</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.SetWildcard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the wildcard, which can contain multiple file types, for example: “<code class="docutils literal notranslate"><span class="pre">BMP</span></code> files (.bmp)|.bmp|GIF files (.gif)|.gif”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wildCard</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FileCtrl.ShowHidden">
+<code class="sig-name descname">ShowHidden</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">show</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FileCtrl.ShowHidden" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether hidden files and folders are shown or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.FileCtrl.Directory">
+<code class="sig-name descname">Directory</code><a class="headerlink" href="#wx.FileCtrl.Directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileCtrl.GetDirectory" title="wx.FileCtrl.GetDirectory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDirectory</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetDirectory" title="wx.FileCtrl.SetDirectory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDirectory</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileCtrl.Filename">
+<code class="sig-name descname">Filename</code><a class="headerlink" href="#wx.FileCtrl.Filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileCtrl.GetFilename" title="wx.FileCtrl.GetFilename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilename</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetFilename" title="wx.FileCtrl.SetFilename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFilename</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileCtrl.Filenames">
+<code class="sig-name descname">Filenames</code><a class="headerlink" href="#wx.FileCtrl.Filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileCtrl.GetFilenames" title="wx.FileCtrl.GetFilenames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilenames</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileCtrl.FilterIndex">
+<code class="sig-name descname">FilterIndex</code><a class="headerlink" href="#wx.FileCtrl.FilterIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileCtrl.GetFilterIndex" title="wx.FileCtrl.GetFilterIndex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilterIndex</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetFilterIndex" title="wx.FileCtrl.SetFilterIndex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFilterIndex</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileCtrl.Path">
+<code class="sig-name descname">Path</code><a class="headerlink" href="#wx.FileCtrl.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileCtrl.GetPath" title="wx.FileCtrl.GetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPath</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetPath" title="wx.FileCtrl.SetPath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPath</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileCtrl.Paths">
+<code class="sig-name descname">Paths</code><a class="headerlink" href="#wx.FileCtrl.Paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileCtrl.GetPaths" title="wx.FileCtrl.GetPaths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPaths</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FileCtrl.Wildcard">
+<code class="sig-name descname">Wildcard</code><a class="headerlink" href="#wx.FileCtrl.Wildcard" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FileCtrl.GetWildcard" title="wx.FileCtrl.GetWildcard"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWildcard</span></code></a> and <a class="reference internal" href="#wx.FileCtrl.SetWildcard" title="wx.FileCtrl.SetWildcard"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWildcard</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

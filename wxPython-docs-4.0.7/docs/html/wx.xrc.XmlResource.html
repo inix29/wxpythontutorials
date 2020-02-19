@@ -1,0 +1,956 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.xrc.XmlResource — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.xrc.XmlResourceFlags.enumeration.html" rel="next" title="wx.xrc.XmlResourceFlags"/>
+<link href="wx.xrc.1moduleindex.html" rel="prev" title="wx.xrc"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.xrc.1moduleindex.html">
+<strong>wx.xrc</strong></a> »</li>
+<li class="reltitle"> <strong>wx.xrc.XmlResource</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.xrc.XmlResourceFlags.enumeration.html" title="wx.xrc.XmlResourceFlags">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.xrc.1moduleindex.html" title="wx.xrc">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.xrc.XmlResource</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.xrc.XmlResource.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-xrc-xmlresource">
+<span id="wx-xrc-xmlresource"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.xrc.XmlResource</strong><a class="headerlink" href="#phoenix-title-wx-xrc-xmlresource" title="Permalink to this headline">¶</a></h1>
+<p>This is the main class for interacting with the XML-based resource system.</p>
+<p>The class holds <code class="docutils literal notranslate"><span class="pre">XML</span></code> resources from one or more .xml files, binary files or zip archive files.</p>
+<p>Note that this is a singleton class and you’ll never allocate/deallocate it. Just use the static <a class="reference internal" href="#wx.xrc.XmlResource.Get" title="wx.xrc.XmlResource.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.xrc.XmlResource.Get</span></code></a>   getter.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">XML Based Resource System</span> , <span class="xref std std-ref">XRC File Format</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>XmlResource</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of XmlResource" class="inheritance" src="_static/images/inheritance/wx.xrc.XmlResource_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,163,112" href="wx.xrc.XmlResource.html" id="node1" shape="rect" title="This is the main class for interacting with the XML-based resource system."/> <area alt="" coords="40,5,128,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%"/>
+<col style="width: 64%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.__init__" title="wx.xrc.XmlResource.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.AddHandler" title="wx.xrc.XmlResource.AddHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddHandler</span></code></a></p></td>
+<td><p>Initializes only a specific handler (or custom handler).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.AddSubclassFactory" title="wx.xrc.XmlResource.AddSubclassFactory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSubclassFactory</span></code></a></p></td>
+<td><p>Registers subclasses factory for use in <code class="docutils literal notranslate"><span class="pre">XRC</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.AttachUnknownControl" title="wx.xrc.XmlResource.AttachUnknownControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AttachUnknownControl</span></code></a></p></td>
+<td><p>Attaches an unknown control to the given panel/window/dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.ClearHandlers" title="wx.xrc.XmlResource.ClearHandlers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearHandlers</span></code></a></p></td>
+<td><p>Removes all handlers and deletes them (this means that any handlers added using <code class="xref py py-meth docutils literal notranslate"><span class="pre">AddHandler</span></code>   must be allocated on the heap).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.CompareVersion" title="wx.xrc.XmlResource.CompareVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CompareVersion</span></code></a></p></td>
+<td><p>Compares the <code class="docutils literal notranslate"><span class="pre">XRC</span></code> version to the argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.FindXRCIDById" title="wx.xrc.XmlResource.FindXRCIDById"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindXRCIDById</span></code></a></p></td>
+<td><p>Returns a string <code class="docutils literal notranslate"><span class="pre">ID</span></code> corresponding to the given numeric <code class="docutils literal notranslate"><span class="pre">ID</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.Get" title="wx.xrc.XmlResource.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a></p></td>
+<td><p>Gets the global resources object or creates one if none exists.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.GetDomain" title="wx.xrc.XmlResource.GetDomain"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDomain</span></code></a></p></td>
+<td><p>Returns the domain (message catalog) that will be used to load translatable strings in the <code class="docutils literal notranslate"><span class="pre">XRC</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.GetFlags" title="wx.xrc.XmlResource.GetFlags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFlags</span></code></a></p></td>
+<td><p>Returns flags, which may be a bitlist of <a class="reference internal" href="wx.xrc.XmlResourceFlags.enumeration.html#wx-xrc-xmlresourceflags"><span class="std std-ref">  wx.xrc.XmlResourceFlags</span></a>  enumeration values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.GetResourceNode" title="wx.xrc.XmlResource.GetResourceNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetResourceNode</span></code></a></p></td>
+<td><p>Returns the <a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a>  containing the definition of the object with the given name or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.GetVersion" title="wx.xrc.XmlResource.GetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVersion</span></code></a></p></td>
+<td><p>Returns version information (a.b.c.d = d + 256c + 2562b + 2563a).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.GetXRCID" title="wx.xrc.XmlResource.GetXRCID"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetXRCID</span></code></a></p></td>
+<td><p>Returns a numeric <code class="docutils literal notranslate"><span class="pre">ID</span></code> that is equivalent to the string <code class="docutils literal notranslate"><span class="pre">ID</span></code> used in an <code class="docutils literal notranslate"><span class="pre">XML</span></code> resource.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.InitAllHandlers" title="wx.xrc.XmlResource.InitAllHandlers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InitAllHandlers</span></code></a></p></td>
+<td><p>Initializes handlers for all supported controls/windows.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.InsertHandler" title="wx.xrc.XmlResource.InsertHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertHandler</span></code></a></p></td>
+<td><p>Add a new handler at the beginning of the handler list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.Load" title="wx.xrc.XmlResource.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a></p></td>
+<td><p>Loads resources from <code class="docutils literal notranslate"><span class="pre">XML</span></code> files that match given filemask.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadAllFiles" title="wx.xrc.XmlResource.LoadAllFiles"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadAllFiles</span></code></a></p></td>
+<td><p>Loads all .xrc files from directory <em class="xref py py-obj">dirname</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadBitmap" title="wx.xrc.XmlResource.LoadBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadBitmap</span></code></a></p></td>
+<td><p>Loads a bitmap resource from a file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadDialog" title="wx.xrc.XmlResource.LoadDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadDialog</span></code></a></p></td>
+<td><p>Loads a dialog.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadFile" title="wx.xrc.XmlResource.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p></td>
+<td><p>Simpler form of <code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code>   for loading a single <code class="docutils literal notranslate"><span class="pre">XRC</span></code> file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadFrame" title="wx.xrc.XmlResource.LoadFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFrame</span></code></a></p></td>
+<td><p>Loads a frame from the resource.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadFromBuffer" title="wx.xrc.XmlResource.LoadFromBuffer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFromBuffer</span></code></a></p></td>
+<td><p>Load the resource from a bytes string or other data buffer compatible object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadIcon" title="wx.xrc.XmlResource.LoadIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadIcon</span></code></a></p></td>
+<td><p>Loads an icon resource from a file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadMenu" title="wx.xrc.XmlResource.LoadMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadMenu</span></code></a></p></td>
+<td><p>Loads menu from resource.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadMenuBar" title="wx.xrc.XmlResource.LoadMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadMenuBar</span></code></a></p></td>
+<td><p>Loads a menubar from resource.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadObject" title="wx.xrc.XmlResource.LoadObject"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadObject</span></code></a></p></td>
+<td><p>Load an object from the resource specifying both the resource name and the class name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadObjectRecursively" title="wx.xrc.XmlResource.LoadObjectRecursively"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadObjectRecursively</span></code></a></p></td>
+<td><p>Load an object from anywhere in the resource tree.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadPanel" title="wx.xrc.XmlResource.LoadPanel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadPanel</span></code></a></p></td>
+<td><p>Loads a panel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.LoadToolBar" title="wx.xrc.XmlResource.LoadToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadToolBar</span></code></a></p></td>
+<td><p>Loads a toolbar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.Set" title="wx.xrc.XmlResource.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Set</span></code></a></p></td>
+<td><p>Sets the global resources object and returns a pointer to the previous one (may be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.SetDomain" title="wx.xrc.XmlResource.SetDomain"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDomain</span></code></a></p></td>
+<td><p>Sets the domain (message catalog) that will be used to load translatable strings in the <code class="docutils literal notranslate"><span class="pre">XRC</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.SetFlags" title="wx.xrc.XmlResource.SetFlags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlags</span></code></a></p></td>
+<td><p>Sets flags (bitlist of <a class="reference internal" href="wx.xrc.XmlResourceFlags.enumeration.html#wx-xrc-xmlresourceflags"><span class="std std-ref">  wx.xrc.XmlResourceFlags</span></a>  enumeration values).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.Unload" title="wx.xrc.XmlResource.Unload"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Unload</span></code></a></p></td>
+<td><p>This function unloads a resource previously loaded by <code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code> .</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 49%"/>
+<col style="width: 51%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.Domain" title="wx.xrc.XmlResource.Domain"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Domain</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xrc.XmlResource.GetDomain" title="wx.xrc.XmlResource.GetDomain"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDomain</span></code></a> and <a class="reference internal" href="#wx.xrc.XmlResource.SetDomain" title="wx.xrc.XmlResource.SetDomain"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDomain</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.Flags" title="wx.xrc.XmlResource.Flags"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Flags</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xrc.XmlResource.GetFlags" title="wx.xrc.XmlResource.GetFlags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFlags</span></code></a> and <a class="reference internal" href="#wx.xrc.XmlResource.SetFlags" title="wx.xrc.XmlResource.SetFlags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlags</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xrc.XmlResource.Version" title="wx.xrc.XmlResource.Version"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Version</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xrc.XmlResource.GetVersion" title="wx.xrc.XmlResource.GetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVersion</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.xrc.XmlResource">
+<em class="property">class </em><code class="sig-prename descclassname">wx.xrc.</code><code class="sig-name descname">XmlResource</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">XmlResource</span><span class="p">(</span><span class="n">filemask</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">XRC_USE_LOCALE</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">XmlResource</span><span class="p">(</span><span class="n">flags</span><span class="o">=</span><span class="n">XRC_USE_LOCALE</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is the main class for interacting with the XML-based resource
+system.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, filemask, flags=XRC_USE_LOCALE, domain=””)</em></p>
+<p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filemask</strong> (<em>string</em>) – The <code class="docutils literal notranslate"><span class="pre">XRC</span></code> file, archive file, or wildcard specification that will be used to load all resource files inside a zip archive.</p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – One or more value of the <a class="reference internal" href="wx.xrc.XmlResourceFlags.enumeration.html#wx-xrc-xmlresourceflags"><span class="std std-ref">  wx.xrc.XmlResourceFlags</span></a>  enumeration.</p></li>
+<li><p><strong>domain</strong> (<em>string</em>) – The name of the gettext catalog to search for translatable strings. By default all loaded catalogs will be searched. This provides a way to allow the strings to only come from a specific catalog.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, flags=XRC_USE_LOCALE, domain=””)</em></p>
+<p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flags</strong> (<em>int</em>) – One or more value of the <a class="reference internal" href="wx.xrc.XmlResourceFlags.enumeration.html#wx-xrc-xmlresourceflags"><span class="std std-ref">  wx.xrc.XmlResourceFlags</span></a>  enumeration.</p></li>
+<li><p><strong>domain</strong> (<em>string</em>) – The name of the gettext catalog to search for translatable strings. By default all loaded catalogs will be searched. This provides a way to allow the strings to only come from a specific catalog.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.AddHandler">
+<code class="sig-name descname">AddHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.AddHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes only a specific handler (or custom handler).</p>
+<p>Convention says that the handler name is equal to the control’s name plus ‘XmlHandler’, for example TextCtrlXmlHandler, HtmlWindowXmlHandler.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">XML</span></code> resource compiler (wxxrc) can create include file that contains initialization code for all controls used within the resource. Note that this handler must be allocated on the heap, since it will be deleted by <a class="reference internal" href="#wx.xrc.XmlResource.ClearHandlers" title="wx.xrc.XmlResource.ClearHandlers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearHandlers</span></code></a>   later.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>handler</strong> (<a class="reference internal" href="wx.xrc.XmlResourceHandler.html#wx.xrc.XmlResourceHandler" title="wx.xrc.XmlResourceHandler"><em>wx.xrc.XmlResourceHandler</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.AddSubclassFactory">
+<em class="property">static </em><code class="sig-name descname">AddSubclassFactory</code><span class="sig-paren">(</span><em class="sig-param">factory</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.AddSubclassFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers subclasses factory for use in <code class="docutils literal notranslate"><span class="pre">XRC</span></code>.</p>
+<p>This is useful only for language bindings developers who need a way to implement subclassing in wxWidgets ports that don’t support <code class="docutils literal notranslate"><span class="pre">RTTI</span></code> (e.g. wxPython).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>factory</strong> (<a class="reference internal" href="wx.xrc.XmlSubclassFactory.html#wx.xrc.XmlSubclassFactory" title="wx.xrc.XmlSubclassFactory"><em>wx.xrc.XmlSubclassFactory</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.AttachUnknownControl">
+<code class="sig-name descname">AttachUnknownControl</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em>, <em class="sig-param">control</em>, <em class="sig-param">parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.AttachUnknownControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attaches an unknown control to the given panel/window/dialog.</p>
+<p>Unknown controls are used in conjunction with &lt;object class=”unknown”&gt;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>control</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.ClearHandlers">
+<code class="sig-name descname">ClearHandlers</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.ClearHandlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all handlers and deletes them (this means that any handlers added using <a class="reference internal" href="#wx.xrc.XmlResource.AddHandler" title="wx.xrc.XmlResource.AddHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddHandler</span></code></a>   must be allocated on the heap).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.CompareVersion">
+<code class="sig-name descname">CompareVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">major</em>, <em class="sig-param">minor</em>, <em class="sig-param">release</em>, <em class="sig-param">revision</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.CompareVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares the <code class="docutils literal notranslate"><span class="pre">XRC</span></code> version to the argument.</p>
+<p>Returns -1 if the <code class="docutils literal notranslate"><span class="pre">XRC</span></code> version is less than the argument, +1 if greater, and 0 if they are equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>major</strong> (<em>int</em>) – </p></li>
+<li><p><strong>minor</strong> (<em>int</em>) – </p></li>
+<li><p><strong>release</strong> (<em>int</em>) – </p></li>
+<li><p><strong>revision</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.FindXRCIDById">
+<em class="property">static </em><code class="sig-name descname">FindXRCIDById</code><span class="sig-paren">(</span><em class="sig-param">numId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.FindXRCIDById" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string <code class="docutils literal notranslate"><span class="pre">ID</span></code> corresponding to the given numeric <code class="docutils literal notranslate"><span class="pre">ID</span></code>.</p>
+<p>The string returned is such that calling <a class="reference internal" href="#wx.xrc.XmlResource.GetXRCID" title="wx.xrc.XmlResource.GetXRCID"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetXRCID</span></code></a>   with it as parameter yields <em class="xref py py-obj">numId</em>. If there is no string identifier corresponding to the given numeric one, an empty string is returned.</p>
+<p>Notice that, unlike <a class="reference internal" href="#wx.xrc.XmlResource.GetXRCID" title="wx.xrc.XmlResource.GetXRCID"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetXRCID</span></code></a> , this function is slow as it checks all of the identifiers used in <code class="docutils literal notranslate"><span class="pre">XRC</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>numId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.Get">
+<em class="property">static </em><code class="sig-name descname">Get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.Get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the global resources object or creates one if none exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-xrc-xmlresource"><span class="std std-ref">  wx.xrc.XmlResource</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.GetDomain">
+<code class="sig-name descname">GetDomain</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.GetDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the domain (message catalog) that will be used to load translatable strings in the <code class="docutils literal notranslate"><span class="pre">XRC</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.GetFlags">
+<code class="sig-name descname">GetFlags</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.GetFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns flags, which may be a bitlist of <a class="reference internal" href="wx.xrc.XmlResourceFlags.enumeration.html#wx-xrc-xmlresourceflags"><span class="std std-ref">  wx.xrc.XmlResourceFlags</span></a>  enumeration values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.GetResourceNode">
+<code class="sig-name descname">GetResourceNode</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.GetResourceNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a>  containing the definition of the object with the given name or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>This function recursively searches all the loaded <code class="docutils literal notranslate"><span class="pre">XRC</span></code> files for an object with the specified <em class="xref py py-obj">name</em>. If the object is found, the <a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a>  corresponding to it is returned, so this function can be used to access additional information defined in the <code class="docutils literal notranslate"><span class="pre">XRC</span></code> file and not used by <a class="reference internal" href="#wx-xrc-xmlresource"><span class="std std-ref">  wx.xrc.XmlResource</span></a>  itself, e.g. contents of application-specific <code class="docutils literal notranslate"><span class="pre">XML</span></code> tags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – The name of the resource which must be unique for this function to work correctly, if there is more than one resource with the given name the choice of the one returned by this function is undefined.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The node corresponding to the resource with the given name or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.GetVersion">
+<code class="sig-name descname">GetVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.GetVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns version information (a.b.c.d = d + 256c + 2562b + 2563a).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.GetXRCID">
+<em class="property">static </em><code class="sig-name descname">GetXRCID</code><span class="sig-paren">(</span><em class="sig-param">str_id</em>, <em class="sig-param">value_if_not_found=ID_NONE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.GetXRCID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a numeric <code class="docutils literal notranslate"><span class="pre">ID</span></code> that is equivalent to the string <code class="docutils literal notranslate"><span class="pre">ID</span></code> used in an <code class="docutils literal notranslate"><span class="pre">XML</span></code> resource.</p>
+<p>If an unknown <em class="xref py py-obj">str_id</em>  is requested (i.e. other than <code class="docutils literal notranslate"><span class="pre">ID_XXX</span></code> or integer), a new record is created which associates the given string with a number.</p>
+<p>If <em class="xref py py-obj">value_if_not_found</em>  is  <code class="docutils literal notranslate"><span class="pre">ID_NONE</span></code> , the number is obtained via  <a class="reference internal" href="wx.functions.html#wx.NewId" title="wx.NewId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.NewId</span></code></a>     . Otherwise <em class="xref py py-obj">value_if_not_found</em>  is used.</p>
+<p>Macro  <code class="docutils literal notranslate"><span class="pre">XRCID(name)</span></code>   is provided for convenient use in event tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>str_id</strong> (<em>string</em>) – </p></li>
+<li><p><strong>value_if_not_found</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IDs returned by XRCID() cannot be used with the  <code class="docutils literal notranslate"><span class="pre">EVT_*_RANGE</span></code>   macros, because the order in which they are assigned to symbolic  <em class="xref py py-obj">name</em>  values is not guaranteed.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.InitAllHandlers">
+<code class="sig-name descname">InitAllHandlers</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.InitAllHandlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes handlers for all supported controls/windows.</p>
+<p>This will make the executable quite big because it forces linking against most of the wxWidgets library.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.InsertHandler">
+<code class="sig-name descname">InsertHandler</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">handler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.InsertHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new handler at the beginning of the handler list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>handler</strong> (<a class="reference internal" href="wx.xrc.XmlResourceHandler.html#wx.xrc.XmlResourceHandler" title="wx.xrc.XmlResourceHandler"><em>wx.xrc.XmlResourceHandler</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.Load">
+<code class="sig-name descname">Load</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filemask</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.Load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads resources from <code class="docutils literal notranslate"><span class="pre">XML</span></code> files that match given filemask.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">wx</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">XmlResource</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"rc/*.xrc"</span><span class="p">):</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">LogError</span><span class="p">(</span><span class="s2">"Couldn't load resources!"</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filemask</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">USE_FILESYS</span></code> is enabled, this method understands <a class="reference internal" href="wx.FileSystem.html#wx-filesystem"><span class="std std-ref">  wx.FileSystem</span></a>  URLs (see <a class="reference internal" href="wx.FileSystem.html#wx.FileSystem.FindFirst" title="wx.FileSystem.FindFirst"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileSystem.FindFirst</span></code></a> ).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are sure that the argument is name of single <code class="docutils literal notranslate"><span class="pre">XRC</span></code> file (rather than an URL or a wildcard), use <a class="reference internal" href="#wx.xrc.XmlResource.LoadFile" title="wx.xrc.XmlResource.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a>   instead.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.xrc.XmlResource.LoadFile" title="wx.xrc.XmlResource.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a> , <a class="reference internal" href="#wx.xrc.XmlResource.LoadAllFiles" title="wx.xrc.XmlResource.LoadAllFiles"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadAllFiles</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadAllFiles">
+<code class="sig-name descname">LoadAllFiles</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dirname</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadAllFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads all .xrc files from directory <em class="xref py py-obj">dirname</em>.</p>
+<p>Tries to load as many files as possible; if there’s an error while loading one file, it still attempts to load other files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dirname</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.xrc.XmlResource.LoadFile" title="wx.xrc.XmlResource.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a> , <a class="reference internal" href="#wx.xrc.XmlResource.Load" title="wx.xrc.XmlResource.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadBitmap">
+<code class="sig-name descname">LoadBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a bitmap resource from a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Bitmap</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadDialog">
+<code class="sig-name descname">LoadDialog</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadDialog</strong> <em class="xref py py-obj">(self, parent, name)</em></p>
+<p>Loads a dialog.</p>
+<p><em class="xref py py-obj">parent</em>  points to parent window (if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Dialog</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadDialog</strong> <em class="xref py py-obj">(self, dlg, parent, name)</em></p>
+<p>Loads a dialog.</p>
+<p><em class="xref py py-obj">parent</em>  points to parent window (if any).</p>
+<p>This form is used to finish creation of an already existing instance (the main reason for this is that you may want to use derived class with a new event table). Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">XmlResource</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span><span class="o">.</span><span class="n">LoadDialog</span><span class="p">(</span><span class="n">mainFrame</span><span class="p">,</span> <span class="s2">"my_dialog"</span><span class="p">)</span>
+<span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dlg</strong> (<a class="reference internal" href="wx.Dialog.html#wx.Dialog" title="wx.Dialog"><em>wx.Dialog</em></a>) – </p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadFile">
+<code class="sig-name descname">LoadFile</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">file</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simpler form of <a class="reference internal" href="#wx.xrc.XmlResource.Load" title="wx.xrc.XmlResource.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a>   for loading a single <code class="docutils literal notranslate"><span class="pre">XRC</span></code> file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.xrc.XmlResource.Load" title="wx.xrc.XmlResource.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a> , <a class="reference internal" href="#wx.xrc.XmlResource.LoadAllFiles" title="wx.xrc.XmlResource.LoadAllFiles"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadAllFiles</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadFrame">
+<code class="sig-name descname">LoadFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadFrame</strong> <em class="xref py py-obj">(self, parent, name)</em></p>
+<p>Loads a frame from the resource.</p>
+<p><em class="xref py py-obj">parent</em>  points to parent window (if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Frame</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadFrame</strong> <em class="xref py py-obj">(self, frame, parent, name)</em></p>
+<p>Loads the contents of a frame onto an existing <a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a>.</p>
+<p>This form is used to finish creation of an already existing instance (the main reason for this is that you may want to use derived class with a new event table).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<a class="reference internal" href="wx.Frame.html#wx.Frame" title="wx.Frame"><em>wx.Frame</em></a>) – </p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadFromBuffer">
+<code class="sig-name descname">LoadFromBuffer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadFromBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the resource from a bytes string or other data buffer compatible object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadIcon">
+<code class="sig-name descname">LoadIcon</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads an icon resource from a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Icon</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadMenu">
+<code class="sig-name descname">LoadMenu</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads menu from resource.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> on failure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Menu</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadMenuBar">
+<code class="sig-name descname">LoadMenuBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadMenuBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a menubar from resource.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> on failure.</p>
+<p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadMenuBar</strong> <em class="xref py py-obj">(self, parent, name)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">MenuBar</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadMenuBar</strong> <em class="xref py py-obj">(self, name)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">MenuBar</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadObject">
+<code class="sig-name descname">LoadObject</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an object from the resource specifying both the resource name and the class name.</p>
+<p>The first overload lets you load nonstandard container windows and returns <code class="docutils literal notranslate"><span class="pre">None</span></code> on failure. The second one lets you finish the creation of an existing instance and returns <code class="docutils literal notranslate"><span class="pre">False</span></code> on failure.</p>
+<p>In either case, only the resources defined at the top level of <code class="docutils literal notranslate"><span class="pre">XRC</span></code> files can be loaded by this function, use <a class="reference internal" href="#wx.xrc.XmlResource.LoadObjectRecursively" title="wx.xrc.XmlResource.LoadObjectRecursively"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadObjectRecursively</span></code></a>   if you need to load an object defined deeper in the hierarchy.</p>
+<p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadObject</strong> <em class="xref py py-obj">(self, parent, name, classname)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>classname</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Object</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadObject</strong> <em class="xref py py-obj">(self, instance, parent, name, classname)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instance</strong> (<a class="reference internal" href="wx.Object.html#wx.Object" title="wx.Object"><em>wx.Object</em></a>) – </p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>classname</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadObjectRecursively">
+<code class="sig-name descname">LoadObjectRecursively</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadObjectRecursively" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an object from anywhere in the resource tree.</p>
+<p>These methods are similar to <a class="reference internal" href="#wx.xrc.XmlResource.LoadObject" title="wx.xrc.XmlResource.LoadObject"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadObject</span></code></a>   but may be used to load an object from anywhere in the resource tree and not only the top level. Note that you will very rarely need to do this as in normal use the entire container window (defined at the top level) is loaded and not its individual children but this method can be useful in some particular situations.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+<p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadObjectRecursively</strong> <em class="xref py py-obj">(self, parent, name, classname)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>classname</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Object</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadObjectRecursively</strong> <em class="xref py py-obj">(self, instance, parent, name, classname)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instance</strong> (<a class="reference internal" href="wx.Object.html#wx.Object" title="wx.Object"><em>wx.Object</em></a>) – </p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>classname</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadPanel">
+<code class="sig-name descname">LoadPanel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadPanel" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadPanel</strong> <em class="xref py py-obj">(self, parent, name)</em></p>
+<p>Loads a panel.</p>
+<p><em class="xref py py-obj">parent</em>  points to the parent window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Panel</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>LoadPanel</strong> <em class="xref py py-obj">(self, panel, parent, name)</em></p>
+<p>Loads a panel.</p>
+<p><em class="xref py py-obj">parent</em>  points to the parent window. This form is used to finish creation of an already existing instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>panel</strong> (<a class="reference internal" href="wx.Panel.html#wx.Panel" title="wx.Panel"><em>wx.Panel</em></a>) – </p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.LoadToolBar">
+<code class="sig-name descname">LoadToolBar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.LoadToolBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a toolbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">ToolBar</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.Set">
+<em class="property">static </em><code class="sig-name descname">Set</code><span class="sig-paren">(</span><em class="sig-param">res</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.Set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the global resources object and returns a pointer to the previous one (may be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>res</strong> (<a class="reference internal" href="#wx.xrc.XmlResource" title="wx.xrc.XmlResource"><em>wx.xrc.XmlResource</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-xrc-xmlresource"><span class="std std-ref">  wx.xrc.XmlResource</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.SetDomain">
+<code class="sig-name descname">SetDomain</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">domain</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.SetDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the domain (message catalog) that will be used to load translatable strings in the <code class="docutils literal notranslate"><span class="pre">XRC</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>domain</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.SetFlags">
+<code class="sig-name descname">SetFlags</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.SetFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets flags (bitlist of <a class="reference internal" href="wx.xrc.XmlResourceFlags.enumeration.html#wx-xrc-xmlresourceflags"><span class="std std-ref">  wx.xrc.XmlResourceFlags</span></a>  enumeration values).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xrc.XmlResource.Unload">
+<code class="sig-name descname">Unload</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xrc.XmlResource.Unload" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function unloads a resource previously loaded by <a class="reference internal" href="#wx.xrc.XmlResource.Load" title="wx.xrc.XmlResource.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a> .</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the resource was successfully unloaded and <code class="docutils literal notranslate"><span class="pre">False</span></code> if it hasn’t been found in the list of loaded resources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.xrc.XmlResource.Domain">
+<code class="sig-name descname">Domain</code><a class="headerlink" href="#wx.xrc.XmlResource.Domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xrc.XmlResource.GetDomain" title="wx.xrc.XmlResource.GetDomain"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDomain</span></code></a> and <a class="reference internal" href="#wx.xrc.XmlResource.SetDomain" title="wx.xrc.XmlResource.SetDomain"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDomain</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xrc.XmlResource.Flags">
+<code class="sig-name descname">Flags</code><a class="headerlink" href="#wx.xrc.XmlResource.Flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xrc.XmlResource.GetFlags" title="wx.xrc.XmlResource.GetFlags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFlags</span></code></a> and <a class="reference internal" href="#wx.xrc.XmlResource.SetFlags" title="wx.xrc.XmlResource.SetFlags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlags</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xrc.XmlResource.Version">
+<code class="sig-name descname">Version</code><a class="headerlink" href="#wx.xrc.XmlResource.Version" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xrc.XmlResource.GetVersion" title="wx.xrc.XmlResource.GetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVersion</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

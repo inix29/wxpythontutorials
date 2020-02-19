@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.newevent — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.nvdlg.html" rel="next" title="wx.lib.nvdlg"/>
+<link href="wx.lib.multisash.MultiViewLeaf.html" rel="prev" title="wx.lib.multisash.MultiViewLeaf"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.newevent</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.nvdlg.html" title="wx.lib.nvdlg">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.multisash.MultiViewLeaf.html" title="wx.lib.multisash.MultiViewLeaf">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.newevent</strong></a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#function-summary-functions-summary"> Functions Summary</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.newevent.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.newevent"></span><div class="section" id="phoenix-title-wx-lib-newevent">
+<span id="wx-lib-newevent"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.newevent</strong><a class="headerlink" href="#phoenix-title-wx-lib-newevent" title="Permalink to this headline">¶</a></h1>
+<p>Easy generation of new events classes and binder objects.</p>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>This module contains two functions which makes the generation of custom wxPython events
+particularly easy.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Sample usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wx</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="kn">import</span> <span class="nn">wx.lib.newevent</span> <span class="kn">as</span> <span class="nn">NE</span>
+
+<span class="n">MooEvent</span><span class="p">,</span> <span class="n">EVT_MOO</span> <span class="o">=</span> <span class="n">NE</span><span class="o">.</span><span class="n">NewEvent</span><span class="p">()</span>
+<span class="n">GooEvent</span><span class="p">,</span> <span class="n">EVT_GOO</span> <span class="o">=</span> <span class="n">NE</span><span class="o">.</span><span class="n">NewCommandEvent</span><span class="p">()</span>
+
+<span class="n">DELAY</span> <span class="o">=</span> <span class="mf">0.7</span>
+
+<span class="k">def</span> <span class="nf">evt_thr</span><span class="p">(</span><span class="n">win</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">PostEvent</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">MooEvent</span><span class="p">(</span><span class="n">moo</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">cmd_thr</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">PostEvent</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">GooEvent</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">goo</span><span class="o">=</span><span class="nb">id</span><span class="p">))</span>
+
+<span class="n">ID_CMD1</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">NewIdRef</span><span class="p">()</span>
+<span class="n">ID_CMD2</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">NewIdRef</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Frame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"MOO"</span><span class="p">)</span>
+        <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">EVT_MOO</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_moo</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Generate MOO"</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_evt_click</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID_CMD1</span><span class="p">,</span> <span class="s2">"Generate GOO with </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">ID_CMD1</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_click</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID_CMD2</span><span class="p">,</span> <span class="s2">"Generate GOO with </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">ID_CMD2</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_click</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">EVT_GOO</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd1</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_CMD1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">EVT_GOO</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd2</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_CMD2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SetAutoLayout</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">sizer</span><span class="o">.</span><span class="n">Fit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_evt_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">evt_thr</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">))</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">setDaemon</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_cmd_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">cmd_thr</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">GetId</span><span class="p">()))</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">setDaemon</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+        <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span>
+        <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_moo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">"MOO = </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="n">moo</span><span class="p">,</span> <span class="s2">"Got Moo"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_cmd1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">"goo = </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="n">goo</span><span class="p">,</span> <span class="s2">"Got Goo (cmd1)"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_cmd2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">"goo = </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="n">goo</span><span class="p">,</span> <span class="s2">"Got Goo (cmd2)"</span><span class="p">)</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">Show</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="function-summary-functions-summary">
+<h2><a class="reference internal" href="_images/function_summary.png"><img alt="function_summary" class="align-middle" src="_images/function_summary.png" style="width: 32px;"/></a> Functions Summary<a class="headerlink" href="#function-summary-functions-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.newevent.NewCommandEvent" title="wx.lib.newevent.NewCommandEvent"><code class="xref py py-func docutils literal notranslate"><span class="pre">NewCommandEvent</span></code></a></p></td>
+<td><p>Generates a new <em class="xref py py-obj">(command_event, binder)</em> tuple.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.newevent.NewEvent" title="wx.lib.newevent.NewEvent"><code class="xref py py-func docutils literal notranslate"><span class="pre">NewEvent</span></code></a></p></td>
+<td><p>Generates a new <em class="xref py py-obj">(event, binder)</em> tuple.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<br/><hr/>
+<dl class="function">
+<dt id="wx.lib.newevent.NewCommandEvent">
+<code class="sig-name descname">NewCommandEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.newevent.NewCommandEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a new <em class="xref py py-obj">(command_event, binder)</em> tuple.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MooCmdEvent</span><span class="p">,</span> <span class="n">EVT_MOO</span> <span class="o">=</span> <span class="n">NewCommandEvent</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="function">
+<dt id="wx.lib.newevent.NewEvent">
+<code class="sig-name descname">NewEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.newevent.NewEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a new <em class="xref py py-obj">(event, binder)</em> tuple.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MooEvent</span><span class="p">,</span> <span class="n">EVT_MOO</span> <span class="o">=</span> <span class="n">NewEvent</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

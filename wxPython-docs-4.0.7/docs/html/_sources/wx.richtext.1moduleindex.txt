@@ -1,0 +1,187 @@
+
+
+.. module:: wx.richtext
+
+
+.. include:: headings.inc
+
+=========================================================================
+**wx.richtext**
+=========================================================================
+
+The :class:`RichTextCtrl` is a generic, ground-up implementation of a rich
+text control capable of showing multiple text styles and images.  This module
+contains the control and many supporting classes needed for using the features
+of the :class:`RichTextCtrl`.
+
+.. note:: Due to some internal dynamic initialization in wxWidgets, this
+          module should be imported **before** the :class:`wx.App` object is
+          created.
+
+
+Class Summary
+=============
+
+================================================================================ ================================================================================
+**Class**                                                                        **Short Description**
+================================================================================ ================================================================================
+`~wx.richtext.RichTextAction`                                                    Implements a part of a command.
+`~wx.richtext.RichTextAttr`                                                      A class representing enhanced attributes for rich text objects.
+`~wx.richtext.RichTextBox`                                                       This class implements a floating or inline text box, containing paragraphs.
+`~wx.richtext.RichTextBuffer`                                                    This is a kind of paragraph layout box, used to represent the whole buffer.
+`~wx.richtext.RichTextBufferDataObject`                                          Implements a rich text data object for clipboard transfer.
+`~wx.richtext.RichTextCell`                                                      :ref:`wx.richtext.RichTextCell`  is the cell in a table, in which the user can type.
+`~wx.richtext.RichTextCharacterStyleDefinition`                                  This class represents a character style definition, usually added to a :ref:`wx.richtext.RichTextStyleSheet`.
+`~wx.richtext.RichTextCommand`                                                   Implements a command on the undo/redo stack.
+`~wx.richtext.RichTextCompositeObject`                                           Objects of this class can contain other objects.
+`~wx.richtext.RichTextContextMenuPropertiesInfo`                                 :ref:`wx.richtext.RichTextContextMenuPropertiesInfo`  keeps track of objects that appear in the context menu, whose properties are available to be edited.
+`~wx.richtext.RichTextCtrl`                                                      :ref:`wx.richtext.RichTextCtrl`  provides a generic, ground-up implementation of a text control capable of showing multiple styles and images.
+`~wx.richtext.RichTextDrawingContext`                                            A class for passing information to drawing and measuring functions.
+`~wx.richtext.RichTextDrawingHandler`                                            The base class for custom drawing handlers.
+`~wx.richtext.RichTextEvent`                                                     This is the event class for :ref:`wx.richtext.RichTextCtrl`  notifications.
+`~wx.richtext.RichTextField`                                                     This class implements the general concept of a field, an object that represents additional functionality such as a footnote, a bookmark, a page number, a table of contents, and so on.
+`~wx.richtext.RichTextFieldType`                                                 The base class for custom field types.
+`~wx.richtext.RichTextFieldTypeStandard`                                         A field type that can handle fields with text or bitmap labels, with a small range of styles for implementing rectangular fields and fields that can be used for start and end tags.
+`~wx.richtext.RichTextFileHandler`                                               The base class for file handlers.
+`~wx.richtext.RichTextFontTable`                                                 Manages quick access to a pool of fonts for rendering rich text.
+`~wx.richtext.RichTextFormattingDialog`                                          This dialog allows the user to edit a character and/or paragraph style.
+`~wx.richtext.RichTextFormattingDialogFactory`                                   This class provides pages for :ref:`wx.richtext.RichTextFormattingDialog`, and allows other customization of the dialog.
+`~wx.richtext.RichTextHeaderFooterData`                                          This class represents header and footer data to be passed to the :ref:`wx.richtext.RichTextPrinting`  and :ref:`wx.richtext.RichTextPrintout`  classes.
+`~wx.richtext.RichTextHTMLHandler`                                               Handles HTML output (only) for :ref:`wx.richtext.RichTextCtrl`  content.
+`~wx.richtext.RichTextImage`                                                     This class implements a graphic object.
+`~wx.richtext.RichTextImageBlock`                                                This class stores information about an image, in binary in-memory form.
+`~wx.richtext.RichTextLine`                                                      This object represents a line in a paragraph, and stores offsets from the start of the paragraph representing the start and end positions of the line.
+`~wx.richtext.RichTextListStyleDefinition`                                       This class represents a list style definition, usually added to a :ref:`wx.richtext.RichTextStyleSheet`.
+`~wx.richtext.RichTextObject`                                                    This is the base for drawable rich text objects.
+`~wx.richtext.RichTextObjectAddress`                                             A class for specifying an object anywhere in an object hierarchy, without using a pointer, necessary since ``RTC`` commands may delete and recreate sub-objects so physical object addresses change.
+`~wx.richtext.RichTextParagraph`                                                 This object represents a single paragraph containing various objects such as text content, images, and further paragraph layout objects.
+`~wx.richtext.RichTextParagraphLayoutBox`                                        This class knows how to lay out paragraphs.
+`~wx.richtext.RichTextParagraphStyleDefinition`                                  This class represents a paragraph style definition, usually added to a :ref:`wx.richtext.RichTextStyleSheet`.
+`~wx.richtext.RichTextPlainText`                                                 This object represents a single piece of text.
+`~wx.richtext.RichTextPlainTextHandler`                                          Implements saving a buffer to plain text.
+`~wx.richtext.RichTextPrinting`                                                  This class provides a simple interface for performing :ref:`wx.richtext.RichTextBuffer`  printing and previewing.
+`~wx.richtext.RichTextPrintout`                                                  This class implements print layout for :ref:`wx.richtext.RichTextBuffer`.
+`~wx.richtext.RichTextProperties`                                                A simple property class using Variants.
+`~wx.richtext.RichTextRange`                                                     This stores beginning and end positions for a range of data.
+`~wx.richtext.RichTextRenderer`                                                  This class isolates some common drawing functionality.
+`~wx.richtext.RichTextSelection`                                                 Stores selection information.
+`~wx.richtext.RichTextStdRenderer`                                               The standard renderer for drawing bullets.
+`~wx.richtext.RichTextStyleComboCtrl`                                            This is a combo control that can display the styles in a :ref:`wx.richtext.RichTextStyleSheet`, and apply the selection to an associated :ref:`wx.richtext.RichTextCtrl`.
+`~wx.richtext.RichTextStyleDefinition`                                           This is a base class for paragraph and character styles.
+`~wx.richtext.RichTextStyleListBox`                                              This is a listbox that can display the styles in a :ref:`wx.richtext.RichTextStyleSheet`, and apply the selection to an associated :ref:`wx.richtext.RichTextCtrl`.
+`~wx.richtext.RichTextStyleListCtrl`                                             This class incorporates a :ref:`wx.richtext.RichTextStyleListBox`  and a choice control that allows the user to select the category of style to view.
+`~wx.richtext.RichTextStyleOrganiserDialog`                                      This class shows a style sheet and allows the user to edit, add and remove styles.
+`~wx.richtext.RichTextStyleSheet`                                                A style sheet contains named paragraph and character styles that make it easy for a user to apply combinations of attributes to a :ref:`wx.richtext.RichTextCtrl`.
+`~wx.richtext.RichTextTable`                                                     :ref:`wx.richtext.RichTextTable`  represents a table with arbitrary columns and rows.
+`~wx.richtext.RichTextXMLHandler`                                                A handler for loading and saving content in an ``XML`` format specific to :ref:`wx.richtext.RichTextBuffer`.
+`~wx.richtext.SymbolPickerDialog`                                                :ref:`wx.richtext.SymbolPickerDialog`  presents the user with a choice of fonts and a grid of available characters.
+`~wx.richtext.TextAttrBorder`                                                    A class representing a rich text object border.
+`~wx.richtext.TextAttrBorders`                                                   A class representing a rich text object's borders.
+`~wx.richtext.TextAttrDimension`                                                 A class representing a rich text dimension, including units and position.
+`~wx.richtext.TextAttrDimensionConverter`                                        A class to make it easier to convert dimensions.
+`~wx.richtext.TextAttrDimensions`                                                A class for left, right, top and bottom dimensions.
+`~wx.richtext.TextAttrSize`                                                      A class for representing width and height.
+`~wx.richtext.TextBoxAttr`                                                       A class representing the box attributes of a rich text object.
+================================================================================ ================================================================================
+
+
+Functions Summary
+=================
+
+================================================================================ ================================================================================
+**Function**                                                                     **Short Description**
+================================================================================ ================================================================================
+:func:`~wx.richtext.RichTextApplyStyle`                                          Apply one style to another.
+:func:`~wx.richtext.RichTextBitlistsEqPartial`                                   Compare two bitlists.
+:func:`~wx.richtext.RichTextCombineBitlists`                                     Combine two bitlists.
+:func:`~wx.richtext.RichTextDecimalToRoman`                                      Convert a decimal to Roman numerals.
+:func:`~wx.richtext.RichTextHasStyle`                                            Utilities
+:func:`~wx.richtext.RichTextModuleInit`                                          
+:func:`~wx.richtext.RichTextRemoveStyle`                                         :param `destStyle`:
+:func:`~wx.richtext.RichTextSplitParaCharStyles`                                 Split into paragraph and character styles.
+:func:`~wx.richtext.RichTextTabsEq`                                              Compare tabs.
+:func:`~wx.richtext.TextAttrCollectCommonAttributes`                             :param `currentStyle`:
+:func:`~wx.richtext.TextAttrEq`                                                  Compare two attribute objects.
+================================================================================ ================================================================================
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   wx.richtext.RichTextAction
+   wx.richtext.RichTextAttr
+   wx.richtext.RichTextBox
+   wx.richtext.RichTextBuffer
+   wx.richtext.RichTextBufferDataObject
+   wx.richtext.RichTextCell
+   wx.richtext.RichTextCharacterStyleDefinition
+   wx.richtext.RichTextCommand
+   wx.richtext.RichTextCommandId.enumeration
+   wx.richtext.RichTextCompositeObject
+   wx.richtext.RichTextContextMenuPropertiesInfo
+   wx.richtext.RichTextCtrl
+   wx.richtext.RichTextCtrlSelectionState.enumeration
+   wx.richtext.RichTextDrawingContext
+   wx.richtext.RichTextDrawingHandler
+   wx.richtext.RichTextEvent
+   wx.richtext.RichTextField
+   wx.richtext.RichTextFieldType
+   wx.richtext.RichTextFieldTypeStandard
+   wx.richtext.RichTextFileHandler
+   wx.richtext.RichTextFileType.enumeration
+   wx.richtext.RichTextFontTable
+   wx.richtext.RichTextFormattingDialog
+   wx.richtext.RichTextFormattingDialogFactory
+   wx.richtext.RichTextHTMLHandler
+   wx.richtext.RichTextHeaderFooterData
+   wx.richtext.RichTextHitTestFlags.enumeration
+   wx.richtext.RichTextImage
+   wx.richtext.RichTextImageBlock
+   wx.richtext.RichTextLine
+   wx.richtext.RichTextListStyleDefinition
+   wx.richtext.RichTextObject
+   wx.richtext.RichTextObjectAddress
+   wx.richtext.RichTextOddEvenPage.enumeration
+   wx.richtext.RichTextPageLocation.enumeration
+   wx.richtext.RichTextParagraph
+   wx.richtext.RichTextParagraphLayoutBox
+   wx.richtext.RichTextParagraphStyleDefinition
+   wx.richtext.RichTextPlainText
+   wx.richtext.RichTextPlainTextHandler
+   wx.richtext.RichTextPrinting
+   wx.richtext.RichTextPrintout
+   wx.richtext.RichTextProperties
+   wx.richtext.RichTextRange
+   wx.richtext.RichTextRenderer
+   wx.richtext.RichTextSelection
+   wx.richtext.RichTextStdRenderer
+   wx.richtext.RichTextStyleComboCtrl
+   wx.richtext.RichTextStyleDefinition
+   wx.richtext.RichTextStyleListBox
+   wx.richtext.RichTextStyleListCtrl
+   wx.richtext.RichTextStyleOrganiserDialog
+   wx.richtext.RichTextStyleSheet
+   wx.richtext.RichTextTable
+   wx.richtext.RichTextXMLHandler
+   wx.richtext.SymbolPickerDialog
+   wx.richtext.TextAttrBorder
+   wx.richtext.TextAttrBorderFlags.enumeration
+   wx.richtext.TextAttrBorderStyle.enumeration
+   wx.richtext.TextAttrBorderWidth.enumeration
+   wx.richtext.TextAttrBorders
+   wx.richtext.TextAttrDimension
+   wx.richtext.TextAttrDimensionConverter
+   wx.richtext.TextAttrDimensions
+   wx.richtext.TextAttrSize
+   wx.richtext.TextAttrUnits.enumeration
+   wx.richtext.TextAttrValueFlags.enumeration
+   wx.richtext.TextBoxAttr
+   wx.richtext.TextBoxAttrClearStyle.enumeration
+   wx.richtext.TextBoxAttrCollapseMode.enumeration
+   wx.richtext.TextBoxAttrFlags.enumeration
+   wx.richtext.TextBoxAttrFloatStyle.enumeration
+   wx.richtext.TextBoxAttrPosition.enumeration
+   wx.richtext.TextBoxAttrVerticalAlignment.enumeration
+   wx.richtext.functions
+

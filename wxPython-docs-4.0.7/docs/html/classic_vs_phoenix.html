@@ -1,0 +1,2259 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Classic vs Phoenix — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="DocstringsGuidelines.html" rel="next" title="Phoenix Docstrings Guidelines"/>
+<link href="MigrationGuide.html" rel="prev" title="wxPython Project Phoenix Migration Guide"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="MigrationGuide.html">
+              wxPython Project Phoenix Migration Guide</a> »</li>
+<li class="reltitle"> <strong>Classic vs Phoenix</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="DocstringsGuidelines.html" title="Phoenix Docstrings Guidelines">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="MigrationGuide.html" title="wxPython Project Phoenix Migration Guide">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Classic vs Phoenix</strong></a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#functions-and-classes-modifications">Functions and Classes Modifications</a></li>
+<li><a class="reference internal" href="#wx-dc-modifications"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DC</span></code> Modifications</a></li>
+<li><a class="reference internal" href="#wx-window-modifications"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Window</span></code> Modifications</a></li>
+<li><a class="reference internal" href="#wx-sizer-modifications"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Sizer</span></code> Modifications</a></li>
+<li><a class="reference internal" href="#wx-lib-modifications">wx.lib Modifications</a></li>
+<li><a class="reference internal" href="#modules-which-have-moved">Modules which have moved</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/classic_vs_phoenix.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-classic-vs-phoenix">
+<span id="classic-vs-phoenix"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Classic vs Phoenix</strong><a class="headerlink" href="#phoenix-title-classic-vs-phoenix" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This document contains a list of the most common wxPython functions, classes and <code class="xref py py-class docutils literal notranslate"><span class="pre">Window</span></code> / <code class="xref py py-class docutils literal notranslate"><span class="pre">Sizer</span></code>
+methods which need to be changed to a new syntax in Phoenix; it presents the modification in a 2-columns,
+space-separated table containing the old wxPython (Classic) name on the left and the new (if it exists)
+Phoenix name on the right. I found it impressively useful while porting AGW to Phoenix.</p>
+</div>
+<div class="section" id="functions-and-classes-modifications">
+<h2>Functions and Classes Modifications<a class="headerlink" href="#functions-and-classes-modifications" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%"/>
+<col style="width: 61%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><em class="xref py py-obj">Classic</em> Name</p></th>
+<th class="head"><p><em class="xref py py-obj">Phoenix</em> Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AboutBox</p></td>
+<td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.adv.AboutBox</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>AboutDialogInfo</p></td>
+<td><p><a class="reference internal" href="wx.adv.AboutDialogInfo.html#wx.adv.AboutDialogInfo" title="wx.adv.AboutDialogInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.AboutDialogInfo</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>AcceleratorEntry_Create</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ANIHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>App_CleanUp</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ArtProvider_Delete</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.Delete" title="wx.ArtProvider.Delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.Delete</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ArtProvider_GetBitmap</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.GetBitmap" title="wx.ArtProvider.GetBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetBitmap</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ArtProvider_GetIcon</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.GetIcon" title="wx.ArtProvider.GetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetIcon</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ArtProvider_GetIconBundle</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.GetIconBundle" title="wx.ArtProvider.GetIconBundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetIconBundle</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ArtProvider_GetMessageBoxIcon</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.GetMessageBoxIcon" title="wx.ArtProvider.GetMessageBoxIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetMessageBoxIcon</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ArtProvider_GetMessageBoxIconId</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.GetMessageBoxIconId" title="wx.ArtProvider.GetMessageBoxIconId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetMessageBoxIconId</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ArtProvider_GetNativeSizeHint</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.GetNativeSizeHint" title="wx.ArtProvider.GetNativeSizeHint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetNativeSizeHint</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ArtProvider_GetSizeHint</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.GetSizeHint" title="wx.ArtProvider.GetSizeHint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetSizeHint</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ArtProvider_HasNativeProvider</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.HasNativeProvider" title="wx.ArtProvider.HasNativeProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.HasNativeProvider</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ArtProvider_Insert</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.Insert" title="wx.ArtProvider.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.Insert</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ArtProvider_Pop</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.Pop" title="wx.ArtProvider.Pop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.Pop</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ArtProvider_Push</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.Push" title="wx.ArtProvider.Push"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.Push</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ArtProvider_PushBack</p></td>
+<td><p><a class="reference internal" href="wx.ArtProvider.html#wx.ArtProvider.PushBack" title="wx.ArtProvider.PushBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.PushBack</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Bitmap.SetBitmapSelected</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Bitmap.SetBitmapPressed</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>BitmapFromBits</p></td>
+<td><p><a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>BitmapFromIcon</p></td>
+<td><p><a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>BitmapFromImage</p></td>
+<td><p><a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>BitmapFromXPMData</p></td>
+<td><p><a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>BMPHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>BookCtrlBase_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.BookCtrl.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>BrushFromBitmap</p></td>
+<td><p><a class="reference internal" href="wx.Brush.html#wx.Brush" title="wx.Brush"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Brush</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Button_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Button.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Button_GetDefaultSize</p></td>
+<td><p><a class="reference internal" href="wx.Button.html#wx.Button.GetDefaultSize" title="wx.Button.GetDefaultSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Button.GetDefaultSize</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>CalculateLayoutEvent</p></td>
+<td><p><a class="reference internal" href="wx.adv.CalculateLayoutEvent.html#wx.adv.CalculateLayoutEvent" title="wx.adv.CalculateLayoutEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.CalculateLayoutEvent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Caret_GetBlinkTime</p></td>
+<td><p><a class="reference internal" href="wx.Caret.html#wx.Caret.GetBlinkTime" title="wx.Caret.GetBlinkTime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Caret.GetBlinkTime</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Caret_SetBlinkTime</p></td>
+<td><p><a class="reference internal" href="wx.Caret.html#wx.Caret.SetBlinkTime" title="wx.Caret.SetBlinkTime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Caret.SetBlinkTime</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CheckBox_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.CheckBox.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Choice_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Choice.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ChoicebookEvent</p></td>
+<td><p><a class="reference internal" href="wx.BookCtrlEvent.html#wx.BookCtrlEvent" title="wx.BookCtrlEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.BookCtrlEvent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Clipboard_Get</p></td>
+<td><p><a class="reference internal" href="wx.Clipboard.html#wx.Clipboard.Get" title="wx.Clipboard.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Clipboard.Get</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ClipboardEvent</p></td>
+<td><p><a class="reference internal" href="wx.ClipboardTextEvent.html#wx.ClipboardTextEvent" title="wx.ClipboardTextEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ClipboardTextEvent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ClipboardLocker</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Colour.SetFromString</p></td>
+<td><p><a class="reference internal" href="wx.Colour.html#wx.Colour.Set" title="wx.Colour.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Colour.Set</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ColourRGB</p></td>
+<td><p><a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Colour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ComboBox_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ComboBox.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>CommandLinkButton</p></td>
+<td><p><a class="reference internal" href="wx.adv.CommandLinkButton.html#wx.adv.CommandLinkButton" title="wx.adv.CommandLinkButton"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.CommandLinkButton</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ConfigBase_Create</p></td>
+<td><p><a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase.Create" title="wx.ConfigBase.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ConfigBase.Create</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ConfigBase_DontCreateOnDemand</p></td>
+<td><p><a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase.DontCreateOnDemand" title="wx.ConfigBase.DontCreateOnDemand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ConfigBase.DontCreateOnDemand</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ConfigBase_Get</p></td>
+<td><p><a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase.Get" title="wx.ConfigBase.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ConfigBase.Get</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ConfigBase_Set</p></td>
+<td><p><a class="reference internal" href="wx.ConfigBase.html#wx.ConfigBase.Set" title="wx.ConfigBase.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ConfigBase.Set</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Control_Ellipsize</p></td>
+<td><p><a class="reference internal" href="wx.Control.html#wx.Control.Ellipsize" title="wx.Control.Ellipsize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Control.Ellipsize</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Control_EscapeMnemonics</p></td>
+<td><p><a class="reference internal" href="wx.Control.html#wx.Control.EscapeMnemonics" title="wx.Control.EscapeMnemonics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Control.EscapeMnemonics</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Control_FindAccelIndex</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Control_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Control.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Control_GetCompositeControlsDefaultAttributes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Control_RemoveMnemonics</p></td>
+<td><p><a class="reference internal" href="wx.Control.html#wx.Control.RemoveMnemonics" title="wx.Control.RemoveMnemonics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Control.RemoveMnemonics</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CPPFileSystemHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>CreateFileTipProvider</p></td>
+<td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.adv.CreateFileTipProvider</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>CURHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>CursorFromImage</p></td>
+<td><p><a class="reference internal" href="wx.Cursor.html#wx.Cursor" title="wx.Cursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Cursor</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CustomDataFormat</p></td>
+<td><p><a class="reference internal" href="wx.DataFormat.html#wx.DataFormat" title="wx.DataFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DataFormat</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateEvent</p></td>
+<td><p><a class="reference internal" href="wx.adv.DateEvent.html#wx.adv.DateEvent" title="wx.adv.DateEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.DateEvent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DatePickerCtrl</p></td>
+<td><p><a class="reference internal" href="wx.adv.DatePickerCtrl.html#wx.adv.DatePickerCtrl" title="wx.adv.DatePickerCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.DatePickerCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DatePickerCtrlBase</p></td>
+<td><p><a class="reference internal" href="wx.adv.DatePickerCtrl.html#wx.adv.DatePickerCtrl" title="wx.adv.DatePickerCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.DatePickerCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateSpan_Day</p></td>
+<td><p><a class="reference internal" href="wx.DateSpan.html#wx.DateSpan.Day" title="wx.DateSpan.Day"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateSpan.Day</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateSpan_Days</p></td>
+<td><p><a class="reference internal" href="wx.DateSpan.html#wx.DateSpan.Days" title="wx.DateSpan.Days"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateSpan.Days</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateSpan_Month</p></td>
+<td><p><a class="reference internal" href="wx.DateSpan.html#wx.DateSpan.Month" title="wx.DateSpan.Month"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateSpan.Month</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateSpan_Months</p></td>
+<td><p><a class="reference internal" href="wx.DateSpan.html#wx.DateSpan.Months" title="wx.DateSpan.Months"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateSpan.Months</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateSpan_Week</p></td>
+<td><p><a class="reference internal" href="wx.DateSpan.html#wx.DateSpan.Week" title="wx.DateSpan.Week"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateSpan.Week</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateSpan_Weeks</p></td>
+<td><p><a class="reference internal" href="wx.DateSpan.html#wx.DateSpan.Weeks" title="wx.DateSpan.Weeks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateSpan.Weeks</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateSpan_Year</p></td>
+<td><p><a class="reference internal" href="wx.DateSpan.html#wx.DateSpan.Year" title="wx.DateSpan.Year"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateSpan.Year</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateSpan_Years</p></td>
+<td><p><a class="reference internal" href="wx.DateSpan.html#wx.DateSpan.Years" title="wx.DateSpan.Years"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateSpan.Years</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_ConvertYearToBC</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.ConvertYearToBC" title="wx.DateTime.ConvertYearToBC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.ConvertYearToBC</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_GetAmPmStrings</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetAmPmStrings" title="wx.DateTime.GetAmPmStrings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetAmPmStrings</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_GetBeginDST</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetBeginDST" title="wx.DateTime.GetBeginDST"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetBeginDST</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_GetCentury</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetCentury" title="wx.DateTime.GetCentury"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetCentury</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_GetCountry</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetCountry" title="wx.DateTime.GetCountry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetCountry</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_GetCurrentMonth</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetCurrentMonth" title="wx.DateTime.GetCurrentMonth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetCurrentMonth</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_GetCurrentYear</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetCurrentYear" title="wx.DateTime.GetCurrentYear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetCurrentYear</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_GetEndDST</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetEndDST" title="wx.DateTime.GetEndDST"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetEndDST</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_GetEnglishMonthName</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetEnglishMonthName" title="wx.DateTime.GetEnglishMonthName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetEnglishMonthName</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_GetEnglishWeekDayName</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetEnglishWeekDayName" title="wx.DateTime.GetEnglishWeekDayName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetEnglishWeekDayName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_GetMonthName</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetMonthName" title="wx.DateTime.GetMonthName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetMonthName</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_GetNumberOfDaysInMonth</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_GetNumberOfDaysinYear</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_GetWeekDayName</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.GetWeekDayName" title="wx.DateTime.GetWeekDayName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.GetWeekDayName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_IsDSTApplicable</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.IsDSTApplicable" title="wx.DateTime.IsDSTApplicable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.IsDSTApplicable</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_IsLeapYear</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.IsLeapYear" title="wx.DateTime.IsLeapYear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.IsLeapYear</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_IsWestEuropeanCountry</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.IsWestEuropeanCountry" title="wx.DateTime.IsWestEuropeanCountry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.IsWestEuropeanCountry</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_Now</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.Now" title="wx.DateTime.Now"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.Now</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_SetCountry</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.SetCountry" title="wx.DateTime.SetCountry"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.SetCountry</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_SetToWeekOfYear</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.SetToWeekOfYear" title="wx.DateTime.SetToWeekOfYear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.SetToWeekOfYear</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTime_Today</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.Today" title="wx.DateTime.Today"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.Today</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTime_UNow</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime.UNow" title="wx.DateTime.UNow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DateTime.UNow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTimeFromDateTime</p></td>
+<td><p><a class="reference internal" href="wx.DateTime.html#wx.DateTime" title="wx.DateTime"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DateTime</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Dialog_EnableLayoutAdaptation</p></td>
+<td><p><a class="reference internal" href="wx.Dialog.html#wx.Dialog.EnableLayoutAdaptation" title="wx.Dialog.EnableLayoutAdaptation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.EnableLayoutAdaptation</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Dialog_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Dialog_GetLayoutAdapter</p></td>
+<td><p><a class="reference internal" href="wx.Dialog.html#wx.Dialog.GetLayoutAdapter" title="wx.Dialog.GetLayoutAdapter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.GetLayoutAdapter</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Dialog_IsLayoutAdaptationEnabled</p></td>
+<td><p><a class="reference internal" href="wx.Dialog.html#wx.Dialog.IsLayoutAdaptationEnabled" title="wx.Dialog.IsLayoutAdaptationEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.IsLayoutAdaptationEnabled</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Dialog_SetLayoutAdapter</p></td>
+<td><p><a class="reference internal" href="wx.Dialog.html#wx.Dialog.SetLayoutAdapter" title="wx.Dialog.SetLayoutAdapter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.SetLayoutAdapter</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DirItemData</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Display_GetCount</p></td>
+<td><p><a class="reference internal" href="wx.Display.html#wx.Display.GetCount" title="wx.Display.GetCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Display.GetCount</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Display_GetFromPoint</p></td>
+<td><p><a class="reference internal" href="wx.Display.html#wx.Display.GetFromPoint" title="wx.Display.GetFromPoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Display.GetFromPoint</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Display_GetFromWindow</p></td>
+<td><p><a class="reference internal" href="wx.Display.html#wx.Display.GetFromWindow" title="wx.Display.GetFromWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Display.GetFromWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DragIcon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>DragListItem</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>DragString</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>DragTreeItem</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>DROP_ICON</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>EmptyBitmap</p></td>
+<td><p><a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Bitmap</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>EmptyIcon</p></td>
+<td><p><a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Icon</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>EmptyImage</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image" title="wx.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Image</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>EncodingConverter</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>EncodingConverter_CanConvert</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>EncodingConverter_GetAllEquivalents</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>EncodingConverter_GetPlatformEquivalents</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>EventLoopBase_GetActive</p></td>
+<td><p><a class="reference internal" href="wx.EventLoopBase.html#wx.EventLoopBase.GetActive" title="wx.EventLoopBase.GetActive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EventLoopBase.GetActive</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>EventLoopBase_SetActive</p></td>
+<td><p><a class="reference internal" href="wx.EventLoopBase.html#wx.EventLoopBase.SetActive" title="wx.EventLoopBase.SetActive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EventLoopBase.SetActive</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>EventProcessInHandlerOnly</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>EVT_COMMAND</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>EVT_COMMAND_RANGE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ExpandEnvVars</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>FFontFromPixelSize</p></td>
+<td><p><a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Font</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FileConfig_GetGlobalFileName</p></td>
+<td><p><a class="reference internal" href="wx.FileConfig.html#wx.FileConfig.GetGlobalFileName" title="wx.FileConfig.GetGlobalFileName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileConfig.GetGlobalFileName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FileConfig_GetLocalFileName</p></td>
+<td><p><a class="reference internal" href="wx.FileConfig.html#wx.FileConfig.GetLocalFileName" title="wx.FileConfig.GetLocalFileName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileConfig.GetLocalFileName</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FileSystem_AddHandler</p></td>
+<td><p><a class="reference internal" href="wx.FileSystem.html#wx.FileSystem.AddHandler" title="wx.FileSystem.AddHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileSystem.AddHandler</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FileSystem_CleanUpHandlers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>FileSystem_FileNameToURL</p></td>
+<td><p><a class="reference internal" href="wx.FileSystem.html#wx.FileSystem.FileNameToURL" title="wx.FileSystem.FileNameToURL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileSystem.FileNameToURL</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FileSystem_RemoveHandler</p></td>
+<td><p><a class="reference internal" href="wx.FileSystem.html#wx.FileSystem.RemoveHandler" title="wx.FileSystem.RemoveHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileSystem.RemoveHandler</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FileSystem_URLToFileName</p></td>
+<td><p><a class="reference internal" href="wx.FileSystem.html#wx.FileSystem.URLToFileName" title="wx.FileSystem.URLToFileName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileSystem.URLToFileName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FileSystemHandler_GetAnchor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>FileSystemHandler_GetLeftLocation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>FileSystemHandler_GetMimeTypeFromExt</p></td>
+<td><p><a class="reference internal" href="wx.FileSystemHandler.html#wx.FileSystemHandler.GetMimeTypeFromExt" title="wx.FileSystemHandler.GetMimeTypeFromExt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileSystemHandler.GetMimeTypeFromExt</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FileSystemHandler_GetProtocol</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>FileSystemHandler_GetRightLocation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>FileType_ExpandCommand</p></td>
+<td><p><a class="reference internal" href="wx.FileType.html#wx.FileType.ExpandCommand" title="wx.FileType.ExpandCommand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FileType.ExpandCommand</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FileTypeInfoSequence</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>FindWindowById</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.FindWindowById" title="wx.Window.FindWindowById"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.FindWindowById</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Font2</p></td>
+<td><p><a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Font</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Font_AdjustToSymbolicSize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Font_GetDefaultEncoding</p></td>
+<td><p><a class="reference internal" href="wx.Font.html#wx.Font.GetDefaultEncoding" title="wx.Font.GetDefaultEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.GetDefaultEncoding</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Font_SetDefaultEncoding</p></td>
+<td><p><a class="reference internal" href="wx.Font.html#wx.Font.SetDefaultEncoding" title="wx.Font.SetDefaultEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Font.SetDefaultEncoding</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FontEnumerator_GetEncodings</p></td>
+<td><p><a class="reference internal" href="wx.FontEnumerator.html#wx.FontEnumerator.GetEncodings" title="wx.FontEnumerator.GetEncodings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontEnumerator.GetEncodings</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FontEnumerator_GetFacenames</p></td>
+<td><p><a class="reference internal" href="wx.FontEnumerator.html#wx.FontEnumerator.GetFacenames" title="wx.FontEnumerator.GetFacenames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontEnumerator.GetFacenames</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FontEnumerator_IsValidFacename</p></td>
+<td><p><a class="reference internal" href="wx.FontEnumerator.html#wx.FontEnumerator.IsValidFacename" title="wx.FontEnumerator.IsValidFacename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontEnumerator.IsValidFacename</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FontFromNativeInfo</p></td>
+<td><p><a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Font</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FontFromNativeInfoString</p></td>
+<td><p><a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Font</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FontFromPixelSize</p></td>
+<td><p><a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Font</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FontMapper_Get</p></td>
+<td><p><a class="reference internal" href="wx.FontMapper.html#wx.FontMapper.Get" title="wx.FontMapper.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.Get</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FontMapper_GetDefaultConfigPath</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>FontMapper_GetEncoding</p></td>
+<td><p><a class="reference internal" href="wx.FontMapper.html#wx.FontMapper.GetEncoding" title="wx.FontMapper.GetEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.GetEncoding</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FontMapper_GetEncodingDescription</p></td>
+<td><p><a class="reference internal" href="wx.FontMapper.html#wx.FontMapper.GetEncodingDescription" title="wx.FontMapper.GetEncodingDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.GetEncodingDescription</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FontMapper_GetEncodingFromName</p></td>
+<td><p><a class="reference internal" href="wx.FontMapper.html#wx.FontMapper.GetEncodingFromName" title="wx.FontMapper.GetEncodingFromName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.GetEncodingFromName</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FontMapper_GetEncodingName</p></td>
+<td><p><a class="reference internal" href="wx.FontMapper.html#wx.FontMapper.GetEncodingName" title="wx.FontMapper.GetEncodingName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.GetEncodingName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>FontMapper_GetSupportedEncodingsCount</p></td>
+<td><p><a class="reference internal" href="wx.FontMapper.html#wx.FontMapper.GetSupportedEncodingsCount" title="wx.FontMapper.GetSupportedEncodingsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.GetSupportedEncodingsCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>FontMapper_Set</p></td>
+<td><p><a class="reference internal" href="wx.FontMapper.html#wx.FontMapper.Set" title="wx.FontMapper.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FontMapper.Set</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Frame_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Frame.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>FutureCall</p></td>
+<td><p><a class="reference internal" href="wx.CallLater.html#wx.CallLater" title="wx.CallLater"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.CallLater</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Gauge_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Gauge.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GBSizerItemSizer</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.GbSizerItem</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GBSizerItemSpacer</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.GbSizerItem</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GBSizerItemWindow</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.GbSizerItem</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GDIObjListBase</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GenericFindWindowAtPoint</p></td>
+<td><p><a class="reference internal" href="wx.functions.html#wx.FindWindowAtPoint" title="wx.FindWindowAtPoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.FindWindowAtPoint</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetAccelFromString</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GetCurrentId</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetCurrentTime</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GetDefaultPyEncoding</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetDisplayDepth</p></td>
+<td><p><a class="reference internal" href="wx.functions.html#wx.DisplayDepth" title="wx.DisplayDepth"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.DisplayDepth</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GetFreeMemory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetLocale</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GetLocalTime</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetLocalTimeMillis</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GetNativeFontEncoding</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetNumberFromUser</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GetPasswordFromUser</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetSingleChoiceIndex</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GetStockHelpString</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetStockLabel</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GetTextFromUser</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetUTCTime</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GetXDisplay</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GIFHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GraphicsContext_Create</p></td>
+<td><p><a class="reference internal" href="wx.GraphicsContext.html#wx.GraphicsContext.Create" title="wx.GraphicsContext.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.GraphicsContext.Create</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GraphicsContext_CreateFromNative</p></td>
+<td><p><a class="reference internal" href="wx.GraphicsContext.html#wx.GraphicsContext.CreateFromNative" title="wx.GraphicsContext.CreateFromNative"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.GraphicsContext.CreateFromNative</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GraphicsContext_CreateFromNativeWindow</p></td>
+<td><p><a class="reference internal" href="wx.GraphicsContext.html#wx.GraphicsContext.CreateFromNativeWindow" title="wx.GraphicsContext.CreateFromNativeWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.GraphicsContext.CreateFromNativeWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GraphicsContext_CreateMeasuringContext</p></td>
+<td><p><a class="reference internal" href="wx.GraphicsContext.html#wx.GraphicsContext.Create" title="wx.GraphicsContext.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.GraphicsContext.Create</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GraphicsRenderer_GetCairoRenderer</p></td>
+<td><p><a class="reference internal" href="wx.GraphicsRenderer.html#wx.GraphicsRenderer.GetCairoRenderer" title="wx.GraphicsRenderer.GetCairoRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.GraphicsRenderer.GetCairoRenderer</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GraphicsRenderer_GetDefaultRenderer</p></td>
+<td><p><a class="reference internal" href="wx.GraphicsRenderer.html#wx.GraphicsRenderer.GetDefaultRenderer" title="wx.GraphicsRenderer.GetDefaultRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.GraphicsRenderer.GetDefaultRenderer</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>HelpProvider_Get</p></td>
+<td><p><a class="reference internal" href="wx.HelpProvider.html#wx.HelpProvider.Get" title="wx.HelpProvider.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.HelpProvider.Get</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>HelpProvider_Set</p></td>
+<td><p><a class="reference internal" href="wx.HelpProvider.html#wx.HelpProvider.Set" title="wx.HelpProvider.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.HelpProvider.Set</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>HtmlListBox</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>HyperlinkCtrl</p></td>
+<td><p><a class="reference internal" href="wx.adv.HyperlinkCtrl.html#wx.adv.HyperlinkCtrl" title="wx.adv.HyperlinkCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.HyperlinkCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>HyperlinkEvent</p></td>
+<td><p><a class="reference internal" href="wx.adv.HyperlinkEvent.html#wx.adv.HyperlinkEvent" title="wx.adv.HyperlinkEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.HyperlinkEvent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ICOHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>IconBundleFromFile</p></td>
+<td><p><a class="reference internal" href="wx.IconBundle.html#wx.IconBundle" title="wx.IconBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.IconBundle</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>IconBundleFromIcon</p></td>
+<td><p><a class="reference internal" href="wx.IconBundle.html#wx.IconBundle" title="wx.IconBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.IconBundle</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>IconBundleFromStream</p></td>
+<td><p><a class="reference internal" href="wx.IconBundle.html#wx.IconBundle" title="wx.IconBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.IconBundle</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>IconFromBitmap</p></td>
+<td><p><a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Icon</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>IconFromLocation</p></td>
+<td><p><a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Icon</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>IconFromXPMData</p></td>
+<td><p><a class="reference internal" href="wx.Icon.html#wx.Icon" title="wx.Icon"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Icon</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>IdleEvent_GetMode</p></td>
+<td><p><a class="reference internal" href="wx.IdleEvent.html#wx.IdleEvent.GetMode" title="wx.IdleEvent.GetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.IdleEvent.GetMode</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>IdleEvent_SetMode</p></td>
+<td><p><a class="reference internal" href="wx.IdleEvent.html#wx.IdleEvent.SetMode" title="wx.IdleEvent.SetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.IdleEvent.SetMode</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Image_AddHandler</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image.AddHandler" title="wx.Image.AddHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.AddHandler</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Image_CanRead</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image.CanRead" title="wx.Image.CanRead"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.CanRead</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Image_CanReadStream</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image.CanRead" title="wx.Image.CanRead"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.CanRead</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Image_GetHandlers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Image_GetImageCount</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image.GetImageCount" title="wx.Image.GetImageCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.GetImageCount</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Image_GetImageExtWildcard</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image.GetImageExtWildcard" title="wx.Image.GetImageExtWildcard"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.GetImageExtWildcard</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Image_HSVtoRGB</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image.HSVtoRGB" title="wx.Image.HSVtoRGB"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.HSVtoRGB</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Image_HSVValue</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.HSVValue</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Image_InsertHandler</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image.InsertHandler" title="wx.Image.InsertHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.InsertHandler</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Image_RemoveHandler</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image.RemoveHandler" title="wx.Image.RemoveHandler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.RemoveHandler</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Image_RGBtoHSV</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image.RGBtoHSV" title="wx.Image.RGBtoHSV"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Image.RGBtoHSV</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Image_RGBValue</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.RGBValue</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ImageFromMime</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image" title="wx.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Image</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ImageFromStream</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image" title="wx.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Image</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ImageFromStreamMime</p></td>
+<td><p><a class="reference internal" href="wx.Image.html#wx.Image" title="wx.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Image</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ImageHistogram_MakeKey</p></td>
+<td><p><a class="reference internal" href="wx.ImageHistogram.html#wx.ImageHistogram.MakeKey" title="wx.ImageHistogram.MakeKey"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ImageHistogram.MakeKey</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>IsStockID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>IsStockLabel</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Joystick</p></td>
+<td><p><a class="reference internal" href="wx.adv.Joystick.html#wx.adv.Joystick" title="wx.adv.Joystick"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.Joystick</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>JPEGHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>KeyEvent.m_altDown</p></td>
+<td><p><a class="reference internal" href="wx.KeyboardState.html#wx.KeyboardState.GetModifiers" title="wx.KeyboardState.GetModifiers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.KeyboardState.GetModifiers</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>KeyEvent.m_controlDown</p></td>
+<td><p><a class="reference internal" href="wx.KeyboardState.html#wx.KeyboardState.GetModifiers" title="wx.KeyboardState.GetModifiers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.KeyboardState.GetModifiers</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>KeyEvent.m_keyCode</p></td>
+<td><p><a class="reference internal" href="wx.KeyEvent.html#wx.KeyEvent.KeyCode" title="wx.KeyEvent.KeyCode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.KeyEvent.KeyCode</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>KeyEvent.m_metaDown</p></td>
+<td><p><a class="reference internal" href="wx.KeyboardState.html#wx.KeyboardState.GetModifiers" title="wx.KeyboardState.GetModifiers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.KeyboardState.GetModifiers</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>KeyEvent.m_shiftDown</p></td>
+<td><p><a class="reference internal" href="wx.KeyboardState.html#wx.KeyboardState.GetModifiers" title="wx.KeyboardState.GetModifiers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.KeyboardState.GetModifiers</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>KeyEvent.m_x</p></td>
+<td><p><a class="reference internal" href="wx.KeyEvent.html#wx.KeyEvent.X" title="wx.KeyEvent.X"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.KeyEvent.X</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>KeyEvent.m_y</p></td>
+<td><p><a class="reference internal" href="wx.KeyEvent.html#wx.KeyEvent.Y" title="wx.KeyEvent.Y"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.KeyEvent.Y</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>LayoutAlgorithm</p></td>
+<td><p><a class="reference internal" href="wx.adv.LayoutAlgorithm.html#wx.adv.LayoutAlgorithm" title="wx.adv.LayoutAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.LayoutAlgorithm</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ListbookEvent</p></td>
+<td><p><a class="reference internal" href="wx.BookCtrlEvent.html#wx.BookCtrlEvent" title="wx.BookCtrlEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.BookCtrlEvent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListBox_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListBox.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ListCtrl_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListCtrl_HasColumnOrderSupport</p></td>
+<td><p><a class="reference internal" href="wx.ListCtrl.html#wx.ListCtrl.HasColumnOrderSupport" title="wx.ListCtrl.HasColumnOrderSupport"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ListCtrl.HasColumnOrderSupport</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ListEvent.m_code</p></td>
+<td><p><a class="reference internal" href="wx.ListEvent.html#wx.ListEvent.KeyCode" title="wx.ListEvent.KeyCode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListEvent.KeyCode</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListEvent.m_col</p></td>
+<td><p><a class="reference internal" href="wx.ListEvent.html#wx.ListEvent.Column" title="wx.ListEvent.Column"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListEvent.Column</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ListEvent.m_item</p></td>
+<td><p><a class="reference internal" href="wx.ListEvent.html#wx.ListEvent.Item" title="wx.ListEvent.Item"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListEvent.Item</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListEvent.m_itemIndex</p></td>
+<td><p><a class="reference internal" href="wx.ListEvent.html#wx.ListEvent.Index" title="wx.ListEvent.Index"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListEvent.Index</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ListEvent.m_oldItemIndex</p></td>
+<td><p><a class="reference internal" href="wx.ListEvent.html#wx.ListEvent.CacheFrom" title="wx.ListEvent.CacheFrom"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListEvent.CacheFrom</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListEvent.m_pointDrag</p></td>
+<td><p><a class="reference internal" href="wx.ListEvent.html#wx.ListEvent.Point" title="wx.ListEvent.Point"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListEvent.Point</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ListItem.m_col</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.Column" title="wx.ListItem.Column"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.Column</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListItem.m_data</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.Data" title="wx.ListItem.Data"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.Data</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ListItem.m_format</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.Align" title="wx.ListItem.Align"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.Align</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListItem.m_image</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.Image" title="wx.ListItem.Image"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.Image</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ListItem.m_itemId</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.Id" title="wx.ListItem.Id"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.Id</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListItem.m_mask</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.Mask" title="wx.ListItem.Mask"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.Mask</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ListItem.m_state</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.State" title="wx.ListItem.State"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.State</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListItem.m_stateMask</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.State" title="wx.ListItem.State"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.State</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ListItem.m_text</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.Text" title="wx.ListItem.Text"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.Text</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ListItem.m_width</p></td>
+<td><p><a class="reference internal" href="wx.ListItem.html#wx.ListItem.Width" title="wx.ListItem.Width"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wx.ListItem.Width</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Locale_AddCatalogLookupPathPrefix</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.AddCatalogLookupPathPrefix" title="wx.Locale.AddCatalogLookupPathPrefix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.AddCatalogLookupPathPrefix</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Locale_AddLanguage</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.AddLanguage" title="wx.Locale.AddLanguage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.AddLanguage</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Locale_FindLanguageInfo</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.FindLanguageInfo" title="wx.Locale.FindLanguageInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.FindLanguageInfo</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Locale_GetInfo</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.GetInfo" title="wx.Locale.GetInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.GetInfo</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Locale_GetLanguageCanonicalName</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.GetLanguageCanonicalName" title="wx.Locale.GetLanguageCanonicalName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.GetLanguageCanonicalName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Locale_GetLanguageInfo</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.GetLanguageInfo" title="wx.Locale.GetLanguageInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.GetLanguageInfo</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Locale_GetLanguageName</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.GetLanguageName" title="wx.Locale.GetLanguageName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.GetLanguageName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Locale_GetSystemEncoding</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.GetSystemEncoding" title="wx.Locale.GetSystemEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.GetSystemEncoding</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Locale_GetSystemEncodingName</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.GetSystemEncodingName" title="wx.Locale.GetSystemEncodingName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.GetSystemEncodingName</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Locale_GetSystemLanguage</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.GetSystemLanguage" title="wx.Locale.GetSystemLanguage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.GetSystemLanguage</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Locale_IsAvailable</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale.IsAvailable" title="wx.Locale.IsAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Locale.IsAvailable</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_AddTraceMask</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.AddTraceMask" title="wx.Log.AddTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.AddTraceMask</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_ClearTraceMasks</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.ClearTraceMasks" title="wx.Log.ClearTraceMasks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.ClearTraceMasks</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_DoCreateOnDemand</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_DontCreateOnDemand</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.DontCreateOnDemand" title="wx.Log.DontCreateOnDemand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.DontCreateOnDemand</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_EnableLogging</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.EnableLogging" title="wx.Log.EnableLogging"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.EnableLogging</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_FlushActive</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.FlushActive" title="wx.Log.FlushActive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.FlushActive</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_GetActiveTarget</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.GetActiveTarget" title="wx.Log.GetActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.GetActiveTarget</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_GetComponentLevel</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_GetLogLevel</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.GetLogLevel" title="wx.Log.GetLogLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.GetLogLevel</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_GetRepetitionCounting</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.GetRepetitionCounting" title="wx.Log.GetRepetitionCounting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.GetRepetitionCounting</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_GetTimestamp</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.GetTimestamp" title="wx.Log.GetTimestamp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.GetTimestamp</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_GetTraceMask</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_GetTraceMasks</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.GetTraceMasks" title="wx.Log.GetTraceMasks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.GetTraceMasks</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_GetVerbose</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.GetVerbose" title="wx.Log.GetVerbose"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.GetVerbose</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_IsAllowedTraceMask</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.IsAllowedTraceMask" title="wx.Log.IsAllowedTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.IsAllowedTraceMask</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_IsEnabled</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.IsEnabled" title="wx.Log.IsEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.IsEnabled</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_IsLevelEnabled</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.IsLevelEnabled" title="wx.Log.IsLevelEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.IsLevelEnabled</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_RemoveTraceMask</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.RemoveTraceMask" title="wx.Log.RemoveTraceMask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.RemoveTraceMask</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_Resume</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.Resume" title="wx.Log.Resume"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.Resume</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_SetActiveTarget</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.SetActiveTarget" title="wx.Log.SetActiveTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.SetActiveTarget</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_SetComponentLevel</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.SetComponentLevel" title="wx.Log.SetComponentLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.SetComponentLevel</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_SetLogLevel</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.SetLogLevel" title="wx.Log.SetLogLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.SetLogLevel</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_SetRepetitionCounting</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.SetRepetitionCounting" title="wx.Log.SetRepetitionCounting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.SetRepetitionCounting</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_SetTimestamp</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.SetTimestamp" title="wx.Log.SetTimestamp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.SetTimestamp</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_SetTraceMask</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_SetVerbose</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.SetVerbose" title="wx.Log.SetVerbose"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.SetVerbose</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Log_Suspend</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log.Suspend" title="wx.Log.Suspend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Log.Suspend</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Log_TimeStamp</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>LogInfo</p></td>
+<td><p><a class="reference internal" href="wx.functions.html#wx.LogMessage" title="wx.LogMessage"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.LogMessage</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>LogStatusFrame</p></td>
+<td><p><a class="reference internal" href="wx.functions.html#wx.LogStatus" title="wx.LogStatus"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.LogStatus</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>LogTrace</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MaskColour</p></td>
+<td><p><a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Colour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>MemoryDCFromDC</p></td>
+<td><p><a class="reference internal" href="wx.MemoryDC.html#wx.MemoryDC" title="wx.MemoryDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MemoryDC</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>MemoryFSHandler_AddFile</p></td>
+<td><p><a class="reference internal" href="wx.MemoryFSHandler.html#wx.MemoryFSHandler.AddFile" title="wx.MemoryFSHandler.AddFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.MemoryFSHandler.AddFile</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>MemoryFSHandler_AddFileWithMimeType</p></td>
+<td><p><a class="reference internal" href="wx.MemoryFSHandler.html#wx.MemoryFSHandler.AddFileWithMimeType" title="wx.MemoryFSHandler.AddFileWithMimeType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.MemoryFSHandler.AddFileWithMimeType</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>MemoryFSHandler_RemoveFile</p></td>
+<td><p><a class="reference internal" href="wx.MemoryFSHandler.html#wx.MemoryFSHandler.RemoveFile" title="wx.MemoryFSHandler.RemoveFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.MemoryFSHandler.RemoveFile</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>MenuBar_GetAutoWindowMenu</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MenuBar_MacSetCommonMenuBar</p></td>
+<td><p><a class="reference internal" href="wx.MenuBar.html#wx.MenuBar.MacSetCommonMenuBar" title="wx.MenuBar.MacSetCommonMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.MenuBar.MacSetCommonMenuBar</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>MenuBar_SetAutoWindowMenu</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MenuItem_GetDefaultMarginWidth</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MenuItem_GetLabelText</p></td>
+<td><p><a class="reference internal" href="wx.MenuItem.html#wx.MenuItem.GetLabelText" title="wx.MenuItem.GetLabelText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.MenuItem.GetLabelText</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>MetaFile</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.msw.MemoryDC</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MetafileDataObject</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MetaFileDC</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.msw.MetafileDC</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MimeTypesManager_IsOfType</p></td>
+<td><p><a class="reference internal" href="wx.MimeTypesManager.html#wx.MimeTypesManager.IsOfType" title="wx.MimeTypesManager.IsOfType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.MimeTypesManager.IsOfType</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ModalEventLoop</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MutexGuiEnter</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MutexGuiLeave</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MutexGuiLocker</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>NamedColour</p></td>
+<td><p><a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Colour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>NativeEncodingInfo</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>NcPaintEvent</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Notebook_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Notebook.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>NotebookEvent</p></td>
+<td><p><a class="reference internal" href="wx.BookCtrlEvent.html#wx.BookCtrlEvent" title="wx.BookCtrlEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.BookCtrlEvent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>NotebookPage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>NotificationMessage</p></td>
+<td><p><a class="reference internal" href="wx.adv.NotificationMessage.html#wx.adv.NotificationMessage" title="wx.adv.NotificationMessage"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.NotificationMessage</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>NullFileTypeInfo</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Panel_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Panel.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PCXHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PlatformInformation_GetOperatingSystemDirectory</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PlatformInfo.GetOperatingSystemDirectory</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PNGHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PNMHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Point2DCopy</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Point2DDouble</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Point2DFromPoint</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Point2DDouble</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreBitmapButton</p></td>
+<td><p><a class="reference internal" href="wx.BitmapButton.html#wx.BitmapButton" title="wx.BitmapButton"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.BitmapButton</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreButton</p></td>
+<td><p><a class="reference internal" href="wx.Button.html#wx.Button" title="wx.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Button</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreCheckBox</p></td>
+<td><p><a class="reference internal" href="wx.CheckBox.html#wx.CheckBox" title="wx.CheckBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.CheckBox</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreCheckListBox</p></td>
+<td><p><a class="reference internal" href="wx.CheckListBox.html#wx.CheckListBox" title="wx.CheckListBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.CheckListBox</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreChoice</p></td>
+<td><p><a class="reference internal" href="wx.Choice.html#wx.Choice" title="wx.Choice"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Choice</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreChoicebook</p></td>
+<td><p><a class="reference internal" href="wx.Choicebook.html#wx.Choicebook" title="wx.Choicebook"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Choicebook</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreCollapsiblePane</p></td>
+<td><p><a class="reference internal" href="wx.CollapsiblePane.html#wx.CollapsiblePane" title="wx.CollapsiblePane"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.CollapsiblePane</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreColourPickerCtrl</p></td>
+<td><p><a class="reference internal" href="wx.ColourPickerCtrl.html#wx.ColourPickerCtrl" title="wx.ColourPickerCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ColourPickerCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreComboBox</p></td>
+<td><p><a class="reference internal" href="wx.ComboBox.html#wx.ComboBox" title="wx.ComboBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ComboBox</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreCommandLinkButton</p></td>
+<td><p><a class="reference internal" href="wx.adv.CommandLinkButton.html#wx.adv.CommandLinkButton" title="wx.adv.CommandLinkButton"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.CommandLinkButton</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreControl</p></td>
+<td><p><a class="reference internal" href="wx.Control.html#wx.Control" title="wx.Control"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Control</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreDatePickerCtrl</p></td>
+<td><p><a class="reference internal" href="wx.adv.DatePickerCtrl.html#wx.adv.DatePickerCtrl" title="wx.adv.DatePickerCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.DatePickerCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreDialog</p></td>
+<td><p><a class="reference internal" href="wx.Dialog.html#wx.Dialog" title="wx.Dialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Dialog</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreDirFilterListCtrl</p></td>
+<td><p><a class="reference internal" href="wx.DirFilterListCtrl.html#wx.DirFilterListCtrl" title="wx.DirFilterListCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DirFilterListCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreDirPickerCtrl</p></td>
+<td><p><a class="reference internal" href="wx.DirPickerCtrl.html#wx.DirPickerCtrl" title="wx.DirPickerCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DirPickerCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreFileCtrl</p></td>
+<td><p><a class="reference internal" href="wx.FileCtrl.html#wx.FileCtrl" title="wx.FileCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.FileCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreFilePickerCtrl</p></td>
+<td><p><a class="reference internal" href="wx.FilePickerCtrl.html#wx.FilePickerCtrl" title="wx.FilePickerCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.FilePickerCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreFindReplaceDialog</p></td>
+<td><p><a class="reference internal" href="wx.FindReplaceDialog.html#wx.FindReplaceDialog" title="wx.FindReplaceDialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.FindReplaceDialog</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreFontPickerCtrl</p></td>
+<td><p><a class="reference internal" href="wx.FontPickerCtrl.html#wx.FontPickerCtrl" title="wx.FontPickerCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.FontPickerCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreFrame</p></td>
+<td><p><a class="reference internal" href="wx.Frame.html#wx.Frame" title="wx.Frame"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Frame</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreGauge</p></td>
+<td><p><a class="reference internal" href="wx.Gauge.html#wx.Gauge" title="wx.Gauge"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Gauge</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreGenericDirCtrl</p></td>
+<td><p><a class="reference internal" href="wx.GenericDirCtrl.html#wx.GenericDirCtrl" title="wx.GenericDirCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.GenericDirCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreHScrolledWindow</p></td>
+<td><p><a class="reference internal" href="wx.HScrolledWindow.html#wx.HScrolledWindow" title="wx.HScrolledWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.HScrolledWindow</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreHtmlListBox</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreHVScrolledWindow</p></td>
+<td><p><a class="reference internal" href="wx.HVScrolledWindow.html#wx.HVScrolledWindow" title="wx.HVScrolledWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.HVScrolledWindow</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreHyperlinkCtrl</p></td>
+<td><p><a class="reference internal" href="wx.adv.HyperlinkCtrl.html#wx.adv.HyperlinkCtrl" title="wx.adv.HyperlinkCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.HyperlinkCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreInfoBar</p></td>
+<td><p><a class="reference internal" href="wx.InfoBar.html#wx.InfoBar" title="wx.InfoBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.InfoBar</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreListbook</p></td>
+<td><p><a class="reference internal" href="wx.Listbook.html#wx.Listbook" title="wx.Listbook"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Listbook</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreListBox</p></td>
+<td><p><a class="reference internal" href="wx.ListBox.html#wx.ListBox" title="wx.ListBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ListBox</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreListCtrl</p></td>
+<td><p><a class="reference internal" href="wx.ListCtrl.html#wx.ListCtrl" title="wx.ListCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ListCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreListView</p></td>
+<td><p><a class="reference internal" href="wx.ListView.html#wx.ListView" title="wx.ListView"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ListView</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreMDIChildFrame</p></td>
+<td><p><a class="reference internal" href="wx.MDIChildFrame.html#wx.MDIChildFrame" title="wx.MDIChildFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MDIChildFrame</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreMDIClientWindow</p></td>
+<td><p><a class="reference internal" href="wx.MDIClientWindow.html#wx.MDIClientWindow" title="wx.MDIClientWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MDIClientWindow</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreMDIParentFrame</p></td>
+<td><p><a class="reference internal" href="wx.MDIParentFrame.html#wx.MDIParentFrame" title="wx.MDIParentFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MDIParentFrame</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreMiniFrame</p></td>
+<td><p><a class="reference internal" href="wx.MiniFrame.html#wx.MiniFrame" title="wx.MiniFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.MiniFrame</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreNotebook</p></td>
+<td><p><a class="reference internal" href="wx.Notebook.html#wx.Notebook" title="wx.Notebook"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Notebook</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PrePanel</p></td>
+<td><p><a class="reference internal" href="wx.Panel.html#wx.Panel" title="wx.Panel"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Panel</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PrePopupTransientWindow</p></td>
+<td><p><a class="reference internal" href="wx.PopupTransientWindow.html#wx.PopupTransientWindow" title="wx.PopupTransientWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.PopupTransientWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PrePopupWindow</p></td>
+<td><p><a class="reference internal" href="wx.PopupWindow.html#wx.PopupWindow" title="wx.PopupWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.PopupWindow</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PrePyAxBaseWindow</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PrePyControl</p></td>
+<td><p><a class="reference internal" href="wx.Control.html#wx.Control" title="wx.Control"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Control</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PrePyPanel</p></td>
+<td><p><a class="reference internal" href="wx.Panel.html#wx.Panel" title="wx.Panel"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Panel</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PrePyPickerBase</p></td>
+<td><p><a class="reference internal" href="wx.PickerBase.html#wx.PickerBase" title="wx.PickerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.PickerBase</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PrePyScrolledWindow</p></td>
+<td><p><a class="reference internal" href="wx.ScrolledWindow.html#wx.ScrolledWindow" title="wx.ScrolledWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ScrolledWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PrePyWindow</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Window</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreRadioBox</p></td>
+<td><p><a class="reference internal" href="wx.RadioBox.html#wx.RadioBox" title="wx.RadioBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.RadioBox</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreRadioButton</p></td>
+<td><p><a class="reference internal" href="wx.RadioButton.html#wx.RadioButton" title="wx.RadioButton"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.RadioButton</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreSashLayoutWindow</p></td>
+<td><p><a class="reference internal" href="wx.adv.SashLayoutWindow.html#wx.adv.SashLayoutWindow" title="wx.adv.SashLayoutWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.SashLayoutWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreSashWindow</p></td>
+<td><p><a class="reference internal" href="wx.adv.SashWindow.html#wx.adv.SashWindow" title="wx.adv.SashWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.SashWindow</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreScrollBar</p></td>
+<td><p><a class="reference internal" href="wx.ScrollBar.html#wx.ScrollBar" title="wx.ScrollBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ScrollBar</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreScrolledWindow</p></td>
+<td><p><a class="reference internal" href="wx.ScrolledWindow.html#wx.ScrolledWindow" title="wx.ScrolledWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ScrolledWindow</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreSearchCtrl</p></td>
+<td><p><a class="reference internal" href="wx.SearchCtrl.html#wx.SearchCtrl" title="wx.SearchCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SearchCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreSimpleHtmlListBox</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PreSingleInstanceChecker</p></td>
+<td><p><a class="reference internal" href="wx.SingleInstanceChecker.html#wx.SingleInstanceChecker" title="wx.SingleInstanceChecker"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SingleInstanceChecker</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreSlider</p></td>
+<td><p><a class="reference internal" href="wx.Slider.html#wx.Slider" title="wx.Slider"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Slider</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreSpinButton</p></td>
+<td><p><a class="reference internal" href="wx.SpinButton.html#wx.SpinButton" title="wx.SpinButton"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SpinButton</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreSpinCtrl</p></td>
+<td><p><a class="reference internal" href="wx.SpinCtrl.html#wx.SpinCtrl" title="wx.SpinCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SpinCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreSpinCtrlDouble</p></td>
+<td><p><a class="reference internal" href="wx.SpinCtrlDouble.html#wx.SpinCtrlDouble" title="wx.SpinCtrlDouble"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SpinCtrlDouble</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreSplitterWindow</p></td>
+<td><p><a class="reference internal" href="wx.SplitterWindow.html#wx.SplitterWindow" title="wx.SplitterWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SplitterWindow</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreStaticBitmap</p></td>
+<td><p><a class="reference internal" href="wx.StaticBitmap.html#wx.StaticBitmap" title="wx.StaticBitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.StaticBitmap</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreStaticBox</p></td>
+<td><p><a class="reference internal" href="wx.StaticBox.html#wx.StaticBox" title="wx.StaticBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.StaticBox</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreStaticLine</p></td>
+<td><p><a class="reference internal" href="wx.StaticLine.html#wx.StaticLine" title="wx.StaticLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.StaticLine</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreStaticText</p></td>
+<td><p><a class="reference internal" href="wx.StaticText.html#wx.StaticText" title="wx.StaticText"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.StaticText</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreStatusBar</p></td>
+<td><p><a class="reference internal" href="wx.StatusBar.html#wx.StatusBar" title="wx.StatusBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.StatusBar</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreTextCtrl</p></td>
+<td><p><a class="reference internal" href="wx.TextCtrl.html#wx.TextCtrl" title="wx.TextCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreToggleButton</p></td>
+<td><p><a class="reference internal" href="wx.ToggleButton.html#wx.ToggleButton" title="wx.ToggleButton"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ToggleButton</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreToolBar</p></td>
+<td><p><a class="reference internal" href="wx.ToolBar.html#wx.ToolBar" title="wx.ToolBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ToolBar</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreToolbook</p></td>
+<td><p><a class="reference internal" href="wx.Toolbook.html#wx.Toolbook" title="wx.Toolbook"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Toolbook</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreTreebook</p></td>
+<td><p><a class="reference internal" href="wx.Treebook.html#wx.Treebook" title="wx.Treebook"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Treebook</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreTreeCtrl</p></td>
+<td><p><a class="reference internal" href="wx.TreeCtrl.html#wx.TreeCtrl" title="wx.TreeCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TreeCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreVListBox</p></td>
+<td><p><a class="reference internal" href="wx.VListBox.html#wx.VListBox" title="wx.VListBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.VListBox</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PreVScrolledWindow</p></td>
+<td><p><a class="reference internal" href="wx.VScrolledWindow.html#wx.VScrolledWindow" title="wx.VScrolledWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.VScrolledWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PreWindow</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Window</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Printer_GetLastError</p></td>
+<td><p><a class="reference internal" href="wx.Printer.html#wx.Printer.GetLastError" title="wx.Printer.GetLastError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Printer.GetLastError</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Process_Exists</p></td>
+<td><p><a class="reference internal" href="wx.Process.html#wx.Process.Exists" title="wx.Process.Exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Process.Exists</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Process_Kill</p></td>
+<td><p><a class="reference internal" href="wx.Process.html#wx.Process.Kill" title="wx.Process.Kill"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Process.Kill</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Process_Open</p></td>
+<td><p><a class="reference internal" href="wx.Process.html#wx.Process.Open" title="wx.Process.Open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Process.Open</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PseudoDC</p></td>
+<td><p><a class="reference internal" href="wx.adv.PseudoDC.html#wx.adv.PseudoDC" title="wx.adv.PseudoDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.PseudoDC</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyApp_GetComCtl32Version</p></td>
+<td><p><a class="reference internal" href="wx.PyApp.html#wx.PyApp.GetComCtl32Version" title="wx.PyApp.GetComCtl32Version"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.GetComCtl32Version</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyApp_GetMacAboutMenuItemId</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.GetMacAboutMenuItemId</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyApp_GetMacExitMenuItemId</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.GetMacExitMenuItemId</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PyApp_GetMacHelpMenuTitleName</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.GetMacHelpMenuTitleName</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyApp_GetMacPreferencesMenuItemId</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.GetMacPreferencesMenuItemId</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PyApp_GetMacSupportPCMenuShortcuts</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyApp_GetShell32Version</p></td>
+<td><p><a class="reference internal" href="wx.PyApp.html#wx.PyApp.GetShell32Version" title="wx.PyApp.GetShell32Version"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.GetShell32Version</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyApp_GetTraitsIfExists</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyApp_IsDisplayAvailable</p></td>
+<td><p><a class="reference internal" href="wx.PyApp.html#wx.PyApp.IsDisplayAvailable" title="wx.PyApp.IsDisplayAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.IsDisplayAvailable</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyApp_IsMainLoopRunning</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.IsMainLoopRunning</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyApp_SetMacAboutMenuItemId</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.SetMacAboutMenuItemId</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PyApp_SetMacExitMenuItemId</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.SetMacExitMenuItemId</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyApp_SetMacHelpMenuTitleName</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.SetMacHelpMenuTitleName</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PyApp_SetMacPreferencesMenuItemId</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.PyApp.SetMacPreferencesMenuItemId</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyApp_SetMacSupportPCMenuShortcuts</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PyAxBaseWindow_FromHWND</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyBitmapDataObject</p></td>
+<td><p><a class="reference internal" href="wx.BitmapDataObject.html#wx.BitmapDataObject" title="wx.BitmapDataObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.BitmapDataObject</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyControl</p></td>
+<td><p><a class="reference internal" href="wx.Control.html#wx.Control" title="wx.Control"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Control</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyDataObjectSimple</p></td>
+<td><p><a class="reference internal" href="wx.DataObjectSimple.html#wx.DataObjectSimple" title="wx.DataObjectSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DataObjectSimple</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyDeadObjectError</p></td>
+<td><p><em class="xref py py-obj">RuntimeError</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyDropTarget</p></td>
+<td><p><a class="reference internal" href="wx.DropTarget.html#wx.DropTarget" title="wx.DropTarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DropTarget</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyEvtHandler</p></td>
+<td><p><a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler" title="wx.EvtHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.EvtHandler</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyImageHandler</p></td>
+<td><p><a class="reference internal" href="wx.ImageHandler.html#wx.ImageHandler" title="wx.ImageHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ImageHandler</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyLocale</p></td>
+<td><p><a class="reference internal" href="wx.Locale.html#wx.Locale" title="wx.Locale"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Locale</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyLog</p></td>
+<td><p><a class="reference internal" href="wx.Log.html#wx.Log" title="wx.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyPanel</p></td>
+<td><p><a class="reference internal" href="wx.Panel.html#wx.Panel" title="wx.Panel"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Panel</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyPickerBase</p></td>
+<td><p><a class="reference internal" href="wx.PickerBase.html#wx.PickerBase" title="wx.PickerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.PickerBase</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyPreviewControlBar</p></td>
+<td><p><a class="reference internal" href="wx.PreviewControlBar.html#wx.PreviewControlBar" title="wx.PreviewControlBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.PreviewControlBar</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyPreviewFrame</p></td>
+<td><p><a class="reference internal" href="wx.PreviewFrame.html#wx.PreviewFrame" title="wx.PreviewFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.PreviewFrame</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyPrintPreview</p></td>
+<td><p><a class="reference internal" href="wx.PrintPreview.html#wx.PrintPreview" title="wx.PrintPreview"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.PrintPreview</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyScrolledWindow</p></td>
+<td><p><a class="reference internal" href="wx.ScrolledWindow.html#wx.ScrolledWindow" title="wx.ScrolledWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ScrolledWindow</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PySimpleApp</p></td>
+<td><p><a class="reference internal" href="wx.App.html#wx.App" title="wx.App"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.App</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyTextDataObject</p></td>
+<td><p><a class="reference internal" href="wx.TextDataObject.html#wx.TextDataObject" title="wx.TextDataObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextDataObject</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyTimer</p></td>
+<td><p><a class="reference internal" href="wx.Timer.html#wx.Timer" title="wx.Timer"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Timer</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyTipProvider</p></td>
+<td><p><a class="reference internal" href="wx.adv.TipProvider.html#wx.adv.TipProvider" title="wx.adv.TipProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.TipProvider</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PyValidator</p></td>
+<td><p><a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Validator</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PyWindow</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Window</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Quantize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Quantize_Quantize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>QueryLayoutInfoEvent</p></td>
+<td><p><a class="reference internal" href="wx.adv.QueryLayoutInfoEvent.html#wx.adv.QueryLayoutInfoEvent" title="wx.adv.QueryLayoutInfoEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.QueryLayoutInfoEvent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>RadioBox_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.RadioBox.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>RadioButton_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.RadioButton.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>RectPP</p></td>
+<td><p><a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Rect</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>RectPS</p></td>
+<td><p><a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Rect</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>RectS</p></td>
+<td><p><a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Rect</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rect.OffsetXY</p></td>
+<td><p><a class="reference internal" href="wx.Rect.html#wx.Rect.Offset" title="wx.Rect.Offset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Rect.Offset</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>RegionFromBitmap</p></td>
+<td><p><a class="reference internal" href="wx.Region.html#wx.Region" title="wx.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Region</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>RegionFromBitmapColour</p></td>
+<td><p><a class="reference internal" href="wx.Region.html#wx.Region" title="wx.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Region</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>RegionFromPoints</p></td>
+<td><p><a class="reference internal" href="wx.Region.html#wx.Region" title="wx.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Region</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>RendererNative_Get</p></td>
+<td><p><a class="reference internal" href="wx.RendererNative.html#wx.RendererNative.Get" title="wx.RendererNative.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.RendererNative.Get</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>RendererNative_GetDefault</p></td>
+<td><p><a class="reference internal" href="wx.RendererNative.html#wx.RendererNative.GetDefault" title="wx.RendererNative.GetDefault"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.RendererNative.GetDefault</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>RendererNative_GetGeneric</p></td>
+<td><p><a class="reference internal" href="wx.RendererNative.html#wx.RendererNative.GetGeneric" title="wx.RendererNative.GetGeneric"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.RendererNative.GetGeneric</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>RendererNative_Set</p></td>
+<td><p><a class="reference internal" href="wx.RendererNative.html#wx.RendererNative.Set" title="wx.RendererNative.Set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.RendererNative.Set</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>RendererVersion_IsCompatible</p></td>
+<td><p><a class="reference internal" href="wx.RendererVersion.html#wx.RendererVersion.IsCompatible" title="wx.RendererVersion.IsCompatible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.RendererVersion.IsCompatible</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SashEvent</p></td>
+<td><p><a class="reference internal" href="wx.adv.SashEvent.html#wx.adv.SashEvent" title="wx.adv.SashEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.SashEvent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SashLayoutWindow</p></td>
+<td><p><a class="reference internal" href="wx.adv.SashLayoutWindow.html#wx.adv.SashLayoutWindow" title="wx.adv.SashLayoutWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.SashLayoutWindow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SashWindow</p></td>
+<td><p><a class="reference internal" href="wx.adv.SashWindow.html#wx.adv.SashWindow" title="wx.adv.SashWindow"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.SashWindow</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ScrollBar_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ScrollBar.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ScrolledWindow_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ScrolledWindow.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ScrollHelper</p></td>
+<td><p><a class="reference internal" href="wx.VarHVScrollHelper.html#wx.VarHVScrollHelper" title="wx.VarHVScrollHelper"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.VarHVScrollHelper</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SearchCtrlBase</p></td>
+<td><p><a class="reference internal" href="wx.SearchCtrl.html#wx.SearchCtrl" title="wx.SearchCtrl"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SearchCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SetCursor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SetDefaultPyEncoding</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>SetBitmapSelected</p></td>
+<td><p><a class="reference internal" href="wx.AnyButton.html#wx.AnyButton.SetBitmapPressed" title="wx.AnyButton.SetBitmapPressed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.AnyButton.SetBitmapPressed</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ShowTip</p></td>
+<td><p><a class="reference internal" href="wx.adv.functions.html#wx.adv.ShowTip" title="wx.adv.ShowTip"><code class="xref py py-func docutils literal notranslate"><span class="pre">wx.adv.ShowTip</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SimpleHtmlListBox</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SizerFlags_GetDefaultBorder</p></td>
+<td><p><a class="reference internal" href="wx.SizerFlags.html#wx.SizerFlags.GetDefaultBorder" title="wx.SizerFlags.GetDefaultBorder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SizerFlags.GetDefaultBorder</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SizerItemSizer</p></td>
+<td><p><a class="reference internal" href="wx.SizerItem.html#wx.SizerItem" title="wx.SizerItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SizerItem</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SizerItemSpacer</p></td>
+<td><p><a class="reference internal" href="wx.SizerItem.html#wx.SizerItem" title="wx.SizerItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SizerItem</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SizerItemWindow</p></td>
+<td><p><a class="reference internal" href="wx.SizerItem.html#wx.SizerItem" title="wx.SizerItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.SizerItem</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Slider_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Slider.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Sound</p></td>
+<td><p><a class="reference internal" href="wx.adv.Sound.html#wx.adv.Sound" title="wx.adv.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.Sound</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Sound_PlaySound</p></td>
+<td><p><a class="reference internal" href="wx.adv.Sound.html#wx.adv.Sound.PlaySound" title="wx.adv.Sound.PlaySound"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.adv.Sound.PlaySound</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Sound_Stop</p></td>
+<td><p><a class="reference internal" href="wx.adv.Sound.html#wx.adv.Sound.Stop" title="wx.adv.Sound.Stop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.adv.Sound.Stop</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SoundFromData</p></td>
+<td><p><a class="reference internal" href="wx.adv.Sound.html#wx.adv.Sound" title="wx.adv.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.Sound</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SpinButton_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SpinButton.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SpinCtrl_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SpinCtrl.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>SplashScreen</p></td>
+<td><p><a class="reference internal" href="wx.adv.SplashScreen.html#wx.adv.SplashScreen" title="wx.adv.SplashScreen"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.SplashScreen</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SplashScreenWindow</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>SplitterWindow.SetSashSize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SplitterWindow_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SplitterWindow.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StandardDialogLayoutAdapter</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>StandardDialogLayoutAdapter_DoFitWithScrolling</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StandardDialogLayoutAdapter_DoMustScroll</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>StandardDialogLayoutAdapter_DoReparentControls</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StandardPaths_Get</p></td>
+<td><p><a class="reference internal" href="wx.StandardPaths.html#wx.StandardPaths.Get" title="wx.StandardPaths.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StandardPaths.Get</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>StaticBitmap_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StaticBitmap.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StaticBox_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StaticBox.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>StaticLine_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StaticLine.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StaticLine_GetDefaultSize</p></td>
+<td><p><a class="reference internal" href="wx.StaticLine.html#wx.StaticLine.GetDefaultSize" title="wx.StaticLine.GetDefaultSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StaticLine.GetDefaultSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>StaticText_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StaticText.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StatusBar_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StatusBar.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>StockCursor</p></td>
+<td><p><a class="reference internal" href="wx.Cursor.html#wx.Cursor" title="wx.Cursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Cursor</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>StockGDI_DeleteAll</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StockGDI.DeleteAll</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>StockGDI_GetBrush</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StockGDI.GetBrush</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StockGDI_GetColour</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StockGDI.GetColour</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>StockGDI_GetCursor</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StockGDI.GetCursor</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StockGDI_GetPen</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StockGDI.GetPen</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>StockGDI_instance</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.StockGDI.instance</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StopWatch</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>StyledTextCtrl.SetUseAntiAliasing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>SystemOptions_GetOption</p></td>
+<td><p><a class="reference internal" href="wx.SystemOptions.html#wx.SystemOptions.GetOption" title="wx.SystemOptions.GetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemOptions.GetOption</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SystemOptions_GetOptionInt</p></td>
+<td><p><a class="reference internal" href="wx.SystemOptions.html#wx.SystemOptions.GetOptionInt" title="wx.SystemOptions.GetOptionInt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemOptions.GetOptionInt</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SystemOptions_HasOption</p></td>
+<td><p><a class="reference internal" href="wx.SystemOptions.html#wx.SystemOptions.HasOption" title="wx.SystemOptions.HasOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemOptions.HasOption</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SystemOptions_IsFalse</p></td>
+<td><p><a class="reference internal" href="wx.SystemOptions.html#wx.SystemOptions.IsFalse" title="wx.SystemOptions.IsFalse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemOptions.IsFalse</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SystemOptions_SetOption</p></td>
+<td><p><a class="reference internal" href="wx.SystemOptions.html#wx.SystemOptions.SetOption" title="wx.SystemOptions.SetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemOptions.SetOption</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SystemOptions_SetOptionInt</p></td>
+<td><p><a class="reference internal" href="wx.SystemOptions.html#wx.SystemOptions.SetOption" title="wx.SystemOptions.SetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemOptions.SetOption</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SystemSettings_GetColour</p></td>
+<td><p><a class="reference internal" href="wx.SystemSettings.html#wx.SystemSettings.GetColour" title="wx.SystemSettings.GetColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemSettings.GetColour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SystemSettings_GetFont</p></td>
+<td><p><a class="reference internal" href="wx.SystemSettings.html#wx.SystemSettings.GetFont" title="wx.SystemSettings.GetFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemSettings.GetFont</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SystemSettings_GetMetric</p></td>
+<td><p><a class="reference internal" href="wx.SystemSettings.html#wx.SystemSettings.GetMetric" title="wx.SystemSettings.GetMetric"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemSettings.GetMetric</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SystemSettings_GetScreenType</p></td>
+<td><p><a class="reference internal" href="wx.SystemSettings.html#wx.SystemSettings.GetScreenType" title="wx.SystemSettings.GetScreenType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemSettings.GetScreenType</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SystemSettings_HasFeature</p></td>
+<td><p><a class="reference internal" href="wx.SystemSettings.html#wx.SystemSettings.HasFeature" title="wx.SystemSettings.HasFeature"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.SystemSettings.HasFeature</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SystemSettings_SetScreenType</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TaskBarIcon</p></td>
+<td><p><a class="reference internal" href="wx.adv.TaskBarIcon.html#wx.adv.TaskBarIcon" title="wx.adv.TaskBarIcon"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.TaskBarIcon</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>TaskBarIcon_IsAvailable</p></td>
+<td><p><a class="reference internal" href="wx.adv.TaskBarIcon.html#wx.adv.TaskBarIcon.IsAvailable" title="wx.adv.TaskBarIcon.IsAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.adv.TaskBarIcon.IsAvailable</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>TaskBarIconEvent</p></td>
+<td><p><a class="reference internal" href="wx.adv.TaskBarIconEvent.html#wx.adv.TaskBarIconEvent" title="wx.adv.TaskBarIconEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.TaskBarIconEvent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>TestFontEncoding</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TextAreaBase</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NONE</span> <span class="pre">(implementation</span> <span class="pre">detail)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TextAttr_BitlistsEqPartial</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TextAttr_Combine</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TextAttr_CombineBitlists</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TextAttr_RemoveStyle</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TextAttr_SplitParaCharStyles</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TextAttr_TabsEq</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TextCtrl_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TextCtrl.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TextCtrlBase</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NONE</span> <span class="pre">(implementation</span> <span class="pre">detail)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TextCtrlIface</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NONE</span> <span class="pre">(implementation</span> <span class="pre">detail)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TextEntryBase</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NONE</span> <span class="pre">(implementation</span> <span class="pre">detail)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TextUrlEvent</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TGAHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Thread_IsMain</p></td>
+<td><p><a class="reference internal" href="wx.functions.html#wx.IsMainThread" title="wx.IsMainThread"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.IsMainThread</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ThreadEvent</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TIFFHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TimeSpan_Day</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Day" title="wx.TimeSpan.Day"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Day</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>TimeSpan_Days</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Days" title="wx.TimeSpan.Days"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Days</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>TimeSpan_Hour</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Hour" title="wx.TimeSpan.Hour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Hour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>TimeSpan_Hours</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Hours" title="wx.TimeSpan.Hours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Hours</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>TimeSpan_Millisecond</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Millisecond" title="wx.TimeSpan.Millisecond"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Millisecond</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>TimeSpan_Milliseconds</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Milliseconds" title="wx.TimeSpan.Milliseconds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Milliseconds</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>TimeSpan_Minute</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Minute" title="wx.TimeSpan.Minute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Minute</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>TimeSpan_Minutes</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Minutes" title="wx.TimeSpan.Minutes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Minutes</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>TimeSpan_Second</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Second" title="wx.TimeSpan.Second"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Second</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>TimeSpan_Seconds</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Seconds" title="wx.TimeSpan.Seconds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Seconds</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>TimeSpan_Week</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Week" title="wx.TimeSpan.Week"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Week</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>TimeSpan_Weeks</p></td>
+<td><p><a class="reference internal" href="wx.TimeSpan.html#wx.TimeSpan.Weeks" title="wx.TimeSpan.Weeks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TimeSpan.Weeks</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>TipProvider</p></td>
+<td><p><a class="reference internal" href="wx.adv.TipProvider.html#wx.adv.TipProvider" title="wx.adv.TipProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.TipProvider</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ToggleButton_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToggleButton.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ToolBar_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolBar.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ToolbookEvent</p></td>
+<td><p><a class="reference internal" href="wx.BookCtrlEvent.html#wx.BookCtrlEvent" title="wx.BookCtrlEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.BookCtrlEvent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ToolTip_Enable</p></td>
+<td><p><a class="reference internal" href="wx.ToolTip.html#wx.ToolTip.Enable" title="wx.ToolTip.Enable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolTip.Enable</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ToolTip_SetAutoPop</p></td>
+<td><p><a class="reference internal" href="wx.ToolTip.html#wx.ToolTip.SetAutoPop" title="wx.ToolTip.SetAutoPop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolTip.SetAutoPop</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ToolTip_SetDelay</p></td>
+<td><p><a class="reference internal" href="wx.ToolTip.html#wx.ToolTip.SetDelay" title="wx.ToolTip.SetDelay"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolTip.SetDelay</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ToolTip_SetMaxWidth</p></td>
+<td><p><a class="reference internal" href="wx.ToolTip.html#wx.ToolTip.SetMaxWidth" title="wx.ToolTip.SetMaxWidth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolTip.SetMaxWidth</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ToolTip_SetReshow</p></td>
+<td><p><a class="reference internal" href="wx.ToolTip.html#wx.ToolTip.SetReshow" title="wx.ToolTip.SetReshow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolTip.SetReshow</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>TopLevelWindow_GetDefaultSize</p></td>
+<td><p><a class="reference internal" href="wx.TopLevelWindow.html#wx.TopLevelWindow.GetDefaultSize" title="wx.TopLevelWindow.GetDefaultSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TopLevelWindow.GetDefaultSize</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Trap</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TreebookEvent</p></td>
+<td><p><a class="reference internal" href="wx.BookCtrlEvent.html#wx.BookCtrlEvent" title="wx.BookCtrlEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.BookCtrlEvent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>TreeCtrl_GetClassDefaultAttributes</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TreeCtrl.GetClassDefaultAttributes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TreeItemData</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code> (a MappedType is being used instead to handle setting any PyObject as item data.)</p></td>
+</tr>
+<tr class="row-even"><td><p>UpdateUIEvent_CanUpdate</p></td>
+<td><p><a class="reference internal" href="wx.UpdateUIEvent.html#wx.UpdateUIEvent.CanUpdate" title="wx.UpdateUIEvent.CanUpdate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.CanUpdate</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>UpdateUIEvent_GetMode</p></td>
+<td><p><a class="reference internal" href="wx.UpdateUIEvent.html#wx.UpdateUIEvent.GetMode" title="wx.UpdateUIEvent.GetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.GetMode</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>UpdateUIEvent_GetUpdateInterval</p></td>
+<td><p><a class="reference internal" href="wx.UpdateUIEvent.html#wx.UpdateUIEvent.GetUpdateInterval" title="wx.UpdateUIEvent.GetUpdateInterval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.GetUpdateInterval</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>UpdateUIEvent_ResetUpdateTime</p></td>
+<td><p><a class="reference internal" href="wx.UpdateUIEvent.html#wx.UpdateUIEvent.ResetUpdateTime" title="wx.UpdateUIEvent.ResetUpdateTime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.ResetUpdateTime</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>UpdateUIEvent_SetMode</p></td>
+<td><p><a class="reference internal" href="wx.UpdateUIEvent.html#wx.UpdateUIEvent.SetMode" title="wx.UpdateUIEvent.SetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.SetMode</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>UpdateUIEvent_SetUpdateInterval</p></td>
+<td><p><a class="reference internal" href="wx.UpdateUIEvent.html#wx.UpdateUIEvent.SetUpdateInterval" title="wx.UpdateUIEvent.SetUpdateInterval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.UpdateUIEvent.SetUpdateInterval</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Validator_IsSilent</p></td>
+<td><p><a class="reference internal" href="wx.Validator.html#wx.Validator.IsSilent" title="wx.Validator.IsSilent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Validator.IsSilent</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Validator_SetBellOnError</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Validator_SuppressBellOnError</p></td>
+<td><p><a class="reference internal" href="wx.Validator.html#wx.Validator.SuppressBellOnError" title="wx.Validator.SuppressBellOnError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Validator.SuppressBellOnError</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>WakeUpMainThread</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Window_FindFocus</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.FindFocus" title="wx.Window.FindFocus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.FindFocus</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Window_FromHWND</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Window_GetCapture</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.GetCapture" title="wx.Window.GetCapture"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetCapture</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Window_GetClassDefaultAttributes</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.GetClassDefaultAttributes" title="wx.Window.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetClassDefaultAttributes</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Window_NewControlId</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.NewControlId" title="wx.Window.NewControlId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.NewControlId</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Window_UnreserveControlId</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.UnreserveControlId" title="wx.Window.UnreserveControlId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.UnreserveControlId</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>XPMHandler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MISSING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>YieldIfNeeded</p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.Yield</span></code> wx.GetApp().Yield(onlyIfNeeded=True)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="wx-dc-modifications">
+<h2><a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.DC</span></code></a> Modifications<a class="headerlink" href="#wx-dc-modifications" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><em class="xref py py-obj">Classic</em> Name</p></th>
+<th class="head"><p><em class="xref py py-obj">Phoenix</em> Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BeginDrawing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>BlitPointSize</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.Blit" title="wx.DC.Blit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.Blit</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>CalcBoundingBoxPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.CalcBoundingBox" title="wx.DC.CalcBoundingBox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.CalcBoundingBox</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CrossHairPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.CrossHair" title="wx.DC.CrossHair"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.CrossHair</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DrawArcPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawArc" title="wx.DC.DrawArc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawArc</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DrawBitmapPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawBitmap" title="wx.DC.DrawBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawBitmap</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DrawCheckMarkRect</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawCheckMark" title="wx.DC.DrawCheckMark"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawCheckMark</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DrawCirclePoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawCircle" title="wx.DC.DrawCircle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawCircle</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DrawEllipsePointSize</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawEllipse" title="wx.DC.DrawEllipse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawEllipse</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DrawEllipseRect</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawEllipse" title="wx.DC.DrawEllipse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawEllipse</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DrawEllipticArcPointSize</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawEllipticArc" title="wx.DC.DrawEllipticArc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawEllipticArc</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DrawIconPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawIcon" title="wx.DC.DrawIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawIcon</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DrawLinePoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawLine" title="wx.DC.DrawLine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawLine</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DrawPointPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawPoint" title="wx.DC.DrawPoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawPoint</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DrawRectanglePointSize</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawRectangle" title="wx.DC.DrawRectangle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawRectangle</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DrawRectangleRect</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawRectangle" title="wx.DC.DrawRectangle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawRectangle</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DrawRotatedTextPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawRotatedText" title="wx.DC.DrawRotatedText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawRotatedText</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DrawRoundedRectanglePointSize</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawRoundedRectangle" title="wx.DC.DrawRoundedRectangle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawRoundedRectangle</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DrawRoundedRectangleRect</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawRoundedRectangle" title="wx.DC.DrawRoundedRectangle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawRoundedRectangle</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DrawTextPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.DrawText" title="wx.DC.DrawText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.DrawText</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>EndDrawing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>FloodFillPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.FloodFill" title="wx.DC.FloodFill"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.FloodFill</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GetDeviceOriginTuple</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.GetDeviceOrigin" title="wx.DC.GetDeviceOrigin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetDeviceOrigin</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetImpl</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GetLogicalOriginTuple</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.GetLogicalOrigin" title="wx.DC.GetLogicalOrigin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetLogicalOrigin</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetMultiLineTextExtent</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.GetFullMultiLineTextExtent" title="wx.DC.GetFullMultiLineTextExtent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetFullMultiLineTextExtent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GetOptimization</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetPixelPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.GetPixel" title="wx.DC.GetPixel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetPixel</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GetResolution</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.GetPPI" title="wx.DC.GetPPI"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetPPI</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetSizeMMTuple</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.GetSizeMM" title="wx.DC.GetSizeMM"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetSizeMM</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Ok</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.IsOk" title="wx.DC.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.IsOk</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SetClippingRect</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.SetClippingRegion" title="wx.DC.SetClippingRegion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.SetClippingRegion</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SetClippingRegionAsRegion</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.SetClippingRegion" title="wx.DC.SetClippingRegion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.SetClippingRegion</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SetClippingRegionPointSize</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.SetClippingRegion" title="wx.DC.SetClippingRegion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.SetClippingRegion</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SetDeviceOriginPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.SetDeviceOrigin" title="wx.DC.SetDeviceOrigin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.SetDeviceOrigin</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SetLogicalOriginPoint</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.SetLogicalOrigin" title="wx.DC.SetLogicalOrigin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.SetLogicalOrigin</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SetOptimization</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>StretchBlitPointSize</p></td>
+<td><p><a class="reference internal" href="wx.DC.html#wx.DC.StretchBlit" title="wx.DC.StretchBlit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.StretchBlit</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="wx-window-modifications">
+<h2><a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Window</span></code></a> Modifications<a class="headerlink" href="#wx-window-modifications" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><em class="xref py py-obj">Classic</em> Name</p></th>
+<th class="head"><p><em class="xref py py-obj">Phoenix</em> Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ClientToScreenXY</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.ClientToScreen" title="wx.Window.ClientToScreen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.ClientToScreen</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ConvertDialogPointToPixels</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.ConvertDialogToPixels" title="wx.Window.ConvertDialogToPixels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.ConvertDialogToPixels</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>ConvertDialogSizeToPixels</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.ConvertDialogToPixels" title="wx.Window.ConvertDialogToPixels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.ConvertDialogToPixels</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetAdjustedBestSize</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.GetEffectiveMinSize" title="wx.Window.GetEffectiveMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetEffectiveMinSize</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GetBestFittingSize</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.GetEffectiveMinSize" title="wx.Window.GetEffectiveMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetEffectiveMinSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetBestSizeTuple</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.GetBestSize" title="wx.Window.GetBestSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetBestSize</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GetClientSizeTuple</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.GetClientSize" title="wx.Window.GetClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetClientSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetScreenPositionTuple</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.GetScreenPosition" title="wx.Window.GetScreenPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetScreenPosition</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GetSizeTuple</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.GetSize" title="wx.Window.GetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetToolTipString</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.GetToolTipText" title="wx.Window.GetToolTipText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.GetToolTipText</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>HitTestXY</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.HitTest" title="wx.Window.HitTest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.HitTest</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>IsExposedPoint</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.IsExposed" title="wx.Window.IsExposed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.IsExposed</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>IsExposedRect</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.IsExposed" title="wx.Window.IsExposed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.IsExposed</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>MakeModal</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PopupMenuXY</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.PopupMenu" title="wx.Window.PopupMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.PopupMenu</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ScreenToClientXY</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.ScreenToClient" title="wx.Window.ScreenToClient"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.ScreenToClient</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SetBestFittingSize</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.SetInitialSize" title="wx.Window.SetInitialSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetInitialSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SetClientSizeWH</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.SetClientSize" title="wx.Window.SetClientSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetClientSize</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SetDimensions</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.SetSize" title="wx.Window.SetSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SetHelpTextForId</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.SetHelpText" title="wx.Window.SetHelpText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetHelpText</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SetSizeHintsSz</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.SetSizeHints" title="wx.Window.SetSizeHints"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetSizeHints</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SetToolTipString</p></td>
+<td><p><a class="reference internal" href="wx.Window.html#wx.Window.SetToolTip" title="wx.Window.SetToolTip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetToolTip</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SetVirtualSizeHints</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SetVirtualSizeHintsSz</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="wx-sizer-modifications">
+<h2><a class="reference internal" href="wx.Sizer.html#wx.Sizer" title="wx.Sizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.Sizer</span></code></a> Modifications<a class="headerlink" href="#wx-sizer-modifications" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><em class="xref py py-obj">Classic</em> Name</p></th>
+<th class="head"><p><em class="xref py py-obj">Phoenix</em> Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AddF</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Add" title="wx.Sizer.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Add</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>AddItem</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Add" title="wx.Sizer.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Add</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>AddSizer</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Add" title="wx.Sizer.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Add</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>AddWindow</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Add" title="wx.Sizer.Add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Add</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>DeleteWindows</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Clear" title="wx.Sizer.Clear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Clear</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetItemIndex</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.GetItem" title="wx.Sizer.GetItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.GetItem</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>GetMinSizeTuple</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.GetMinSize" title="wx.Sizer.GetMinSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.GetMinSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GetPositionTuple</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.GetPosition" title="wx.Sizer.GetPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.GetPosition</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>InsertF</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Insert" title="wx.Sizer.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Insert</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>InsertItem</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Insert" title="wx.Sizer.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Insert</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>InsertSizer</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Insert" title="wx.Sizer.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Insert</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>InsertWindow</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Insert" title="wx.Sizer.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Insert</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PrependF</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Prepend" title="wx.Sizer.Prepend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Prepend</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PrependItem</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Prepend" title="wx.Sizer.Prepend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Prepend</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>PrependSizer</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Prepend" title="wx.Sizer.Prepend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Prepend</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PrependWindow</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Prepend" title="wx.Sizer.Prepend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Prepend</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>RemovePos</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Remove" title="wx.Sizer.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Remove</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>RemoveSizer</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Remove" title="wx.Sizer.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Remove</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>RemoveWindow</p></td>
+<td><p><a class="reference internal" href="wx.Sizer.html#wx.Sizer.Remove" title="wx.Sizer.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Sizer.Remove</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="wx-lib-modifications">
+<h2>wx.lib Modifications<a class="headerlink" href="#wx-lib-modifications" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><em class="xref py py-obj">Classic</em> Name</p></th>
+<th class="head"><p><em class="xref py py-obj">Phoenix</em> Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>wx.lib.buttonpanel</p></td>
+<td><p><a class="reference internal" href="wx.lib.agw.buttonpanel.html#module-wx.lib.agw.buttonpanel" title="wx.lib.agw.buttonpanel"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.lib.agw.buttonpanel</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.lib.customtreectrl</p></td>
+<td><p><a class="reference internal" href="wx.lib.agw.customtreectrl.html#module-wx.lib.agw.customtreectrl" title="wx.lib.agw.customtreectrl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.lib.agw.customtreectrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.lib.flatnotebook</p></td>
+<td><p><a class="reference internal" href="wx.lib.agw.flatnotebook.html#module-wx.lib.agw.flatnotebook" title="wx.lib.agw.flatnotebook"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.lib.agw.flatnotebook</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.lib.foldpanelbar</p></td>
+<td><p><a class="reference internal" href="wx.lib.agw.foldpanelbar.html#module-wx.lib.agw.foldpanelbar" title="wx.lib.agw.foldpanelbar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.lib.agw.foldpanelbar</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.lib.hyperlink</p></td>
+<td><p><a class="reference internal" href="wx.lib.agw.hyperlink.html#module-wx.lib.agw.hyperlink" title="wx.lib.agw.hyperlink"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.lib.agw.hyperlink</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.lib.grids</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.lib.pyshell</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.lib.rightalign</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.lib.shell</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.lib.splashscreen</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.lib.wxPlotCanvas</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REMOVED</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="modules-which-have-moved">
+<h2>Modules which have moved<a class="headerlink" href="#modules-which-have-moved" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><em class="xref py py-obj">Classic</em> Name</p></th>
+<th class="head"><p><em class="xref py py-obj">Phoenix</em> Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>wx.calendar.CalendarCtrl</p></td>
+<td><p><a class="reference internal" href="wx.adv.CalendarCtrl.html#wx.adv.CalendarCtrl" title="wx.adv.CalendarCtrl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.CalendarCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.animate.Animation</p></td>
+<td><p><a class="reference internal" href="wx.adv.Animation.html#wx.adv.Animation" title="wx.adv.Animation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.Animation</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.animate.AnimationCtrl</p></td>
+<td><p><a class="reference internal" href="wx.adv.AnimationCtrl.html#wx.adv.AnimationCtrl" title="wx.adv.AnimationCtrl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.AnimationCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.combo.OwnerDrawnComboBox</p></td>
+<td><p><a class="reference internal" href="wx.adv.OwnerDrawnComboBox.html#wx.adv.OwnerDrawnComboBox" title="wx.adv.OwnerDrawnComboBox"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.OwnerDrawnComboBox</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.gizmos.EditableListBox</p></td>
+<td><p><a class="reference internal" href="wx.adv.EditableListBox.html#wx.adv.EditableListBox" title="wx.adv.EditableListBox"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.EditableListBox</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.gizmos.TreeListCtrl</p></td>
+<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.lib.gizmos.TreeListCtrl</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.AboutBox</p></td>
+<td><p><a class="reference internal" href="wx.adv.functions.html#wx.adv.AboutBox" title="wx.adv.AboutBox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.adv.AboutBox</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.AboutDialogInfo</p></td>
+<td><p><a class="reference internal" href="wx.adv.AboutDialogInfo.html#wx.adv.AboutDialogInfo" title="wx.adv.AboutDialogInfo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.AboutDialogInfo</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.DatePickerCtrl</p></td>
+<td><p><a class="reference internal" href="wx.adv.DatePickerCtrl.html#wx.adv.DatePickerCtrl" title="wx.adv.DatePickerCtrl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.DatePickerCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.GenericDatePickerCtrl</p></td>
+<td><p><a class="reference internal" href="wx.adv.GenericDatePickerCtrl.html#wx.adv.GenericDatePickerCtrl" title="wx.adv.GenericDatePickerCtrl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.GenericDatePickerCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.TaskBarIcon</p></td>
+<td><p><a class="reference internal" href="wx.adv.TaskBarIcon.html#wx.adv.TaskBarIcon" title="wx.adv.TaskBarIcon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.TaskBarIcon</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>wx.SplashScreen</p></td>
+<td><p><a class="reference internal" href="wx.adv.SplashScreen.html#wx.adv.SplashScreen" title="wx.adv.SplashScreen"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.SplashScreen</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>wx.wizard.Wizard</p></td>
+<td><p><a class="reference internal" href="wx.adv.Wizard.html#wx.adv.Wizard" title="wx.adv.Wizard"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wx.adv.Wizard</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

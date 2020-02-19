@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Validator Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="window_deletion_overview.html" rel="next" title="Window Deletion Overview"/>
+<link href="treectrl_overview.html" rel="prev" title="TreeCtrl Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Validator Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="window_deletion_overview.html" title="Window Deletion Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="treectrl_overview.html" title="TreeCtrl Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Validator Overview</strong></a><ul>
+<li><a class="reference internal" href="#validator-basic-concepts">Validator basic concepts</a></li>
+<li><a class="reference internal" href="#anatomy-of-a-validator">Anatomy of a Validator</a></li>
+<li><a class="reference internal" href="#how-validators-interact-with-dialogs">How Validators Interact with Dialogs</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/validator_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-validator-overview">
+<span id="validator-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Validator Overview</strong><a class="headerlink" href="#phoenix-title-validator-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="validator-basic-concepts">
+<span id="id1"></span><h2>Validator basic concepts<a class="headerlink" href="#validator-basic-concepts" title="Permalink to this headline">¶</a></h2>
+<p>The aim of the validator concept is to make dialogs very much easier
+to write. A validator is an object that can be plugged into a control
+(such as a <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>), and mediates between Python data and
+the control, transferring the data in either direction and validating
+it. It also is able to intercept events generated by the control,
+providing filtering behaviour without the need to derive a new control
+class.</p>
+<p><a class="reference internal" href="wx.Validator.html#wx-validator"><span class="std std-ref">  wx.Validator</span></a> can also be used to intercept keystrokes and other
+events within an input field. To use a validator, you have to create
+your own sub-class of <a class="reference internal" href="wx.Validator.html#wx-validator"><span class="std std-ref">  wx.Validator</span></a> (neither <em class="xref py py-obj">TextValidator</em> nor
+<em class="xref py py-obj">GenericValidator</em> are implemented in wxPython). This sub-class is
+then associated with your input field by calling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myInputField</span><span class="o">.</span><span class="n">SetValidator</span><span class="p">(</span><span class="n">myValidator</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your <a class="reference internal" href="wx.Validator.html#wx-validator"><span class="std std-ref">  wx.Validator</span></a> sub-class must implement the
+<a class="reference internal" href="wx.Validator.html#wx.Validator.Clone" title="wx.Validator.Clone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Validator.Clone</span></code></a> method.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that any <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> may have a validator; using the
+<code class="docutils literal notranslate"><span class="pre">WS_EX_VALIDATE_RECURSIVELY</span></code> style (see <a class="reference internal" href="wx.Window.html#window-extra-styles"><span class="std std-ref">Window extended
+styles</span></a>) you can also implement recursive
+validation.</p>
+</div>
+</div>
+<div class="section" id="anatomy-of-a-validator">
+<span id="id2"></span><h2>Anatomy of a Validator<a class="headerlink" href="#anatomy-of-a-validator" title="Permalink to this headline">¶</a></h2>
+<p>A programmer creating a new validator class should provide the
+following functionality.</p>
+<p>A validator constructor is responsible for allowing the programmer to
+specify the kind of validation required, and perhaps a pointer to a
+Python variable that is used for storing the data for the control. If
+such a variable address is not supplied by the user, then the
+validator should store the data internally.</p>
+<p>The <a class="reference internal" href="wx.Validator.html#wx.Validator.Validate" title="wx.Validator.Validate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Validator.Validate</span></code></a> method should return true if the
+data in the control (not the Python variable) is valid.  It should
+also show an appropriate message if data was not valid.</p>
+<p>The <a class="reference internal" href="wx.Validator.html#wx.Validator.TransferToWindow" title="wx.Validator.TransferToWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Validator.TransferToWindow</span></code></a> member function should
+transfer the data from the validator or associated Python variable to
+the control.</p>
+<p>The <a class="reference internal" href="wx.Validator.html#wx.Validator.TransferFromWindow" title="wx.Validator.TransferFromWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Validator.TransferFromWindow</span></code></a> member function should
+transfer the data from the control to the validator or associated
+Python variable.</p>
+<p>There should be a copy constructor, and a <a class="reference internal" href="wx.Validator.html#wx.Validator.Clone" title="wx.Validator.Clone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Validator.Clone</span></code></a>
+function which returns a copy of the validator object.  This is
+important because validators are passed by reference to window
+constructors, and must therefore be cloned internally.</p>
+<p>You can optionally define event handlers for the validator, to
+implement filtering. These handlers will capture events before the
+control itself does (see <a class="reference internal" href="events_overview.html#how-events-are-processed"><span class="std std-ref">How Events are Processed</span></a>).</p>
+</div>
+<div class="section" id="how-validators-interact-with-dialogs">
+<span id="id3"></span><h2>How Validators Interact with Dialogs<a class="headerlink" href="#how-validators-interact-with-dialogs" title="Permalink to this headline">¶</a></h2>
+<p>For validators to work correctly, validator functions must be called
+at the right times during dialog initialisation and dismissal.</p>
+<p>When a <a class="reference internal" href="wx.Dialog.html#wx.Dialog.Show" title="wx.Dialog.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.Show</span></code></a> is called (for a modeless dialog) or
+<a class="reference internal" href="wx.Dialog.html#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.ShowModal</span></code></a> is called (for a modal dialog), the
+function <a class="reference internal" href="wx.Window.html#wx.Window.InitDialog" title="wx.Window.InitDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.InitDialog</span></code></a> is automatically called. This in
+turn sends an initialisation event to the dialog. The default handler
+for the <code class="docutils literal notranslate"><span class="pre">wxEVT_INIT_DIALOG</span></code> event is defined in the <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>
+class to simply call the function
+<a class="reference internal" href="wx.Window.html#wx.Window.TransferDataToWindow" title="wx.Window.TransferDataToWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.TransferDataToWindow</span></code></a>. This function finds all the
+validators in the window’s children and calls the
+<a class="reference internal" href="wx.Validator.html#wx.Validator.TransferToWindow" title="wx.Validator.TransferToWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Validator.TransferToWindow</span></code></a> function for each. Thus, data is
+transferred from Python variables to the dialog just as the dialog is
+being shown.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using a window or panel instead of a dialog, you
+will need to call <a class="reference internal" href="wx.Window.html#wx.Window.InitDialog" title="wx.Window.InitDialog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.InitDialog</span></code></a> explicitly before
+showing the window.</p>
+</div>
+<p>When the user clicks on a button, for example the <code class="docutils literal notranslate"><span class="pre">OK</span></code> button, the
+application should first call <a class="reference internal" href="wx.Window.html#wx.Window.Validate" title="wx.Window.Validate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Validate</span></code></a>, which
+returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if any of the child window validators failed to
+validate the window data. The button handler should return immediately
+if validation failed. Secondly, the application should call
+<a class="reference internal" href="wx.Window.html#wx.Window.TransferDataFromWindow" title="wx.Window.TransferDataFromWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.TransferDataFromWindow</span></code></a> and return if this failed.
+It is then safe to end the dialog by calling
+<a class="reference internal" href="wx.Dialog.html#wx.Dialog.EndModal" title="wx.Dialog.EndModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.EndModal</span></code></a> (if modal) or <a class="reference internal" href="wx.Dialog.html#wx.Dialog.Show" title="wx.Dialog.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.Show</span></code></a> (if
+modeless).</p>
+<p>In fact, <a class="reference internal" href="wx.Dialog.html#wx-dialog"><span class="std std-ref">  wx.Dialog</span></a> contains a default command event handler for
+the <code class="docutils literal notranslate"><span class="pre">ID_OK</span></code> button. It goes like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">OnOK</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Validate</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">TransferDataFromWindow</span><span class="p">():</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">IsModal</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">EndModal</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SetReturnCode</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So if using validators and a normal <code class="docutils literal notranslate"><span class="pre">OK</span></code> button, you may not even
+need to write any code for handling dialog dismissal.</p>
+<p>If you load your dialog from a resource file, you will need to iterate
+through the controls setting validators, since validators can’t be
+specified in a dialog resource.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

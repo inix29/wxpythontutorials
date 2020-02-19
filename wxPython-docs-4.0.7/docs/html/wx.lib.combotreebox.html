@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.combotreebox — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.combotreebox.BaseComboTreeBox.html" rel="next" title="wx.lib.combotreebox.BaseComboTreeBox"/>
+<link href="wx.lib.colourutils.html" rel="prev" title="wx.lib.colourutils"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.combotreebox</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.combotreebox.BaseComboTreeBox.html" title="wx.lib.combotreebox.BaseComboTreeBox">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.colourutils.html" title="wx.lib.colourutils">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.combotreebox</strong></a><ul>
+<li><a class="reference internal" href="#function-summary-functions-summary"> Functions Summary</a></li>
+<li><a class="reference internal" href="#class-summary-classes-summary"> Classes Summary</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.combotreebox.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.combotreebox"></span><div class="section" id="phoenix-title-wx-lib-combotreebox">
+<span id="wx-lib-combotreebox"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.combotreebox</strong><a class="headerlink" href="#phoenix-title-wx-lib-combotreebox" title="Permalink to this headline">¶</a></h1>
+<p>ComboTreeBox provides a ComboBox that pops up a tree instead of a list.</p>
+<p>ComboTreeBox tries to provide the same interface as <a class="reference internal" href="wx.ComboBox.html#wx.ComboBox" title="wx.ComboBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ComboBox</span></code></a> as much as
+possible. However, whereas the ComboBox widget uses indices to access
+items in the list of choices, ComboTreeBox uses TreeItemId’s instead. If
+you add an item to the ComboTreeBox (using Append or Insert), the
+<a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TreeItemId</span></code></a> associated with the added item is returned. You can then use
+that <a class="reference internal" href="wx.TreeItemId.html#wx.TreeItemId" title="wx.TreeItemId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.TreeItemId</span></code></a> to add items as children of that first item. For
+example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wx.lib.combotreebox</span> <span class="kn">import</span> <span class="n">ComboTreeBox</span>
+<span class="n">combo</span> <span class="o">=</span> <span class="n">ComboTreeBox</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+<span class="n">item1</span> <span class="o">=</span> <span class="n">combo</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="s1">'Item 1'</span><span class="p">)</span> <span class="c1"># Add a root item</span>
+<span class="n">item1a</span> <span class="o">=</span> <span class="n">combo</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="s1">'Item 1a'</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">item1</span><span class="p">)</span> <span class="c1"># Add a child to item1</span>
+</pre></div>
+</div>
+<p>You can also add client data to each of the items like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">item1</span> <span class="o">=</span> <span class="n">combo</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="s1">'Item 1'</span><span class="p">,</span> <span class="n">clientData</span><span class="o">=</span><span class="n">somePythonObject</span><span class="p">)</span>
+<span class="n">item1a</span> <span class="o">=</span> <span class="n">combo</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="s1">'Item 1a'</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">item1</span><span class="p">,</span>
+                       <span class="n">clientData</span><span class="o">=</span><span class="n">someOtherPythonObject</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And later fetch the client data like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">somePythonObject</span> <span class="o">=</span> <span class="n">combo</span><span class="o">.</span><span class="n">GetClientData</span><span class="p">(</span><span class="n">item1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To get the client data of the currently selected item (if any):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">currentItem</span> <span class="o">=</span> <span class="n">combo</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">currentItem</span><span class="p">:</span>
+    <span class="n">somePythonObject</span> <span class="o">=</span> <span class="n">combo</span><span class="o">.</span><span class="n">GetClientData</span><span class="p">(</span><span class="n">currentItem</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Supported styles are the same as for <a class="reference internal" href="wx.ComboBox.html#wx.ComboBox" title="wx.ComboBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.ComboBox</span></code></a>, i.e. <code class="docutils literal notranslate"><span class="pre">wx.CB_READONLY</span></code> and
+<code class="docutils literal notranslate"><span class="pre">wx.CB_SORT</span></code>. Provide them as usual:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">combo</span> <span class="o">=</span> <span class="n">ComboTreeBox</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">CB_READONLY</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">CB_SORT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Supported platforms: wxMSW and wxMAC natively, wxGTK by means of a
+workaround.</p>
+<p><em>Module author: Frank Niessink &lt;<a class="reference external" href="mailto:frank%40niessink.com">frank<span>@</span>niessink<span>.</span>com</a>&gt;</em></p>
+<p>Copyright 2006, 2008, 2010, Frank Niessink
+License: wxWidgets license
+Version: 1.1
+Date: August 1, 2010</p>
+<div class="section" id="function-summary-functions-summary">
+<h2><a class="reference internal" href="_images/function_summary.png"><img alt="function_summary" class="align-middle" src="_images/function_summary.png" style="width: 32px;"/></a> Functions Summary<a class="headerlink" href="#function-summary-functions-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.combotreebox.ComboTreeBox" title="wx.lib.combotreebox.ComboTreeBox"><code class="xref py py-func docutils literal notranslate"><span class="pre">ComboTreeBox</span></code></a></p></td>
+<td><p>Factory function to create the right ComboTreeBox depending on</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-summary-classes-summary">
+<h2><a class="reference internal" href="_images/class_summary.png"><img alt="class_summary" class="align-middle" src="_images/class_summary.png" style="width: 32px;"/></a> Classes Summary<a class="headerlink" href="#class-summary-classes-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.combotreebox.BaseComboTreeBox.html#wx.lib.combotreebox.BaseComboTreeBox" title="wx.lib.combotreebox.BaseComboTreeBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseComboTreeBox</span></code></a></p></td>
+<td><p>BaseComboTreeBox is the base class for platform specific versions of the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.combotreebox.BasePopupFrame.html#wx.lib.combotreebox.BasePopupFrame" title="wx.lib.combotreebox.BasePopupFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePopupFrame</span></code></a></p></td>
+<td><p>BasePopupFrame is the base class for platform specific versions of the</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.combotreebox.GTKComboTreeBox.html#wx.lib.combotreebox.GTKComboTreeBox" title="wx.lib.combotreebox.GTKComboTreeBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GTKComboTreeBox</span></code></a></p></td>
+<td><p>The ComboTreeBox widget for wxGTK. This is actually a work</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.combotreebox.GTKPopupFrame.html#wx.lib.combotreebox.GTKPopupFrame" title="wx.lib.combotreebox.GTKPopupFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GTKPopupFrame</span></code></a></p></td>
+<td><p>GTKPopupFrame is the base class GTK PopupFrame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.combotreebox.IterableTreeCtrl.html#wx.lib.combotreebox.IterableTreeCtrl" title="wx.lib.combotreebox.IterableTreeCtrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IterableTreeCtrl</span></code></a></p></td>
+<td><p>TreeCtrl is the same as <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeCtrl</span></code>, with a few convenience methods</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.combotreebox.MACPopupFrame.html#wx.lib.combotreebox.MACPopupFrame" title="wx.lib.combotreebox.MACPopupFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MACPopupFrame</span></code></a></p></td>
+<td><p>MacPopupFrame is the base class Mac PopupFrame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.combotreebox.MSWComboTreeBox.html#wx.lib.combotreebox.MSWComboTreeBox" title="wx.lib.combotreebox.MSWComboTreeBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MSWComboTreeBox</span></code></a></p></td>
+<td><p>MSWComboTreeBox adds one piece of functionality as compared to</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.combotreebox.MSWPopupFrame.html#wx.lib.combotreebox.MSWPopupFrame" title="wx.lib.combotreebox.MSWPopupFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MSWPopupFrame</span></code></a></p></td>
+<td><p>MSWPopupFrame is the base class Windows PopupFrame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.combotreebox.NativeComboTreeBox.html#wx.lib.combotreebox.NativeComboTreeBox" title="wx.lib.combotreebox.NativeComboTreeBox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NativeComboTreeBox</span></code></a></p></td>
+<td><p>NativeComboTreeBox, and any subclass, uses the native ComboBox as basis,</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<br/><hr/>
+<dl class="function">
+<dt id="wx.lib.combotreebox.ComboTreeBox">
+<code class="sig-name descname">ComboTreeBox</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.combotreebox.ComboTreeBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factory function to create the right ComboTreeBox depending on
+platform. You may force a specific class, e.g. for testing
+purposes, by setting the keyword argument ‘platform’, e.g.
+‘platform=GTK’ or ‘platform=MSW’ or ‘platform=MAC’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>platform</strong> (<em>string</em>) – ‘GTK’|’MSW’|’MAC’ can be used to override the
+actual platform for testing</p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

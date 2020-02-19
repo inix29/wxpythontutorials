@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.DataObjectSimple — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.DateSpan.html" rel="next" title="wx.DateSpan"/>
+<link href="wx.DataObjectComposite.html" rel="prev" title="wx.DataObjectComposite"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.DataObjectSimple</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.DateSpan.html" title="wx.DateSpan">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.DataObjectComposite.html" title="wx.DataObjectComposite">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.DataObjectSimple</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.DataObjectSimple.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-dataobjectsimple">
+<span id="wx-dataobjectsimple"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.DataObjectSimple</strong><a class="headerlink" href="#phoenix-title-wx-dataobjectsimple" title="Permalink to this headline">¶</a></h1>
+<p>This is the simplest possible implementation of the <a class="reference internal" href="wx.DataObject.html#wx-dataobject"><span class="std std-ref">  wx.DataObject</span></a>  class.</p>
+<p>The data object of (a class derived from) this class only supports <strong>one format</strong>, so the number of virtual functions to be implemented is reduced.</p>
+<p>Notice that this is still an abstract base class and cannot be used directly, it must be derived. The objects supporting rendering the data must override <a class="reference internal" href="#wx.DataObjectSimple.GetDataSize" title="wx.DataObjectSimple.GetDataSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDataSize</span></code></a>  and <a class="reference internal" href="#wx.DataObjectSimple.GetDataHere" title="wx.DataObjectSimple.GetDataHere"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDataHere</span></code></a>  while the objects which may be set must override <a class="reference internal" href="#wx.DataObjectSimple.SetData" title="wx.DataObjectSimple.SetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetData</span></code></a>. Of course, the objects supporting both operations must override all three methods.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>DataObjectSimple</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of DataObjectSimple" class="inheritance" src="_static/images/inheritance/wx.DataObjectSimple_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,171,112" href="wx.DataObjectSimple.html" id="node1" shape="rect" title="This is the simplest possible implementation of the wx.DataObject  class."/> <area alt="" coords="28,5,148,35" href="wx.DataObject.html" id="node2" shape="rect" title="A wx.DataObject  represents data that can be copied to or from the clipboard, or dragged and dropped."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.BitmapDataObject.html#wx-bitmapdataobject"><span class="std std-ref">  wx.BitmapDataObject</span></a>, <a class="reference internal" href="wx.CustomDataObject.html#wx-customdataobject"><span class="std std-ref">  wx.CustomDataObject</span></a>, <a class="reference internal" href="wx.FileDataObject.html#wx-filedataobject"><span class="std std-ref">  wx.FileDataObject</span></a>, <a class="reference internal" href="wx.HTMLDataObject.html#wx-htmldataobject"><span class="std std-ref">  wx.HTMLDataObject</span></a>, <a class="reference internal" href="wx.richtext.RichTextBufferDataObject.html#wx-richtext-richtextbufferdataobject"><span class="std std-ref">  wx.richtext.RichTextBufferDataObject</span></a>, <a class="reference internal" href="wx.TextDataObject.html#wx-textdataobject"><span class="std std-ref">  wx.TextDataObject</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%"/>
+<col style="width: 62%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DataObjectSimple.__init__" title="wx.DataObjectSimple.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor accepts the supported format (none by default) which may also be set later with <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFormat</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DataObjectSimple.GetAllFormats" title="wx.DataObjectSimple.GetAllFormats"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAllFormats</span></code></a></p></td>
+<td><p>Returns a list of wx.DataFormat objects which this data object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DataObjectSimple.GetDataHere" title="wx.DataObjectSimple.GetDataHere"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDataHere</span></code></a></p></td>
+<td><p>Copies this data object’s data bytes to the given buffer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DataObjectSimple.GetDataSize" title="wx.DataObjectSimple.GetDataSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDataSize</span></code></a></p></td>
+<td><p>Gets the size of our data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DataObjectSimple.GetFormat" title="wx.DataObjectSimple.GetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFormat</span></code></a></p></td>
+<td><p>Returns the (one and only one) format supported by this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DataObjectSimple.SetData" title="wx.DataObjectSimple.SetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetData</span></code></a></p></td>
+<td><p>Copies data from the provided buffer to this data object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DataObjectSimple.SetFormat" title="wx.DataObjectSimple.SetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFormat</span></code></a></p></td>
+<td><p>Sets the supported format.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 48%"/>
+<col style="width: 52%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DataObjectSimple.AllFormats" title="wx.DataObjectSimple.AllFormats"><code class="xref py py-attr docutils literal notranslate"><span class="pre">AllFormats</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.DataObjectSimple.GetAllFormats" title="wx.DataObjectSimple.GetAllFormats"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAllFormats</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DataObjectSimple.DataHere" title="wx.DataObjectSimple.DataHere"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DataHere</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.DataObjectSimple.GetDataHere" title="wx.DataObjectSimple.GetDataHere"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDataHere</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.DataObjectSimple.DataSize" title="wx.DataObjectSimple.DataSize"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DataSize</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.DataObjectSimple.GetDataSize" title="wx.DataObjectSimple.GetDataSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDataSize</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.DataObjectSimple.Format" title="wx.DataObjectSimple.Format"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Format</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.DataObjectSimple.GetFormat" title="wx.DataObjectSimple.GetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFormat</span></code></a> and <a class="reference internal" href="#wx.DataObjectSimple.SetFormat" title="wx.DataObjectSimple.SetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFormat</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.DataObjectSimple">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">DataObjectSimple</code><span class="sig-paren">(</span><em class="sig-param">DataObject</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DataObjectSimple" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DataObjectSimple</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="n">FormatInvalid</span><span class="p">)</span>
+
+<span class="n">DataObjectSimple</span><span class="p">(</span><span class="n">formatName</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is the simplest possible implementation of the DataObject
+class.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.DataObjectSimple.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DataObjectSimple.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, format=FormatInvalid)</em></p>
+<p>Constructor accepts the supported format (none by default) which may also be set later with <a class="reference internal" href="#wx.DataObjectSimple.SetFormat" title="wx.DataObjectSimple.SetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFormat</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>format</strong> (<a class="reference internal" href="wx.DataFormat.html#wx.DataFormat" title="wx.DataFormat"><em>wx.DataFormat</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, formatName)</em></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DataObjectSimple.GetAllFormats">
+<code class="sig-name descname">GetAllFormats</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dir=DataObject.Get</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DataObjectSimple.GetAllFormats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of wx.DataFormat objects which this data object
+supports transferring in the given direction.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DataObjectSimple.GetDataHere">
+<code class="sig-name descname">GetDataHere</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">buf</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DataObjectSimple.GetDataHere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies this data object’s data bytes to the given buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DataObjectSimple.GetDataSize">
+<code class="sig-name descname">GetDataSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DataObjectSimple.GetDataSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the size of our data.</p>
+<p>Must be implemented in the derived class if the object supports rendering its data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DataObjectSimple.GetFormat">
+<code class="sig-name descname">GetFormat</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DataObjectSimple.GetFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the (one and only one) format supported by this object.</p>
+<p>It is assumed that the format is supported in both directions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.DataFormat.html#wx-dataformat"><span class="std std-ref">  wx.DataFormat</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DataObjectSimple.SetData">
+<code class="sig-name descname">SetData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DataObjectSimple.SetData" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetData</strong> <em class="xref py py-obj">(self, buf)</em></p>
+<p>Copies data from the provided buffer to this data object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetData</strong> <em class="xref py py-obj">(self, format, buf)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.DataObjectSimple.SetFormat">
+<code class="sig-name descname">SetFormat</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">format</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.DataObjectSimple.SetFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the supported format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>format</strong> (<a class="reference internal" href="wx.DataFormat.html#wx.DataFormat" title="wx.DataFormat"><em>wx.DataFormat</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.DataObjectSimple.AllFormats">
+<code class="sig-name descname">AllFormats</code><a class="headerlink" href="#wx.DataObjectSimple.AllFormats" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.DataObjectSimple.GetAllFormats" title="wx.DataObjectSimple.GetAllFormats"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAllFormats</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.DataObjectSimple.DataHere">
+<code class="sig-name descname">DataHere</code><a class="headerlink" href="#wx.DataObjectSimple.DataHere" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.DataObjectSimple.GetDataHere" title="wx.DataObjectSimple.GetDataHere"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDataHere</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.DataObjectSimple.DataSize">
+<code class="sig-name descname">DataSize</code><a class="headerlink" href="#wx.DataObjectSimple.DataSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.DataObjectSimple.GetDataSize" title="wx.DataObjectSimple.GetDataSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDataSize</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.DataObjectSimple.Format">
+<code class="sig-name descname">Format</code><a class="headerlink" href="#wx.DataObjectSimple.Format" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.DataObjectSimple.GetFormat" title="wx.DataObjectSimple.GetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFormat</span></code></a> and <a class="reference internal" href="#wx.DataObjectSimple.SetFormat" title="wx.DataObjectSimple.SetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFormat</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

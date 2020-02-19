@@ -1,0 +1,196 @@
+
+.. include:: headings.inc
+
+=========================================================================
+**wx.adv** Functions
+=========================================================================
+
+The functions and macros defined in the **wx.adv** module are described here: you can look up a function using the alphabetical listing of them.
+
+Function Summary
+================
+
+
+:ref:`A <wx.adv A>`  |  :ref:`C <wx.adv C>`  |  :ref:`G <wx.adv G>`  |  :ref:`S <wx.adv S>`
+
+
+.. _wx.adv A:
+
+A
+^
+
+* :func:`wx.adv.AboutBox`
+
+
+.. _wx.adv C:
+
+C
+^
+
+* :func:`wx.adv.CreateFileTipProvider`
+
+
+.. _wx.adv G:
+
+G
+^
+
+* :func:`wx.adv.GenericAboutBox`
+
+
+.. _wx.adv S:
+
+S
+^
+
+* :func:`wx.adv.ShowTip`
+
+
+Functions
+=============
+
+
+.. function:: wx.adv.AboutBox(info, parent=None)
+
+   This function shows the standard about dialog containing the information specified in `info`.                  
+
+   If the current platform has a native about dialog which is capable of showing all the fields in `info`, the native dialog is used, otherwise the function falls back to the generic wxWidgets version of the dialog, i.e. does the same thing as GenericAboutBox. 
+
+   Here is an example of how this function may be used: 
+
+   ::
+
+           def ShowSimpleAboutDialog(self, event):
+
+               info = wx.adv.AboutDialogInfo()
+               info.SetName(_("My Program"))
+               info.SetVersion(_("1.2.3 Beta"))
+               info.SetDescription(_("This program does something great."))
+               info.SetCopyright(wx.T("(C) 2007 Me <my@email.addre.ss>"))
+
+               wx.adv.AboutBox(info)
+
+
+
+   Please see the :ref:`Dialogs Sample <dialogs sample>`  for more examples of using this function and :ref:`wx.adv.AboutDialogInfo`  for the description of the information which can be shown in the about dialog. 
+
+                
+
+
+   :param `info`: 
+   :type `info`: wx.adv.AboutDialogInfo
+   :param `parent`: 
+   :type `parent`: wx.Window
+
+
+
+
+
+
+.. function:: wx.adv.CreateFileTipProvider(filename, currentTip)
+
+   This function creates a :ref:`wx.adv.TipProvider`  which may be used with `wx.adv.ShowTip`     .                  
+
+
+
+
+   :param `filename`: The name of the file containing the tips, one per line.   
+   :type `filename`: string
+   :param `currentTip`: The index of the first tip to show. Normally this index is remembered between the 2 program runs.  
+   :type `currentTip`: int
+
+
+
+
+
+
+
+
+   :rtype: :ref:`wx.adv.TipProvider`
+
+
+
+
+                  
+
+
+
+   .. seealso:: :ref:`TipProvider Overview <tipprovider overview>`  
+
+
+
+
+
+
+
+.. function:: wx.adv.GenericAboutBox(info, parent=None)
+
+   This function does the same thing as `wx.adv.AboutBox`       except that it always uses the generic wxWidgets version of the dialog instead of the native one.                  
+
+   This is mainly useful if you need to customize the dialog by e.g. adding custom controls to it (customizing the native dialog is not currently supported). 
+
+   See the :ref:`Dialogs Sample <dialogs sample>`  for an example of about dialog customization. 
+
+
+                
+
+
+   :param `info`: 
+   :type `info`: wx.adv.AboutDialogInfo
+   :param `parent`: 
+   :type `parent`: wx.Window
+
+
+
+
+
+
+   .. seealso:: :ref:`wx.adv.AboutDialogInfo`  
+
+
+
+
+
+
+
+.. function:: wx.adv.ShowTip(parent, tipProvider, showAtStartup=True)
+
+   This function shows a "startup tip" to the user.                  
+
+   The return value is the state of the "Show tips at startup" checkbox. 
+
+
+
+
+   :param `parent`: The parent window for the modal dialog.   
+   :type `parent`: wx.Window
+   :param `tipProvider`: An object which is used to get the text of the tips. It may be created with the `wx.adv.CreateFileTipProvider`       function.   
+   :type `tipProvider`: wx.adv.TipProvider
+   :param `showAtStartup`: Should be ``True`` if startup tips are shown, ``False`` otherwise. This is used as the initial value for "Show tips at startup" checkbox which is shown in the tips dialog.  
+   :type `showAtStartup`: bool
+
+
+
+
+
+
+
+
+
+
+   :rtype: `bool`
+
+
+
+
+                  
+
+
+
+   .. seealso:: :ref:`TipProvider Overview <tipprovider overview>`  
+
+
+
+
+
+

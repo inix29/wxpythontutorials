@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.TextDataObject — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.TextDropTarget.html" rel="next" title="wx.TextDropTarget"/>
+<link href="wx.TextCtrlHitTestResult.enumeration.html" rel="prev" title="wx.TextCtrlHitTestResult"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.TextDataObject</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.TextDropTarget.html" title="wx.TextDropTarget">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.TextCtrlHitTestResult.enumeration.html" title="wx.TextCtrlHitTestResult">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.TextDataObject</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.TextDataObject.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-textdataobject">
+<span id="wx-textdataobject"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.TextDataObject</strong><a class="headerlink" href="#phoenix-title-wx-textdataobject" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-textdataobject"><span class="std std-ref">  wx.TextDataObject</span></a>  is a specialization of <a class="reference internal" href="wx.DataObjectSimple.html#wx-dataobjectsimple"><span class="std std-ref">  wx.DataObjectSimple</span></a>  for text data.</p>
+<p>It can be used without change to paste data into the <a class="reference internal" href="wx.Clipboard.html#wx-clipboard"><span class="std std-ref">  wx.Clipboard</span></a>  or a <a class="reference internal" href="wx.DropSource.html#wx-dropsource"><span class="std std-ref">  wx.DropSource</span></a>. A user may wish to derive a new class from this class for providing text on-demand in order to minimize memory consumption when offering data in several formats, such as plain text and <code class="docutils literal notranslate"><span class="pre">RTF</span></code> because by default the text is stored in a string in this class, but it might as well be generated when requested. For this, <a class="reference internal" href="#wx.TextDataObject.GetTextLength" title="wx.TextDataObject.GetTextLength"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTextLength</span></code></a>  and <a class="reference internal" href="#wx.TextDataObject.GetText" title="wx.TextDataObject.GetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetText</span></code></a>  will have to be overridden.</p>
+<p>Note that if you already have the text inside a string, you will not achieve any efficiency gain by overriding these functions because copying Strings is already a very efficient operation (data is not actually copied because Strings are reference counted).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dnd_overview.html#drag-and-drop-overview"><span class="std std-ref">Drag and Drop Overview</span></a>, <a class="reference internal" href="wx.DataObject.html#wx-dataobject"><span class="std std-ref">  wx.DataObject</span></a>, <a class="reference internal" href="wx.DataObjectSimple.html#wx-dataobjectsimple"><span class="std std-ref">  wx.DataObjectSimple</span></a>, <a class="reference internal" href="wx.FileDataObject.html#wx-filedataobject"><span class="std std-ref">  wx.FileDataObject</span></a>, <a class="reference internal" href="wx.BitmapDataObject.html#wx-bitmapdataobject"><span class="std std-ref">  wx.BitmapDataObject</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>TextDataObject</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of TextDataObject" class="inheritance" src="_static/images/inheritance/wx.TextDataObject_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="13,160,163,189" href="wx.TextDataObject.html" id="node1" shape="rect" title="wx.TextDataObject  is a specialization of wx.DataObjectSimple  for text data."/> <area alt="" coords="5,83,171,112" href="wx.DataObjectSimple.html" id="node2" shape="rect" title="This is the simplest possible implementation of the wx.DataObject  class."/> <area alt="" coords="28,5,148,35" href="wx.DataObject.html" id="node3" shape="rect" title="A wx.DataObject  represents data that can be copied to or from the clipboard, or dragged and dropped."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.URLDataObject.html#wx-urldataobject"><span class="std std-ref">  wx.URLDataObject</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%"/>
+<col style="width: 71%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TextDataObject.__init__" title="wx.TextDataObject.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor, may be used to initialise the text (otherwise <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code>   should be used later).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TextDataObject.GetAllFormats" title="wx.TextDataObject.GetAllFormats"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAllFormats</span></code></a></p></td>
+<td><p>Returns a list of wx.DataFormat objects which this data object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TextDataObject.GetFormat" title="wx.TextDataObject.GetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFormat</span></code></a></p></td>
+<td><p>Returns the preferred format supported by this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TextDataObject.GetFormatCount" title="wx.TextDataObject.GetFormatCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFormatCount</span></code></a></p></td>
+<td><p>Returns 2 under Mac and wxGTK, where text data coming from the clipboard may be provided as <code class="docutils literal notranslate"><span class="pre">ANSI</span></code> ( <code class="docutils literal notranslate"><span class="pre">DF_TEXT</span></code> ) or as Unicode text ( <code class="docutils literal notranslate"><span class="pre">DF_UNICODETEXT</span></code> , but only when   <code class="docutils literal notranslate"><span class="pre">USE_UNICODE==1</span></code> ).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TextDataObject.GetText" title="wx.TextDataObject.GetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetText</span></code></a></p></td>
+<td><p>Returns the text associated with the data object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TextDataObject.GetTextLength" title="wx.TextDataObject.GetTextLength"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTextLength</span></code></a></p></td>
+<td><p>Returns the data size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TextDataObject.SetData" title="wx.TextDataObject.SetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetData</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TextDataObject.SetText" title="wx.TextDataObject.SetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code></a></p></td>
+<td><p>Sets the text associated with the data object.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TextDataObject.AllFormats" title="wx.TextDataObject.AllFormats"><code class="xref py py-attr docutils literal notranslate"><span class="pre">AllFormats</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TextDataObject.GetAllFormats" title="wx.TextDataObject.GetAllFormats"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAllFormats</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TextDataObject.Format" title="wx.TextDataObject.Format"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Format</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TextDataObject.GetFormat" title="wx.TextDataObject.GetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFormat</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TextDataObject.FormatCount" title="wx.TextDataObject.FormatCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FormatCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TextDataObject.GetFormatCount" title="wx.TextDataObject.GetFormatCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFormatCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.TextDataObject.Text" title="wx.TextDataObject.Text"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Text</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TextDataObject.GetText" title="wx.TextDataObject.GetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetText</span></code></a> and <a class="reference internal" href="#wx.TextDataObject.SetText" title="wx.TextDataObject.SetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.TextDataObject.TextLength" title="wx.TextDataObject.TextLength"><code class="xref py py-attr docutils literal notranslate"><span class="pre">TextLength</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.TextDataObject.GetTextLength" title="wx.TextDataObject.GetTextLength"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTextLength</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.TextDataObject">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">TextDataObject</code><span class="sig-paren">(</span><em class="sig-param">DataObjectSimple</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TextDataObject" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TextDataObject</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>TextDataObject is a specialization of DataObjectSimple for text
+data.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.TextDataObject.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">text=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TextDataObject.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor, may be used to initialise the text (otherwise <a class="reference internal" href="#wx.TextDataObject.SetText" title="wx.TextDataObject.SetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code></a>   should be used later).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TextDataObject.GetAllFormats">
+<code class="sig-name descname">GetAllFormats</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dir=DataObject.Get</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TextDataObject.GetAllFormats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of wx.DataFormat objects which this data object
+supports transferring in the given direction.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TextDataObject.GetFormat">
+<code class="sig-name descname">GetFormat</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TextDataObject.GetFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the preferred format supported by this object.</p>
+<p>This is  <code class="docutils literal notranslate"><span class="pre">DF_TEXT</span></code>   or   <code class="docutils literal notranslate"><span class="pre">DF_UNICODETEXT</span></code>   depending on the platform and from the build mode (i.e. from   <code class="docutils literal notranslate"><span class="pre">USE_UNICODE</span></code> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.DataFormat.html#wx-dataformat"><span class="std std-ref">  wx.DataFormat</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TextDataObject.GetFormatCount">
+<code class="sig-name descname">GetFormatCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dir=DataObject.Get</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TextDataObject.GetFormatCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns 2 under Mac and wxGTK, where text data coming from the clipboard may be provided as <code class="docutils literal notranslate"><span class="pre">ANSI</span></code> ( <code class="docutils literal notranslate"><span class="pre">DF_TEXT</span></code> ) or as Unicode text ( <code class="docutils literal notranslate"><span class="pre">DF_UNICODETEXT</span></code> , but only when   <code class="docutils literal notranslate"><span class="pre">USE_UNICODE==1</span></code> ).</p>
+<p>Returns 1 under other platforms (e.g. wxMSW) or when building in <code class="docutils literal notranslate"><span class="pre">ANSI</span></code> mode ( <code class="docutils literal notranslate"><span class="pre">USE_UNICODE==0</span></code> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dir</strong> (<em>DataObject.Direction</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TextDataObject.GetText">
+<code class="sig-name descname">GetText</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TextDataObject.GetText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the text associated with the data object.</p>
+<p>You may wish to override this method when offering data on-demand, but this is not required by wxWidgets’ internals. Use this method to get data in text form from the <a class="reference internal" href="wx.Clipboard.html#wx-clipboard"><span class="std std-ref">  wx.Clipboard</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TextDataObject.GetTextLength">
+<code class="sig-name descname">GetTextLength</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TextDataObject.GetTextLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the data size.</p>
+<p>By default, returns the size of the text data set in the constructor or using <a class="reference internal" href="#wx.TextDataObject.SetText" title="wx.TextDataObject.SetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code></a> . This can be overridden to provide text size data on-demand. It is recommended to return the text length plus 1 for a trailing zero, but this is not strictly required.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TextDataObject.SetData">
+<code class="sig-name descname">SetData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">format</em>, <em class="sig-param">buf</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TextDataObject.SetData" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.TextDataObject.SetText">
+<code class="sig-name descname">SetText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">strText</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.TextDataObject.SetText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the text associated with the data object.</p>
+<p>This method is called when the data object receives the data and, by default, copies the text into the member variable. If you want to process the text on the fly you may wish to override this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strText</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.TextDataObject.AllFormats">
+<code class="sig-name descname">AllFormats</code><a class="headerlink" href="#wx.TextDataObject.AllFormats" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TextDataObject.GetAllFormats" title="wx.TextDataObject.GetAllFormats"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAllFormats</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TextDataObject.Format">
+<code class="sig-name descname">Format</code><a class="headerlink" href="#wx.TextDataObject.Format" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TextDataObject.GetFormat" title="wx.TextDataObject.GetFormat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFormat</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TextDataObject.FormatCount">
+<code class="sig-name descname">FormatCount</code><a class="headerlink" href="#wx.TextDataObject.FormatCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TextDataObject.GetFormatCount" title="wx.TextDataObject.GetFormatCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFormatCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TextDataObject.Text">
+<code class="sig-name descname">Text</code><a class="headerlink" href="#wx.TextDataObject.Text" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TextDataObject.GetText" title="wx.TextDataObject.GetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetText</span></code></a> and <a class="reference internal" href="#wx.TextDataObject.SetText" title="wx.TextDataObject.SetText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetText</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.TextDataObject.TextLength">
+<code class="sig-name descname">TextLength</code><a class="headerlink" href="#wx.TextDataObject.TextLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.TextDataObject.GetTextLength" title="wx.TextDataObject.GetTextLength"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTextLength</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

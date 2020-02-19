@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.masked.maskededit — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.masked.maskededit.Field.html" rel="next" title="wx.lib.masked.maskededit.Field"/>
+<link href="wx.lib.masked.ipaddrctrl.IpAddrCtrlAccessorsMixin.html" rel="prev" title="wx.lib.masked.ipaddrctrl.IpAddrCtrlAccessorsMixin"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.masked.html">
+<strong>wx.lib.masked</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.masked.maskededit</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.masked.maskededit.Field.html" title="wx.lib.masked.maskededit.Field">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.masked.ipaddrctrl.IpAddrCtrlAccessorsMixin.html" title="wx.lib.masked.ipaddrctrl.IpAddrCtrlAccessorsMixin">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.masked.maskededit</strong></a></li>
+<li><a class="reference internal" href="#masked-edit-overview">Masked Edit Overview</a><ul>
+<li><a class="reference internal" href="#initialization-parameters">Initialization Parameters</a><ul>
+<li><a class="reference internal" href="#validating-user-input">Validating User Input</a></li>
+<li><a class="reference internal" href="#coloring-behavior">Coloring Behavior</a></li>
+<li><a class="reference internal" href="#fields">Fields</a></li>
+<li><a class="reference internal" href="#control-class-functions">Control Class Functions</a></li>
+<li><a class="reference internal" href="#masked-ctrl-configuration">masked.Ctrl Configuration</a></li>
+<li><a class="reference internal" href="#class-summary-classes-summary"> Classes Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.masked.maskededit.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<span class="target" id="module-wx.lib.masked.maskededit"></span><div class="section" id="phoenix-title-wx-lib-masked-maskededit">
+<span id="wx-lib-masked-maskededit"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.masked.maskededit</strong><a class="headerlink" href="#phoenix-title-wx-lib-masked-maskededit" title="Permalink to this headline">¶</a></h1>
+<p>contains MaskedEditMixin class that drives all the other masked controls.</p>
+</div>
+<div class="section" id="masked-edit-overview">
+<h1>Masked Edit Overview<a class="headerlink" href="#masked-edit-overview" title="Permalink to this headline">¶</a></h1>
+<dl>
+<dt>masked.TextCtrl:</dt><dd><p>is a sublassed text control that can carefully control the user’s input
+based on a mask string you provide.</p>
+<p>General usage example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">control</span> <span class="o">=</span> <span class="n">masked</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span> <span class="n">win</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="s1">'(###) ###-####'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The example above will create a text control that allows only numbers to be
+entered and then only in the positions indicated in the mask by the # sign.</p>
+</dd>
+<dt>masked.ComboBox:</dt><dd><p>is a similar subclass of wxComboBox that allows the same sort of masking,
+but also can do auto-complete of values, and can require the value typed
+to be in the list of choices to be colored appropriately.</p>
+</dd>
+<dt>masked.Ctrl:</dt><dd><p>is actually a factory function for several types of masked edit controls:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>masked.TextCtrl</p></td>
+<td><p>standard masked edit text box</p></td>
+</tr>
+<tr class="row-even"><td><p>masked.ComboBox</p></td>
+<td><p>adds combobox capabilities</p></td>
+</tr>
+<tr class="row-odd"><td><p>masked.IpAddrCtrl</p></td>
+<td><p>adds special semantics for IP address entry</p></td>
+</tr>
+<tr class="row-even"><td><p>masked.TimeCtrl</p></td>
+<td><p>special subclass handling lots of types as values</p></td>
+</tr>
+<tr class="row-odd"><td><p>masked.NumCtrl</p></td>
+<td><p>special subclass handling numeric values</p></td>
+</tr>
+</tbody>
+</table>
+<p>It works by looking for a <em>controlType</em> parameter in the keyword
+arguments of the control, to determine what kind of instance to return.
+If not specified as a keyword argument, the default control type returned
+will be masked.TextCtrl.</p>
+<p>Each of the above classes has its own set of arguments, but masked.Ctrl
+provides a single “unified” interface for masked controls.</p>
+</dd>
+</dl>
+<p>What follows is a description of how to configure the generic masked.TextCtrl
+and masked.ComboBox;  masked.NumCtrl and masked.TimeCtrl have their own demo
+pages and interface descriptions.</p>
+<hr class="docutils"/>
+<div class="section" id="initialization-parameters">
+<h2>Initialization Parameters<a class="headerlink" href="#initialization-parameters" title="Permalink to this headline">¶</a></h2>
+<dl>
+<dt>mask</dt><dd><blockquote>
+<div><p>Allowed mask characters and function:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%"/>
+<col style="width: 88%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Character</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>#</p></td>
+<td><p>Allow numeric only (0-9)</p></td>
+</tr>
+<tr class="row-odd"><td><p>N</p></td>
+<td><p>Allow letters and numbers (0-9)</p></td>
+</tr>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>Allow uppercase letters only</p></td>
+</tr>
+<tr class="row-odd"><td><p>a</p></td>
+<td><p>Allow lowercase letters only</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>Allow any letter, upper or lower</p></td>
+</tr>
+<tr class="row-odd"><td><p>X</p></td>
+<td><p>Allow string.letters, string.punctuation, string.digits</p></td>
+</tr>
+<tr class="row-even"><td><p>&amp;</p></td>
+<td><p>Allow string.punctuation only (doesn’t include all unicode symbols)</p></td>
+</tr>
+<tr class="row-odd"><td><p>*</p></td>
+<td><p>Allow any visible character</p></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</td>
+<td><p>explicit field boundary (takes no space in the control; allows mix
+of adjacent mask characters to be treated as separate fields,
+eg: ‘&amp;|###’ means “field 0 = ‘&amp;’, field 1 = ‘###’”, but there’s
+no fixed characters in between.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These controls define these sets of characters using string.letters,
+string.uppercase, etc.  These sets are affected by the system locale
+setting, so in order to have the masked controls accept characters
+that are specific to your users’ language, your application should
+set the locale.
+For example, to allow international characters to be used in the
+above masks, you can place the following in your code as part of
+your application’s initialization code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">locale</span>
+<span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The controls now also support (by popular demand) all “visible” characters,
+by use of the * mask character, including unicode characters above
+the standard ANSI keycode range.
+Note:  As string.punctuation doesn’t typically include all unicode
+symbols, you will have to use includechars to get some of these into
+otherwise restricted positions in your control, such as those specified
+with &amp;.</p>
+</div></blockquote>
+<p>Using these mask characters, a variety of template masks can be built. See
+the demo for some other common examples include date+time, social security
+number, etc.  If any of these characters are needed as template rather
+than mask characters, they can be escaped with , ie. N means “literal N”.
+(use \ for literal backslash, as in: r’CCC\NNN’.)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Masks containing only # characters and one optional decimal point
+character are handled specially, as “numeric” controls.  Such
+controls have special handling for typing the ‘-‘ key, handling
+the “decimal point” character as truncating the integer portion,
+optionally allowing grouping characters and so forth.
+There are several parameters and format codes that only make sense
+when combined with such masks, eg. groupChar, decimalChar, and so
+forth (see below).  These allow you to construct reasonable
+numeric entry controls.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing the mask for a control deletes any previous field classes
+(and any associated validation or formatting constraints) for them.</p>
+</div>
+</dd>
+<dt>useFixedWidthFont</dt><dd><p>By default, masked edit controls use a fixed width font, so that
+the mask characters are fixed within the control, regardless of
+subsequent modifications to the value.  Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> if having
+the control font be the same as other controls is required. (This is
+a control-level parameter.)</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 2.9.5: </span>The default is changed to <code class="docutils literal notranslate"><span class="pre">False</span></code> for numctrl only</p>
+</div>
+</dd>
+<dt>defaultEncoding</dt><dd><p>(Applies to unicode systems only) By default, the default unicode encoding
+used is latin1, or iso-8859-1.  If necessary, you can set this control-level
+parameter to govern the codec used to decode your keyboard inputs.
+(This is a control-level parameter.)</p>
+</dd>
+<dt>formatcodes</dt><dd><dl>
+<dt>These other properties can be passed to the class when instantiating it:</dt><dd><p>Formatcodes are specified as a string of single character formatting
+codes that modify  behavior of the control:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>_  Allow spaces
+!  Force upper
+^  Force lower
+R  Right-align field(s)
+r  Right-insert in field(s) (implies R)
+&lt;  Stay in field until explicit navigation out of it
+
+&gt;  Allow insert/delete within partially filled fields (as
+   opposed to the default "overwrite" mode for fixed-width
+   masked edit controls.)  This allows single-field controls
+   or each field within a multi-field control to optionally
+   behave more like standard text controls.
+   (See EMAIL or phone number autoformat examples.)
+
+   *Note: This also governs whether backspace/delete operations
+   shift contents of field to right of cursor, or just blank the
+   erased section.
+
+   Also, when combined with 'r', this indicates that the field
+   or control allows right insert anywhere within the current
+   non-empty value in the field.  (Otherwise right-insert behavior
+   is only performed to when the entire right-insertable field is
+   selected or the cursor is at the right edge of the field.*
+
+
+,  Allow grouping character in integer fields of numeric controls
+   and auto-group/regroup digits (if the result fits) when leaving
+   such a field.  (If specified, .SetValue() will attempt to
+   auto-group as well.)
+   ',' is also the default grouping character.  To change the
+   grouping character and/or decimal character, use the groupChar
+   and decimalChar parameters, respectively.
+   Note: typing the "decimal point" character in such fields will
+   clip the value to that left of the cursor for integer
+   fields of controls with "integer" or "floating point" masks.
+   If the ',' format code is specified, this will also cause the
+   resulting digits to be regrouped properly, using the current
+   grouping character.
+-  Prepend and reserve leading space for sign to mask and allow
+   signed values (negative #s shown in red by default.) Can be
+   used with argument useParensForNegatives (see below.)
+0  integer fields get leading zeros
+D  Date[/time] field
+T  Time field
+F  Auto-Fit: the control calulates its size from
+   the length of the template mask
+V  validate entered chars against validRegex before allowing them
+   to be entered vs. being allowed by basic mask and then having
+   the resulting value just colored as invalid.
+   (See USSTATE autoformat demo for how this can be used.)
+S  select entire field when navigating to new field
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>fillChar</p>
+<dl>
+<dt>defaultValue</dt><dd><p>These controls have two options for the initial state of the control.
+If a blank control with just the non-editable characters showing
+is desired, simply leave the constructor variable fillChar as its
+default (‘ ‘).  If you want some other character there, simply
+change the fillChar to that value.  Note: changing the control’s fillChar
+will implicitly reset all of the fields’ fillChars to this value.</p>
+<p>If you need different default characters in each mask position,
+you can specify a defaultValue parameter in the constructor, or
+set them for each field individually.
+This value must satisfy the non-editable characters of the mask,
+but need not conform to the replaceable characters.</p>
+</dd>
+</dl>
+<p>groupChar</p>
+<dl>
+<dt>decimalChar</dt><dd><p>These parameters govern what character is used to group numbers
+and is used to indicate the decimal point for numeric format controls.
+The default groupChar is ‘,’, the default decimalChar is ‘.’
+By changing these, you can customize the presentation of numbers
+for your location.</p>
+<p>Eg:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">formatcodes</span> <span class="o">=</span> <span class="s1">','</span><span class="p">,</span> <span class="n">groupChar</span><span class="o">=</span><span class="s1">'</span><span class="se">\'</span><span class="s1">'</span>                  <span class="n">allows</span>  <span class="mi">12</span><span class="s1">'345.34</span>
+<span class="n">formatcodes</span> <span class="o">=</span> <span class="s1">','</span><span class="p">,</span> <span class="n">groupChar</span><span class="o">=</span><span class="s1">'.'</span><span class="p">,</span> <span class="n">decimalChar</span><span class="o">=</span><span class="s1">','</span>  <span class="n">allows</span>  <span class="mf">12.345</span><span class="p">,</span><span class="mi">34</span>
+</pre></div>
+</div>
+<p>(These are control-level parameters.)</p>
+</dd>
+<dt>shiftDecimalChar</dt><dd><p>The default “shiftDecimalChar” (used for “backwards-tabbing” until
+shift-tab is fixed in wxPython) is ‘&gt;’ (for QUERTY keyboards.) for
+other keyboards, you may want to customize this, eg ‘?’ for shift ‘,’ on
+AZERTY keyboards, ‘:’ or ‘;’ for other European keyboards, etc.
+(This is a control-level parameter.)</p>
+</dd>
+<dt>useParensForNegatives=False</dt><dd><p>This option can be used with signed numeric format controls to
+indicate signs via () rather than ‘-‘.
+(This is a control-level parameter.)</p>
+</dd>
+<dt>autoSelect=False</dt><dd><p>This option can be used to have a field or the control try to
+auto-complete on each keystroke if choices have been specified.</p>
+</dd>
+<dt>autoCompleteKeycodes=[]</dt><dd><p>By default, DownArrow, PageUp and PageDown will auto-complete a
+partially entered field.  Shift-DownArrow, Shift-UpArrow, PageUp
+and PageDown will also auto-complete, but if the field already
+contains a matched value, these keys will cycle through the list
+of choices forward or backward as appropriate.  Shift-Up and
+Shift-Down also take you to the next/previous field after any
+auto-complete action.</p>
+<p>Additional auto-complete keys can be specified via this parameter.
+Any keys so specified will act like PageDown.
+(This is a control-level parameter.)</p>
+</dd>
+</dl>
+<div class="section" id="validating-user-input">
+<h3>Validating User Input<a class="headerlink" href="#validating-user-input" title="Permalink to this headline">¶</a></h3>
+<p>There are a variety of initialization parameters that are used to validate
+user input.  These parameters can apply to the control as a whole, and/or
+to individual fields:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4%"/>
+<col style="width: 96%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>excludeChars</p></td>
+<td><p>A string of characters to exclude even if otherwise allowed</p></td>
+</tr>
+<tr class="row-even"><td><p>includeChars</p></td>
+<td><p>A string of characters to allow even if otherwise disallowed</p></td>
+</tr>
+<tr class="row-odd"><td><p>validRegex</p></td>
+<td><p>Use a regular expression to validate the contents of the text box</p></td>
+</tr>
+<tr class="row-even"><td><p>validRange</p></td>
+<td><p>Pass a rangeas list (low,high) to limit numeric fields/values</p></td>
+</tr>
+<tr class="row-odd"><td><p>choices</p></td>
+<td><p>A list of strings that are allowed choices for the control.</p></td>
+</tr>
+<tr class="row-even"><td><p>choiceRequired</p></td>
+<td><p>value must be member of choices list</p></td>
+</tr>
+<tr class="row-odd"><td><p>compareNoCase</p></td>
+<td><p>Perform case-insensitive matching when validating against list. <em>Note: for masked.ComboBox, this defaults to True.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>emptyInvalid</p></td>
+<td><p>Boolean indicating whether an empty value should be considered invalid</p></td>
+</tr>
+<tr class="row-odd"><td><p>validFunc</p></td>
+<td><p>A function to call of the form: bool = func(candidate_value) which will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the candidate_value satisfies some external criteria for the control in addition to the the other validation, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if not.  (This validation is applied last in the chain of validations.)</p></td>
+</tr>
+<tr class="row-even"><td><p>validRequired</p></td>
+<td><p>Boolean indicating whether or not keys that are allowed by the mask, but result in an invalid value are allowed to be entered into the control.  Setting this to <code class="docutils literal notranslate"><span class="pre">True</span></code> implies that a valid default value is set for the control.</p></td>
+</tr>
+<tr class="row-odd"><td><p>retainFieldValidation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code> by default; if True, this allows individual fields to retain their own validation constraints independently of any subsequent changes to the control’s overall parameters. (This is a control-level parameter.)</p></td>
+</tr>
+<tr class="row-even"><td><p>validator</p></td>
+<td><p>Validators are not normally needed for masked controls, because of the nature of the validation and control of input.  However, you can supply one to provide data transfer routines for the controls.</p></td>
+</tr>
+<tr class="row-odd"><td><p>raiseOnInvalidPaste</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code> by default; normally a bad paste simply is ignored with a bell; if True, this will cause a ValueError exception to be thrown, with the .value attribute of the exception containing the bad value.</p></td>
+</tr>
+<tr class="row-even"><td><p>stopFieldChangeIfInvalid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code> by default; tries to prevent navigation out of a field if its current value is invalid.  Can be used to create a hybrid of validation settings, allowing intermediate invalid values in a field without sacrificing ability to limit values as with validRequired. NOTE: It is possible to end up with an invalid value when using this option if focus is switched to some other control via mousing. To avoid this, consider deriving a class that defines _LostFocus() function that returns the control to a valid value when the focus shifts.  (AFAICT, The change in focus is unpreventable.)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="coloring-behavior">
+<h3>Coloring Behavior<a class="headerlink" href="#coloring-behavior" title="Permalink to this headline">¶</a></h3>
+<p>The following parameters have been provided to allow you to change the default
+coloring behavior of the control.   These can be set at construction, or via
+the .SetCtrlParameters() function.  Pass a color as string e.g. ‘Yellow’:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>emptyBackgroundColour</p></td>
+<td><p>Control Background color when identified as empty. Default=White</p></td>
+</tr>
+<tr class="row-even"><td><p>invalidBackgroundColour</p></td>
+<td><p>Control Background color when identified as Not valid. Default=Yellow</p></td>
+</tr>
+<tr class="row-odd"><td><p>validBackgroundColour</p></td>
+<td><p>Control Background color when identified as Valid. Default=white</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following parameters control the default foreground color coloring behavior of the
+control. Pass a color as string e.g. ‘Yellow’:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%"/>
+<col style="width: 74%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>foregroundColour</p></td>
+<td><p>Control foreground color when value is not negative.  Default=Black</p></td>
+</tr>
+<tr class="row-even"><td><p>signedForegroundColour</p></td>
+<td><p>Control foreground color when value is negative. Default=Red</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
+<p>Each part of the mask that allows user input is considered a field.  The fields
+are represented by their own class instances.  You can specify field-specific
+constraints by constructing or accessing the field instances for the control
+and then specifying those constraints via parameters.</p>
+<dl>
+<dt>fields</dt><dd><p>This parameter allows you to specify Field instances containing
+constraints for the individual fields of a control, eg: local
+choice lists, validation rules, functions, regexps, etc.
+It can be either an ordered list or a dictionary.  If a list,
+the fields will be applied as fields 0, 1, 2, etc.
+If a dictionary, it should be keyed by field index.
+the values should be a instances of maskededit.Field.</p>
+<p>Any field not represented by the list or dictionary will be
+implicitly created by the control.</p>
+<p>Eg:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Field</span><span class="p">(</span><span class="n">formatcodes</span><span class="o">=</span><span class="s1">'_r'</span><span class="p">),</span> <span class="n">Field</span><span class="p">(</span><span class="s1">'choices=['</span><span class="n">a</span><span class="s1">', '</span><span class="sa">b</span><span class="s1">', '</span><span class="n">c</span><span class="s1">']) ]</span>
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span> <span class="p">{</span>
+           <span class="mi">1</span><span class="p">:</span> <span class="p">(</span> <span class="n">Field</span><span class="p">(</span><span class="n">formatcodes</span><span class="o">=</span><span class="s1">'_R'</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]),</span>
+           <span class="mi">3</span><span class="p">:</span> <span class="p">(</span> <span class="n">Field</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">'01'</span><span class="p">,</span> <span class="s1">'02'</span><span class="p">,</span> <span class="s1">'03'</span><span class="p">],</span> <span class="n">choiceRequired</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+         <span class="p">}</span>
+</pre></div>
+</div>
+<p>The following parameters are available for individual fields, with the
+same semantics as for the whole control but applied to the field in question:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 15%"/>
+<col style="width: 85%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>fillChar</p></td>
+<td><p>if set for a field, it will override the control’s fillChar for that field</p></td>
+</tr>
+<tr class="row-even"><td><p>groupChar</p></td>
+<td><p>if set for a field, it will override the control’s default</p></td>
+</tr>
+<tr class="row-odd"><td><p>defaultValue</p></td>
+<td><p>sets field-specific default value; overrides any default from control</p></td>
+</tr>
+<tr class="row-even"><td><p>compareNoCase</p></td>
+<td><p>overrides control’s settings</p></td>
+</tr>
+<tr class="row-odd"><td><p>emptyInvalid</p></td>
+<td><p>determines whether field is required to be filled at all times</p></td>
+</tr>
+<tr class="row-even"><td><p>validRequired</p></td>
+<td><p>if set, requires field to contain valid value</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>If any of the above parameters are subsequently specified for the control as a
+whole, that new value will be propagated to each field, unless the
+retainFieldValidation control-level parameter is set.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 32%"/>
+<col style="width: 68%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>formatcodes</p></td>
+<td><p>Augments control’s settings</p></td>
+</tr>
+<tr class="row-even"><td><p>excludeChars</p></td>
+<td><p>‘       ‘        ‘</p></td>
+</tr>
+<tr class="row-odd"><td><p>includeChars</p></td>
+<td><p>‘       ‘        ‘</p></td>
+</tr>
+<tr class="row-even"><td><p>validRegex</p></td>
+<td><p>‘       ‘        ‘</p></td>
+</tr>
+<tr class="row-odd"><td><p>validRange</p></td>
+<td><p>‘       ‘        ‘</p></td>
+</tr>
+<tr class="row-even"><td><p>choices</p></td>
+<td><p>‘       ‘        ‘</p></td>
+</tr>
+<tr class="row-odd"><td><p>choiceRequired</p></td>
+<td><p>‘       ‘        ‘</p></td>
+</tr>
+<tr class="row-even"><td><p>validFunc</p></td>
+<td><p>‘       ‘        ‘</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd>
+</dl>
+</div>
+<div class="section" id="control-class-functions">
+<h3>Control Class Functions<a class="headerlink" href="#control-class-functions" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt>.GetPlainValue(value=None)</dt><dd><p>Returns the value specified (or the control’s text value
+not specified) without the formatting text.
+In the example above, might return phone no=’3522640075’,
+whereas control.GetValue() would return ‘(352) 264-0075’</p>
+</dd>
+<dt>.ClearValue()</dt><dd><p>Returns the control’s value to its default, and places the
+cursor at the beginning of the control.</p>
+</dd>
+<dt>.SetValue()</dt><dd><p>Does “smart replacement” of passed value into the control, as does
+the .Paste() method.  As with other text entry controls, the
+.SetValue() text replacement begins at left-edge of the control,
+with missing mask characters inserted as appropriate.
+.SetValue will also adjust integer, float or date mask entry values,
+adding commas, auto-completing years, etc. as appropriate.
+For “right-aligned” numeric controls, it will also now automatically
+right-adjust any value whose length is less than the width of the
+control before attempting to set the value.
+If a value does not follow the format of the control’s mask, or will
+not fit into the control, a ValueError exception will be raised.</p>
+<p>Eg:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="s1">'(###) ###-####'</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">'1234567890'</span><span class="p">)</span>           <span class="o">=&gt;</span> <span class="s1">'(123) 456-7890'</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">'(123)4567890'</span><span class="p">)</span>         <span class="o">=&gt;</span> <span class="s1">'(123) 456-7890'</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">'(123)456-7890'</span><span class="p">)</span>        <span class="o">=&gt;</span> <span class="s1">'(123) 456-7890'</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">'123/4567-890'</span><span class="p">)</span>         <span class="o">=&gt;</span> <span class="n">illegal</span> <span class="n">paste</span><span class="p">;</span> <span class="ne">ValueError</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="s1">'#{6}.#{2}'</span><span class="p">,</span> <span class="n">formatcodes</span> <span class="o">=</span> <span class="s1">'_,-'</span><span class="p">,</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">'111'</span><span class="p">)</span>                  <span class="o">=&gt;</span> <span class="s1">' 111   .  '</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">' </span><span class="si">%9.2f</span><span class="s1">'</span> <span class="o">%</span> <span class="o">-</span><span class="mf">111.12345</span> <span class="p">)</span> <span class="o">=&gt;</span> <span class="s1">'   -111.12'</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">' </span><span class="si">%9.2f</span><span class="s1">'</span> <span class="o">%</span> <span class="mf">1234.00</span> <span class="p">)</span>    <span class="o">=&gt;</span> <span class="s1">'  1,234.00'</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">' </span><span class="si">%9.2f</span><span class="s1">'</span> <span class="o">%</span> <span class="o">-</span><span class="mf">1234567.12345</span> <span class="p">)</span> <span class="o">=&gt;</span> <span class="n">insufficient</span> <span class="n">room</span><span class="p">;</span> <span class="ne">ValueError</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="s1">'#{6}.#{2}'</span><span class="p">,</span> <span class="n">formatcodes</span> <span class="o">=</span> <span class="s1">'_,-R'</span>  <span class="c1"># will right-adjust value for right-aligned control</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">'111'</span><span class="p">)</span>                  <span class="o">=&gt;</span> <span class="n">padded</span> <span class="n">value</span> <span class="n">misalignment</span> <span class="ne">ValueError</span><span class="p">:</span> <span class="s2">"       111"</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">fit</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">'</span><span class="si">%.2f</span><span class="s1">'</span> <span class="o">%</span> <span class="mi">111</span> <span class="p">)</span>          <span class="o">=&gt;</span> <span class="s1">'    111.00'</span>
+    <span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">'</span><span class="si">%.2f</span><span class="s1">'</span> <span class="o">%</span> <span class="o">-</span><span class="mf">111.12345</span> <span class="p">)</span>   <span class="o">=&gt;</span> <span class="s1">'   -111.12'</span>
+</pre></div>
+</div>
+</dd>
+<dt>.IsValid(value=None)</dt><dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value specified (or the value of the control
+if not specified) passes validation tests</p>
+</dd>
+<dt>.IsEmpty(value=None)</dt><dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value specified (or the value of the control
+if not specified) is equal to an “empty value,” ie. all
+editable characters == the fillChar for their respective fields.</p>
+</dd>
+<dt>.IsDefault(value=None)</dt><dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value specified (or the value of the control
+if not specified) is equal to the initial value of the control.</p>
+</dd>
+<dt>.Refresh()</dt><dd><p>Recolors the control as appropriate to its current settings.</p>
+</dd>
+<dt>.SetCtrlParameters(**kwargs)</dt><dd><p>This function allows you to set up and/or change the control parameters
+after construction; it takes a list of key/value pairs as arguments,
+where the keys can be any of the mask-specific parameters in the constructor.</p>
+<p>Eg:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ctl</span> <span class="o">=</span> <span class="n">masked</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span>
+<span class="n">ctl</span><span class="o">.</span><span class="n">SetCtrlParameters</span><span class="p">(</span> <span class="n">mask</span><span class="o">=</span><span class="s1">'###-####'</span><span class="p">,</span>
+                       <span class="n">defaultValue</span><span class="o">=</span><span class="s1">'555-1212'</span><span class="p">,</span>
+                       <span class="n">formatcodes</span><span class="o">=</span><span class="s1">'F'</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>.GetCtrlParameter(parametername)</dt><dd><blockquote>
+<div><p>This function allows you to retrieve the current value of a parameter
+from the control.</p>
+</div></blockquote>
+<dl>
+<dt><em>Note:</em> Each of the control parameters can also be set using its</dt><dd><blockquote>
+<div><p>own Set and Get function.  These functions follow a regular form:
+All of the parameter names start with lower case; for their
+corresponding Set/Get function, the parameter name is capitalized.</p>
+</div></blockquote>
+<p>Eg:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ctl</span><span class="o">.</span><span class="n">SetMask</span><span class="p">(</span><span class="s1">'###-####'</span><span class="p">)</span>
+<span class="n">ctl</span><span class="o">.</span><span class="n">SetDefaultValue</span><span class="p">(</span><span class="s1">'555-1212'</span><span class="p">)</span>
+<span class="n">ctl</span><span class="o">.</span><span class="n">GetChoiceRequired</span><span class="p">()</span>
+<span class="n">ctl</span><span class="o">.</span><span class="n">GetFormatcodes</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+<dt><em>Note:</em> After any change in parameters, the choices for the</dt><dd><p>control are reevaluated to ensure that they are still legal.  If you
+have large choice lists, it is therefore more efficient to set parameters
+before setting the choices available.</p>
+</dd>
+</dl>
+</dd>
+<dt>.SetFieldParameters(field_index, **kwargs)</dt><dd><p>This function allows you to specify change individual field
+parameters after construction. (Indices are 0-based.)</p>
+</dd>
+<dt>.GetFieldParameter(field_index, parametername)</dt><dd><p>Allows the retrieval of field parameters after construction</p>
+</dd>
+</dl>
+<p>The control detects certain common constructions. In order to use the signed feature
+(negative numbers and coloring), the mask has to be all numbers with optionally one
+decimal point. Without a decimal (e.g. ‘######’, the control will treat it as an integer
+value. With a decimal (e.g. ‘###.##’), the control will act as a floating point control
+(i.e. press decimal to ‘tab’ to the decimal position). Pressing decimal in the
+integer control truncates the value.  However, for a true numeric control,
+masked.NumCtrl provides all this, and true numeric input/output support as well.</p>
+<p>Check your controls by calling each control’s .IsValid() function and the
+.IsEmpty() function to determine which controls have been a) filled in and
+b) filled in properly.</p>
+<p>Regular expression validations can be used flexibly and creatively.
+Take a look at the demo; the zip-code validation succeeds as long as the
+first five numerals are entered. the last four are optional, but if
+any are entered, there must be 4 to be valid.</p>
+</div>
+<div class="section" id="masked-ctrl-configuration">
+<h3>masked.Ctrl Configuration<a class="headerlink" href="#masked-ctrl-configuration" title="Permalink to this headline">¶</a></h3>
+<p>masked.Ctrl works by looking for a special <em>controlType</em>
+parameter in the variable arguments of the control, to determine
+what kind of instance to return.
+controlType can be one of:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">controlTypes</span><span class="o">.</span><span class="n">TEXT</span>
+<span class="n">controlTypes</span><span class="o">.</span><span class="n">COMBO</span>
+<span class="n">controlTypes</span><span class="o">.</span><span class="n">IPADDR</span>
+<span class="n">controlTypes</span><span class="o">.</span><span class="n">TIME</span>
+<span class="n">controlTypes</span><span class="o">.</span><span class="n">NUMBER</span>
+</pre></div>
+</div>
+<p>These constants are also available individually, ie, you can
+use either of the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wx.lib.masked</span> <span class="kn">import</span> <span class="n">MaskedCtrl</span><span class="p">,</span> <span class="n">controlTypes</span>
+<span class="kn">from</span> <span class="nn">wx.lib.masked</span> <span class="kn">import</span> <span class="n">MaskedCtrl</span><span class="p">,</span> <span class="n">COMBO</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">NUMBER</span><span class="p">,</span> <span class="n">IPADDR</span>
+</pre></div>
+</div>
+<p>If not specified as a keyword argument, the default controlType is
+controlTypes.TEXT.</p>
+</div>
+<div class="section" id="class-summary-classes-summary">
+<h3><a class="reference internal" href="_images/class_summary.png"><img alt="class_summary" class="align-middle" src="_images/class_summary.png" style="width: 32px;"/></a> Classes Summary<a class="headerlink" href="#class-summary-classes-summary" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.masked.maskededit.Field.html#wx.lib.masked.maskededit.Field" title="wx.lib.masked.maskededit.Field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Field</span></code></a></p></td>
+<td><p>This class manages the individual fields in a masked edit control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="wx.lib.masked.maskededit.MaskedEditAccessorsMixin.html#wx.lib.masked.maskededit.MaskedEditAccessorsMixin" title="wx.lib.masked.maskededit.MaskedEditAccessorsMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MaskedEditAccessorsMixin</span></code></a></p></td>
+<td><p>To avoid a ton of boiler-plate, and to automate the getter/setter generation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="wx.lib.masked.maskededit.MaskedEditMixin.html#wx.lib.masked.maskededit.MaskedEditMixin" title="wx.lib.masked.maskededit.MaskedEditMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MaskedEditMixin</span></code></a></p></td>
+<td><p>This class allows us to abstract the masked edit functionality that could</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

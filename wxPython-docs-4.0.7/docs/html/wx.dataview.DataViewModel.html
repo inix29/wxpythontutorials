@@ -1,0 +1,763 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.dataview.DataViewModel — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.dataview.DataViewModelNotifier.html" rel="next" title="wx.dataview.DataViewModelNotifier"/>
+<link href="wx.dataview.DataViewListStore.html" rel="prev" title="wx.dataview.DataViewListStore"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.dataview.1moduleindex.html">
+<strong>wx.dataview</strong></a> »</li>
+<li class="reltitle"> <strong>wx.dataview.DataViewModel</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.dataview.DataViewModelNotifier.html" title="wx.dataview.DataViewModelNotifier">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.dataview.DataViewListStore.html" title="wx.dataview.DataViewListStore">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.dataview.DataViewModel</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.dataview.DataViewModel.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-dataview-dataviewmodel">
+<span id="wx-dataview-dataviewmodel"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.dataview.DataViewModel</strong><a class="headerlink" href="#phoenix-title-wx-dataview-dataviewmodel" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-dataview-dataviewmodel"><span class="std std-ref">  wx.dataview.DataViewModel</span></a>  is the base class for all data model to be displayed by a <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>.</p>
+<p>All other models derive from it and must implement its pure virtual functions in order to define a complete data model. In detail, you need to override <a class="reference internal" href="#wx.dataview.DataViewModel.IsContainer" title="wx.dataview.DataViewModel.IsContainer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.IsContainer</span></code></a> , <a class="reference internal" href="#wx.dataview.DataViewModel.GetParent" title="wx.dataview.DataViewModel.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.GetParent</span></code></a> , <a class="reference internal" href="#wx.dataview.DataViewModel.GetChildren" title="wx.dataview.DataViewModel.GetChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.GetChildren</span></code></a> , <a class="reference internal" href="#wx.dataview.DataViewModel.GetColumnCount" title="wx.dataview.DataViewModel.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.GetColumnCount</span></code></a> , <a class="reference internal" href="#wx.dataview.DataViewModel.GetColumnType" title="wx.dataview.DataViewModel.GetColumnType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.GetColumnType</span></code></a>   and <a class="reference internal" href="#wx.dataview.DataViewModel.GetValue" title="wx.dataview.DataViewModel.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.GetValue</span></code></a>   in order to define the data model which acts as an interface between your actual data and the <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>.</p>
+<p>Note that <a class="reference internal" href="#wx-dataview-dataviewmodel"><span class="std std-ref">  wx.dataview.DataViewModel</span></a>  does not define the position or index of any item in the control because different controls might display the same data differently. <a class="reference internal" href="#wx-dataview-dataviewmodel"><span class="std std-ref">  wx.dataview.DataViewModel</span></a>  does provide a <a class="reference internal" href="#wx.dataview.DataViewModel.Compare" title="wx.dataview.DataViewModel.Compare"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.Compare</span></code></a>   method which the <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  may use to sort the data either in conjunction with a column header or without (see <a class="reference internal" href="#wx.dataview.DataViewModel.HasDefaultCompare" title="wx.dataview.DataViewModel.HasDefaultCompare"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.HasDefaultCompare</span></code></a> ).</p>
+<p><a class="reference internal" href="#wx-dataview-dataviewmodel"><span class="std std-ref">  wx.dataview.DataViewModel</span></a>  (as indeed the entire <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  code) is using <em class="xref py py-obj">Variant</em>       to store data and its type in a generic way. <em class="xref py py-obj">Variant</em>       can be extended to contain almost any data without changes to the original class. To a certain extent, you can use (the somewhat more elegant) <em class="xref py py-obj">Any</em>       instead of <em class="xref py py-obj">Variant</em>       as there is code to convert between the two, but it is unclear what impact this will have on performance.</p>
+<p>Since you will usually allow the <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  to change your data through its graphical interface, you will also have to override <a class="reference internal" href="#wx.dataview.DataViewModel.SetValue" title="wx.dataview.DataViewModel.SetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.SetValue</span></code></a>   which the <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  will call when a change to some data has been committed.</p>
+<p>If the data represented by the model is changed by something else than its associated <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>, the control has to be notified about the change. Depending on what happened you need to call one of the following methods:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wx.dataview.DataViewModel.ValueChanged" title="wx.dataview.DataViewModel.ValueChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.ValueChanged</span></code></a> ,</p></li>
+<li><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemAdded" title="wx.dataview.DataViewModel.ItemAdded"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.ItemAdded</span></code></a> ,</p></li>
+<li><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemDeleted" title="wx.dataview.DataViewModel.ItemDeleted"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.ItemDeleted</span></code></a> ,</p></li>
+<li><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemChanged" title="wx.dataview.DataViewModel.ItemChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.ItemChanged</span></code></a> ,</p></li>
+<li><p><a class="reference internal" href="#wx.dataview.DataViewModel.Cleared" title="wx.dataview.DataViewModel.Cleared"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.Cleared</span></code></a> .</p></li>
+</ul>
+<p>There are plural forms for notification of addition, change or removal of several item at once. See:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemsAdded" title="wx.dataview.DataViewModel.ItemsAdded"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.ItemsAdded</span></code></a> ,</p></li>
+<li><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemsDeleted" title="wx.dataview.DataViewModel.ItemsDeleted"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.ItemsDeleted</span></code></a> ,</p></li>
+<li><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemsChanged" title="wx.dataview.DataViewModel.ItemsChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.ItemsChanged</span></code></a> .</p></li>
+</ul>
+<p>This class maintains a list of <a class="reference internal" href="wx.dataview.DataViewModelNotifier.html#wx-dataview-dataviewmodelnotifier"><span class="std std-ref">  wx.dataview.DataViewModelNotifier</span></a>  which link this class to the specific implementations on the supported platforms so that e.g. calling <a class="reference internal" href="#wx.dataview.DataViewModel.ValueChanged" title="wx.dataview.DataViewModel.ValueChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModel.ValueChanged</span></code></a>   on this model will just call <a class="reference internal" href="wx.dataview.DataViewModelNotifier.html#wx.dataview.DataViewModelNotifier.ValueChanged" title="wx.dataview.DataViewModelNotifier.ValueChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.dataview.DataViewModelNotifier.ValueChanged</span></code></a>   for each notifier that has been added. You can also add your own notifier in order to get informed about any changes to the data in the list model.</p>
+<p>Currently wxWidgets provides the following models apart from the base model: <a class="reference internal" href="wx.dataview.DataViewIndexListModel.html#wx-dataview-dataviewindexlistmodel"><span class="std std-ref">  wx.dataview.DataViewIndexListModel</span></a>, <a class="reference internal" href="wx.dataview.DataViewVirtualListModel.html#wx-dataview-dataviewvirtuallistmodel"><span class="std std-ref">  wx.dataview.DataViewVirtualListModel</span></a>, <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a>, <a class="reference internal" href="wx.dataview.DataViewListStore.html#wx-dataview-dataviewliststore"><span class="std std-ref">  wx.dataview.DataViewListStore</span></a>.</p>
+<p>Note that <a class="reference internal" href="#wx-dataview-dataviewmodel"><span class="std std-ref">  wx.dataview.DataViewModel</span></a>  is reference counted, derives from <a class="reference internal" href="wx.RefCounter.html#wx-refcounter"><span class="std std-ref">  wx.RefCounter</span></a>  and cannot be deleted directly as it can be shared by several DataViewCtrls. This implies that you need to decrease the reference count after associating the model with a control like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">musicCtrl</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">dataview</span><span class="o">.</span><span class="n">DataViewCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_ANY</span><span class="p">)</span>
+<span class="n">musicModel</span> <span class="o">=</span> <span class="n">MyMusicModel</span><span class="p">()</span>
+<span class="n">musicCtrl</span><span class="o">.</span><span class="n">AssociateModel</span><span class="p">(</span><span class="n">musicModel</span><span class="p">)</span>
+<span class="n">musicModel</span><span class="o">.</span><span class="n">DecRef</span><span class="p">()</span>  <span class="c1"># avoid memory leak !!</span>
+
+<span class="c1"># add columns now</span>
+</pre></div>
+</div>
+<p>A potentially better way to avoid memory leaks is to use ObjectDataPtr</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### wxPython does not provide wrappers for wxObjectDataPtr</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>DataViewModel</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of DataViewModel" class="inheritance" src="_static/images/inheritance/wx.dataview.DataViewModel_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,219,112" href="wx.dataview.DataViewModel.html" id="node1" shape="rect" title="wx.dataview.DataViewModel  is the base class for all data model to be displayed by a wx.dataview.DataViewCtrl."/> <area alt="" coords="52,5,172,35" href="wx.RefCounter.html" id="node2" shape="rect" title="This class is used to manage reference-counting providing a simple interface and a counter."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.dataview.DataViewListModel.html#wx-dataview-dataviewlistmodel"><span class="std std-ref">  wx.dataview.DataViewListModel</span></a>, <a class="reference internal" href="wx.dataview.DataViewTreeStore.html#wx-dataview-dataviewtreestore"><span class="std std-ref">  wx.dataview.DataViewTreeStore</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30%"/>
+<col style="width: 70%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.__init__" title="wx.dataview.DataViewModel.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.AddNotifier" title="wx.dataview.DataViewModel.AddNotifier"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddNotifier</span></code></a></p></td>
+<td><p>Adds a <a class="reference internal" href="wx.dataview.DataViewModelNotifier.html#wx-dataview-dataviewmodelnotifier"><span class="std std-ref">  wx.dataview.DataViewModelNotifier</span></a>  to the model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.ChangeValue" title="wx.dataview.DataViewModel.ChangeValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ChangeValue</span></code></a></p></td>
+<td><p>Change the value of the given item and update the control to reflect it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.Cleared" title="wx.dataview.DataViewModel.Cleared"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Cleared</span></code></a></p></td>
+<td><p>Called to inform the model that all data has been cleared.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.Compare" title="wx.dataview.DataViewModel.Compare"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Compare</span></code></a></p></td>
+<td><p>The compare function to be used by control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.GetAttr" title="wx.dataview.DataViewModel.GetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttr</span></code></a></p></td>
+<td><p>Override this to indicate that the item has special font attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.GetChildren" title="wx.dataview.DataViewModel.GetChildren"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildren</span></code></a></p></td>
+<td><p>Override this so the control can query the child items of an item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.GetColumnCount" title="wx.dataview.DataViewModel.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p></td>
+<td><p>Override this to indicate the number of columns in the model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.GetColumnType" title="wx.dataview.DataViewModel.GetColumnType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnType</span></code></a></p></td>
+<td><p>Override this to indicate what type of data is stored in the column specified by <em class="xref py py-obj">col</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.GetParent" title="wx.dataview.DataViewModel.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParent</span></code></a></p></td>
+<td><p>Override this to indicate which <a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a>  representing the parent of <em class="xref py py-obj">item</em>  or an invalid <a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a>  if the root item is the parent item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.GetValue" title="wx.dataview.DataViewModel.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValue</span></code></a></p></td>
+<td><p>Override this to indicate the value of <em class="xref py py-obj">item</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.HasContainerColumns" title="wx.dataview.DataViewModel.HasContainerColumns"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasContainerColumns</span></code></a></p></td>
+<td><p>Override this method to indicate if a container item merely acts as a headline (or for categorisation) or if it also acts a normal item with entries for further columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.HasDefaultCompare" title="wx.dataview.DataViewModel.HasDefaultCompare"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasDefaultCompare</span></code></a></p></td>
+<td><p>Override this to indicate that the model provides a default compare function that the control should use if no <a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a>  has been chosen for sorting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.HasValue" title="wx.dataview.DataViewModel.HasValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasValue</span></code></a></p></td>
+<td><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is a value in the given column of this item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.IsContainer" title="wx.dataview.DataViewModel.IsContainer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsContainer</span></code></a></p></td>
+<td><p>Override this to indicate of <em class="xref py py-obj">item</em>  is a container, i.e. if it can have child items.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.IsEnabled" title="wx.dataview.DataViewModel.IsEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEnabled</span></code></a></p></td>
+<td><p>Override this to indicate that the item should be disabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.IsListModel" title="wx.dataview.DataViewModel.IsListModel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsListModel</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.IsVirtualListModel" title="wx.dataview.DataViewModel.IsVirtualListModel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsVirtualListModel</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemAdded" title="wx.dataview.DataViewModel.ItemAdded"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ItemAdded</span></code></a></p></td>
+<td><p>Call this to inform the model that an item has been added to the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemChanged" title="wx.dataview.DataViewModel.ItemChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ItemChanged</span></code></a></p></td>
+<td><p>Call this to inform the model that an item has changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemDeleted" title="wx.dataview.DataViewModel.ItemDeleted"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ItemDeleted</span></code></a></p></td>
+<td><p>Call this to inform the model that an item has been deleted from the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemsAdded" title="wx.dataview.DataViewModel.ItemsAdded"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ItemsAdded</span></code></a></p></td>
+<td><p>Call this to inform the model that several items have been added to the data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemsChanged" title="wx.dataview.DataViewModel.ItemsChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ItemsChanged</span></code></a></p></td>
+<td><p>Call this to inform the model that several items have changed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.ItemsDeleted" title="wx.dataview.DataViewModel.ItemsDeleted"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ItemsDeleted</span></code></a></p></td>
+<td><p>Call this to inform the model that several items have been deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.RemoveNotifier" title="wx.dataview.DataViewModel.RemoveNotifier"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveNotifier</span></code></a></p></td>
+<td><p>Remove the <em class="xref py py-obj">notifier</em>  from the list of notifiers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.Resort" title="wx.dataview.DataViewModel.Resort"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Resort</span></code></a></p></td>
+<td><p>Call this to initiate a resort after the sort function has been changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.SetValue" title="wx.dataview.DataViewModel.SetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetValue</span></code></a></p></td>
+<td><p>This gets called in order to set a value in the data model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.ValueChanged" title="wx.dataview.DataViewModel.ValueChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ValueChanged</span></code></a></p></td>
+<td><p>Call this to inform this model that a value in the model has been changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">~wxDataViewModel</span></code></p></td>
+<td><p>Destructor.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewModel.ColumnCount" title="wx.dataview.DataViewModel.ColumnCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ColumnCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewModel.GetColumnCount" title="wx.dataview.DataViewModel.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.dataview.DataViewModel">
+<em class="property">class </em><code class="sig-prename descclassname">wx.dataview.</code><code class="sig-name descname">DataViewModel</code><span class="sig-paren">(</span><em class="sig-param">RefCounter</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DataViewModel</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>DataViewModel is the base class for all data model to be displayed
+by a DataViewCtrl.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.AddNotifier">
+<code class="sig-name descname">AddNotifier</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">notifier</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.AddNotifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a <a class="reference internal" href="wx.dataview.DataViewModelNotifier.html#wx-dataview-dataviewmodelnotifier"><span class="std std-ref">  wx.dataview.DataViewModelNotifier</span></a>  to the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>notifier</strong> (<a class="reference internal" href="wx.dataview.DataViewModelNotifier.html#wx.dataview.DataViewModelNotifier" title="wx.dataview.DataViewModelNotifier"><em>wx.dataview.DataViewModelNotifier</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.ChangeValue">
+<code class="sig-name descname">ChangeValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">variant</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.ChangeValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the value of the given item and update the control to reflect it.</p>
+<p>This function simply calls <a class="reference internal" href="#wx.dataview.DataViewModel.SetValue" title="wx.dataview.DataViewModel.SetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetValue</span></code></a>   and, if it succeeded, <a class="reference internal" href="#wx.dataview.DataViewModel.ValueChanged" title="wx.dataview.DataViewModel.ValueChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ValueChanged</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variant</strong> (<em>DVCVariant</em>) – The new value.</p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – The item (row) to update.</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – The column to update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if both <a class="reference internal" href="#wx.dataview.DataViewModel.SetValue" title="wx.dataview.DataViewModel.SetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetValue</span></code></a>   and <a class="reference internal" href="#wx.dataview.DataViewModel.ValueChanged" title="wx.dataview.DataViewModel.ValueChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ValueChanged</span></code></a>   returned <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.Cleared">
+<code class="sig-name descname">Cleared</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.Cleared" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called to inform the model that all data has been cleared.</p>
+<p>The control will reread the data from the model again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.Compare">
+<code class="sig-name descname">Compare</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item1</em>, <em class="sig-param">item2</em>, <em class="sig-param">column</em>, <em class="sig-param">ascending</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.Compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>The compare function to be used by control.</p>
+<p>The default compare function sorts by container and other items separately and in ascending order. Override this for a different sorting behaviour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item1</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>item2</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>column</strong> (<em>int</em>) – </p></li>
+<li><p><strong>ascending</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.dataview.DataViewModel.HasDefaultCompare" title="wx.dataview.DataViewModel.HasDefaultCompare"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasDefaultCompare</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.GetAttr">
+<code class="sig-name descname">GetAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em>, <em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.GetAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to indicate that the item has special font attributes.</p>
+<p>This only affects the DataViewTextRendererText renderer.</p>
+<p>The base class version always simply returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – The item for which the attribute is requested.</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – The column of the item for which the attribute is requested.</p></li>
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.dataview.DataViewItemAttr.html#wx.dataview.DataViewItemAttr" title="wx.dataview.DataViewItemAttr"><em>wx.dataview.DataViewItemAttr</em></a>) – The attribute to be filled in if the function returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this item has an attribute or <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.dataview.DataViewItemAttr.html#wx-dataview-dataviewitemattr"><span class="std std-ref">  wx.dataview.DataViewItemAttr</span></a>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.GetChildren">
+<code class="sig-name descname">GetChildren</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">children</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.GetChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this so the control can query the child items of an item.</p>
+<p>Returns the number of items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>children</strong> (<em>DataViewItemArray</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.GetColumnCount">
+<code class="sig-name descname">GetColumnCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.GetColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to indicate the number of columns in the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.GetColumnType">
+<code class="sig-name descname">GetColumnType</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.GetColumnType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to indicate what type of data is stored in the column specified by <em class="xref py py-obj">col</em>.</p>
+<p>This should return a string indicating the type of data as reported by <em class="xref py py-obj">Variant</em>     .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.GetParent">
+<code class="sig-name descname">GetParent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.GetParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to indicate which <a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a>  representing the parent of <em class="xref py py-obj">item</em>  or an invalid <a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a>  if the root item is the parent item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.dataview.DataViewItem.html#wx-dataview-dataviewitem"><span class="std std-ref">  wx.dataview.DataViewItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.GetValue">
+<code class="sig-name descname">GetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.GetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to indicate the value of <em class="xref py py-obj">item</em>.</p>
+<p>A <em class="xref py py-obj">Variant</em>       is used to store the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">variant</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.HasContainerColumns">
+<code class="sig-name descname">HasContainerColumns</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.HasContainerColumns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to indicate if a container item merely acts as a headline (or for categorisation) or if it also acts a normal item with entries for further columns.</p>
+<p>By default returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.HasDefaultCompare">
+<code class="sig-name descname">HasDefaultCompare</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.HasDefaultCompare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to indicate that the model provides a default compare function that the control should use if no <a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a>  has been chosen for sorting.</p>
+<p>Usually, the user clicks on a column header for sorting, the data will be sorted alphanumerically.</p>
+<p>If any other order (e.g. by index or order of appearance) is required, then this should be used. See <a class="reference internal" href="wx.dataview.DataViewIndexListModel.html#wx-dataview-dataviewindexlistmodel"><span class="std std-ref">  wx.dataview.DataViewIndexListModel</span></a>  for a model which makes use of this.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.HasValue">
+<code class="sig-name descname">HasValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.HasValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is a value in the given column of this item.</p>
+<p>All normal items have values in all columns but the container items only show their label in the first column (<em class="xref py py-obj">col</em>  == 0) by default (but see <a class="reference internal" href="#wx.dataview.DataViewModel.HasContainerColumns" title="wx.dataview.DataViewModel.HasContainerColumns"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasContainerColumns</span></code></a> ). So this function always returns <code class="docutils literal notranslate"><span class="pre">True</span></code> for the first column while for the other ones it returns <code class="docutils literal notranslate"><span class="pre">True</span></code> only if the item is not a container or <a class="reference internal" href="#wx.dataview.DataViewModel.HasContainerColumns" title="wx.dataview.DataViewModel.HasContainerColumns"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasContainerColumns</span></code></a>   was overridden to return <code class="docutils literal notranslate"><span class="pre">True</span></code> for it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>col</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.IsContainer">
+<code class="sig-name descname">IsContainer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.IsContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to indicate of <em class="xref py py-obj">item</em>  is a container, i.e. if it can have child items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.IsEnabled">
+<code class="sig-name descname">IsEnabled</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.IsEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to indicate that the item should be disabled.</p>
+<p>Disabled items are displayed differently (e.g. grayed out) and cannot be interacted with.</p>
+<p>The base class version always returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, thus making all items enabled by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – The item whose enabled status is requested.</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – The column of the item whose enabled status is requested.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this item should be enabled, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently disabling items is not supported by the OSX/Carbon implementation.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.IsListModel">
+<code class="sig-name descname">IsListModel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.IsListModel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.IsVirtualListModel">
+<code class="sig-name descname">IsVirtualListModel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.IsVirtualListModel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.ItemAdded">
+<code class="sig-name descname">ItemAdded</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.ItemAdded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to inform the model that an item has been added to the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.ItemChanged">
+<code class="sig-name descname">ItemChanged</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.ItemChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to inform the model that an item has changed.</p>
+<p>This will eventually emit a  <code class="docutils literal notranslate"><span class="pre">wxEVT_DATAVIEW_ITEM_VALUE_CHANGED</span></code>   event (in which the column fields will not be set) to the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.ItemDeleted">
+<code class="sig-name descname">ItemDeleted</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.ItemDeleted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to inform the model that an item has been deleted from the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.ItemsAdded">
+<code class="sig-name descname">ItemsAdded</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.ItemsAdded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to inform the model that several items have been added to the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>items</strong> (<em>DataViewItemArray</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.ItemsChanged">
+<code class="sig-name descname">ItemsChanged</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.ItemsChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to inform the model that several items have changed.</p>
+<p>This will eventually emit  <code class="docutils literal notranslate"><span class="pre">wxEVT_DATAVIEW_ITEM_VALUE_CHANGED</span></code>   events (in which the column fields will not be set) to the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> (<em>DataViewItemArray</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.ItemsDeleted">
+<code class="sig-name descname">ItemsDeleted</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.ItemsDeleted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to inform the model that several items have been deleted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>items</strong> (<em>DataViewItemArray</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.RemoveNotifier">
+<code class="sig-name descname">RemoveNotifier</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">notifier</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.RemoveNotifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the <em class="xref py py-obj">notifier</em>  from the list of notifiers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>notifier</strong> (<a class="reference internal" href="wx.dataview.DataViewModelNotifier.html#wx.dataview.DataViewModelNotifier" title="wx.dataview.DataViewModelNotifier"><em>wx.dataview.DataViewModelNotifier</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.Resort">
+<code class="sig-name descname">Resort</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.Resort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to initiate a resort after the sort function has been changed.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.SetValue">
+<code class="sig-name descname">SetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">variant</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.SetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>This gets called in order to set a value in the data model.</p>
+<p>The most common scenario is that the <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  calls this method after the user changed some data in the view.</p>
+<p>This is the function you need to override in your derived class but if you want to call it, <a class="reference internal" href="#wx.dataview.DataViewModel.ChangeValue" title="wx.dataview.DataViewModel.ChangeValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ChangeValue</span></code></a>   is usually more convenient as otherwise you need to manually call <a class="reference internal" href="#wx.dataview.DataViewModel.ValueChanged" title="wx.dataview.DataViewModel.ValueChanged"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ValueChanged</span></code></a>   to update the control itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variant</strong> (<em>DVCVariant</em>) – </p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewModel.ValueChanged">
+<code class="sig-name descname">ValueChanged</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewModel.ValueChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this to inform this model that a value in the model has been changed.</p>
+<p>This is also called from <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>’s internal editing code, e.g. when editing a text field in the control.</p>
+<p>This will eventually emit a  <code class="docutils literal notranslate"><span class="pre">wxEVT_DATAVIEW_ITEM_VALUE_CHANGED</span></code>   event to the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt>
+<code class="sig-name descname">~wxDataViewModel(self)</code></dt>
+<dd><p>Destructor.</p>
+<p>This should not be called directly. Use <a class="reference internal" href="wx.RefCounter.html#wx.RefCounter.DecRef" title="wx.RefCounter.DecRef"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DecRef</span></code></a>   instead.</p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewModel.ColumnCount">
+<code class="sig-name descname">ColumnCount</code><a class="headerlink" href="#wx.dataview.DataViewModel.ColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewModel.GetColumnCount" title="wx.dataview.DataViewModel.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

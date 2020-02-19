@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.BufferedPaintDC — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.BusyCursor.html" rel="next" title="wx.BusyCursor"/>
+<link href="wx.BufferedDC.html" rel="prev" title="wx.BufferedDC"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.BufferedPaintDC</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.BusyCursor.html" title="wx.BusyCursor">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.BufferedDC.html" title="wx.BufferedDC">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.BufferedPaintDC</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.BufferedPaintDC.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-bufferedpaintdc">
+<span id="wx-bufferedpaintdc"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.BufferedPaintDC</strong><a class="headerlink" href="#phoenix-title-wx-bufferedpaintdc" title="Permalink to this headline">¶</a></h1>
+<p>This is a subclass of <a class="reference internal" href="wx.BufferedDC.html#wx-buffereddc"><span class="std std-ref">  wx.BufferedDC</span></a>  which can be used inside of an  <code class="docutils literal notranslate"><span class="pre">EVT_PAINT()</span></code>   event handler to achieve double-buffered drawing.</p>
+<p>Just use this class instead of <a class="reference internal" href="wx.PaintDC.html#wx-paintdc"><span class="std std-ref">  wx.PaintDC</span></a>  and make sure <a class="reference internal" href="wx.Window.html#wx.Window.SetBackgroundStyle" title="wx.Window.SetBackgroundStyle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetBackgroundStyle</span></code></a>   is called with <code class="docutils literal notranslate"><span class="pre">wx.BG_STYLE_PAINT</span></code> somewhere in the class initialization code, and that’s all you have to do to (mostly) avoid flicker. The only thing to watch out for is that if you are using this class together with <a class="reference internal" href="wx.Scrolled.html#wx-scrolled"><span class="std std-ref">  wx.Scrolled</span></a>, you probably do <strong>not</strong>  want to call <a class="reference internal" href="wx.Scrolled.html#wx.Scrolled.PrepareDC" title="wx.Scrolled.PrepareDC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Scrolled.PrepareDC</span></code></a>   on it as it already does this internally for the real underlying <a class="reference internal" href="wx.PaintDC.html#wx-paintdc"><span class="std std-ref">  wx.PaintDC</span></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>, <a class="reference internal" href="wx.BufferedDC.html#wx-buffereddc"><span class="std std-ref">  wx.BufferedDC</span></a>, <a class="reference internal" href="wx.AutoBufferedPaintDC.html#wx-autobufferedpaintdc"><span class="std std-ref">  wx.AutoBufferedPaintDC</span></a>, <a class="reference internal" href="wx.PaintDC.html#wx-paintdc"><span class="std std-ref">  wx.PaintDC</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>BufferedPaintDC</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of BufferedPaintDC" class="inheritance" src="_static/images/inheritance/wx.BufferedPaintDC_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,315,161,344" href="wx.BufferedPaintDC.html" id="node1" shape="rect" title="This is a subclass of wx.BufferedDC  which can be used inside of an  ``EVT_PAINT()``   event handler to achieve double-buffered drawing."/> <area alt="" coords="23,237,144,267" href="wx.BufferedDC.html" id="node2" shape="rect" title="This class provides a simple way to avoid flicker: when drawing on it, everything is in fact first drawn on an in-memory buffer (a wx.Bitmap) and then copied to the screen, using the associated wx.DC, only once, when this object is destroyed."/> <area alt="" coords="24,160,143,189" href="wx.MemoryDC.html" id="node3" shape="rect" title="A memory device context provides a means to draw graphics onto a bitmap."/> <area alt="" coords="47,83,119,112" href="wx.DC.html" id="node4" shape="rect" title="A wx.DC  is a `'device context'`  onto which graphics and text can be drawn."/> <area alt="" coords="39,5,127,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.AutoBufferedPaintDC.html#wx-autobufferedpaintdc"><span class="std std-ref">  wx.AutoBufferedPaintDC</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%"/>
+<col style="width: 72%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.BufferedPaintDC.__init__" title="wx.BufferedPaintDC.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>As with <a class="reference internal" href="wx.BufferedDC.html#wx-buffereddc"><span class="std std-ref">  wx.BufferedDC</span></a>, you may either provide the bitmap to be used for buffering or let this object create one internally (in the latter case, the size of the client part of the window is used).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.BufferedPaintDC">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">BufferedPaintDC</code><span class="sig-paren">(</span><em class="sig-param">BufferedDC</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.BufferedPaintDC" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BufferedPaintDC</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">BUFFER_CLIENT_AREA</span><span class="p">)</span>
+
+<span class="n">BufferedPaintDC</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">BUFFER_CLIENT_AREA</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a subclass of BufferedDC which can be used inside of an
+EVT_PAINT() event handler to achieve double-buffered drawing.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.BufferedPaintDC.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.BufferedPaintDC.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>As with <a class="reference internal" href="wx.BufferedDC.html#wx-buffereddc"><span class="std std-ref">  wx.BufferedDC</span></a>, you may either provide the bitmap to be used for buffering or let this object create one internally (in the latter case, the size of the client part of the window is used).</p>
+<p>Pass <code class="docutils literal notranslate"><span class="pre">wx.BUFFER_CLIENT_AREA</span></code> for the <em class="xref py py-obj">style</em>  parameter to indicate that just the client area of the window is buffered, or <code class="docutils literal notranslate"><span class="pre">wx.BUFFER_VIRTUAL_AREA</span></code> to indicate that the buffer bitmap covers the virtual area.</p>
+<p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, window, buffer, style=BUFFER_CLIENT_AREA)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>buffer</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, window, style=BUFFER_CLIENT_AREA)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

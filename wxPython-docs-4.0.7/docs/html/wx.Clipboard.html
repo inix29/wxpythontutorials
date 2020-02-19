@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Clipboard — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ClipboardTextEvent.html" rel="next" title="wx.ClipboardTextEvent"/>
+<link href="wx.ClientDataContainer.html" rel="prev" title="wx.ClientDataContainer"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Clipboard</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ClipboardTextEvent.html" title="wx.ClipboardTextEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.ClientDataContainer.html" title="wx.ClientDataContainer">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Clipboard</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Clipboard.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-clipboard">
+<span id="wx-clipboard"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Clipboard</strong><a class="headerlink" href="#phoenix-title-wx-clipboard" title="Permalink to this headline">¶</a></h1>
+<p>A class for manipulating the clipboard.</p>
+<p>To use the clipboard, you call member functions of the global <code class="xref py py-meth docutils literal notranslate"><span class="pre">TheClipboard</span></code>  object.</p>
+<p>See the <a class="reference internal" href="dataobject_overview.html#dataobject-overview"><span class="std std-ref">DataObject Overview</span></a>  for further information.</p>
+<p>Call <a class="reference internal" href="#wx.Clipboard.Open" title="wx.Clipboard.Open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Clipboard.Open</span></code></a>   to get ownership of the clipboard. If this operation returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, you now own the clipboard. Call <a class="reference internal" href="#wx.Clipboard.SetData" title="wx.Clipboard.SetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Clipboard.SetData</span></code></a>   to put data on the clipboard, or <a class="reference internal" href="#wx.Clipboard.GetData" title="wx.Clipboard.GetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Clipboard.GetData</span></code></a>   to retrieve data from the clipboard. Call <a class="reference internal" href="#wx.Clipboard.Close" title="wx.Clipboard.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Clipboard.Close</span></code></a>   to close the clipboard and relinquish ownership. You should keep the clipboard open only momentarily.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write some text to the clipboard</span>
+<span class="k">if</span> <span class="n">wx</span><span class="o">.</span><span class="n">TheClipboard</span><span class="o">.</span><span class="n">Open</span><span class="p">():</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">TheClipboard</span><span class="o">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">TextDataObject</span><span class="p">(</span><span class="s2">"Some text"</span><span class="p">))</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">TheClipboard</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+
+
+<span class="c1"># Test if text content is available</span>
+<span class="n">not_empty</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TheClipboard</span><span class="o">.</span><span class="n">IsSupported</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">DataFormat</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">DF_TEXT</span><span class="p">))</span>
+
+
+<span class="c1"># Read some text</span>
+<span class="n">text_data</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextDataObject</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">wx</span><span class="o">.</span><span class="n">TheClipboard</span><span class="o">.</span><span class="n">Open</span><span class="p">():</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TheClipboard</span><span class="o">.</span><span class="n">GetData</span><span class="p">(</span><span class="n">text_data</span><span class="p">)</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">TheClipboard</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">text_data</span><span class="o">.</span><span class="n">GetText</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="dnd_overview.html#drag-and-drop-overview"><span class="std std-ref">Drag and Drop Overview</span></a>, <a class="reference internal" href="dataobject_overview.html#dataobject-overview"><span class="std std-ref">DataObject Overview</span></a>, <a class="reference internal" href="wx.DataObject.html#wx-dataobject"><span class="std std-ref">  wx.DataObject</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Clipboard</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Clipboard" class="inheritance" src="_static/images/inheritance/wx.Clipboard_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,115,112" href="wx.Clipboard.html" id="node1" shape="rect" title="A class for manipulating the clipboard."/> <area alt="" coords="16,5,104,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%"/>
+<col style="width: 72%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Clipboard.__init__" title="wx.Clipboard.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Clipboard.AddData" title="wx.Clipboard.AddData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddData</span></code></a></p></td>
+<td><p>Call this function to add the data object to the clipboard.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Clipboard.Clear" title="wx.Clipboard.Clear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Clear</span></code></a></p></td>
+<td><p>Clears the global clipboard object and the system’s clipboard if possible.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Clipboard.Close" title="wx.Clipboard.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Close</span></code></a></p></td>
+<td><p>Call this function to close the clipboard, having opened it with <code class="xref py py-meth docutils literal notranslate"><span class="pre">Open</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Clipboard.Flush" title="wx.Clipboard.Flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Flush</span></code></a></p></td>
+<td><p>Flushes the clipboard: this means that the data which is currently on clipboard will stay available even after the application exits (possibly eating memory), otherwise the clipboard will be emptied on exit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Clipboard.Get" title="wx.Clipboard.Get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Get</span></code></a></p></td>
+<td><p>Returns the global instance (wxTheClipboard) of the clipboard object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Clipboard.GetData" title="wx.Clipboard.GetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetData</span></code></a></p></td>
+<td><p>Call this function to fill <em class="xref py py-obj">data</em>  with data on the clipboard, if available in the required format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Clipboard.IsOpened" title="wx.Clipboard.IsOpened"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsOpened</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the clipboard has been opened.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Clipboard.IsSupported" title="wx.Clipboard.IsSupported"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSupported</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is data which matches the data format of the given data object currently <strong>available</strong>  on the clipboard.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Clipboard.IsUsingPrimarySelection" title="wx.Clipboard.IsUsingPrimarySelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsUsingPrimarySelection</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if we are using the primary selection, <code class="docutils literal notranslate"><span class="pre">False</span></code> if clipboard one.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Clipboard.Open" title="wx.Clipboard.Open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Open</span></code></a></p></td>
+<td><p>Call this function to open the clipboard before calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetData</span></code>   and <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetData</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Clipboard.SetData" title="wx.Clipboard.SetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetData</span></code></a></p></td>
+<td><p>Call this function to set the data object to the clipboard.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Clipboard.UsePrimarySelection" title="wx.Clipboard.UsePrimarySelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UsePrimarySelection</span></code></a></p></td>
+<td><p>On platforms supporting it (all X11-based ports), <a class="reference internal" href="#wx-clipboard"><span class="std std-ref">  wx.Clipboard</span></a>  uses the <code class="docutils literal notranslate"><span class="pre">CLIPBOARD</span></code> X11 selection by default.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Clipboard">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Clipboard</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Clipboard</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A class for manipulating the clipboard.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Clipboard.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.AddData">
+<code class="sig-name descname">AddData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.AddData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to add the data object to the clipboard.</p>
+<p>This is an obsolete synonym for <a class="reference internal" href="#wx.Clipboard.SetData" title="wx.Clipboard.SetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetData</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="wx.DataObject.html#wx.DataObject" title="wx.DataObject"><em>wx.DataObject</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.Clear">
+<code class="sig-name descname">Clear</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the global clipboard object and the system’s clipboard if possible.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.Close">
+<code class="sig-name descname">Close</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.Close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to close the clipboard, having opened it with <a class="reference internal" href="#wx.Clipboard.Open" title="wx.Clipboard.Open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Open</span></code></a> .</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.Flush">
+<code class="sig-name descname">Flush</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.Flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flushes the clipboard: this means that the data which is currently on clipboard will stay available even after the application exits (possibly eating memory), otherwise the clipboard will be emptied on exit.</p>
+<p>Currently this method is not implemented in X11-based ports, i.e. wxGTK, X11 and Motif and always returns <code class="docutils literal notranslate"><span class="pre">False</span></code> there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if the operation is unsuccessful for any reason.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.Get">
+<em class="property">static </em><code class="sig-name descname">Get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.Get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the global instance (wxTheClipboard) of the clipboard object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-clipboard"><span class="std std-ref">  wx.Clipboard</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.GetData">
+<code class="sig-name descname">GetData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.GetData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to fill <em class="xref py py-obj">data</em>  with data on the clipboard, if available in the required format.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> on success.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="wx.DataObject.html#wx.DataObject" title="wx.DataObject"><em>wx.DataObject</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.IsOpened">
+<code class="sig-name descname">IsOpened</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.IsOpened" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the clipboard has been opened.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.IsSupported">
+<code class="sig-name descname">IsSupported</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">format</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.IsSupported" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is data which matches the data format of the given data object currently <strong>available</strong>  on the clipboard.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>format</strong> (<a class="reference internal" href="wx.DataFormat.html#wx.DataFormat" title="wx.DataFormat"><em>wx.DataFormat</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>The name of this function is misleading. This should be renamed to something that more accurately indicates what it does.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.IsUsingPrimarySelection">
+<code class="sig-name descname">IsUsingPrimarySelection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.IsUsingPrimarySelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if we are using the primary selection, <code class="docutils literal notranslate"><span class="pre">False</span></code> if clipboard one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Clipboard.UsePrimarySelection" title="wx.Clipboard.UsePrimarySelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UsePrimarySelection</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.Open">
+<code class="sig-name descname">Open</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.Open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to open the clipboard before calling <a class="reference internal" href="#wx.Clipboard.SetData" title="wx.Clipboard.SetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetData</span></code></a>   and <a class="reference internal" href="#wx.Clipboard.GetData" title="wx.Clipboard.GetData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetData</span></code></a> .</p>
+<p>Call <a class="reference internal" href="#wx.Clipboard.Close" title="wx.Clipboard.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Close</span></code></a>   when you have finished with the clipboard. You should keep the clipboard open for only a very short time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success. This should be tested (as in the sample shown above).</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.SetData">
+<code class="sig-name descname">SetData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.SetData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this function to set the data object to the clipboard.</p>
+<p>The new data object replaces any previously set one, so if the application wants to provide clipboard data in several different formats, it must use a composite data object supporting all of the formats instead of calling this function several times with different data objects as this would only leave data from the last one in the clipboard.</p>
+<p>After this function has been called, the clipboard owns the data, so do not delete the data explicitly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="wx.DataObject.html#wx.DataObject" title="wx.DataObject"><em>wx.DataObject</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Clipboard.UsePrimarySelection">
+<code class="sig-name descname">UsePrimarySelection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">primary=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Clipboard.UsePrimarySelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>On platforms supporting it (all X11-based ports), <a class="reference internal" href="#wx-clipboard"><span class="std std-ref">  wx.Clipboard</span></a>  uses the <code class="docutils literal notranslate"><span class="pre">CLIPBOARD</span></code> X11 selection by default.</p>
+<p>When this function is called with <code class="docutils literal notranslate"><span class="pre">True</span></code>, all subsequent clipboard operations will use <code class="docutils literal notranslate"><span class="pre">PRIMARY</span></code> selection until this function is called again with <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>On the other platforms, there is no <code class="docutils literal notranslate"><span class="pre">PRIMARY</span></code> selection and so all clipboard operations will fail. This allows implementing the standard X11 handling of the clipboard which consists in copying data to the <code class="docutils literal notranslate"><span class="pre">CLIPBOARD</span></code> selection only when the user explicitly requests it (i.e. by selecting the “Copy” menu command) but putting the currently selected text into the <code class="docutils literal notranslate"><span class="pre">PRIMARY</span></code> selection automatically, without overwriting the normal clipboard contents with the currently selected text on the other platforms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>primary</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

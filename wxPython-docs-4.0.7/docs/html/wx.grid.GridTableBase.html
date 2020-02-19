@@ -1,0 +1,922 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.grid.GridTableBase — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.grid.GridTableMessage.html" rel="next" title="wx.grid.GridTableMessage"/>
+<link href="wx.grid.GridStringTable.html" rel="prev" title="wx.grid.GridStringTable"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.grid.1moduleindex.html">
+<strong>wx.grid</strong></a> »</li>
+<li class="reltitle"> <strong>wx.grid.GridTableBase</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.grid.GridTableMessage.html" title="wx.grid.GridTableMessage">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.grid.GridStringTable.html" title="wx.grid.GridStringTable">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.grid.GridTableBase</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.grid.GridTableBase.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-grid-gridtablebase">
+<span id="wx-grid-gridtablebase"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.grid.GridTableBase</strong><a class="headerlink" href="#phoenix-title-wx-grid-gridtablebase" title="Permalink to this headline">¶</a></h1>
+<p>The almost abstract base class for grid tables.</p>
+<p>A grid table is responsible for storing the grid data and, indirectly, grid cell attributes. The data can be stored in the way most convenient for the application but has to be provided in string form to <a class="reference internal" href="wx.grid.Grid.html#wx-grid-grid"><span class="std std-ref">  wx.grid.Grid</span></a>. It is also possible to provide cells values in other formats if appropriate, e.g. as numbers.</p>
+<p>This base class is not quite abstract as it implements a trivial strategy for storing the attributes by forwarding it to <a class="reference internal" href="wx.grid.GridCellAttrProvider.html#wx-grid-gridcellattrprovider"><span class="std std-ref">  wx.grid.GridCellAttrProvider</span></a>  and also provides stubs for some other functions. However it does have a number of pure virtual methods which must be implemented in the derived classes.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.grid.GridStringTable.html#wx-grid-gridstringtable"><span class="std std-ref">  wx.grid.GridStringTable</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>GridTableBase</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of GridTableBase" class="inheritance" src="_static/images/inheritance/wx.grid.GridTableBase_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,177,112" href="wx.grid.GridTableBase.html" id="node1" shape="rect" title="The almost abstract base class for grid tables."/> <area alt="" coords="47,5,135,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.grid.GridStringTable.html#wx-grid-gridstringtable"><span class="std std-ref">  wx.grid.GridStringTable</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.__init__" title="wx.grid.GridTableBase.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.AppendCols" title="wx.grid.GridTableBase.AppendCols"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendCols</span></code></a></p></td>
+<td><p>Exactly the same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendRows</span></code>   but for columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.AppendRows" title="wx.grid.GridTableBase.AppendRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendRows</span></code></a></p></td>
+<td><p>Append additional rows at the end of the table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.CanGetValueAs" title="wx.grid.GridTableBase.CanGetValueAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanGetValueAs</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value of the given cell can be accessed as if it were of the specified type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.CanHaveAttributes" title="wx.grid.GridTableBase.CanHaveAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanHaveAttributes</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this table supports attributes or <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.CanSetValueAs" title="wx.grid.GridTableBase.CanSetValueAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanSetValueAs</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value of the given cell can be set as if it were of the specified type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.Clear" title="wx.grid.GridTableBase.Clear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Clear</span></code></a></p></td>
+<td><p>Clear the table contents.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.DeleteCols" title="wx.grid.GridTableBase.DeleteCols"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteCols</span></code></a></p></td>
+<td><p>Exactly the same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteRows</span></code>   but for columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.DeleteRows" title="wx.grid.GridTableBase.DeleteRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteRows</span></code></a></p></td>
+<td><p>Delete rows from the table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetAttr" title="wx.grid.GridTableBase.GetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttr</span></code></a></p></td>
+<td><p>Return the attribute for the given cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetAttrProvider" title="wx.grid.GridTableBase.GetAttrProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttrProvider</span></code></a></p></td>
+<td><p>Returns the attribute provider currently being used.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetColLabelValue" title="wx.grid.GridTableBase.GetColLabelValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColLabelValue</span></code></a></p></td>
+<td><p>Return the label of the specified column.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetColsCount" title="wx.grid.GridTableBase.GetColsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColsCount</span></code></a></p></td>
+<td><p>Return the number of columns in the table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetNumberCols" title="wx.grid.GridTableBase.GetNumberCols"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberCols</span></code></a></p></td>
+<td><p>Must be overridden to return the number of columns in the table.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetNumberRows" title="wx.grid.GridTableBase.GetNumberRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberRows</span></code></a></p></td>
+<td><p>Must be overridden to return the number of rows in the table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetRowLabelValue" title="wx.grid.GridTableBase.GetRowLabelValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowLabelValue</span></code></a></p></td>
+<td><p>Return the label of the specified row.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetRowsCount" title="wx.grid.GridTableBase.GetRowsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowsCount</span></code></a></p></td>
+<td><p>Return the number of rows in the table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetTypeName" title="wx.grid.GridTableBase.GetTypeName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTypeName</span></code></a></p></td>
+<td><p>Returns the type of the value in the given cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetValue" title="wx.grid.GridTableBase.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValue</span></code></a></p></td>
+<td><p>Must be overridden to implement accessing the table values as text.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetValueAsBool" title="wx.grid.GridTableBase.GetValueAsBool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValueAsBool</span></code></a></p></td>
+<td><p>Returns the value of the given cell as a boolean.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetValueAsDouble" title="wx.grid.GridTableBase.GetValueAsDouble"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValueAsDouble</span></code></a></p></td>
+<td><p>Returns the value of the given cell as a double.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetValueAsLong" title="wx.grid.GridTableBase.GetValueAsLong"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValueAsLong</span></code></a></p></td>
+<td><p>Returns the value of the given cell as a long.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.GetView" title="wx.grid.GridTableBase.GetView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetView</span></code></a></p></td>
+<td><p>Returns the last grid passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetView</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.InsertCols" title="wx.grid.GridTableBase.InsertCols"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertCols</span></code></a></p></td>
+<td><p>Exactly the same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertRows</span></code>   but for columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.InsertRows" title="wx.grid.GridTableBase.InsertRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertRows</span></code></a></p></td>
+<td><p>Insert additional rows into the table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.IsEmpty" title="wx.grid.GridTableBase.IsEmpty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmpty</span></code></a></p></td>
+<td><p>Same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmptyCell</span></code>   but taking <a class="reference internal" href="wx.grid.GridCellCoords.html#wx-grid-gridcellcoords"><span class="std std-ref">  wx.grid.GridCellCoords</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.IsEmptyCell" title="wx.grid.GridTableBase.IsEmptyCell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmptyCell</span></code></a></p></td>
+<td><p>May be overridden to implement testing for empty cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetAttr" title="wx.grid.GridTableBase.SetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttr</span></code></a></p></td>
+<td><p>Set attribute of the specified cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetAttrProvider" title="wx.grid.GridTableBase.SetAttrProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttrProvider</span></code></a></p></td>
+<td><p>Associate this attributes provider with the table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetColAttr" title="wx.grid.GridTableBase.SetColAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColAttr</span></code></a></p></td>
+<td><p>Set attribute of the specified column.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetColLabelValue" title="wx.grid.GridTableBase.SetColLabelValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColLabelValue</span></code></a></p></td>
+<td><p>Exactly the same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowLabelValue</span></code>   but for columns.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetRowAttr" title="wx.grid.GridTableBase.SetRowAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowAttr</span></code></a></p></td>
+<td><p>Set attribute of the specified row.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetRowLabelValue" title="wx.grid.GridTableBase.SetRowLabelValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowLabelValue</span></code></a></p></td>
+<td><p>Set the given label for the specified row.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetValue" title="wx.grid.GridTableBase.SetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetValue</span></code></a></p></td>
+<td><p>Must be overridden to implement setting the table values as text.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetValueAsBool" title="wx.grid.GridTableBase.SetValueAsBool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetValueAsBool</span></code></a></p></td>
+<td><p>Sets the value of the given cell as a boolean.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetValueAsDouble" title="wx.grid.GridTableBase.SetValueAsDouble"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetValueAsDouble</span></code></a></p></td>
+<td><p>Sets the value of the given cell as a double.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetValueAsLong" title="wx.grid.GridTableBase.SetValueAsLong"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetValueAsLong</span></code></a></p></td>
+<td><p>Sets the value of the given cell as a long.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.SetView" title="wx.grid.GridTableBase.SetView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetView</span></code></a></p></td>
+<td><p>Called by the grid when the table is associated with it.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.AttrProvider" title="wx.grid.GridTableBase.AttrProvider"><code class="xref py py-attr docutils literal notranslate"><span class="pre">AttrProvider</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetAttrProvider" title="wx.grid.GridTableBase.GetAttrProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttrProvider</span></code></a> and <a class="reference internal" href="#wx.grid.GridTableBase.SetAttrProvider" title="wx.grid.GridTableBase.SetAttrProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttrProvider</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.ColsCount" title="wx.grid.GridTableBase.ColsCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ColsCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetColsCount" title="wx.grid.GridTableBase.GetColsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColsCount</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.NumberCols" title="wx.grid.GridTableBase.NumberCols"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NumberCols</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetNumberCols" title="wx.grid.GridTableBase.GetNumberCols"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberCols</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.NumberRows" title="wx.grid.GridTableBase.NumberRows"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NumberRows</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetNumberRows" title="wx.grid.GridTableBase.GetNumberRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberRows</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.RowsCount" title="wx.grid.GridTableBase.RowsCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">RowsCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetRowsCount" title="wx.grid.GridTableBase.GetRowsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowsCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.grid.GridTableBase.View" title="wx.grid.GridTableBase.View"><code class="xref py py-attr docutils literal notranslate"><span class="pre">View</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetView" title="wx.grid.GridTableBase.GetView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetView</span></code></a> and <a class="reference internal" href="#wx.grid.GridTableBase.SetView" title="wx.grid.GridTableBase.SetView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetView</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.grid.GridTableBase">
+<em class="property">class </em><code class="sig-prename descclassname">wx.grid.</code><code class="sig-name descname">GridTableBase</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GridTableBase</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The almost abstract base class for grid tables.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.AppendCols">
+<code class="sig-name descname">AppendCols</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">numCols=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.AppendCols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exactly the same as <a class="reference internal" href="#wx.grid.GridTableBase.AppendRows" title="wx.grid.GridTableBase.AppendRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendRows</span></code></a>   but for columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>numCols</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.AppendRows">
+<code class="sig-name descname">AppendRows</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">numRows=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.AppendRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append additional rows at the end of the table.</p>
+<p>This method is provided in addition to <a class="reference internal" href="#wx.grid.GridTableBase.InsertRows" title="wx.grid.GridTableBase.InsertRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertRows</span></code></a>   as some data models may only support appending rows to them but not inserting them at arbitrary locations. In such case you may implement this method only and leave <a class="reference internal" href="#wx.grid.GridTableBase.InsertRows" title="wx.grid.GridTableBase.InsertRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertRows</span></code></a>   unimplemented.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>numRows</strong> (<em>int</em>) – The number of rows to add.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.CanGetValueAs">
+<code class="sig-name descname">CanGetValueAs</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">typeName</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.CanGetValueAs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value of the given cell can be accessed as if it were of the specified type.</p>
+<p>By default the cells can only be accessed as strings. Note that a cell could be accessible in different ways, e.g. a numeric cell may return <code class="docutils literal notranslate"><span class="pre">True</span></code> for  <code class="docutils literal notranslate"><span class="pre">GRID_VALUE_NUMBER</span></code>   but also for   <code class="docutils literal notranslate"><span class="pre">GRID_VALUE_STRING</span></code>   indicating that the value can be coerced to a string form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>typeName</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.CanHaveAttributes">
+<code class="sig-name descname">CanHaveAttributes</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.CanHaveAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this table supports attributes or <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<p>By default, the table automatically creates a <a class="reference internal" href="wx.grid.GridCellAttrProvider.html#wx-grid-gridcellattrprovider"><span class="std std-ref">  wx.grid.GridCellAttrProvider</span></a>  when this function is called if it had no attribute provider before and returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.CanSetValueAs">
+<code class="sig-name descname">CanSetValueAs</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">typeName</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.CanSetValueAs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value of the given cell can be set as if it were of the specified type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>typeName</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.grid.GridTableBase.CanGetValueAs" title="wx.grid.GridTableBase.CanGetValueAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanGetValueAs</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.Clear">
+<code class="sig-name descname">Clear</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the table contents.</p>
+<p>This method is used by <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.ClearGrid" title="wx.grid.Grid.ClearGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.Grid.ClearGrid</span></code></a> .</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.DeleteCols">
+<code class="sig-name descname">DeleteCols</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos=0</em>, <em class="sig-param">numCols=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.DeleteCols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exactly the same as <a class="reference internal" href="#wx.grid.GridTableBase.DeleteRows" title="wx.grid.GridTableBase.DeleteRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteRows</span></code></a>   but for columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>numCols</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.DeleteRows">
+<code class="sig-name descname">DeleteRows</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos=0</em>, <em class="sig-param">numRows=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.DeleteRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete rows from the table.</p>
+<p>Notice that currently deleting a row intersecting a multi-cell (see SetCellSize()) is not supported and will result in a crash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – The first row to delete.</p></li>
+<li><p><strong>numRows</strong> (<em>int</em>) – The number of rows to delete.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetAttr">
+<code class="sig-name descname">GetAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">kind</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the attribute for the given cell.</p>
+<p>By default this function is simply forwarded to <a class="reference internal" href="wx.grid.GridCellAttrProvider.html#wx.grid.GridCellAttrProvider.GetAttr" title="wx.grid.GridCellAttrProvider.GetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.GridCellAttrProvider.GetAttr</span></code></a>   but it may be overridden to handle attributes directly in the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>kind</strong> (<em>GridCellAttr.wxAttrKind</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.grid.GridCellAttr.html#wx-grid-gridcellattr"><span class="std std-ref">  wx.grid.GridCellAttr</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetAttrProvider">
+<code class="sig-name descname">GetAttrProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetAttrProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the attribute provider currently being used.</p>
+<p>This function may return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the attribute provider hasn’t been neither associated with this table by <a class="reference internal" href="#wx.grid.GridTableBase.SetAttrProvider" title="wx.grid.GridTableBase.SetAttrProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttrProvider</span></code></a>   nor created on demand by any other methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.grid.GridCellAttrProvider.html#wx-grid-gridcellattrprovider"><span class="std std-ref">  wx.grid.GridCellAttrProvider</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetColLabelValue">
+<code class="sig-name descname">GetColLabelValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetColLabelValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the label of the specified column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetColsCount">
+<code class="sig-name descname">GetColsCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetColsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of columns in the table.</p>
+<p>This method is not virtual and is only provided as a convenience for the derived classes which can’t call <a class="reference internal" href="#wx.grid.GridTableBase.GetNumberCols" title="wx.grid.GridTableBase.GetNumberCols"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberCols</span></code></a>   without a  <code class="docutils literal notranslate"><span class="pre">const_cast</span></code>   from their  methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetNumberCols">
+<code class="sig-name descname">GetNumberCols</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetNumberCols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to return the number of columns in the table.</p>
+<p>For backwards compatibility reasons, this method is not const. Use <a class="reference internal" href="#wx.grid.GridTableBase.GetColsCount" title="wx.grid.GridTableBase.GetColsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColsCount</span></code></a>   instead of it in  methods of derived table classes,</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetNumberRows">
+<code class="sig-name descname">GetNumberRows</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetNumberRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to return the number of rows in the table.</p>
+<p>For backwards compatibility reasons, this method is not const. Use <a class="reference internal" href="#wx.grid.GridTableBase.GetRowsCount" title="wx.grid.GridTableBase.GetRowsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowsCount</span></code></a>   instead of it in  methods of derived table classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetRowLabelValue">
+<code class="sig-name descname">GetRowLabelValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetRowLabelValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the label of the specified row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>row</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetRowsCount">
+<code class="sig-name descname">GetRowsCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetRowsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of rows in the table.</p>
+<p>This method is not virtual and is only provided as a convenience for the derived classes which can’t call <a class="reference internal" href="#wx.grid.GridTableBase.GetNumberRows" title="wx.grid.GridTableBase.GetNumberRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberRows</span></code></a>   without a  <code class="docutils literal notranslate"><span class="pre">const_cast</span></code>   from their  methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetTypeName">
+<code class="sig-name descname">GetTypeName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetTypeName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the type of the value in the given cell.</p>
+<p>By default all cells are strings and this method returns  <code class="docutils literal notranslate"><span class="pre">GRID_VALUE_STRING</span></code> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetValue">
+<code class="sig-name descname">GetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to implement accessing the table values as text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">PyObject</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetValueAsBool">
+<code class="sig-name descname">GetValueAsBool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetValueAsBool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the given cell as a boolean.</p>
+<p>This should only be called if <a class="reference internal" href="#wx.grid.GridTableBase.CanGetValueAs" title="wx.grid.GridTableBase.CanGetValueAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanGetValueAs</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when called with  <code class="docutils literal notranslate"><span class="pre">GRID_VALUE_BOOL</span></code>   argument. Default implementation always return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetValueAsDouble">
+<code class="sig-name descname">GetValueAsDouble</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetValueAsDouble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the given cell as a double.</p>
+<p>This should only be called if <a class="reference internal" href="#wx.grid.GridTableBase.CanGetValueAs" title="wx.grid.GridTableBase.CanGetValueAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanGetValueAs</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when called with  <code class="docutils literal notranslate"><span class="pre">GRID_VALUE_FLOAT</span></code>   argument. Default implementation always return 0.0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">float</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetValueAsLong">
+<code class="sig-name descname">GetValueAsLong</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetValueAsLong" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the given cell as a long.</p>
+<p>This should only be called if <a class="reference internal" href="#wx.grid.GridTableBase.CanGetValueAs" title="wx.grid.GridTableBase.CanGetValueAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanGetValueAs</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when called with  <code class="docutils literal notranslate"><span class="pre">GRID_VALUE_NUMBER</span></code>   argument. Default implementation always return 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.GetView">
+<code class="sig-name descname">GetView</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.GetView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the last grid passed to <a class="reference internal" href="#wx.grid.GridTableBase.SetView" title="wx.grid.GridTableBase.SetView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetView</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.grid.Grid.html#wx-grid-grid"><span class="std std-ref">  wx.grid.Grid</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.InsertCols">
+<code class="sig-name descname">InsertCols</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos=0</em>, <em class="sig-param">numCols=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.InsertCols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exactly the same as <a class="reference internal" href="#wx.grid.GridTableBase.InsertRows" title="wx.grid.GridTableBase.InsertRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertRows</span></code></a>   but for columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>numCols</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.InsertRows">
+<code class="sig-name descname">InsertRows</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos=0</em>, <em class="sig-param">numRows=1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.InsertRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert additional rows into the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – The position of the first new row.</p></li>
+<li><p><strong>numRows</strong> (<em>int</em>) – The number of rows to insert.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.IsEmpty">
+<code class="sig-name descname">IsEmpty</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">coords</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <a class="reference internal" href="#wx.grid.GridTableBase.IsEmptyCell" title="wx.grid.GridTableBase.IsEmptyCell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmptyCell</span></code></a>   but taking <a class="reference internal" href="wx.grid.GridCellCoords.html#wx-grid-gridcellcoords"><span class="std std-ref">  wx.grid.GridCellCoords</span></a>.</p>
+<p>Notice that this method is not virtual, only <a class="reference internal" href="#wx.grid.GridTableBase.IsEmptyCell" title="wx.grid.GridTableBase.IsEmptyCell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEmptyCell</span></code></a>   should be overridden.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>coords</strong> (<a class="reference internal" href="wx.grid.GridCellCoords.html#wx.grid.GridCellCoords" title="wx.grid.GridCellCoords"><em>wx.grid.GridCellCoords</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.IsEmptyCell">
+<code class="sig-name descname">IsEmptyCell</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.IsEmptyCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>May be overridden to implement testing for empty cells.</p>
+<p>This method is used by the grid to test if the given cell is not used and so whether a neighbouring cell may overflow into it. By default it only returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value of the given cell, as returned by <a class="reference internal" href="#wx.grid.GridTableBase.GetValue" title="wx.grid.GridTableBase.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValue</span></code></a> , is empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetAttr">
+<code class="sig-name descname">SetAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">attr</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set attribute of the specified cell.</p>
+<p>By default this function is simply forwarded to <a class="reference internal" href="wx.grid.GridCellAttrProvider.html#wx.grid.GridCellAttrProvider.SetAttr" title="wx.grid.GridCellAttrProvider.SetAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.GridCellAttrProvider.SetAttr</span></code></a> .</p>
+<p>The table takes ownership of <code class="xref py py-obj docutils literal notranslate"><span class="pre">attr</span></code>, i.e. will call DecRef() on it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.grid.GridCellAttr.html#wx.grid.GridCellAttr" title="wx.grid.GridCellAttr"><em>wx.grid.GridCellAttr</em></a>) – </p></li>
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetAttrProvider">
+<code class="sig-name descname">SetAttrProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">attrProvider</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetAttrProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associate this attributes provider with the table.</p>
+<p>The table takes ownership of <em class="xref py py-obj">attrProvider</em>  pointer and will delete it when it doesn’t need it any more. The pointer can be <code class="docutils literal notranslate"><span class="pre">None</span></code>, however this won’t disable attributes management in the table but will just result in a default attributes being recreated the next time any of the other functions in this section is called. To completely disable the attributes support, should this be needed, you need to override <a class="reference internal" href="#wx.grid.GridTableBase.CanHaveAttributes" title="wx.grid.GridTableBase.CanHaveAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanHaveAttributes</span></code></a>   to return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attrProvider</strong> (<a class="reference internal" href="wx.grid.GridCellAttrProvider.html#wx.grid.GridCellAttrProvider" title="wx.grid.GridCellAttrProvider"><em>wx.grid.GridCellAttrProvider</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetColAttr">
+<code class="sig-name descname">SetColAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">attr</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetColAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set attribute of the specified column.</p>
+<p>By default this function is simply forwarded to <a class="reference internal" href="wx.grid.GridCellAttrProvider.html#wx.grid.GridCellAttrProvider.SetColAttr" title="wx.grid.GridCellAttrProvider.SetColAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.GridCellAttrProvider.SetColAttr</span></code></a> .</p>
+<p>The table takes ownership of <code class="xref py py-obj docutils literal notranslate"><span class="pre">attr</span></code>, i.e. will call DecRef() on it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.grid.GridCellAttr.html#wx.grid.GridCellAttr" title="wx.grid.GridCellAttr"><em>wx.grid.GridCellAttr</em></a>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetColLabelValue">
+<code class="sig-name descname">SetColLabelValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em>, <em class="sig-param">label</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetColLabelValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exactly the same as <a class="reference internal" href="#wx.grid.GridTableBase.SetRowLabelValue" title="wx.grid.GridTableBase.SetRowLabelValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRowLabelValue</span></code></a>   but for columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetRowAttr">
+<code class="sig-name descname">SetRowAttr</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">attr</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetRowAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set attribute of the specified row.</p>
+<p>By default this function is simply forwarded to <a class="reference internal" href="wx.grid.GridCellAttrProvider.html#wx.grid.GridCellAttrProvider.SetRowAttr" title="wx.grid.GridCellAttrProvider.SetRowAttr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.GridCellAttrProvider.SetRowAttr</span></code></a> .</p>
+<p>The table takes ownership of <code class="xref py py-obj docutils literal notranslate"><span class="pre">attr</span></code>, i.e. will call DecRef() on it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong> (<a class="reference internal" href="wx.grid.GridCellAttr.html#wx.grid.GridCellAttr" title="wx.grid.GridCellAttr"><em>wx.grid.GridCellAttr</em></a>) – </p></li>
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetRowLabelValue">
+<code class="sig-name descname">SetRowLabelValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">label</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetRowLabelValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the given label for the specified row.</p>
+<p>The default version does nothing, i.e. the label is not stored. You must override this method in your derived class if you wish <a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid.SetRowLabelValue" title="wx.grid.Grid.SetRowLabelValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.grid.Grid.SetRowLabelValue</span></code></a>   to work.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetValue">
+<code class="sig-name descname">SetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to implement setting the table values as text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>value</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetValueAsBool">
+<code class="sig-name descname">SetValueAsBool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetValueAsBool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value of the given cell as a boolean.</p>
+<p>This should only be called if <a class="reference internal" href="#wx.grid.GridTableBase.CanSetValueAs" title="wx.grid.GridTableBase.CanSetValueAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanSetValueAs</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when called with  <code class="docutils literal notranslate"><span class="pre">GRID_VALUE_BOOL</span></code>   argument. Default implementation doesn’t do anything.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>value</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetValueAsDouble">
+<code class="sig-name descname">SetValueAsDouble</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetValueAsDouble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value of the given cell as a double.</p>
+<p>This should only be called if <a class="reference internal" href="#wx.grid.GridTableBase.CanSetValueAs" title="wx.grid.GridTableBase.CanSetValueAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanSetValueAs</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when called with  <code class="docutils literal notranslate"><span class="pre">GRID_VALUE_FLOAT</span></code>   argument. Default implementation doesn’t do anything.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>value</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetValueAsLong">
+<code class="sig-name descname">SetValueAsLong</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">row</em>, <em class="sig-param">col</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetValueAsLong" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value of the given cell as a long.</p>
+<p>This should only be called if <a class="reference internal" href="#wx.grid.GridTableBase.CanSetValueAs" title="wx.grid.GridTableBase.CanSetValueAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanSetValueAs</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when called with  <code class="docutils literal notranslate"><span class="pre">GRID_VALUE_NUMBER</span></code>   argument. Default implementation doesn’t do anything.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>value</strong> (<em>long</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.grid.GridTableBase.SetView">
+<code class="sig-name descname">SetView</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">grid</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.grid.GridTableBase.SetView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the grid when the table is associated with it.</p>
+<p>The default implementation stores the pointer and returns it from its <a class="reference internal" href="#wx.grid.GridTableBase.GetView" title="wx.grid.GridTableBase.GetView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetView</span></code></a>   and so only makes sense if the table cannot be associated with more than one grid at a time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>grid</strong> (<a class="reference internal" href="wx.grid.Grid.html#wx.grid.Grid" title="wx.grid.Grid"><em>wx.grid.Grid</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.grid.GridTableBase.AttrProvider">
+<code class="sig-name descname">AttrProvider</code><a class="headerlink" href="#wx.grid.GridTableBase.AttrProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetAttrProvider" title="wx.grid.GridTableBase.GetAttrProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAttrProvider</span></code></a> and <a class="reference internal" href="#wx.grid.GridTableBase.SetAttrProvider" title="wx.grid.GridTableBase.SetAttrProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAttrProvider</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.grid.GridTableBase.ColsCount">
+<code class="sig-name descname">ColsCount</code><a class="headerlink" href="#wx.grid.GridTableBase.ColsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetColsCount" title="wx.grid.GridTableBase.GetColsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColsCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.grid.GridTableBase.NumberCols">
+<code class="sig-name descname">NumberCols</code><a class="headerlink" href="#wx.grid.GridTableBase.NumberCols" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetNumberCols" title="wx.grid.GridTableBase.GetNumberCols"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberCols</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.grid.GridTableBase.NumberRows">
+<code class="sig-name descname">NumberRows</code><a class="headerlink" href="#wx.grid.GridTableBase.NumberRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetNumberRows" title="wx.grid.GridTableBase.GetNumberRows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNumberRows</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.grid.GridTableBase.RowsCount">
+<code class="sig-name descname">RowsCount</code><a class="headerlink" href="#wx.grid.GridTableBase.RowsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetRowsCount" title="wx.grid.GridTableBase.GetRowsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowsCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.grid.GridTableBase.View">
+<code class="sig-name descname">View</code><a class="headerlink" href="#wx.grid.GridTableBase.View" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.grid.GridTableBase.GetView" title="wx.grid.GridTableBase.GetView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetView</span></code></a> and <a class="reference internal" href="#wx.grid.GridTableBase.SetView" title="wx.grid.GridTableBase.SetView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetView</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

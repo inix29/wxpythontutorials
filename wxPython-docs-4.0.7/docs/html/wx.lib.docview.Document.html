@@ -1,0 +1,687 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.docview.Document — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.docview.View.html" rel="next" title="wx.lib.docview.View"/>
+<link href="wx.lib.docview.DocTemplate.html" rel="prev" title="wx.lib.docview.DocTemplate"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.docview.html">
+<strong>wx.lib.docview</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.docview.Document</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.docview.View.html" title="wx.lib.docview.View">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.docview.DocTemplate.html" title="wx.lib.docview.DocTemplate">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.docview.Document</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#super-classes-known-superclasses"> Known Superclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.docview.Document.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-lib-docview-document">
+<span id="wx-lib-docview-document"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.docview.Document</strong><a class="headerlink" href="#phoenix-title-wx-lib-docview-document" title="Permalink to this headline">¶</a></h1>
+<p>The document class can be used to model an application’s file-based data. It
+is part of the document/view framework supported by wxWindows, and cooperates
+with the <a class="reference internal" href="wx.lib.docview.View.html#wx.lib.docview.View" title="wx.lib.docview.View"><code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></a>, <a class="reference internal" href="wx.lib.docview.DocTemplate.html#wx.lib.docview.DocTemplate" title="wx.lib.docview.DocTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocTemplate</span></code></a> and <a class="reference internal" href="wx.lib.docview.DocManager.html#wx.lib.docview.DocManager" title="wx.lib.docview.DocManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocManager</span></code></a> classes.</p>
+<p>Note this wxPython version also keeps track of the modification date of the
+document and if it changes on disk outside of the application, we will warn the
+user before saving to avoid clobbering the file.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Document</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Document" class="inheritance" src="_static/images/inheritance/wx.lib.docview.Document_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="14,160,207,189" href="wx.lib.docview.Document.html" id="node1" shape="rect" title="The document class can be used to model an application's file-based data. It"/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node2" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node4" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="super-classes-known-superclasses">
+<h2><a class="reference internal" href="_images/super_classes.png"><img alt="super_classes" class="align-middle" src="_images/super_classes.png" style="width: 32px;"/></a> Known Superclasses<a class="headerlink" href="#super-classes-known-superclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler" title="wx.EvtHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.EvtHandler</span></code></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.__init__" title="wx.lib.docview.Document.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.  Define your own default constructor to initialize</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.AddView" title="wx.lib.docview.Document.AddView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddView</span></code></a></p></td>
+<td><p>If the view is not already in the list of views, adds the view and</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.Close" title="wx.lib.docview.Document.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Close</span></code></a></p></td>
+<td><p>Closes the document, by calling <a class="reference internal" href="#wx.lib.docview.Document.OnSaveModified" title="wx.lib.docview.Document.OnSaveModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSaveModified</span></code></a> and then (if this true)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.DeleteAllViews" title="wx.lib.docview.Document.DeleteAllViews"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAllViews</span></code></a></p></td>
+<td><p>Calls <a class="reference internal" href="wx.lib.docview.View.html#wx.lib.docview.View.Close" title="wx.lib.docview.View.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">View.Close</span></code></a> and deletes each view. Deleting the final view will</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.DeleteContents" title="wx.lib.docview.Document.DeleteContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteContents</span></code></a></p></td>
+<td><p>Deletes the contents of the document.  Override this method as</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.Destroy" title="wx.lib.docview.Document.Destroy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Destroy</span></code></a></p></td>
+<td><p>Destructor. Removes itself from the document manager.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.Draw" title="wx.lib.docview.Document.Draw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Draw</span></code></a></p></td>
+<td><p>Called by printing framework to draw the view.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetCommandProcessor" title="wx.lib.docview.Document.GetCommandProcessor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCommandProcessor</span></code></a></p></td>
+<td><p>Returns the command processor associated with this document.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetDocumentManager" title="wx.lib.docview.Document.GetDocumentManager"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDocumentManager</span></code></a></p></td>
+<td><p>Returns the associated document manager.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetDocumentModificationDate" title="wx.lib.docview.Document.GetDocumentModificationDate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDocumentModificationDate</span></code></a></p></td>
+<td><p>Returns the file’s modification date when it was loaded from disk.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetDocumentName" title="wx.lib.docview.Document.GetDocumentName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDocumentName</span></code></a></p></td>
+<td><p>The document type name given to the wxDocTemplate constructor,</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetDocumentSaved" title="wx.lib.docview.Document.GetDocumentSaved"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDocumentSaved</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the document has been saved.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetDocumentTemplate" title="wx.lib.docview.Document.GetDocumentTemplate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDocumentTemplate</span></code></a></p></td>
+<td><p>Returns the template that created the document.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetDocumentWindow" title="wx.lib.docview.Document.GetDocumentWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDocumentWindow</span></code></a></p></td>
+<td><p>Intended to return a suitable window for using as a parent for</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetFilename" title="wx.lib.docview.Document.GetFilename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFilename</span></code></a></p></td>
+<td><p>Gets the filename associated with this document, or “” if none is</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetFirstView" title="wx.lib.docview.Document.GetFirstView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFirstView</span></code></a></p></td>
+<td><p>A convenience function to get the first view for a document, because</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetPrintableName" title="wx.lib.docview.Document.GetPrintableName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintableName</span></code></a></p></td>
+<td><p>Copies a suitable document name into the supplied name buffer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetTitle" title="wx.lib.docview.Document.GetTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetTitle</span></code></a></p></td>
+<td><p>Gets the title for this document. The document title is used for an</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetViews" title="wx.lib.docview.Document.GetViews"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetViews</span></code></a></p></td>
+<td><p>Returns the list whose elements are the views on the document.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.GetWriteable" title="wx.lib.docview.Document.GetWriteable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWriteable</span></code></a></p></td>
+<td><p>Returns true if the document can be written to its accociated file path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.IsDocumentModificationDateCorrect" title="wx.lib.docview.Document.IsDocumentModificationDateCorrect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsDocumentModificationDateCorrect</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if the file has been modified outside of the application.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.IsModified" title="wx.lib.docview.Document.IsModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsModified</span></code></a></p></td>
+<td><p>Returns true if the document has been modified since the last save,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.LoadObject" title="wx.lib.docview.Document.LoadObject"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadObject</span></code></a></p></td>
+<td><p>Override this function and call it from your own <code class="docutils literal notranslate"><span class="pre">LoadObject</span></code> before</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.Modify" title="wx.lib.docview.Document.Modify"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Modify</span></code></a></p></td>
+<td><p>Call with true to mark the document as modified since the last save,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.NotifyClosing" title="wx.lib.docview.Document.NotifyClosing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NotifyClosing</span></code></a></p></td>
+<td><p>Notifies the views that the document is going to close.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.OnChangedViewList" title="wx.lib.docview.Document.OnChangedViewList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnChangedViewList</span></code></a></p></td>
+<td><p>Called when a view is added to or deleted from this document. The</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.OnCloseDocument" title="wx.lib.docview.Document.OnCloseDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCloseDocument</span></code></a></p></td>
+<td><p>The default implementation calls <a class="reference internal" href="#wx.lib.docview.Document.DeleteContents" title="wx.lib.docview.Document.DeleteContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteContents</span></code></a> (an empty</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.OnCreate" title="wx.lib.docview.Document.OnCreate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCreate</span></code></a></p></td>
+<td><p>The default implementation calls <a class="reference internal" href="#wx.lib.docview.Document.DeleteContents" title="wx.lib.docview.Document.DeleteContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteContents</span></code></a> (an empty</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.OnCreateCommandProcessor" title="wx.lib.docview.Document.OnCreateCommandProcessor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCreateCommandProcessor</span></code></a></p></td>
+<td><p>Override this function if you want a different (or no) command</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.OnNewDocument" title="wx.lib.docview.Document.OnNewDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnNewDocument</span></code></a></p></td>
+<td><p>The default implementation calls OnSaveModified and DeleteContents,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.OnOpenDocument" title="wx.lib.docview.Document.OnOpenDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnOpenDocument</span></code></a></p></td>
+<td><p>Constructs an input file for the given filename (which must not</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.OnSaveDocument" title="wx.lib.docview.Document.OnSaveDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSaveDocument</span></code></a></p></td>
+<td><p>Constructs an output file for the given filename (which must</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.OnSaveModified" title="wx.lib.docview.Document.OnSaveModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSaveModified</span></code></a></p></td>
+<td><p>If the document has been modified, prompts the user to ask if the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.ProcessEvent" title="wx.lib.docview.Document.ProcessEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ProcessEvent</span></code></a></p></td>
+<td><p>Processes an event, searching event tables and calling zero or more</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.RemoveView" title="wx.lib.docview.Document.RemoveView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveView</span></code></a></p></td>
+<td><p>Removes the view from the document’s list of views, and calls</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.Revert" title="wx.lib.docview.Document.Revert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Revert</span></code></a></p></td>
+<td><p>Override this function to revert the document to its last saved state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.Save" title="wx.lib.docview.Document.Save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Save</span></code></a></p></td>
+<td><p>Saves the document by calling <a class="reference internal" href="#wx.lib.docview.Document.OnSaveDocument" title="wx.lib.docview.Document.OnSaveDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSaveDocument</span></code></a> if there is an</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SaveAs" title="wx.lib.docview.Document.SaveAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SaveAs</span></code></a></p></td>
+<td><p>Prompts the user for a file to save to, and then calls <code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSaveDocument</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SaveObject" title="wx.lib.docview.Document.SaveObject"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SaveObject</span></code></a></p></td>
+<td><p>Override this function and call it from your own <code class="docutils literal notranslate"><span class="pre">SaveObject</span></code> before</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SetCommandProcessor" title="wx.lib.docview.Document.SetCommandProcessor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCommandProcessor</span></code></a></p></td>
+<td><p>Sets the command processor to be used for this document. The document</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SetDocumentModificationDate" title="wx.lib.docview.Document.SetDocumentModificationDate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDocumentModificationDate</span></code></a></p></td>
+<td><p>Saves the file’s last modification date.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SetDocumentName" title="wx.lib.docview.Document.SetDocumentName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDocumentName</span></code></a></p></td>
+<td><p>Sets the document type name given to the <a class="reference internal" href="wx.lib.docview.DocTemplate.html#wx.lib.docview.DocTemplate" title="wx.lib.docview.DocTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocTemplate</span></code></a> constructor,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SetDocumentSaved" title="wx.lib.docview.Document.SetDocumentSaved"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDocumentSaved</span></code></a></p></td>
+<td><p>Sets whether the document has been saved.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SetDocumentTemplate" title="wx.lib.docview.Document.SetDocumentTemplate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDocumentTemplate</span></code></a></p></td>
+<td><p>Sets the template that created the document. Should only be called by</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SetFilename" title="wx.lib.docview.Document.SetFilename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFilename</span></code></a></p></td>
+<td><p>Sets the filename for this document. Usually called by the framework.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SetTitle" title="wx.lib.docview.Document.SetTitle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetTitle</span></code></a></p></td>
+<td><p>Sets the title for this document. The document title is used for an</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.docview.Document.SetWriteable" title="wx.lib.docview.Document.SetWriteable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWriteable</span></code></a></p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> if the document can not be saved.  This will disable the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.docview.Document.UpdateAllViews" title="wx.lib.docview.Document.UpdateAllViews"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UpdateAllViews</span></code></a></p></td>
+<td><p>Updates all views. If sender is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, does not update this view.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.lib.docview.Document">
+<em class="property">class </em><code class="sig-name descname">Document</code><span class="sig-paren">(</span><em class="sig-param">wx.EvtHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document" title="Permalink to this definition">¶</a></dt>
+<dd><p>The document class can be used to model an application’s file-based data. It
+is part of the document/view framework supported by wxWindows, and cooperates
+with the <a class="reference internal" href="wx.lib.docview.View.html#wx.lib.docview.View" title="wx.lib.docview.View"><code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></a>, <a class="reference internal" href="wx.lib.docview.DocTemplate.html#wx.lib.docview.DocTemplate" title="wx.lib.docview.DocTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocTemplate</span></code></a> and <a class="reference internal" href="wx.lib.docview.DocManager.html#wx.lib.docview.DocManager" title="wx.lib.docview.DocManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocManager</span></code></a> classes.</p>
+<p>Note this wxPython version also keeps track of the modification date of the
+document and if it changes on disk outside of the application, we will warn the
+user before saving to avoid clobbering the file.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.lib.docview.Document.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.  Define your own default constructor to initialize
+application-specific data.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.AddView">
+<code class="sig-name descname">AddView</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">view</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.AddView" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the view is not already in the list of views, adds the view and
+calls <a class="reference internal" href="#wx.lib.docview.Document.OnChangedViewList" title="wx.lib.docview.Document.OnChangedViewList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnChangedViewList</span></code></a>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.Close">
+<code class="sig-name descname">Close</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.Close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the document, by calling <a class="reference internal" href="#wx.lib.docview.Document.OnSaveModified" title="wx.lib.docview.Document.OnSaveModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSaveModified</span></code></a> and then (if this true)
+<a class="reference internal" href="#wx.lib.docview.Document.OnCloseDocument" title="wx.lib.docview.Document.OnCloseDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCloseDocument</span></code></a>. This does not normally delete the document object:
+use <a class="reference internal" href="#wx.lib.docview.Document.DeleteAllViews" title="wx.lib.docview.Document.DeleteAllViews"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteAllViews</span></code></a> to do this implicitly.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.DeleteAllViews">
+<code class="sig-name descname">DeleteAllViews</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.DeleteAllViews" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls <a class="reference internal" href="wx.lib.docview.View.html#wx.lib.docview.View.Close" title="wx.lib.docview.View.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">View.Close</span></code></a> and deletes each view. Deleting the final view will
+implicitly delete the document itself, because the wxView destructor
+calls RemoveView. This in turn calls <a class="reference internal" href="#wx.lib.docview.Document.OnChangedViewList" title="wx.lib.docview.Document.OnChangedViewList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Document.OnChangedViewList</span></code></a>,
+whose default implemention is to save and delete the document if no
+views exist.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.DeleteContents">
+<code class="sig-name descname">DeleteContents</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.DeleteContents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the contents of the document.  Override this method as
+necessary.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.Destroy">
+<code class="sig-name descname">Destroy</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.Destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destructor. Removes itself from the document manager.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.Draw">
+<code class="sig-name descname">Draw</code><span class="sig-paren">(</span><em class="sig-param">context</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.Draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by printing framework to draw the view.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetCommandProcessor">
+<code class="sig-name descname">GetCommandProcessor</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetCommandProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the command processor associated with this document.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetDocumentManager">
+<code class="sig-name descname">GetDocumentManager</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetDocumentManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the associated document manager.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetDocumentModificationDate">
+<code class="sig-name descname">GetDocumentModificationDate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetDocumentModificationDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the file’s modification date when it was loaded from disk.
+This is used to check if the file has been modified outside of the application.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetDocumentName">
+<code class="sig-name descname">GetDocumentName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetDocumentName" title="Permalink to this definition">¶</a></dt>
+<dd><p>The document type name given to the wxDocTemplate constructor,
+copied to this document when the document is created. If several
+document templates are created that use the same document type, this
+variable is used in <a class="reference internal" href="wx.lib.docview.DocManager.html#wx.lib.docview.DocManager.CreateView" title="wx.lib.docview.DocManager.CreateView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DocManager.CreateView</span></code></a> to collate a list of
+alternative view types that can be used on this kind of document.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetDocumentSaved">
+<code class="sig-name descname">GetDocumentSaved</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetDocumentSaved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the document has been saved.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetDocumentTemplate">
+<code class="sig-name descname">GetDocumentTemplate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetDocumentTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the template that created the document.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetDocumentWindow">
+<code class="sig-name descname">GetDocumentWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetDocumentWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Intended to return a suitable window for using as a parent for
+document-related dialog boxes. By default, uses the frame associated
+with the first view.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetFilename">
+<code class="sig-name descname">GetFilename</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the filename associated with this document, or “” if none is
+associated.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetFirstView">
+<code class="sig-name descname">GetFirstView</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetFirstView" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience function to get the first view for a document, because
+in many cases a document will only have a single view.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetPrintableName">
+<code class="sig-name descname">GetPrintableName</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetPrintableName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies a suitable document name into the supplied name buffer.
+The default function uses the title, or if there is no title, uses the
+filename; or if no filename, the string ‘Untitled’.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetTitle">
+<code class="sig-name descname">GetTitle</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the title for this document. The document title is used for an
+associated frame (if any), and is usually constructed by the framework
+from the filename.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetViews">
+<code class="sig-name descname">GetViews</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetViews" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list whose elements are the views on the document.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.GetWriteable">
+<code class="sig-name descname">GetWriteable</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.GetWriteable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the document can be written to its accociated file path.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.IsDocumentModificationDateCorrect">
+<code class="sig-name descname">IsDocumentModificationDateCorrect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.IsDocumentModificationDateCorrect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> if the file has been modified outside of the application.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.IsModified">
+<code class="sig-name descname">IsModified</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.IsModified" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the document has been modified since the last save,
+false otherwise. You may need to override this if your document view
+maintains its own record of being modified (for example if using
+wxTextWindow to view and edit the document).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.LoadObject">
+<code class="sig-name descname">LoadObject</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">file</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.LoadObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this function and call it from your own <code class="docutils literal notranslate"><span class="pre">LoadObject</span></code> before
+loading your own data. <code class="docutils literal notranslate"><span class="pre">LoadObject</span></code> is called by the framework
+automatically when the document contents need to be loaded.</p>
+<p>Note that the wxPython version simply sends you a Python file object,
+so you can use pickle.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.Modify">
+<code class="sig-name descname">Modify</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">modify</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.Modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call with true to mark the document as modified since the last save,
+false otherwise. You may need to override this if your document view
+maintains its own record of being modified (for example if using
+<code class="xref py py-class docutils literal notranslate"><span class="pre">wx.TextWindow</span></code> to view and edit the document).
+This method has been extended to notify its views that the dirty
+flag has changed.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.NotifyClosing">
+<code class="sig-name descname">NotifyClosing</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.NotifyClosing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notifies the views that the document is going to close.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.OnChangedViewList">
+<code class="sig-name descname">OnChangedViewList</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.OnChangedViewList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a view is added to or deleted from this document. The
+default implementation saves and deletes the document if no views
+exist (the last one has just been removed).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.OnCloseDocument">
+<code class="sig-name descname">OnCloseDocument</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.OnCloseDocument" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default implementation calls <a class="reference internal" href="#wx.lib.docview.Document.DeleteContents" title="wx.lib.docview.Document.DeleteContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteContents</span></code></a> (an empty
+implementation) sets the modified flag to false. Override this to
+supply additional behaviour when the document is closed with Close.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.OnCreate">
+<code class="sig-name descname">OnCreate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em>, <em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.OnCreate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default implementation calls <a class="reference internal" href="#wx.lib.docview.Document.DeleteContents" title="wx.lib.docview.Document.DeleteContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteContents</span></code></a> (an empty
+implementation) sets the modified flag to false. Override this to
+supply additional behaviour when the document is opened with Open.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.OnCreateCommandProcessor">
+<code class="sig-name descname">OnCreateCommandProcessor</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.OnCreateCommandProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this function if you want a different (or no) command
+processor to be created when the document is created. By default, it
+returns an instance of <a class="reference internal" href="wx.lib.docview.CommandProcessor.html#wx.lib.docview.CommandProcessor" title="wx.lib.docview.CommandProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandProcessor</span></code></a>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.OnNewDocument">
+<code class="sig-name descname">OnNewDocument</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.OnNewDocument" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default implementation calls OnSaveModified and DeleteContents,
+makes a default title for the document, and notifies the views that
+the filename (in fact, the title) has changed.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.OnOpenDocument">
+<code class="sig-name descname">OnOpenDocument</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.OnOpenDocument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an input file for the given filename (which must not
+be empty), and calls <a class="reference internal" href="#wx.lib.docview.Document.LoadObject" title="wx.lib.docview.Document.LoadObject"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadObject</span></code></a>. If LoadObject returns true, the
+document is set to unmodified; otherwise, an error message box is
+displayed. The document’s views are notified that the filename has
+changed, to give windows an opportunity to update their titles. All of
+the document’s views are then updated.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.OnSaveDocument">
+<code class="sig-name descname">OnSaveDocument</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.OnSaveDocument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an output file for the given filename (which must
+not be empty), and calls <a class="reference internal" href="#wx.lib.docview.Document.SaveObject" title="wx.lib.docview.Document.SaveObject"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SaveObject</span></code></a>. If <a class="reference internal" href="#wx.lib.docview.Document.SaveObject" title="wx.lib.docview.Document.SaveObject"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SaveObject</span></code></a>
+returns true, the document is set to unmodified; otherwise, an
+error message box is displayed.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.OnSaveModified">
+<code class="sig-name descname">OnSaveModified</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.OnSaveModified" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the document has been modified, prompts the user to ask if the
+changes should be changed. If the user replies Yes, the Save function
+is called. If No, the document is marked as unmodified and the
+function succeeds. If Cancel, the function fails.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.ProcessEvent">
+<code class="sig-name descname">ProcessEvent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.ProcessEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes an event, searching event tables and calling zero or more
+suitable event handler function(s).  Note that the ProcessEvent
+method is called from the wxPython docview framework directly since
+wxPython does not have a virtual ProcessEvent function.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.RemoveView">
+<code class="sig-name descname">RemoveView</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">view</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.RemoveView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the view from the document’s list of views, and calls
+<a class="reference internal" href="#wx.lib.docview.Document.OnChangedViewList" title="wx.lib.docview.Document.OnChangedViewList"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnChangedViewList</span></code></a>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.Revert">
+<code class="sig-name descname">Revert</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.Revert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this function to revert the document to its last saved state.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.Save">
+<code class="sig-name descname">Save</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.Save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the document by calling <a class="reference internal" href="#wx.lib.docview.Document.OnSaveDocument" title="wx.lib.docview.Document.OnSaveDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSaveDocument</span></code></a> if there is an
+associated filename, or <a class="reference internal" href="#wx.lib.docview.Document.SaveAs" title="wx.lib.docview.Document.SaveAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SaveAs</span></code></a> if there is no filename.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SaveAs">
+<code class="sig-name descname">SaveAs</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SaveAs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompts the user for a file to save to, and then calls <a class="reference internal" href="#wx.lib.docview.Document.OnSaveDocument" title="wx.lib.docview.Document.OnSaveDocument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnSaveDocument</span></code></a>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SaveObject">
+<code class="sig-name descname">SaveObject</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">file</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SaveObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this function and call it from your own <code class="docutils literal notranslate"><span class="pre">SaveObject</span></code> before
+saving your own data. <code class="docutils literal notranslate"><span class="pre">SaveObject</span></code> is called by the framework
+automatically when the document contents need to be saved.</p>
+<p>Note that the wxPython version simply sends you a Python file object,
+so you can use pickle.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SetCommandProcessor">
+<code class="sig-name descname">SetCommandProcessor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">processor</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SetCommandProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the command processor to be used for this document. The document
+will then be responsible for its deletion. Normally you should not
+call this; override <a class="reference internal" href="#wx.lib.docview.Document.OnCreateCommandProcessor" title="wx.lib.docview.Document.OnCreateCommandProcessor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnCreateCommandProcessor</span></code></a> instead.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SetDocumentModificationDate">
+<code class="sig-name descname">SetDocumentModificationDate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SetDocumentModificationDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the file’s last modification date.
+This is used to check if the file has been modified outside of
+the application.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SetDocumentName">
+<code class="sig-name descname">SetDocumentName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SetDocumentName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the document type name given to the <a class="reference internal" href="wx.lib.docview.DocTemplate.html#wx.lib.docview.DocTemplate" title="wx.lib.docview.DocTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocTemplate</span></code></a> constructor,
+copied to this document when the document is created. If several
+document templates are created that use the same document type, this
+variable is used in <a class="reference internal" href="wx.lib.docview.DocManager.html#wx.lib.docview.DocManager.CreateView" title="wx.lib.docview.DocManager.CreateView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DocManager.CreateView</span></code></a> to collate a list of
+alternative view types that can be used on this kind of document. Do
+not change the value of this variable.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SetDocumentSaved">
+<code class="sig-name descname">SetDocumentSaved</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">saved=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SetDocumentSaved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether the document has been saved.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SetDocumentTemplate">
+<code class="sig-name descname">SetDocumentTemplate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">template</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SetDocumentTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the template that created the document. Should only be called by
+the framework.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SetFilename">
+<code class="sig-name descname">SetFilename</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filename</em>, <em class="sig-param">notifyViews = False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SetFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the filename for this document. Usually called by the framework.
+If notifyViews is true, <a class="reference internal" href="wx.lib.docview.View.html#wx.lib.docview.View.OnChangeFilename" title="wx.lib.docview.View.OnChangeFilename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">View.OnChangeFilename</span></code></a> is called for all
+views.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SetTitle">
+<code class="sig-name descname">SetTitle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SetTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the title for this document. The document title is used for an
+associated frame (if any), and is usually constructed by the framework
+from the filename.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.SetWriteable">
+<code class="sig-name descname">SetWriteable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">writeable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.SetWriteable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> if the document can not be saved.  This will disable the
+<code class="docutils literal notranslate"><span class="pre">ID_SAVE_AS</span></code> event and is useful for custom documents that should
+not be saveable.  The <code class="docutils literal notranslate"><span class="pre">ID_SAVE</span></code> event can be disabled by never
+modifying the document.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.docview.Document.UpdateAllViews">
+<code class="sig-name descname">UpdateAllViews</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sender = None</em>, <em class="sig-param">hint = None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.docview.Document.UpdateAllViews" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates all views. If sender is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, does not update this view.
+hint represents optional information to allow a view to optimize its
+update.</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

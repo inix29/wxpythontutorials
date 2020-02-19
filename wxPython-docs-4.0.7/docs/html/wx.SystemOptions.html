@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.SystemOptions — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.SystemScreenType.enumeration.html" rel="next" title="wx.SystemScreenType"/>
+<link href="wx.SystemMetric.enumeration.html" rel="prev" title="wx.SystemMetric"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.SystemOptions</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.SystemScreenType.enumeration.html" title="wx.SystemScreenType">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.SystemMetric.enumeration.html" title="wx.SystemMetric">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.SystemOptions</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-all-platforms"> All platforms</a></li>
+<li><a class="reference internal" href="#phoenix-title-windows"> Windows</a></li>
+<li><a class="reference internal" href="#phoenix-title-gtk"> GTK+</a></li>
+<li><a class="reference internal" href="#phoenix-title-mac"> Mac</a></li>
+<li><a class="reference internal" href="#phoenix-title-motif"> Motif</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.SystemOptions.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-systemoptions">
+<span id="wx-systemoptions"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.SystemOptions</strong><a class="headerlink" href="#phoenix-title-wx-systemoptions" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-systemoptions"><span class="std std-ref">  wx.SystemOptions</span></a>  stores option/value pairs that wxWidgets itself or applications can use to alter behaviour at run-time.</p>
+<p>It can be used to optimize behaviour that doesn’t deserve a distinct API, but is still important to be able to configure.</p>
+<p>System options can be set by the program itself using <a class="reference internal" href="#wx.SystemOptions.SetOption" title="wx.SystemOptions.SetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOption</span></code></a>  method and they also can be set from the program environment by defining an environment variable  <code class="docutils literal notranslate"><span class="pre">_option</span></code>   to set the given option for all wxWidgets applications or   <code class="docutils literal notranslate"><span class="pre">_appname_option</span></code>   to set it just for the application with the given name (as returned by  <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.GetAppName</span></code> ). Notice that any characters not allowed in the environment variables names, such as periods and dashes, should be replaced with underscores. E.g. to define a system option “foo-bar” you need to define the environment variable “wx_foo_bar”.</p>
+<p>The program may use system options for its own needs but they are mostly used to control the behaviour of wxWidgets library itself.</p>
+<p>These options are currently recognised by wxWidgets:</p>
+<div class="section" id="phoenix-title-all-platforms">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> All platforms<a class="headerlink" href="#phoenix-title-all-platforms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>exit-on-assert: If set to non-zero value, abort the program if an assertion fails. The default behaviour in case of assertion failure depends on the build mode and can be changed by overriding <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.OnAssertFailure</span></code>   but setting this option allows changing it without modifying the program code and also applies to asserts which may happen before the <a class="reference internal" href="wx.App.html#wx-app"><span class="std std-ref">  wx.App</span></a>  object creation or after its destruction.</p></li>
+</ul>
+</div>
+<div class="section" id="phoenix-title-windows">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Windows<a class="headerlink" href="#phoenix-title-windows" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>no-maskblt: 1 to never use WIN32’s MaskBlt function, 0 to allow it to be used where possible. Default: 0. In some circumstances the MaskBlt function can be slower than using the fallback code, especially if using DC caching. By default, MaskBlt will be used where it is implemented by the operating system and driver.</p></li>
+<li><p>msw.remap: If 1 (the default), <a class="reference internal" href="wx.ToolBar.html#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>  bitmap colours will be remapped to the current theme’s values. Set this to 0 to disable this functionality, for example if you’re using more than 16 colours in your tool bitmaps.</p></li>
+<li><p>msw.window.no-clip-children: If 1, windows will not automatically get the <code class="docutils literal notranslate"><span class="pre">WS_CLIPCHILDREN</span></code> style. This restores the way windows are refreshed back to the method used in versions of wxWidgets earlier than 2.5.4, and for some complex window hierarchies it can reduce apparent refresh delays. You may still specify <code class="docutils literal notranslate"><span class="pre">wx.CLIP_CHILDREN</span></code> for individual windows.</p></li>
+<li><p>msw.notebook.themed-background: If set to 0, globally disables themed backgrounds on notebook pages. Note that this won’t disable the theme on the actual notebook background (noticeable only if there are no pages).</p></li>
+<li><p>msw.staticbox.optimized-paint: If set to 0, switches off optimized <a class="reference internal" href="wx.StaticBox.html#wx-staticbox"><span class="std std-ref">  wx.StaticBox</span></a>  painting. Setting this to 0 causes more flicker, but allows applications to paint graphics on the parent of a static box (the optimized refresh causes any such drawing to disappear).</p></li>
+<li><p>msw.display.directdraw: If set to 1, use DirectDraw-based implementation of <a class="reference internal" href="wx.Display.html#wx-display"><span class="std std-ref">  wx.Display</span></a>. By default the standard Win32 functions are used.</p></li>
+<li><p>msw.font.no-proof-quality: If set to 1, use default fonts quality instead of proof quality when creating fonts. With proof quality the fonts have slightly better appearance but not all fonts are available in this quality, e.g. the Terminal font in small sizes is not and this option may be used if wider fonts selection is more important than higher quality.</p></li>
+<li><p>wince.dialog.real-ok-cancel: The PocketPC guidelines recommend for Ok/Cancel dialogs to use an <code class="docutils literal notranslate"><span class="pre">wx.OK</span></code> button located inside the caption bar and implement Cancel functionality through Undo outside the dialog. <a class="reference internal" href="wx.Dialog.html#wx.Dialog.CreateButtonSizer" title="wx.Dialog.CreateButtonSizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.CreateButtonSizer</span></code></a>   will follow the native behaviour on WinCE but it can be overridden with real Buttons by setting the option below to 1.</p></li>
+</ul>
+</div>
+<div class="section" id="phoenix-title-gtk">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> GTK+<a class="headerlink" href="#phoenix-title-gtk" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>gtk.tlw.can-set-transparent: <a class="reference internal" href="wx.TopLevelWindow.html#wx.TopLevelWindow.CanSetTransparent" title="wx.TopLevelWindow.CanSetTransparent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.TopLevelWindow.CanSetTransparent</span></code></a>   method normally tries to detect automatically whether transparency for top level windows is currently supported, however this may sometimes fail and this option allows overriding the automatic detection. Setting it to 1 makes the transparency be always available (setting it can still fail, of course) and setting it to 0 makes it always unavailable.</p></li>
+<li><p>gtk.desktop: This option can be set to override the default desktop environment determination. Supported values are GNOME and KDE.</p></li>
+<li><p>gtk.window.force-background-colour: If 1, the backgrounds of windows with the <code class="docutils literal notranslate"><span class="pre">wx.BG_STYLE_COLOUR</span></code> background style are cleared forcibly instead of relying on the underlying GTK+ window colour. This works around a display problem when running applications under KDE with the gtk-qt theme installed (0.6 and below).</p></li>
+</ul>
+</div>
+<div class="section" id="phoenix-title-mac">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Mac<a class="headerlink" href="#phoenix-title-mac" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>mac.window-plain-transition: If 1, uses a plainer transition when showing a window. You can also use the symbol <code class="docutils literal notranslate"><span class="pre">MAC_WINDOW_PLAIN_TRANSITION</span></code>.</p></li>
+<li><p>window-default-variant: The default variant used by windows (cast to integer from the WindowVariant enum). Also known as <code class="docutils literal notranslate"><span class="pre">WINDOW_DEFAULT_VARIANT</span></code>.</p></li>
+<li><p>mac.listctrl.always_use_generic: Tells <a class="reference internal" href="wx.ListCtrl.html#wx-listctrl"><span class="std std-ref">  wx.ListCtrl</span></a>  to use the generic control even when it is capable of using the native control instead. Also known as <code class="docutils literal notranslate"><span class="pre">MAC_ALWAYS_USE_GENERIC_LISTCTRL</span></code>.</p></li>
+<li><p>mac.textcontrol-use-spell-checker: This option only has effect for Mac OS X 10.4 and higher. If 1 activates the spell checking in <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>.</p></li>
+<li><p>osx.openfiledialog.always-show-types: Per default a <a class="reference internal" href="wx.FileDialog.html#wx-filedialog"><span class="std std-ref">  wx.FileDialog</span></a>  with <code class="docutils literal notranslate"><span class="pre">wx.FD_OPEN</span></code> does not show a types-popup on OSX but allows the selection of files from any of the supported types. Setting this to 1 shows a <a class="reference internal" href="wx.Choice.html#wx-choice"><span class="std std-ref">  wx.Choice</span></a>  for selection (if there is more than one supported filetype).</p></li>
+</ul>
+</div>
+<div class="section" id="phoenix-title-motif">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Motif<a class="headerlink" href="#phoenix-title-motif" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>motif.largebuttons: If 1, uses a bigger default size for Buttons.</p></li>
+</ul>
+<p>The compile-time option to include or exclude this functionality is <code class="docutils literal notranslate"><span class="pre">USE_SYSTEM_OPTIONS</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.SystemSettings.html#wx-systemsettings"><span class="std std-ref">  wx.SystemSettings</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>SystemOptions</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of SystemOptions" class="inheritance" src="_static/images/inheritance/wx.SystemOptions_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,152,112" href="wx.SystemOptions.html" id="node1" shape="rect" title="wx.SystemOptions  stores option/value pairs that wxWidgets itself or applications can use to alter behaviour at run-time."/> <area alt="" coords="35,5,123,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.SystemOptions.__init__" title="wx.SystemOptions.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.SystemOptions.GetOption" title="wx.SystemOptions.GetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOption</span></code></a></p></td>
+<td><p>Gets an option.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.SystemOptions.GetOptionInt" title="wx.SystemOptions.GetOptionInt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOptionInt</span></code></a></p></td>
+<td><p>Gets an option as an integer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.SystemOptions.HasOption" title="wx.SystemOptions.HasOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasOption</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given option is present.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.SystemOptions.IsFalse" title="wx.SystemOptions.IsFalse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsFalse</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the option with the given <em class="xref py py-obj">name</em>  had been set to 0 value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.SystemOptions.SetOption" title="wx.SystemOptions.SetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOption</span></code></a></p></td>
+<td><p>Sets an option.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.SystemOptions">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">SystemOptions</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SystemOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SystemOptions</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>SystemOptions stores option/value pairs that wxWidgets itself or
+applications can use to alter behaviour at run-time.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.SystemOptions.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SystemOptions.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+<p>You don’t need to create an instance of <a class="reference internal" href="#wx-systemoptions"><span class="std std-ref">  wx.SystemOptions</span></a>  since all of its functions are static.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.SystemOptions.GetOption">
+<em class="property">static </em><code class="sig-name descname">GetOption</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SystemOptions.GetOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets an option.</p>
+<p>The function is case-insensitive to <em class="xref py py-obj">name</em>. Returns empty string if the option hasn’t been set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.SystemOptions.SetOption" title="wx.SystemOptions.SetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOption</span></code></a> , <a class="reference internal" href="#wx.SystemOptions.GetOptionInt" title="wx.SystemOptions.GetOptionInt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOptionInt</span></code></a> , <a class="reference internal" href="#wx.SystemOptions.HasOption" title="wx.SystemOptions.HasOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasOption</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.SystemOptions.GetOptionInt">
+<em class="property">static </em><code class="sig-name descname">GetOptionInt</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SystemOptions.GetOptionInt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets an option as an integer.</p>
+<p>The function is case-insensitive to <em class="xref py py-obj">name</em>. If the option hasn’t been set, this function returns 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.SystemOptions.SetOption" title="wx.SystemOptions.SetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOption</span></code></a> , <a class="reference internal" href="#wx.SystemOptions.GetOption" title="wx.SystemOptions.GetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOption</span></code></a> , <a class="reference internal" href="#wx.SystemOptions.HasOption" title="wx.SystemOptions.HasOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasOption</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.SystemOptions.HasOption">
+<em class="property">static </em><code class="sig-name descname">HasOption</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SystemOptions.HasOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given option is present.</p>
+<p>The function is case-insensitive to <em class="xref py py-obj">name</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.SystemOptions.SetOption" title="wx.SystemOptions.SetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOption</span></code></a> , <a class="reference internal" href="#wx.SystemOptions.GetOption" title="wx.SystemOptions.GetOption"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOption</span></code></a> , <a class="reference internal" href="#wx.SystemOptions.GetOptionInt" title="wx.SystemOptions.GetOptionInt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOptionInt</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.SystemOptions.IsFalse">
+<em class="property">static </em><code class="sig-name descname">IsFalse</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SystemOptions.IsFalse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the option with the given <em class="xref py py-obj">name</em>  had been set to 0 value.</p>
+<p>This is mostly useful for boolean options for which you can’t use  <code class="docutils literal notranslate"><span class="pre">GetOptionInt(name)</span></code>   == 0 as this would also be <code class="docutils literal notranslate"><span class="pre">True</span></code> if the option hadn’t been set at all.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.SystemOptions.SetOption">
+<em class="property">static </em><code class="sig-name descname">SetOption</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.SystemOptions.SetOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets an option.</p>
+<p>The function is case-insensitive to <em class="xref py py-obj">name</em>.</p>
+<p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetOption</strong> <em class="xref py py-obj">(name, value)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>value</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetOption</strong> <em class="xref py py-obj">(name, value)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>value</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

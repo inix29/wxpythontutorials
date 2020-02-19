@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Accessible — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ActivateEvent.html" rel="next" title="wx.ActivateEvent"/>
+<link href="wx.AcceleratorTable.html" rel="prev" title="wx.AcceleratorTable"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Accessible</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ActivateEvent.html" title="wx.ActivateEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.AcceleratorTable.html" title="wx.AcceleratorTable">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Accessible</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Accessible.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-accessible">
+<span id="wx-accessible"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Accessible</strong><a class="headerlink" href="#phoenix-title-wx-accessible" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#wx-accessible"><span class="std std-ref">  wx.Accessible</span></a>  class allows wxWidgets applications, and wxWidgets itself, to return extended information about user interface elements to client applications such as screen readers.</p>
+<p>This is the main way in which wxWidgets implements accessibility features.</p>
+<p>At present, only Microsoft Active Accessibility is supported by this class.</p>
+<p>To use this class, derive from <a class="reference internal" href="#wx-accessible"><span class="std std-ref">  wx.Accessible</span></a>, implement appropriate functions, and associate an object of the class with a window using <a class="reference internal" href="wx.Window.html#wx.Window.SetAccessible" title="wx.Window.SetAccessible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetAccessible</span></code></a> .</p>
+<p>All functions return an indication of success, failure, or not implemented using values of the AccStatus enum type.</p>
+<p>If you return  <code class="docutils literal notranslate"><span class="pre">ACC_NOT_IMPLEMENTED</span></code>   from any function, the system will try to implement the appropriate functionality. However this will not work with all functions.</p>
+<p>Most functions work with an object <em class="xref py py-obj">id</em>, which can be zero to refer to ‘this’ UI element, or greater than zero to refer to the nth child element. This allows you to specify elements that don’t have a corresponding <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  or <a class="reference internal" href="#wx-accessible"><span class="std std-ref">  wx.Accessible</span></a>; for example, the sash of a splitter window.</p>
+<p>For details on the semantics of functions and types, please refer to the Microsoft Active Accessibility 1.2 documentation.</p>
+<p>This class is compiled into wxWidgets only if the <code class="docutils literal notranslate"><span class="pre">wx.USE_ACCESSIBILITY</span></code> setup symbol is set to 1.</p>
+<div class="admonition availability" id="index-0">
+<p class="admonition-title">Availability</p>
+<p>Only available for MSW.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">Accessibility Sample</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Accessible</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Accessible" class="inheritance" src="_static/images/inheritance/wx.Accessible_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,120,112" href="wx.Accessible.html" id="node1" shape="rect" title="The wx.Accessible  class allows wxWidgets applications, and wxWidgets itself, to return extended information about user interface elements to client applications such as screen readers."/> <area alt="" coords="19,5,107,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.__init__" title="wx.Accessible.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor, taking an optional window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.DoDefaultAction" title="wx.Accessible.DoDefaultAction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoDefaultAction</span></code></a></p></td>
+<td><p>Performs the default action for the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.GetChild" title="wx.Accessible.GetChild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChild</span></code></a></p></td>
+<td><p>Gets the specified child (starting from 1).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.GetChildCount" title="wx.Accessible.GetChildCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetChildCount</span></code></a></p></td>
+<td><p>Returns the number of children in <em class="xref py py-obj">childCount</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.GetDefaultAction" title="wx.Accessible.GetDefaultAction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDefaultAction</span></code></a></p></td>
+<td><p>Gets the default action for this object (0) or a child (greater than 0).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.GetDescription" title="wx.Accessible.GetDescription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDescription</span></code></a></p></td>
+<td><p>Returns the description for this object or a child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.GetFocus" title="wx.Accessible.GetFocus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFocus</span></code></a></p></td>
+<td><p>Gets the window with the keyboard focus.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.GetHelpText" title="wx.Accessible.GetHelpText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHelpText</span></code></a></p></td>
+<td><p>Returns help text for this object or a child, similar to tooltip text.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.GetKeyboardShortcut" title="wx.Accessible.GetKeyboardShortcut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetKeyboardShortcut</span></code></a></p></td>
+<td><p>Returns the keyboard shortcut for this object or child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.GetLocation" title="wx.Accessible.GetLocation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLocation</span></code></a></p></td>
+<td><p>Returns the rectangle for this object (id is 0) or a child element (id is greater than 0).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.GetName" title="wx.Accessible.GetName"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetName</span></code></a></p></td>
+<td><p>Gets the name of the specified object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.GetParent" title="wx.Accessible.GetParent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetParent</span></code></a></p></td>
+<td><p>Returns the parent of this object, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.GetRole" title="wx.Accessible.GetRole"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRole</span></code></a></p></td>
+<td><p>Returns a role constant describing this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.GetSelections" title="wx.Accessible.GetSelections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelections</span></code></a></p></td>
+<td><p>Gets a variant representing the selected children of this object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.GetState" title="wx.Accessible.GetState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetState</span></code></a></p></td>
+<td><p>Returns a state constant.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.GetValue" title="wx.Accessible.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValue</span></code></a></p></td>
+<td><p>Returns a localized string representing the value for the object or child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.GetWindow" title="wx.Accessible.GetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWindow</span></code></a></p></td>
+<td><p>Returns the window associated with this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.HitTest" title="wx.Accessible.HitTest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HitTest</span></code></a></p></td>
+<td><p>Returns a status value and object id to indicate whether the given point was on this or a child object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.Navigate" title="wx.Accessible.Navigate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Navigate</span></code></a></p></td>
+<td><p>Navigates from <em class="xref py py-obj">fromId</em>  to <em class="xref py py-obj">toId</em>  or to <em class="xref py py-obj">toObject</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.NotifyEvent" title="wx.Accessible.NotifyEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NotifyEvent</span></code></a></p></td>
+<td><p>Allows the application to send an event when something changes in an accessible object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.Select" title="wx.Accessible.Select"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Select</span></code></a></p></td>
+<td><p>Selects the object or child.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Accessible.SetWindow" title="wx.Accessible.SetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWindow</span></code></a></p></td>
+<td><p>Sets the window associated with this object.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Accessible.Window" title="wx.Accessible.Window"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Window</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Accessible.GetWindow" title="wx.Accessible.GetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWindow</span></code></a> and <a class="reference internal" href="#wx.Accessible.SetWindow" title="wx.Accessible.SetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWindow</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Accessible">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Accessible</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Accessible</span><span class="p">(</span><span class="n">win</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The Accessible class allows wxWidgets applications, and wxWidgets
+itself, to return extended information about user interface elements
+to client applications such as screen readers.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Accessible.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor, taking an optional window.</p>
+<p>The object can be associated with a window later.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.DoDefaultAction">
+<code class="sig-name descname">DoDefaultAction</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.DoDefaultAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the default action for the object.</p>
+<p><em class="xref py py-obj">childId</em>  is 0 (the action for this object) or greater than 0 (the action for a child).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">wx.ACC_NOT_SUPPORTED</span></code> if there is no default action for this window (e.g. an edit control).</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetChild">
+<code class="sig-name descname">GetChild</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the specified child (starting from 1).</p>
+<p>If <em class="xref py py-obj">child</em>  is <code class="docutils literal notranslate"><span class="pre">None</span></code> and the return value is <code class="docutils literal notranslate"><span class="pre">wx.ACC_OK</span></code>, this means that the child is a simple element and not an accessible object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">child</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetChildCount">
+<code class="sig-name descname">GetChildCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetChildCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of children in <em class="xref py py-obj">childCount</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">childCount</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetDefaultAction">
+<code class="sig-name descname">GetDefaultAction</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetDefaultAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the default action for this object (0) or a child (greater than 0).</p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">wx.ACC_OK</span></code> even if there is no action. <em class="xref py py-obj">actionName</em>  is the action, or the empty string if there is no action. The retrieved string describes the action that is performed on an object, not what the object does as a result. For example, a toolbar button that prints a document has a default action of “Press” rather than “Prints
+the current document.”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">actionName</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetDescription">
+<code class="sig-name descname">GetDescription</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the description for this object or a child.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">description</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetFocus">
+<code class="sig-name descname">GetFocus</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetFocus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the window with the keyboard focus.</p>
+<p>If childId is 0 and child is <code class="docutils literal notranslate"><span class="pre">None</span></code>, no object in this subhierarchy has the focus. If this object has the focus, child should be ‘this’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">child</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetHelpText">
+<code class="sig-name descname">GetHelpText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetHelpText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns help text for this object or a child, similar to tooltip text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">helpText</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetKeyboardShortcut">
+<code class="sig-name descname">GetKeyboardShortcut</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetKeyboardShortcut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the keyboard shortcut for this object or child.</p>
+<p>Returns e.g. <code class="docutils literal notranslate"><span class="pre">ALT+K</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">shortcut</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetLocation">
+<code class="sig-name descname">GetLocation</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">elementId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the rectangle for this object (id is 0) or a child element (id is greater than 0).</p>
+<p><em class="xref py py-obj">rect</em>  is in screen coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>elementId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">rect</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetName">
+<code class="sig-name descname">GetName</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the name of the specified object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">name</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetParent">
+<code class="sig-name descname">GetParent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the parent of this object, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">parent</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetRole">
+<code class="sig-name descname">GetRole</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a role constant describing this object.</p>
+<p>See AccRole for a list of these roles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">role</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetSelections">
+<code class="sig-name descname">GetSelections</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetSelections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a variant representing the selected children of this object.</p>
+<p>Acceptable values are:</p>
+<ul class="simple">
+<li><p>a null variant (IsNull() returns <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></li>
+<li><p>a list variant (GetType() == “list”)</p></li>
+<li><p>an integer representing the selected child element, or 0 if this object is selected (GetType() == “long”)</p></li>
+<li><p>a “voidx” pointer to a <a class="reference internal" href="#wx-accessible"><span class="std std-ref">  wx.Accessible</span></a>  child object</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">selections</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetState">
+<code class="sig-name descname">GetState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a state constant.</p>
+<p>See AccStatus for a list of these states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">state</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetValue">
+<code class="sig-name descname">GetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a localized string representing the value for the object or child.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>childId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>( <a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a>, <em class="xref py py-obj">strValue</em> )</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.GetWindow">
+<code class="sig-name descname">GetWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.GetWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the window associated with this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.HitTest">
+<code class="sig-name descname">HitTest</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pt</em>, <em class="sig-param">childId</em>, <em class="sig-param">childObject</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.HitTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a status value and object id to indicate whether the given point was on this or a child object.</p>
+<p>Can return either a child object, or an integer representing the child element, starting from 1.</p>
+<p><em class="xref py py-obj">pt</em>  is in screen coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>childId</strong> (<em>int</em>) – </p></li>
+<li><p><strong>childObject</strong> (<a class="reference internal" href="#wx.Accessible" title="wx.Accessible"><em>Accessible</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.Navigate">
+<code class="sig-name descname">Navigate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">navDir</em>, <em class="sig-param">fromId</em>, <em class="sig-param">toId</em>, <em class="sig-param">toObject</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.Navigate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Navigates from <em class="xref py py-obj">fromId</em>  to <em class="xref py py-obj">toId</em>  or to <em class="xref py py-obj">toObject</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>navDir</strong> (<a class="reference internal" href="wx.NavDir.enumeration.html" title="NavDir"><em>NavDir</em></a>) – </p></li>
+<li><p><strong>fromId</strong> (<em>int</em>) – </p></li>
+<li><p><strong>toId</strong> (<em>int</em>) – </p></li>
+<li><p><strong>toObject</strong> (<a class="reference internal" href="#wx.Accessible" title="wx.Accessible"><em>Accessible</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.NotifyEvent">
+<em class="property">static </em><code class="sig-name descname">NotifyEvent</code><span class="sig-paren">(</span><em class="sig-param">eventType</em>, <em class="sig-param">window</em>, <em class="sig-param">objectType</em>, <em class="sig-param">objectId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.NotifyEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows the application to send an event when something changes in an accessible object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eventType</strong> (<em>int</em>) – </p></li>
+<li><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>objectType</strong> (<a class="reference internal" href="wx.AccObject.enumeration.html" title="AccObject"><em>AccObject</em></a>) – </p></li>
+<li><p><strong>objectId</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.Select">
+<code class="sig-name descname">Select</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">childId</em>, <em class="sig-param">selectFlags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.Select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the object or child.</p>
+<p>See AccSelectionFlags for a list of the selection actions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>childId</strong> (<em>int</em>) – </p></li>
+<li><p><strong>selectFlags</strong> (<a class="reference internal" href="wx.AccSelectionFlags.enumeration.html" title="AccSelectionFlags"><em>AccSelectionFlags</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.AccStatus.enumeration.html#wx-accstatus"><span class="std std-ref">  wx.AccStatus</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Accessible.SetWindow">
+<code class="sig-name descname">SetWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Accessible.SetWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the window associated with this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.Accessible.Window">
+<code class="sig-name descname">Window</code><a class="headerlink" href="#wx.Accessible.Window" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Accessible.GetWindow" title="wx.Accessible.GetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWindow</span></code></a> and <a class="reference internal" href="#wx.Accessible.SetWindow" title="wx.Accessible.SetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWindow</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.mixins.inspection.InspectionMixin — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.mixins.listctrl.html" rel="next" title="wx.lib.mixins.listctrl"/>
+<link href="wx.lib.mixins.inspection.InspectableApp.html" rel="prev" title="wx.lib.mixins.inspection.InspectableApp"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a href="wx.lib.mixins.html">
+<strong>wx.lib.mixins</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.mixins.inspection.html">
+<strong>wx.lib.mixins.inspection</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.mixins.inspection.InspectionMixin</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.mixins.listctrl.html" title="wx.lib.mixins.listctrl">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.mixins.inspection.InspectableApp.html" title="wx.lib.mixins.inspection.InspectableApp">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.mixins.inspection.InspectionMixin</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.mixins.inspection.InspectionMixin.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-lib-mixins-inspection-inspectionmixin">
+<span id="wx-lib-mixins-inspection-inspectionmixin"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.mixins.inspection.InspectionMixin</strong><a class="headerlink" href="#phoenix-title-wx-lib-mixins-inspection-inspectionmixin" title="Permalink to this headline">¶</a></h1>
+<p>This class is intended to be used as a mix-in with the <code class="xref py py-class docutils literal notranslate"><span class="pre">App</span></code>.
+When used it will add the ability to popup a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">InspectionFrame</span></code> window
+where the widget under the mouse cursor will be selected in the tree and
+loaded into the shell’s namespace as ‘obj’.  The default key sequence to
+activate the inspector is Ctrl-Alt-I (or Cmd-Alt-I on Mac) but this can be
+changed via parameters to the <em class="xref py py-obj">Init</em> method, or the application can call
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowInspectionTool</span></code> from other
+event handlers if desired.</p>
+<p>To use this class simply derive a class from <code class="xref py py-class docutils literal notranslate"><span class="pre">App</span></code> and
+<a class="reference internal" href="#wx.lib.mixins.inspection.InspectionMixin" title="wx.lib.mixins.inspection.InspectionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">InspectionMixin</span></code></a> and then call the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">InspectionMixin.Init</span></code> method from the app’s
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">AppConsole.OnInit</span></code> method.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>InspectionMixin</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of InspectionMixin" class="inheritance" src="_static/images/inheritance/wx.lib.mixins.inspection.InspectionMixin_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,296,35" href="wx.lib.mixins.inspection.InspectionMixin.html" id="node1" shape="rect" title="This class is intended to be used as a mix-in with the App."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.lib.mixins.inspection.InspectableApp.html#wx.lib.mixins.inspection.InspectableApp" title="wx.lib.mixins.inspection.InspectableApp"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.lib.mixins.inspection.InspectableApp</span></code></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.inspection.InspectionMixin.InitInspection" title="wx.lib.mixins.inspection.InspectionMixin.InitInspection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InitInspection</span></code></a></p></td>
+<td><p>Make the event binding that will activate the InspectionFrame window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.inspection.InspectionMixin.ShowInspectionTool" title="wx.lib.mixins.inspection.InspectionMixin.ShowInspectionTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowInspectionTool</span></code></a></p></td>
+<td><p>Show the Inspection tool, creating it if neccesary, setting it</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.lib.mixins.inspection.InspectionMixin">
+<em class="property">class </em><code class="sig-name descname">InspectionMixin</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.inspection.InspectionMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is intended to be used as a mix-in with the <code class="xref py py-class docutils literal notranslate"><span class="pre">App</span></code>.
+When used it will add the ability to popup a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">InspectionFrame</span></code> window
+where the widget under the mouse cursor will be selected in the tree and
+loaded into the shell’s namespace as ‘obj’.  The default key sequence to
+activate the inspector is Ctrl-Alt-I (or Cmd-Alt-I on Mac) but this can be
+changed via parameters to the <code class="xref py py-obj docutils literal notranslate"><span class="pre">Init</span></code> method, or the application can call
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowInspectionTool</span></code> from other
+event handlers if desired.</p>
+<p>To use this class simply derive a class from <code class="xref py py-class docutils literal notranslate"><span class="pre">App</span></code> and
+<a class="reference internal" href="#wx.lib.mixins.inspection.InspectionMixin" title="wx.lib.mixins.inspection.InspectionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">InspectionMixin</span></code></a> and then call the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">InspectionMixin.Init</span></code> method from the app’s
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">AppConsole.OnInit</span></code> method.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.lib.mixins.inspection.InspectionMixin.InitInspection">
+<code class="sig-name descname">InitInspection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos=wx.DefaultPosition</em>, <em class="sig-param">size=wx.Size(850</em>, <em class="sig-param">700)</em>, <em class="sig-param">config=None</em>, <em class="sig-param">locals=None</em>, <em class="sig-param">alt=True</em>, <em class="sig-param">cmd=True</em>, <em class="sig-param">shift=False</em>, <em class="sig-param">keyCode=ord('I')</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.inspection.InspectionMixin.InitInspection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the event binding that will activate the InspectionFrame window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> – the control position. A value of (-1, -1) indicates a default position,
+chosen by either the windowing system or wxPython, depending on platform;</p></li>
+<li><p><strong>size</strong> – the control size. A value of (-1, -1) indicates a default size,
+chosen by either the windowing system or wxPython, depending on platform;</p></li>
+<li><p><strong>config</strong> – A <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code> object to be used to store layout
+and other info to when the inspection frame is closed.
+This info will be restored the next time the inspection
+frame is used.</p></li>
+<li><p><strong>locals</strong> – A dictionary of names to be added to the PyCrust
+namespace.</p></li>
+<li><p><strong>alt</strong> (<em>boolean</em>) – use alt in the short cut sequence</p></li>
+<li><p><strong>cmd</strong> (<em>boolean</em>) – use ctrl/cmd in the short cut sequence</p></li>
+<li><p><strong>shift</strong> (<em>boolean</em>) – use shift in the short cut sequence</p></li>
+<li><p><strong>keyCode</strong> (<em>string</em>) – the key code for the short cut sequence</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.inspection.InspectionMixin.ShowInspectionTool">
+<code class="sig-name descname">ShowInspectionTool</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.inspection.InspectionMixin.ShowInspectionTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the Inspection tool, creating it if neccesary, setting it
+to display the widget under the cursor.</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.lib.mixins.listctrl.TextEditMixin — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.lib.mixins.rubberband.html" rel="next" title="wx.lib.mixins.rubberband"/>
+<link href="wx.lib.mixins.listctrl.ListRowHighlighter.html" rel="prev" title="wx.lib.mixins.listctrl.ListRowHighlighter"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a href="wx.lib.html">
+<strong>wx.lib</strong></a> »</li>
+<li><a href="wx.lib.mixins.html">
+<strong>wx.lib.mixins</strong></a> »</li>
+<li><a accesskey="U" href="wx.lib.mixins.listctrl.html">
+<strong>wx.lib.mixins.listctrl</strong></a> »</li>
+<li class="reltitle"> <strong>wx.lib.mixins.listctrl.TextEditMixin</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.lib.mixins.rubberband.html" title="wx.lib.mixins.rubberband">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.lib.mixins.listctrl.ListRowHighlighter.html" title="wx.lib.mixins.listctrl.ListRowHighlighter">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.lib.mixins.listctrl.TextEditMixin</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.lib.mixins.listctrl.TextEditMixin.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-lib-mixins-listctrl-texteditmixin">
+<span id="wx-lib-mixins-listctrl-texteditmixin"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.lib.mixins.listctrl.TextEditMixin</strong><a class="headerlink" href="#phoenix-title-wx-lib-mixins-listctrl-texteditmixin" title="Permalink to this headline">¶</a></h1>
+<p>A mixin class that enables any text in any column of a
+multi-column listctrl to be edited by clicking on the given row
+and column.  You close the text editor by hitting the ENTER key or
+clicking somewhere else on the listctrl. You switch to the next
+column by hiting TAB.</p>
+<p>To use the mixin you have to include it in the class definition
+and call the __init__ function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TestListCtrl</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ListCtrl</span><span class="p">,</span> <span class="n">TextEditMixin</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">DefaultPosition</span><span class="p">,</span>
+                 <span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">DefaultSize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">ListCtrl</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span>
+        <span class="n">TextEditMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Authors:     Steve Zatz, Pim Van Heuven (<a class="reference external" href="mailto:pim%40think-wize.com">pim<span>@</span>think-wize<span>.</span>com</a>)</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>TextEditMixin</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of TextEditMixin" class="inheritance" src="_static/images/inheritance/wx.lib.mixins.listctrl.TextEditMixin_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,255,35" href="wx.lib.mixins.listctrl.TextEditMixin.html" id="node1" shape="rect" title="A mixin class that enables any text in any column of a"/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.TextEditMixin.__init__" title="wx.lib.mixins.listctrl.TextEditMixin.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Initialize self.  See help(type(self)) for accurate signature.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.TextEditMixin.CloseEditor" title="wx.lib.mixins.listctrl.TextEditMixin.CloseEditor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CloseEditor</span></code></a></p></td>
+<td><p>Close the editor and save the new value to the ListCtrl.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.TextEditMixin.make_editor" title="wx.lib.mixins.listctrl.TextEditMixin.make_editor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">make_editor</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.TextEditMixin.OnChar" title="wx.lib.mixins.listctrl.TextEditMixin.OnChar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnChar</span></code></a></p></td>
+<td><p>Catch the TAB, Shift-TAB, cursor DOWN/UP key code</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.TextEditMixin.OnItemSelected" title="wx.lib.mixins.listctrl.TextEditMixin.OnItemSelected"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnItemSelected</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.TextEditMixin.OnLeftDown" title="wx.lib.mixins.listctrl.TextEditMixin.OnLeftDown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnLeftDown</span></code></a></p></td>
+<td><p>Examine the click and double</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.lib.mixins.listctrl.TextEditMixin.OpenEditor" title="wx.lib.mixins.listctrl.TextEditMixin.OpenEditor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OpenEditor</span></code></a></p></td>
+<td><p>Opens an editor at the current position.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.lib.mixins.listctrl.TextEditMixin">
+<em class="property">class </em><code class="sig-name descname">TextEditMixin</code><a class="headerlink" href="#wx.lib.mixins.listctrl.TextEditMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>A mixin class that enables any text in any column of a
+multi-column listctrl to be edited by clicking on the given row
+and column.  You close the text editor by hitting the ENTER key or
+clicking somewhere else on the listctrl. You switch to the next
+column by hiting TAB.</p>
+<p>To use the mixin you have to include it in the class definition
+and call the __init__ function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TestListCtrl</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ListCtrl</span><span class="p">,</span> <span class="n">TextEditMixin</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">DefaultPosition</span><span class="p">,</span>
+                 <span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">DefaultSize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">ListCtrl</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span>
+        <span class="n">TextEditMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Authors:     Steve Zatz, Pim Van Heuven (<a class="reference external" href="mailto:pim%40think-wize.com">pim<span>@</span>think-wize<span>.</span>com</a>)</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.TextEditMixin.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.TextEditMixin.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.TextEditMixin.CloseEditor">
+<code class="sig-name descname">CloseEditor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">evt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.TextEditMixin.CloseEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the editor and save the new value to the ListCtrl.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.TextEditMixin.make_editor">
+<code class="sig-name descname">make_editor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col_style=wx.LIST_FORMAT_LEFT</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.TextEditMixin.make_editor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.TextEditMixin.OnChar">
+<code class="sig-name descname">OnChar</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.TextEditMixin.OnChar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Catch the TAB, Shift-TAB, cursor DOWN/UP key code
+so we can open the editor at the next column (if any).</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.TextEditMixin.OnItemSelected">
+<code class="sig-name descname">OnItemSelected</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">evt</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.TextEditMixin.OnItemSelected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.TextEditMixin.OnLeftDown">
+<code class="sig-name descname">OnLeftDown</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">evt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.TextEditMixin.OnLeftDown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Examine the click and double
+click events to see if a row has been click on twice. If so,
+determine the current row and columnn and open the editor.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.lib.mixins.listctrl.TextEditMixin.OpenEditor">
+<code class="sig-name descname">OpenEditor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em>, <em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.lib.mixins.listctrl.TextEditMixin.OpenEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens an editor at the current position.</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

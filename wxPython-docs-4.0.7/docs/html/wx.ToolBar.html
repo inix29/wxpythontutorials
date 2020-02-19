@@ -1,0 +1,1467 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.ToolBar — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ToolBarToolBase.html" rel="next" title="wx.ToolBarToolBase"/>
+<link href="wx.ToggleButton.html" rel="prev" title="wx.ToggleButton"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.ToolBar</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ToolBarToolBase.html" title="wx.ToolBarToolBase">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.ToggleButton.html" title="wx.ToggleButton">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.ToolBar</strong></a><ul>
+<li><a class="reference internal" href="#styles-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.ToolBar.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-toolbar">
+<span id="wx-toolbar"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.ToolBar</strong><a class="headerlink" href="#phoenix-title-wx-toolbar" title="Permalink to this headline">¶</a></h1>
+<p>A toolbar is a bar of buttons and/or other controls usually placed below the menu bar in a <a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a>.</p>
+<p>You may create a toolbar that is managed by a frame calling <a class="reference internal" href="wx.Frame.html#wx.Frame.CreateToolBar" title="wx.Frame.CreateToolBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Frame.CreateToolBar</span></code></a> . Under Pocket <code class="docutils literal notranslate"><span class="pre">PC</span></code>, you should always use this function for creating the toolbar to be managed by the frame, so that wxWidgets can use a combined menubar and toolbar. Where you manage your own toolbars, create <a class="reference internal" href="#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>  as usual.</p>
+<p>There are several different types of tools you can add to a toolbar. These types are controlled by the <a class="reference internal" href="wx.ItemKind.enumeration.html#wx-itemkind"><span class="std std-ref">  wx.ItemKind</span></a>  enumeration.</p>
+<p>Note that many methods in <a class="reference internal" href="#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>  such as <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolBar.AddTool</span></code></a>   return a  <code class="docutils literal notranslate"><span class="pre">ToolBarToolBase*</span></code>   object. This should be regarded as an opaque handle representing the newly added toolbar item, providing access to its id and position within the toolbar. Changes to the item’s state should be made through calls to  <a class="reference internal" href="#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>  methods, for example <a class="reference internal" href="#wx.ToolBar.EnableTool" title="wx.ToolBar.EnableTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolBar.EnableTool</span></code></a> . Calls to  <a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a>  methods (undocumented by purpose) will not change the visible state of the item within the tool bar.</p>
+<p><strong>wxMSW note</strong>: Note that under wxMSW toolbar paints tools to reflect system-wide colours. If you use more than 16 colours in your tool bitmaps, you may wish to suppress this behaviour, otherwise system colours in your bitmaps will inadvertently be mapped to system colours. To do this, set the msw.remap system option before creating the toolbar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">SystemOptions</span><span class="o">.</span><span class="n">SetOption</span><span class="p">(</span><span class="s2">"msw.remap"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you wish to use 32-bit images (which include an alpha channel for transparency) use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wx</span><span class="o">.</span><span class="n">SystemOptions</span><span class="o">.</span><span class="n">SetOption</span><span class="p">(</span><span class="s2">"msw.remap"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then colour remapping is switched off, and a transparent background used. But only use this option under Windows XP with <code class="docutils literal notranslate"><span class="pre">True</span></code> colour:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">wx</span><span class="o">.</span><span class="n">GetApp</span><span class="p">()</span><span class="o">.</span><span class="n">GetComCtl32Version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">600</span> <span class="ow">and</span> <span class="n">wx</span><span class="o">.</span><span class="n">DisplayDepth</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">32</span><span class="p">:</span>
+    <span class="c1"># Use the 32-bit images</span>
+    <span class="n">wx</span><span class="o">.</span><span class="n">SystemOptions</span><span class="o">.</span><span class="n">SetOption</span><span class="p">(</span><span class="s2">"msw.remap"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="styles-window-styles">
+<span id="toolbar-styles"></span><h2><a class="reference internal" href="_images/styles.png"><img alt="styles" class="align-middle" src="_images/styles.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#styles-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>This class supports the following styles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_FLAT</span></code>: Gives the toolbar a flat look (Windows and GTK only).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_DOCKABLE</span></code>: Makes the toolbar floatable and dockable (GTK only).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_HORIZONTAL</span></code>: Specifies horizontal layout (default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_VERTICAL</span></code>: Specifies vertical layout.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_TEXT</span></code>: Shows the text in the toolbar buttons; by default only icons are shown.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_NOICONS</span></code>: Specifies no icons in the toolbar buttons; by default they are shown.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_NODIVIDER</span></code>: Specifies no divider (border) above the toolbar (Windows only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_NOALIGN</span></code>: Specifies no alignment with the parent window (Windows only, not very useful).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_HORZ_LAYOUT</span></code>: Shows the text and the icons alongside, not vertically stacked (Windows and GTK 2 only). This style must be used with  <code class="docutils literal notranslate"><span class="pre">TB_TEXT</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_HORZ_TEXT</span></code>: Combination of  <code class="docutils literal notranslate"><span class="pre">TB_HORZ_LAYOUT</span></code>   and   <code class="docutils literal notranslate"><span class="pre">TB_TEXT</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_NO_TOOLTIPS</span></code>: Don’t show the short help tooltips for the tools when the mouse hovers over them.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_BOTTOM</span></code>: Align the toolbar at the bottom of parent window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_RIGHT</span></code>: Align the toolbar at the right side of parent window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.TB_DEFAULT_STYLE</span></code>: Combination of  <code class="docutils literal notranslate"><span class="pre">TB_HORIZONTAL</span></code>   and   <code class="docutils literal notranslate"><span class="pre">TB_FLAT</span></code> . This style is new since wxWidgets 2.9.5.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="window_styles_overview.html#window-styles"><span class="std std-ref">Window Styles</span></a>. Note that the wxMSW native toolbar ignores  <code class="docutils literal notranslate"><span class="pre">TB_NOICONS</span></code>   style. Also, toggling the   <code class="docutils literal notranslate"><span class="pre">TB_TEXT</span></code>   works only if the style was initially on.</p>
+</div>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="toolbar-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_TOOL: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TOOL</span></code>   event (a synonym for   <code class="docutils literal notranslate"><span class="pre">wxEVT_MENU</span></code> ). Pass the id of the tool.</p></li>
+<li><p>EVT_MENU: The same as EVT_TOOL().</p></li>
+<li><p>EVT_TOOL_RANGE: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TOOL</span></code>   event for a range of identifiers. Pass the ids of the tools.</p></li>
+<li><p>EVT_MENU_RANGE: The same as EVT_TOOL_RANGE().</p></li>
+<li><p>EVT_TOOL_RCLICKED: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TOOL_RCLICKED</span></code>   event. Pass the id of the tool. (Not available on wxOSX.)</p></li>
+<li><p>EVT_TOOL_RCLICKED_RANGE: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TOOL_RCLICKED</span></code>   event for a range of ids. Pass the ids of the tools. (Not available on wxOSX.)</p></li>
+<li><p>EVT_TOOL_ENTER: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TOOL_ENTER</span></code>   event. Pass the id of the toolbar itself. The value of  <a class="reference internal" href="wx.CommandEvent.html#wx.CommandEvent.GetSelection" title="wx.CommandEvent.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.CommandEvent.GetSelection</span></code></a>   is the tool id, or -1 if the mouse cursor has moved off a tool. (Not available on wxOSX.)</p></li>
+<li><p>EVT_TOOL_DROPDOWN: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_TOOL_DROPDOWN</span></code>   event. If unhandled, displays the default dropdown menu set using  <a class="reference internal" href="#wx.ToolBar.SetDropdownMenu" title="wx.ToolBar.SetDropdownMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ToolBar.SetDropdownMenu</span></code></a> .</p></li>
+</ul>
+<p>The toolbar class emits menu commands in the same way that a frame menubar does, so you can use one EVT_MENU() macro for both a menu item and a toolbar button. The event handler functions take a
+<a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a>  argument. For most event macros, the identifier of the tool is passed, but for EVT_TOOL_ENTER() the toolbar window identifier is passed and the tool identifier is retrieved from the <a class="reference internal" href="wx.CommandEvent.html#wx-commandevent"><span class="std std-ref">  wx.CommandEvent</span></a>. This is because the identifier may be  <code class="docutils literal notranslate"><span class="pre">ID_ANY</span></code>   when the mouse moves off a tool, and   <code class="docutils literal notranslate"><span class="pre">ID_ANY</span></code>   is not allowed as an identifier in the event system.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="toolbar_overview.html#toolbar-overview"><span class="std std-ref">Toolbar Overview</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ToolBar</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ToolBar" class="inheritance" src="_static/images/inheritance/wx.ToolBar_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="63,315,159,344" href="wx.ToolBar.html" id="node1" shape="rect" title="A toolbar is a bar of buttons and/or other controls usually placed below the menu bar in a wx.Frame."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%"/>
+<col style="width: 64%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.__init__" title="wx.ToolBar.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.AddCheckTool" title="wx.ToolBar.AddCheckTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddCheckTool</span></code></a></p></td>
+<td><p>Adds a new check (or toggle) tool to the toolbar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.AddControl" title="wx.ToolBar.AddControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddControl</span></code></a></p></td>
+<td><p>Adds any control to the toolbar, typically e.g. a <a class="reference internal" href="wx.ComboBox.html#wx-combobox"><span class="std std-ref">  wx.ComboBox</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.AddLabelTool" title="wx.ToolBar.AddLabelTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddLabelTool</span></code></a></p></td>
+<td><p>Old style method to add a tool in the toolbar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.AddRadioTool" title="wx.ToolBar.AddRadioTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddRadioTool</span></code></a></p></td>
+<td><p>Adds a new radio tool to the toolbar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.AddSeparator" title="wx.ToolBar.AddSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSeparator</span></code></a></p></td>
+<td><p>Adds a separator for spacing groups of tools.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.AddSimpleTool" title="wx.ToolBar.AddSimpleTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSimpleTool</span></code></a></p></td>
+<td><p>Old style method to add a tool to the toolbar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.AddStretchableSpace" title="wx.ToolBar.AddStretchableSpace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddStretchableSpace</span></code></a></p></td>
+<td><p>Adds a stretchable space to the toolbar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a></p></td>
+<td><p>Adds a tool to the toolbar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.ClearTools" title="wx.ToolBar.ClearTools"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearTools</span></code></a></p></td>
+<td><p>Deletes all the tools in the toolbar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.CreateTool" title="wx.ToolBar.CreateTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateTool</span></code></a></p></td>
+<td><p>Factory function to create a new toolbar tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.DeleteTool" title="wx.ToolBar.DeleteTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteTool</span></code></a></p></td>
+<td><p>Removes the specified tool from the toolbar and deletes it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.DeleteToolByPos" title="wx.ToolBar.DeleteToolByPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteToolByPos</span></code></a></p></td>
+<td><p>This function behaves like <code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteTool</span></code>   but it deletes the tool at the specified position and not the one with the given id.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.EnableTool" title="wx.ToolBar.EnableTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableTool</span></code></a></p></td>
+<td><p>Enables or disables the tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.FindById" title="wx.ToolBar.FindById"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindById</span></code></a></p></td>
+<td><p>Returns a pointer to the tool identified by <em class="xref py py-obj">id</em>  or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no corresponding tool is found.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.FindControl" title="wx.ToolBar.FindControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindControl</span></code></a></p></td>
+<td><p>Returns a pointer to the control identified by <em class="xref py py-obj">id</em>  or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no corresponding control is found.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.FindToolForPosition" title="wx.ToolBar.FindToolForPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindToolForPosition</span></code></a></p></td>
+<td><p>Finds a tool for the given mouse position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.GetClassDefaultAttributes" title="wx.ToolBar.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.GetMargins" title="wx.ToolBar.GetMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMargins</span></code></a></p></td>
+<td><p>Returns the left/right and top/bottom margins, which are also used for inter-toolspacing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolBitmapSize" title="wx.ToolBar.GetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBitmapSize</span></code></a></p></td>
+<td><p>Returns the size of bitmap that the toolbar expects to have.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolByPos" title="wx.ToolBar.GetToolByPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolByPos</span></code></a></p></td>
+<td><p>Returns a pointer to the tool at ordinal position <em class="xref py py-obj">pos</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolClientData" title="wx.ToolBar.GetToolClientData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolClientData</span></code></a></p></td>
+<td><p>Get any client data associated with the tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolEnabled" title="wx.ToolBar.GetToolEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolEnabled</span></code></a></p></td>
+<td><p>Called to determine whether a tool is enabled (responds to user input).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolLongHelp" title="wx.ToolBar.GetToolLongHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolLongHelp</span></code></a></p></td>
+<td><p>Returns the long help for the given tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolPacking" title="wx.ToolBar.GetToolPacking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolPacking</span></code></a></p></td>
+<td><p>Returns the value used for packing tools.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolPos" title="wx.ToolBar.GetToolPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolPos</span></code></a></p></td>
+<td><p>Returns the tool position in the toolbar, or  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   if the tool is not found.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolSeparation" title="wx.ToolBar.GetToolSeparation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolSeparation</span></code></a></p></td>
+<td><p>Returns the default separator size.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolShortHelp" title="wx.ToolBar.GetToolShortHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolShortHelp</span></code></a></p></td>
+<td><p>Returns the short help for the given tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolSize" title="wx.ToolBar.GetToolSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolSize</span></code></a></p></td>
+<td><p>Returns the size of a whole button, which is usually larger than a tool bitmap because of added 3D effects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolState" title="wx.ToolBar.GetToolState"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolState</span></code></a></p></td>
+<td><p>Gets the on/off state of a toggle tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.GetToolsCount" title="wx.ToolBar.GetToolsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolsCount</span></code></a></p></td>
+<td><p>Returns the number of tools in the toolbar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.InsertControl" title="wx.ToolBar.InsertControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertControl</span></code></a></p></td>
+<td><p>Inserts the control into the toolbar at the given position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.InsertLabelTool" title="wx.ToolBar.InsertLabelTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertLabelTool</span></code></a></p></td>
+<td><p>Old style method to insert a tool in the toolbar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.InsertSeparator" title="wx.ToolBar.InsertSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertSeparator</span></code></a></p></td>
+<td><p>Inserts the separator into the toolbar at the given position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.InsertSimpleTool" title="wx.ToolBar.InsertSimpleTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertSimpleTool</span></code></a></p></td>
+<td><p>Old style method to insert a tool in the toolbar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.InsertStretchableSpace" title="wx.ToolBar.InsertStretchableSpace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertStretchableSpace</span></code></a></p></td>
+<td><p>Inserts a stretchable space at the given position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.InsertTool" title="wx.ToolBar.InsertTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertTool</span></code></a></p></td>
+<td><p>Inserts the tool with the specified attributes into the toolbar at the given position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a></p></td>
+<td><p>This function should be called after you have added tools.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.RemoveTool" title="wx.ToolBar.RemoveTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveTool</span></code></a></p></td>
+<td><p>Removes the given tool from the toolbar but doesn’t delete it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.SetDropdownMenu" title="wx.ToolBar.SetDropdownMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDropdownMenu</span></code></a></p></td>
+<td><p>Sets the dropdown menu for the tool given by its <em class="xref py py-obj">id</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.SetMargins" title="wx.ToolBar.SetMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMargins</span></code></a></p></td>
+<td><p>Set the values to be used as margins for the toolbar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.SetToolBitmapSize" title="wx.ToolBar.SetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBitmapSize</span></code></a></p></td>
+<td><p>Sets the default size of each tool bitmap.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.SetToolClientData" title="wx.ToolBar.SetToolClientData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolClientData</span></code></a></p></td>
+<td><p>Sets the client data associated with the tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.SetToolDisabledBitmap" title="wx.ToolBar.SetToolDisabledBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolDisabledBitmap</span></code></a></p></td>
+<td><p>Sets the bitmap to be used by the tool with the given <code class="docutils literal notranslate"><span class="pre">ID</span></code> when the tool is in a disabled state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.SetToolLongHelp" title="wx.ToolBar.SetToolLongHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolLongHelp</span></code></a></p></td>
+<td><p>Sets the long help for the given tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.SetToolNormalBitmap" title="wx.ToolBar.SetToolNormalBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolNormalBitmap</span></code></a></p></td>
+<td><p>Sets the bitmap to be used by the tool with the given <code class="docutils literal notranslate"><span class="pre">ID</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.SetToolPacking" title="wx.ToolBar.SetToolPacking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolPacking</span></code></a></p></td>
+<td><p>Sets the value used for spacing tools.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.SetToolSeparation" title="wx.ToolBar.SetToolSeparation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolSeparation</span></code></a></p></td>
+<td><p>Sets the default separator size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.SetToolShortHelp" title="wx.ToolBar.SetToolShortHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolShortHelp</span></code></a></p></td>
+<td><p>Sets the short help for the given tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.ToggleTool" title="wx.ToolBar.ToggleTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ToggleTool</span></code></a></p></td>
+<td><p>Toggles a tool on or off.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 49%"/>
+<col style="width: 51%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.Margins" title="wx.ToolBar.Margins"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Margins</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ToolBar.GetMargins" title="wx.ToolBar.GetMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMargins</span></code></a> and <a class="reference internal" href="#wx.ToolBar.SetMargins" title="wx.ToolBar.SetMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMargins</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.ToolBitmapSize" title="wx.ToolBar.ToolBitmapSize"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ToolBitmapSize</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ToolBar.GetToolBitmapSize" title="wx.ToolBar.GetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBitmapSize</span></code></a> and <a class="reference internal" href="#wx.ToolBar.SetToolBitmapSize" title="wx.ToolBar.SetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBitmapSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.ToolPacking" title="wx.ToolBar.ToolPacking"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ToolPacking</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ToolBar.GetToolPacking" title="wx.ToolBar.GetToolPacking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolPacking</span></code></a> and <a class="reference internal" href="#wx.ToolBar.SetToolPacking" title="wx.ToolBar.SetToolPacking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolPacking</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.ToolSeparation" title="wx.ToolBar.ToolSeparation"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ToolSeparation</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ToolBar.GetToolSeparation" title="wx.ToolBar.GetToolSeparation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolSeparation</span></code></a> and <a class="reference internal" href="#wx.ToolBar.SetToolSeparation" title="wx.ToolBar.SetToolSeparation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolSeparation</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ToolBar.ToolSize" title="wx.ToolBar.ToolSize"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ToolSize</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ToolBar.GetToolSize" title="wx.ToolBar.GetToolSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolSize</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ToolBar.ToolsCount" title="wx.ToolBar.ToolsCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ToolsCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ToolBar.GetToolsCount" title="wx.ToolBar.GetToolsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolsCount</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.ToolBar">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">ToolBar</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ToolBar</span><span class="p">()</span>
+
+<span class="n">ToolBar</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+        <span class="n">style</span><span class="o">=</span><span class="n">TB_HORIZONTAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">ToolBarNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A toolbar is a bar of buttons and/or other controls usually placed
+below the menu bar in a Frame.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.ToolBar.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=TB_HORIZONTAL, name=ToolBarNameStr)</em></p>
+<p>Constructs a toolbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – Pointer to a parent window.</p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – Window identifier. If -1, will automatically create an identifier.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Window position. <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultPosition</span></code>       indicates that wxWidgets should generate a default position for the window. If using the <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  class directly, supply an actual position.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Window size. <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.DefaultSize</span></code>       indicates that wxWidgets should generate a default size for the window.</p></li>
+<li><p><strong>style</strong> (<em>long</em>) – Window style. See <a class="reference internal" href="#wx-toolbar"><span class="std std-ref">  wx.ToolBar</span></a>  initial description for details.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – Window name.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After a toolbar is created, you use <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a>   and perhaps <a class="reference internal" href="#wx.ToolBar.AddSeparator" title="wx.ToolBar.AddSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSeparator</span></code></a> , and then you must call <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a>   to construct and display the toolbar tools.</p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.AddCheckTool">
+<code class="sig-name descname">AddCheckTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em>, <em class="sig-param">label</em>, <em class="sig-param">bitmap1</em>, <em class="sig-param">bmpDisabled=NullBitmap</em>, <em class="sig-param">shortHelp=""</em>, <em class="sig-param">longHelp=""</em>, <em class="sig-param">clientData=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.AddCheckTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new check (or toggle) tool to the toolbar.</p>
+<p>The parameters are the same as in <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>toolId</strong> (<em>int</em>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>bitmap1</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>bmpDisabled</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>shortHelp</strong> (<em>string</em>) – </p></li>
+<li><p><strong>longHelp</strong> (<em>string</em>) – </p></li>
+<li><p><strong>clientData</strong> (<em>PyUserData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.AddControl">
+<code class="sig-name descname">AddControl</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">control</em>, <em class="sig-param">label=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.AddControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds any control to the toolbar, typically e.g. a <a class="reference internal" href="wx.ComboBox.html#wx-combobox"><span class="std std-ref">  wx.ComboBox</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>control</strong> (<a class="reference internal" href="wx.Control.html#wx.Control" title="wx.Control"><em>wx.Control</em></a>) – The control to be added.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – Text to be displayed near the control.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>wxMSW: the label is only displayed if there is enough space available below the embedded control.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mac: labels are only displayed if wxWidgets is built with  <code class="docutils literal notranslate"><span class="pre">MAC_USE_NATIVE_TOOLBAR</span></code>   set to 1</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.AddLabelTool">
+<code class="sig-name descname">AddLabelTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">label</em>, <em class="sig-param">bitmap</em>, <em class="sig-param">bmpDisabled=wx.NullBitmap</em>, <em class="sig-param">kind=wx.ITEM_NORMAL</em>, <em class="sig-param">shortHelp=""</em>, <em class="sig-param">longHelp=""</em>, <em class="sig-param">clientData=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.AddLabelTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Old style method to add a tool in the toolbar.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.AddRadioTool">
+<code class="sig-name descname">AddRadioTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em>, <em class="sig-param">label</em>, <em class="sig-param">bitmap1</em>, <em class="sig-param">bmpDisabled=NullBitmap</em>, <em class="sig-param">shortHelp=""</em>, <em class="sig-param">longHelp=""</em>, <em class="sig-param">clientData=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.AddRadioTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new radio tool to the toolbar.</p>
+<p>Consecutive radio tools form a radio group such that exactly one button in the group is pressed at any moment, in other words whenever a button in the group is pressed the previously pressed button is automatically released. You should avoid having the radio groups of only one element as it would be impossible for the user to use such button.</p>
+<p>By default, the first button in the radio group is initially pressed, the others are not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>toolId</strong> (<em>int</em>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>bitmap1</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>bmpDisabled</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>shortHelp</strong> (<em>string</em>) – </p></li>
+<li><p><strong>longHelp</strong> (<em>string</em>) – </p></li>
+<li><p><strong>clientData</strong> (<em>PyUserData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.AddSeparator">
+<code class="sig-name descname">AddSeparator</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.AddSeparator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a separator for spacing groups of tools.</p>
+<p>Notice that the separator uses the look appropriate for the current platform so it can be a vertical line (MSW, some versions of GTK) or just an empty space or something else.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.SetToolSeparation" title="wx.ToolBar.SetToolSeparation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolSeparation</span></code></a> , <a class="reference internal" href="#wx.ToolBar.AddStretchableSpace" title="wx.ToolBar.AddStretchableSpace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddStretchableSpace</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.AddSimpleTool">
+<code class="sig-name descname">AddSimpleTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em>, <em class="sig-param">bitmap</em>, <em class="sig-param">shortHelpString=""</em>, <em class="sig-param">longHelpString=""</em>, <em class="sig-param">isToggle=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.AddSimpleTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Old style method to add a tool to the toolbar.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.AddStretchableSpace">
+<code class="sig-name descname">AddStretchableSpace</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.AddStretchableSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a stretchable space to the toolbar.</p>
+<p>Any space not taken up by the fixed items (all items except for stretchable spaces) is distributed in equal measure between the stretchable spaces in the toolbar. The most common use for this method is to add a single stretchable space before the items which should be right-aligned in the toolbar, but more exotic possibilities are possible, e.g. a stretchable space may be added in the beginning and the end of the toolbar to centre all toolbar items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.AddSeparator" title="wx.ToolBar.AddSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSeparator</span></code></a> , <a class="reference internal" href="#wx.ToolBar.InsertStretchableSpace" title="wx.ToolBar.InsertStretchableSpace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertStretchableSpace</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.AddTool">
+<code class="sig-name descname">AddTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.AddTool" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>AddTool</strong> <em class="xref py py-obj">(self, tool)</em></p>
+<p>Adds a tool to the toolbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tool</strong> (<a class="reference internal" href="wx.ToolBarToolBase.html#wx.ToolBarToolBase" title="wx.ToolBarToolBase"><em>wx.ToolBarToolBase</em></a>) – The tool to be added.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After you have added tools to a toolbar, you must call <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a>   in order to have the tools appear.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddSeparator" title="wx.ToolBar.AddSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSeparator</span></code></a> , <a class="reference internal" href="#wx.ToolBar.AddCheckTool" title="wx.ToolBar.AddCheckTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddCheckTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.AddRadioTool" title="wx.ToolBar.AddRadioTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddRadioTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.InsertTool" title="wx.ToolBar.InsertTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.DeleteTool" title="wx.ToolBar.DeleteTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a> , <a class="reference internal" href="#wx.ToolBar.SetDropdownMenu" title="wx.ToolBar.SetDropdownMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDropdownMenu</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>AddTool</strong> <em class="xref py py-obj">(self, toolId, label, bitmap, shortHelp=””, kind=ITEM_NORMAL)</em></p>
+<p>Adds a tool to the toolbar.</p>
+<p>This most commonly used version has fewer parameters than the full version below which specifies the more rarely used button features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>toolId</strong> (<em>int</em>) – An integer by which the tool may be identified in subsequent operations.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – The string to be displayed with the tool.</p></li>
+<li><p><strong>bitmap</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – The primary tool bitmap.</p></li>
+<li><p><strong>shortHelp</strong> (<em>string</em>) – This string is used for the tools tooltip.</p></li>
+<li><p><strong>kind</strong> (<a class="reference internal" href="wx.ItemKind.enumeration.html" title="ItemKind"><em>ItemKind</em></a>) – May be <code class="docutils literal notranslate"><span class="pre">ITEM_NORMAL</span></code>  for a normal button (default), <code class="docutils literal notranslate"><span class="pre">ITEM_CHECK</span></code>  for a checkable tool (such tool stays pressed after it had been toggled) or <code class="docutils literal notranslate"><span class="pre">ITEM_RADIO</span></code>  for a checkable tool which makes part of a radio group of tools each of which is automatically unchecked whenever another button in the group is checked. <code class="docutils literal notranslate"><span class="pre">ITEM_DROPDOWN</span></code>  specifies that a drop-down menu button will appear next to the tool button (only GTK+ and MSW). Call <a class="reference internal" href="#wx.ToolBar.SetDropdownMenu" title="wx.ToolBar.SetDropdownMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDropdownMenu</span></code></a>   afterwards.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After you have added tools to a toolbar, you must call <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a>   in order to have the tools appear.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddSeparator" title="wx.ToolBar.AddSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSeparator</span></code></a> , <a class="reference internal" href="#wx.ToolBar.AddCheckTool" title="wx.ToolBar.AddCheckTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddCheckTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.AddRadioTool" title="wx.ToolBar.AddRadioTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddRadioTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.InsertTool" title="wx.ToolBar.InsertTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.DeleteTool" title="wx.ToolBar.DeleteTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a> , <a class="reference internal" href="#wx.ToolBar.SetDropdownMenu" title="wx.ToolBar.SetDropdownMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDropdownMenu</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>AddTool</strong> <em class="xref py py-obj">(self, toolId, label, bitmap, bmpDisabled, kind=ITEM_NORMAL, shortHelp=””, longHelp=””, clientData=None)</em></p>
+<p>Adds a tool to the toolbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>toolId</strong> (<em>int</em>) – An integer by which the tool may be identified in subsequent operations.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – The string to be displayed with the tool.</p></li>
+<li><p><strong>bitmap</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – The primary tool bitmap.</p></li>
+<li><p><strong>bmpDisabled</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – The bitmap used when the tool is disabled. If it is equal to <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.NullBitmap</span></code>       (default), the disabled bitmap is automatically generated by greying the normal one.</p></li>
+<li><p><strong>kind</strong> (<a class="reference internal" href="wx.ItemKind.enumeration.html" title="ItemKind"><em>ItemKind</em></a>) – May be <code class="docutils literal notranslate"><span class="pre">ITEM_NORMAL</span></code>  for a normal button (default), <code class="docutils literal notranslate"><span class="pre">ITEM_CHECK</span></code>  for a checkable tool (such tool stays pressed after it had been toggled) or <code class="docutils literal notranslate"><span class="pre">ITEM_RADIO</span></code>  for a checkable tool which makes part of a radio group of tools each of which is automatically unchecked whenever another button in the group is checked. <code class="docutils literal notranslate"><span class="pre">ITEM_DROPDOWN</span></code>  specifies that a drop-down menu button will appear next to the tool button (only GTK+ and MSW). Call <a class="reference internal" href="#wx.ToolBar.SetDropdownMenu" title="wx.ToolBar.SetDropdownMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDropdownMenu</span></code></a>   afterwards.</p></li>
+<li><p><strong>shortHelp</strong> (<em>string</em>) – </p></li>
+<li><p><strong>longHelp</strong> (<em>string</em>) – </p></li>
+<li><p><strong>clientData</strong> (<em>PyUserData</em>) – An optional pointer to client data which can be retrieved later using <a class="reference internal" href="#wx.ToolBar.GetToolClientData" title="wx.ToolBar.GetToolClientData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolClientData</span></code></a> .</p></li>
+</ul>
+</dd>
+</dl>
+<p>This string is used for the tools tooltip.</p>
+<p>This string is shown in the statusbar (if any) of the parent frame when the mouse pointer is inside the tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After you have added tools to a toolbar, you must call <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a>   in order to have the tools appear.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddSeparator" title="wx.ToolBar.AddSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSeparator</span></code></a> , <a class="reference internal" href="#wx.ToolBar.AddCheckTool" title="wx.ToolBar.AddCheckTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddCheckTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.AddRadioTool" title="wx.ToolBar.AddRadioTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddRadioTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.InsertTool" title="wx.ToolBar.InsertTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.DeleteTool" title="wx.ToolBar.DeleteTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a> , <a class="reference internal" href="#wx.ToolBar.SetDropdownMenu" title="wx.ToolBar.SetDropdownMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDropdownMenu</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.ClearTools">
+<code class="sig-name descname">ClearTools</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.ClearTools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all the tools in the toolbar.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.CreateTool">
+<code class="sig-name descname">CreateTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.CreateTool" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CreateTool</strong> <em class="xref py py-obj">(self, toolId, label, bmpNormal, bmpDisabled=NullBitmap, kind=ITEM_NORMAL, clientData=None, shortHelp=””, longHelp=””)</em></p>
+<p>Factory function to create a new toolbar tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>toolId</strong> (<em>int</em>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>bmpNormal</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>bmpDisabled</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>kind</strong> (<a class="reference internal" href="wx.ItemKind.enumeration.html" title="ItemKind"><em>ItemKind</em></a>) – </p></li>
+<li><p><strong>clientData</strong> (<em>PyUserData</em>) – </p></li>
+<li><p><strong>shortHelp</strong> (<em>string</em>) – </p></li>
+<li><p><strong>longHelp</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CreateTool</strong> <em class="xref py py-obj">(self, control, label)</em></p>
+<p>Factory function to create a new control toolbar tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>control</strong> (<a class="reference internal" href="wx.Control.html#wx.Control" title="wx.Control"><em>wx.Control</em></a>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.DeleteTool">
+<code class="sig-name descname">DeleteTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.DeleteTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the specified tool from the toolbar and deletes it.</p>
+<p>If you don’t want to delete the tool, but just to remove it from the toolbar (to possibly add it back later), you may use <a class="reference internal" href="#wx.ToolBar.RemoveTool" title="wx.ToolBar.RemoveTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveTool</span></code></a>   instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>toolId</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the tool was deleted, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is unnecessary to call <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a>   for the change to take place, it will happen immediately.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.DeleteToolByPos" title="wx.ToolBar.DeleteToolByPos"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteToolByPos</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.DeleteToolByPos">
+<code class="sig-name descname">DeleteToolByPos</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.DeleteToolByPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function behaves like <a class="reference internal" href="#wx.ToolBar.DeleteTool" title="wx.ToolBar.DeleteTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteTool</span></code></a>   but it deletes the tool at the specified position and not the one with the given id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.EnableTool">
+<code class="sig-name descname">EnableTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em>, <em class="sig-param">enable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.EnableTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables or disables the tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool to enable or disable, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p></li>
+<li><p><strong>enable</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, enables the tool, otherwise disables it.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some implementations will change the visible state of the tool to indicate that it is disabled.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.GetToolEnabled" title="wx.ToolBar.GetToolEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolEnabled</span></code></a> , <a class="reference internal" href="#wx.ToolBar.ToggleTool" title="wx.ToolBar.ToggleTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ToggleTool</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.FindById">
+<code class="sig-name descname">FindById</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.FindById" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the tool identified by <em class="xref py py-obj">id</em>  or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no corresponding tool is found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.FindControl">
+<code class="sig-name descname">FindControl</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.FindControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the control identified by <em class="xref py py-obj">id</em>  or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no corresponding control is found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Control.html#wx-control"><span class="std std-ref">  wx.Control</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.FindToolForPosition">
+<code class="sig-name descname">FindToolForPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.FindToolForPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds a tool for the given mouse position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – X position.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Y position.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A pointer to a tool if a tool is found, or <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently not implemented in wxGTK (always returns <code class="docutils literal notranslate"><span class="pre">None</span></code> there).</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.VisualAttributes.html#wx-visualattributes"><span class="std std-ref">  wx.VisualAttributes</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetMargins">
+<code class="sig-name descname">GetMargins</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetMargins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the left/right and top/bottom margins, which are also used for inter-toolspacing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.SetMargins" title="wx.ToolBar.SetMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMargins</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolBitmapSize">
+<code class="sig-name descname">GetToolBitmapSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolBitmapSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of bitmap that the toolbar expects to have.</p>
+<p>The default bitmap size is platform-dependent: for example, it is 16x15 for MSW and 24x24 for GTK. This size does <em class="xref py py-obj">not</em>  necessarily indicate the best size to use for the toolbars on the given platform, for this you should use  <code class="docutils literal notranslate"><span class="pre">ArtProvider::GetNativeSizeHint(wxART_TOOLBAR)</span></code>   but in any case, as the bitmap size is deduced automatically from the size of the bitmaps associated with the tools added to the toolbar, it is usually unnecessary to call  <a class="reference internal" href="#wx.ToolBar.SetToolBitmapSize" title="wx.ToolBar.SetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBitmapSize</span></code></a>   explicitly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this is the size of the bitmap you pass to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> , and not the eventual size of the tool button.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.SetToolBitmapSize" title="wx.ToolBar.SetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBitmapSize</span></code></a> , <a class="reference internal" href="#wx.ToolBar.GetToolSize" title="wx.ToolBar.GetToolSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolByPos">
+<code class="sig-name descname">GetToolByPos</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolByPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the tool at ordinal position <em class="xref py py-obj">pos</em>.</p>
+<p>Don’t confuse this with <a class="reference internal" href="#wx.ToolBar.FindToolForPosition" title="wx.ToolBar.FindToolForPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindToolForPosition</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.GetToolsCount" title="wx.ToolBar.GetToolsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolsCount</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolClientData">
+<code class="sig-name descname">GetToolClientData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolClientData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get any client data associated with the tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">PyUserData</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Client data, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if there is none.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolEnabled">
+<code class="sig-name descname">GetToolEnabled</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called to determine whether a tool is enabled (responds to user input).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the tool is enabled, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.EnableTool" title="wx.ToolBar.EnableTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableTool</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolLongHelp">
+<code class="sig-name descname">GetToolLongHelp</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolLongHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the long help for the given tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.SetToolLongHelp" title="wx.ToolBar.SetToolLongHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolLongHelp</span></code></a> , <a class="reference internal" href="#wx.ToolBar.SetToolShortHelp" title="wx.ToolBar.SetToolShortHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolShortHelp</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolPacking">
+<code class="sig-name descname">GetToolPacking</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolPacking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value used for packing tools.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.SetToolPacking" title="wx.ToolBar.SetToolPacking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolPacking</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolPos">
+<code class="sig-name descname">GetToolPos</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the tool position in the toolbar, or  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   if the tool is not found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolSeparation">
+<code class="sig-name descname">GetToolSeparation</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolSeparation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the default separator size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.SetToolSeparation" title="wx.ToolBar.SetToolSeparation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolSeparation</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolShortHelp">
+<code class="sig-name descname">GetToolShortHelp</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolShortHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the short help for the given tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.GetToolLongHelp" title="wx.ToolBar.GetToolLongHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolLongHelp</span></code></a> , <a class="reference internal" href="#wx.ToolBar.SetToolShortHelp" title="wx.ToolBar.SetToolShortHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolShortHelp</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolSize">
+<code class="sig-name descname">GetToolSize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of a whole button, which is usually larger than a tool bitmap because of added 3D effects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.SetToolBitmapSize" title="wx.ToolBar.SetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBitmapSize</span></code></a> , <a class="reference internal" href="#wx.ToolBar.GetToolBitmapSize" title="wx.ToolBar.GetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBitmapSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolState">
+<code class="sig-name descname">GetToolState</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the on/off state of a toggle tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the tool is toggled on, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.ToggleTool" title="wx.ToolBar.ToggleTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ToggleTool</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.GetToolsCount">
+<code class="sig-name descname">GetToolsCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.GetToolsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of tools in the toolbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.InsertControl">
+<code class="sig-name descname">InsertControl</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em>, <em class="sig-param">control</em>, <em class="sig-param">label=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.InsertControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the control into the toolbar at the given position.</p>
+<p>You must call <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a>   for the change to take place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>control</strong> (<a class="reference internal" href="wx.Control.html#wx.Control" title="wx.Control"><em>wx.Control</em></a>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddControl" title="wx.ToolBar.AddControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddControl</span></code></a> , <a class="reference internal" href="#wx.ToolBar.InsertTool" title="wx.ToolBar.InsertTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertTool</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.InsertLabelTool">
+<code class="sig-name descname">InsertLabelTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em>, <em class="sig-param">id</em>, <em class="sig-param">label</em>, <em class="sig-param">bitmap</em>, <em class="sig-param">bmpDisabled=wx.NullBitmap</em>, <em class="sig-param">kind=wx.ITEM_NORMAL</em>, <em class="sig-param">shortHelp=""</em>, <em class="sig-param">longHelp=""</em>, <em class="sig-param">clientData=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.InsertLabelTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Old style method to insert a tool in the toolbar.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.InsertSeparator">
+<code class="sig-name descname">InsertSeparator</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.InsertSeparator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the separator into the toolbar at the given position.</p>
+<p>You must call <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a>   for the change to take place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddSeparator" title="wx.ToolBar.AddSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSeparator</span></code></a> , <a class="reference internal" href="#wx.ToolBar.InsertTool" title="wx.ToolBar.InsertTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertTool</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.InsertSimpleTool">
+<code class="sig-name descname">InsertSimpleTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em>, <em class="sig-param">toolId</em>, <em class="sig-param">bitmap</em>, <em class="sig-param">shortHelpString=""</em>, <em class="sig-param">longHelpString=""</em>, <em class="sig-param">isToggle=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.InsertSimpleTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Old style method to insert a tool in the toolbar.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.InsertStretchableSpace">
+<code class="sig-name descname">InsertStretchableSpace</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.InsertStretchableSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts a stretchable space at the given position.</p>
+<p>See <a class="reference internal" href="#wx.ToolBar.AddStretchableSpace" title="wx.ToolBar.AddStretchableSpace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddStretchableSpace</span></code></a>   for details about stretchable spaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.InsertTool" title="wx.ToolBar.InsertTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.InsertSeparator" title="wx.ToolBar.InsertSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertSeparator</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.InsertTool">
+<code class="sig-name descname">InsertTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.InsertTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the tool with the specified attributes into the toolbar at the given position.</p>
+<p>You must call <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a>   for the change to take place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The newly inserted tool or <code class="docutils literal notranslate"><span class="pre">None</span></code> on failure. Notice that with the overload taking <em class="xref py py-obj">tool</em>  parameter the caller is responsible for deleting the tool in the latter case.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> , <a class="reference internal" href="#wx.ToolBar.InsertControl" title="wx.ToolBar.InsertControl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertControl</span></code></a> , <a class="reference internal" href="#wx.ToolBar.InsertSeparator" title="wx.ToolBar.InsertSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">InsertSeparator</span></code></a></p>
+</div>
+<p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertTool</strong> <em class="xref py py-obj">(self, pos, toolId, label, bitmap, bmpDisabled=NullBitmap, kind=ITEM_NORMAL, shortHelp=””, longHelp=””, clientData=None)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>toolId</strong> (<em>int</em>) – </p></li>
+<li><p><strong>label</strong> (<em>string</em>) – </p></li>
+<li><p><strong>bitmap</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>bmpDisabled</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p></li>
+<li><p><strong>kind</strong> (<a class="reference internal" href="wx.ItemKind.enumeration.html" title="ItemKind"><em>ItemKind</em></a>) – </p></li>
+<li><p><strong>shortHelp</strong> (<em>string</em>) – </p></li>
+<li><p><strong>longHelp</strong> (<em>string</em>) – </p></li>
+<li><p><strong>clientData</strong> (<em>PyUserData</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>InsertTool</strong> <em class="xref py py-obj">(self, pos, tool)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>tool</strong> (<a class="reference internal" href="wx.ToolBarToolBase.html#wx.ToolBarToolBase" title="wx.ToolBarToolBase"><em>wx.ToolBarToolBase</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.Realize">
+<code class="sig-name descname">Realize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.Realize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function should be called after you have added tools.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.RemoveTool">
+<code class="sig-name descname">RemoveTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.RemoveTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the given tool from the toolbar but doesn’t delete it.</p>
+<p>This allows inserting/adding this tool back to this (or another) toolbar later.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.ToolBarToolBase.html#wx-toolbartoolbase"><span class="std std-ref">  wx.ToolBarToolBase</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is unnecessary to call <a class="reference internal" href="#wx.ToolBar.Realize" title="wx.ToolBar.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a>   for the change to take place, it will happen immediately.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.DeleteTool" title="wx.ToolBar.DeleteTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DeleteTool</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetDropdownMenu">
+<code class="sig-name descname">SetDropdownMenu</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">menu</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetDropdownMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the dropdown menu for the tool given by its <em class="xref py py-obj">id</em>.</p>
+<p>The tool itself will delete the menu when it’s no longer needed. Only supported under GTK+ und MSW.</p>
+<p>If you define a EVT_TOOL_DROPDOWN() handler in your program, you must call <a class="reference internal" href="wx.Event.html#wx.Event.Skip" title="wx.Event.Skip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Event.Skip</span></code></a>   from it or the menu won’t be displayed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+<li><p><strong>menu</strong> (<a class="reference internal" href="wx.Menu.html#wx.Menu" title="wx.Menu"><em>wx.Menu</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetMargins">
+<code class="sig-name descname">SetMargins</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetMargins" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetMargins</strong> <em class="xref py py-obj">(self, x, y)</em></p>
+<p>Set the values to be used as margins for the toolbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – Left margin, right margin and inter-tool separation value.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Top margin, bottom margin and inter-tool separation value.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This must be called before the tools are added if absolute positioning is to be used, and the default (zero-size) margins are to be overridden.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.GetMargins" title="wx.ToolBar.GetMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMargins</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>SetMargins</strong> <em class="xref py py-obj">(self, size)</em></p>
+<p>Set the margins for the toolbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Margin size.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This must be called before the tools are added if absolute positioning is to be used, and the default (zero-size) margins are to be overridden.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.GetMargins" title="wx.ToolBar.GetMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMargins</span></code></a> , <a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetToolBitmapSize">
+<code class="sig-name descname">SetToolBitmapSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">size</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetToolBitmapSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the default size of each tool bitmap.</p>
+<p>The default bitmap size is 16 by 15 pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – The size of the bitmaps in the toolbar.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This should be called to tell the toolbar what the tool bitmap size is. Call it before you add tools.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.GetToolBitmapSize" title="wx.ToolBar.GetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBitmapSize</span></code></a> , <a class="reference internal" href="#wx.ToolBar.GetToolSize" title="wx.ToolBar.GetToolSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetToolClientData">
+<code class="sig-name descname">SetToolClientData</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">clientData</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetToolClientData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the client data associated with the tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p></li>
+<li><p><strong>clientData</strong> (<em>PyUserData</em>) – The client data to use.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetToolDisabledBitmap">
+<code class="sig-name descname">SetToolDisabledBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">bitmap</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetToolDisabledBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the bitmap to be used by the tool with the given <code class="docutils literal notranslate"><span class="pre">ID</span></code> when the tool is in a disabled state.</p>
+<p>This can only be used on Button tools, not controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p></li>
+<li><p><strong>bitmap</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – Bitmap to use for disabled tools.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The native toolbar classes on the main platforms all synthesize the disabled bitmap from the normal bitmap, so this function will have no effect on those platforms.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetToolLongHelp">
+<code class="sig-name descname">SetToolLongHelp</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em>, <em class="sig-param">helpString</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetToolLongHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the long help for the given tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p></li>
+<li><p><strong>helpString</strong> (<em>string</em>) – A string for the long help.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might use the long help for displaying the tool purpose on the status line.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.GetToolLongHelp" title="wx.ToolBar.GetToolLongHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolLongHelp</span></code></a> , <a class="reference internal" href="#wx.ToolBar.SetToolShortHelp" title="wx.ToolBar.SetToolShortHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolShortHelp</span></code></a> ,</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetToolNormalBitmap">
+<code class="sig-name descname">SetToolNormalBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">bitmap</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetToolNormalBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the bitmap to be used by the tool with the given <code class="docutils literal notranslate"><span class="pre">ID</span></code>.</p>
+<p>This can only be used on Button tools, not controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p></li>
+<li><p><strong>bitmap</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – Bitmap to use for normals tools.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetToolPacking">
+<code class="sig-name descname">SetToolPacking</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">packing</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetToolPacking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value used for spacing tools.</p>
+<p>The default value is 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>packing</strong> (<em>int</em>) – The value for packing.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The packing is used for spacing in the vertical direction if the toolbar is horizontal, and for spacing in the horizontal direction if the toolbar is vertical.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.GetToolPacking" title="wx.ToolBar.GetToolPacking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolPacking</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetToolSeparation">
+<code class="sig-name descname">SetToolSeparation</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">separation</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetToolSeparation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the default separator size.</p>
+<p>The default value is 5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>separation</strong> (<em>int</em>) – The separator size.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.AddSeparator" title="wx.ToolBar.AddSeparator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddSeparator</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.SetToolShortHelp">
+<code class="sig-name descname">SetToolShortHelp</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em>, <em class="sig-param">helpString</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.SetToolShortHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the short help for the given tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p></li>
+<li><p><strong>helpString</strong> (<em>string</em>) – The string for the short help.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An application might use short help for identifying the tool purpose in a tooltip.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ToolBar.GetToolShortHelp" title="wx.ToolBar.GetToolShortHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolShortHelp</span></code></a> , <a class="reference internal" href="#wx.ToolBar.SetToolLongHelp" title="wx.ToolBar.SetToolLongHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolLongHelp</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ToolBar.ToggleTool">
+<code class="sig-name descname">ToggleTool</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">toolId</em>, <em class="sig-param">toggle</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ToolBar.ToggleTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggles a tool on or off.</p>
+<p>This does not cause any event to get emitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>toolId</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the tool in question, as passed to <a class="reference internal" href="#wx.ToolBar.AddTool" title="wx.ToolBar.AddTool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddTool</span></code></a> .</p></li>
+<li><p><strong>toggle</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, toggles the tool on, otherwise toggles it off.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only applies to a tool that has been specified as a toggle tool.</p>
+</div>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.ToolBar.Margins">
+<code class="sig-name descname">Margins</code><a class="headerlink" href="#wx.ToolBar.Margins" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ToolBar.GetMargins" title="wx.ToolBar.GetMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMargins</span></code></a> and <a class="reference internal" href="#wx.ToolBar.SetMargins" title="wx.ToolBar.SetMargins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMargins</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ToolBar.ToolBitmapSize">
+<code class="sig-name descname">ToolBitmapSize</code><a class="headerlink" href="#wx.ToolBar.ToolBitmapSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ToolBar.GetToolBitmapSize" title="wx.ToolBar.GetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolBitmapSize</span></code></a> and <a class="reference internal" href="#wx.ToolBar.SetToolBitmapSize" title="wx.ToolBar.SetToolBitmapSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolBitmapSize</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ToolBar.ToolPacking">
+<code class="sig-name descname">ToolPacking</code><a class="headerlink" href="#wx.ToolBar.ToolPacking" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ToolBar.GetToolPacking" title="wx.ToolBar.GetToolPacking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolPacking</span></code></a> and <a class="reference internal" href="#wx.ToolBar.SetToolPacking" title="wx.ToolBar.SetToolPacking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolPacking</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ToolBar.ToolSeparation">
+<code class="sig-name descname">ToolSeparation</code><a class="headerlink" href="#wx.ToolBar.ToolSeparation" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ToolBar.GetToolSeparation" title="wx.ToolBar.GetToolSeparation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolSeparation</span></code></a> and <a class="reference internal" href="#wx.ToolBar.SetToolSeparation" title="wx.ToolBar.SetToolSeparation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetToolSeparation</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ToolBar.ToolSize">
+<code class="sig-name descname">ToolSize</code><a class="headerlink" href="#wx.ToolBar.ToolSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ToolBar.GetToolSize" title="wx.ToolBar.GetToolSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolSize</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ToolBar.ToolsCount">
+<code class="sig-name descname">ToolsCount</code><a class="headerlink" href="#wx.ToolBar.ToolsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ToolBar.GetToolsCount" title="wx.ToolBar.GetToolsCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetToolsCount</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

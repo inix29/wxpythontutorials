@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.PrintPreview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.Printer.html" rel="next" title="wx.Printer"/>
+<link href="wx.PrintOrientation.enumeration.html" rel="prev" title="wx.PrintOrientation"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.PrintPreview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.Printer.html" title="wx.Printer">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.PrintOrientation.enumeration.html" title="wx.PrintOrientation">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.PrintPreview</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.PrintPreview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-printpreview">
+<span id="wx-printpreview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.PrintPreview</strong><a class="headerlink" href="#phoenix-title-wx-printpreview" title="Permalink to this headline">¶</a></h1>
+<p>Objects of this class manage the print preview process.</p>
+<p>The object is passed a <a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  object, and the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  object itself is passed to a <a class="reference internal" href="wx.PreviewFrame.html#wx-previewframe"><span class="std std-ref">  wx.PreviewFrame</span></a>  object. Previewing is started by initializing and showing the preview frame. Unlike <a class="reference internal" href="wx.Printer.html#wx.Printer.Print" title="wx.Printer.Print"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Printer.Print</span></code></a> , flow of control returns to the application immediately after the frame is shown.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The preview shown is only exact on Windows. On other platforms, the <a class="reference internal" href="wx.DC.html#wx-dc"><span class="std std-ref">  wx.DC</span></a>  used for preview is different from what is used for printing and the results may be significantly different, depending on how is the output created. In particular, printing code relying on <a class="reference internal" href="wx.DC.html#wx.DC.GetTextExtent" title="wx.DC.GetTextExtent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DC.GetTextExtent</span></code></a>   heavily (for example, <a class="reference internal" href="wx.html.HtmlEasyPrinting.html#wx-html-htmleasyprinting"><span class="std std-ref">  wx.html.HtmlEasyPrinting</span></a>  and other HTML classes do) is affected. It is recommended to use native preview functionality on platforms that offer it (OS X, GTK+).</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="printing_framework_overview.html#printing-framework-overview"><span class="std std-ref">Printing Framework Overview</span></a>, <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a>, <a class="reference internal" href="wx.PrintDialog.html#wx-printdialog"><span class="std std-ref">  wx.PrintDialog</span></a>, <a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a>, <a class="reference internal" href="wx.Printer.html#wx-printer"><span class="std std-ref">  wx.Printer</span></a>, <a class="reference internal" href="wx.PreviewCanvas.html#wx-previewcanvas"><span class="std std-ref">  wx.PreviewCanvas</span></a>, <a class="reference internal" href="wx.PreviewControlBar.html#wx-previewcontrolbar"><span class="std std-ref">  wx.PreviewControlBar</span></a>, <a class="reference internal" href="wx.PreviewFrame.html#wx-previewframe"><span class="std std-ref">  wx.PreviewFrame</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>PrintPreview</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of PrintPreview" class="inheritance" src="_static/images/inheritance/wx.PrintPreview_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,133,112" href="wx.PrintPreview.html" id="node1" shape="rect" title="Objects of this class manage the print preview process."/> <area alt="" coords="25,5,113,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%"/>
+<col style="width: 60%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.__init__" title="wx.PrintPreview.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.GetCanvas" title="wx.PrintPreview.GetCanvas"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCanvas</span></code></a></p></td>
+<td><p>Gets the preview window used for displaying the print preview image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.GetCurrentPage" title="wx.PrintPreview.GetCurrentPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentPage</span></code></a></p></td>
+<td><p>Gets the page currently being previewed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.GetFrame" title="wx.PrintPreview.GetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrame</span></code></a></p></td>
+<td><p>Gets the frame used for displaying the print preview canvas and control bar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.GetMaxPage" title="wx.PrintPreview.GetMaxPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMaxPage</span></code></a></p></td>
+<td><p>Returns the maximum page number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.GetMinPage" title="wx.PrintPreview.GetMinPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMinPage</span></code></a></p></td>
+<td><p>Returns the minimum page number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.GetPrintout" title="wx.PrintPreview.GetPrintout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintout</span></code></a></p></td>
+<td><p>Gets the preview printout object associated with the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.GetPrintoutForPrinting" title="wx.PrintPreview.GetPrintoutForPrinting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintoutForPrinting</span></code></a></p></td>
+<td><p>Gets the printout object to be used for printing from within the preview interface, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if none exists.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.IsOk" title="wx.PrintPreview.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsOk</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  is valid, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.PaintPage" title="wx.PrintPreview.PaintPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PaintPage</span></code></a></p></td>
+<td><p>This refreshes the preview window with the preview image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.Print" title="wx.PrintPreview.Print"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Print</span></code></a></p></td>
+<td><p>Invokes the print process using the second <a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  object supplied in the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.RenderPage" title="wx.PrintPreview.RenderPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RenderPage</span></code></a></p></td>
+<td><p>Renders a page into a <a class="reference internal" href="wx.MemoryDC.html#wx-memorydc"><span class="std std-ref">  wx.MemoryDC</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.SetCanvas" title="wx.PrintPreview.SetCanvas"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCanvas</span></code></a></p></td>
+<td><p>Sets the window to be used for displaying the print preview image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.SetCurrentPage" title="wx.PrintPreview.SetCurrentPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCurrentPage</span></code></a></p></td>
+<td><p>Sets the current page to be previewed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.SetFrame" title="wx.PrintPreview.SetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFrame</span></code></a></p></td>
+<td><p>Sets the frame to be used for displaying the print preview canvas and control bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.SetPrintout" title="wx.PrintPreview.SetPrintout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPrintout</span></code></a></p></td>
+<td><p>Associates a printout object with the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.SetZoom" title="wx.PrintPreview.SetZoom"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetZoom</span></code></a></p></td>
+<td><p>Sets the percentage preview zoom, and refreshes the preview canvas accordingly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.__bool__" title="wx.PrintPreview.__bool__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__bool__</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.__nonzero__" title="wx.PrintPreview.__nonzero__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__nonzero__</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 48%"/>
+<col style="width: 52%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.Canvas" title="wx.PrintPreview.Canvas"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Canvas</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PrintPreview.GetCanvas" title="wx.PrintPreview.GetCanvas"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCanvas</span></code></a> and <a class="reference internal" href="#wx.PrintPreview.SetCanvas" title="wx.PrintPreview.SetCanvas"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCanvas</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.CurrentPage" title="wx.PrintPreview.CurrentPage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CurrentPage</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PrintPreview.GetCurrentPage" title="wx.PrintPreview.GetCurrentPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentPage</span></code></a> and <a class="reference internal" href="#wx.PrintPreview.SetCurrentPage" title="wx.PrintPreview.SetCurrentPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCurrentPage</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.Frame" title="wx.PrintPreview.Frame"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Frame</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PrintPreview.GetFrame" title="wx.PrintPreview.GetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrame</span></code></a> and <a class="reference internal" href="#wx.PrintPreview.SetFrame" title="wx.PrintPreview.SetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFrame</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.MaxPage" title="wx.PrintPreview.MaxPage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MaxPage</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PrintPreview.GetMaxPage" title="wx.PrintPreview.GetMaxPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMaxPage</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.MinPage" title="wx.PrintPreview.MinPage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MinPage</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PrintPreview.GetMinPage" title="wx.PrintPreview.GetMinPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMinPage</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.PrintPreview.Printout" title="wx.PrintPreview.Printout"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Printout</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PrintPreview.GetPrintout" title="wx.PrintPreview.GetPrintout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintout</span></code></a> and <a class="reference internal" href="#wx.PrintPreview.SetPrintout" title="wx.PrintPreview.SetPrintout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPrintout</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.PrintPreview.PrintoutForPrinting" title="wx.PrintPreview.PrintoutForPrinting"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PrintoutForPrinting</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.PrintPreview.GetPrintoutForPrinting" title="wx.PrintPreview.GetPrintoutForPrinting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintoutForPrinting</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.PrintPreview">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">PrintPreview</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PrintPreview</span><span class="p">(</span><span class="n">printout</span><span class="p">,</span> <span class="n">printoutForPrinting</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">PrintPreview</span><span class="p">(</span><span class="n">printout</span><span class="p">,</span> <span class="n">printoutForPrinting</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Objects of this class manage the print preview process.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.PrintPreview.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, printout, printoutForPrinting=None, data=None)</em></p>
+<p>Constructor.</p>
+<p>Pass a printout object, an optional printout object to be used for actual printing, and the address of an optional block of printer data, which will be copied to the print preview object’s print data.</p>
+<p>If <em class="xref py py-obj">printoutForPrinting</em>  is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, a <strong>“Print…”</strong>  button will be placed on the preview frame so that the user can print directly from the preview interface.</p>
+<p>Use  <a class="reference internal" href="#wx.PrintPreview.IsOk" title="wx.PrintPreview.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsOk</span></code></a>   to check whether the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  object was created correctly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>printout</strong> (<a class="reference internal" href="wx.Printout.html#wx.Printout" title="wx.Printout"><em>wx.Printout</em></a>) – </p></li>
+<li><p><strong>printoutForPrinting</strong> (<a class="reference internal" href="wx.Printout.html#wx.Printout" title="wx.Printout"><em>wx.Printout</em></a>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference internal" href="wx.PrintDialogData.html#wx.PrintDialogData" title="wx.PrintDialogData"><em>wx.PrintDialogData</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not explicitly delete the printout objects once this constructor has been called, since they will be deleted in the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  destructor. The same does not apply to the <em class="xref py py-obj">data</em>  argument.</p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, printout, printoutForPrinting, data)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>printout</strong> (<a class="reference internal" href="wx.Printout.html#wx.Printout" title="wx.Printout"><em>wx.Printout</em></a>) – </p></li>
+<li><p><strong>printoutForPrinting</strong> (<a class="reference internal" href="wx.Printout.html#wx.Printout" title="wx.Printout"><em>wx.Printout</em></a>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference internal" href="wx.PrintData.html#wx.PrintData" title="wx.PrintData"><em>wx.PrintData</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.GetCanvas">
+<code class="sig-name descname">GetCanvas</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.GetCanvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the preview window used for displaying the print preview image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.PreviewCanvas.html#wx-previewcanvas"><span class="std std-ref">  wx.PreviewCanvas</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.GetCurrentPage">
+<code class="sig-name descname">GetCurrentPage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.GetCurrentPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the page currently being previewed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.GetFrame">
+<code class="sig-name descname">GetFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.GetFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the frame used for displaying the print preview canvas and control bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.GetMaxPage">
+<code class="sig-name descname">GetMaxPage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.GetMaxPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the maximum page number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.GetMinPage">
+<code class="sig-name descname">GetMinPage</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.GetMinPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the minimum page number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.GetPrintout">
+<code class="sig-name descname">GetPrintout</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.GetPrintout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the preview printout object associated with the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.GetPrintoutForPrinting">
+<code class="sig-name descname">GetPrintoutForPrinting</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.GetPrintoutForPrinting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the printout object to be used for printing from within the preview interface, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if none exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.IsOk">
+<code class="sig-name descname">IsOk</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.IsOk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  is valid, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<p>It could return <code class="docutils literal notranslate"><span class="pre">False</span></code> if there was a problem initializing the printer device context (current printer not set, for example).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.PaintPage">
+<code class="sig-name descname">PaintPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">canvas</em>, <em class="sig-param">dc</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.PaintPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This refreshes the preview window with the preview image.</p>
+<p>It must be called from the preview window’s OnPaint member.</p>
+<p>The implementation simply blits the preview bitmap onto the canvas, creating a new preview bitmap if none exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>canvas</strong> (<a class="reference internal" href="wx.PreviewCanvas.html#wx.PreviewCanvas" title="wx.PreviewCanvas"><em>wx.PreviewCanvas</em></a>) – </p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="wx.DC.html#wx.DC" title="wx.DC"><em>wx.DC</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.Print">
+<code class="sig-name descname">Print</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">prompt</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.Print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invokes the print process using the second <a class="reference internal" href="wx.Printout.html#wx-printout"><span class="std std-ref">  wx.Printout</span></a>  object supplied in the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  constructor.</p>
+<p>Will normally be called by the <strong>Print</strong>… panel item on the preview frame’s control bar.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> in case of error <a class="reference internal" href="wx.Printer.html#wx.Printer.GetLastError" title="wx.Printer.GetLastError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Printer.GetLastError</span></code></a>   to get detailed information about the kind of the error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prompt</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.RenderPage">
+<code class="sig-name descname">RenderPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pageNum</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.RenderPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a page into a <a class="reference internal" href="wx.MemoryDC.html#wx-memorydc"><span class="std std-ref">  wx.MemoryDC</span></a>.</p>
+<p>Used internally by <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pageNum</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.SetCanvas">
+<code class="sig-name descname">SetCanvas</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.SetCanvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the window to be used for displaying the print preview image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.PreviewCanvas.html#wx.PreviewCanvas" title="wx.PreviewCanvas"><em>wx.PreviewCanvas</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.SetCurrentPage">
+<code class="sig-name descname">SetCurrentPage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pageNum</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.SetCurrentPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the current page to be previewed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pageNum</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.SetFrame">
+<code class="sig-name descname">SetFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">frame</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.SetFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the frame to be used for displaying the print preview canvas and control bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frame</strong> (<a class="reference internal" href="wx.Frame.html#wx.Frame" title="wx.Frame"><em>wx.Frame</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.SetPrintout">
+<code class="sig-name descname">SetPrintout</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">printout</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.SetPrintout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates a printout object with the <a class="reference internal" href="#wx-printpreview"><span class="std std-ref">  wx.PrintPreview</span></a>  object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>printout</strong> (<a class="reference internal" href="wx.Printout.html#wx.Printout" title="wx.Printout"><em>wx.Printout</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.SetZoom">
+<code class="sig-name descname">SetZoom</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">percent</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.SetZoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the percentage preview zoom, and refreshes the preview canvas accordingly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>percent</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.__bool__">
+<code class="sig-name descname">__bool__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.__bool__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.PrintPreview.__nonzero__">
+<code class="sig-name descname">__nonzero__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.PrintPreview.__nonzero__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.PrintPreview.Canvas">
+<code class="sig-name descname">Canvas</code><a class="headerlink" href="#wx.PrintPreview.Canvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PrintPreview.GetCanvas" title="wx.PrintPreview.GetCanvas"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCanvas</span></code></a> and <a class="reference internal" href="#wx.PrintPreview.SetCanvas" title="wx.PrintPreview.SetCanvas"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCanvas</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PrintPreview.CurrentPage">
+<code class="sig-name descname">CurrentPage</code><a class="headerlink" href="#wx.PrintPreview.CurrentPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PrintPreview.GetCurrentPage" title="wx.PrintPreview.GetCurrentPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCurrentPage</span></code></a> and <a class="reference internal" href="#wx.PrintPreview.SetCurrentPage" title="wx.PrintPreview.SetCurrentPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCurrentPage</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PrintPreview.Frame">
+<code class="sig-name descname">Frame</code><a class="headerlink" href="#wx.PrintPreview.Frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PrintPreview.GetFrame" title="wx.PrintPreview.GetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrame</span></code></a> and <a class="reference internal" href="#wx.PrintPreview.SetFrame" title="wx.PrintPreview.SetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFrame</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PrintPreview.MaxPage">
+<code class="sig-name descname">MaxPage</code><a class="headerlink" href="#wx.PrintPreview.MaxPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PrintPreview.GetMaxPage" title="wx.PrintPreview.GetMaxPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMaxPage</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PrintPreview.MinPage">
+<code class="sig-name descname">MinPage</code><a class="headerlink" href="#wx.PrintPreview.MinPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PrintPreview.GetMinPage" title="wx.PrintPreview.GetMinPage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMinPage</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PrintPreview.Printout">
+<code class="sig-name descname">Printout</code><a class="headerlink" href="#wx.PrintPreview.Printout" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PrintPreview.GetPrintout" title="wx.PrintPreview.GetPrintout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintout</span></code></a> and <a class="reference internal" href="#wx.PrintPreview.SetPrintout" title="wx.PrintPreview.SetPrintout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPrintout</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.PrintPreview.PrintoutForPrinting">
+<code class="sig-name descname">PrintoutForPrinting</code><a class="headerlink" href="#wx.PrintPreview.PrintoutForPrinting" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.PrintPreview.GetPrintoutForPrinting" title="wx.PrintPreview.GetPrintoutForPrinting"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPrintoutForPrinting</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

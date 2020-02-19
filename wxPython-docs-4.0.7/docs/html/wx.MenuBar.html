@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.MenuBar — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.MenuEvent.html" rel="next" title="wx.MenuEvent"/>
+<link href="wx.Menu.html" rel="prev" title="wx.Menu"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.MenuBar</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.MenuEvent.html" title="wx.MenuEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.Menu.html" title="wx.Menu">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.MenuBar</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.MenuBar.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-menubar">
+<span id="wx-menubar"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.MenuBar</strong><a class="headerlink" href="#phoenix-title-wx-menubar" title="Permalink to this headline">¶</a></h1>
+<p>A menu bar is a series of menus accessible from the top of a frame.</p>
+<p>If you have a toolbar which uses the same identifiers as your <code class="docutils literal notranslate"><span class="pre">EVT_MENU</span></code> entries, events from the toolbar will also be processed by your <code class="docutils literal notranslate"><span class="pre">EVT_MENU</span></code> event handlers.</p>
+<p>Tip: under Windows, if you discover that menu shortcuts (for example, Alt-F to show the file menu) are not working, check any <code class="docutils literal notranslate"><span class="pre">EVT_CHAR</span></code> events you are handling in child windows. If you are not calling event.Skip() for events that you don’t process in these event handlers, menu shortcuts may cease to work.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To respond to a menu selection, provide a handler for <code class="docutils literal notranslate"><span class="pre">EVT_MENU</span></code>, in the frame that contains the menu bar.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a>, <a class="reference internal" href="events_overview.html#events-and-event-handling"><span class="std std-ref">Events and Event Handling</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>MenuBar</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of MenuBar" class="inheritance" src="_static/images/inheritance/wx.MenuBar_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="59,237,163,267" href="wx.MenuBar.html" id="node1" shape="rect" title="A menu bar is a series of menus accessible from the top of a frame."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node2" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node3" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node4" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node5" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%"/>
+<col style="width: 61%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.__init__" title="wx.MenuBar.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Construct an empty menu bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.Append" title="wx.MenuBar.Append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Append</span></code></a></p></td>
+<td><p>Adds the item to the end of the menu bar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.Attach" title="wx.MenuBar.Attach"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Attach</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.Check" title="wx.MenuBar.Check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Check</span></code></a></p></td>
+<td><p>Checks or unchecks a menu item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.Detach" title="wx.MenuBar.Detach"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Detach</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.Enable" title="wx.MenuBar.Enable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enable</span></code></a></p></td>
+<td><p>Enables or disables (greys out) a menu item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.EnableTop" title="wx.MenuBar.EnableTop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableTop</span></code></a></p></td>
+<td><p>Enables or disables a whole menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.FindItem" title="wx.MenuBar.FindItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindItem</span></code></a></p></td>
+<td><p>Finds the menu item object associated with the given menu item identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.FindItemById" title="wx.MenuBar.FindItemById"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindItemById</span></code></a></p></td>
+<td><p>FindItemById(id) . MenuItem</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.FindMenu" title="wx.MenuBar.FindMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindMenu</span></code></a></p></td>
+<td><p>Returns the index of the menu with the given <em class="xref py py-obj">title</em>  or  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   if no such menu exists in this menubar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.FindMenuItem" title="wx.MenuBar.FindMenuItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FindMenuItem</span></code></a></p></td>
+<td><p>Finds the menu item id for a menu name/menu item string pair.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.GetFrame" title="wx.MenuBar.GetFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrame</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.GetHelpString" title="wx.MenuBar.GetHelpString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHelpString</span></code></a></p></td>
+<td><p>Gets the help string associated with the menu item identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.GetLabel" title="wx.MenuBar.GetLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLabel</span></code></a></p></td>
+<td><p>Gets the label associated with a menu item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.GetLabelTop" title="wx.MenuBar.GetLabelTop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLabelTop</span></code></a></p></td>
+<td><p>Returns the label of a top-level menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.GetMenu" title="wx.MenuBar.GetMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenu</span></code></a></p></td>
+<td><p>Returns the menu at <em class="xref py py-obj">menuIndex</em>  (zero-based).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.GetMenuCount" title="wx.MenuBar.GetMenuCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuCount</span></code></a></p></td>
+<td><p>Returns the number of menus in this menubar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.GetMenuLabel" title="wx.MenuBar.GetMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuLabel</span></code></a></p></td>
+<td><p>Returns the label of a top-level menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.GetMenuLabelText" title="wx.MenuBar.GetMenuLabelText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuLabelText</span></code></a></p></td>
+<td><p>Returns the label of a top-level menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.GetMenus" title="wx.MenuBar.GetMenus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenus</span></code></a></p></td>
+<td><p>GetMenus() . (menu, label)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.Insert" title="wx.MenuBar.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Insert</span></code></a></p></td>
+<td><p>Inserts the menu at the given position into the menu bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.IsAttached" title="wx.MenuBar.IsAttached"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsAttached</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.IsChecked" title="wx.MenuBar.IsChecked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsChecked</span></code></a></p></td>
+<td><p>Determines whether an item is checked.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.IsEnabled" title="wx.MenuBar.IsEnabled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEnabled</span></code></a></p></td>
+<td><p>Determines whether an item is enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.IsEnabledTop" title="wx.MenuBar.IsEnabledTop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEnabledTop</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the menu with the given index is enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.MacGetCommonMenuBar" title="wx.MenuBar.MacGetCommonMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MacGetCommonMenuBar</span></code></a></p></td>
+<td><p>Enables you to get the global menubar on Mac, that is, the menubar displayed when the app is running without any frames open.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.MacSetCommonMenuBar" title="wx.MenuBar.MacSetCommonMenuBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MacSetCommonMenuBar</span></code></a></p></td>
+<td><p>Enables you to set the global menubar on Mac, that is, the menubar displayed when the app is running without any frames open.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.OSXGetAppleMenu" title="wx.MenuBar.OSXGetAppleMenu"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OSXGetAppleMenu</span></code></a></p></td>
+<td><p>Returns the Apple menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.Refresh" title="wx.MenuBar.Refresh"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Refresh</span></code></a></p></td>
+<td><p>Redraw the menu bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.Remove" title="wx.MenuBar.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code></a></p></td>
+<td><p>Removes the menu from the menu bar and returns the menu object - the caller is responsible for deleting it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.Replace" title="wx.MenuBar.Replace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Replace</span></code></a></p></td>
+<td><p>Replaces the menu at the given position with another one.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.SetHelpString" title="wx.MenuBar.SetHelpString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHelpString</span></code></a></p></td>
+<td><p>Sets the help string associated with a menu item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.SetLabel" title="wx.MenuBar.SetLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLabel</span></code></a></p></td>
+<td><p>Sets the label of a menu item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.SetLabelTop" title="wx.MenuBar.SetLabelTop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLabelTop</span></code></a></p></td>
+<td><p>Sets the label of a top-level menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.SetMenuLabel" title="wx.MenuBar.SetMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenuLabel</span></code></a></p></td>
+<td><p>Sets the label of a top-level menu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MenuBar.SetMenus" title="wx.MenuBar.SetMenus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenus</span></code></a></p></td>
+<td><p>SetMenus()</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MenuBar.Menus" title="wx.MenuBar.Menus"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Menus</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.MenuBar.GetMenus" title="wx.MenuBar.GetMenus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenus</span></code></a> and <a class="reference internal" href="#wx.MenuBar.SetMenus" title="wx.MenuBar.SetMenus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenus</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.MenuBar">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">MenuBar</code><span class="sig-paren">(</span><em class="sig-param">Window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MenuBar</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A menu bar is a series of menus accessible from the top of a frame.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.MenuBar.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">style=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct an empty menu bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>style</strong> (<em>long</em>) – If <code class="docutils literal notranslate"><span class="pre">wx.MB_DOCKABLE</span></code> the menu bar can be detached (wxGTK only).</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.Append">
+<code class="sig-name descname">Append</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">menu</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.Append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the item to the end of the menu bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menu</strong> (<a class="reference internal" href="wx.Menu.html#wx.Menu" title="wx.Menu"><em>wx.Menu</em></a>) – The menu to add. Do not deallocate this menu after calling <a class="reference internal" href="#wx.MenuBar.Append" title="wx.MenuBar.Append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Append</span></code></a> .</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – The title of the menu, must be non-empty.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success, <code class="docutils literal notranslate"><span class="pre">False</span></code> if an error occurred.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.Insert" title="wx.MenuBar.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Insert</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.Attach">
+<code class="sig-name descname">Attach</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">frame</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.Attach" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frame</strong> (<a class="reference internal" href="wx.Frame.html#wx.Frame" title="wx.Frame"><em>wx.Frame</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.Check">
+<code class="sig-name descname">Check</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">check</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.Check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks or unchecks a menu item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – The menu item identifier.</p></li>
+<li><p><strong>check</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, checks the menu item, otherwise the item is unchecked.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only use this when the menu bar has been associated with a frame; otherwise, use the <a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a>  equivalent call.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.Detach">
+<code class="sig-name descname">Detach</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.Detach" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.Enable">
+<code class="sig-name descname">Enable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">enable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.Enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables or disables (greys out) a menu item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – The menu item identifier.</p></li>
+<li><p><strong>enable</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to enable the item, <code class="docutils literal notranslate"><span class="pre">False</span></code> to disable it.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only use this when the menu bar has been associated with a frame; otherwise, use the <a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a>  equivalent call.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.EnableTop">
+<code class="sig-name descname">EnableTop</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em>, <em class="sig-param">enable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.EnableTop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables or disables a whole menu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – The position of the menu, starting from zero.</p></li>
+<li><p><strong>enable</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to enable the menu, <code class="docutils literal notranslate"><span class="pre">False</span></code> to disable it.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only use this when the menu bar has been associated with a frame.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.FindItem">
+<code class="sig-name descname">FindItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.FindItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the menu item object associated with the given menu item identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – Menu item identifier.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">tuple</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.FindItemById">
+<code class="sig-name descname">FindItemById</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.FindItemById" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>FindItemById(id) . MenuItem</p>
+<p>Finds the menu item object associated with the given menu item identifier.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.MenuItem.html#wx-menuitem"><span class="std std-ref">  wx.MenuItem</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.FindMenu">
+<code class="sig-name descname">FindMenu</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.FindMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the index of the menu with the given <em class="xref py py-obj">title</em>  or  <code class="docutils literal notranslate"><span class="pre">NOT_FOUND</span></code>   if no such menu exists in this menubar.</p>
+<p>The <em class="xref py py-obj">title</em>  parameter may specify either the menu title (with accelerator characters, i.e.  <code class="docutils literal notranslate"><span class="pre">"&amp;File"</span></code> ) or just the menu label ( <code class="docutils literal notranslate"><span class="pre">"File"</span></code> ) indifferently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.FindMenuItem">
+<code class="sig-name descname">FindMenuItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">menuString</em>, <em class="sig-param">itemString</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.FindMenuItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the menu item id for a menu name/menu item string pair.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menuString</strong> (<em>string</em>) – Menu title to find.</p></li>
+<li><p><strong>itemString</strong> (<em>string</em>) – Item to find.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The menu item identifier, or <code class="docutils literal notranslate"><span class="pre">wx.NOT_FOUND</span></code> if none was found.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any special menu codes are stripped out of source and target strings before matching.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.GetFrame">
+<code class="sig-name descname">GetFrame</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.GetFrame" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.GetHelpString">
+<code class="sig-name descname">GetHelpString</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.GetHelpString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the help string associated with the menu item identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The menu item identifier.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The help string, or the empty string if there was no help string or the menu item was not found.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.SetHelpString" title="wx.MenuBar.SetHelpString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetHelpString</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.GetLabel">
+<code class="sig-name descname">GetLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.GetLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the label associated with a menu item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The menu item identifier.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The menu item label, or the empty string if the item was not found.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use only after the menubar has been associated with a frame.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.GetLabelTop">
+<code class="sig-name descname">GetLabelTop</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.GetLabelTop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label of a top-level menu.</p>
+<p>Note that the returned string does not include the accelerator characters which could have been specified in the menu title string during its construction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – Position of the menu on the menu bar, starting from zero.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The menu label, or the empty string if the menu was not found.</p>
+</dd>
+</dl>
+<div class="admonition wxdeprecated" id="deprecated-0">
+<p class="admonition-title">Deprecated</p>
+<p>This function is deprecated in favour of <a class="reference internal" href="#wx.MenuBar.GetMenuLabel" title="wx.MenuBar.GetMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuLabel</span></code></a>   and <a class="reference internal" href="#wx.MenuBar.GetMenuLabelText" title="wx.MenuBar.GetMenuLabelText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuLabelText</span></code></a> .</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use only after the menubar has been associated with a frame.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.SetLabelTop" title="wx.MenuBar.SetLabelTop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLabelTop</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.GetMenu">
+<code class="sig-name descname">GetMenu</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">menuIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.GetMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the menu at <em class="xref py py-obj">menuIndex</em>  (zero-based).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>menuIndex</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.GetMenuCount">
+<code class="sig-name descname">GetMenuCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.GetMenuCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of menus in this menubar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.GetMenuLabel">
+<code class="sig-name descname">GetMenuLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.GetMenuLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label of a top-level menu.</p>
+<p>Note that the returned string includes the accelerator characters that have been specified in the menu title string during its construction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – Position of the menu on the menu bar, starting from zero.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The menu label, or the empty string if the menu was not found.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use only after the menubar has been associated with a frame.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.GetMenuLabelText" title="wx.MenuBar.GetMenuLabelText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuLabelText</span></code></a> , <a class="reference internal" href="#wx.MenuBar.SetMenuLabel" title="wx.MenuBar.SetMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenuLabel</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.GetMenuLabelText">
+<code class="sig-name descname">GetMenuLabelText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.GetMenuLabelText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label of a top-level menu.</p>
+<p>Note that the returned string does not include any accelerator characters that may have been specified in the menu title string during its construction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – Position of the menu on the menu bar, starting from zero.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The menu label, or the empty string if the menu was not found.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use only after the menubar has been associated with a frame.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.GetMenuLabel" title="wx.MenuBar.GetMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuLabel</span></code></a> , <a class="reference internal" href="#wx.MenuBar.SetMenuLabel" title="wx.MenuBar.SetMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenuLabel</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.GetMenus">
+<code class="sig-name descname">GetMenus</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.GetMenus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of (menu, label) items for the menus in the <code class="xref py py-class docutils literal notranslate"><span class="pre">MenuBar</span></code>.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.Insert">
+<code class="sig-name descname">Insert</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em>, <em class="sig-param">menu</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.Insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the menu at the given position into the menu bar.</p>
+<p>Inserting menu at position 0 will insert it in the very beginning of it, inserting at position <a class="reference internal" href="#wx.MenuBar.GetMenuCount" title="wx.MenuBar.GetMenuCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenuCount</span></code></a>   is the same as calling <a class="reference internal" href="#wx.MenuBar.Append" title="wx.MenuBar.Append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Append</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – The position of the new menu in the menu bar</p></li>
+<li><p><strong>menu</strong> (<a class="reference internal" href="wx.Menu.html#wx.Menu" title="wx.Menu"><em>wx.Menu</em></a>) – The menu to add. <a class="reference internal" href="#wx-menubar"><span class="std std-ref">  wx.MenuBar</span></a>  owns the menu and will free it.</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – The title of the menu.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success, <code class="docutils literal notranslate"><span class="pre">False</span></code> if an error occurred.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.Append" title="wx.MenuBar.Append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Append</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.IsAttached">
+<code class="sig-name descname">IsAttached</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.IsAttached" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.IsChecked">
+<code class="sig-name descname">IsChecked</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.IsChecked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether an item is checked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The menu item identifier.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the item was found and is checked, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.IsEnabled">
+<code class="sig-name descname">IsEnabled</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.IsEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether an item is enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The menu item identifier.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the item was found and is enabled, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.IsEnabledTop">
+<code class="sig-name descname">IsEnabledTop</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.IsEnabledTop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the menu with the given index is enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – The menu position (0-based)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.4.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.MacGetCommonMenuBar">
+<em class="property">static </em><code class="sig-name descname">MacGetCommonMenuBar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.MacGetCommonMenuBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables you to get the global menubar on Mac, that is, the menubar displayed when the app is running without any frames open.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-menubar"><span class="std std-ref">  wx.MenuBar</span></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The global menubar.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only exists on Mac, other platforms do not have this method.</p>
+</div>
+<div class="admonition availability" id="index-0">
+<p class="admonition-title">Availability</p>
+<p>Only available for OSX.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.MacSetCommonMenuBar">
+<em class="property">static </em><code class="sig-name descname">MacSetCommonMenuBar</code><span class="sig-paren">(</span><em class="sig-param">menubar</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.MacSetCommonMenuBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables you to set the global menubar on Mac, that is, the menubar displayed when the app is running without any frames open.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>menubar</strong> (<a class="reference internal" href="#wx.MenuBar" title="wx.MenuBar"><em>wx.MenuBar</em></a>) – The menubar to set.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only exists on Mac, other platforms do not have this method.</p>
+</div>
+<div class="admonition availability" id="index-1">
+<p class="admonition-title">Availability</p>
+<p>Only available for OSX.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.OSXGetAppleMenu">
+<code class="sig-name descname">OSXGetAppleMenu</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.OSXGetAppleMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Apple menu.</p>
+<p>This is the leftmost menu with application’s name as its title. You shouldn’t remove any items from it, but it is safe to insert extra menu items or submenus into it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.1.</span></p>
+</div>
+<div class="admonition availability" id="index-2">
+<p class="admonition-title">Availability</p>
+<p>Only available for OSX.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.Refresh">
+<code class="sig-name descname">Refresh</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">eraseBackground=True</em>, <em class="sig-param">rect=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.Refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redraw the menu bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eraseBackground</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>rect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.Remove">
+<code class="sig-name descname">Remove</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the menu from the menu bar and returns the menu object - the caller is responsible for deleting it.</p>
+<p>This function may be used together with <a class="reference internal" href="#wx.MenuBar.Insert" title="wx.MenuBar.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Insert</span></code></a>   to change the menubar dynamically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.Replace" title="wx.MenuBar.Replace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Replace</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.Replace">
+<code class="sig-name descname">Replace</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em>, <em class="sig-param">menu</em>, <em class="sig-param">title</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.Replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces the menu at the given position with another one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – The position of the new menu in the menu bar</p></li>
+<li><p><strong>menu</strong> (<a class="reference internal" href="wx.Menu.html#wx.Menu" title="wx.Menu"><em>wx.Menu</em></a>) – The menu to add.</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – The title of the menu.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Menu.html#wx-menu"><span class="std std-ref">  wx.Menu</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The menu which was previously at position pos. The caller is responsible for deleting it.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.Insert" title="wx.MenuBar.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Insert</span></code></a> , <a class="reference internal" href="#wx.MenuBar.Remove" title="wx.MenuBar.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.SetHelpString">
+<code class="sig-name descname">SetHelpString</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">helpString</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.SetHelpString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the help string associated with a menu item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Menu item identifier.</p></li>
+<li><p><strong>helpString</strong> (<em>string</em>) – Help string to associate with the menu item.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.GetHelpString" title="wx.MenuBar.GetHelpString"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetHelpString</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.SetLabel">
+<code class="sig-name descname">SetLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">label</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.SetLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the label of a menu item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Menu item identifier.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – Menu item label.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use only after the menubar has been associated with a frame.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.GetLabel" title="wx.MenuBar.GetLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLabel</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.SetLabelTop">
+<code class="sig-name descname">SetLabelTop</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em>, <em class="sig-param">label</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.SetLabelTop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the label of a top-level menu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – The position of a menu on the menu bar, starting from zero.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – The menu label.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition wxdeprecated" id="deprecated-1">
+<p class="admonition-title">Deprecated</p>
+<p>This function has been deprecated in favour of <a class="reference internal" href="#wx.MenuBar.SetMenuLabel" title="wx.MenuBar.SetMenuLabel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenuLabel</span></code></a> .</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use only after the menubar has been associated with a frame.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MenuBar.GetLabelTop" title="wx.MenuBar.GetLabelTop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLabelTop</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.SetMenuLabel">
+<code class="sig-name descname">SetMenuLabel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em>, <em class="sig-param">label</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.SetMenuLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the label of a top-level menu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int</em>) – The position of a menu on the menu bar, starting from zero.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – The menu label.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use only after the menubar has been associated with a frame.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MenuBar.SetMenus">
+<code class="sig-name descname">SetMenus</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MenuBar.SetMenus" title="Permalink to this definition">¶</a></dt>
+<dd><p>SetMenus()</p>
+<p>Clear and add new menus to the <code class="xref py py-class docutils literal notranslate"><span class="pre">MenuBar</span></code> from a list of (menu, label) items.</p>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.MenuBar.Menus">
+<code class="sig-name descname">Menus</code><a class="headerlink" href="#wx.MenuBar.Menus" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.MenuBar.GetMenus" title="wx.MenuBar.GetMenus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMenus</span></code></a> and <a class="reference internal" href="#wx.MenuBar.SetMenus" title="wx.MenuBar.SetMenus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMenus</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

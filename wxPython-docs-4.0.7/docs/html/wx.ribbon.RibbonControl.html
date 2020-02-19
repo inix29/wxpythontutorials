@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.ribbon.RibbonControl — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ribbon.RibbonDisplayMode.enumeration.html" rel="next" title="wx.ribbon.RibbonDisplayMode"/>
+<link href="wx.ribbon.RibbonButtonKind.enumeration.html" rel="prev" title="wx.ribbon.RibbonButtonKind"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.ribbon.1moduleindex.html">
+<strong>wx.ribbon</strong></a> »</li>
+<li class="reltitle"> <strong>wx.ribbon.RibbonControl</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ribbon.RibbonDisplayMode.enumeration.html" title="wx.ribbon.RibbonDisplayMode">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.ribbon.RibbonButtonKind.enumeration.html" title="wx.ribbon.RibbonButtonKind">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.ribbon.RibbonControl</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.ribbon.RibbonControl.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-ribbon-ribboncontrol">
+<span id="wx-ribbon-ribboncontrol"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.ribbon.RibbonControl</strong><a class="headerlink" href="#phoenix-title-wx-ribbon-ribboncontrol" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-ribbon-ribboncontrol"><span class="std std-ref">  wx.ribbon.RibbonControl</span></a>  serves as a base class for all controls which share the ribbon characteristics of having a ribbon art provider, and (optionally) non-continuous resizing.</p>
+<p>Despite what the name may imply, it is not the top-level control for creating a ribbon interface - that is <a class="reference internal" href="wx.ribbon.RibbonBar.html#wx-ribbon-ribbonbar"><span class="std std-ref">  wx.ribbon.RibbonBar</span></a>.</p>
+<p>Ribbon controls often have a region which is “transparent”, and shows the contents of the ribbon page or panel behind it. If implementing a new ribbon control, then it may be useful to realise that this effect is done by the art provider when painting the background of the control, and hence in the paint handler for the new control, you should call a draw background method on the art provider ( <a class="reference internal" href="wx.ribbon.RibbonArtProvider.html#wx.ribbon.RibbonArtProvider.DrawButtonBarBackground" title="wx.ribbon.RibbonArtProvider.DrawButtonBarBackground"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ribbon.RibbonArtProvider.DrawButtonBarBackground</span></code></a>   and <a class="reference internal" href="wx.ribbon.RibbonArtProvider.html#wx.ribbon.RibbonArtProvider.DrawToolBarBackground" title="wx.ribbon.RibbonArtProvider.DrawToolBarBackground"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ribbon.RibbonArtProvider.DrawToolBarBackground</span></code></a>   typically just redraw what is behind the rectangle being painted) if you want transparent regions.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>RibbonControl</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of RibbonControl" class="inheritance" src="_static/images/inheritance/wx.ribbon.RibbonControl_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="17,315,204,344" href="wx.ribbon.RibbonControl.html" id="node1" shape="rect" title="wx.ribbon.RibbonControl  serves as a base class for all controls which share the ribbon characteristics of having a ribbon art provider, and (optionally) non-continuous resizing."/> <area alt="" coords="64,237,157,267" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node3" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node4" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node5" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node6" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.ribbon.RibbonBar.html#wx-ribbon-ribbonbar"><span class="std std-ref">  wx.ribbon.RibbonBar</span></a>, <a class="reference internal" href="wx.ribbon.RibbonButtonBar.html#wx-ribbon-ribbonbuttonbar"><span class="std std-ref">  wx.ribbon.RibbonButtonBar</span></a>, <a class="reference internal" href="wx.ribbon.RibbonGallery.html#wx-ribbon-ribbongallery"><span class="std std-ref">  wx.ribbon.RibbonGallery</span></a>, <a class="reference internal" href="wx.ribbon.RibbonPage.html#wx-ribbon-ribbonpage"><span class="std std-ref">  wx.ribbon.RibbonPage</span></a>, <a class="reference internal" href="wx.ribbon.RibbonPanel.html#wx-ribbon-ribbonpanel"><span class="std std-ref">  wx.ribbon.RibbonPanel</span></a>, <a class="reference internal" href="wx.ribbon.RibbonToolBar.html#wx-ribbon-ribbontoolbar"><span class="std std-ref">  wx.ribbon.RibbonToolBar</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%"/>
+<col style="width: 59%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.__init__" title="wx.ribbon.RibbonControl.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.DoGetNextLargerSize" title="wx.ribbon.RibbonControl.DoGetNextLargerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoGetNextLargerSize</span></code></a></p></td>
+<td><p>Implementation of <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextLargerSize</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.DoGetNextSmallerSize" title="wx.ribbon.RibbonControl.DoGetNextSmallerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoGetNextSmallerSize</span></code></a></p></td>
+<td><p>Implementation of <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSmallerSize</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.GetAncestorRibbonBar" title="wx.ribbon.RibbonControl.GetAncestorRibbonBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAncestorRibbonBar</span></code></a></p></td>
+<td><p>Get the first ancestor which is a <a class="reference internal" href="wx.ribbon.RibbonBar.html#wx-ribbon-ribbonbar"><span class="std std-ref">  wx.ribbon.RibbonBar</span></a>  (or derived) or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not having such parent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.GetArtProvider" title="wx.ribbon.RibbonControl.GetArtProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArtProvider</span></code></a></p></td>
+<td><p>Get the art provider to be used.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.GetBestSizeForParentSize" title="wx.ribbon.RibbonControl.GetBestSizeForParentSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBestSizeForParentSize</span></code></a></p></td>
+<td><p>Finds the best width and height given the parent’s width and height.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.GetClassDefaultAttributes" title="wx.ribbon.RibbonControl.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.GetNextLargerSize" title="wx.ribbon.RibbonControl.GetNextLargerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextLargerSize</span></code></a></p></td>
+<td><p>If sizing is not continuous, then return a suitable size for the control which is larger than the current size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.GetNextSmallerSize" title="wx.ribbon.RibbonControl.GetNextSmallerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSmallerSize</span></code></a></p></td>
+<td><p>If sizing is not continuous, then return a suitable size for the control which is smaller than the current size.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.IsSizingContinuous" title="wx.ribbon.RibbonControl.IsSizingContinuous"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSizingContinuous</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.Realise" title="wx.ribbon.RibbonControl.Realise"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realise</span></code></a></p></td>
+<td><p>Alias for <code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.Realize" title="wx.ribbon.RibbonControl.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a></p></td>
+<td><p>Perform initial size and layout calculations after children have been added, and/or realize children.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.SetArtProvider" title="wx.ribbon.RibbonControl.SetArtProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetArtProvider</span></code></a></p></td>
+<td><p>Set the art provider to be used.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%"/>
+<col style="width: 56%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.AncestorRibbonBar" title="wx.ribbon.RibbonControl.AncestorRibbonBar"><code class="xref py py-attr docutils literal notranslate"><span class="pre">AncestorRibbonBar</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ribbon.RibbonControl.GetAncestorRibbonBar" title="wx.ribbon.RibbonControl.GetAncestorRibbonBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAncestorRibbonBar</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ribbon.RibbonControl.ArtProvider" title="wx.ribbon.RibbonControl.ArtProvider"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ArtProvider</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.ribbon.RibbonControl.GetArtProvider" title="wx.ribbon.RibbonControl.GetArtProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArtProvider</span></code></a> and <a class="reference internal" href="#wx.ribbon.RibbonControl.SetArtProvider" title="wx.ribbon.RibbonControl.SetArtProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetArtProvider</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.ribbon.RibbonControl">
+<em class="property">class </em><code class="sig-prename descclassname">wx.ribbon.</code><code class="sig-name descname">RibbonControl</code><span class="sig-paren">(</span><em class="sig-param">Control</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RibbonControl</span><span class="p">()</span>
+
+<span class="n">RibbonControl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+              <span class="n">style</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">DefaultValidator</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">ControlNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>RibbonControl serves as a base class for all controls which share
+the ribbon characteristics of having a ribbon art provider, and
+(optionally) non-continuous resizing.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=0, validator=DefaultValidator, name=ControlNameStr)</em></p>
+<p>Constructor.</p>
+<p>If <em class="xref py py-obj">parent</em>  is a <a class="reference internal" href="#wx-ribbon-ribboncontrol"><span class="std std-ref">  wx.ribbon.RibbonControl</span></a>  with a not <code class="docutils literal notranslate"><span class="pre">None</span></code> art provider, then the art provider of new control is set to that of <em class="xref py py-obj">parent</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>validator</strong> (<a class="reference internal" href="wx.Validator.html#wx.Validator" title="wx.Validator"><em>wx.Validator</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.DoGetNextLargerSize">
+<code class="sig-name descname">DoGetNextLargerSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">direction</em>, <em class="sig-param">relative_to</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.DoGetNextLargerSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of <a class="reference internal" href="#wx.ribbon.RibbonControl.GetNextLargerSize" title="wx.ribbon.RibbonControl.GetNextLargerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextLargerSize</span></code></a> .</p>
+<p>Controls which have non-continuous sizing must override this virtual function rather than <a class="reference internal" href="#wx.ribbon.RibbonControl.GetNextLargerSize" title="wx.ribbon.RibbonControl.GetNextLargerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextLargerSize</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (<a class="reference internal" href="wx.Orientation.enumeration.html" title="Orientation"><em>Orientation</em></a>) – </p></li>
+<li><p><strong>relative_to</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.DoGetNextSmallerSize">
+<code class="sig-name descname">DoGetNextSmallerSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">direction</em>, <em class="sig-param">relative_to</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.DoGetNextSmallerSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of <a class="reference internal" href="#wx.ribbon.RibbonControl.GetNextSmallerSize" title="wx.ribbon.RibbonControl.GetNextSmallerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSmallerSize</span></code></a> .</p>
+<p>Controls which have non-continuous sizing must override this virtual function rather than <a class="reference internal" href="#wx.ribbon.RibbonControl.GetNextSmallerSize" title="wx.ribbon.RibbonControl.GetNextSmallerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSmallerSize</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (<a class="reference internal" href="wx.Orientation.enumeration.html" title="Orientation"><em>Orientation</em></a>) – </p></li>
+<li><p><strong>relative_to</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.GetAncestorRibbonBar">
+<code class="sig-name descname">GetAncestorRibbonBar</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.GetAncestorRibbonBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the first ancestor which is a <a class="reference internal" href="wx.ribbon.RibbonBar.html#wx-ribbon-ribbonbar"><span class="std std-ref">  wx.ribbon.RibbonBar</span></a>  (or derived) or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not having such parent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ribbon.RibbonBar.html#wx-ribbon-ribbonbar"><span class="std std-ref">  wx.ribbon.RibbonBar</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.4.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.GetArtProvider">
+<code class="sig-name descname">GetArtProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.GetArtProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the art provider to be used.</p>
+<p>Note that until an art provider has been set in some way, this function may return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.ribbon.RibbonArtProvider.html#wx-ribbon-ribbonartprovider"><span class="std std-ref">  wx.ribbon.RibbonArtProvider</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.GetBestSizeForParentSize">
+<code class="sig-name descname">GetBestSizeForParentSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parentSize</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.GetBestSizeForParentSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the best width and height given the parent’s width and height.</p>
+<p>Used to implement the <code class="docutils literal notranslate"><span class="pre">wx.ribbon.RIBBON_PANEL_FLEXIBLE</span></code> panel style.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parentSize</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">VisualAttributes</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.GetNextLargerSize">
+<code class="sig-name descname">GetNextLargerSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.GetNextLargerSize" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetNextLargerSize</strong> <em class="xref py py-obj">(self, direction)</em></p>
+<p>If sizing is not continuous, then return a suitable size for the control which is larger than the current size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>direction</strong> (<a class="reference internal" href="wx.Orientation.enumeration.html" title="Orientation"><em>Orientation</em></a>) – The direction(s) in which the size should increase.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The current size if there is no larger size, otherwise a suitable size which is larger in the given direction(s), and the same as the current size in the other direction (if any).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ribbon.RibbonControl.IsSizingContinuous" title="wx.ribbon.RibbonControl.IsSizingContinuous"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSizingContinuous</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetNextLargerSize</strong> <em class="xref py py-obj">(self, direction, relative_to)</em></p>
+<p>If sizing is not continuous, then return a suitable size for the control which is larger than the given size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (<a class="reference internal" href="wx.Orientation.enumeration.html" title="Orientation"><em>Orientation</em></a>) – The direction(s) in which the size should increase.</p></li>
+<li><p><strong>relative_to</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – The size for which a larger size should be found.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">relative_to</em>  if there is no larger size, otherwise a suitable size which is larger in the given direction(s), and the same as <em class="xref py py-obj">relative_to</em>  in the other direction (if any).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ribbon.RibbonControl.IsSizingContinuous" title="wx.ribbon.RibbonControl.IsSizingContinuous"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSizingContinuous</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ribbon.RibbonControl.DoGetNextLargerSize" title="wx.ribbon.RibbonControl.DoGetNextLargerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoGetNextLargerSize</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.GetNextSmallerSize">
+<code class="sig-name descname">GetNextSmallerSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.GetNextSmallerSize" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetNextSmallerSize</strong> <em class="xref py py-obj">(self, direction)</em></p>
+<p>If sizing is not continuous, then return a suitable size for the control which is smaller than the current size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>direction</strong> (<a class="reference internal" href="wx.Orientation.enumeration.html" title="Orientation"><em>Orientation</em></a>) – The direction(s) in which the size should reduce.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The current size if there is no smaller size, otherwise a suitable size which is smaller in the given direction(s), and the same as the current size in the other direction (if any).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ribbon.RibbonControl.IsSizingContinuous" title="wx.ribbon.RibbonControl.IsSizingContinuous"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSizingContinuous</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>GetNextSmallerSize</strong> <em class="xref py py-obj">(self, direction, relative_to)</em></p>
+<p>If sizing is not continuous, then return a suitable size for the control which is smaller than the given size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (<a class="reference internal" href="wx.Orientation.enumeration.html" title="Orientation"><em>Orientation</em></a>) – The direction(s) in which the size should reduce.</p></li>
+<li><p><strong>relative_to</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – The size for which a smaller size should be found.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">relative_to</em>  if there is no smaller size, otherwise a suitable size which is smaller in the given direction(s), and the same as <em class="xref py py-obj">relative_to</em>  in the other direction (if any).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ribbon.RibbonControl.IsSizingContinuous" title="wx.ribbon.RibbonControl.IsSizingContinuous"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsSizingContinuous</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ribbon.RibbonControl.DoGetNextSmallerSize" title="wx.ribbon.RibbonControl.DoGetNextSmallerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoGetNextSmallerSize</span></code></a></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.IsSizingContinuous">
+<code class="sig-name descname">IsSizingContinuous</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.IsSizingContinuous" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this window can take any size (greater than its minimum size), <code class="docutils literal notranslate"><span class="pre">False</span></code> if it can only take certain sizes.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ribbon.RibbonControl.GetNextSmallerSize" title="wx.ribbon.RibbonControl.GetNextSmallerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextSmallerSize</span></code></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ribbon.RibbonControl.GetNextLargerSize" title="wx.ribbon.RibbonControl.GetNextLargerSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNextLargerSize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.Realise">
+<code class="sig-name descname">Realise</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.Realise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#wx.ribbon.RibbonControl.Realize" title="wx.ribbon.RibbonControl.Realize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Realize</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.Realize">
+<code class="sig-name descname">Realize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.Realize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform initial size and layout calculations after children have been added, and/or realize children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ribbon.RibbonControl.SetArtProvider">
+<code class="sig-name descname">SetArtProvider</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">art</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ribbon.RibbonControl.SetArtProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the art provider to be used.</p>
+<p>In many cases, setting the art provider will also set the art provider on all child windows which extend <a class="reference internal" href="#wx-ribbon-ribboncontrol"><span class="std std-ref">  wx.ribbon.RibbonControl</span></a>.</p>
+<p>In most cases, controls will not take ownership of the given pointer, with the notable exception being <a class="reference internal" href="wx.ribbon.RibbonBar.html#wx.ribbon.RibbonBar.SetArtProvider" title="wx.ribbon.RibbonBar.SetArtProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ribbon.RibbonBar.SetArtProvider</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>art</strong> (<a class="reference internal" href="wx.ribbon.RibbonArtProvider.html#wx.ribbon.RibbonArtProvider" title="wx.ribbon.RibbonArtProvider"><em>wx.ribbon.RibbonArtProvider</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.ribbon.RibbonControl.AncestorRibbonBar">
+<code class="sig-name descname">AncestorRibbonBar</code><a class="headerlink" href="#wx.ribbon.RibbonControl.AncestorRibbonBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ribbon.RibbonControl.GetAncestorRibbonBar" title="wx.ribbon.RibbonControl.GetAncestorRibbonBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAncestorRibbonBar</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.ribbon.RibbonControl.ArtProvider">
+<code class="sig-name descname">ArtProvider</code><a class="headerlink" href="#wx.ribbon.RibbonControl.ArtProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.ribbon.RibbonControl.GetArtProvider" title="wx.ribbon.RibbonControl.GetArtProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetArtProvider</span></code></a> and <a class="reference internal" href="#wx.ribbon.RibbonControl.SetArtProvider" title="wx.ribbon.RibbonControl.SetArtProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetArtProvider</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

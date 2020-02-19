@@ -1,0 +1,1889 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.propgrid.PropertyGrid — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.propgrid.PropertyGridEvent.html" rel="next" title="wx.propgrid.PropertyGridEvent"/>
+<link href="wx.propgrid.PropertyCategory.html" rel="prev" title="wx.propgrid.PropertyCategory"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.propgrid.1moduleindex.html">
+<strong>wx.propgrid</strong></a> »</li>
+<li class="reltitle"> <strong>wx.propgrid.PropertyGrid</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.propgrid.PropertyGridEvent.html" title="wx.propgrid.PropertyGridEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.propgrid.PropertyCategory.html" title="wx.propgrid.PropertyCategory">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.propgrid.PropertyGrid</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-window-styles"> Window Styles</a></li>
+<li><a class="reference internal" href="#phoenix-title-event-handling"> Event Handling</a></li>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.propgrid.PropertyGrid.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-propgrid-propertygrid">
+<span id="wx-propgrid-propertygrid"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.propgrid.PropertyGrid</strong><a class="headerlink" href="#phoenix-title-wx-propgrid-propertygrid" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  is a specialized grid for editing properties - in other words name = value pairs.</p>
+<p>List of ready-to-use property classes include strings, numbers, flag sets, fonts, colours and many others. It is possible, for example, to categorize properties, set up a complete tree-hierarchy, add more than two columns, and set arbitrary per-property attributes.</p>
+<p>Please note that most member functions are inherited and as such not documented on this page. This means you will probably also want to read <a class="reference internal" href="wx.propgrid.PropertyGridInterface.html#wx-propgrid-propertygridinterface"><span class="std std-ref">  wx.propgrid.PropertyGridInterface</span></a>  class reference.</p>
+<p>See also <span class="xref std std-ref">PropertyGrid Overview</span>.</p>
+<div class="section" id="phoenix-title-window-styles">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Window Styles<a class="headerlink" href="#phoenix-title-window-styles" title="Permalink to this headline">¶</a></h2>
+<p>See <span class="xref std std-ref">PropertyGrid Window Styles</span>.</p>
+</div>
+<div class="section" id="phoenix-title-event-handling">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Event Handling<a class="headerlink" href="#phoenix-title-event-handling" title="Permalink to this headline">¶</a></h2>
+<p>To process input from a property grid control, use these event handler macros to direct input to member functions that take a <a class="reference internal" href="wx.propgrid.PropertyGridEvent.html#wx-propgrid-propertygridevent"><span class="std std-ref">  wx.propgrid.PropertyGridEvent</span></a>  argument.</p>
+</div>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="propertygrid-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive one of the <a class="reference internal" href="wx.propgrid.PropertyGridEvent.html#wx-propgrid-propertygridevent"><span class="std std-ref">  wx.propgrid.PropertyGridEvent</span></a> parameters.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EVT_PG_SELECTED</span></code> : Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_SELECTED</span></code>   event, generated when a property selection has been changed, either by user action or by indirect program function. For instance, collapsing a parent property programmatically causes any selected child property to become unselected, and may therefore cause this event to be generated.</p></li>
+<li><p>EVT_PG_CHANGED: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_CHANGED</span></code>   event, generated when property value has been changed by the user.</p></li>
+<li><p>EVT_PG_CHANGING: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_CHANGING</span></code>   event, generated when property value is about to be changed by user. Use <em class="xref py py-obj">PropertyGridEvent.GetValue()</em> to take a peek at the pending value, and  <a class="reference internal" href="wx.propgrid.PropertyGridEvent.html#wx.propgrid.PropertyGridEvent.Veto" title="wx.propgrid.PropertyGridEvent.Veto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PropertyGridEvent.Veto</span></code></a>   to prevent change from taking place, if necessary.</p></li>
+<li><p>EVT_PG_HIGHLIGHTED: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_HIGHLIGHTED</span></code>   event, which occurs when mouse moves over a property. Event’s property is <code class="docutils literal notranslate"><span class="pre">None</span></code> if hovered area does not belong to any property.</p></li>
+<li><p>EVT_PG_RIGHT_CLICK: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_RIGHT_CLICK</span></code>   event, which occurs when property is clicked on with right mouse button.</p></li>
+<li><p>EVT_PG_DOUBLE_CLICK: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_DOUBLE_CLICK</span></code>   event, which occurs when property is double-clicked on with left mouse button.</p></li>
+<li><p>EVT_PG_ITEM_COLLAPSED: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_ITEM_COLLAPSED</span></code>   event, generated when user collapses a property or category.</p></li>
+<li><p>EVT_PG_ITEM_EXPANDED: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_ITEM_EXPANDED</span></code>   event, generated when user expands a property or category.</p></li>
+<li><p>EVT_PG_LABEL_EDIT_BEGIN: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_LABEL_EDIT_BEGIN</span></code>   event, generated when user is about to begin editing a property label. You can veto this event to prevent the action.</p></li>
+<li><p>EVT_PG_LABEL_EDIT_ENDING: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_LABEL_EDIT_ENDING</span></code>   event, generated when user is about to end editing of a property label. You can veto this event to prevent the action.</p></li>
+<li><p>EVT_PG_COL_BEGIN_DRAG: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_COL_BEGIN_DRAG</span></code>   event, generated when user starts resizing a column - can be vetoed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EVT_PG_COL_DRAGGING</span></code>, : Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_COL_DRAGGING</span></code> , event, generated when a column resize by user is in progress. This event is also generated when user double-clicks the splitter in order to recenter it.</p></li>
+<li><p>EVT_PG_COL_END_DRAG: Respond to  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_COL_END_DRAG</span></code>   event, generated after column resize by user has finished.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use <code class="xref py py-meth docutils literal notranslate"><span class="pre">Freeze</span></code>   and <code class="xref py py-meth docutils literal notranslate"><span class="pre">Thaw</span></code>   respectively to disable and enable drawing. This will also delay sorting etc. miscellaneous calculations to the last possible moment.</p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>PropertyGrid</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of PropertyGrid" class="inheritance" src="_static/images/inheritance/wx.propgrid.PropertyGrid_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="162,333,353,363" href="wx.propgrid.PropertyGrid.html" id="node1" shape="rect" title="wx.propgrid.PropertyGrid  is a specialized grid for editing properties - in other words name = value pairs."/> <area alt="" coords="64,247,157,276" href="wx.Control.html" id="node2" shape="rect" title="This is the base class for a control or 'widget'."/> <area alt="" coords="357,247,608,276" href="wx.propgrid.PropertyGridInterface.html" id="node4" shape="rect" title="Most of the shared property manipulation interface shared by wx.propgrid.PropertyGrid, wx.propgrid.PropertyGridPage, and wx.propgrid.PropertyGridManager  is defined in this class."/> <area alt="" coords="62,160,159,189" href="wx.Window.html" id="node5" shape="rect" title="wx.Window  is the base class for all windows and represents any visible object on screen."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node6" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node7" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node8" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%"/>
+<col style="width: 73%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.__init__" title="wx.propgrid.PropertyGrid.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Two step constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.AddActionTrigger" title="wx.propgrid.PropertyGrid.AddActionTrigger"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddActionTrigger</span></code></a></p></td>
+<td><p>Adds given key combination to trigger given action.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.AddToSelection" title="wx.propgrid.PropertyGrid.AddToSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddToSelection</span></code></a></p></td>
+<td><p>Adds given property into selection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.AutoGetTranslation" title="wx.propgrid.PropertyGrid.AutoGetTranslation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AutoGetTranslation</span></code></a></p></td>
+<td><p>This static function enables or disables automatic use of <a class="reference internal" href="wx.functions.html#wx.GetTranslation" title="wx.GetTranslation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetTranslation</span></code></a>       for following strings: <a class="reference internal" href="wx.propgrid.EnumProperty.html#wx-propgrid-enumproperty"><span class="std std-ref">  wx.propgrid.EnumProperty</span></a>  list labels, <a class="reference internal" href="wx.propgrid.FlagsProperty.html#wx-propgrid-flagsproperty"><span class="std std-ref">  wx.propgrid.FlagsProperty</span></a>  child property labels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.BeginLabelEdit" title="wx.propgrid.PropertyGrid.BeginLabelEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BeginLabelEdit</span></code></a></p></td>
+<td><p>Creates label editor <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>  for given column, for property that is currently selected.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.CenterSplitter" title="wx.propgrid.PropertyGrid.CenterSplitter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CenterSplitter</span></code></a></p></td>
+<td><p>Centers the splitter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.ChangePropertyValue" title="wx.propgrid.PropertyGrid.ChangePropertyValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ChangePropertyValue</span></code></a></p></td>
+<td><p>Changes value of a property, as if from an editor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.Clear" title="wx.propgrid.PropertyGrid.Clear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Clear</span></code></a></p></td>
+<td><p>Deletes all properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.ClearActionTriggers" title="wx.propgrid.PropertyGrid.ClearActionTriggers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ClearActionTriggers</span></code></a></p></td>
+<td><p>Clears action triggers for given action.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.CommitChangesFromEditor" title="wx.propgrid.PropertyGrid.CommitChangesFromEditor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CommitChangesFromEditor</span></code></a></p></td>
+<td><p>Forces updating the value of property from the editor control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.Create" title="wx.propgrid.PropertyGrid.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Two step creation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.DedicateKey" title="wx.propgrid.PropertyGrid.DedicateKey"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DedicateKey</span></code></a></p></td>
+<td><p>Dedicates a specific keycode to <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.DoHidePropertyError" title="wx.propgrid.PropertyGrid.DoHidePropertyError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoHidePropertyError</span></code></a></p></td>
+<td><p>Override in derived class to hide an error displayed by <code class="xref py py-meth docutils literal notranslate"><span class="pre">DoShowPropertyError</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.DoRegisterEditorClass" title="wx.propgrid.PropertyGrid.DoRegisterEditorClass"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoRegisterEditorClass</span></code></a></p></td>
+<td><p>Registers a new editor class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.DoShowPropertyError" title="wx.propgrid.PropertyGrid.DoShowPropertyError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoShowPropertyError</span></code></a></p></td>
+<td><p>Override in derived class to display error messages in custom manner (these message usually only result from validation failure).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.EditorsValueWasModified" title="wx.propgrid.PropertyGrid.EditorsValueWasModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EditorsValueWasModified</span></code></a></p></td>
+<td><p>Call when editor widget’s contents is modified.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.EditorsValueWasNotModified" title="wx.propgrid.PropertyGrid.EditorsValueWasNotModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EditorsValueWasNotModified</span></code></a></p></td>
+<td><p>Reverse of <code class="xref py py-meth docutils literal notranslate"><span class="pre">EditorsValueWasModified</span></code> .</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.EnableCategories" title="wx.propgrid.PropertyGrid.EnableCategories"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableCategories</span></code></a></p></td>
+<td><p>Enables or disables (shows/hides) categories according to parameter enable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.EndLabelEdit" title="wx.propgrid.PropertyGrid.EndLabelEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndLabelEdit</span></code></a></p></td>
+<td><p>Destroys label editor <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>, if any.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.EnsureVisible" title="wx.propgrid.PropertyGrid.EnsureVisible"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnsureVisible</span></code></a></p></td>
+<td><p>Scrolls and/or expands items to ensure that the given item is visible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.FitColumns" title="wx.propgrid.PropertyGrid.FitColumns"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FitColumns</span></code></a></p></td>
+<td><p>Reduces column sizes to minimum possible, while still retaining fully visible grid contents (labels, images).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCaptionBackgroundColour" title="wx.propgrid.PropertyGrid.GetCaptionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaptionBackgroundColour</span></code></a></p></td>
+<td><p>Returns current category caption background colour.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCaptionFont" title="wx.propgrid.PropertyGrid.GetCaptionFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaptionFont</span></code></a></p></td>
+<td><p>Returns current category caption font.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCaptionForegroundColour" title="wx.propgrid.PropertyGrid.GetCaptionForegroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaptionForegroundColour</span></code></a></p></td>
+<td><p>Returns current category caption text colour.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCellBackgroundColour" title="wx.propgrid.PropertyGrid.GetCellBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCellBackgroundColour</span></code></a></p></td>
+<td><p>Returns current cell background colour.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCellDisabledTextColour" title="wx.propgrid.PropertyGrid.GetCellDisabledTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCellDisabledTextColour</span></code></a></p></td>
+<td><p>Returns current cell text colour when disabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCellTextColour" title="wx.propgrid.PropertyGrid.GetCellTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCellTextColour</span></code></a></p></td>
+<td><p>Returns current cell text colour.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetClassDefaultAttributes" title="wx.propgrid.PropertyGrid.GetClassDefaultAttributes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetClassDefaultAttributes</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetColumnCount" title="wx.propgrid.PropertyGrid.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a></p></td>
+<td><p>Returns number of columns currently on grid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetEditorTextCtrl" title="wx.propgrid.PropertyGrid.GetEditorTextCtrl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditorTextCtrl</span></code></a></p></td>
+<td><p>Returns <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>  active in currently selected property, if any.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetEmptySpaceColour" title="wx.propgrid.PropertyGrid.GetEmptySpaceColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEmptySpaceColour</span></code></a></p></td>
+<td><p>Returns colour of empty space below properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetFontHeight" title="wx.propgrid.PropertyGrid.GetFontHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFontHeight</span></code></a></p></td>
+<td><p>Returns height of highest characters of used font.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetGrid" title="wx.propgrid.PropertyGrid.GetGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetGrid</span></code></a></p></td>
+<td><p>Returns pointer to itself.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetImageRect" title="wx.propgrid.PropertyGrid.GetImageRect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageRect</span></code></a></p></td>
+<td><p>Returns rectangle of custom paint image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetImageSize" title="wx.propgrid.PropertyGrid.GetImageSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageSize</span></code></a></p></td>
+<td><p>Returns size of the custom paint image in front of property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetLabelEditor" title="wx.propgrid.PropertyGrid.GetLabelEditor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLabelEditor</span></code></a></p></td>
+<td><p>Returns currently active label editor, <code class="docutils literal notranslate"><span class="pre">None</span></code> if none.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetLastItem" title="wx.propgrid.PropertyGrid.GetLastItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLastItem</span></code></a></p></td>
+<td><p>Returns last item which could be iterated using given flags.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetLineColour" title="wx.propgrid.PropertyGrid.GetLineColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLineColour</span></code></a></p></td>
+<td><p>Returns colour of lines between cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetMarginColour" title="wx.propgrid.PropertyGrid.GetMarginColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMarginColour</span></code></a></p></td>
+<td><p>Returns background colour of margin.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetPanel" title="wx.propgrid.PropertyGrid.GetPanel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPanel</span></code></a></p></td>
+<td><p>Returns <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  that the properties are painted on, and which should be used as the parent for editor controls.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetRoot" title="wx.propgrid.PropertyGrid.GetRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRoot</span></code></a></p></td>
+<td><p>Returns “root property”.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetRowHeight" title="wx.propgrid.PropertyGrid.GetRowHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowHeight</span></code></a></p></td>
+<td><p>Returns height of a single grid row (in pixels).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectedProperty" title="wx.propgrid.PropertyGrid.GetSelectedProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedProperty</span></code></a></p></td>
+<td><p>Returns currently selected property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelection" title="wx.propgrid.PropertyGrid.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a></p></td>
+<td><p>Returns currently selected property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectionBackgroundColour" title="wx.propgrid.PropertyGrid.GetSelectionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectionBackgroundColour</span></code></a></p></td>
+<td><p>Returns current selection background colour.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectionForegroundColour" title="wx.propgrid.PropertyGrid.GetSelectionForegroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectionForegroundColour</span></code></a></p></td>
+<td><p>Returns current selection text colour.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSplitterPosition" title="wx.propgrid.PropertyGrid.GetSplitterPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSplitterPosition</span></code></a></p></td>
+<td><p>Returns current splitter x position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetStatusBar" title="wx.propgrid.PropertyGrid.GetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBar</span></code></a></p></td>
+<td><p>Return <a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a>  that is used by this <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetUncommittedPropertyValue" title="wx.propgrid.PropertyGrid.GetUncommittedPropertyValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUncommittedPropertyValue</span></code></a></p></td>
+<td><p>Returns most up-to-date value of selected property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetUnspecifiedValueAppearance" title="wx.propgrid.PropertyGrid.GetUnspecifiedValueAppearance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUnspecifiedValueAppearance</span></code></a></p></td>
+<td><p>Returns current appearance of unspecified value cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetUnspecifiedValueText" title="wx.propgrid.PropertyGrid.GetUnspecifiedValueText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUnspecifiedValueText</span></code></a></p></td>
+<td><p>Returns (visual) text representation of the unspecified property value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.GetVerticalSpacing" title="wx.propgrid.PropertyGrid.GetVerticalSpacing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVerticalSpacing</span></code></a></p></td>
+<td><p>Returns current vertical spacing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.HitTest" title="wx.propgrid.PropertyGrid.HitTest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HitTest</span></code></a></p></td>
+<td><p>Returns information about arbitrary position in the grid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.IsAnyModified" title="wx.propgrid.PropertyGrid.IsAnyModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsAnyModified</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if any property has been modified by the user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.IsEditorFocused" title="wx.propgrid.PropertyGrid.IsEditorFocused"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEditorFocused</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a property editor control has focus.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.IsEditorsValueModified" title="wx.propgrid.PropertyGrid.IsEditorsValueModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsEditorsValueModified</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if editor’s value was marked modified.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.IsFrozen" title="wx.propgrid.PropertyGrid.IsFrozen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsFrozen</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if updating is frozen (ie.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.MakeColumnEditable" title="wx.propgrid.PropertyGrid.MakeColumnEditable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MakeColumnEditable</span></code></a></p></td>
+<td><p>Makes given column editable by user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.OnTLPChanging" title="wx.propgrid.PropertyGrid.OnTLPChanging"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnTLPChanging</span></code></a></p></td>
+<td><p>It is recommended that you call this function any time your code causes <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>’s top-level parent to change.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.RefreshEditor" title="wx.propgrid.PropertyGrid.RefreshEditor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshEditor</span></code></a></p></td>
+<td><p>Refreshes any active editor control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.RefreshProperty" title="wx.propgrid.PropertyGrid.RefreshProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RefreshProperty</span></code></a></p></td>
+<td><p>Redraws given property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.RegisterEditorClass" title="wx.propgrid.PropertyGrid.RegisterEditorClass"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RegisterEditorClass</span></code></a></p></td>
+<td><p>Forwards to DoRegisterEditorClass with empty name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.RemoveFromSelection" title="wx.propgrid.PropertyGrid.RemoveFromSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveFromSelection</span></code></a></p></td>
+<td><p>Removes given property from selection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.ResetColours" title="wx.propgrid.PropertyGrid.ResetColours"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ResetColours</span></code></a></p></td>
+<td><p>Resets all colours to the original system values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.ResetColumnSizes" title="wx.propgrid.PropertyGrid.ResetColumnSizes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ResetColumnSizes</span></code></a></p></td>
+<td><p>Resets column sizes and splitter positions, based on proportions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SelectProperty" title="wx.propgrid.PropertyGrid.SelectProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectProperty</span></code></a></p></td>
+<td><p>Selects a property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCaptionBackgroundColour" title="wx.propgrid.PropertyGrid.SetCaptionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCaptionBackgroundColour</span></code></a></p></td>
+<td><p>Sets category caption background colour.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCaptionTextColour" title="wx.propgrid.PropertyGrid.SetCaptionTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCaptionTextColour</span></code></a></p></td>
+<td><p>Sets category caption text colour.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCellBackgroundColour" title="wx.propgrid.PropertyGrid.SetCellBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCellBackgroundColour</span></code></a></p></td>
+<td><p>Sets default cell background colour - applies to property cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCellDisabledTextColour" title="wx.propgrid.PropertyGrid.SetCellDisabledTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCellDisabledTextColour</span></code></a></p></td>
+<td><p>Sets cell text colour for disabled properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCellTextColour" title="wx.propgrid.PropertyGrid.SetCellTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCellTextColour</span></code></a></p></td>
+<td><p>Sets default cell text colour - applies to property name and value text.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetColumnCount" title="wx.propgrid.PropertyGrid.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p></td>
+<td><p>Set number of columns (2 or more).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCurrentCategory" title="wx.propgrid.PropertyGrid.SetCurrentCategory"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCurrentCategory</span></code></a></p></td>
+<td><p>Sets the ‘current’ category - Append will add non-category properties under it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetEmptySpaceColour" title="wx.propgrid.PropertyGrid.SetEmptySpaceColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEmptySpaceColour</span></code></a></p></td>
+<td><p>Sets colour of empty space below properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetLineColour" title="wx.propgrid.PropertyGrid.SetLineColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLineColour</span></code></a></p></td>
+<td><p>Sets colour of lines between cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetMarginColour" title="wx.propgrid.PropertyGrid.SetMarginColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMarginColour</span></code></a></p></td>
+<td><p>Sets background colour of margin.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSelection" title="wx.propgrid.PropertyGrid.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelection</span></code></a></p></td>
+<td><p>Set entire new selection from given list of properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSelectionBackgroundColour" title="wx.propgrid.PropertyGrid.SetSelectionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelectionBackgroundColour</span></code></a></p></td>
+<td><p>Sets selection background colour - applies to selected property name background.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSelectionTextColour" title="wx.propgrid.PropertyGrid.SetSelectionTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelectionTextColour</span></code></a></p></td>
+<td><p>Sets selection foreground colour - applies to selected property name text.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSplitterLeft" title="wx.propgrid.PropertyGrid.SetSplitterLeft"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSplitterLeft</span></code></a></p></td>
+<td><p>Moves splitter as left as possible, while still allowing all labels to be shown in full.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSplitterPosition" title="wx.propgrid.PropertyGrid.SetSplitterPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSplitterPosition</span></code></a></p></td>
+<td><p>Sets x coordinate of the splitter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance" title="wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetUnspecifiedValueAppearance</span></code></a></p></td>
+<td><p>Sets appearance of value cells representing an unspecified property value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetVerticalSpacing" title="wx.propgrid.PropertyGrid.SetVerticalSpacing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetVerticalSpacing</span></code></a></p></td>
+<td><p>Sets vertical spacing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.ShowPropertyError" title="wx.propgrid.PropertyGrid.ShowPropertyError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ShowPropertyError</span></code></a></p></td>
+<td><p>Shows an brief error message that is related to a property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.WasValueChangedInEvent" title="wx.propgrid.PropertyGrid.WasValueChangedInEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WasValueChangedInEvent</span></code></a></p></td>
+<td><p>You can use this member function, for instance, to detect in <a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.OnEvent" title="wx.propgrid.PGProperty.OnEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.OnEvent</span></code></a>   if <a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.SetValueInEvent" title="wx.propgrid.PGProperty.SetValueInEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.SetValueInEvent</span></code></a>   was already called in <a class="reference internal" href="wx.propgrid.PGEditor.html#wx.propgrid.PGEditor.OnEvent" title="wx.propgrid.PGEditor.OnEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGEditor.OnEvent</span></code></a> .</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%"/>
+<col style="width: 63%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.CaptionBackgroundColour" title="wx.propgrid.PropertyGrid.CaptionBackgroundColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CaptionBackgroundColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCaptionBackgroundColour" title="wx.propgrid.PropertyGrid.GetCaptionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaptionBackgroundColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCaptionBackgroundColour" title="wx.propgrid.PropertyGrid.SetCaptionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCaptionBackgroundColour</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.CaptionFont" title="wx.propgrid.PropertyGrid.CaptionFont"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CaptionFont</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCaptionFont" title="wx.propgrid.PropertyGrid.GetCaptionFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaptionFont</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.CaptionForegroundColour" title="wx.propgrid.PropertyGrid.CaptionForegroundColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CaptionForegroundColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCaptionForegroundColour" title="wx.propgrid.PropertyGrid.GetCaptionForegroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaptionForegroundColour</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.CellBackgroundColour" title="wx.propgrid.PropertyGrid.CellBackgroundColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CellBackgroundColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCellBackgroundColour" title="wx.propgrid.PropertyGrid.GetCellBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCellBackgroundColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCellBackgroundColour" title="wx.propgrid.PropertyGrid.SetCellBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCellBackgroundColour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.CellDisabledTextColour" title="wx.propgrid.PropertyGrid.CellDisabledTextColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CellDisabledTextColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCellDisabledTextColour" title="wx.propgrid.PropertyGrid.GetCellDisabledTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCellDisabledTextColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCellDisabledTextColour" title="wx.propgrid.PropertyGrid.SetCellDisabledTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCellDisabledTextColour</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.CellTextColour" title="wx.propgrid.PropertyGrid.CellTextColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">CellTextColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCellTextColour" title="wx.propgrid.PropertyGrid.GetCellTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCellTextColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCellTextColour" title="wx.propgrid.PropertyGrid.SetCellTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCellTextColour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.ColumnCount" title="wx.propgrid.PropertyGrid.ColumnCount"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ColumnCount</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetColumnCount" title="wx.propgrid.PropertyGrid.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetColumnCount" title="wx.propgrid.PropertyGrid.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.EditorTextCtrl" title="wx.propgrid.PropertyGrid.EditorTextCtrl"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EditorTextCtrl</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetEditorTextCtrl" title="wx.propgrid.PropertyGrid.GetEditorTextCtrl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditorTextCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.EmptySpaceColour" title="wx.propgrid.PropertyGrid.EmptySpaceColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EmptySpaceColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetEmptySpaceColour" title="wx.propgrid.PropertyGrid.GetEmptySpaceColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEmptySpaceColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetEmptySpaceColour" title="wx.propgrid.PropertyGrid.SetEmptySpaceColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEmptySpaceColour</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.FontHeight" title="wx.propgrid.PropertyGrid.FontHeight"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FontHeight</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetFontHeight" title="wx.propgrid.PropertyGrid.GetFontHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFontHeight</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.Grid" title="wx.propgrid.PropertyGrid.Grid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Grid</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetGrid" title="wx.propgrid.PropertyGrid.GetGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetGrid</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.ImageSize" title="wx.propgrid.PropertyGrid.ImageSize"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ImageSize</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetImageSize" title="wx.propgrid.PropertyGrid.GetImageSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageSize</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.LabelEditor" title="wx.propgrid.PropertyGrid.LabelEditor"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LabelEditor</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetLabelEditor" title="wx.propgrid.PropertyGrid.GetLabelEditor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLabelEditor</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.LastItem" title="wx.propgrid.PropertyGrid.LastItem"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LastItem</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetLastItem" title="wx.propgrid.PropertyGrid.GetLastItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLastItem</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.LineColour" title="wx.propgrid.PropertyGrid.LineColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LineColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetLineColour" title="wx.propgrid.PropertyGrid.GetLineColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLineColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetLineColour" title="wx.propgrid.PropertyGrid.SetLineColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLineColour</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.MarginColour" title="wx.propgrid.PropertyGrid.MarginColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MarginColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetMarginColour" title="wx.propgrid.PropertyGrid.GetMarginColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMarginColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetMarginColour" title="wx.propgrid.PropertyGrid.SetMarginColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMarginColour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.Panel" title="wx.propgrid.PropertyGrid.Panel"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Panel</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetPanel" title="wx.propgrid.PropertyGrid.GetPanel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPanel</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.Root" title="wx.propgrid.PropertyGrid.Root"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Root</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetRoot" title="wx.propgrid.PropertyGrid.GetRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRoot</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.RowHeight" title="wx.propgrid.PropertyGrid.RowHeight"><code class="xref py py-attr docutils literal notranslate"><span class="pre">RowHeight</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetRowHeight" title="wx.propgrid.PropertyGrid.GetRowHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowHeight</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SelectedProperty" title="wx.propgrid.PropertyGrid.SelectedProperty"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SelectedProperty</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectedProperty" title="wx.propgrid.PropertyGrid.GetSelectedProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedProperty</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.Selection" title="wx.propgrid.PropertyGrid.Selection"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Selection</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelection" title="wx.propgrid.PropertyGrid.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSelection" title="wx.propgrid.PropertyGrid.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelection</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SelectionBackgroundColour" title="wx.propgrid.PropertyGrid.SelectionBackgroundColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SelectionBackgroundColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectionBackgroundColour" title="wx.propgrid.PropertyGrid.GetSelectionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectionBackgroundColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSelectionBackgroundColour" title="wx.propgrid.PropertyGrid.SetSelectionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelectionBackgroundColour</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SelectionForegroundColour" title="wx.propgrid.PropertyGrid.SelectionForegroundColour"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SelectionForegroundColour</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectionForegroundColour" title="wx.propgrid.PropertyGrid.GetSelectionForegroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectionForegroundColour</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SplitterPosition" title="wx.propgrid.PropertyGrid.SplitterPosition"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SplitterPosition</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSplitterPosition" title="wx.propgrid.PropertyGrid.GetSplitterPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSplitterPosition</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSplitterPosition" title="wx.propgrid.PropertyGrid.SetSplitterPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSplitterPosition</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.StatusBar" title="wx.propgrid.PropertyGrid.StatusBar"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StatusBar</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetStatusBar" title="wx.propgrid.PropertyGrid.GetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBar</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.UncommittedPropertyValue" title="wx.propgrid.PropertyGrid.UncommittedPropertyValue"><code class="xref py py-attr docutils literal notranslate"><span class="pre">UncommittedPropertyValue</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetUncommittedPropertyValue" title="wx.propgrid.PropertyGrid.GetUncommittedPropertyValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUncommittedPropertyValue</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.UnspecifiedValueAppearance" title="wx.propgrid.PropertyGrid.UnspecifiedValueAppearance"><code class="xref py py-attr docutils literal notranslate"><span class="pre">UnspecifiedValueAppearance</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetUnspecifiedValueAppearance" title="wx.propgrid.PropertyGrid.GetUnspecifiedValueAppearance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUnspecifiedValueAppearance</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance" title="wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetUnspecifiedValueAppearance</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.UnspecifiedValueText" title="wx.propgrid.PropertyGrid.UnspecifiedValueText"><code class="xref py py-attr docutils literal notranslate"><span class="pre">UnspecifiedValueText</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetUnspecifiedValueText" title="wx.propgrid.PropertyGrid.GetUnspecifiedValueText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUnspecifiedValueText</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.VerticalSpacing" title="wx.propgrid.PropertyGrid.VerticalSpacing"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VerticalSpacing</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetVerticalSpacing" title="wx.propgrid.PropertyGrid.GetVerticalSpacing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVerticalSpacing</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetVerticalSpacing" title="wx.propgrid.PropertyGrid.SetVerticalSpacing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetVerticalSpacing</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.propgrid.PropertyGrid">
+<em class="property">class </em><code class="sig-prename descclassname">wx.propgrid.</code><code class="sig-name descname">PropertyGrid</code><span class="sig-paren">(</span><em class="sig-param">Control</em>, <em class="sig-param">PropertyGridInterface</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PropertyGrid</span><span class="p">()</span>
+
+<span class="n">PropertyGrid</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">ID_ANY</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">DefaultPosition</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">DefaultSize</span><span class="p">,</span>
+             <span class="n">style</span><span class="o">=</span><span class="n">PG_DEFAULT_STYLE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">PropertyGridNameStr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>PropertyGrid is a specialized grid for editing properties - in other
+words name = value pairs.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Two step constructor.</p>
+<p>Call <a class="reference internal" href="#wx.propgrid.PropertyGrid.Create" title="wx.propgrid.PropertyGrid.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   when this constructor is called to build up the <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=PG_DEFAULT_STYLE, name=PropertyGridNameStr)</em></p>
+<p>Constructor.</p>
+<p>The styles to be used are styles valid for the <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">PropertyGrid Window Styles</span>.</p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.AddActionTrigger">
+<code class="sig-name descname">AddActionTrigger</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">action</em>, <em class="sig-param">keycode</em>, <em class="sig-param">modifiers=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.AddActionTrigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds given key combination to trigger given action.</p>
+<p>Here is a sample code to make Enter key press move focus to the next property.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">propGrid</span><span class="o">.</span><span class="n">AddActionTrigger</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PG_ACTION_NEXT_PROPERTY</span><span class="p">,</span>
+                          <span class="n">wx</span><span class="o">.</span><span class="n">WXK_RETURN</span><span class="p">)</span>
+<span class="n">propGrid</span><span class="o">.</span><span class="n">DedicateKey</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">WXK_RETURN</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action</strong> (<em>int</em>) – Which action to trigger. See <span class="xref std std-ref">PropertyGrid Action Identifiers</span>.</p></li>
+<li><p><strong>keycode</strong> (<em>int</em>) – Which keycode triggers the action.</p></li>
+<li><p><strong>modifiers</strong> (<em>int</em>) – Which key event modifiers, in addition to keycode, are needed to trigger the action.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.AddToSelection">
+<code class="sig-name descname">AddToSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.AddToSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds given property into selection.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">wx.propgrid.PG_EX_MULTIPLE_SELECTION</span></code> extra style is not used, then this has same effect as calling <a class="reference internal" href="#wx.propgrid.PropertyGrid.SelectProperty" title="wx.propgrid.PropertyGrid.SelectProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SelectProperty</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Multiple selection is not supported for categories. This means that if you have properties selected, you cannot add category to selection, and also if you have category selected, you cannot add other properties to selection. This member function will fail silently in these cases, even returning <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.AutoGetTranslation">
+<em class="property">static </em><code class="sig-name descname">AutoGetTranslation</code><span class="sig-paren">(</span><em class="sig-param">enable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.AutoGetTranslation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This static function enables or disables automatic use of <a class="reference internal" href="wx.functions.html#wx.GetTranslation" title="wx.GetTranslation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.GetTranslation</span></code></a>       for following strings: <a class="reference internal" href="wx.propgrid.EnumProperty.html#wx-propgrid-enumproperty"><span class="std std-ref">  wx.propgrid.EnumProperty</span></a>  list labels, <a class="reference internal" href="wx.propgrid.FlagsProperty.html#wx-propgrid-flagsproperty"><span class="std std-ref">  wx.propgrid.FlagsProperty</span></a>  child property labels.</p>
+<p>Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.BeginLabelEdit">
+<code class="sig-name descname">BeginLabelEdit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colIndex=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.BeginLabelEdit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates label editor <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>  for given column, for property that is currently selected.</p>
+<p>When multiple selection is enabled, this applies to whatever property <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelection" title="wx.propgrid.PropertyGrid.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a>   returns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>colIndex</strong> (<em>int</em>) – Which column’s label to edit. Note that you should not use value 1, which is reserved for property value column.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.propgrid.PropertyGrid.EndLabelEdit" title="wx.propgrid.PropertyGrid.EndLabelEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndLabelEdit</span></code></a> , <a class="reference internal" href="#wx.propgrid.PropertyGrid.MakeColumnEditable" title="wx.propgrid.PropertyGrid.MakeColumnEditable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MakeColumnEditable</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.CenterSplitter">
+<code class="sig-name descname">CenterSplitter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enableAutoResizing=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.CenterSplitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centers the splitter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enableAutoResizing</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, automatic column resizing is enabled (only applicapple if window style <code class="docutils literal notranslate"><span class="pre">wx.propgrid.PG_SPLITTER_AUTO_CENTER</span></code> is used).</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.ChangePropertyValue">
+<code class="sig-name descname">ChangePropertyValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">newValue</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.ChangePropertyValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes value of a property, as if from an editor.</p>
+<p>Use this instead of <a class="reference internal" href="wx.propgrid.PropertyGridInterface.html#wx.propgrid.PropertyGridInterface.SetPropertyValue" title="wx.propgrid.PropertyGridInterface.SetPropertyValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPropertyValue</span></code></a>   if you need the value to run through validation process, and also send the property change event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – </p></li>
+<li><p><strong>newValue</strong> (<em>PGVariant</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if value was successfully changed.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.Clear">
+<code class="sig-name descname">Clear</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.Clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all properties.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.ClearActionTriggers">
+<code class="sig-name descname">ClearActionTriggers</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">action</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.ClearActionTriggers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears action triggers for given action.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>action</strong> (<em>int</em>) – Which action to trigger. <span class="xref std std-ref">PropertyGrid Action Identifiers</span>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.CommitChangesFromEditor">
+<code class="sig-name descname">CommitChangesFromEditor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.CommitChangesFromEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces updating the value of property from the editor control.</p>
+<p>Note that  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_CHANGING</span></code>   and   <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_CHANGED</span></code>   are dispatched using ProcessEvent, meaning your event handlers will be called immediately.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>wx.int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if anything was changed.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">id=ID_ANY</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">size=DefaultSize</em>, <em class="sig-param">style=PG_DEFAULT_STYLE</em>, <em class="sig-param">name=PropertyGridNameStr</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two step creation.</p>
+<p>Whenever the control is created without any parameters, use Create to actually create it. Don’t access the control’s public methods before this is called</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>id</strong> (<em>wx.WindowID</em>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>style</strong> (<em>long</em>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">PropertyGrid Window Styles</span>.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.DedicateKey">
+<code class="sig-name descname">DedicateKey</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">keycode</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.DedicateKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dedicates a specific keycode to <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>.</p>
+<p>This means that such key presses will not be redirected to editor controls.</p>
+<p>Using this function allows, for example, navigation between properties using arrow keys even when the focus is in the editor control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keycode</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.DoHidePropertyError">
+<code class="sig-name descname">DoHidePropertyError</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">property</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.DoHidePropertyError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override in derived class to hide an error displayed by <a class="reference internal" href="#wx.propgrid.PropertyGrid.DoShowPropertyError" title="wx.propgrid.PropertyGrid.DoShowPropertyError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoShowPropertyError</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>property</strong> (<a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty" title="wx.propgrid.PGProperty"><em>wx.propgrid.PGProperty</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.propgrid.PropertyGrid.DoShowPropertyError" title="wx.propgrid.PropertyGrid.DoShowPropertyError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoShowPropertyError</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.DoRegisterEditorClass">
+<em class="property">static </em><code class="sig-name descname">DoRegisterEditorClass</code><span class="sig-paren">(</span><em class="sig-param">editor</em>, <em class="sig-param">name</em>, <em class="sig-param">noDefCheck=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.DoRegisterEditorClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a new editor class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>editor</strong> (<a class="reference internal" href="wx.propgrid.PGEditor.html#wx.propgrid.PGEditor" title="wx.propgrid.PGEditor"><em>wx.propgrid.PGEditor</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>string</em>) – </p></li>
+<li><p><strong>noDefCheck</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PGEditor.html#wx-propgrid-pgeditor"><span class="std std-ref">  wx.propgrid.PGEditor</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns pointer to the editor class instance that should be used.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.DoShowPropertyError">
+<code class="sig-name descname">DoShowPropertyError</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">property</em>, <em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.DoShowPropertyError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override in derived class to display error messages in custom manner (these message usually only result from validation failure).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>property</strong> (<a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty" title="wx.propgrid.PGProperty"><em>wx.propgrid.PGProperty</em></a>) – </p></li>
+<li><p><strong>msg</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you implement this, then you also need to implement <a class="reference internal" href="#wx.propgrid.PropertyGrid.DoHidePropertyError" title="wx.propgrid.PropertyGrid.DoHidePropertyError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoHidePropertyError</span></code></a>   - possibly to do nothing, if error does not need hiding (e.g. it was logged or shown in a message box).</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.propgrid.PropertyGrid.DoHidePropertyError" title="wx.propgrid.PropertyGrid.DoHidePropertyError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DoHidePropertyError</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.EditorsValueWasModified">
+<code class="sig-name descname">EditorsValueWasModified</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.EditorsValueWasModified" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call when editor widget’s contents is modified.</p>
+<p>For example, this is called when changes text in <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>  (used in <a class="reference internal" href="wx.propgrid.StringProperty.html#wx-propgrid-stringproperty"><span class="std std-ref">  wx.propgrid.StringProperty</span></a>  and <a class="reference internal" href="wx.propgrid.IntProperty.html#wx-propgrid-intproperty"><span class="std std-ref">  wx.propgrid.IntProperty</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function should only be called by custom properties.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.OnEvent" title="wx.propgrid.PGProperty.OnEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.OnEvent</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.EditorsValueWasNotModified">
+<code class="sig-name descname">EditorsValueWasNotModified</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.EditorsValueWasNotModified" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse of <a class="reference internal" href="#wx.propgrid.PropertyGrid.EditorsValueWasModified" title="wx.propgrid.PropertyGrid.EditorsValueWasModified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EditorsValueWasModified</span></code></a> .</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function should only be called by custom properties.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.EnableCategories">
+<code class="sig-name descname">EnableCategories</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enable</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.EnableCategories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables or disables (shows/hides) categories according to parameter enable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This functions deselects selected property, if any. Validation failure option <code class="docutils literal notranslate"><span class="pre">wx.propgrid.PG_VFB_STAY_IN_PROPERTY</span></code> is not respected, ie. selection is cleared even if editor had invalid value.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.EndLabelEdit">
+<code class="sig-name descname">EndLabelEdit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">commit=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.EndLabelEdit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroys label editor <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>, if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>commit</strong> (<em>bool</em>) – Use <code class="docutils literal notranslate"><span class="pre">True</span></code> (default) to store edited label text in property cell data.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.propgrid.PropertyGrid.BeginLabelEdit" title="wx.propgrid.PropertyGrid.BeginLabelEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BeginLabelEdit</span></code></a> , <a class="reference internal" href="#wx.propgrid.PropertyGrid.MakeColumnEditable" title="wx.propgrid.PropertyGrid.MakeColumnEditable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MakeColumnEditable</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.EnsureVisible">
+<code class="sig-name descname">EnsureVisible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.EnsureVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scrolls and/or expands items to ensure that the given item is visible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if something was actually done.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.FitColumns">
+<code class="sig-name descname">FitColumns</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.FitColumns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduces column sizes to minimum possible, while still retaining fully visible grid contents (labels, images).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Minimum size for the grid to still display everything.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Does not work well with <code class="docutils literal notranslate"><span class="pre">wx.propgrid.PG_SPLITTER_AUTO_CENTER</span></code> window style.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetCaptionBackgroundColour">
+<code class="sig-name descname">GetCaptionBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetCaptionBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current category caption background colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetCaptionFont">
+<code class="sig-name descname">GetCaptionFont</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetCaptionFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current category caption font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Font</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetCaptionForegroundColour">
+<code class="sig-name descname">GetCaptionForegroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetCaptionForegroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current category caption text colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetCellBackgroundColour">
+<code class="sig-name descname">GetCellBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetCellBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current cell background colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetCellDisabledTextColour">
+<code class="sig-name descname">GetCellDisabledTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetCellDisabledTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current cell text colour when disabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetCellTextColour">
+<code class="sig-name descname">GetCellTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetCellTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current cell text colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetClassDefaultAttributes">
+<em class="property">static </em><code class="sig-name descname">GetClassDefaultAttributes</code><span class="sig-paren">(</span><em class="sig-param">variant=WINDOW_VARIANT_NORMAL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetClassDefaultAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variant</strong> (<a class="reference internal" href="wx.WindowVariant.enumeration.html" title="WindowVariant"><em>WindowVariant</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">VisualAttributes</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetColumnCount">
+<code class="sig-name descname">GetColumnCount</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of columns currently on grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetEditorTextCtrl">
+<code class="sig-name descname">GetEditorTextCtrl</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetEditorTextCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="wx.TextCtrl.html#wx-textctrl"><span class="std std-ref">  wx.TextCtrl</span></a>  active in currently selected property, if any.</p>
+<p>Takes <a class="reference internal" href="wx.adv.OwnerDrawnComboBox.html#wx-adv-ownerdrawncombobox"><span class="std std-ref">  wx.adv.OwnerDrawnComboBox</span></a>  into account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">TextCtrl</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetEmptySpaceColour">
+<code class="sig-name descname">GetEmptySpaceColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetEmptySpaceColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns colour of empty space below properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetFontHeight">
+<code class="sig-name descname">GetFontHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetFontHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns height of highest characters of used font.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetGrid">
+<code class="sig-name descname">GetGrid</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to itself.</p>
+<p>Dummy function that enables same kind of code to use <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  and <a class="reference internal" href="wx.propgrid.PropertyGridManager.html#wx-propgrid-propertygridmanager"><span class="std std-ref">  wx.propgrid.PropertyGridManager</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetImageRect">
+<code class="sig-name descname">GetImageRect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">property</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetImageRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns rectangle of custom paint image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>property</strong> (<a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty" title="wx.propgrid.PGProperty"><em>wx.propgrid.PGProperty</em></a>) – Return image rectangle for this property.</p></li>
+<li><p><strong>item</strong> (<em>int</em>) – Which choice of property to use (each choice may have different image).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Rect</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetImageSize">
+<code class="sig-name descname">GetImageSize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">property=None</em>, <em class="sig-param">item=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetImageSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns size of the custom paint image in front of property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>property</strong> (<a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty" title="wx.propgrid.PGProperty"><em>wx.propgrid.PGProperty</em></a>) – Return image rectangle for this property. If this argument is <code class="docutils literal notranslate"><span class="pre">None</span></code>, then preferred size is returned.</p></li>
+<li><p><strong>item</strong> (<em>int</em>) – Which choice of property to use (each choice may have different image).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Size</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetLabelEditor">
+<code class="sig-name descname">GetLabelEditor</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetLabelEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns currently active label editor, <code class="docutils literal notranslate"><span class="pre">None</span></code> if none.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">TextCtrl</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetLastItem">
+<code class="sig-name descname">GetLastItem</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">flags=PG_ITERATE_DEFAULT</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetLastItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns last item which could be iterated using given flags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>int</em>) – See <span class="xref std std-ref">PropertyGridIterator Flags</span>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PGProperty.html#wx-propgrid-pgproperty"><span class="std std-ref">  wx.propgrid.PGProperty</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetLineColour">
+<code class="sig-name descname">GetLineColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetLineColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns colour of lines between cells.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetMarginColour">
+<code class="sig-name descname">GetMarginColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetMarginColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns background colour of margin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetPanel">
+<code class="sig-name descname">GetPanel</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetPanel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>  that the properties are painted on, and which should be used as the parent for editor controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Window</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetRoot">
+<code class="sig-name descname">GetRoot</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetRoot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns “root property”.</p>
+<p>It does not have name, etc. and it is not visible. It is only useful for accessing its children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.propgrid.PGProperty.html#wx-propgrid-pgproperty"><span class="std std-ref">  wx.propgrid.PGProperty</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetRowHeight">
+<code class="sig-name descname">GetRowHeight</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetRowHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns height of a single grid row (in pixels).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetSelectedProperty">
+<code class="sig-name descname">GetSelectedProperty</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetSelectedProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns currently selected property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.propgrid.PGProperty.html#wx-propgrid-pgproperty"><span class="std std-ref">  wx.propgrid.PGProperty</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetSelection">
+<code class="sig-name descname">GetSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns currently selected property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.propgrid.PGProperty.html#wx-propgrid-pgproperty"><span class="std std-ref">  wx.propgrid.PGProperty</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetSelectionBackgroundColour">
+<code class="sig-name descname">GetSelectionBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetSelectionBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current selection background colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetSelectionForegroundColour">
+<code class="sig-name descname">GetSelectionForegroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetSelectionForegroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current selection text colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Colour</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetSplitterPosition">
+<code class="sig-name descname">GetSplitterPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">splitterIndex=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetSplitterPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current splitter x position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>splitterIndex</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetStatusBar">
+<code class="sig-name descname">GetStatusBar</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetStatusBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <a class="reference internal" href="wx.StatusBar.html#wx-statusbar"><span class="std std-ref">  wx.StatusBar</span></a>  that is used by this <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>.</p>
+<p>You can reimplement this member function in derived class to override the default behaviour of using the top-level <a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a>’s status bar, if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx.propgrid.PropertyGrid.StatusBar" title="wx.propgrid.PropertyGrid.StatusBar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StatusBar</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetUncommittedPropertyValue">
+<code class="sig-name descname">GetUncommittedPropertyValue</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetUncommittedPropertyValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns most up-to-date value of selected property.</p>
+<p>This will return value different from <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectedProperty" title="wx.propgrid.PropertyGrid.GetSelectedProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedProperty</span></code></a> .GetValue() only when text editor is activate and string edited by user represents valid, uncommitted property value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">PGVariant</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetUnspecifiedValueAppearance">
+<code class="sig-name descname">GetUnspecifiedValueAppearance</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetUnspecifiedValueAppearance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current appearance of unspecified value cells.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.propgrid.PGCell.html#wx-propgrid-pgcell"><span class="std std-ref">  wx.propgrid.PGCell</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance" title="wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetUnspecifiedValueAppearance</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetUnspecifiedValueText">
+<code class="sig-name descname">GetUnspecifiedValueText</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">argFlags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetUnspecifiedValueText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (visual) text representation of the unspecified property value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>argFlags</strong> (<em>int</em>) – For internal use only.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.GetVerticalSpacing">
+<code class="sig-name descname">GetVerticalSpacing</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.GetVerticalSpacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current vertical spacing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.HitTest">
+<code class="sig-name descname">HitTest</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pt</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.HitTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information about arbitrary position in the grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pt</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – Coordinates in the virtual grid space. You may need to use <a class="reference internal" href="wx.Scrolled.html#wx.Scrolled.CalcScrolledPosition" title="wx.Scrolled.CalcScrolledPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Scrolled.CalcScrolledPosition</span></code></a>   for translating <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  client coordinates into something this member function can use.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PropertyGridHitTestResult.html#wx-propgrid-propertygridhittestresult"><span class="std std-ref">  wx.propgrid.PropertyGridHitTestResult</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.IsAnyModified">
+<code class="sig-name descname">IsAnyModified</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.IsAnyModified" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if any property has been modified by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.IsEditorFocused">
+<code class="sig-name descname">IsEditorFocused</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.IsEditorFocused" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a property editor control has focus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.IsEditorsValueModified">
+<code class="sig-name descname">IsEditorsValueModified</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.IsEditorsValueModified" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if editor’s value was marked modified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.IsFrozen">
+<code class="sig-name descname">IsFrozen</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.IsFrozen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if updating is frozen (ie.</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Freeze</span></code>   called but not yet <code class="xref py py-meth docutils literal notranslate"><span class="pre">Thaw</span></code>   ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.MakeColumnEditable">
+<code class="sig-name descname">MakeColumnEditable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">column</em>, <em class="sig-param">editable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.MakeColumnEditable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes given column editable by user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>int</em>) – The index of the column to make editable.</p></li>
+<li><p><strong>editable</strong> (<em>bool</em>) – Using <code class="docutils literal notranslate"><span class="pre">False</span></code> here will disable column from being editable.</p></li>
+</ul>
+</dd>
+</dl>
+<p><em class="xref py py-obj">column</em>  must not be equal to 1, as the second column is always editable and can be made read-only only on cell-by-cell basis using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">property</span><span class="o">.</span><span class="n">ChangeFlag</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">propgrid</span><span class="o">.</span><span class="n">PG_PROP_READONLY</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.propgrid.PropertyGrid.BeginLabelEdit" title="wx.propgrid.PropertyGrid.BeginLabelEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BeginLabelEdit</span></code></a> , <a class="reference internal" href="#wx.propgrid.PropertyGrid.EndLabelEdit" title="wx.propgrid.PropertyGrid.EndLabelEdit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EndLabelEdit</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.OnTLPChanging">
+<code class="sig-name descname">OnTLPChanging</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">newTLP</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.OnTLPChanging" title="Permalink to this definition">¶</a></dt>
+<dd><p>It is recommended that you call this function any time your code causes <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>’s top-level parent to change.</p>
+<p><a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>’s OnIdle() handler should be able to detect most changes, but it is not perfect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>newTLP</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – New top-level parent that is about to be set. Old top-level parent window should still exist as the current one.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function is automatically called from <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>:: <code class="xref py py-meth docutils literal notranslate"><span class="pre">Reparent</span></code>   and <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PropertyGridManager.Reparent</span></code> . You only need to use it if you reparent <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  indirectly.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.RefreshEditor">
+<code class="sig-name descname">RefreshEditor</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.RefreshEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refreshes any active editor control.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.RefreshProperty">
+<code class="sig-name descname">RefreshProperty</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">p</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.RefreshProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redraws given property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty" title="wx.propgrid.PGProperty"><em>wx.propgrid.PGProperty</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.RegisterEditorClass">
+<em class="property">static </em><code class="sig-name descname">RegisterEditorClass</code><span class="sig-paren">(</span><em class="sig-param">editor</em>, <em class="sig-param">noDefCheck=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.RegisterEditorClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forwards to DoRegisterEditorClass with empty name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>editor</strong> (<a class="reference internal" href="wx.propgrid.PGEditor.html#wx.propgrid.PGEditor" title="wx.propgrid.PGEditor"><em>wx.propgrid.PGEditor</em></a>) – </p></li>
+<li><p><strong>noDefCheck</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.propgrid.PGEditor.html#wx-propgrid-pgeditor"><span class="std std-ref">  wx.propgrid.PGEditor</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.RemoveFromSelection">
+<code class="sig-name descname">RemoveFromSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.RemoveFromSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes given property from selection.</p>
+<p>If property is not selected, an assertion failure will occur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.ResetColours">
+<code class="sig-name descname">ResetColours</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.ResetColours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets all colours to the original system values.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.ResetColumnSizes">
+<code class="sig-name descname">ResetColumnSizes</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">enableAutoResizing=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.ResetColumnSizes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets column sizes and splitter positions, based on proportions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enableAutoResizing</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, automatic column resizing is enabled (only applicapple if window style <code class="docutils literal notranslate"><span class="pre">wx.propgrid.PG_SPLITTER_AUTO_CENTER</span></code> is used).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.propgrid.PropertyGridInterface.html#wx.propgrid.PropertyGridInterface.SetColumnProportion" title="wx.propgrid.PropertyGridInterface.SetColumnProportion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PropertyGridInterface.SetColumnProportion</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SelectProperty">
+<code class="sig-name descname">SelectProperty</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">focus=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SelectProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects a property.</p>
+<p>Editor widget is automatically created, but not focused unless focus is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – Property to select (name or pointer).</p></li>
+<li><p><strong>focus</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, move keyboard focus to the created editor right away.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if selection finished successfully. Usually only fails if current value in editor is not valid.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In <a class="reference internal" href="#wx-propgrid-propertygrid"><span class="std std-ref">  wx.propgrid.PropertyGrid</span></a>  1.4, this member function used to generate  <code class="docutils literal notranslate"><span class="pre">wxEVT_PG_SELECTED</span></code> . In wxWidgets 2.9 and later, it no longer does that.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This clears any previous selection.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.propgrid.PropertyGridInterface.html#wx.propgrid.PropertyGridInterface.ClearSelection" title="wx.propgrid.PropertyGridInterface.ClearSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PropertyGridInterface.ClearSelection</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetCaptionBackgroundColour">
+<code class="sig-name descname">SetCaptionBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetCaptionBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets category caption background colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetCaptionTextColour">
+<code class="sig-name descname">SetCaptionTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetCaptionTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets category caption text colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetCellBackgroundColour">
+<code class="sig-name descname">SetCellBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetCellBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets default cell background colour - applies to property cells.</p>
+<p>Note that appearance of editor widgets may not be affected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetCellDisabledTextColour">
+<code class="sig-name descname">SetCellDisabledTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetCellDisabledTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets cell text colour for disabled properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetCellTextColour">
+<code class="sig-name descname">SetCellTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetCellTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets default cell text colour - applies to property name and value text.</p>
+<p>Note that appearance of editor widgets may not be affected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetColumnCount">
+<code class="sig-name descname">SetColumnCount</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">colCount</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set number of columns (2 or more).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>colCount</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetCurrentCategory">
+<code class="sig-name descname">SetCurrentCategory</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetCurrentCategory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the ‘current’ category - Append will add non-category properties under it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetEmptySpaceColour">
+<code class="sig-name descname">SetEmptySpaceColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetEmptySpaceColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets colour of empty space below properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetLineColour">
+<code class="sig-name descname">SetLineColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetLineColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets colour of lines between cells.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetMarginColour">
+<code class="sig-name descname">SetMarginColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetMarginColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets background colour of margin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetSelection">
+<code class="sig-name descname">SetSelection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">newSelection</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set entire new selection from given list of properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>newSelection</strong> (<em>ArrayPGProperty</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetSelectionBackgroundColour">
+<code class="sig-name descname">SetSelectionBackgroundColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetSelectionBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets selection background colour - applies to selected property name background.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetSelectionTextColour">
+<code class="sig-name descname">SetSelectionTextColour</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetSelectionTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets selection foreground colour - applies to selected property name text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetSplitterLeft">
+<code class="sig-name descname">SetSplitterLeft</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">privateChildrenToo=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetSplitterLeft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves splitter as left as possible, while still allowing all labels to be shown in full.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>privateChildrenToo</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">False</span></code>, will still allow private children to be cropped.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetSplitterPosition">
+<code class="sig-name descname">SetSplitterPosition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">newxpos</em>, <em class="sig-param">col=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetSplitterPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets x coordinate of the splitter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>newxpos</strong> (<em>int</em>) – </p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Splitter position cannot exceed grid size, and therefore setting it during form creation may fail as initial grid size is often smaller than desired splitter position, especially when sizers are being used.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance">
+<code class="sig-name descname">SetUnspecifiedValueAppearance</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">cell</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets appearance of value cells representing an unspecified property value.</p>
+<p>Default appearance is blank.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cell</strong> (<a class="reference internal" href="wx.propgrid.PGCell.html#wx.propgrid.PGCell" title="wx.propgrid.PGCell"><em>wx.propgrid.PGCell</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you set the unspecified value to have any textual representation, then that will override “InlineHelp” attribute.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.SetValueToUnspecified" title="wx.propgrid.PGProperty.SetValueToUnspecified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.SetValueToUnspecified</span></code></a> , <a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.IsValueUnspecified" title="wx.propgrid.PGProperty.IsValueUnspecified"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.IsValueUnspecified</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.SetVerticalSpacing">
+<code class="sig-name descname">SetVerticalSpacing</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">vspacing</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.SetVerticalSpacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets vertical spacing.</p>
+<p>Can be 1, 2, or 3 - a value relative to font height. Value of 2 should be default on most platforms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vspacing</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.ShowPropertyError">
+<code class="sig-name descname">ShowPropertyError</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.ShowPropertyError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows an brief error message that is related to a property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference internal" href="wx.propgrid.PGPropArgCls.html#wx.propgrid.PGPropArgCls" title="wx.propgrid.PGPropArgCls"><em>wx.propgrid.PGPropArgCls</em></a>) – </p></li>
+<li><p><strong>msg</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.propgrid.PropertyGrid.WasValueChangedInEvent">
+<code class="sig-name descname">WasValueChangedInEvent</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.propgrid.PropertyGrid.WasValueChangedInEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>You can use this member function, for instance, to detect in <a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.OnEvent" title="wx.propgrid.PGProperty.OnEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.OnEvent</span></code></a>   if <a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.SetValueInEvent" title="wx.propgrid.PGProperty.SetValueInEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.SetValueInEvent</span></code></a>   was already called in <a class="reference internal" href="wx.propgrid.PGEditor.html#wx.propgrid.PGEditor.OnEvent" title="wx.propgrid.PGEditor.OnEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGEditor.OnEvent</span></code></a> .</p>
+<p>It really only detects if was value was changed using <a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.SetValueInEvent" title="wx.propgrid.PGProperty.SetValueInEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.SetValueInEvent</span></code></a> , which is usually used when a ‘picker’ dialog is displayed. If value was written by “normal means” in <a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.StringToValue" title="wx.propgrid.PGProperty.StringToValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.StringToValue</span></code></a>   or IntToValue(), then this function will return <code class="docutils literal notranslate"><span class="pre">False</span></code> (on the other hand, <a class="reference internal" href="wx.propgrid.PGProperty.html#wx.propgrid.PGProperty.OnEvent" title="wx.propgrid.PGProperty.OnEvent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.propgrid.PGProperty.OnEvent</span></code></a>   is not even called in those cases).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.CaptionBackgroundColour">
+<code class="sig-name descname">CaptionBackgroundColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.CaptionBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCaptionBackgroundColour" title="wx.propgrid.PropertyGrid.GetCaptionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaptionBackgroundColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCaptionBackgroundColour" title="wx.propgrid.PropertyGrid.SetCaptionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCaptionBackgroundColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.CaptionFont">
+<code class="sig-name descname">CaptionFont</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.CaptionFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCaptionFont" title="wx.propgrid.PropertyGrid.GetCaptionFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaptionFont</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.CaptionForegroundColour">
+<code class="sig-name descname">CaptionForegroundColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.CaptionForegroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCaptionForegroundColour" title="wx.propgrid.PropertyGrid.GetCaptionForegroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCaptionForegroundColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.CellBackgroundColour">
+<code class="sig-name descname">CellBackgroundColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.CellBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCellBackgroundColour" title="wx.propgrid.PropertyGrid.GetCellBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCellBackgroundColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCellBackgroundColour" title="wx.propgrid.PropertyGrid.SetCellBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCellBackgroundColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.CellDisabledTextColour">
+<code class="sig-name descname">CellDisabledTextColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.CellDisabledTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCellDisabledTextColour" title="wx.propgrid.PropertyGrid.GetCellDisabledTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCellDisabledTextColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCellDisabledTextColour" title="wx.propgrid.PropertyGrid.SetCellDisabledTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCellDisabledTextColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.CellTextColour">
+<code class="sig-name descname">CellTextColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.CellTextColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetCellTextColour" title="wx.propgrid.PropertyGrid.GetCellTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCellTextColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetCellTextColour" title="wx.propgrid.PropertyGrid.SetCellTextColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCellTextColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.ColumnCount">
+<code class="sig-name descname">ColumnCount</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.ColumnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetColumnCount" title="wx.propgrid.PropertyGrid.GetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColumnCount</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetColumnCount" title="wx.propgrid.PropertyGrid.SetColumnCount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetColumnCount</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.EditorTextCtrl">
+<code class="sig-name descname">EditorTextCtrl</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.EditorTextCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetEditorTextCtrl" title="wx.propgrid.PropertyGrid.GetEditorTextCtrl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditorTextCtrl</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.EmptySpaceColour">
+<code class="sig-name descname">EmptySpaceColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.EmptySpaceColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetEmptySpaceColour" title="wx.propgrid.PropertyGrid.GetEmptySpaceColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEmptySpaceColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetEmptySpaceColour" title="wx.propgrid.PropertyGrid.SetEmptySpaceColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetEmptySpaceColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.FontHeight">
+<code class="sig-name descname">FontHeight</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.FontHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetFontHeight" title="wx.propgrid.PropertyGrid.GetFontHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFontHeight</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.Grid">
+<code class="sig-name descname">Grid</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.Grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetGrid" title="wx.propgrid.PropertyGrid.GetGrid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetGrid</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.ImageSize">
+<code class="sig-name descname">ImageSize</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.ImageSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetImageSize" title="wx.propgrid.PropertyGrid.GetImageSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetImageSize</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.LabelEditor">
+<code class="sig-name descname">LabelEditor</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.LabelEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetLabelEditor" title="wx.propgrid.PropertyGrid.GetLabelEditor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLabelEditor</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.LastItem">
+<code class="sig-name descname">LastItem</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.LastItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetLastItem" title="wx.propgrid.PropertyGrid.GetLastItem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLastItem</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.LineColour">
+<code class="sig-name descname">LineColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.LineColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetLineColour" title="wx.propgrid.PropertyGrid.GetLineColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLineColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetLineColour" title="wx.propgrid.PropertyGrid.SetLineColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLineColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.MarginColour">
+<code class="sig-name descname">MarginColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.MarginColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetMarginColour" title="wx.propgrid.PropertyGrid.GetMarginColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMarginColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetMarginColour" title="wx.propgrid.PropertyGrid.SetMarginColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetMarginColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.Panel">
+<code class="sig-name descname">Panel</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.Panel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetPanel" title="wx.propgrid.PropertyGrid.GetPanel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPanel</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.Root">
+<code class="sig-name descname">Root</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.Root" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetRoot" title="wx.propgrid.PropertyGrid.GetRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRoot</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.RowHeight">
+<code class="sig-name descname">RowHeight</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.RowHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetRowHeight" title="wx.propgrid.PropertyGrid.GetRowHeight"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowHeight</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.SelectedProperty">
+<code class="sig-name descname">SelectedProperty</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.SelectedProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectedProperty" title="wx.propgrid.PropertyGrid.GetSelectedProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectedProperty</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.Selection">
+<code class="sig-name descname">Selection</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.Selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelection" title="wx.propgrid.PropertyGrid.GetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelection</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSelection" title="wx.propgrid.PropertyGrid.SetSelection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelection</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.SelectionBackgroundColour">
+<code class="sig-name descname">SelectionBackgroundColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.SelectionBackgroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectionBackgroundColour" title="wx.propgrid.PropertyGrid.GetSelectionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectionBackgroundColour</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSelectionBackgroundColour" title="wx.propgrid.PropertyGrid.SetSelectionBackgroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSelectionBackgroundColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.SelectionForegroundColour">
+<code class="sig-name descname">SelectionForegroundColour</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.SelectionForegroundColour" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSelectionForegroundColour" title="wx.propgrid.PropertyGrid.GetSelectionForegroundColour"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSelectionForegroundColour</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.SplitterPosition">
+<code class="sig-name descname">SplitterPosition</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.SplitterPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetSplitterPosition" title="wx.propgrid.PropertyGrid.GetSplitterPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSplitterPosition</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetSplitterPosition" title="wx.propgrid.PropertyGrid.SetSplitterPosition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetSplitterPosition</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.StatusBar">
+<code class="sig-name descname">StatusBar</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.StatusBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetStatusBar" title="wx.propgrid.PropertyGrid.GetStatusBar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetStatusBar</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.UncommittedPropertyValue">
+<code class="sig-name descname">UncommittedPropertyValue</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.UncommittedPropertyValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetUncommittedPropertyValue" title="wx.propgrid.PropertyGrid.GetUncommittedPropertyValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUncommittedPropertyValue</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.UnspecifiedValueAppearance">
+<code class="sig-name descname">UnspecifiedValueAppearance</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.UnspecifiedValueAppearance" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetUnspecifiedValueAppearance" title="wx.propgrid.PropertyGrid.GetUnspecifiedValueAppearance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUnspecifiedValueAppearance</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance" title="wx.propgrid.PropertyGrid.SetUnspecifiedValueAppearance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetUnspecifiedValueAppearance</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.UnspecifiedValueText">
+<code class="sig-name descname">UnspecifiedValueText</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.UnspecifiedValueText" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetUnspecifiedValueText" title="wx.propgrid.PropertyGrid.GetUnspecifiedValueText"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetUnspecifiedValueText</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.propgrid.PropertyGrid.VerticalSpacing">
+<code class="sig-name descname">VerticalSpacing</code><a class="headerlink" href="#wx.propgrid.PropertyGrid.VerticalSpacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.propgrid.PropertyGrid.GetVerticalSpacing" title="wx.propgrid.PropertyGrid.GetVerticalSpacing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVerticalSpacing</span></code></a> and <a class="reference internal" href="#wx.propgrid.PropertyGrid.SetVerticalSpacing" title="wx.propgrid.PropertyGrid.SetVerticalSpacing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetVerticalSpacing</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

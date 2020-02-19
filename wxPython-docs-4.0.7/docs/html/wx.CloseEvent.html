@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.CloseEvent — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.CollapsiblePane.html" rel="next" title="wx.CollapsiblePane"/>
+<link href="wx.ClipboardTextEvent.html" rel="prev" title="wx.ClipboardTextEvent"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.CloseEvent</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.CollapsiblePane.html" title="wx.CollapsiblePane">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.ClipboardTextEvent.html" title="wx.ClipboardTextEvent">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.CloseEvent</strong></a><ul>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.CloseEvent.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-closeevent">
+<span id="wx-closeevent"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.CloseEvent</strong><a class="headerlink" href="#phoenix-title-wx-closeevent" title="Permalink to this headline">¶</a></h1>
+<p>This event class contains information about window and session close events.</p>
+<p>The handler function for <code class="docutils literal notranslate"><span class="pre">EVT_CLOSE</span></code> is called when the user has tried to close a a frame or dialog box using the window manager (X) or system menu (Windows). It can also be invoked by the application itself programmatically, for example by calling the <a class="reference internal" href="wx.Window.html#wx.Window.Close" title="wx.Window.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Close</span></code></a>   function.</p>
+<p>You should check whether the application is forcing the deletion of the window using <a class="reference internal" href="#wx.CloseEvent.CanVeto" title="wx.CloseEvent.CanVeto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.CloseEvent.CanVeto</span></code></a> . If this is <code class="docutils literal notranslate"><span class="pre">False</span></code>, you <em class="xref py py-obj">must</em>  destroy the window using <a class="reference internal" href="wx.Window.html#wx.Window.Destroy" title="wx.Window.Destroy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Destroy</span></code></a> .</p>
+<p>If the return value is <code class="docutils literal notranslate"><span class="pre">True</span></code>, it is up to you whether you respond by destroying the window.</p>
+<p>If you don’t destroy the window, you should call <a class="reference internal" href="#wx.CloseEvent.Veto" title="wx.CloseEvent.Veto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.CloseEvent.Veto</span></code></a>   to let the calling code know that you did not destroy the window. This allows the <a class="reference internal" href="wx.Window.html#wx.Window.Close" title="wx.Window.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Close</span></code></a>   function to return <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> depending on whether the close instruction was honoured or not.</p>
+<p>Example of a <a class="reference internal" href="#wx-closeevent"><span class="std std-ref">  wx.CloseEvent</span></a>  handler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">OnClose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">CanVeto</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileNotSaved</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">wx</span><span class="o">.</span><span class="n">MessageBox</span><span class="p">(</span><span class="s2">"The file has not been saved... continue closing?"</span><span class="p">,</span>
+                         <span class="s2">"Please confirm"</span><span class="p">,</span>
+                         <span class="n">wx</span><span class="o">.</span><span class="n">ICON_QUESTION</span> <span class="o">|</span> <span class="n">wx</span><span class="o">.</span><span class="n">YES_NO</span><span class="p">)</span> <span class="o">!=</span> <span class="n">wx</span><span class="o">.</span><span class="n">YES</span><span class="p">:</span>
+
+            <span class="n">event</span><span class="o">.</span><span class="n">Veto</span><span class="p">()</span>
+            <span class="k">return</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>  <span class="c1"># you may also do:  event.Skip()</span>
+                    <span class="c1"># since the default event handler does call Destroy(), too</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">EVT_END_SESSION</span></code> event is slightly different as it is sent by the system when the user session is ending (e.g. because of log out or shutdown) and so all windows are being forcefully closed. At least under MSW, after the handler for this event is executed the program is simply killed by the system. Because of this, the default handler for this event provided by wxWidgets calls all the usual cleanup code (including <code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.App.OnExit</span></code> ) so that it could still be executed and exit()s the process itself, without waiting for being killed. If this behaviour is for some reason undesirable, make sure that you define a handler for this event in your App-derived class and do not call  <code class="docutils literal notranslate"><span class="pre">event.Skip()</span></code>   in it (but be aware that the system will still kill your application).</p>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="closeevent-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="#wx-closeevent"><span class="std std-ref">  wx.CloseEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_CLOSE: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_CLOSE_WINDOW</span></code>   command event, supplying the member function. This event applies to  <a class="reference internal" href="wx.Frame.html#wx-frame"><span class="std std-ref">  wx.Frame</span></a>  and <a class="reference internal" href="wx.Dialog.html#wx-dialog"><span class="std std-ref">  wx.Dialog</span></a>  classes.</p></li>
+<li><p>EVT_QUERY_END_SESSION: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_QUERY_END_SESSION</span></code>   session event, supplying the member function. This event can be handled in App-derived class only.</p></li>
+<li><p>EVT_END_SESSION: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_END_SESSION</span></code>   session event, supplying the member function. This event can be handled in App-derived class only.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Window.html#wx.Window.Close" title="wx.Window.Close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.Close</span></code></a> , <a class="reference internal" href="window_deletion_overview.html#window-deletion"><span class="std std-ref">Window Deletion</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>CloseEvent</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of CloseEvent" class="inheritance" src="_static/images/inheritance/wx.CloseEvent_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,160,125,189" href="wx.CloseEvent.html" id="node1" shape="rect" title="This event class contains information about window and session close events."/> <area alt="" coords="24,83,107,112" href="wx.Event.html" id="node2" shape="rect" title="An event is a structure holding information about an event passed to a callback or member function."/> <area alt="" coords="21,5,109,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%"/>
+<col style="width: 63%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.CloseEvent.__init__" title="wx.CloseEvent.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.CloseEvent.CanVeto" title="wx.CloseEvent.CanVeto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanVeto</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if you can veto a system shutdown or a window close event.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.CloseEvent.GetLoggingOff" title="wx.CloseEvent.GetLoggingOff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLoggingOff</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the user is just logging off or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the system is shutting down.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.CloseEvent.GetVeto" title="wx.CloseEvent.GetVeto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVeto</span></code></a></p></td>
+<td><p>Returns whether the Veto flag was set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.CloseEvent.SetCanVeto" title="wx.CloseEvent.SetCanVeto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetCanVeto</span></code></a></p></td>
+<td><p>Sets the ‘can veto’ flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.CloseEvent.SetLoggingOff" title="wx.CloseEvent.SetLoggingOff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLoggingOff</span></code></a></p></td>
+<td><p>Sets the ‘logging off’ flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.CloseEvent.Veto" title="wx.CloseEvent.Veto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Veto</span></code></a></p></td>
+<td><p>Call this from your event handler to veto a system shutdown or to signal to the calling application that a window close did not happen.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.CloseEvent.LoggingOff" title="wx.CloseEvent.LoggingOff"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LoggingOff</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.CloseEvent.GetLoggingOff" title="wx.CloseEvent.GetLoggingOff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLoggingOff</span></code></a> and <a class="reference internal" href="#wx.CloseEvent.SetLoggingOff" title="wx.CloseEvent.SetLoggingOff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLoggingOff</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.CloseEvent">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">CloseEvent</code><span class="sig-paren">(</span><em class="sig-param">Event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.CloseEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CloseEvent</span><span class="p">(</span><span class="n">commandEventType</span><span class="o">=</span><span class="n">wxEVT_NULL</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This event class contains information about window and session close
+events.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.CloseEvent.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">commandEventType=wxEVT_NULL</em>, <em class="sig-param">id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.CloseEvent.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>commandEventType</strong> (<em>wx.EventType</em>) – </p></li>
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.CloseEvent.CanVeto">
+<code class="sig-name descname">CanVeto</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.CloseEvent.CanVeto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if you can veto a system shutdown or a window close event.</p>
+<p>Vetoing a window close event is not possible if the calling code wishes to force the application to exit, and so this function must be called to check this.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.CloseEvent.GetLoggingOff">
+<code class="sig-name descname">GetLoggingOff</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.CloseEvent.GetLoggingOff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the user is just logging off or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the system is shutting down.</p>
+<p>This method can only be called for end session and query end session events, it doesn’t make sense for close window event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.CloseEvent.GetVeto">
+<code class="sig-name descname">GetVeto</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.CloseEvent.GetVeto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the Veto flag was set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.CloseEvent.SetCanVeto">
+<code class="sig-name descname">SetCanVeto</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">canVeto</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.CloseEvent.SetCanVeto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the ‘can veto’ flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>canVeto</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.CloseEvent.SetLoggingOff">
+<code class="sig-name descname">SetLoggingOff</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">loggingOff</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.CloseEvent.SetLoggingOff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the ‘logging off’ flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>loggingOff</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.CloseEvent.Veto">
+<code class="sig-name descname">Veto</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">veto=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.CloseEvent.Veto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this from your event handler to veto a system shutdown or to signal to the calling application that a window close did not happen.</p>
+<p>You can only veto a shutdown if <a class="reference internal" href="#wx.CloseEvent.CanVeto" title="wx.CloseEvent.CanVeto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CanVeto</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>veto</strong> (<em>bool</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.CloseEvent.LoggingOff">
+<code class="sig-name descname">LoggingOff</code><a class="headerlink" href="#wx.CloseEvent.LoggingOff" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.CloseEvent.GetLoggingOff" title="wx.CloseEvent.GetLoggingOff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLoggingOff</span></code></a> and <a class="reference internal" href="#wx.CloseEvent.SetLoggingOff" title="wx.CloseEvent.SetLoggingOff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetLoggingOff</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

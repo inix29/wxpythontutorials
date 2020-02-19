@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.FocusEvent — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.Font.html" rel="next" title="wx.Font"/>
+<link href="wx.FloodFillStyle.enumeration.html" rel="prev" title="wx.FloodFillStyle"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.FocusEvent</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.Font.html" title="wx.Font">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.FloodFillStyle.enumeration.html" title="wx.FloodFillStyle">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.FocusEvent</strong></a><ul>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.FocusEvent.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-focusevent">
+<span id="wx-focusevent"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.FocusEvent</strong><a class="headerlink" href="#phoenix-title-wx-focusevent" title="Permalink to this headline">¶</a></h1>
+<p>A focus event is sent when a window’s focus changes.</p>
+<p>The window losing focus receives a “kill focus” event while the window gaining it gets a “set focus” one.</p>
+<p>Notice that the set focus event happens both when the user gives focus to the window (whether using the mouse or keyboard) and when it is done from the program itself using <a class="reference internal" href="wx.Window.html#wx.Window.SetFocus" title="wx.Window.SetFocus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetFocus</span></code></a> .</p>
+<p>The focus event handlers should almost invariably call <a class="reference internal" href="wx.Event.html#wx.Event.Skip" title="wx.Event.Skip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Event.Skip</span></code></a>   on their event argument to allow the default handling to take place. Failure to do this may result in incorrect behaviour of the native controls. Also note that wxEVT_KILL_FOCUS handler must not call <a class="reference internal" href="wx.Window.html#wx.Window.SetFocus" title="wx.Window.SetFocus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetFocus</span></code></a>   as this, again, is not supported by all native controls. If you need to do this, consider using the <a class="reference internal" href="wx.IdleEvent.html#wx-idleevent"><span class="std std-ref">Delayed Action Mechanism</span></a>  described in <a class="reference internal" href="wx.IdleEvent.html#wx-idleevent"><span class="std std-ref">  wx.IdleEvent</span></a>  documentation.</p>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="focusevent-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="#wx-focusevent"><span class="std std-ref">  wx.FocusEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_SET_FOCUS: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_SET_FOCUS</span></code>   event.</p></li>
+<li><p>EVT_KILL_FOCUS: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_KILL_FOCUS</span></code>   event.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="events_overview.html#events-and-event-handling"><span class="std std-ref">Events and Event Handling</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>FocusEvent</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of FocusEvent" class="inheritance" src="_static/images/inheritance/wx.FocusEvent_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,160,127,189" href="wx.FocusEvent.html" id="node1" shape="rect" title="A focus event is sent when a window's focus changes."/> <area alt="" coords="25,83,107,112" href="wx.Event.html" id="node2" shape="rect" title="An event is a structure holding information about an event passed to a callback or member function."/> <area alt="" coords="22,5,110,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%"/>
+<col style="width: 73%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FocusEvent.__init__" title="wx.FocusEvent.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FocusEvent.GetWindow" title="wx.FocusEvent.GetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWindow</span></code></a></p></td>
+<td><p>Returns the window associated with this event, that is the window which had the focus before for the  <code class="docutils literal notranslate"><span class="pre">wxEVT_SET_FOCUS</span></code>   event and the window which is going to receive focus for the   <code class="docutils literal notranslate"><span class="pre">wxEVT_KILL_FOCUS</span></code>   one.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FocusEvent.SetWindow" title="wx.FocusEvent.SetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWindow</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FocusEvent.Window" title="wx.FocusEvent.Window"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Window</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FocusEvent.GetWindow" title="wx.FocusEvent.GetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWindow</span></code></a> and <a class="reference internal" href="#wx.FocusEvent.SetWindow" title="wx.FocusEvent.SetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWindow</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.FocusEvent">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">FocusEvent</code><span class="sig-paren">(</span><em class="sig-param">Event</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FocusEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FocusEvent</span><span class="p">(</span><span class="n">eventType</span><span class="o">=</span><span class="n">wxEVT_NULL</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A focus event is sent when a window’s focus changes.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.FocusEvent.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">eventType=wxEVT_NULL</em>, <em class="sig-param">id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FocusEvent.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eventType</strong> (<em>wx.EventType</em>) – </p></li>
+<li><p><strong>id</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FocusEvent.GetWindow">
+<code class="sig-name descname">GetWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FocusEvent.GetWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the window associated with this event, that is the window which had the focus before for the  <code class="docutils literal notranslate"><span class="pre">wxEVT_SET_FOCUS</span></code>   event and the window which is going to receive focus for the   <code class="docutils literal notranslate"><span class="pre">wxEVT_KILL_FOCUS</span></code>   one.</p>
+<p>Warning: the window pointer may be <code class="docutils literal notranslate"><span class="pre">None</span></code>!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FocusEvent.SetWindow">
+<code class="sig-name descname">SetWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FocusEvent.SetWindow" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.FocusEvent.Window">
+<code class="sig-name descname">Window</code><a class="headerlink" href="#wx.FocusEvent.Window" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FocusEvent.GetWindow" title="wx.FocusEvent.GetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetWindow</span></code></a> and <a class="reference internal" href="#wx.FocusEvent.SetWindow" title="wx.FocusEvent.SetWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetWindow</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

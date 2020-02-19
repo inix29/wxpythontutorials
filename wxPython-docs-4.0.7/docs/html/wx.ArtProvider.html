@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.ArtProvider — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.AutoBufferedPaintDC.html" rel="next" title="wx.AutoBufferedPaintDC"/>
+<link href="wx.ArchiveFSHandler.html" rel="prev" title="wx.ArchiveFSHandler"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.ArtProvider</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.AutoBufferedPaintDC.html" title="wx.AutoBufferedPaintDC">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.ArchiveFSHandler.html" title="wx.ArchiveFSHandler">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.ArtProvider</strong></a><ul>
+<li><a class="reference internal" href="#phoenix-title-identifying-art-resources"> Identifying art resources</a></li>
+<li><a class="reference internal" href="#phoenix-title-clients"> Clients</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.ArtProvider.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-artprovider">
+<span id="wx-artprovider"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.ArtProvider</strong><a class="headerlink" href="#phoenix-title-wx-artprovider" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>  class is used to customize the look of wxWidgets application.</p>
+<p>When wxWidgets needs to display an icon or a bitmap (e.g. in the standard file dialog), it does not use a hard-coded resource but asks <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>  for it instead. This way users can plug in their own <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>  class and easily replace standard art with their own version.</p>
+<p>All that is needed is to derive a class from <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>, override either its <a class="reference internal" href="#wx.ArtProvider.CreateBitmap" title="wx.ArtProvider.CreateBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.CreateBitmap</span></code></a>   and/or its <a class="reference internal" href="#wx.ArtProvider.CreateIconBundle" title="wx.ArtProvider.CreateIconBundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.CreateIconBundle</span></code></a>   methods and register the provider with <a class="reference internal" href="#wx.ArtProvider.Push" title="wx.ArtProvider.Push"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.Push</span></code></a> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyProvider</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ArtProvider</span><span class="p">):</span>
+
+     <span class="k">def</span> <span class="nf">CreateBitmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+
+         <span class="c1"># Your implementation of CreateBitmap here</span>
+         <span class="k">pass</span>
+
+
+     <span class="c1"># optionally override this one as well</span>
+     <span class="k">def</span> <span class="nf">CreateIconBundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+
+         <span class="c1"># Your implementation of CreateIconBundle here</span>
+         <span class="k">pass</span>
+
+
+<span class="c1"># Later on...</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">ArtProvider</span><span class="o">.</span><span class="n">Push</span><span class="p">(</span><span class="n">MyProvider</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>If you need bitmap images (of the same artwork) that should be displayed at different sizes you should probably consider overriding <a class="reference internal" href="#wx.ArtProvider.CreateIconBundle" title="wx.ArtProvider.CreateIconBundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.CreateIconBundle</span></code></a>   and supplying icon bundles that contain different bitmap sizes.</p>
+<p>There’s another way of taking advantage of this class: you can use it in your code and use platform native icons as provided by <a class="reference internal" href="#wx.ArtProvider.GetBitmap" title="wx.ArtProvider.GetBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetBitmap</span></code></a>   or <a class="reference internal" href="#wx.ArtProvider.GetIcon" title="wx.ArtProvider.GetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetIcon</span></code></a> .</p>
+<div class="section" id="phoenix-title-identifying-art-resources">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Identifying art resources<a class="headerlink" href="#phoenix-title-identifying-art-resources" title="Permalink to this headline">¶</a></h2>
+<p>Every bitmap and icon bundle are known to <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>  under an unique <code class="docutils literal notranslate"><span class="pre">ID</span></code> that is used when requesting a resource from it. The <code class="docutils literal notranslate"><span class="pre">ID</span></code> is represented by the <em class="xref py py-obj">wx.ArtID</em>       type and can have one of these predefined values (you can see bitmaps represented by these constants in the <span class="xref std std-ref">Art Provider Sample</span>):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%"/>
+<col style="width: 34%"/>
+<col style="width: 30%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_ERROR</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_GOTO_LAST</span></code>   (since 2.9.2)</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_FILE_SAVE_AS</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_QUESTION</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_PRINT</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_DELETE</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_WARNING</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_HELP</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_COPY</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_INFORMATION</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_TIP</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_CUT</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_ADD_BOOKMARK</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_REPORT_VIEW</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_PASTE</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_DEL_BOOKMARK</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_LIST_VIEW</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_UNDO</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_HELP_SIDE_PANEL</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_NEW_DIR</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_REDO</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_HELP_SETTINGS</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_FOLDER</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_PLUS</span></code>   (since 2.9.2)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_HELP_BOOK</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_FOLDER_OPEN</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_MINUS</span></code>   (since 2.9.2)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_HELP_FOLDER</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_GO_DIR_UP</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_CLOSE</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_HELP_PAGE</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_EXECUTABLE_FILE</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_QUIT</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_GO_BACK</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_NORMAL_FILE</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_FIND</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_GO_FORWARD</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_TICK_MARK</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_FIND_AND_REPLACE</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_GO_UP</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_CROSS_MARK</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_HARDDISK</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_GO_DOWN</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_MISSING_IMAGE</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_FLOPPY</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_GO_TO_PARENT</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_NEW</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_CDROM</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_GO_HOME</span></code></p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_FILE_OPEN</span></code></p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_GOTO_FIRST</span></code>   (since 2.9.2)</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.ART_FILE_SAVE</span></code></p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<p>Additionally, any string recognized by custom art providers registered using <a class="reference internal" href="#wx.ArtProvider.Push" title="wx.ArtProvider.Push"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.Push</span></code></a>   may be used.</p>
+</div>
+<div class="section" id="phoenix-title-clients">
+<h2><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> Clients<a class="headerlink" href="#phoenix-title-clients" title="Permalink to this headline">¶</a></h2>
+<p>The <em class="xref py py-obj">client</em>  is the entity that calls <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>’s <a class="reference internal" href="#wx.ArtProvider.GetBitmap" title="wx.ArtProvider.GetBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBitmap</span></code></a>  or <a class="reference internal" href="#wx.ArtProvider.GetIcon" title="wx.ArtProvider.GetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIcon</span></code></a>  function. It is represented by ClientID type and can have one of these values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ART_TOOLBAR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ART_MENU</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ART_BUTTON</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ART_FRAME_ICON</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ART_CMN_DIALOG</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ART_HELP_BROWSER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ART_MESSAGE_BOX</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ART_OTHER</span></code>   (used for all requests that don’t fit into any of the categories above)</p></li>
+</ul>
+<p>Client <code class="docutils literal notranslate"><span class="pre">ID</span></code> serve as a hint to
+<a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>  that is supposed to help it to choose the best looking bitmap. For example it is often desirable to use slightly different icons in menus and toolbars even though they represent the same action (e.g. <code class="docutils literal notranslate"><span class="pre">wx.ART_FILE_OPEN</span></code>). Remember that this is really only a hint for <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a> <a class="reference internal" href="#wx.ArtProvider.GetBitmap" title="wx.ArtProvider.GetBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetBitmap</span></code></a>   returns identical bitmap for different client values!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When running under GTK+ 2, GTK+ stock item IDs (e.g.  <code class="docutils literal notranslate"><span class="pre">"gtk-cdrom"</span></code> ) may be used as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">wx</span><span class="o">.</span><span class="n">Platform</span> <span class="o">==</span> <span class="s1">'__WXGTK__'</span><span class="p">:</span>
+    <span class="n">bmp</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ArtProvider</span><span class="o">.</span><span class="n">GetBitmap</span><span class="p">(</span><span class="s2">"gtk-cdrom"</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ART_MENU</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For a list of the GTK+ stock items please refer to the <a class="reference external" href="http://library.gnome.org/devel/gtk/stable/gtk-Stock-Items.html">GTK+ documentation page</a>. It is also possible to load icons from the current icon theme by specifying their name (without extension and directory components). Icon themes recognized by GTK+ follow the freedesktop.org <a class="reference external" href="http://freedesktop.org/Standards/icon-theme-spec">Icon Themes specification</a>. Note that themes are not guaranteed to contain all icons, so <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>  may return <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.NullBitmap</span></code>       or <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.NullIcon</span></code>     . The default theme is typically installed in  <code class="docutils literal notranslate"><span class="pre">/usr/share/icons/hicolor</span></code> .</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">Art Provider Sample</span>  for an example of <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>  usage; <a class="reference internal" href="stock_items.html#stock-id-list"><span class="std std-ref">stock ID list</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ArtProvider</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ArtProvider" class="inheritance" src="_static/images/inheritance/wx.ArtProvider_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,125,112" href="wx.ArtProvider.html" id="node1" shape="rect" title="wx.ArtProvider  class is used to customize the look of wxWidgets application."/> <area alt="" coords="21,5,109,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%"/>
+<col style="width: 68%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ArtProvider.CreateBitmap" title="wx.ArtProvider.CreateBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateBitmap</span></code></a></p></td>
+<td><p>Derived art provider classes must override this method to create requested art resource.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ArtProvider.CreateIconBundle" title="wx.ArtProvider.CreateIconBundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateIconBundle</span></code></a></p></td>
+<td><p>This method is similar to <code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateBitmap</span></code>   but can be used when a bitmap (or an icon) exists in several sizes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ArtProvider.Delete" title="wx.ArtProvider.Delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Delete</span></code></a></p></td>
+<td><p>Delete the given <em class="xref py py-obj">provider</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ArtProvider.GetBitmap" title="wx.ArtProvider.GetBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetBitmap</span></code></a></p></td>
+<td><p>Query registered providers for bitmap with given <code class="docutils literal notranslate"><span class="pre">ID</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ArtProvider.GetIcon" title="wx.ArtProvider.GetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIcon</span></code></a></p></td>
+<td><p>Same as <a class="reference internal" href="#wx.ArtProvider.GetBitmap" title="wx.ArtProvider.GetBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetBitmap</span></code></a> , but return a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>  object (or <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.NullIcon</span></code>       on failure).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ArtProvider.GetIconBundle" title="wx.ArtProvider.GetIconBundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetIconBundle</span></code></a></p></td>
+<td><p>Query registered providers for icon bundle with given <code class="docutils literal notranslate"><span class="pre">ID</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ArtProvider.GetMessageBoxIcon" title="wx.ArtProvider.GetMessageBoxIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessageBoxIcon</span></code></a></p></td>
+<td><p>Helper used by several generic classes: return the icon corresponding to the standard ICON_INFORMATION/WARNING/ERROR/QUESTION flags (only one can be set)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ArtProvider.GetMessageBoxIconId" title="wx.ArtProvider.GetMessageBoxIconId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessageBoxIconId</span></code></a></p></td>
+<td><p>Helper used by <code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessageBoxIcon</span></code> : return the art id corresponding to the standard ICON_INFORMATION/WARNING/ERROR/QUESTION flags (only one can be set)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ArtProvider.GetNativeSizeHint" title="wx.ArtProvider.GetNativeSizeHint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNativeSizeHint</span></code></a></p></td>
+<td><p>Returns native icon size for use specified by <em class="xref py py-obj">client</em>  hint.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ArtProvider.GetSizeHint" title="wx.ArtProvider.GetSizeHint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetSizeHint</span></code></a></p></td>
+<td><p>Returns a suitable size hint for the given <em class="xref py py-obj">ArtClient</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ArtProvider.HasNativeProvider" title="wx.ArtProvider.HasNativeProvider"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasNativeProvider</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the platform uses native icons provider that should take precedence over any customizations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ArtProvider.Insert" title="wx.ArtProvider.Insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Insert</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ArtProvider.Pop" title="wx.ArtProvider.Pop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Pop</span></code></a></p></td>
+<td><p>Remove latest added provider and delete it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ArtProvider.Push" title="wx.ArtProvider.Push"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Push</span></code></a></p></td>
+<td><p>Register new art provider and add it to the top of providers stack (i.e.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ArtProvider.PushBack" title="wx.ArtProvider.PushBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PushBack</span></code></a></p></td>
+<td><p>Register new art provider and add it to the bottom of providers stack.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ArtProvider.Remove" title="wx.ArtProvider.Remove"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Remove</span></code></a></p></td>
+<td><p>Remove a provider from the stack if it is on it.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.ArtProvider">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">ArtProvider</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>ArtProvider class is used to customize the look of wxWidgets
+application.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.ArtProvider.CreateBitmap">
+<code class="sig-name descname">CreateBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">client</em>, <em class="sig-param">size</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.CreateBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Derived art provider classes must override this method to create requested art resource.</p>
+<p>Note that returned bitmaps are cached by <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>  and it is therefore not necessary to optimize <a class="reference internal" href="#wx.ArtProvider.CreateBitmap" title="wx.ArtProvider.CreateBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateBitmap</span></code></a>   for speed (e.g. you may create <a class="reference internal" href="wx.Bitmap.html#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>  objects from XPMs here).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>wx.ArtID</em>) – ArtID unique identifier of the bitmap.</p></li>
+<li><p><strong>client</strong> (<em>wx.ArtClient</em>) – ArtClient identifier of the client (i.e. who is asking for the bitmap). This only serves as a hint.</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Preferred size of the bitmap. The function may return a bitmap of different dimensions, it will be automatically rescaled to meet client’s request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Bitmap.html#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is not part of <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>’s public API, use <a class="reference internal" href="#wx.ArtProvider.GetBitmap" title="wx.ArtProvider.GetBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetBitmap</span></code></a>   or <a class="reference internal" href="#wx.ArtProvider.GetIconBundle" title="wx.ArtProvider.GetIconBundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetIconBundle</span></code></a>   or <a class="reference internal" href="#wx.ArtProvider.GetIcon" title="wx.ArtProvider.GetIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetIcon</span></code></a>   to query <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>  for a resource.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ArtProvider.CreateIconBundle" title="wx.ArtProvider.CreateIconBundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateIconBundle</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.CreateIconBundle">
+<code class="sig-name descname">CreateIconBundle</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">id</em>, <em class="sig-param">client</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.CreateIconBundle" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is similar to <a class="reference internal" href="#wx.ArtProvider.CreateBitmap" title="wx.ArtProvider.CreateBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateBitmap</span></code></a>   but can be used when a bitmap (or an icon) exists in several sizes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>wx.ArtID</em>) – </p></li>
+<li><p><strong>client</strong> (<em>wx.ArtClient</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.IconBundle.html#wx-iconbundle"><span class="std std-ref">  wx.IconBundle</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.Delete">
+<em class="property">static </em><code class="sig-name descname">Delete</code><span class="sig-paren">(</span><em class="sig-param">provider</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.Delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the given <em class="xref py py-obj">provider</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider</strong> (<a class="reference internal" href="#wx.ArtProvider" title="wx.ArtProvider"><em>wx.ArtProvider</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.GetBitmap">
+<em class="property">static </em><code class="sig-name descname">GetBitmap</code><span class="sig-paren">(</span><em class="sig-param">id</em>, <em class="sig-param">client=ART_OTHER</em>, <em class="sig-param">size=DefaultSize</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.GetBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query registered providers for bitmap with given <code class="docutils literal notranslate"><span class="pre">ID</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>wx.ArtID</em>) – ArtID unique identifier of the bitmap.</p></li>
+<li><p><strong>client</strong> (<em>wx.ArtClient</em>) – ArtClient identifier of the client (i.e. who is asking for the bitmap).</p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – Size of the returned bitmap or DefaultSize if size doesn’t matter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Bitmap.html#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The bitmap if one of registered providers recognizes the <code class="docutils literal notranslate"><span class="pre">ID</span></code> or NullBitmap otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.GetIcon">
+<em class="property">static </em><code class="sig-name descname">GetIcon</code><span class="sig-paren">(</span><em class="sig-param">id</em>, <em class="sig-param">client=ART_OTHER</em>, <em class="sig-param">size=DefaultSize</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.GetIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <a class="reference internal" href="#wx.ArtProvider.GetBitmap" title="wx.ArtProvider.GetBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.ArtProvider.GetBitmap</span></code></a> , but return a <a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a>  object (or <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.NullIcon</span></code>       on failure).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>wx.ArtID</em>) – </p></li>
+<li><p><strong>client</strong> (<em>wx.ArtClient</em>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.GetIconBundle">
+<em class="property">static </em><code class="sig-name descname">GetIconBundle</code><span class="sig-paren">(</span><em class="sig-param">id</em>, <em class="sig-param">client=ART_OTHER</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.GetIconBundle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query registered providers for icon bundle with given <code class="docutils literal notranslate"><span class="pre">ID</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>wx.ArtID</em>) – ArtID unique identifier of the icon bundle.</p></li>
+<li><p><strong>client</strong> (<em>wx.ArtClient</em>) – ArtClient identifier of the client (i.e. who is asking for the icon bundle).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.IconBundle.html#wx-iconbundle"><span class="std std-ref">  wx.IconBundle</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The icon bundle if one of registered providers recognizes the <code class="docutils literal notranslate"><span class="pre">ID</span></code> or NullIconBundle otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.GetMessageBoxIcon">
+<em class="property">static </em><code class="sig-name descname">GetMessageBoxIcon</code><span class="sig-paren">(</span><em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.GetMessageBoxIcon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper used by several generic classes: return the icon corresponding to the standard ICON_INFORMATION/WARNING/ERROR/QUESTION flags (only one can be set)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.GetMessageBoxIconId">
+<em class="property">static </em><code class="sig-name descname">GetMessageBoxIconId</code><span class="sig-paren">(</span><em class="sig-param">flags</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.GetMessageBoxIconId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper used by <a class="reference internal" href="#wx.ArtProvider.GetMessageBoxIcon" title="wx.ArtProvider.GetMessageBoxIcon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMessageBoxIcon</span></code></a> : return the art id corresponding to the standard ICON_INFORMATION/WARNING/ERROR/QUESTION flags (only one can be set)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">wx.ArtID</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.GetNativeSizeHint">
+<em class="property">static </em><code class="sig-name descname">GetNativeSizeHint</code><span class="sig-paren">(</span><em class="sig-param">client</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.GetNativeSizeHint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns native icon size for use specified by <em class="xref py py-obj">client</em>  hint.</p>
+<p>If the platform has no commonly used default for this use or if <em class="xref py py-obj">client</em>  is not recognized, returns DefaultSize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>client</strong> (<em>wx.ArtClient</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some cases, a platform may have <em class="xref py py-obj">several</em>  appropriate native sizes (for example, <code class="docutils literal notranslate"><span class="pre">wx.ART_FRAME_ICON</span></code> for frame icons). In that case, this method returns only one of them, picked reasonably.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.GetSizeHint">
+<em class="property">static </em><code class="sig-name descname">GetSizeHint</code><span class="sig-paren">(</span><em class="sig-param">client</em>, <em class="sig-param">platform_default=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.GetSizeHint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a suitable size hint for the given <em class="xref py py-obj">ArtClient</em>.</p>
+<p>If <em class="xref py py-obj">platform_default</em>  is <code class="docutils literal notranslate"><span class="pre">True</span></code>, return a size based on the current platform using <a class="reference internal" href="#wx.ArtProvider.GetNativeSizeHint" title="wx.ArtProvider.GetNativeSizeHint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNativeSizeHint</span></code></a> , otherwise return the size from the topmost <a class="reference internal" href="#wx-artprovider"><span class="std std-ref">  wx.ArtProvider</span></a>. <em class="xref py py-obj">DefaultSize</em>  may be returned if the client doesn’t have a specified size, like <code class="docutils literal notranslate"><span class="pre">wx.ART_OTHER</span></code> for example.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>wx.ArtClient</em>) – </p></li>
+<li><p><strong>platform_default</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ArtProvider.GetNativeSizeHint" title="wx.ArtProvider.GetNativeSizeHint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNativeSizeHint</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.HasNativeProvider">
+<em class="property">static </em><code class="sig-name descname">HasNativeProvider</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.HasNativeProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the platform uses native icons provider that should take precedence over any customizations.</p>
+<p>This is <code class="docutils literal notranslate"><span class="pre">True</span></code> for any platform that has user-customizable icon themes, currently only wxGTK.</p>
+<p>A typical use for this method is to decide whether a custom art provider should be plugged in using <a class="reference internal" href="#wx.ArtProvider.Push" title="wx.ArtProvider.Push"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Push</span></code></a>   or <a class="reference internal" href="#wx.ArtProvider.PushBack" title="wx.ArtProvider.PushBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PushBack</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.Insert">
+<em class="property">static </em><code class="sig-name descname">Insert</code><span class="sig-paren">(</span><em class="sig-param">provider</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.Insert" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider</strong> (<a class="reference internal" href="#wx.ArtProvider" title="wx.ArtProvider"><em>wx.ArtProvider</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition wxdeprecated" id="deprecated-0">
+<p class="admonition-title">Deprecated</p>
+<p>Use <a class="reference internal" href="#wx.ArtProvider.PushBack" title="wx.ArtProvider.PushBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PushBack</span></code></a>   instead.</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.Pop">
+<em class="property">static </em><code class="sig-name descname">Pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.Pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove latest added provider and delete it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.Push">
+<em class="property">static </em><code class="sig-name descname">Push</code><span class="sig-paren">(</span><em class="sig-param">provider</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.Push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register new art provider and add it to the top of providers stack (i.e.</p>
+<p>it will be queried as the first provider).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider</strong> (<a class="reference internal" href="#wx.ArtProvider" title="wx.ArtProvider"><em>wx.ArtProvider</em></a>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ArtProvider.PushBack" title="wx.ArtProvider.PushBack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PushBack</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.PushBack">
+<em class="property">static </em><code class="sig-name descname">PushBack</code><span class="sig-paren">(</span><em class="sig-param">provider</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.PushBack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register new art provider and add it to the bottom of providers stack.</p>
+<p>In other words, it will be queried as the last one, after all others, including the default provider.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider</strong> (<a class="reference internal" href="#wx.ArtProvider" title="wx.ArtProvider"><em>wx.ArtProvider</em></a>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.ArtProvider.Push" title="wx.ArtProvider.Push"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Push</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ArtProvider.Remove">
+<em class="property">static </em><code class="sig-name descname">Remove</code><span class="sig-paren">(</span><em class="sig-param">provider</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ArtProvider.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a provider from the stack if it is on it.</p>
+<p>The provider is not deleted, unlike when using <a class="reference internal" href="#wx.ArtProvider.Delete" title="wx.ArtProvider.Delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Delete</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider</strong> (<a class="reference internal" href="#wx.ArtProvider" title="wx.ArtProvider"><em>wx.ArtProvider</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

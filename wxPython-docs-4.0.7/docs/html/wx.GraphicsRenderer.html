@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.GraphicsRenderer — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.GridBagSizer.html" rel="next" title="wx.GridBagSizer"/>
+<link href="wx.GraphicsPen.html" rel="prev" title="wx.GraphicsPen"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.GraphicsRenderer</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.GridBagSizer.html" title="wx.GridBagSizer">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.GraphicsPen.html" title="wx.GraphicsPen">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.GraphicsRenderer</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.GraphicsRenderer.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-graphicsrenderer">
+<span id="wx-graphicsrenderer"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.GraphicsRenderer</strong><a class="headerlink" href="#phoenix-title-wx-graphicsrenderer" title="Permalink to this headline">¶</a></h1>
+<p>A <a class="reference internal" href="#wx-graphicsrenderer"><span class="std std-ref">  wx.GraphicsRenderer</span></a>  is the instance corresponding to the rendering engine used.</p>
+<p>There may be multiple instances on a system, if there are different rendering engines present, but there is always only one instance per engine. This instance is pointed back to by all objects created by it (<a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>, <a class="reference internal" href="wx.GraphicsPath.html#wx-graphicspath"><span class="std std-ref">  wx.GraphicsPath</span></a>  etc) and can be retrieved through their <a class="reference internal" href="wx.GraphicsObject.html#wx.GraphicsObject.GetRenderer" title="wx.GraphicsObject.GetRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.GraphicsObject.GetRenderer</span></code></a>   method. Therefore you can create an additional instance of a path etc. by calling <a class="reference internal" href="wx.GraphicsObject.html#wx.GraphicsObject.GetRenderer" title="wx.GraphicsObject.GetRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.GraphicsObject.GetRenderer</span></code></a>   and then using the appropriate CreateXXX() function of that renderer.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">GraphicsPath</span><span class="p">()</span> <span class="c1"># from somewhere</span>
+<span class="n">brush</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">GetRenderer</span><span class="p">()</span><span class="o">.</span><span class="n">CreateBrush</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLACK_BRUSH</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>GraphicsRenderer</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of GraphicsRenderer" class="inheritance" src="_static/images/inheritance/wx.GraphicsRenderer_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,171,112" href="wx.GraphicsRenderer.html" id="node1" shape="rect" title="A wx.GraphicsRenderer  is the instance corresponding to the rendering engine used."/> <area alt="" coords="44,5,132,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateBitmap" title="wx.GraphicsRenderer.CreateBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateBitmap</span></code></a></p></td>
+<td><p>Creates <a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a>  from an existing <a class="reference internal" href="wx.Bitmap.html#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateBitmapFromImage" title="wx.GraphicsRenderer.CreateBitmapFromImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateBitmapFromImage</span></code></a></p></td>
+<td><p>Creates <a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a>  from an existing <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateBitmapFromNativeBitmap" title="wx.GraphicsRenderer.CreateBitmapFromNativeBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateBitmapFromNativeBitmap</span></code></a></p></td>
+<td><p>Creates <a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a>  from a native bitmap handle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateBrush" title="wx.GraphicsRenderer.CreateBrush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateBrush</span></code></a></p></td>
+<td><p>Creates a native brush from a <a class="reference internal" href="wx.Brush.html#wx-brush"><span class="std std-ref">  wx.Brush</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateContext" title="wx.GraphicsRenderer.CreateContext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateContext</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  from a <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateContextFromImage" title="wx.GraphicsRenderer.CreateContextFromImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateContextFromImage</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  associated with a <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateContextFromNativeContext" title="wx.GraphicsRenderer.CreateContextFromNativeContext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateContextFromNativeContext</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  from a native context.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateContextFromNativeWindow" title="wx.GraphicsRenderer.CreateContextFromNativeWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateContextFromNativeWindow</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  from a native window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateFont" title="wx.GraphicsRenderer.CreateFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateFont</span></code></a></p></td>
+<td><p>Creates a native graphics font from a <a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a>  and a text colour.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateImageFromBitmap" title="wx.GraphicsRenderer.CreateImageFromBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateImageFromBitmap</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  from a <a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateLinearGradientBrush" title="wx.GraphicsRenderer.CreateLinearGradientBrush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateLinearGradientBrush</span></code></a></p></td>
+<td><p>Creates a native brush with a linear gradient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateMatrix" title="wx.GraphicsRenderer.CreateMatrix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateMatrix</span></code></a></p></td>
+<td><p>Creates a native affine transformation matrix from the passed in values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateMeasuringContext" title="wx.GraphicsRenderer.CreateMeasuringContext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateMeasuringContext</span></code></a></p></td>
+<td><p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  that can be used for measuring texts only.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreatePath" title="wx.GraphicsRenderer.CreatePath"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreatePath</span></code></a></p></td>
+<td><p>Creates a native graphics path which is initially empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreatePen" title="wx.GraphicsRenderer.CreatePen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreatePen</span></code></a></p></td>
+<td><p>Creates a native pen from a <a class="reference internal" href="wx.Pen.html#wx-pen"><span class="std std-ref">  wx.Pen</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateRadialGradientBrush" title="wx.GraphicsRenderer.CreateRadialGradientBrush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateRadialGradientBrush</span></code></a></p></td>
+<td><p>Creates a native brush with a radial gradient.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.CreateSubBitmap" title="wx.GraphicsRenderer.CreateSubBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateSubBitmap</span></code></a></p></td>
+<td><p>Extracts a sub-bitmap from an existing bitmap.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.GetCairoRenderer" title="wx.GraphicsRenderer.GetCairoRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetCairoRenderer</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.GraphicsRenderer.GetDefaultRenderer" title="wx.GraphicsRenderer.GetDefaultRenderer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDefaultRenderer</span></code></a></p></td>
+<td><p>Returns the default renderer on this platform.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.GraphicsRenderer">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">GraphicsRenderer</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A GraphicsRenderer is the instance corresponding to the rendering
+engine used.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateBitmap">
+<code class="sig-name descname">CreateBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bitmap</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates <a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a>  from an existing <a class="reference internal" href="wx.Bitmap.html#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>.</p>
+<p>Returns an invalid NullGraphicsBitmap on failure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bitmap</strong> (<a class="reference internal" href="wx.Bitmap.html#wx.Bitmap" title="wx.Bitmap"><em>wx.Bitmap</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateBitmapFromImage">
+<code class="sig-name descname">CreateBitmapFromImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateBitmapFromImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates <a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a>  from an existing <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>.</p>
+<p>This method is more efficient than converting <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  to <a class="reference internal" href="wx.Bitmap.html#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a>  first and then calling <a class="reference internal" href="#wx.GraphicsRenderer.CreateBitmap" title="wx.GraphicsRenderer.CreateBitmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateBitmap</span></code></a>   but otherwise has the same effect.</p>
+<p>Returns an invalid NullGraphicsBitmap on failure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<a class="reference internal" href="wx.Image.html#wx.Image" title="wx.Image"><em>wx.Image</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.3.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateBitmapFromNativeBitmap">
+<code class="sig-name descname">CreateBitmapFromNativeBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bitmap</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateBitmapFromNativeBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates <a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a>  from a native bitmap handle.</p>
+<p><em class="xref py py-obj">bitmap</em>  meaning is platform-dependent. Currently it’s a GDI+  <code class="docutils literal notranslate"><span class="pre">Bitmap</span></code>   pointer under MSW,   <code class="docutils literal notranslate"><span class="pre">CGImage</span></code>   pointer under OS X or a   <code class="docutils literal notranslate"><span class="pre">cairo_surface_t</span></code>   pointer when using Cairo under any platform.</p>
+<p>Notice that this method takes ownership of <em class="xref py py-obj">bitmap</em>, i.e. it will be destroyed when the returned <a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a>  is.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bitmap</strong> – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateBrush">
+<code class="sig-name descname">CreateBrush</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">brush</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateBrush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a native brush from a <a class="reference internal" href="wx.Brush.html#wx-brush"><span class="std std-ref">  wx.Brush</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>brush</strong> (<a class="reference internal" href="wx.Brush.html#wx.Brush" title="wx.Brush"><em>wx.Brush</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsBrush.html#wx-graphicsbrush"><span class="std std-ref">  wx.GraphicsBrush</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateContext">
+<code class="sig-name descname">CreateContext</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateContext" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CreateContext</strong> <em class="xref py py-obj">(self, window)</em></p>
+<p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  from a <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CreateContext</strong> <em class="xref py py-obj">(self, windowDC)</em></p>
+<p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  from a <a class="reference internal" href="wx.WindowDC.html#wx-windowdc"><span class="std std-ref">  wx.WindowDC</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>windowDC</strong> (<a class="reference internal" href="wx.WindowDC.html#wx.WindowDC" title="wx.WindowDC"><em>wx.WindowDC</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CreateContext</strong> <em class="xref py py-obj">(self, memoryDC)</em></p>
+<p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  from a <a class="reference internal" href="wx.MemoryDC.html#wx-memorydc"><span class="std std-ref">  wx.MemoryDC</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>memoryDC</strong> (<a class="reference internal" href="wx.MemoryDC.html#wx.MemoryDC" title="wx.MemoryDC"><em>wx.MemoryDC</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CreateContext</strong> <em class="xref py py-obj">(self, printerDC)</em></p>
+<p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  from a <a class="reference internal" href="wx.PrinterDC.html#wx-printerdc"><span class="std std-ref">  wx.PrinterDC</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>printerDC</strong> (<a class="reference internal" href="wx.PrinterDC.html#wx.PrinterDC" title="wx.PrinterDC"><em>wx.PrinterDC</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateContextFromImage">
+<code class="sig-name descname">CreateContextFromImage</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateContextFromImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  associated with a <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>.</p>
+<p>This function is used by <em class="xref py py-obj">Context.CreateFromImage()</em> and is not normally called directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<a class="reference internal" href="wx.Image.html#wx.Image" title="wx.Image"><em>wx.Image</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.3.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateContextFromNativeContext">
+<code class="sig-name descname">CreateContextFromNativeContext</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">context</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateContextFromNativeContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  from a native context.</p>
+<p>This native context must be a CGContextRef for Core Graphics, a Graphics pointer for GDIPlus, or a cairo_t pointer for cairo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateContextFromNativeWindow">
+<code class="sig-name descname">CreateContextFromNativeWindow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">window</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateContextFromNativeWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  from a native window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateFont">
+<code class="sig-name descname">CreateFont</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateFont" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CreateFont</strong> <em class="xref py py-obj">(self, font, col=BLACK)</em></p>
+<p>Creates a native graphics font from a <a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a>  and a text colour.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>font</strong> (<a class="reference internal" href="wx.Font.html#wx.Font" title="wx.Font"><em>wx.Font</em></a>) – </p></li>
+<li><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsFont.html#wx-graphicsfont"><span class="std std-ref">  wx.GraphicsFont</span></a></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>CreateFont</strong> <em class="xref py py-obj">(self, sizeInPixels, facename, flags=FONTFLAG_DEFAULT, col=BLACK)</em></p>
+<p>Creates a graphics font with the given characteristics.</p>
+<p>If possible, the <a class="reference internal" href="#wx.GraphicsRenderer.CreateFont" title="wx.GraphicsRenderer.CreateFont"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateFont</span></code></a>   overload taking <a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a>  should be used instead. The main advantage of this overload is that it can be used without X server connection under Unix when using Cairo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sizeInPixels</strong> (<em>float</em>) – Height of the font in user space units, i.e. normally pixels. Notice that this is different from the overload taking <a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a>  as <a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a>  size is specified in points.</p></li>
+<li><p><strong>facename</strong> (<em>string</em>) – The name of the font. The same font name might not be available under all platforms so the font name can also be empty to use the default platform font.</p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – Combination of FontFlag enum elements. Currently only  <code class="docutils literal notranslate"><span class="pre">FONTFLAG_ITALIC</span></code>   and   <code class="docutils literal notranslate"><span class="pre">FONTFLAG_BOLD</span></code>   are supported. By default the normal font version is used.</p></li>
+<li><p><strong>col</strong> (<a class="reference internal" href="wx.Colour.html#wx.Colour" title="wx.Colour"><em>wx.Colour</em></a>) – The font colour, black by default.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsFont.html#wx-graphicsfont"><span class="std std-ref">  wx.GraphicsFont</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.3.</span></p>
+</div>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateImageFromBitmap">
+<code class="sig-name descname">CreateImageFromBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bmp</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateImageFromBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>  from a <a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a>.</p>
+<p>This method is used by the more convenient <a class="reference internal" href="wx.GraphicsBitmap.html#wx.GraphicsBitmap.ConvertToImage" title="wx.GraphicsBitmap.ConvertToImage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.GraphicsBitmap.ConvertToImage</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bmp</strong> (<a class="reference internal" href="wx.GraphicsBitmap.html#wx.GraphicsBitmap" title="wx.GraphicsBitmap"><em>wx.GraphicsBitmap</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateLinearGradientBrush">
+<code class="sig-name descname">CreateLinearGradientBrush</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x1</em>, <em class="sig-param">y1</em>, <em class="sig-param">x2</em>, <em class="sig-param">y2</em>, <em class="sig-param">stops</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateLinearGradientBrush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a native brush with a linear gradient.</p>
+<p>Stops support is new since wxWidgets 2.9.1, previously only the start and end colours could be specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>y1</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>x2</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>y2</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>stops</strong> (<a class="reference internal" href="wx.GraphicsGradientStops.html#wx.GraphicsGradientStops" title="wx.GraphicsGradientStops"><em>wx.GraphicsGradientStops</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsBrush.html#wx-graphicsbrush"><span class="std std-ref">  wx.GraphicsBrush</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateMatrix">
+<code class="sig-name descname">CreateMatrix</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">a=1.0</em>, <em class="sig-param">b=0.0</em>, <em class="sig-param">c=0.0</em>, <em class="sig-param">d=1.0</em>, <em class="sig-param">tx=0.0</em>, <em class="sig-param">ty=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a native affine transformation matrix from the passed in values.</p>
+<p>The defaults result in an identity matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>b</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>c</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>d</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>tx</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>ty</strong> (<em>wx.Double</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsMatrix.html#wx-graphicsmatrix"><span class="std std-ref">  wx.GraphicsMatrix</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateMeasuringContext">
+<code class="sig-name descname">CreateMeasuringContext</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateMeasuringContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a>  that can be used for measuring texts only.</p>
+<p>No drawing commands are allowed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreatePath">
+<code class="sig-name descname">CreatePath</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreatePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a native graphics path which is initially empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.GraphicsPath.html#wx-graphicspath"><span class="std std-ref">  wx.GraphicsPath</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreatePen">
+<code class="sig-name descname">CreatePen</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pen</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreatePen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a native pen from a <a class="reference internal" href="wx.Pen.html#wx-pen"><span class="std std-ref">  wx.Pen</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pen</strong> (<a class="reference internal" href="wx.Pen.html#wx.Pen" title="wx.Pen"><em>wx.Pen</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsPen.html#wx-graphicspen"><span class="std std-ref">  wx.GraphicsPen</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateRadialGradientBrush">
+<code class="sig-name descname">CreateRadialGradientBrush</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">xo</em>, <em class="sig-param">yo</em>, <em class="sig-param">xc</em>, <em class="sig-param">yc</em>, <em class="sig-param">radius</em>, <em class="sig-param">stops</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateRadialGradientBrush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a native brush with a radial gradient.</p>
+<p>Stops support is new since wxWidgets 2.9.1, previously only the start and end colours could be specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xo</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>yo</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>xc</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>yc</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>radius</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>stops</strong> (<a class="reference internal" href="wx.GraphicsGradientStops.html#wx.GraphicsGradientStops" title="wx.GraphicsGradientStops"><em>wx.GraphicsGradientStops</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsBrush.html#wx-graphicsbrush"><span class="std std-ref">  wx.GraphicsBrush</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.CreateSubBitmap">
+<code class="sig-name descname">CreateSubBitmap</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">bitmap</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">w</em>, <em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.CreateSubBitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts a sub-bitmap from an existing bitmap.</p>
+<p>Currently this function is implemented in the native MSW and OS X versions but not when using Cairo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bitmap</strong> (<a class="reference internal" href="wx.GraphicsBitmap.html#wx.GraphicsBitmap" title="wx.GraphicsBitmap"><em>wx.GraphicsBitmap</em></a>) – </p></li>
+<li><p><strong>x</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>y</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>w</strong> (<em>wx.Double</em>) – </p></li>
+<li><p><strong>h</strong> (<em>wx.Double</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.GraphicsBitmap.html#wx-graphicsbitmap"><span class="std std-ref">  wx.GraphicsBitmap</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.GetCairoRenderer">
+<em class="property">static </em><code class="sig-name descname">GetCairoRenderer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.GetCairoRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-graphicsrenderer"><span class="std std-ref">  wx.GraphicsRenderer</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.GraphicsRenderer.GetDefaultRenderer">
+<em class="property">static </em><code class="sig-name descname">GetDefaultRenderer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.GraphicsRenderer.GetDefaultRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the default renderer on this platform.</p>
+<p>On OS X this is the Core Graphics (a.k.a. Quartz <code class="docutils literal notranslate"><span class="pre">2D</span></code>) renderer, on MSW the GDIPlus renderer, and on GTK we currently default to the cairo renderer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wx-graphicsrenderer"><span class="std std-ref">  wx.GraphicsRenderer</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

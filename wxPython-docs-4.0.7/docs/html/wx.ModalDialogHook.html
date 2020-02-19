@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.ModalDialogHook — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.MouseButton.enumeration.html" rel="next" title="wx.MouseButton"/>
+<link href="wx.MirrorDC.html" rel="prev" title="wx.MirrorDC"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.ModalDialogHook</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.MouseButton.enumeration.html" title="wx.MouseButton">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.MirrorDC.html" title="wx.MirrorDC">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.ModalDialogHook</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.ModalDialogHook.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-modaldialoghook">
+<span id="wx-modaldialoghook"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.ModalDialogHook</strong><a class="headerlink" href="#phoenix-title-wx-modaldialoghook" title="Permalink to this headline">¶</a></h1>
+<p>Allows intercepting all modal dialog calls.</p>
+<p>This class can be used to hook into normal modal dialog handling for some special needs. One of the most common use cases is for testing: as automatic tests can’t continue if a modal dialog is shown while they run, this class can be used to avoid showing the modal dialogs during unattended execution. <a class="reference internal" href="#wx-modaldialoghook"><span class="std std-ref">  wx.ModalDialogHook</span></a>  can also be used for disabling some background operation while a modal dialog is shown.</p>
+<p>To install a modal dialog hook, you need to derive your own class from this one and implement its pure virtual <a class="reference internal" href="#wx.ModalDialogHook.Enter" title="wx.ModalDialogHook.Enter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enter</span></code></a>  method. Then simply create an object of your class and call <a class="reference internal" href="#wx.ModalDialogHook.Register" title="wx.ModalDialogHook.Register"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Register</span></code></a>  on it to start receiving calls to your overridden <a class="reference internal" href="#wx.ModalDialogHook.Enter" title="wx.ModalDialogHook.Enter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enter</span></code></a>  (and possibly <a class="reference internal" href="wx.functions.html#wx.Exit" title="wx.Exit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Exit</span></code></a>     ) methods:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyModalDialogHook</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ModalDialogHook</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+
+        <span class="n">wx</span><span class="o">.</span><span class="n">ModalDialogHook</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">Enter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialog</span><span class="p">):</span>
+
+        <span class="c1"># Just for demonstration purposes, intercept all uses of</span>
+        <span class="c1"># wx.FileDialog. Notice that self doesn't provide any real</span>
+        <span class="c1"># sandboxing, of course, the program can still read and write</span>
+        <span class="c1"># files by not using wx.FileDialog to ask the user for their</span>
+        <span class="c1"># names.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dialog</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">):</span>
+
+            <span class="n">wx</span><span class="o">.</span><span class="n">LogError</span><span class="p">(</span><span class="s2">"Access to file system disallowed."</span><span class="p">)</span>
+
+            <span class="c1"># Skip showing the file dialog entirely.</span>
+            <span class="k">return</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lastEnter</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span>
+
+        <span class="c1"># Allow the dialog to be shown as usual.</span>
+        <span class="k">return</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_NONE</span>
+
+
+    <span class="k">def</span> <span class="nf">Exit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialog</span><span class="p">):</span>
+
+        <span class="c1"># Again, just for demonstration purposes, show how long did</span>
+        <span class="c1"># the user take to dismiss the dialog. Notice that we</span>
+        <span class="c1"># shouldn't use wx.LogMessage() here as self would result in</span>
+        <span class="c1"># another modal dialog call and hence infinite recursion. In</span>
+        <span class="c1"># general, the hooks should be as unintrusive as possible.</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">LogDebug</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> dialog took </span><span class="si">%s</span><span class="s2"> to be dismissed"</span><span class="p">,</span>
+                   <span class="n">dialog</span><span class="o">.</span><span class="n">GetClassInfo</span><span class="p">()</span><span class="o">.</span><span class="n">GetClassName</span><span class="p">(),</span>
+                   <span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastEnter</span><span class="p">)</span><span class="o">.</span><span class="n">Format</span><span class="p">())</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+
+    <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">myHook</span> <span class="o">=</span> <span class="n">MyModalDialogHook</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">myHook</span><span class="o">.</span><span class="n">Register</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ModalDialogHook</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ModalDialogHook" class="inheritance" src="_static/images/inheritance/wx.ModalDialogHook_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,5,167,35" href="wx.ModalDialogHook.html" id="node1" shape="rect" title="Allows intercepting all modal dialog calls."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ModalDialogHook.__init__" title="wx.ModalDialogHook.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default and trivial constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ModalDialogHook.Enter" title="wx.ModalDialogHook.Enter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enter</span></code></a></p></td>
+<td><p>Called by wxWidgets before showing any modal dialogs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ModalDialogHook.Exit" title="wx.ModalDialogHook.Exit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Exit</span></code></a></p></td>
+<td><p>Called by wxWidgets after dismissing the modal dialog.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.ModalDialogHook.Register" title="wx.ModalDialogHook.Register"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Register</span></code></a></p></td>
+<td><p>Register this hook as being active.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.ModalDialogHook.Unregister" title="wx.ModalDialogHook.Unregister"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Unregister</span></code></a></p></td>
+<td><p>Unregister this hook.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.ModalDialogHook">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">ModalDialogHook</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ModalDialogHook" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ModalDialogHook</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Allows intercepting all modal dialog calls.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.ModalDialogHook.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ModalDialogHook.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default and trivial constructor.</p>
+<p>The constructor doesn’t do anything, call <a class="reference internal" href="#wx.ModalDialogHook.Register" title="wx.ModalDialogHook.Register"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Register</span></code></a>   to make this hook active.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ModalDialogHook.Enter">
+<code class="sig-name descname">Enter</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dialog</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ModalDialogHook.Enter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by wxWidgets before showing any modal dialogs.</p>
+<p>Override this to be notified whenever a modal dialog is about to be shown.</p>
+<p>If the return value of this method is <code class="docutils literal notranslate"><span class="pre">ID_NONE</span></code>, the dialog is shown as usual and <a class="reference internal" href="wx.functions.html#wx.Exit" title="wx.Exit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Exit</span></code></a>       will be called when it is dismissed. If the return value is anything else, the dialog is not shown at all and its <a class="reference internal" href="wx.Dialog.html#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.ShowModal</span></code></a>   simply returns with the given result. In this case, <a class="reference internal" href="wx.functions.html#wx.Exit" title="wx.Exit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Exit</span></code></a>       won’t be called neither.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dialog</strong> (<a class="reference internal" href="wx.Dialog.html#wx.Dialog" title="wx.Dialog"><em>wx.Dialog</em></a>) – The dialog about to be shown, never <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">wx.ID_NONE</span></code> to continue with showing the dialog or anything else to skip showing the dialog and just return this value from its ShowModal().</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ModalDialogHook.Exit">
+<code class="sig-name descname">Exit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dialog</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ModalDialogHook.Exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by wxWidgets after dismissing the modal dialog.</p>
+<p>Notice that it won’t be called if <a class="reference internal" href="#wx.ModalDialogHook.Enter" title="wx.ModalDialogHook.Enter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enter</span></code></a>   hadn’t been called because another modal hook, registered after this one, intercepted the dialog or if our <a class="reference internal" href="#wx.ModalDialogHook.Enter" title="wx.ModalDialogHook.Enter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enter</span></code></a>   was called but returned a value different from <code class="docutils literal notranslate"><span class="pre">ID_NONE</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dialog</strong> (<a class="reference internal" href="wx.Dialog.html#wx.Dialog" title="wx.Dialog"><em>wx.Dialog</em></a>) – The dialog that was shown and dismissed, never <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ModalDialogHook.Register">
+<code class="sig-name descname">Register</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ModalDialogHook.Register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register this hook as being active.</p>
+<p>After registering the hook, its <a class="reference internal" href="#wx.ModalDialogHook.Enter" title="wx.ModalDialogHook.Enter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enter</span></code></a>   and <a class="reference internal" href="wx.functions.html#wx.Exit" title="wx.Exit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Exit</span></code></a>       methods will be called whenever a modal dialog is shown.</p>
+<p>Notice that the order of registration matters: the last hook registered is called first, and if its <a class="reference internal" href="#wx.ModalDialogHook.Enter" title="wx.ModalDialogHook.Enter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Enter</span></code></a>   returns a value different from <code class="docutils literal notranslate"><span class="pre">ID_NONE</span></code>, the subsequent hooks are skipped.</p>
+<p>It is an error to register the same hook twice.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.ModalDialogHook.Unregister">
+<code class="sig-name descname">Unregister</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.ModalDialogHook.Unregister" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unregister this hook.</p>
+<p>Notice that is done automatically from the destructor, so usually calling this method explicitly is unnecessary.</p>
+<p>The hook must be currently registered.</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

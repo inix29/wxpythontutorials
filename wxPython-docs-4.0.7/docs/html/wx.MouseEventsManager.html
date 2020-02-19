@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.MouseEventsManager — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.MouseState.html" rel="next" title="wx.MouseState"/>
+<link href="wx.MouseEvent.html" rel="prev" title="wx.MouseEvent"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.MouseEventsManager</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.MouseState.html" title="wx.MouseState">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.MouseEvent.html" title="wx.MouseEvent">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.MouseEventsManager</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.MouseEventsManager.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-mouseeventsmanager">
+<span id="wx-mouseeventsmanager"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.MouseEventsManager</strong><a class="headerlink" href="#phoenix-title-wx-mouseeventsmanager" title="Permalink to this headline">¶</a></h1>
+<p>Helper for handling mouse input events in windows containing multiple items.</p>
+<p>This class handles mouse events and synthesizes high-level notifications such as clicks and drag events from low level mouse button presses and mouse movement events. It is useful because handling the mouse events is less obvious than might seem at a first glance: for example, clicks on an object should only be generated if the mouse was both pressed and released over it and not just released (so it requires storing the previous state) and dragging shouldn’t start before the mouse moves away far enough.</p>
+<p>This class encapsulates all these dull details for controls containing multiple items which can be identified by a positive integer index and you just need to implement its pure virtual functions to use it.</p>
+<p>Notice that this class supposes that all items can be identified by an integer “index” but it doesn’t need to be an ordinal index of the item (although this is the most common case)</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>MouseEventsManager</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of MouseEventsManager" class="inheritance" src="_static/images/inheritance/wx.MouseEventsManager_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="15,160,207,189" href="wx.MouseEventsManager.html" id="node1" shape="rect" title="Helper for handling mouse input events in windows containing multiple items."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node2" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node4" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%"/>
+<col style="width: 57%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MouseEventsManager.__init__" title="wx.MouseEventsManager.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MouseEventsManager.Create" title="wx.MouseEventsManager.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Finishes initialization of the object created using default constructor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MouseEventsManager.MouseClickBegin" title="wx.MouseEventsManager.MouseClickBegin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseClickBegin</span></code></a></p></td>
+<td><p>May be overridden to update the state of an item when it is pressed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MouseEventsManager.MouseClickCancelled" title="wx.MouseEventsManager.MouseClickCancelled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseClickCancelled</span></code></a></p></td>
+<td><p>Must be overridden to reset the item appearance changed by <code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseClickBegin</span></code> .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MouseEventsManager.MouseClicked" title="wx.MouseEventsManager.MouseClicked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseClicked</span></code></a></p></td>
+<td><p>Must be overridden to react to mouse clicks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MouseEventsManager.MouseDragBegin" title="wx.MouseEventsManager.MouseDragBegin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragBegin</span></code></a></p></td>
+<td><p>Must be overridden to allow or deny dragging of the item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MouseEventsManager.MouseDragCancelled" title="wx.MouseEventsManager.MouseDragCancelled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragCancelled</span></code></a></p></td>
+<td><p>Must be overridden to handle cancellation of mouse dragging.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MouseEventsManager.MouseDragEnd" title="wx.MouseEventsManager.MouseDragEnd"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragEnd</span></code></a></p></td>
+<td><p>Must be overridden to handle item drop.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.MouseEventsManager.MouseDragging" title="wx.MouseEventsManager.MouseDragging"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragging</span></code></a></p></td>
+<td><p>Must be overridden to provide feed back while an item is being dragged.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.MouseEventsManager.MouseHitTest" title="wx.MouseEventsManager.MouseHitTest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseHitTest</span></code></a></p></td>
+<td><p>Must be overridden to return the item at the given position.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.MouseEventsManager">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">MouseEventsManager</code><span class="sig-paren">(</span><em class="sig-param">EvtHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MouseEventsManager</span><span class="p">()</span>
+
+<span class="n">MouseEventsManager</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Helper for handling mouse input events in windows containing multiple
+items.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.MouseEventsManager.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p>You must call <a class="reference internal" href="#wx.MouseEventsManager.Create" title="wx.MouseEventsManager.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Create</span></code></a>   to finish initializing the mouse events manager. If possible, avoid the use of this constructor in favour of the other one which fully initializes the mouse events manager immediately.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, win)</em></p>
+<p>Constructor creates the manager for the window.</p>
+<p>A mouse event manager is always associated with a window and must be destroyed by the window when it is destroyed (it doesn’t need to be allocated on the heap however).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MouseEventsManager.Create">
+<code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">win</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finishes initialization of the object created using default constructor.</p>
+<p>Currently always returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>win</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MouseEventsManager.MouseClickBegin">
+<code class="sig-name descname">MouseClickBegin</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.MouseClickBegin" title="Permalink to this definition">¶</a></dt>
+<dd><p>May be overridden to update the state of an item when it is pressed.</p>
+<p>This method is called when the item is becomes pressed and can be used to change its appearance when this happens. It is mostly useful for button-like items and doesn’t need to be overridden if the items shouldn’t change their appearance when pressed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>int</em>) – The item being pressed.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MouseEventsManager.MouseClickCancelled">
+<code class="sig-name descname">MouseClickCancelled</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.MouseClickCancelled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to reset the item appearance changed by <a class="reference internal" href="#wx.MouseEventsManager.MouseClickBegin" title="wx.MouseEventsManager.MouseClickBegin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseClickBegin</span></code></a> .</p>
+<p>This method is called if the mouse capture was lost while the item was pressed and must be overridden to restore the default item appearance if it was changed in <a class="reference internal" href="#wx.MouseEventsManager.MouseClickBegin" title="wx.MouseEventsManager.MouseClickBegin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseClickBegin</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MouseEventsManager.MouseDragCancelled" title="wx.MouseEventsManager.MouseDragCancelled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragCancelled</span></code></a> , <a class="reference internal" href="wx.MouseCaptureLostEvent.html#wx-mousecapturelostevent"><span class="std std-ref">  wx.MouseCaptureLostEvent</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MouseEventsManager.MouseClicked">
+<code class="sig-name descname">MouseClicked</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.MouseClicked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to react to mouse clicks.</p>
+<p>This method is called when the user clicked (i.e. pressed and released mouse over the <em class="xref py py-obj">same</em>  item) and should normally generate a notification about this click and return <code class="docutils literal notranslate"><span class="pre">True</span></code> if it was handled or <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise, determining whether the original mouse event is skipped or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>int</em>) – The item which was clicked.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the mouse event was processed and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MouseEventsManager.MouseDragBegin">
+<code class="sig-name descname">MouseDragBegin</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.MouseDragBegin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to allow or deny dragging of the item.</p>
+<p>This method is called when the user attempts to start dragging the given item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>int</em>) – The item which is going to be dragged.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The position from where it is being dragged.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> to allow the item to be dragged (in which case <a class="reference internal" href="#wx.MouseEventsManager.MouseDragging" title="wx.MouseEventsManager.MouseDragging"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragging</span></code></a>   and <a class="reference internal" href="#wx.MouseEventsManager.MouseDragEnd" title="wx.MouseEventsManager.MouseDragEnd"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragEnd</span></code></a>   will be called later, unless <a class="reference internal" href="#wx.MouseEventsManager.MouseDragCancelled" title="wx.MouseEventsManager.MouseDragCancelled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragCancelled</span></code></a>   is called instead) or <code class="docutils literal notranslate"><span class="pre">False</span></code> to forbid it.</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MouseEventsManager.MouseDragCancelled">
+<code class="sig-name descname">MouseDragCancelled</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.MouseDragCancelled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to handle cancellation of mouse dragging.</p>
+<p>This method is called when mouse capture is lost while dragging the item and normally should remove the visual feedback drawn by <a class="reference internal" href="#wx.MouseEventsManager.MouseDragging" title="wx.MouseEventsManager.MouseDragging"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragging</span></code></a>   as well as reset any internal variables set in <a class="reference internal" href="#wx.MouseEventsManager.MouseDragBegin" title="wx.MouseEventsManager.MouseDragBegin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragBegin</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.MouseCaptureLostEvent.html#wx-mousecapturelostevent"><span class="std std-ref">  wx.MouseCaptureLostEvent</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MouseEventsManager.MouseDragEnd">
+<code class="sig-name descname">MouseDragEnd</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.MouseDragEnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to handle item drop.</p>
+<p>This method is called when the mouse is released after dragging the item. Normally the item should be positioned at the new location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>int</em>) – The item which was dragged and now dropped.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The position at which the item was dropped.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MouseEventsManager.MouseDragBegin" title="wx.MouseEventsManager.MouseDragBegin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragBegin</span></code></a> , <a class="reference internal" href="#wx.MouseEventsManager.MouseDragging" title="wx.MouseEventsManager.MouseDragging"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragging</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MouseEventsManager.MouseDragging">
+<code class="sig-name descname">MouseDragging</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.MouseDragging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to provide feed back while an item is being dragged.</p>
+<p>This method is called while the item is being dragged and should normally update the feedback shown on screen (usually this is done using <a class="reference internal" href="wx.Overlay.html#wx-overlay"><span class="std std-ref">  wx.Overlay</span></a>).</p>
+<p>Notice that this method will never be called for the items for which <a class="reference internal" href="#wx.MouseEventsManager.MouseDragBegin" title="wx.MouseEventsManager.MouseDragBegin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragBegin</span></code></a>   returns <code class="docutils literal notranslate"><span class="pre">False</span></code>. Consequently, if <a class="reference internal" href="#wx.MouseEventsManager.MouseDragBegin" title="wx.MouseEventsManager.MouseDragBegin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragBegin</span></code></a>   always returns <code class="docutils literal notranslate"><span class="pre">False</span></code> you can do nothing in this method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>int</em>) – The item being dragged.</p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The current position of the item.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.MouseEventsManager.MouseDragEnd" title="wx.MouseEventsManager.MouseDragEnd"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MouseDragEnd</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.MouseEventsManager.MouseHitTest">
+<code class="sig-name descname">MouseHitTest</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pos</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.MouseEventsManager.MouseHitTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overridden to return the item at the given position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – The position to test, in physical coordinates.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The index of the item at the given position or <code class="docutils literal notranslate"><span class="pre">wx.NOT_FOUND</span></code> if there is no item there.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

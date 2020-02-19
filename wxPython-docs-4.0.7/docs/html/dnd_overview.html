@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Drag and Drop Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="events_overview.html" rel="next" title="Events and Event Handling"/>
+<link href="dialog_overview.html" rel="prev" title="Dialog Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Drag and Drop Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="events_overview.html" title="Events and Event Handling">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="dialog_overview.html" title="Dialog Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/dnd_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-drag-and-drop-overview">
+<span id="drag-and-drop-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Drag and Drop Overview</strong><a class="headerlink" href="#phoenix-title-drag-and-drop-overview" title="Permalink to this headline">¶</a></h1>
+<p>It may be noted that data transfer to and from the clipboard is quite
+similar to data transfer with drag and drop and the code to implement
+these two types is almost the same. In particular, both data transfer
+mechanisms store data in some kind of <a class="reference internal" href="wx.DataObject.html#wx-dataobject"><span class="std std-ref">  wx.DataObject</span></a> and identify
+its format(s) using the <a class="reference internal" href="wx.DataFormat.html#wx-dataformat"><span class="std std-ref">  wx.DataFormat</span></a> class.</p>
+<p>To be a <em class="xref py py-obj">drag</em> source, i.e. to provide the data which may be dragged
+by the user elsewhere, you should implement the following steps:</p>
+<ul>
+<li><p><strong>Preparation</strong>: First of all, a data object must be created and
+initialized with the data you wish to drag. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_data</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextDataObject</span><span class="p">(</span><span class="s2">"This text will be dragged."</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Drag start</strong>: To start the dragging process (typically in response
+to a mouse click) you must call <a class="reference internal" href="wx.DropSource.html#wx.DropSource.DoDragDrop" title="wx.DropSource.DoDragDrop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DropSource.DoDragDrop</span></code></a> like
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dragSource</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DropSource</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="n">dragSource</span><span class="o">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">my_data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">dragSource</span><span class="o">.</span><span class="n">DoDragDrop</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Dragging</strong>: The call to <em class="xref py py-obj">DoDragDrop()</em> blocks the program until
+the user releases the mouse button (unless you override the
+<a class="reference internal" href="wx.DropSource.html#wx.DropSource.GiveFeedback" title="wx.DropSource.GiveFeedback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DropSource.GiveFeedback</span></code></a> function to do something
+special). When the mouse moves in a window of a program which
+understands the same drag-and-drop protocol (any program under
+Windows or any program supporting the XDnD protocol under X
+Windows), the corresponding <a class="reference internal" href="wx.DropTarget.html#wx-droptarget"><span class="std std-ref">  wx.DropTarget</span></a> methods are called -
+see below.</p></li>
+<li><p><strong>Processing the result</strong>: <em class="xref py py-obj">DoDragDrop()</em> returns an effect code
+which is one of the values of <a class="reference internal" href="wx.DragResult.enumeration.html#wx-dragresult"><span class="std std-ref">  wx.DragResult</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">DragCopy</span><span class="p">:</span>
+    <span class="c1"># Copy the data</span>
+    <span class="n">CopyMyData</span><span class="p">()</span>
+
+<span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">DragMove</span><span class="p">:</span>
+    <span class="c1"># Move the data</span>
+    <span class="n">MoveMyData</span><span class="p">()</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Default, do nothing</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>To be a <em class="xref py py-obj">drop</em> target, i.e. to receive the data dropped by the user
+you should follow the instructions below:</p>
+<ul class="simple">
+<li><p><strong>Initialization</strong>: For a window to be a drop target, it needs to
+have an associated <a class="reference internal" href="wx.DropTarget.html#wx-droptarget"><span class="std std-ref">  wx.DropTarget</span></a> object. Normally, you will
+call <a class="reference internal" href="wx.Window.html#wx.Window.SetDropTarget" title="wx.Window.SetDropTarget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Window.SetDropTarget</span></code></a> during window creation
+associating your drop target with it. You must derive a class from
+<a class="reference internal" href="wx.DropTarget.html#wx-droptarget"><span class="std std-ref">  wx.DropTarget</span></a> and override its pure virtual
+methods. Alternatively, you may derive from <a class="reference internal" href="wx.TextDropTarget.html#wx-textdroptarget"><span class="std std-ref">  wx.TextDropTarget</span></a>
+or <a class="reference internal" href="wx.FileDropTarget.html#wx-filedroptarget"><span class="std std-ref">  wx.FileDropTarget</span></a> and override their <em class="xref py py-obj">OnDropText()</em> or
+<em class="xref py py-obj">OnDropFiles()</em> method.</p></li>
+<li><p><strong>Drop</strong>: When the user releases the mouse over a window, wxPython
+asks the associated <a class="reference internal" href="wx.DropTarget.html#wx-droptarget"><span class="std std-ref">  wx.DropTarget</span></a> object if it accepts the
+data. For this, a <a class="reference internal" href="wx.DataObject.html#wx-dataobject"><span class="std std-ref">  wx.DataObject</span></a> must be associated with the
+drop target and this data object will be responsible for the format
+negotiation between the drag source and the drop target. If all goes
+well, then <a class="reference internal" href="wx.DropTarget.html#wx.DropTarget.OnData" title="wx.DropTarget.OnData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DropTarget.OnData</span></code></a> will get called and the
+<a class="reference internal" href="wx.DataObject.html#wx-dataobject"><span class="std std-ref">  wx.DataObject</span></a> belonging to the drop target can get filled
+with data.</p></li>
+<li><p><strong>The end</strong>: After processing the data, <em class="xref py py-obj">DoDragDrop()</em> returns
+either <code class="docutils literal notranslate"><span class="pre">wx.DragCopy</span></code> or <code class="docutils literal notranslate"><span class="pre">wx.DragMove</span></code> depending on the state of
+the keys <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>, <code class="docutils literal notranslate"><span class="pre">Shift</span></code> and <code class="docutils literal notranslate"><span class="pre">Alt</span></code> at the moment of the
+drop. There is currently no way for the drop target to change this
+return code.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.adv.ExtHelpController — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.adv.GenericCalendarCtrl.html" rel="next" title="wx.adv.GenericCalendarCtrl"/>
+<link href="wx.adv.EditableListBox.html" rel="prev" title="wx.adv.EditableListBox"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.adv.1moduleindex.html">
+<strong>wx.adv</strong></a> »</li>
+<li class="reltitle"> <strong>wx.adv.ExtHelpController</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.adv.GenericCalendarCtrl.html" title="wx.adv.GenericCalendarCtrl">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.adv.EditableListBox.html" title="wx.adv.EditableListBox">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.adv.ExtHelpController</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.adv.ExtHelpController.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-adv-exthelpcontroller">
+<span id="wx-adv-exthelpcontroller"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.adv.ExtHelpController</strong><a class="headerlink" href="#phoenix-title-wx-adv-exthelpcontroller" title="Permalink to this headline">¶</a></h1>
+<p>This class implements help via an external browser.</p>
+<p>It requires the name of a directory containing the documentation and a file mapping numerical Section numbers to relative <code class="docutils literal notranslate"><span class="pre">URLS</span></code>.</p>
+<p>The map file contains two or three fields per line: numeric_id relative_URL [; comment/documentation]</p>
+<p>The numeric_id is the id used to look up the entry in <a class="reference internal" href="#wx.adv.ExtHelpController.DisplaySection" title="wx.adv.ExtHelpController.DisplaySection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisplaySection</span></code></a>/DisplayBlock(). The relative_URL is a filename of an html file, relative to the help directory. The optional comment/documentation field (after a ‘;’) is used for keyword searches, so some meaningful text here does not hurt. If the documentation itself contains a ‘;’, only the part before that will be displayed in the listbox, but all of it used for search.</p>
+<p>Lines starting with ‘;’ will be ignored.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><em class="xref py py-obj">HelpController</em></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>ExtHelpController</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of ExtHelpController" class="inheritance" src="_static/images/inheritance/wx.adv.ExtHelpController_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,160,197,189" href="wx.adv.ExtHelpController.html" id="node1" shape="rect" title="This class implements help via an external browser."/> <area alt="" coords="15,83,188,112" href="wx.HelpControllerBase.html" id="node2" shape="rect" title="This is the abstract base class a family of classes by which applications may invoke a help viewer to provide on-line help."/> <area alt="" coords="57,5,145,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.__init__" title="wx.adv.ExtHelpController.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.DisplayBlock" title="wx.adv.ExtHelpController.DisplayBlock"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisplayBlock</span></code></a></p></td>
+<td><p>Display help for URL (using DisplayHelp) or keyword (using KeywordSearch)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.DisplayContents" title="wx.adv.ExtHelpController.DisplayContents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisplayContents</span></code></a></p></td>
+<td><p>Display list of all help entries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.DisplayHelp" title="wx.adv.ExtHelpController.DisplayHelp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisplayHelp</span></code></a></p></td>
+<td><p>Call the browser using a relative URL.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.DisplaySection" title="wx.adv.ExtHelpController.DisplaySection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisplaySection</span></code></a></p></td>
+<td><p>Display help for id sectionNo.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.GetFrameParameters" title="wx.adv.ExtHelpController.GetFrameParameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrameParameters</span></code></a></p></td>
+<td><p>Obtains the latest settings used by the help frame and the help frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.Initialize" title="wx.adv.ExtHelpController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize</span></code></a></p></td>
+<td><p>This must be called to tell the controller where to find the documentation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.KeywordSearch" title="wx.adv.ExtHelpController.KeywordSearch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">KeywordSearch</span></code></a></p></td>
+<td><p>Search comment/documentation fields in map file and present a list to chose from.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.LoadFile" title="wx.adv.ExtHelpController.LoadFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LoadFile</span></code></a></p></td>
+<td><p>If file is “”, reloads file given in Initialize.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.OnQuit" title="wx.adv.ExtHelpController.OnQuit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnQuit</span></code></a></p></td>
+<td><p>Does nothing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.Quit" title="wx.adv.ExtHelpController.Quit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Quit</span></code></a></p></td>
+<td><p>Does nothing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.SetFrameParameters" title="wx.adv.ExtHelpController.SetFrameParameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFrameParameters</span></code></a></p></td>
+<td><p>Allows one to override the default settings for the help frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.SetViewer" title="wx.adv.ExtHelpController.SetViewer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetViewer</span></code></a></p></td>
+<td><p>Tell it which browser to use.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.adv.ExtHelpController.FrameParameters" title="wx.adv.ExtHelpController.FrameParameters"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FrameParameters</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.adv.ExtHelpController.GetFrameParameters" title="wx.adv.ExtHelpController.GetFrameParameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrameParameters</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.adv.ExtHelpController">
+<em class="property">class </em><code class="sig-prename descclassname">wx.adv.</code><code class="sig-name descname">ExtHelpController</code><span class="sig-paren">(</span><em class="sig-param">HelpControllerBase</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ExtHelpController</span><span class="p">(</span><span class="n">parentWindow</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class implements help via an external browser.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parentWindow=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parentWindow</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.DisplayBlock">
+<code class="sig-name descname">DisplayBlock</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">blockNo</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.DisplayBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display help for URL (using DisplayHelp) or keyword (using KeywordSearch)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blockNo</strong> (<em>long</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.DisplayContents">
+<code class="sig-name descname">DisplayContents</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.DisplayContents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display list of all help entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.DisplayHelp">
+<code class="sig-name descname">DisplayHelp</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">relativeURL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.DisplayHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call the browser using a relative URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>relativeURL</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.DisplaySection">
+<code class="sig-name descname">DisplaySection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.DisplaySection" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DisplaySection</strong> <em class="xref py py-obj">(self, sectionNo)</em></p>
+<p>Display help for id sectionNo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sectionNo</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>DisplaySection</strong> <em class="xref py py-obj">(self, section)</em></p>
+<p>Display help for id sectionNo <a class="reference internal" href="#wx.adv.ExtHelpController.DisplaySection" title="wx.adv.ExtHelpController.DisplaySection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisplaySection</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>section</strong> (<em>string</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.GetFrameParameters">
+<code class="sig-name descname">GetFrameParameters</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">size=None</em>, <em class="sig-param">pos=None</em>, <em class="sig-param">newFrameEachTime=None</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.GetFrameParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtains the latest settings used by the help frame and the help frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>newFrameEachTime</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Frame</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.Initialize">
+<code class="sig-name descname">Initialize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">dir</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.Initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This must be called to tell the controller where to find the documentation.</p>
+<p>If a locale is set, look in file/localename, i.e. If passed “/usr/local/myapp/help” and the current <a class="reference internal" href="wx.Locale.html#wx-locale"><span class="std std-ref">  wx.Locale</span></a>  is set to be “de”, then look in “/usr/local/myapp/help/de/” first and fall back to “/usr/local/myapp/help” if that doesn’t exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dir</strong> (<em>string</em>) – directory name where to fine the help files</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.KeywordSearch">
+<code class="sig-name descname">KeywordSearch</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">k</em>, <em class="sig-param">mode=HELP_SEARCH_ALL</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.KeywordSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search comment/documentation fields in map file and present a list to chose from.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k</strong> (<em>string</em>) – string to search for, empty string will list all entries</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="wx.HelpSearchMode.enumeration.html" title="HelpSearchMode"><em>HelpSearchMode</em></a>) – optional parameter allows the search the index (wx``wx.HELP_SEARCH_INDEX``) but this currently only supported by the <a class="reference internal" href="wx.html.HtmlHelpController.html#wx-html-htmlhelpcontroller"><span class="std std-ref">  wx.html.HtmlHelpController</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.LoadFile">
+<code class="sig-name descname">LoadFile</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">file=""</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.LoadFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>If file is “”, reloads file given in Initialize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>string</em>) – Name of help directory.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> on success</p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.OnQuit">
+<code class="sig-name descname">OnQuit</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.OnQuit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does nothing.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.Quit">
+<code class="sig-name descname">Quit</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.Quit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does nothing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.SetFrameParameters">
+<code class="sig-name descname">SetFrameParameters</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">titleFormat</em>, <em class="sig-param">size</em>, <em class="sig-param">pos=DefaultPosition</em>, <em class="sig-param">newFrameEachTime=False</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.SetFrameParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows one to override the default settings for the help frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>titleFormat</strong> (<em>string</em>) – </p></li>
+<li><p><strong>size</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+<li><p><strong>pos</strong> (<a class="reference internal" href="wx.Point.html#wx.Point" title="wx.Point"><em>wx.Point</em></a>) – </p></li>
+<li><p><strong>newFrameEachTime</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.adv.ExtHelpController.SetViewer">
+<code class="sig-name descname">SetViewer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">viewer=""</em>, <em class="sig-param">flags=HELP_NETSCAPE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.adv.ExtHelpController.SetViewer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell it which browser to use.</p>
+<p>The Netscape support will check whether Netscape is already running (by looking at the .netscape/lock file in the user’s home directory) and tell it to load the page into the existing window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>viewer</strong> (<em>string</em>) – The command to call a browser/html viewer.</p></li>
+<li><p><strong>flags</strong> (<em>long</em>) – Set this to <code class="docutils literal notranslate"><span class="pre">wx.HELP_NETSCAPE</span></code> if the browser is some variant of Netscape.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.adv.ExtHelpController.FrameParameters">
+<code class="sig-name descname">FrameParameters</code><a class="headerlink" href="#wx.adv.ExtHelpController.FrameParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.adv.ExtHelpController.GetFrameParameters" title="wx.adv.ExtHelpController.GetFrameParameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFrameParameters</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

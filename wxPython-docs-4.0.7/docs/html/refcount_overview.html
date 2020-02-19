@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Reference Counting Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="richtextctrl_overview.html" rel="next" title="RichTextCtrl Overview"/>
+<link href="printing_framework_overview.html" rel="prev" title="Printing Framework Overview"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Reference Counting Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="richtextctrl_overview.html" title="RichTextCtrl Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="printing_framework_overview.html" title="Printing Framework Overview">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Reference Counting Overview</strong></a><ul>
+<li><a class="reference internal" href="#why-you-shouldn-t-care-about-it">Why You Shouldn’t Care About It</a></li>
+<li><a class="reference internal" href="#object-comparison">Object Comparison</a></li>
+<li><a class="reference internal" href="#object-destruction">Object Destruction</a></li>
+<li><a class="reference internal" href="#list-of-reference-counted-classes">List of Reference Counted Classes</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/refcount_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-reference-counting-overview">
+<span id="reference-counting"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Reference Counting Overview</strong><a class="headerlink" href="#phoenix-title-reference-counting-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="why-you-shouldn-t-care-about-it">
+<h2>Why You Shouldn’t Care About It<a class="headerlink" href="#why-you-shouldn-t-care-about-it" title="Permalink to this headline">¶</a></h2>
+<p>Many of the C++ objects wrapped by wxPython use a technique known as
+<em class="xref py py-obj">reference counting</em>, also known as <em class="xref py py-obj">copy on write</em> (COW). This means
+that when an object is assigned to another, no copying really takes
+place. Only the reference count on the shared object data is
+incremented and both objects share the same data (a very fast
+operation).</p>
+<p>But as soon as one of the two (or more) objects is modified, the data
+has to be copied because the changes to one of the objects shouldn’t
+be seen in the others. As data copying only happens when the object is
+written to, this is known as COW.</p>
+<p>What is important to understand is that all this happens absolutely
+transparently to the class users and that whether an object is shared
+or not is not seen from the outside of the class - in any case, the
+result of any operation on it is the same.</p>
+</div>
+<div class="section" id="object-comparison">
+<h2>Object Comparison<a class="headerlink" href="#object-comparison" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code> operators of the reference counted classes
+always do a <em class="xref py py-obj">deep comparison</em>. This means that the equality operator
+will return true if two objects are identical and not only if they
+share the same data.</p>
+<p>Note that wxPython follows the STL philosophy: when a comparison
+operator cannot be implemented efficiently (like for e.g.
+<a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a>’s <code class="docutils literal notranslate"><span class="pre">==</span></code> operator which would need to compare the entire
+image’s data, pixel-by-pixel), it’s not implemented at all.  That’s
+why not all reference counted classes provide comparison operators.</p>
+<p>Also note that if you only need to do a shallow comparison between two
+<a class="reference internal" href="wx.Object.html#wx-object"><span class="std std-ref">  wx.Object</span></a> derived classes, you should not use the <code class="docutils literal notranslate"><span class="pre">==</span></code> and
+<code class="docutils literal notranslate"><span class="pre">!=</span></code> operators but rather the <a class="reference internal" href="wx.Object.html#wx.Object.IsSameAs" title="wx.Object.IsSameAs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Object.IsSameAs</span></code></a>() function.</p>
+</div>
+<div class="section" id="object-destruction">
+<h2>Object Destruction<a class="headerlink" href="#object-destruction" title="Permalink to this headline">¶</a></h2>
+<p>When a COW object destructor is called, it may not delete the data: if
+it’s shared, the destructor will just decrement the shared data’s
+reference count without destroying it. Only when the destructor of the
+last object owning the data is called, the data is really
+destroyed. Just like all other COW-things, this happens transparently
+to the class users so that you shouldn’t care about it.</p>
+</div>
+<div class="section" id="list-of-reference-counted-classes">
+<h2>List of Reference Counted Classes<a class="headerlink" href="#list-of-reference-counted-classes" title="Permalink to this headline">¶</a></h2>
+<p>The following classes in wxPython have efficient (i.e. fast)
+assignment operators and copy constructors since they are
+reference-counted:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="wx.AcceleratorTable.html#wx-acceleratortable"><span class="std std-ref">  wx.AcceleratorTable</span></a></p></li>
+<li><p><a class="reference internal" href="wx.adv.Animation.html#wx-adv-animation"><span class="std std-ref">  wx.adv.Animation</span></a></p></li>
+<li><p><a class="reference internal" href="wx.Bitmap.html#wx-bitmap"><span class="std std-ref">  wx.Bitmap</span></a></p></li>
+<li><p><a class="reference internal" href="wx.Brush.html#wx-brush"><span class="std std-ref">  wx.Brush</span></a></p></li>
+<li><p><a class="reference internal" href="wx.Cursor.html#wx-cursor"><span class="std std-ref">  wx.Cursor</span></a></p></li>
+<li><p><a class="reference internal" href="wx.Font.html#wx-font"><span class="std std-ref">  wx.Font</span></a></p></li>
+<li><p><a class="reference internal" href="wx.GraphicsBrush.html#wx-graphicsbrush"><span class="std std-ref">  wx.GraphicsBrush</span></a></p></li>
+<li><p><a class="reference internal" href="wx.GraphicsContext.html#wx-graphicscontext"><span class="std std-ref">  wx.GraphicsContext</span></a></p></li>
+<li><p><a class="reference internal" href="wx.GraphicsFont.html#wx-graphicsfont"><span class="std std-ref">  wx.GraphicsFont</span></a></p></li>
+<li><p><a class="reference internal" href="wx.GraphicsMatrix.html#wx-graphicsmatrix"><span class="std std-ref">  wx.GraphicsMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="wx.GraphicsPath.html#wx-graphicspath"><span class="std std-ref">  wx.GraphicsPath</span></a></p></li>
+<li><p><a class="reference internal" href="wx.GraphicsPen.html#wx-graphicspen"><span class="std std-ref">  wx.GraphicsPen</span></a></p></li>
+<li><p><a class="reference internal" href="wx.Icon.html#wx-icon"><span class="std std-ref">  wx.Icon</span></a></p></li>
+<li><p><a class="reference internal" href="wx.Image.html#wx-image"><span class="std std-ref">  wx.Image</span></a></p></li>
+<li><p><em class="xref py py-obj">wx.msw.Metafile</em></p></li>
+<li><p><a class="reference internal" href="wx.Palette.html#wx-palette"><span class="std std-ref">  wx.Palette</span></a></p></li>
+</ul>
+<p>Note that the list above reports the objects which are reference
+counted in all ports of wxPython; some ports may use this technique
+also for other classes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

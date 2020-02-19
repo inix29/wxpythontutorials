@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.Process — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.ProcessEvent.html" rel="next" title="wx.ProcessEvent"/>
+<link href="wx.Printout.html" rel="prev" title="wx.Printout"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.Process</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.ProcessEvent.html" title="wx.ProcessEvent">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.Printout.html" title="wx.Printout">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.Process</strong></a><ul>
+<li><a class="reference internal" href="#events-events-emitted-by-this-class"> Events Emitted by this Class</a></li>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.Process.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-process">
+<span id="wx-process"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.Process</strong><a class="headerlink" href="#phoenix-title-wx-process" title="Permalink to this headline">¶</a></h1>
+<p>The objects of this class are used in conjunction with the <a class="reference internal" href="wx.functions.html#wx.Execute" title="wx.Execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Execute</span></code></a>       function.</p>
+<p>When a <a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  object is passed to <a class="reference internal" href="wx.functions.html#wx.Execute" title="wx.Execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Execute</span></code></a>     , its <a class="reference internal" href="#wx.Process.OnTerminate" title="wx.Process.OnTerminate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnTerminate</span></code></a>  virtual method is called when the process terminates. This allows the program to be (asynchronously) notified about the process termination and also retrieve its exit status which is unavailable from <a class="reference internal" href="wx.functions.html#wx.Execute" title="wx.Execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Execute</span></code></a>       in the case of asynchronous execution.</p>
+<p><a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  also supports <code class="docutils literal notranslate"><span class="pre">IO</span></code> redirection of the child process. For this, you have to call its <a class="reference internal" href="#wx.Process.Redirect" title="wx.Process.Redirect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Redirect</span></code></a>  method before passing it to <a class="reference internal" href="wx.functions.html#wx.Execute" title="wx.Execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Execute</span></code></a>     . If the child process was launched successfully, <a class="reference internal" href="#wx.Process.GetInputStream" title="wx.Process.GetInputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetInputStream</span></code></a>, <a class="reference internal" href="#wx.Process.GetOutputStream" title="wx.Process.GetOutputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOutputStream</span></code></a>  and <a class="reference internal" href="#wx.Process.GetErrorStream" title="wx.Process.GetErrorStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetErrorStream</span></code></a>  can then be used to retrieve the streams corresponding to the child process standard output, input and error output respectively.</p>
+<div class="section" id="events-events-emitted-by-this-class">
+<span id="process-events"></span><h2><a class="reference internal" href="_images/events.png"><img alt="events" class="align-middle" src="_images/events.png" style="width: 32px;"/></a> Events Emitted by this Class<a class="headerlink" href="#events-events-emitted-by-this-class" title="Permalink to this headline">¶</a></h2>
+<p>Handlers bound for the following event types will receive a <a class="reference internal" href="wx.ProcessEvent.html#wx-processevent"><span class="std std-ref">  wx.ProcessEvent</span></a> parameter.</p>
+<ul class="simple">
+<li><p>EVT_END_PROCESS: Process a  <code class="docutils literal notranslate"><span class="pre">wxEVT_END_PROCESS</span></code>   event, sent by  <a class="reference internal" href="#wx.Process.OnTerminate" title="wx.Process.OnTerminate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Process.OnTerminate</span></code></a>   upon the external process termination.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>Process</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of Process" class="inheritance" src="_static/images/inheritance/wx.Process_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="63,160,159,189" href="wx.Process.html" id="node1" shape="rect" title="The objects of this class are used in conjunction with the wx.Execute  function."/> <area alt="" coords="51,83,170,112" href="wx.EvtHandler.html" id="node2" shape="rect" title="A class that can handle events from the windowing system."/> <area alt="" coords="5,5,93,35" href="wx.Object.html" id="node3" shape="rect" title="This is the root class of many of the wxWidgets classes."/> <area alt="" coords="118,5,229,35" href="wx.Trackable.html" id="node4" shape="rect" title="Add-on base class for a trackable object."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%"/>
+<col style="width: 78%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.__init__" title="wx.Process.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructs a process object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.CloseOutput" title="wx.Process.CloseOutput"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CloseOutput</span></code></a></p></td>
+<td><p>Closes the output stream (the one connected to the stdin of the child process).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.Detach" title="wx.Process.Detach"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Detach</span></code></a></p></td>
+<td><p>Detaches this event handler from the parent specified in the constructor (see <a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.Unlink" title="wx.EvtHandler.Unlink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.Unlink</span></code></a>   for a similar but not identical function).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.Exists" title="wx.Process.Exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Exists</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given process exists in the system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.GetErrorStream" title="wx.Process.GetErrorStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetErrorStream</span></code></a></p></td>
+<td><p>Returns an input stream which corresponds to the standard error output (stderr) of the child process.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.GetInputStream" title="wx.Process.GetInputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetInputStream</span></code></a></p></td>
+<td><p>It returns an input stream corresponding to the standard output stream of the subprocess.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.GetOutputStream" title="wx.Process.GetOutputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOutputStream</span></code></a></p></td>
+<td><p>It returns an output stream corresponding to the input stream of the subprocess.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.GetPid" title="wx.Process.GetPid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPid</span></code></a></p></td>
+<td><p>Returns the process <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the process launched by <code class="xref py py-meth docutils literal notranslate"><span class="pre">Open</span></code>   or set by <a class="reference internal" href="wx.functions.html#wx.Execute" title="wx.Execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Execute</span></code></a>       (if you passed this <a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  as argument).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.IsErrorAvailable" title="wx.Process.IsErrorAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsErrorAvailable</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is data to be read on the child process standard error stream.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.IsInputAvailable" title="wx.Process.IsInputAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsInputAvailable</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is data to be read on the child process standard output stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.IsInputOpened" title="wx.Process.IsInputOpened"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsInputOpened</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child process standard output stream is opened.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.Kill" title="wx.Process.Kill"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Kill</span></code></a></p></td>
+<td><p>Send the specified signal to the given process.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.OnTerminate" title="wx.Process.OnTerminate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OnTerminate</span></code></a></p></td>
+<td><p>It is called when the process with the pid <em class="xref py py-obj">pid</em>  finishes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.Open" title="wx.Process.Open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Open</span></code></a></p></td>
+<td><p>This static method replaces the standard  <code class="docutils literal notranslate"><span class="pre">popen()</span></code>   function: it launches the process specified by the  <code class="xref py py-obj docutils literal notranslate"><span class="pre">cmd</span></code>  parameter and returns the <a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  object which can be used to retrieve the streams connected to the standard input, output and error output of the child process.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.Redirect" title="wx.Process.Redirect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Redirect</span></code></a></p></td>
+<td><p>Turns on redirection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.SetPriority" title="wx.Process.SetPriority"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetPriority</span></code></a></p></td>
+<td><p>Sets the priority of the process, between 0 (lowest) and 100 (highest).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.ErrorStream" title="wx.Process.ErrorStream"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ErrorStream</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Process.GetErrorStream" title="wx.Process.GetErrorStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetErrorStream</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.InputStream" title="wx.Process.InputStream"><code class="xref py py-attr docutils literal notranslate"><span class="pre">InputStream</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Process.GetInputStream" title="wx.Process.GetInputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetInputStream</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.Process.OutputStream" title="wx.Process.OutputStream"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OutputStream</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Process.GetOutputStream" title="wx.Process.GetOutputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOutputStream</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.Process.Pid" title="wx.Process.Pid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Pid</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.Process.GetPid" title="wx.Process.GetPid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPid</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.Process">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">Process</code><span class="sig-paren">(</span><em class="sig-param">EvtHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Process</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">Process</span><span class="p">(</span><span class="n">flags</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The objects of this class are used in conjunction with the Execute()
+function.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.Process.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, parent=None, id=-1)</em></p>
+<p>Constructs a process object.</p>
+<p><em class="xref py py-obj">id</em>  is only used in the case you want to use wxWidgets events. It identifies this object, or another window that will receive the event.</p>
+<p>If the <em class="xref py py-obj">parent</em>  parameter is different from <code class="docutils literal notranslate"><span class="pre">None</span></code>, it will receive a  <code class="docutils literal notranslate"><span class="pre">wxEVT_END_PROCESS</span></code>   notification event (you should insert   <code class="docutils literal notranslate"><span class="pre">EVT_END_PROCESS</span></code>   macro in the event table of the parent to handle it) with the given  <em class="xref py py-obj">id</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler" title="wx.EvtHandler"><em>wx.EvtHandler</em></a>) – The event handler parent.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – id of an event.</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, flags)</em></p>
+<p>Creates an object without any associated parent (and hence no id neither) but allows specifying the <em class="xref py py-obj">flags</em>  which can have the value of  <code class="docutils literal notranslate"><span class="pre">PROCESS_DEFAULT</span></code>   or   <code class="docutils literal notranslate"><span class="pre">PROCESS_REDIRECT</span></code> .</p>
+<p>Specifying the former value has no particular effect while using the latter one is equivalent to calling <a class="reference internal" href="#wx.Process.Redirect" title="wx.Process.Redirect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Redirect</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flags</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.CloseOutput">
+<code class="sig-name descname">CloseOutput</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.CloseOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the output stream (the one connected to the stdin of the child process).</p>
+<p>This function can be used to indicate to the child process that there is no more data to be read - usually, a filter program will only terminate when the input stream is closed.</p>
+<p>Notice that <a class="reference internal" href="#wx.Process.GetOutputStream" title="wx.Process.GetOutputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOutputStream</span></code></a>   will return <code class="docutils literal notranslate"><span class="pre">None</span></code> after the output stream is closed.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.Detach">
+<code class="sig-name descname">Detach</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.Detach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detaches this event handler from the parent specified in the constructor (see <a class="reference internal" href="wx.EvtHandler.html#wx.EvtHandler.Unlink" title="wx.EvtHandler.Unlink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.EvtHandler.Unlink</span></code></a>   for a similar but not identical function).</p>
+<p>Normally, a <a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  object is deleted by its parent when it receives the notification about the process termination.</p>
+<p>However, it might happen that the parent object is destroyed before the external process is terminated (e.g. a window from which this external process was launched is closed by the user) and in this case it <strong>should</strong>  not delete the <a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  object, but <strong>should</strong>  call <a class="reference internal" href="#wx.Process.Detach" title="wx.Process.Detach"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Detach</span></code></a>   instead.</p>
+<p>After the <a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  object is detached from its parent, no notification events will be sent to the parent and the object will delete itself upon reception of the process termination notification.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.Exists">
+<em class="property">static </em><code class="sig-name descname">Exists</code><span class="sig-paren">(</span><em class="sig-param">pid</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.Exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given process exists in the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pid</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.functions.html#wx.Kill" title="wx.Kill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Kill</span></code></a>     , <span class="xref std std-ref">Exec sample</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.GetErrorStream">
+<code class="sig-name descname">GetErrorStream</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.GetErrorStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an input stream which corresponds to the standard error output (stderr) of the child process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.InputStream.html#wx-inputstream"><span class="std std-ref">  wx.InputStream</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.GetInputStream">
+<code class="sig-name descname">GetInputStream</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.GetInputStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>It returns an input stream corresponding to the standard output stream of the subprocess.</p>
+<p>If it is <code class="docutils literal notranslate"><span class="pre">None</span></code>, you have not turned on the redirection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.InputStream.html#wx-inputstream"><span class="std std-ref">  wx.InputStream</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Process.Redirect" title="wx.Process.Redirect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Redirect</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.GetOutputStream">
+<code class="sig-name descname">GetOutputStream</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.GetOutputStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>It returns an output stream corresponding to the input stream of the subprocess.</p>
+<p>If it is <code class="docutils literal notranslate"><span class="pre">None</span></code>, you have not turned on the redirection or already called <a class="reference internal" href="#wx.Process.CloseOutput" title="wx.Process.CloseOutput"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CloseOutput</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.OutputStream.html#wx-outputstream"><span class="std std-ref">  wx.OutputStream</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Process.Redirect" title="wx.Process.Redirect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Redirect</span></code></a> .</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.GetPid">
+<code class="sig-name descname">GetPid</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.GetPid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the process <code class="docutils literal notranslate"><span class="pre">ID</span></code> of the process launched by <a class="reference internal" href="#wx.Process.Open" title="wx.Process.Open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Open</span></code></a>   or set by <a class="reference internal" href="wx.functions.html#wx.Execute" title="wx.Execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Execute</span></code></a>       (if you passed this <a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  as argument).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">long</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.IsErrorAvailable">
+<code class="sig-name descname">IsErrorAvailable</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.IsErrorAvailable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is data to be read on the child process standard error stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Process.IsInputAvailable" title="wx.Process.IsInputAvailable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsInputAvailable</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.IsInputAvailable">
+<code class="sig-name descname">IsInputAvailable</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.IsInputAvailable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is data to be read on the child process standard output stream.</p>
+<p>This allows writing simple (and extremely inefficient) polling-based code waiting for a better mechanism in future wxWidgets versions. See the <span class="xref std std-ref">exec sample</span>  for an example of using this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Process.IsInputOpened" title="wx.Process.IsInputOpened"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsInputOpened</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.IsInputOpened">
+<code class="sig-name descname">IsInputOpened</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.IsInputOpened" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the child process standard output stream is opened.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.Kill">
+<em class="property">static </em><code class="sig-name descname">Kill</code><span class="sig-paren">(</span><em class="sig-param">pid</em>, <em class="sig-param">sig=SIGTERM</em>, <em class="sig-param">flags=KILL_NOCHILDREN</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.Kill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the specified signal to the given process.</p>
+<p>Possible signal values can be one of the <a class="reference internal" href="wx.Signal.enumeration.html#wx-signal"><span class="std std-ref">  wx.Signal</span></a>  enumeration values.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">SIGNONE</span></code> ,   <code class="docutils literal notranslate"><span class="pre">SIGKILL</span></code>   and   <code class="docutils literal notranslate"><span class="pre">SIGTERM</span></code>   have the same meaning under both Unix and Windows but all the other signals are equivalent to   <code class="docutils literal notranslate"><span class="pre">SIGTERM</span></code>   under Windows.</p>
+</div></blockquote>
+<p>The <em class="xref py py-obj">flags</em>  parameter can be  <code class="docutils literal notranslate"><span class="pre">KILL_NOCHILDREN</span></code>   (the default), or   <code class="docutils literal notranslate"><span class="pre">KILL_CHILDREN</span></code> , in which case the child processes of this process will be killed too. Note that under Unix, for   <code class="docutils literal notranslate"><span class="pre">KILL_CHILDREN</span></code>   to work you should have created the process passing   <code class="docutils literal notranslate"><span class="pre">EXEC_MAKE_GROUP_LEADER</span></code> .</p>
+<p>Returns the element of <a class="reference internal" href="wx.KillError.enumeration.html#wx-killerror"><span class="std std-ref">  wx.KillError</span></a>  enum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pid</strong> (<em>int</em>) – </p></li>
+<li><p><strong>sig</strong> (<a class="reference internal" href="wx.Signal.enumeration.html" title="Signal"><em>Signal</em></a>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="wx.KillError.enumeration.html#wx-killerror"><span class="std std-ref">  wx.KillError</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.Process.Exists" title="wx.Process.Exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Exists</span></code></a> , <a class="reference internal" href="wx.functions.html#wx.Kill" title="wx.Kill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Kill</span></code></a>     , <span class="xref std std-ref">Exec sample</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.OnTerminate">
+<code class="sig-name descname">OnTerminate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">pid</em>, <em class="sig-param">status</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.OnTerminate" title="Permalink to this definition">¶</a></dt>
+<dd><p>It is called when the process with the pid <em class="xref py py-obj">pid</em>  finishes.</p>
+<p>It raises a wxWidgets event when it isn’t overridden.</p>
+<p>Note that this function won’t be called if you <a class="reference internal" href="wx.functions.html#wx.Kill" title="wx.Kill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Kill</span></code></a>       the process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pid</strong> (<em>int</em>) – The pid of the process which has just terminated.</p></li>
+<li><p><strong>status</strong> (<em>int</em>) – The exit code of the process.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.Open">
+<em class="property">static </em><code class="sig-name descname">Open</code><span class="sig-paren">(</span><em class="sig-param">cmd</em>, <em class="sig-param">flags=EXEC_ASYNC</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.Open" title="Permalink to this definition">¶</a></dt>
+<dd><p>This static method replaces the standard  <code class="docutils literal notranslate"><span class="pre">popen()</span></code>   function: it launches the process specified by the  <code class="xref py py-obj docutils literal notranslate"><span class="pre">cmd</span></code>  parameter and returns the <a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  object which can be used to retrieve the streams connected to the standard input, output and error output of the child process.</p>
+<p>If the process couldn’t be launched, <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> (<em>string</em>) – The command to execute, including optional arguments.</p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – The flags to pass to <a class="reference internal" href="wx.functions.html#wx.Execute" title="wx.Execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Execute</span></code></a>     . Note:  <code class="docutils literal notranslate"><span class="pre">EXEC_SYNC</span></code>   should not be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A pointer to new <a class="reference internal" href="#wx-process"><span class="std std-ref">  wx.Process</span></a>  object or <code class="docutils literal notranslate"><span class="pre">None</span></code> on error.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In any case the returned pointer should <strong>not</strong>  be deleted, rather the process object will be destroyed automatically when the child process terminates. This does mean that the child process should be told to quit before the main program exits to avoid memory leaks.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.functions.html#wx.Execute" title="wx.Execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Execute</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.Redirect">
+<code class="sig-name descname">Redirect</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.Redirect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns on redirection.</p>
+<p><a class="reference internal" href="wx.functions.html#wx.Execute" title="wx.Execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Execute</span></code></a>       will try to open a couple of pipes to catch the subprocess stdio. The caught input stream is returned by <a class="reference internal" href="#wx.Process.GetOutputStream" title="wx.Process.GetOutputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOutputStream</span></code></a>   as a non-seekable stream. The caught output stream is returned by <a class="reference internal" href="#wx.Process.GetInputStream" title="wx.Process.GetInputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetInputStream</span></code></a>   as a non-seekable stream.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.Process.SetPriority">
+<code class="sig-name descname">SetPriority</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">priority</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.Process.SetPriority" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the priority of the process, between 0 (lowest) and 100 (highest).</p>
+<p>It can only be set before the process is created.</p>
+<p>The following symbolic constants can be used in addition to raw values in 0..100 range:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PRIORITY_MIN</span></code>:  0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRIORITY_DEFAULT</span></code>:  50</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRIORITY_MAX</span></code>:  100</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>priority</strong> – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.5.</span></p>
+</div>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.Process.ErrorStream">
+<code class="sig-name descname">ErrorStream</code><a class="headerlink" href="#wx.Process.ErrorStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Process.GetErrorStream" title="wx.Process.GetErrorStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetErrorStream</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Process.InputStream">
+<code class="sig-name descname">InputStream</code><a class="headerlink" href="#wx.Process.InputStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Process.GetInputStream" title="wx.Process.GetInputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetInputStream</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Process.OutputStream">
+<code class="sig-name descname">OutputStream</code><a class="headerlink" href="#wx.Process.OutputStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Process.GetOutputStream" title="wx.Process.GetOutputStream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOutputStream</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.Process.Pid">
+<code class="sig-name descname">Pid</code><a class="headerlink" href="#wx.Process.Pid" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.Process.GetPid" title="wx.Process.GetPid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetPid</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.xml.XmlDocument — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.xml.XmlDocumentLoadFlag.enumeration.html" rel="next" title="wx.xml.XmlDocumentLoadFlag"/>
+<link href="wx.xml.XmlAttribute.html" rel="prev" title="wx.xml.XmlAttribute"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.xml.1moduleindex.html">
+<strong>wx.xml</strong></a> »</li>
+<li class="reltitle"> <strong>wx.xml.XmlDocument</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.xml.XmlDocumentLoadFlag.enumeration.html" title="wx.xml.XmlDocumentLoadFlag">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.xml.XmlAttribute.html" title="wx.xml.XmlAttribute">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.xml.XmlDocument</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.xml.XmlDocument.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-xml-xmldocument">
+<span id="wx-xml-xmldocument"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.xml.XmlDocument</strong><a class="headerlink" href="#phoenix-title-wx-xml-xmldocument" title="Permalink to this headline">¶</a></h1>
+<p>This class holds <code class="docutils literal notranslate"><span class="pre">XML</span></code> data/document as parsed by <code class="docutils literal notranslate"><span class="pre">XML</span></code> parser in the root node.</p>
+<p><a class="reference internal" href="#wx-xml-xmldocument"><span class="std std-ref">  wx.xml.XmlDocument</span></a>  internally uses the expat library which comes with wxWidgets to parse the given stream.</p>
+<p>A simple example of using <code class="docutils literal notranslate"><span class="pre">XML</span></code> classes is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ScanDocument</span><span class="p">():</span>
+
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">XmlDocument</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">doc</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"myfile.xml"</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># start processing the XML file</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">GetRoot</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">"myroot-node"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># examine prologue</span>
+    <span class="n">prolog</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">GetDocumentNode</span><span class="p">()</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">prolog</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">prolog</span><span class="o">.</span><span class="n">GetType</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">XML_PI_NODE</span> <span class="ow">and</span> <span class="n">prolog</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"target"</span><span class="p">:</span>
+
+            <span class="c1"># process Process Instruction contents</span>
+            <span class="n">pi</span> <span class="o">=</span> <span class="n">prolog</span><span class="o">.</span><span class="n">GetContent</span><span class="p">()</span>
+
+            <span class="c1"># Other code here...</span>
+
+    <span class="n">child</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">GetRoot</span><span class="p">()</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">child</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"tag1"</span><span class="p">:</span>
+
+            <span class="c1"># process text enclosed by tag1/tag1</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">GetNodeContent</span><span class="p">()</span>
+
+            <span class="c1"># Other code here...</span>
+
+            <span class="c1"># process attributes of tag1</span>
+            <span class="n">attrvalue1</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">"attr1"</span><span class="p">,</span> <span class="s2">"default-value"</span><span class="p">)</span>
+            <span class="n">attrvalue2</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">"attr2"</span><span class="p">,</span> <span class="s2">"default-value"</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">child</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"tag2"</span><span class="p">:</span>
+
+            <span class="c1"># process tag2 ...</span>
+            <span class="n">attrvalue3</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">"attr3"</span><span class="p">,</span> <span class="s2">"default-value"</span><span class="p">)</span>
+
+
+        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">GetNext</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note that if you want to preserve the original formatting of the loaded file including whitespaces and indentation, you need to turn off whitespace-only textnode removal and automatic indentation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">XmlDocument</span><span class="p">()</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"myfile.xml"</span><span class="p">,</span> <span class="s2">"UTF-8"</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">XMLDOC_KEEP_WHITESPACE_NODES</span><span class="p">)</span>
+
+<span class="c1"># myfile2.xml will be identical to myfile.xml saving it self way:</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="s2">"myfile2.xml"</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">XML_NO_INDENTATION</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using default parameters, you will get a reformatted document which in general is different from the original loaded content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">XmlDocument</span><span class="p">()</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="s2">"myfile.xml"</span><span class="p">)</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="s2">"myfile2.xml"</span><span class="p">)</span>  <span class="c1"># myfile2.xml != myfile.xml</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a>, <a class="reference internal" href="wx.xml.XmlAttribute.html#wx-xml-xmlattribute"><span class="std std-ref">  wx.xml.XmlAttribute</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>XmlDocument</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of XmlDocument" class="inheritance" src="_static/images/inheritance/wx.xml.XmlDocument_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,175,112" href="wx.xml.XmlDocument.html" id="node1" shape="rect" title="This class holds ``XML`` data/document as parsed by ``XML`` parser in the root node."/> <area alt="" coords="46,5,134,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.__init__" title="wx.xml.XmlDocument.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Default constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.AppendToProlog" title="wx.xml.XmlDocument.AppendToProlog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppendToProlog</span></code></a></p></td>
+<td><p>Appends a Process Instruction or Comment node to the document prologue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.DetachDocumentNode" title="wx.xml.XmlDocument.DetachDocumentNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DetachDocumentNode</span></code></a></p></td>
+<td><p>Detaches the document node and returns it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.DetachRoot" title="wx.xml.XmlDocument.DetachRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DetachRoot</span></code></a></p></td>
+<td><p>Detaches the root entity node and returns it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.GetDocumentNode" title="wx.xml.XmlDocument.GetDocumentNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDocumentNode</span></code></a></p></td>
+<td><p>Returns the document node of the document.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.GetFileEncoding" title="wx.xml.XmlDocument.GetFileEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFileEncoding</span></code></a></p></td>
+<td><p>Returns encoding of document (may be empty).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.GetLibraryVersionInfo" title="wx.xml.XmlDocument.GetLibraryVersionInfo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetLibraryVersionInfo</span></code></a></p></td>
+<td><p>Get expat library version information.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.GetRoot" title="wx.xml.XmlDocument.GetRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRoot</span></code></a></p></td>
+<td><p>Returns the root element node of the document.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.GetVersion" title="wx.xml.XmlDocument.GetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVersion</span></code></a></p></td>
+<td><p>Returns the version of document.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.IsOk" title="wx.xml.XmlDocument.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsOk</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the document has been loaded successfully.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.Load" title="wx.xml.XmlDocument.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a></p></td>
+<td><p>Parses <em class="xref py py-obj">filename</em>  as an xml document and loads its data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.Save" title="wx.xml.XmlDocument.Save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Save</span></code></a></p></td>
+<td><p>Saves <code class="docutils literal notranslate"><span class="pre">XML</span></code> tree creating a file named with given string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.SetDocumentNode" title="wx.xml.XmlDocument.SetDocumentNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDocumentNode</span></code></a></p></td>
+<td><p>Sets the document node of this document.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.SetFileEncoding" title="wx.xml.XmlDocument.SetFileEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFileEncoding</span></code></a></p></td>
+<td><p>Sets the encoding of the file which will be used to save the document.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.SetRoot" title="wx.xml.XmlDocument.SetRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRoot</span></code></a></p></td>
+<td><p>Sets the root element node of this document.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.SetVersion" title="wx.xml.XmlDocument.SetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetVersion</span></code></a></p></td>
+<td><p>Sets the version of the <code class="docutils literal notranslate"><span class="pre">XML</span></code> file which will be used to save the document.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%"/>
+<col style="width: 54%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.DocumentNode" title="wx.xml.XmlDocument.DocumentNode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DocumentNode</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlDocument.GetDocumentNode" title="wx.xml.XmlDocument.GetDocumentNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDocumentNode</span></code></a> and <a class="reference internal" href="#wx.xml.XmlDocument.SetDocumentNode" title="wx.xml.XmlDocument.SetDocumentNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDocumentNode</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.FileEncoding" title="wx.xml.XmlDocument.FileEncoding"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FileEncoding</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlDocument.GetFileEncoding" title="wx.xml.XmlDocument.GetFileEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFileEncoding</span></code></a> and <a class="reference internal" href="#wx.xml.XmlDocument.SetFileEncoding" title="wx.xml.XmlDocument.SetFileEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFileEncoding</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.Root" title="wx.xml.XmlDocument.Root"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Root</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlDocument.GetRoot" title="wx.xml.XmlDocument.GetRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRoot</span></code></a> and <a class="reference internal" href="#wx.xml.XmlDocument.SetRoot" title="wx.xml.XmlDocument.SetRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRoot</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.xml.XmlDocument.Version" title="wx.xml.XmlDocument.Version"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Version</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.xml.XmlDocument.GetVersion" title="wx.xml.XmlDocument.GetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVersion</span></code></a> and <a class="reference internal" href="#wx.xml.XmlDocument.SetVersion" title="wx.xml.XmlDocument.SetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetVersion</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.xml.XmlDocument">
+<em class="property">class </em><code class="sig-prename descclassname">wx.xml.</code><code class="sig-name descname">XmlDocument</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">XmlDocument</span><span class="p">()</span>
+
+<span class="n">XmlDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+<span class="n">XmlDocument</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="p">)</span>
+
+<span class="n">XmlDocument</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class holds <code class="docutils literal notranslate"><span class="pre">XML</span></code> data/document as parsed by <code class="docutils literal notranslate"><span class="pre">XML</span></code> parser in the root
+node.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self)</em></p>
+<p>Default constructor.</p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, doc)</em></p>
+<p>Copy constructor.</p>
+<p>Deep copies all the <code class="docutils literal notranslate"><span class="pre">XML</span></code> tree of the given document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>doc</strong> (<a class="reference internal" href="#wx.xml.XmlDocument" title="wx.xml.XmlDocument"><em>wx.xml.XmlDocument</em></a>) – </p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, filename, encoding=”UTF-8”)</em></p>
+<p>Loads the given filename using the given encoding.</p>
+<p>See <a class="reference internal" href="#wx.xml.XmlDocument.Load" title="wx.xml.XmlDocument.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – </p></li>
+<li><p><strong>encoding</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, stream, encoding=”UTF-8”)</em></p>
+<p>Loads the <code class="docutils literal notranslate"><span class="pre">XML</span></code> document from given stream using the given encoding.</p>
+<p>See <a class="reference internal" href="#wx.xml.XmlDocument.Load" title="wx.xml.XmlDocument.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<a class="reference internal" href="wx.InputStream.html#wx.InputStream" title="wx.InputStream"><em>wx.InputStream</em></a>) – </p></li>
+<li><p><strong>encoding</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.AppendToProlog">
+<code class="sig-name descname">AppendToProlog</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.AppendToProlog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends a Process Instruction or Comment node to the document prologue.</p>
+<p>Calling this function will create a prologue or attach the node to the end of an existing prologue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<a class="reference internal" href="wx.xml.XmlNode.html#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.DetachDocumentNode">
+<code class="sig-name descname">DetachDocumentNode</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.DetachDocumentNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detaches the document node and returns it.</p>
+<p>The document node will be set to <code class="docutils literal notranslate"><span class="pre">None</span></code> and thus <a class="reference internal" href="#wx.xml.XmlDocument.IsOk" title="wx.xml.XmlDocument.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsOk</span></code></a>   will return <code class="docutils literal notranslate"><span class="pre">False</span></code> after calling this function.</p>
+<p>Note that the caller is responsible for deleting the returned node in order to avoid memory leaks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.DetachRoot">
+<code class="sig-name descname">DetachRoot</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.DetachRoot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detaches the root entity node and returns it.</p>
+<p>After calling this function, the document node will remain together with any prologue nodes, but <a class="reference internal" href="#wx.xml.XmlDocument.IsOk" title="wx.xml.XmlDocument.IsOk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsOk</span></code></a>   will return <code class="docutils literal notranslate"><span class="pre">False</span></code> since the root entity will be missing.</p>
+<p>Note that the caller is responsible for deleting the returned node in order to avoid memory leaks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.GetDocumentNode">
+<code class="sig-name descname">GetDocumentNode</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.GetDocumentNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the document node of the document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.GetFileEncoding">
+<code class="sig-name descname">GetFileEncoding</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.GetFileEncoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns encoding of document (may be empty).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the encoding original file was saved in, <strong>not</strong>  the encoding of in-memory representation!</p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.GetLibraryVersionInfo">
+<em class="property">static </em><code class="sig-name descname">GetLibraryVersionInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.GetLibraryVersionInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get expat library version information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">VersionInfo</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.VersionInfo.html#wx-versioninfo"><span class="std std-ref">  wx.VersionInfo</span></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.GetRoot">
+<code class="sig-name descname">GetRoot</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.GetRoot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the root element node of the document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.GetVersion">
+<code class="sig-name descname">GetVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.GetVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the version of document.</p>
+<p>This is the value in the  <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> ?xml version=”1.0”?&gt; header of the <code class="docutils literal notranslate"><span class="pre">XML</span></code> document. If the version attribute was not explicitly given in the header, this function returns an empty string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.IsOk">
+<code class="sig-name descname">IsOk</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.IsOk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the document has been loaded successfully.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.Load">
+<code class="sig-name descname">Load</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.Load" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Load</strong> <em class="xref py py-obj">(self, filename, encoding=”UTF-8”, flags=XMLDOC_NONE)</em></p>
+<p>Parses <em class="xref py py-obj">filename</em>  as an xml document and loads its data.</p>
+<p>If <em class="xref py py-obj">flags</em>  does not contain <code class="docutils literal notranslate"><span class="pre">wx.xml.XMLDOC_KEEP_WHITESPACE_NODES</span></code>, then, while loading, all nodes of type  <code class="docutils literal notranslate"><span class="pre">XML_TEXT_NODE</span></code>   (see  <a class="reference internal" href="wx.xml.XmlNode.html#wx-xml-xmlnode"><span class="std std-ref">  wx.xml.XmlNode</span></a>) are automatically skipped if they contain whitespaces only.</p>
+<p>The removal of these nodes makes the load process slightly faster and requires less memory however makes impossible to recreate exactly the loaded text with a <a class="reference internal" href="#wx.xml.XmlDocument.Save" title="wx.xml.XmlDocument.Save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Save</span></code></a>   call later. Read the initial description of this class for more info.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> on success, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – </p></li>
+<li><p><strong>encoding</strong> (<em>string</em>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Load</strong> <em class="xref py py-obj">(self, stream, encoding=”UTF-8”, flags=XMLDOC_NONE)</em></p>
+<p>Like <a class="reference internal" href="#wx.xml.XmlDocument.Load" title="wx.xml.XmlDocument.Load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Load</span></code></a>   but takes the data from given input stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<a class="reference internal" href="wx.InputStream.html#wx.InputStream" title="wx.InputStream"><em>wx.InputStream</em></a>) – </p></li>
+<li><p><strong>encoding</strong> (<em>string</em>) – </p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.Save">
+<code class="sig-name descname">Save</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.Save" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Save</strong> <em class="xref py py-obj">(self, filename, indentstep=2)</em></p>
+<p>Saves <code class="docutils literal notranslate"><span class="pre">XML</span></code> tree creating a file named with given string.</p>
+<p>If <em class="xref py py-obj">indentstep</em>  is greater than or equal to zero, then, while saving, an automatic indentation is added with steps composed by indentstep spaces.</p>
+<p>If <em class="xref py py-obj">indentstep</em>  is  <code class="docutils literal notranslate"><span class="pre">XML_NO_INDENTATION</span></code> , then, automatic indentation is turned off.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – </p></li>
+<li><p><strong>indentstep</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>Save</strong> <em class="xref py py-obj">(self, stream, indentstep=2)</em></p>
+<p>Saves <code class="docutils literal notranslate"><span class="pre">XML</span></code> tree in the given output stream.</p>
+<p>See Save(const String&amp;, int) for a description of <em class="xref py py-obj">indentstep</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<a class="reference internal" href="wx.OutputStream.html#wx.OutputStream" title="wx.OutputStream"><em>wx.OutputStream</em></a>) – </p></li>
+<li><p><strong>indentstep</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.SetDocumentNode">
+<code class="sig-name descname">SetDocumentNode</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.SetDocumentNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the document node of this document.</p>
+<p>Deletes any previous document node. Use <a class="reference internal" href="#wx.xml.XmlDocument.DetachDocumentNode" title="wx.xml.XmlDocument.DetachDocumentNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DetachDocumentNode</span></code></a>   and then <a class="reference internal" href="#wx.xml.XmlDocument.SetDocumentNode" title="wx.xml.XmlDocument.SetDocumentNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDocumentNode</span></code></a>   if you want to replace the document node without deleting the old document tree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<a class="reference internal" href="wx.xml.XmlNode.html#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.2.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.SetFileEncoding">
+<code class="sig-name descname">SetFileEncoding</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.SetFileEncoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the encoding of the file which will be used to save the document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>encoding</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.SetRoot">
+<code class="sig-name descname">SetRoot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.SetRoot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the root element node of this document.</p>
+<p>Will create the document node if necessary. Any previous root element node is deleted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<a class="reference internal" href="wx.xml.XmlNode.html#wx.xml.XmlNode" title="wx.xml.XmlNode"><em>wx.xml.XmlNode</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.xml.XmlDocument.SetVersion">
+<code class="sig-name descname">SetVersion</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">version</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.xml.XmlDocument.SetVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the version of the <code class="docutils literal notranslate"><span class="pre">XML</span></code> file which will be used to save the document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>version</strong> (<em>string</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.xml.XmlDocument.DocumentNode">
+<code class="sig-name descname">DocumentNode</code><a class="headerlink" href="#wx.xml.XmlDocument.DocumentNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlDocument.GetDocumentNode" title="wx.xml.XmlDocument.GetDocumentNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetDocumentNode</span></code></a> and <a class="reference internal" href="#wx.xml.XmlDocument.SetDocumentNode" title="wx.xml.XmlDocument.SetDocumentNode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetDocumentNode</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlDocument.FileEncoding">
+<code class="sig-name descname">FileEncoding</code><a class="headerlink" href="#wx.xml.XmlDocument.FileEncoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlDocument.GetFileEncoding" title="wx.xml.XmlDocument.GetFileEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFileEncoding</span></code></a> and <a class="reference internal" href="#wx.xml.XmlDocument.SetFileEncoding" title="wx.xml.XmlDocument.SetFileEncoding"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFileEncoding</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlDocument.Root">
+<code class="sig-name descname">Root</code><a class="headerlink" href="#wx.xml.XmlDocument.Root" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlDocument.GetRoot" title="wx.xml.XmlDocument.GetRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRoot</span></code></a> and <a class="reference internal" href="#wx.xml.XmlDocument.SetRoot" title="wx.xml.XmlDocument.SetRoot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetRoot</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.xml.XmlDocument.Version">
+<code class="sig-name descname">Version</code><a class="headerlink" href="#wx.xml.XmlDocument.Version" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.xml.XmlDocument.GetVersion" title="wx.xml.XmlDocument.GetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVersion</span></code></a> and <a class="reference internal" href="#wx.xml.XmlDocument.SetVersion" title="wx.xml.XmlDocument.SetVersion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetVersion</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.FlexGridSizer — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.FlexSizerGrowMode.enumeration.html" rel="next" title="wx.FlexSizerGrowMode"/>
+<link href="wx.FindReplaceFlags.enumeration.html" rel="prev" title="wx.FindReplaceFlags"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.1moduleindex.html">
+<strong>wx</strong></a> »</li>
+<li class="reltitle"> <strong>wx.FlexGridSizer</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.FlexSizerGrowMode.enumeration.html" title="wx.FlexSizerGrowMode">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.FindReplaceFlags.enumeration.html" title="wx.FindReplaceFlags">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.FlexGridSizer</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.FlexGridSizer.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-flexgridsizer">
+<span id="wx-flexgridsizer"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.FlexGridSizer</strong><a class="headerlink" href="#phoenix-title-wx-flexgridsizer" title="Permalink to this headline">¶</a></h1>
+<p>A flex grid sizer is a sizer which lays out its children in a two-dimensional table with all table fields in one row having the same height and all fields in one column having the same width, but all rows or all columns are not necessarily the same height or width as in the <a class="reference internal" href="wx.GridSizer.html#wx-gridsizer"><span class="std std-ref">  wx.GridSizer</span></a>.</p>
+<p>Since wxWidgets 2.5.0, <a class="reference internal" href="#wx-flexgridsizer"><span class="std std-ref">  wx.FlexGridSizer</span></a>  can also size items equally in one direction but unequally (“flexibly”) in the other. If the sizer is only flexible in one direction (this can be changed using <a class="reference internal" href="#wx.FlexGridSizer.SetFlexibleDirection" title="wx.FlexGridSizer.SetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FlexGridSizer.SetFlexibleDirection</span></code></a> ), it needs to be decided how the sizer should grow in the other (“non-flexible”) direction in order to fill the available space. The <a class="reference internal" href="#wx.FlexGridSizer.SetNonFlexibleGrowMode" title="wx.FlexGridSizer.SetNonFlexibleGrowMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.FlexGridSizer.SetNonFlexibleGrowMode</span></code></a>   method serves this purpose.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.Sizer.html#wx-sizer"><span class="std std-ref">  wx.Sizer</span></a>, <a class="reference internal" href="sizers_overview.html#sizers-overview"><span class="std std-ref">Sizers Overview</span></a></p>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>FlexGridSizer</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of FlexGridSizer" class="inheritance" src="_static/images/inheritance/wx.FlexGridSizer_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,237,139,267" href="wx.FlexGridSizer.html" id="node1" shape="rect" title="A flex grid sizer is a sizer which lays out its children in a two-dimensional table with all table fields in one row having the same height and all fields in one column having the same width, but all rows or all columns are not necessarily the same height or width as in the wx.GridSizer."/> <area alt="" coords="19,160,125,189" href="wx.GridSizer.html" id="node2" shape="rect" title="A grid sizer is a sizer which lays out its children in a two-dimensional table with all table fields having the same size, i.e."/> <area alt="" coords="33,83,111,112" href="wx.Sizer.html" id="node3" shape="rect" title="wx.Sizer  is the abstract base class used for laying out subwindows in a window."/> <area alt="" coords="28,5,116,35" href="wx.Object.html" id="node4" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.GridBagSizer.html#wx-gridbagsizer"><span class="std std-ref">  wx.GridBagSizer</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 67%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.__init__" title="wx.FlexGridSizer.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p><a class="reference internal" href="#wx-flexgridsizer"><span class="std std-ref">  wx.FlexGridSizer</span></a>  constructors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FlexGridSizer.AddGrowableCol" title="wx.FlexGridSizer.AddGrowableCol"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddGrowableCol</span></code></a></p></td>
+<td><p>Specifies that column <em class="xref py py-obj">idx</em>  (starting from zero) should be grown if there is extra space available to the sizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.AddGrowableRow" title="wx.FlexGridSizer.AddGrowableRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddGrowableRow</span></code></a></p></td>
+<td><p>Specifies that row idx (starting from zero) should be grown if there is extra space available to the sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FlexGridSizer.CalcMin" title="wx.FlexGridSizer.CalcMin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CalcMin</span></code></a></p></td>
+<td><p>This method is abstract and has to be overwritten by any derived class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.GetColWidths" title="wx.FlexGridSizer.GetColWidths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColWidths</span></code></a></p></td>
+<td><p>Returns a read-only array containing the widths of the columns in the sizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FlexGridSizer.GetFlexibleDirection" title="wx.FlexGridSizer.GetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFlexibleDirection</span></code></a></p></td>
+<td><p>Returns a <a class="reference internal" href="wx.Orientation.enumeration.html#wx-orientation"><span class="std std-ref">  wx.Orientation</span></a>  value that specifies whether the sizer flexibly resizes its columns, rows, or both (default).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.GetNonFlexibleGrowMode" title="wx.FlexGridSizer.GetNonFlexibleGrowMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNonFlexibleGrowMode</span></code></a></p></td>
+<td><p>Returns the value that specifies how the sizer grows in the “non-flexible” direction if there is one.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FlexGridSizer.GetRowHeights" title="wx.FlexGridSizer.GetRowHeights"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowHeights</span></code></a></p></td>
+<td><p>Returns a read-only array containing the heights of the rows in the sizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.IsColGrowable" title="wx.FlexGridSizer.IsColGrowable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsColGrowable</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if column <em class="xref py py-obj">idx</em>  is growable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FlexGridSizer.IsRowGrowable" title="wx.FlexGridSizer.IsRowGrowable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsRowGrowable</span></code></a></p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if row <em class="xref py py-obj">idx</em>  is growable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.RecalcSizes" title="wx.FlexGridSizer.RecalcSizes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RecalcSizes</span></code></a></p></td>
+<td><p>This method is abstract and has to be overwritten by any derived class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FlexGridSizer.RemoveGrowableCol" title="wx.FlexGridSizer.RemoveGrowableCol"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveGrowableCol</span></code></a></p></td>
+<td><p>Specifies that the <em class="xref py py-obj">idx</em>  column index is no longer growable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.RemoveGrowableRow" title="wx.FlexGridSizer.RemoveGrowableRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveGrowableRow</span></code></a></p></td>
+<td><p>Specifies that the <em class="xref py py-obj">idx</em>  row index is no longer growable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FlexGridSizer.SetFlexibleDirection" title="wx.FlexGridSizer.SetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlexibleDirection</span></code></a></p></td>
+<td><p>Specifies whether the sizer should flexibly resize its columns, rows, or both.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.SetNonFlexibleGrowMode" title="wx.FlexGridSizer.SetNonFlexibleGrowMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNonFlexibleGrowMode</span></code></a></p></td>
+<td><p>Specifies how the sizer should grow in the non-flexible direction if there is one (so <code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlexibleDirection</span></code>   must have been called previously).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%"/>
+<col style="width: 57%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.ColWidths" title="wx.FlexGridSizer.ColWidths"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ColWidths</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FlexGridSizer.GetColWidths" title="wx.FlexGridSizer.GetColWidths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColWidths</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FlexGridSizer.FlexibleDirection" title="wx.FlexGridSizer.FlexibleDirection"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FlexibleDirection</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FlexGridSizer.GetFlexibleDirection" title="wx.FlexGridSizer.GetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFlexibleDirection</span></code></a> and <a class="reference internal" href="#wx.FlexGridSizer.SetFlexibleDirection" title="wx.FlexGridSizer.SetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlexibleDirection</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.FlexGridSizer.NonFlexibleGrowMode" title="wx.FlexGridSizer.NonFlexibleGrowMode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NonFlexibleGrowMode</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FlexGridSizer.GetNonFlexibleGrowMode" title="wx.FlexGridSizer.GetNonFlexibleGrowMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNonFlexibleGrowMode</span></code></a> and <a class="reference internal" href="#wx.FlexGridSizer.SetNonFlexibleGrowMode" title="wx.FlexGridSizer.SetNonFlexibleGrowMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNonFlexibleGrowMode</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.FlexGridSizer.RowHeights" title="wx.FlexGridSizer.RowHeights"><code class="xref py py-attr docutils literal notranslate"><span class="pre">RowHeights</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.FlexGridSizer.GetRowHeights" title="wx.FlexGridSizer.GetRowHeights"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowHeights</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.FlexGridSizer">
+<em class="property">class </em><code class="sig-prename descclassname">wx.</code><code class="sig-name descname">FlexGridSizer</code><span class="sig-paren">(</span><em class="sig-param">GridSizer</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FlexGridSizer</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">vgap</span><span class="p">,</span> <span class="n">hgap</span><span class="p">)</span>
+
+<span class="n">FlexGridSizer</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="n">Size</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="n">FlexGridSizer</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vgap</span><span class="p">,</span> <span class="n">hgap</span><span class="p">)</span>
+
+<span class="n">FlexGridSizer</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">gap</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A flex grid sizer is a sizer which lays out its children in a two-
+dimensional table with all table fields in one row having the same
+height and all fields in one column having the same width, but all
+rows or all columns are not necessarily the same height or width as in
+the GridSizer.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.FlexGridSizer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#wx-flexgridsizer"><span class="std std-ref">  wx.FlexGridSizer</span></a>  constructors.</p>
+<p>Please see <code class="xref py py-meth docutils literal notranslate"><span class="pre">GridSizer.__init__</span></code>   documentation.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1: </span>(except for the four argument overload)</p>
+</div>
+<p><a class="reference internal" href="_images/overload.png"><img alt="overload" class="align-middle" src="_images/overload.png" style="width: 16px;"/></a> <strong>Overloaded Implementations:</strong></p>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, cols, vgap, hgap)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cols</strong> (<em>int</em>) – </p></li>
+<li><p><strong>vgap</strong> (<em>int</em>) – </p></li>
+<li><p><strong>hgap</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, cols, gap=Size(0,0))</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cols</strong> (<em>int</em>) – </p></li>
+<li><p><strong>gap</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, rows, cols, vgap, hgap)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rows</strong> (<em>int</em>) – </p></li>
+<li><p><strong>cols</strong> (<em>int</em>) – </p></li>
+<li><p><strong>vgap</strong> (<em>int</em>) – </p></li>
+<li><p><strong>hgap</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+<p><strong>__init__</strong> <em class="xref py py-obj">(self, rows, cols, gap)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rows</strong> (<em>int</em>) – </p></li>
+<li><p><strong>cols</strong> (<em>int</em>) – </p></li>
+<li><p><strong>gap</strong> (<a class="reference internal" href="wx.Size.html#wx.Size" title="wx.Size"><em>wx.Size</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="html"><hr class="overloadsep"/><br/></span></p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.AddGrowableCol">
+<code class="sig-name descname">AddGrowableCol</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em>, <em class="sig-param">proportion=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.AddGrowableCol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies that column <em class="xref py py-obj">idx</em>  (starting from zero) should be grown if there is extra space available to the sizer.</p>
+<p>The <em class="xref py py-obj">proportion</em>  parameter has the same meaning as the stretch factor for the sizers (see <a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a>) except that if all proportions are 0, then all columns are resized equally (instead of not being resized at all).</p>
+<p>Notice that the column must not be already growable, if you need to change the proportion you must call <a class="reference internal" href="#wx.FlexGridSizer.RemoveGrowableCol" title="wx.FlexGridSizer.RemoveGrowableCol"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RemoveGrowableCol</span></code></a>   first and then make it growable (with a different proportion) again. You can use <a class="reference internal" href="#wx.FlexGridSizer.IsColGrowable" title="wx.FlexGridSizer.IsColGrowable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IsColGrowable</span></code></a>   to check whether a column is already growable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> (<em>int</em>) – </p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.AddGrowableRow">
+<code class="sig-name descname">AddGrowableRow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em>, <em class="sig-param">proportion=0</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.AddGrowableRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies that row idx (starting from zero) should be grown if there is extra space available to the sizer.</p>
+<p>This is identical to <a class="reference internal" href="#wx.FlexGridSizer.AddGrowableCol" title="wx.FlexGridSizer.AddGrowableCol"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddGrowableCol</span></code></a>   except that it works with rows and not columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> (<em>int</em>) – </p></li>
+<li><p><strong>proportion</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.CalcMin">
+<code class="sig-name descname">CalcMin</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.CalcMin" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is abstract and has to be overwritten by any derived class.</p>
+<p>Here, the sizer will do the actual calculation of its children’s minimal sizes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.Size.html#wx-size"><span class="std std-ref">  wx.Size</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.GetColWidths">
+<code class="sig-name descname">GetColWidths</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.GetColWidths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a read-only array containing the widths of the columns in the sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of integers</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.GetFlexibleDirection">
+<code class="sig-name descname">GetFlexibleDirection</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.GetFlexibleDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <a class="reference internal" href="wx.Orientation.enumeration.html#wx-orientation"><span class="std std-ref">  wx.Orientation</span></a>  value that specifies whether the sizer flexibly resizes its columns, rows, or both (default).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>One of the following values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.VERTICAL</span></code>: Rows are flexibly sized.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.HORIZONTAL</span></code>: Columns are flexibly sized.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.BOTH</span></code>: Both rows and columns are flexibly sized (this is the default value).</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.FlexGridSizer.SetFlexibleDirection" title="wx.FlexGridSizer.SetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlexibleDirection</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.GetNonFlexibleGrowMode">
+<code class="sig-name descname">GetNonFlexibleGrowMode</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.GetNonFlexibleGrowMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value that specifies how the sizer grows in the “non-flexible” direction if there is one.</p>
+<p>The behaviour of the elements in the flexible direction (i.e. both rows and columns by default, or rows only if <a class="reference internal" href="#wx.FlexGridSizer.GetFlexibleDirection" title="wx.FlexGridSizer.GetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFlexibleDirection</span></code></a>   is  <code class="docutils literal notranslate"><span class="pre">VERTICAL</span></code>   or columns only if it is   <code class="docutils literal notranslate"><span class="pre">HORIZONTAL</span></code> ) is always governed by their proportion as specified in the call to  <a class="reference internal" href="#wx.FlexGridSizer.AddGrowableRow" title="wx.FlexGridSizer.AddGrowableRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddGrowableRow</span></code></a>   or <a class="reference internal" href="#wx.FlexGridSizer.AddGrowableCol" title="wx.FlexGridSizer.AddGrowableCol"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddGrowableCol</span></code></a> . What happens in the other direction depends on the value of returned by this function as described below.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.FlexSizerGrowMode.enumeration.html#wx-flexsizergrowmode"><span class="std std-ref">  wx.FlexSizerGrowMode</span></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>One of the following values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FLEX_GROWMODE_NONE</span></code>: Sizer doesn’t grow its elements at all in the non-flexible direction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FLEX_GROWMODE_SPECIFIED</span></code>: Sizer honors growable columns/rows set with <a class="reference internal" href="#wx.FlexGridSizer.AddGrowableCol" title="wx.FlexGridSizer.AddGrowableCol"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddGrowableCol</span></code></a>   and <a class="reference internal" href="#wx.FlexGridSizer.AddGrowableRow" title="wx.FlexGridSizer.AddGrowableRow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AddGrowableRow</span></code></a>   in the non-flexible direction as well. In this case equal sizing applies to minimum sizes of columns or rows (this is the default value).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wx.FLEX_GROWMODE_ALL</span></code>: Sizer equally stretches all columns or rows in the non-flexible direction, independently of the proportions applied in the flexible direction.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.FlexGridSizer.SetFlexibleDirection" title="wx.FlexGridSizer.SetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlexibleDirection</span></code></a> , <a class="reference internal" href="#wx.FlexGridSizer.SetNonFlexibleGrowMode" title="wx.FlexGridSizer.SetNonFlexibleGrowMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNonFlexibleGrowMode</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.GetRowHeights">
+<code class="sig-name descname">GetRowHeights</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.GetRowHeights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a read-only array containing the heights of the rows in the sizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">list of integers</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.IsColGrowable">
+<code class="sig-name descname">IsColGrowable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.IsColGrowable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if column <em class="xref py py-obj">idx</em>  is growable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.IsRowGrowable">
+<code class="sig-name descname">IsRowGrowable</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.IsRowGrowable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if row <em class="xref py py-obj">idx</em>  is growable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.0.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.RecalcSizes">
+<code class="sig-name descname">RecalcSizes</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.RecalcSizes" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is abstract and has to be overwritten by any derived class.</p>
+<p>Here, the sizer will do the actual calculation of its children’s positions and sizes.</p>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.RemoveGrowableCol">
+<code class="sig-name descname">RemoveGrowableCol</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.RemoveGrowableCol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies that the <em class="xref py py-obj">idx</em>  column index is no longer growable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.RemoveGrowableRow">
+<code class="sig-name descname">RemoveGrowableRow</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">idx</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.RemoveGrowableRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies that the <em class="xref py py-obj">idx</em>  row index is no longer growable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.SetFlexibleDirection">
+<code class="sig-name descname">SetFlexibleDirection</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">direction</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.SetFlexibleDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies whether the sizer should flexibly resize its columns, rows, or both.</p>
+<p>Argument <em class="xref py py-obj">direction</em>  can be  <code class="docutils literal notranslate"><span class="pre">VERTICAL</span></code> ,   <code class="docutils literal notranslate"><span class="pre">HORIZONTAL</span></code>   or   <code class="docutils literal notranslate"><span class="pre">BOTH</span></code>   (which is the default value). Any other value is ignored.</p>
+<p>See <a class="reference internal" href="#wx.FlexGridSizer.GetFlexibleDirection" title="wx.FlexGridSizer.GetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFlexibleDirection</span></code></a>   for the explanation of these values. Note that this method does not trigger relayout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>direction</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.FlexGridSizer.SetNonFlexibleGrowMode">
+<code class="sig-name descname">SetNonFlexibleGrowMode</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">mode</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.FlexGridSizer.SetNonFlexibleGrowMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies how the sizer should grow in the non-flexible direction if there is one (so <a class="reference internal" href="#wx.FlexGridSizer.SetFlexibleDirection" title="wx.FlexGridSizer.SetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlexibleDirection</span></code></a>   must have been called previously).</p>
+<p>Argument <em class="xref py py-obj">mode</em>  can be one of those documented in <a class="reference internal" href="#wx.FlexGridSizer.GetNonFlexibleGrowMode" title="wx.FlexGridSizer.GetNonFlexibleGrowMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNonFlexibleGrowMode</span></code></a> , please see there for their explanation. Note that this method does not trigger relayout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="wx.FlexSizerGrowMode.enumeration.html" title="FlexSizerGrowMode"><em>FlexSizerGrowMode</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.FlexGridSizer.ColWidths">
+<code class="sig-name descname">ColWidths</code><a class="headerlink" href="#wx.FlexGridSizer.ColWidths" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FlexGridSizer.GetColWidths" title="wx.FlexGridSizer.GetColWidths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetColWidths</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FlexGridSizer.FlexibleDirection">
+<code class="sig-name descname">FlexibleDirection</code><a class="headerlink" href="#wx.FlexGridSizer.FlexibleDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FlexGridSizer.GetFlexibleDirection" title="wx.FlexGridSizer.GetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetFlexibleDirection</span></code></a> and <a class="reference internal" href="#wx.FlexGridSizer.SetFlexibleDirection" title="wx.FlexGridSizer.SetFlexibleDirection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetFlexibleDirection</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FlexGridSizer.NonFlexibleGrowMode">
+<code class="sig-name descname">NonFlexibleGrowMode</code><a class="headerlink" href="#wx.FlexGridSizer.NonFlexibleGrowMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FlexGridSizer.GetNonFlexibleGrowMode" title="wx.FlexGridSizer.GetNonFlexibleGrowMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetNonFlexibleGrowMode</span></code></a> and <a class="reference internal" href="#wx.FlexGridSizer.SetNonFlexibleGrowMode" title="wx.FlexGridSizer.SetNonFlexibleGrowMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetNonFlexibleGrowMode</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.FlexGridSizer.RowHeights">
+<code class="sig-name descname">RowHeights</code><a class="headerlink" href="#wx.FlexGridSizer.RowHeights" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.FlexGridSizer.GetRowHeights" title="wx.FlexGridSizer.GetRowHeights"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetRowHeights</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

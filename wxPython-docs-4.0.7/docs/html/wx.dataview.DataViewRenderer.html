@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>wx.dataview.DataViewRenderer — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="wx.dataview.DataViewSpinRenderer.html" rel="next" title="wx.dataview.DataViewSpinRenderer"/>
+<link href="wx.dataview.DataViewProgressRenderer.html" rel="prev" title="wx.dataview.DataViewProgressRenderer"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="wx.dataview.1moduleindex.html">
+<strong>wx.dataview</strong></a> »</li>
+<li class="reltitle"> <strong>wx.dataview.DataViewRenderer</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="wx.dataview.DataViewSpinRenderer.html" title="wx.dataview.DataViewSpinRenderer">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="wx.dataview.DataViewProgressRenderer.html" title="wx.dataview.DataViewProgressRenderer">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>wx.dataview.DataViewRenderer</strong></a><ul>
+<li><a class="reference internal" href="#class-hierarchy-class-hierarchy"> Class Hierarchy</a></li>
+<li><a class="reference internal" href="#sub-classes-known-subclasses"> Known Subclasses</a></li>
+<li><a class="reference internal" href="#method-summary-methods-summary"> Methods Summary</a></li>
+<li><a class="reference internal" href="#property-summary-properties-summary"> Properties Summary</a></li>
+<li><a class="reference internal" href="#api-class-api"> Class API</a></li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/wx.dataview.DataViewRenderer.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-wx-dataview-dataviewrenderer">
+<span id="wx-dataview-dataviewrenderer"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>wx.dataview.DataViewRenderer</strong><a class="headerlink" href="#phoenix-title-wx-dataview-dataviewrenderer" title="Permalink to this headline">¶</a></h1>
+<p>This class is used by <a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a>  to render the individual cells.</p>
+<p>One instance of a renderer class is owned by a <a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a>. There is a number of ready-to-use renderers provided:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="wx.dataview.DataViewTextRenderer.html#wx-dataview-dataviewtextrenderer"><span class="std std-ref">  wx.dataview.DataViewTextRenderer</span></a>,</p></li>
+<li><p><a class="reference internal" href="wx.dataview.DataViewIconTextRenderer.html#wx-dataview-dataviewicontextrenderer"><span class="std std-ref">  wx.dataview.DataViewIconTextRenderer</span></a>,</p></li>
+<li><p><a class="reference internal" href="wx.dataview.DataViewToggleRenderer.html#wx-dataview-dataviewtogglerenderer"><span class="std std-ref">  wx.dataview.DataViewToggleRenderer</span></a>,</p></li>
+<li><p><a class="reference internal" href="wx.dataview.DataViewProgressRenderer.html#wx-dataview-dataviewprogressrenderer"><span class="std std-ref">  wx.dataview.DataViewProgressRenderer</span></a>,</p></li>
+<li><p><a class="reference internal" href="wx.dataview.DataViewBitmapRenderer.html#wx-dataview-dataviewbitmaprenderer"><span class="std std-ref">  wx.dataview.DataViewBitmapRenderer</span></a>,</p></li>
+<li><p><a class="reference internal" href="wx.dataview.DataViewDateRenderer.html#wx-dataview-dataviewdaterenderer"><span class="std std-ref">  wx.dataview.DataViewDateRenderer</span></a>,</p></li>
+<li><p><a class="reference internal" href="wx.dataview.DataViewSpinRenderer.html#wx-dataview-dataviewspinrenderer"><span class="std std-ref">  wx.dataview.DataViewSpinRenderer</span></a>.</p></li>
+<li><p><a class="reference internal" href="wx.dataview.DataViewChoiceRenderer.html#wx-dataview-dataviewchoicerenderer"><span class="std std-ref">  wx.dataview.DataViewChoiceRenderer</span></a>.</p></li>
+</ul>
+<p>Additionally, the user can write their own renderers by deriving from <a class="reference internal" href="wx.dataview.DataViewCustomRenderer.html#wx-dataview-dataviewcustomrenderer"><span class="std std-ref">  wx.dataview.DataViewCustomRenderer</span></a>.</p>
+<p>The <a class="reference internal" href="wx.dataview.DataViewCellMode.enumeration.html#wx-dataview-dataviewcellmode"><span class="std std-ref">  wx.dataview.DataViewCellMode</span></a>  and <a class="reference internal" href="wx.dataview.DataViewCellRenderState.enumeration.html#wx-dataview-dataviewcellrenderstate"><span class="std std-ref">  wx.dataview.DataViewCellRenderState</span></a>  flags accepted by the constructors respectively controls what actions the cell data allows and how the renderer should display its contents in a cell.</p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="section" id="class-hierarchy-class-hierarchy">
+<h2><a class="reference internal" href="_images/class_hierarchy.png"><img alt="class_hierarchy" class="align-middle" src="_images/class_hierarchy.png" style="width: 32px;"/></a> Class Hierarchy<a class="headerlink" href="#class-hierarchy-class-hierarchy" title="Permalink to this headline">¶</a></h2>
+<div class="closed" id="toggleBlock" onclick="return toggleVisibility(this)" style="cursor:pointer;">
+<img id="toggleBlock-trigger" src="_static/images/closed.png"/>
+Inheritance diagram for class <strong>DataViewRenderer</strong>:
+</div>
+<div id="toggleBlock-summary" style="display:block;"></div>
+<div id="toggleBlock-content" style="display:none;">
+<p class="graphviz">
+<center><img alt="Inheritance diagram of DataViewRenderer" class="inheritance" src="_static/images/inheritance/wx.dataview.DataViewRenderer_inheritance.png" usemap="#dummy"/></center>
+<script type="text/javascript">toggleVisibilityOnLoad(document.getElementById('toggleBlock'))</script>
+<map id="dummy" name="dummy"> <area alt="" coords="5,83,241,112" href="wx.dataview.DataViewRenderer.html" id="node1" shape="rect" title="This class is used by wx.dataview.DataViewCtrl  to render the individual cells."/> <area alt="" coords="79,5,167,35" href="wx.Object.html" id="node2" shape="rect" title="This is the root class of many of the wxWidgets classes."/> </map>
+</p>
+</div><div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="sub-classes-known-subclasses">
+<h2><a class="reference internal" href="_images/sub_classes.png"><img alt="sub_classes" class="align-middle" src="_images/sub_classes.png" style="width: 32px;"/></a> Known Subclasses<a class="headerlink" href="#sub-classes-known-subclasses" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wx.dataview.DataViewBitmapRenderer.html#wx-dataview-dataviewbitmaprenderer"><span class="std std-ref">  wx.dataview.DataViewBitmapRenderer</span></a>, <a class="reference internal" href="wx.dataview.DataViewChoiceRenderer.html#wx-dataview-dataviewchoicerenderer"><span class="std std-ref">  wx.dataview.DataViewChoiceRenderer</span></a>, <a class="reference internal" href="wx.dataview.DataViewCustomRenderer.html#wx-dataview-dataviewcustomrenderer"><span class="std std-ref">  wx.dataview.DataViewCustomRenderer</span></a>, <a class="reference internal" href="wx.dataview.DataViewDateRenderer.html#wx-dataview-dataviewdaterenderer"><span class="std std-ref">  wx.dataview.DataViewDateRenderer</span></a>, <a class="reference internal" href="wx.dataview.DataViewIconTextRenderer.html#wx-dataview-dataviewicontextrenderer"><span class="std std-ref">  wx.dataview.DataViewIconTextRenderer</span></a>, <a class="reference internal" href="wx.dataview.DataViewProgressRenderer.html#wx-dataview-dataviewprogressrenderer"><span class="std std-ref">  wx.dataview.DataViewProgressRenderer</span></a>, <a class="reference internal" href="wx.dataview.DataViewTextRenderer.html#wx-dataview-dataviewtextrenderer"><span class="std std-ref">  wx.dataview.DataViewTextRenderer</span></a>, <a class="reference internal" href="wx.dataview.DataViewToggleRenderer.html#wx-dataview-dataviewtogglerenderer"><span class="std std-ref">  wx.dataview.DataViewToggleRenderer</span></a></p>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="method-summary-methods-summary">
+<h2><a class="reference internal" href="_images/method_summary.png"><img alt="method_summary" class="align-middle" src="_images/method_summary.png" style="width: 32px;"/></a> Methods Summary<a class="headerlink" href="#method-summary-methods-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%"/>
+<col style="width: 58%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.__init__" title="wx.dataview.DataViewRenderer.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p>Constructor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.CancelEditing" title="wx.dataview.DataViewRenderer.CancelEditing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CancelEditing</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.CreateEditorCtrl" title="wx.dataview.DataViewRenderer.CreateEditorCtrl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CreateEditorCtrl</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.DisableEllipsize" title="wx.dataview.DataViewRenderer.DisableEllipsize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DisableEllipsize</span></code></a></p></td>
+<td><p>Disable replacing parts of the item text with ellipsis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.EnableEllipsize" title="wx.dataview.DataViewRenderer.EnableEllipsize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableEllipsize</span></code></a></p></td>
+<td><p>Enable or disable replacing parts of the item text with ellipsis to make it fit the column width.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.FinishEditing" title="wx.dataview.DataViewRenderer.FinishEditing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FinishEditing</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.GetAlignment" title="wx.dataview.DataViewRenderer.GetAlignment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAlignment</span></code></a></p></td>
+<td><p>Returns the alignment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.GetEditorCtrl" title="wx.dataview.DataViewRenderer.GetEditorCtrl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditorCtrl</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.GetEllipsizeMode" title="wx.dataview.DataViewRenderer.GetEllipsizeMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEllipsizeMode</span></code></a></p></td>
+<td><p>Returns the ellipsize mode used by the renderer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.GetMode" title="wx.dataview.DataViewRenderer.GetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMode</span></code></a></p></td>
+<td><p>Returns the cell mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.GetOwner" title="wx.dataview.DataViewRenderer.GetOwner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOwner</span></code></a></p></td>
+<td><p>Returns pointer to the owning <a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.GetValue" title="wx.dataview.DataViewRenderer.GetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValue</span></code></a></p></td>
+<td><p>This methods retrieves the value from the renderer in order to transfer the value back to the data model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.GetValueFromEditorCtrl" title="wx.dataview.DataViewRenderer.GetValueFromEditorCtrl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetValueFromEditorCtrl</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.GetVariantType" title="wx.dataview.DataViewRenderer.GetVariantType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVariantType</span></code></a></p></td>
+<td><p>Returns a string with the type of the <em class="xref py py-obj">Variant</em>       supported by this renderer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.GetView" title="wx.dataview.DataViewRenderer.GetView"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetView</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.HasEditorCtrl" title="wx.dataview.DataViewRenderer.HasEditorCtrl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">HasEditorCtrl</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.SetAlignment" title="wx.dataview.DataViewRenderer.SetAlignment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAlignment</span></code></a></p></td>
+<td><p>Sets the alignment of the renderer’s content.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.SetOwner" title="wx.dataview.DataViewRenderer.SetOwner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOwner</span></code></a></p></td>
+<td><p>Sets the owning <a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.SetValue" title="wx.dataview.DataViewRenderer.SetValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetValue</span></code></a></p></td>
+<td><p>Set the value of the renderer (and thus its cell) to <em class="xref py py-obj">value</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.StartEditing" title="wx.dataview.DataViewRenderer.StartEditing"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StartEditing</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.Validate" title="wx.dataview.DataViewRenderer.Validate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Validate</span></code></a></p></td>
+<td><p>Before data is committed to the data model, it is passed to this method where it can be checked for validity.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="property-summary-properties-summary">
+<h2><a class="reference internal" href="_images/property_summary.png"><img alt="property_summary" class="align-middle" src="_images/property_summary.png" style="width: 32px;"/></a> Properties Summary<a class="headerlink" href="#property-summary-properties-summary" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%"/>
+<col style="width: 58%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.Alignment" title="wx.dataview.DataViewRenderer.Alignment"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Alignment</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetAlignment" title="wx.dataview.DataViewRenderer.GetAlignment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAlignment</span></code></a> and <a class="reference internal" href="#wx.dataview.DataViewRenderer.SetAlignment" title="wx.dataview.DataViewRenderer.SetAlignment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAlignment</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.EditorCtrl" title="wx.dataview.DataViewRenderer.EditorCtrl"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EditorCtrl</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetEditorCtrl" title="wx.dataview.DataViewRenderer.GetEditorCtrl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditorCtrl</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.EllipsizeMode" title="wx.dataview.DataViewRenderer.EllipsizeMode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">EllipsizeMode</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetEllipsizeMode" title="wx.dataview.DataViewRenderer.GetEllipsizeMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEllipsizeMode</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.Mode" title="wx.dataview.DataViewRenderer.Mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Mode</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetMode" title="wx.dataview.DataViewRenderer.GetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMode</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.Owner" title="wx.dataview.DataViewRenderer.Owner"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Owner</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetOwner" title="wx.dataview.DataViewRenderer.GetOwner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOwner</span></code></a> and <a class="reference internal" href="#wx.dataview.DataViewRenderer.SetOwner" title="wx.dataview.DataViewRenderer.SetOwner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOwner</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#wx.dataview.DataViewRenderer.VariantType" title="wx.dataview.DataViewRenderer.VariantType"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VariantType</span></code></a></p></td>
+<td><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetVariantType" title="wx.dataview.DataViewRenderer.GetVariantType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVariantType</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+</div>
+<div class="section" id="api-class-api">
+<h2><a class="reference internal" href="_images/api.png"><img alt="api" class="align-middle" src="_images/api.png" style="width: 32px;"/></a> Class API<a class="headerlink" href="#api-class-api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wx.dataview.DataViewRenderer">
+<em class="property">class </em><code class="sig-prename descclassname">wx.dataview.</code><code class="sig-name descname">DataViewRenderer</code><span class="sig-paren">(</span><em class="sig-param">Object</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Possible constructors</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DataViewRenderer</span><span class="p">(</span><span class="n">varianttype</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">DATAVIEW_CELL_INERT</span><span class="p">,</span>
+                 <span class="n">align</span><span class="o">=</span><span class="n">DVR_DEFAULT_ALIGNMENT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class is used by DataViewCtrl to render the individual cells.</p>
+<br/><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">varianttype</em>, <em class="sig-param">mode=DATAVIEW_CELL_INERT</em>, <em class="sig-param">align=DVR_DEFAULT_ALIGNMENT</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>varianttype</strong> (<em>string</em>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="wx.dataview.DataViewCellMode.enumeration.html" title="DataViewCellMode"><em>DataViewCellMode</em></a>) – </p></li>
+<li><p><strong>align</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.CancelEditing">
+<code class="sig-name descname">CancelEditing</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.CancelEditing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.CreateEditorCtrl">
+<code class="sig-name descname">CreateEditorCtrl</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">parent</em>, <em class="sig-param">labelRect</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.CreateEditorCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p></li>
+<li><p><strong>labelRect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+<li><p><strong>value</strong> (<em>DVCVariant</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">Window</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.DisableEllipsize">
+<code class="sig-name descname">DisableEllipsize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.DisableEllipsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable replacing parts of the item text with ellipsis.</p>
+<p>If ellipsizing is disabled, the string will be truncated if it doesn’t fit.</p>
+<p>This is the same as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EnableEllipsize</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">ELLIPSIZE_NONE</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.EnableEllipsize">
+<code class="sig-name descname">EnableEllipsize</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">mode=ELLIPSIZE_MIDDLE</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.EnableEllipsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable or disable replacing parts of the item text with ellipsis to make it fit the column width.</p>
+<p>This method only makes sense for the renderers working with text, such as <a class="reference internal" href="wx.dataview.DataViewTextRenderer.html#wx-dataview-dataviewtextrenderer"><span class="std std-ref">  wx.dataview.DataViewTextRenderer</span></a>  or <a class="reference internal" href="wx.dataview.DataViewIconTextRenderer.html#wx-dataview-dataviewicontextrenderer"><span class="std std-ref">  wx.dataview.DataViewIconTextRenderer</span></a>.</p>
+<p>By default <code class="docutils literal notranslate"><span class="pre">wx.ELLIPSIZE_MIDDLE</span></code> is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="wx.EllipsizeMode.enumeration.html" title="EllipsizeMode"><em>EllipsizeMode</em></a>) – Ellipsization mode, use <code class="docutils literal notranslate"><span class="pre">wx.ELLIPSIZE_NONE</span></code> to disable.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.9.1.</span></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.FinishEditing">
+<code class="sig-name descname">FinishEditing</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.FinishEditing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.GetAlignment">
+<code class="sig-name descname">GetAlignment</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.GetAlignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the alignment.</p>
+<p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.SetAlignment" title="wx.dataview.DataViewRenderer.SetAlignment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAlignment</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">int</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.GetEditorCtrl">
+<code class="sig-name descname">GetEditorCtrl</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.GetEditorCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">Window</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.GetEllipsizeMode">
+<code class="sig-name descname">GetEllipsizeMode</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.GetEllipsizeMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the ellipsize mode used by the renderer.</p>
+<p>If the return value is <code class="docutils literal notranslate"><span class="pre">wx.ELLIPSIZE_NONE</span></code>, the text is simply truncated if it doesn’t fit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.EllipsizeMode.enumeration.html#wx-ellipsizemode"><span class="std std-ref">  wx.EllipsizeMode</span></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#wx.dataview.DataViewRenderer.EnableEllipsize" title="wx.dataview.DataViewRenderer.EnableEllipsize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EnableEllipsize</span></code></a></p>
+</div>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.GetMode">
+<code class="sig-name descname">GetMode</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.GetMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the cell mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.dataview.DataViewCellMode.enumeration.html#wx-dataview-dataviewcellmode"><span class="std std-ref">  wx.dataview.DataViewCellMode</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.GetOwner">
+<code class="sig-name descname">GetOwner</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.GetOwner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pointer to the owning <a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.GetValue">
+<code class="sig-name descname">GetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.GetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>This methods retrieves the value from the renderer in order to transfer the value back to the data model.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> on failure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">value</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.GetValueFromEditorCtrl">
+<code class="sig-name descname">GetValueFromEditorCtrl</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">editor</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.GetValueFromEditorCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>editor</strong> (<a class="reference internal" href="wx.Window.html#wx.Window" title="wx.Window"><em>wx.Window</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">value</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.GetVariantType">
+<code class="sig-name descname">GetVariantType</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.GetVariantType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string with the type of the <em class="xref py py-obj">Variant</em>       supported by this renderer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.GetView">
+<code class="sig-name descname">GetView</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.GetView" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="wx.dataview.DataViewCtrl.html#wx-dataview-dataviewctrl"><span class="std std-ref">  wx.dataview.DataViewCtrl</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.HasEditorCtrl">
+<code class="sig-name descname">HasEditorCtrl</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.HasEditorCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.SetAlignment">
+<code class="sig-name descname">SetAlignment</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">align</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.SetAlignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the alignment of the renderer’s content.</p>
+<p>The default value of  <code class="docutils literal notranslate"><span class="pre">DVR_DEFAULT_ALIGMENT</span></code>   indicates that the content should have the same alignment as the column header.</p>
+<p>The method is not implemented under OS X and the renderer always aligns its contents as the column header on that platform. The other platforms support both vertical and horizontal alignment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>align</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.SetOwner">
+<code class="sig-name descname">SetOwner</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">owner</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.SetOwner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the owning <a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a>.</p>
+<p>This is usually called from within <a class="reference internal" href="wx.dataview.DataViewColumn.html#wx-dataview-dataviewcolumn"><span class="std std-ref">  wx.dataview.DataViewColumn</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>owner</strong> (<a class="reference internal" href="wx.dataview.DataViewColumn.html#wx.dataview.DataViewColumn" title="wx.dataview.DataViewColumn"><em>wx.dataview.DataViewColumn</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.SetValue">
+<code class="sig-name descname">SetValue</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.SetValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the value of the renderer (and thus its cell) to <em class="xref py py-obj">value</em>.</p>
+<p>The internal code will then render this cell with this data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">DVCVariant</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.StartEditing">
+<code class="sig-name descname">StartEditing</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">item</em>, <em class="sig-param">labelRect</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.StartEditing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="wx.dataview.DataViewItem.html#wx.dataview.DataViewItem" title="wx.dataview.DataViewItem"><em>wx.dataview.DataViewItem</em></a>) – </p></li>
+<li><p><strong>labelRect</strong> (<a class="reference internal" href="wx.Rect.html#wx.Rect" title="wx.Rect"><em>wx.Rect</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><hr/>
+<dl class="method">
+<dt id="wx.dataview.DataViewRenderer.Validate">
+<code class="sig-name descname">Validate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#wx.dataview.DataViewRenderer.Validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Before data is committed to the data model, it is passed to this method where it can be checked for validity.</p>
+<p>This can also be used for checking a valid range or limiting the user input in a certain aspect (e.g. max number of characters or only alphanumeric input, <code class="docutils literal notranslate"><span class="pre">ASCII</span></code> only etc.). Return <code class="docutils literal notranslate"><span class="pre">False</span></code> if the value is not valid.</p>
+<p>Please note that due to implementation limitations, this validation is done after the editing control already is destroyed and the editing process finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>DVCVariant</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em class="xref py py-obj">bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+<br/><h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewRenderer.Alignment">
+<code class="sig-name descname">Alignment</code><a class="headerlink" href="#wx.dataview.DataViewRenderer.Alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetAlignment" title="wx.dataview.DataViewRenderer.GetAlignment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetAlignment</span></code></a> and <a class="reference internal" href="#wx.dataview.DataViewRenderer.SetAlignment" title="wx.dataview.DataViewRenderer.SetAlignment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetAlignment</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewRenderer.EditorCtrl">
+<code class="sig-name descname">EditorCtrl</code><a class="headerlink" href="#wx.dataview.DataViewRenderer.EditorCtrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetEditorCtrl" title="wx.dataview.DataViewRenderer.GetEditorCtrl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEditorCtrl</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewRenderer.EllipsizeMode">
+<code class="sig-name descname">EllipsizeMode</code><a class="headerlink" href="#wx.dataview.DataViewRenderer.EllipsizeMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetEllipsizeMode" title="wx.dataview.DataViewRenderer.GetEllipsizeMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetEllipsizeMode</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewRenderer.Mode">
+<code class="sig-name descname">Mode</code><a class="headerlink" href="#wx.dataview.DataViewRenderer.Mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetMode" title="wx.dataview.DataViewRenderer.GetMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetMode</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewRenderer.Owner">
+<code class="sig-name descname">Owner</code><a class="headerlink" href="#wx.dataview.DataViewRenderer.Owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetOwner" title="wx.dataview.DataViewRenderer.GetOwner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetOwner</span></code></a> and <a class="reference internal" href="#wx.dataview.DataViewRenderer.SetOwner" title="wx.dataview.DataViewRenderer.SetOwner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SetOwner</span></code></a></p>
+</dd></dl>
+<br/><hr/>
+<dl class="attribute">
+<dt id="wx.dataview.DataViewRenderer.VariantType">
+<code class="sig-name descname">VariantType</code><a class="headerlink" href="#wx.dataview.DataViewRenderer.VariantType" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#wx.dataview.DataViewRenderer.GetVariantType" title="wx.dataview.DataViewRenderer.GetVariantType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetVariantType</span></code></a></p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Dialog Overview — wxPython Phoenix 4.0.7 documentation</title>
+<link href="_static/css/phoenix.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script src="_static/javascript/header.js" type="text/javascript"></script>
+<script src="_static/javascript/sidebar.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.collapse.js" type="text/javascript"></script>
+<script src="_static/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="_static/javascript/toggle_visibility.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link href="_static/phoenix_small.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="dnd_overview.html" rel="next" title="Drag and Drop Overview"/>
+<link href="dc_overview.html" rel="prev" title="Device Contexts"/>
+</head><body>
+<div class="related">
+<h3>Navigation</h3>
+<ul class="row1">
+<li><img alt="" src="_static/images/sphinxdocs/phoenix_small.png"/></li>
+<li><a href="https://wxPython.org/" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">Home</a> | </li>
+<li><a href="gallery.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);;">Gallery</a> | </li>
+<li><a href="index.html" style="color: rgb(238, 152, 22); hover: rgb(53, 95, 124);">API Docs</a> » </li>
+<li><a accesskey="U" href="Overviews.html">
+<strong>Overview Documents</strong></a> »</li>
+<li class="reltitle"> <strong>Dialog Overview</strong></li>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="dnd_overview.html" title="Drag and Drop Overview">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="dc_overview.html" title="Device Contexts">previous</a> |</li>
+</ul>
+</div>
+<div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+<div class="sphinxsidebarwrapper">
+<p class="logo"><a href="index.html">
+<img alt="Logo" class="logo" src="_static/phoenix_main.png"/>
+</a></p>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li><a class="reference internal" href="#"> <strong>Dialog Overview</strong></a><ul>
+<li><a class="reference internal" href="#automatic-scrolled-dialogs">Automatic scrolling dialogs</a><ul>
+<li><a class="reference internal" href="#customising-scrolling-adaptation">Customising scrolling adaptation</a></li>
+<li><a class="reference internal" href="#situations-where-automatic-scrolling-adaptation-may-fail">Situations where automatic scrolling adaptation may fail</a></li>
+<li><a class="reference internal" href="#propertysheetdialog-and-wizard">PropertySheetDialog and Wizard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div id="searchbox" role="search" style="display: none">
+<h4>Search</h4>
+<form action="search.html" class="search" method="get">
+<input name="q" type="text"/>
+<input type="submit" value="Go"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div aria-label="source link" id="sourcelink" role="note">
+<a href="_sources/dialog_overview.txt" rel="nofollow">Show page source</a>
+</div>
+</div>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body headerfix">
+
+<div class="section" id="phoenix-title-dialog-overview">
+<span id="dialog-overview"></span><h1><a class="reference internal" href="_images/phoenix_title.png"><img alt="phoenix_title" class="align-middle" src="_images/phoenix_title.png" style="width: 32px;"/></a> <strong>Dialog Overview</strong><a class="headerlink" href="#phoenix-title-dialog-overview" title="Permalink to this headline">¶</a></h1>
+<p>A dialog box is similar to a panel, in that it is a window which can
+be used for placing controls, with the following exceptions:</p>
+<ul class="simple">
+<li><p>A surrounding frame is implicitly created.</p></li>
+<li><p>Extra functionality is automatically given to the dialog box, such
+as tabbing between items (currently Windows only).</p></li>
+<li><p>If the dialog box is <em class="xref py py-obj">modal</em>, the calling program is blocked until
+the dialog box is dismissed.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="wx.TopLevelWindow.html#wx-toplevelwindow"><span class="std std-ref">  wx.TopLevelWindow</span></a> and <a class="reference internal" href="wx.Window.html#wx-window"><span class="std std-ref">  wx.Window</span></a> for inherited
+member functions. Validation of data in controls is covered in
+<a class="reference internal" href="validator_overview.html#validator-overview"><span class="std std-ref">Validator Overview</span></a>.</p>
+</div>
+<div class="section" id="automatic-scrolled-dialogs">
+<span id="automatic-scrolling-dialogs"></span><span id="id1"></span><h2>Automatic scrolling dialogs<a class="headerlink" href="#automatic-scrolled-dialogs" title="Permalink to this headline">¶</a></h2>
+<p>As an ever greater variety of mobile hardware comes to market, it
+becomes more imperative for wxPython applications to adapt to these
+platforms without putting too much burden on the programmer. One area
+where wxPython can help is in adapting dialogs for the lower
+resolution screens that inevitably accompany a smaller form
+factor. <a class="reference internal" href="wx.Dialog.html#wx-dialog"><span class="std std-ref">  wx.Dialog</span></a> therefore supplies a global
+<a class="reference internal" href="wx.DialogLayoutAdapter.html#wx-dialoglayoutadapter"><span class="std std-ref">  wx.DialogLayoutAdapter</span></a> class that implements automatic scrolling
+adaptation for most sizer-based custom dialogs.</p>
+<p>Many applications should therefore be able to adapt to small displays
+with little or no work, as far as dialogs are concerned.  By default
+this adaptation is off. To switch scrolling adaptation on globally in
+your application, call the static function
+<a class="reference internal" href="wx.Dialog.html#wx.Dialog.EnableLayoutAdaptation" title="wx.Dialog.EnableLayoutAdaptation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.EnableLayoutAdaptation</span></code></a> passing <code class="docutils literal notranslate"><span class="pre">True</span></code>. You can also
+adjust adaptation on a per-dialog basis by calling
+<a class="reference internal" href="wx.Dialog.html#wx.Dialog.SetLayoutAdaptationMode" title="wx.Dialog.SetLayoutAdaptationMode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.SetLayoutAdaptationMode</span></code></a> with one of
+<code class="docutils literal notranslate"><span class="pre">wx.DIALOG_ADAPTATION_MODE_DEFAULT</span></code> (use the global setting),
+<code class="docutils literal notranslate"><span class="pre">wx.DIALOG_ADAPTATION_MODE_ENABLED</span></code> or
+<code class="docutils literal notranslate"><span class="pre">wx.DIALOG_ADAPTATION_MODE_DISABLED</span></code>.</p>
+<p>The last two modes override the global adaptation setting. With
+adaptation enabled, if the display size is too small for the dialog,
+wxPython (or rather the standard adapter class
+<em class="xref py py-obj">wx.StandardDialogLayoutAdapter</em>     ) will make part of the dialog
+scrolling, leaving standard buttons in a non-scrolling part at the
+bottom of the dialog. This is done as follows, in
+<a class="reference internal" href="wx.DialogLayoutAdapter.html#wx.DialogLayoutAdapter.DoLayoutAdaptation" title="wx.DialogLayoutAdapter.DoLayoutAdaptation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.DialogLayoutAdapter.DoLayoutAdaptation</span></code></a> called from within
+<a class="reference internal" href="wx.Dialog.html#wx.Dialog.Show" title="wx.Dialog.Show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.Show</span></code></a> or <a class="reference internal" href="wx.Dialog.html#wx.Dialog.ShowModal" title="wx.Dialog.ShowModal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.ShowModal</span></code></a>:</p>
+<ul class="simple">
+<li><p>If <a class="reference internal" href="wx.Dialog.html#wx.Dialog.GetContentWindow" title="wx.Dialog.GetContentWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.GetContentWindow</span></code></a> returns a window derived from
+<a class="reference internal" href="wx.BookCtrlBase.html#wx-bookctrlbase"><span class="std std-ref">  wx.BookCtrlBase</span></a>, the pages are made scrollable and no other
+adaptation is done.</p></li>
+<li><p>wxPython looks for a <a class="reference internal" href="wx.StdDialogButtonSizer.html#wx-stddialogbuttonsizer"><span class="std std-ref">  wx.StdDialogButtonSizer</span></a> and uses it for the
+non-scrolling part.</p></li>
+<li><p>If that search failed, wxPython looks for a horizontal
+<a class="reference internal" href="wx.BoxSizer.html#wx-boxsizer"><span class="std std-ref">  wx.BoxSizer</span></a> with one or more standard buttons, with identifiers
+such as <code class="docutils literal notranslate"><span class="pre">wx.ID_OK</span></code> and <code class="docutils literal notranslate"><span class="pre">wx.ID_CANCEL</span></code>.</p></li>
+<li><p>If that search failed too, wxPython finds ‘loose’ standard buttons
+(in any kind of sizer) and adds them to a
+<a class="reference internal" href="wx.StdDialogButtonSizer.html#wx-stddialogbuttonsizer"><span class="std std-ref">  wx.StdDialogButtonSizer</span></a>.  If no standard buttons were found, the
+whole dialog content will scroll.</p></li>
+<li><p>All the children apart from standard buttons are reparented onto a
+new <a class="reference internal" href="wx.ScrolledWindow.html#wx-scrolledwindow"><span class="std std-ref">  wx.ScrolledWindow</span></a> object, using the old top-level sizer for
+the scrolled window and creating a new top-level sizer to lay out
+the scrolled window and standard button sizer.</p></li>
+</ul>
+<div class="section" id="customising-scrolling-adaptation">
+<span id="layout-adaptation-code"></span><h3>Customising scrolling adaptation<a class="headerlink" href="#customising-scrolling-adaptation" title="Permalink to this headline">¶</a></h3>
+<p>In addition to switching adaptation on and off globally and per
+dialog, you can choose how aggressively wxPython will search for
+standard buttons by setting
+<a class="reference internal" href="wx.Dialog.html#wx.Dialog.SetLayoutAdaptationLevel" title="wx.Dialog.SetLayoutAdaptationLevel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.SetLayoutAdaptationLevel</span></code></a>. By default, all the steps
+described above will be performed but by setting the level to 1, for
+example, you can choose to only look for <a class="reference internal" href="wx.StdDialogButtonSizer.html#wx-stddialogbuttonsizer"><span class="std std-ref">  wx.StdDialogButtonSizer</span></a>.</p>
+<p>You can use <a class="reference internal" href="wx.Dialog.html#wx.Dialog.AddMainButtonId" title="wx.Dialog.AddMainButtonId"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.AddMainButtonId</span></code></a> to add identifiers for
+buttons that should also be treated as standard buttons for the
+non-scrolling area.</p>
+<p>You can derive your own class from <a class="reference internal" href="wx.DialogLayoutAdapter.html#wx-dialoglayoutadapter"><span class="std std-ref">  wx.DialogLayoutAdapter</span></a> or
+<em class="xref py py-obj">wx.StandardDialogLayoutAdapter</em>      and call
+<a class="reference internal" href="wx.Dialog.html#wx.Dialog.SetLayoutAdapter" title="wx.Dialog.SetLayoutAdapter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.SetLayoutAdapter</span></code></a>, deleting the old object that this
+function returns. Override the functions <em class="xref py py-obj">CanDoLayoutAdaptation</em> and
+<em class="xref py py-obj">DoLayoutAdaptation</em> to test for adaptation applicability and perform
+the adaptation.</p>
+<p>You can also override <a class="reference internal" href="wx.Dialog.html#wx.Dialog.CanDoLayoutAdaptation" title="wx.Dialog.CanDoLayoutAdaptation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.CanDoLayoutAdaptation</span></code></a> and
+<a class="reference internal" href="wx.Dialog.html#wx.Dialog.DoLayoutAdaptation" title="wx.Dialog.DoLayoutAdaptation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.DoLayoutAdaptation</span></code></a> in a class derived from
+<a class="reference internal" href="wx.Dialog.html#wx-dialog"><span class="std std-ref">  wx.Dialog</span></a>.</p>
+</div>
+<div class="section" id="situations-where-automatic-scrolling-adaptation-may-fail">
+<h3>Situations where automatic scrolling adaptation may fail<a class="headerlink" href="#situations-where-automatic-scrolling-adaptation-may-fail" title="Permalink to this headline">¶</a></h3>
+<p>Because adaptation rearranges your sizer and window hierarchy, it is
+not fool-proof, and may fail in the following situations:</p>
+<ul class="simple">
+<li><p>The dialog doesn’t use sizers.</p></li>
+<li><p>The dialog implementation makes assumptions about the window
+hierarchy, for example getting the parent of a control and casting
+to the dialog class.</p></li>
+<li><p>The dialog does custom painting and/or event handling not handled by
+the scrolled window. If this problem can be solved globally, you can
+derive a new adapter class from <em class="xref py py-obj">wx.StandardDialogLayoutAdapter</em>
+and override its <em class="xref py py-obj">CreateScrolledWindow</em> function to return an
+instance of your own class.</p></li>
+<li><p>The dialog has unusual layout, for example a vertical sizer
+containing a mixture of standard buttons and other controls.</p></li>
+<li><p>The dialog makes assumptions about the sizer hierarchy, for example
+to show or hide children of the top-level sizer. However, the
+original sizer hierarchy will still hold until <em class="xref py py-obj">Show</em> or <em class="xref py py-obj">ShowModal</em>
+is called.</p></li>
+</ul>
+<p>You can help make sure that your dialogs will continue to function
+after adaptation by:</p>
+<ul class="simple">
+<li><p>Avoiding the above situations and assumptions;</p></li>
+<li><p>Using <a class="reference internal" href="wx.StdDialogButtonSizer.html#wx-stddialogbuttonsizer"><span class="std std-ref">  wx.StdDialogButtonSizer</span></a>;</p></li>
+<li><p>Only making assumptions about hierarchy immediately after the dialog
+is created;</p></li>
+<li><p>Using an intermediate sizer under the main sizer, a false top-level
+sizer that can be relied on to exist for the purposes of
+manipulating child sizers and windows;</p></li>
+<li><p>Overriding <a class="reference internal" href="wx.Dialog.html#wx.Dialog.GetContentWindow" title="wx.Dialog.GetContentWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.GetContentWindow</span></code></a> to return a book control
+if your dialog implements pages: wxPython will then only make the
+pages scrollable.</p></li>
+</ul>
+</div>
+<div class="section" id="propertysheetdialog-and-wizard">
+<h3>PropertySheetDialog and Wizard<a class="headerlink" href="#propertysheetdialog-and-wizard" title="Permalink to this headline">¶</a></h3>
+<p>Adaptation for <em class="xref py py-obj">wx.PropertySheetDialog</em>      is always done by simply
+making the pages scrollable, since <a class="reference internal" href="wx.Dialog.html#wx.Dialog.GetContentWindow" title="wx.Dialog.GetContentWindow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wx.Dialog.GetContentWindow</span></code></a>
+returns the dialog’s book control and this is handled by the standard
+layout adapter.</p>
+<p><a class="reference internal" href="wx.adv.Wizard.html#wx.adv.Wizard" title="wx.adv.Wizard"><code class="xref py py-class docutils literal notranslate"><span class="pre">wx.adv.Wizard</span></code></a> uses its own <em class="xref py py-obj">CanDoLayoutAdaptation</em> and
+<em class="xref py py-obj">DoLayoutAdaptation</em> functions rather than the global adapter: again,
+only the wizard pages are made scrollable.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer" role="contentinfo">
+        © Copyright 2012-2019, The wxPython Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+<script>
+            $(".codeexpander").collapse({head: "p", group: "div"},
+            {show: function(){
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+
+                    this.animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>
